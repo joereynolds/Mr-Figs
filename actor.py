@@ -17,7 +17,7 @@ class Actor(entity.Entity):
         self.lives = 3 
         self.speed = 50
         self.level = level
-        self.bombs = []
+        self.bombs = pygame.sprite.Group()
         self.move_stack = [] #contains the last 10 moves the user did. We keep this so that a user can undo their actions. 
 
     def move(self,command):
@@ -36,11 +36,6 @@ class Actor(entity.Entity):
             if sprite.solid:
                 if pygame.sprite.collide_rect(self,sprite):
                     self.update(keys.opposites[self.move_stack.pop()]) #'undo' our action.
-        for bomb in self.bombs:
-            for particle in bomb.particles:
-                if pygame.sprite.collide_rect(self,particle):
-                    print('collision')
- 
     def finished_level(self):
         """Returns True if the user has finished level. i.e. if they have
            destroyed the block and gotten out of the boundaries of the screen"""
@@ -52,7 +47,7 @@ class Actor(entity.Entity):
 
     def update(self, command):
         if command == 'space':
-            self.bombs.append(bomb.Bomb(self.rect.x,
+            self.bombs.add(bomb.Bomb(self.rect.x,
                                    self.rect.y,
                                    50,
                                    50,

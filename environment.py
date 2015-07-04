@@ -45,6 +45,9 @@ class LevelBase(SceneBase):
         self.player_group.add(self.player)
         self.level_tiles = self.level.created_level
 
+        self.sprites = pygame.sprite.Group()
+        self.sprites.add(self.level_tiles, self.player_group, self.player.bombs)
+
     def process_input(self):
         pressed_keys = pygame.key.get_pressed()
         for event in pygame.event.get():
@@ -55,15 +58,16 @@ class LevelBase(SceneBase):
             for k,v in keys.keys.items():
                 if pressed_keys[k]:
                     self.player_group.update(v)
-        
+                    for sprite in self.sprites:
+                        sprite.rect.x +=1 
     def update(self):
         self.player_group.add(self.player.bombs)
-
+        self.sprites.add(self.player.bombs)
         #Move this into a function
         for bomb in self.player.bombs:
             self.player_group.add(bomb.particles)
             if bomb.particle_collision(self.player):
-                self.__init__(self.file, self.next_level) #restart the level
+                self.reset()
 
         if self.player.finished_level():
             self.switch_to_scene(self.next_level)
@@ -73,6 +77,9 @@ class LevelBase(SceneBase):
         self.level.created_level.draw(self.surface)
         self.player_group.draw(self.surface)
         pygame.display.flip()
+
+    def reset(self):
+        self.__init__(self.file, self.next_level)
 
 Level3 = LevelBase('level3.txt','Nothing')
 Level2 = LevelBase('level2.txt', Level3)

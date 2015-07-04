@@ -3,8 +3,8 @@ Constants pertaining to graphical use. Note that this can probably be moved to c
 """
 import pygame
 
-WIDTH  = 500
-HEIGHT = 300
+WIDTH  = 700
+HEIGHT = 500
 SCREEN = pygame.display.set_mode((WIDTH, HEIGHT))
 
 spritesheet = pygame.image.load('spritesheet.png')
