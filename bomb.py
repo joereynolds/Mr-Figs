@@ -54,4 +54,12 @@ class Bomb(entity.Entity):
                 self.level.get_tile(x,y).destructable = False 
         except AttributeError:
             print('Attribute Error : Tried to place tile on non-existent block')
+    
+    def particle_collision(self, player):
+        """Returns True if any of the bombs particles collide with player. If they do, we'll probably reset the level."""
+        for particle in self.particles:
+            if pygame.sprite.collide_rect(particle,player):
+                return True
+                print('PARTICLE COLLISION')
+
 

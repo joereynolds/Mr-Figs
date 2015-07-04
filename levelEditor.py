@@ -19,7 +19,8 @@ class Editor():
     tiles = {'X' : [True, False, graphics.spritesheet.subsurface(166,245,50,50)],
              'O' : [True, True, graphics.spritesheet.subsurface(509,217,50,50)],
              '#' : [False, False,graphics.spritesheet.subsurface(466,68,50,50)],
-             'T' : [True, True, graphics.spritesheet.subsurface(378,241,50,50)]
+             'T' : [True, True, graphics.spritesheet.subsurface(378,241,50,50)],
+             'S' : [False, False, graphics.spritesheet.subsurface(608,214,50,50)]
            }
 
     def __init__(self, _file):

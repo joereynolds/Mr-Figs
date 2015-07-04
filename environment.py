@@ -38,6 +38,7 @@ class LevelBase(SceneBase):
     def __init__(self,file,next_level):
         SceneBase.__init__(self)
         self.next_level = next_level
+        self.file = file
         self.level = levelEditor.Editor(file)
         self.player = actor.Actor(50,50,50,50, self.level)
         self.player_group = pygame.sprite.Group()
@@ -54,13 +55,16 @@ class LevelBase(SceneBase):
             for k,v in keys.keys.items():
                 if pressed_keys[k]:
                     self.player_group.update(v)
-
+        
     def update(self):
         self.player_group.add(self.player.bombs)
 
         #Move this into a function
         for bomb in self.player.bombs:
             self.player_group.add(bomb.particles)
+            if bomb.particle_collision(self.player):
+                self.__init__(self.file, self.next_level) #restart the level
+
         if self.player.finished_level():
             self.switch_to_scene(self.next_level)
 
@@ -72,4 +76,4 @@ class LevelBase(SceneBase):
 
 Level3 = LevelBase('level3.txt','Nothing')
 Level2 = LevelBase('level2.txt', Level3)
-Level1 = LevelBase('level1.txt',Level2) 
+Level1 = LevelBase('level1.txt', Level2) 

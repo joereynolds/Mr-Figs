@@ -24,7 +24,8 @@ class Actor(entity.Entity):
         directions = {'up':(0,-1),
                       'down':(0,1),
                       'left':(-1,0),
-                      'right':(1,0)}
+                      'right':(1,0),
+                      'nothing':(0,0)}
 
         self.rect.x += directions[command][0] * self.speed
         self.rect.y += directions[command][1] * self.speed
@@ -35,6 +36,10 @@ class Actor(entity.Entity):
             if sprite.solid:
                 if pygame.sprite.collide_rect(self,sprite):
                     self.update(keys.opposites[self.move_stack.pop()]) #'undo' our action.
+        for bomb in self.bombs:
+            for particle in bomb.particles:
+                if pygame.sprite.collide_rect(self,particle):
+                    print('collision')
  
     def finished_level(self):
         """Returns True if the user has finished level. i.e. if they have

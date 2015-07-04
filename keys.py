@@ -5,7 +5,8 @@ keys = {pygame.K_UP:'up',
         pygame.K_LEFT:'left',
         pygame.K_RIGHT:'right',
         pygame.K_SPACE:'space',
-        pygame.K_u:'u'} 
+        pygame.K_u:'u',
+        1:'nothing'}#be does nothing but we need to supply a command to our update function for the player. And sometimes we want  no movement to take effect  
 
 opposites = {'up':'down',
              'down':'up',
