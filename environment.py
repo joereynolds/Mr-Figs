@@ -43,7 +43,7 @@ class LevelBase(SceneBase):
         self.player = actor.Actor(50,50,50,50, self.level)
         self.level_tiles = self.level.created_level
         self.sprites = pygame.sprite.LayeredUpdates()
-        self.sprites.add(self.level_tiles, self.player, self.player.bombs)
+        self.sprites.add(self.level_tiles, self.player)
 
     def process_input(self):
         pressed_keys = pygame.key.get_pressed()
@@ -56,7 +56,9 @@ class LevelBase(SceneBase):
                 if pressed_keys[k]:
                     self.player.update(v)
                     for sprite in self.sprites:
-                        sprite.rect.x +=1 
+                        if sprite.image == graphics.spritesheet.subsurface(608,214,50,50):
+                            print('yup')
+                            sprite.image = graphics.spritesheet.subsurface(0,0,0,0)
         
     def update(self):
         self.sprites.add(self.player.bombs)
@@ -78,6 +80,7 @@ class LevelBase(SceneBase):
     def reset(self):
         self.__init__(self.file, self.next_level)
 
-Level3 = LevelBase('level3.txt','Nothing')
+Level4 = LevelBase('level4.txt','nothing')
+Level3 = LevelBase('level3.txt', Level4)
 Level2 = LevelBase('level2.txt', Level3)
 Level1 = LevelBase('level1.txt', Level2) 
