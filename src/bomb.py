@@ -31,24 +31,11 @@ class Bomb(entity.Entity):
 
     def explode(self):
         """Explodes our bomb making sure that the particles only go to the correct boundaries of the walls. Or is meant to..."""
-        #...who needs algorithms...
-        self.create_particle(self.rect.x + 50, self.rect.y, 50, 50)
-        self.create_particle(self.rect.x + 100, self.rect.y, 50, 50)
-        self.create_particle(self.rect.x + 150, self.rect.y, 50, 50)
-        self.create_particle(self.rect.x + 200, self.rect.y, 50, 50)
-        self.create_particle(self.rect.x - 50, self.rect.y, 50, 50)
-        self.create_particle(self.rect.x - 100, self.rect.y, 50, 50)
-        self.create_particle(self.rect.x - 150, self.rect.y, 50, 50)
-        self.create_particle(self.rect.x - 200, self.rect.y, 50, 50)
-
-        self.create_particle(self.rect.x, self.rect.y + 50, 50, 50)
-        self.create_particle(self.rect.x, self.rect.y + 100, 50, 50)
-        self.create_particle(self.rect.x, self.rect.y + 150, 50, 50)
-        self.create_particle(self.rect.x, self.rect.y + 200, 50, 50)
-        self.create_particle(self.rect.x, self.rect.y - 50, 50, 50)
-        self.create_particle(self.rect.x, self.rect.y - 100, 50, 50)
-        self.create_particle(self.rect.x, self.rect.y - 150, 50, 50)
-        self.create_particle(self.rect.x, self.rect.y - 200, 50, 50)
+        for i in range(50,250,50):
+            self.create_particle(self.rect.x + i, self.rect.y, 50, 50)
+            self.create_particle(self.rect.x - i, self.rect.y, 50, 50)
+            self.create_particle(self.rect.x, self.rect.y + i, 50, 50)
+            self.create_particle(self.rect.x, self.rect.y - i, 50, 50)
        
     def create_particle(self,x,y,width,height):
         obj = entity.Entity(x,y,50,50)

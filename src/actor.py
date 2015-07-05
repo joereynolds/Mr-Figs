@@ -14,7 +14,6 @@ class Actor(entity.Entity):
 
         self.image.fill(colours.RED)
         self.direction = 'down'
-        self.lives = 3 
         self.speed = 50
         self.level = level
         self.bombs = pygame.sprite.Group()

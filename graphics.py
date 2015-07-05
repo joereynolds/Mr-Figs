@@ -1,13 +1,10 @@
-"""
-Constants pertaining to graphical use. Note that this can probably be moved to constants without too much bother.
-"""
 import pygame
 
 WIDTH  = 700
 HEIGHT = 500
 SCREEN = pygame.display.set_mode((WIDTH, HEIGHT))
 
-spritesheet = pygame.image.load('../data/spritesheet.png')
+spritesheet = pygame.image.load('data/spritesheet.png')
 
 ROCK_SPRITE      = spritesheet.subsurface(166,245,50,50)
 GOAL_SPRITE      = spritesheet.subsurface(509,217,50,50)
