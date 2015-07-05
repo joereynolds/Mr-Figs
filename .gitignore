@@ -55,3 +55,9 @@ docs/_build/
 
 # PyBuilder
 target/
+
+#Windows
+Thumbs.db
+
+#Vim
+*.swp
