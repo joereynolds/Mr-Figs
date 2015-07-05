@@ -17,11 +17,11 @@ class Editor():
         True Is whether this tile can be destroyed via a bomb
         path/to/img is the path to the image if you have one
     """
-    tiles = {'X' : [tile.Tile, True, False, graphics.spritesheet.subsurface(166,245,50,50)],
-             'O' : [tile.Tile, True, True, graphics.spritesheet.subsurface(509,217,50,50)],
-             '#' : [tile.Tile, False, False,graphics.spritesheet.subsurface(466,68,50,50)],
-             'T' : [tile.Tile, True, True, graphics.spritesheet.subsurface(378,241,50,50)],
-             'S' : [tile.Spike, False, False, graphics.spritesheet.subsurface(608,214,50,50)]
+    tiles = {'X' : [tile.Tile, True, False, graphics.ROCK_SPRITE],
+             'O' : [tile.Tile, True, True, graphics.GOAL_SPRITE],
+             '#' : [tile.Tile, False, False,graphics.FLOOR_SPRITE],
+             'T' : [tile.Tile, True, True, graphics.TREE_SPRITE],
+             'S' : [tile.Spike, False, False, graphics.SPIKEDOWN_SPRITE]
            }
 
     def __init__(self, _file):

@@ -37,9 +37,12 @@ class Actor(entity.Entity):
                 if pygame.sprite.collide_rect(self,sprite):
                     self.update(keys.opposites[self.move_stack.pop()]) #'undo' our action.
             if isinstance(sprite, tile.Spike):
-                if sprite.state:
+                if not sprite.state:
                     if pygame.sprite.collide_rect(self, sprite):
                         pygame.sprite.Sprite.kill(self)
+        for bomb in self.bombs:
+            if pygame.sprite.collide_rect(self,bomb):
+                self.update(keys.opposites[self.move_stack.pop()])
 
     def finished_level(self):
         """Returns True if the user has finished level. i.e. if they have
@@ -49,6 +52,10 @@ class Actor(entity.Entity):
            self.rect.y > graphics.HEIGHT or \
            self.rect.y <= 0:
            return True
+    
+    def undo_action(self):
+        if self.move_stack:
+            self.move(keys.opposites[self.move_stack.pop()]) #undo
 
     def update(self, command):
         if command == 'space':
@@ -58,8 +65,7 @@ class Actor(entity.Entity):
                                    50,
                                    self.level))
         elif command == 'u':
-            if self.move_stack:
-                self.move(keys.opposites[self.move_stack.pop()]) #undo
+            self.undo_action()
         else:
             self.move(command)
             self.move_stack.append(command)

@@ -20,6 +20,7 @@ class Spike(Tile):
     def change_state(self):
         """Changes our state from 0(friendly) to 1(deadly) and vice versa.
            Changing state also requires that we change the image of our spike too"""
+        print('STATE :',self.state)
         if self.state:
             self.state = 0
             self.image = graphics.spritesheet.subsurface(608,214,50,50)

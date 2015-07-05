@@ -47,6 +47,7 @@ class LevelBase(SceneBase):
         self.sprites.add(self.level_tiles, self.player)
 
     def process_input(self):
+        #Maybe create an InputHandler class for all of this?
         pressed_keys = pygame.key.get_pressed()
         for event in pygame.event.get():
             if event.type == pygame.MOUSEBUTTONDOWN:
@@ -83,4 +84,4 @@ class LevelBase(SceneBase):
 Level4 = LevelBase('level4.txt','nothing')
 Level3 = LevelBase('level3.txt', Level4)
 Level2 = LevelBase('level2.txt', Level3)
-Level1 = LevelBase('level1.txt', Level2) 
+Level1 = LevelBase('level3.txt', Level2) 

@@ -2,16 +2,25 @@ import pygame
 import graphics
 import entity
 
+"""
+
+@solid     = Whether the actor can walk through it
+@lifespan  = The amount of steps actor must take before the bomb detonates
+@level     = level data from the LevelEditor class
+@particles = A container for a bomb's particles 
+"""
 class Bomb(entity.Entity):
 
     def __init__(self, x, y, width, height, level, image=None):
         entity.Entity.__init__(self, x, y, width, height, image)
         self.solid = True 
-        self.lifespan = 5 #How many steps the player has to take until the bom blows up
+        self.lifespan = 5 
         self.level = level
-        self.particles = pygame.sprite.Group() #container for our particles
+        self.particles = pygame.sprite.Group()
 
     def blow_up(self):
+        """Destroys our bomb and then all of its particles associated with it.
+           Returns True on success so that outside classes can know it's completed successfull"""
         if self.lifespan ==0:
             self.explode()
         if self. lifespan <= -2:
@@ -22,7 +31,6 @@ class Bomb(entity.Entity):
 
     def explode(self):
         """Explodes our bomb making sure that the particles only go to the correct boundaries of the walls. Or is meant to..."""
-        #Create bombs to the (eventual left) and right of the original bomb
         #...who needs algorithms...
         self.create_particle(self.rect.x + 50, self.rect.y, 50, 50)
         self.create_particle(self.rect.x + 100, self.rect.y, 50, 50)
@@ -53,7 +61,7 @@ class Bomb(entity.Entity):
                 self.level.get_tile(x,y).solid = False
                 self.level.get_tile(x,y).destructable = False 
         except AttributeError:
-            print('Attribute Error : Tried to place tile on non-existent block')
+            print('Attribute Error : Tried to place bomb on non-existent block')
     
     def particle_collision(self, player):
         """Returns True if any of the bombs particles collide with player. If they do, we'll probably reset the level."""
