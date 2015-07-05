@@ -4,6 +4,7 @@ Handles our Scene logic and input processing/updating/rendering
 import pygame
 import levelEditor
 import keys
+import tile
 import colours
 import graphics
 import guiBase
@@ -56,9 +57,8 @@ class LevelBase(SceneBase):
                 if pressed_keys[k]:
                     self.player.update(v)
                     for sprite in self.sprites:
-                        if sprite.image == graphics.spritesheet.subsurface(608,214,50,50):
-                            print('yup')
-                            sprite.image = graphics.spritesheet.subsurface(0,0,0,0)
+                        if isinstance(sprite,tile.Spike):
+                            sprite.change_state()
         
     def update(self):
         self.sprites.add(self.player.bombs)

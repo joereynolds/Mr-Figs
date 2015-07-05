@@ -12,15 +12,16 @@ class Editor():
        'X' : [True, True, path/to/img]
        
        'X' is the representation of the tile in the text file
+        tile.Tile is the type of object to be created
         True Is whether the tile is solid or not
         True Is whether this tile can be destroyed via a bomb
         path/to/img is the path to the image if you have one
     """
-    tiles = {'X' : [True, False, graphics.spritesheet.subsurface(166,245,50,50)],
-             'O' : [True, True, graphics.spritesheet.subsurface(509,217,50,50)],
-             '#' : [False, False,graphics.spritesheet.subsurface(466,68,50,50)],
-             'T' : [True, True, graphics.spritesheet.subsurface(378,241,50,50)],
-             'S' : [False, False, graphics.spritesheet.subsurface(608,214,50,50)]
+    tiles = {'X' : [tile.Tile, True, False, graphics.spritesheet.subsurface(166,245,50,50)],
+             'O' : [tile.Tile, True, True, graphics.spritesheet.subsurface(509,217,50,50)],
+             '#' : [tile.Tile, False, False,graphics.spritesheet.subsurface(466,68,50,50)],
+             'T' : [tile.Tile, True, True, graphics.spritesheet.subsurface(378,241,50,50)],
+             'S' : [tile.Spike, False, False, graphics.spritesheet.subsurface(608,214,50,50)]
            }
 
     def __init__(self, _file):
@@ -58,12 +59,12 @@ class Editor():
             for x, _tile in enumerate(tiles):
                 for tile_icon, attributes in Editor.tiles.items():
                     if _tile == tile_icon:
-                        obj = tile.Tile(x * 50,
+                        obj = Editor.tiles[_tile][0](x * 50,
                                         y * 50,
                                         50,
                                         50,
-                                        Editor.tiles[_tile][0],
                                         Editor.tiles[_tile][1],
-                                        Editor.tiles[_tile][2])
+                                        Editor.tiles[_tile][2],
+                                        Editor.tiles[_tile][3])
                         self.created_level.add(obj)
                        

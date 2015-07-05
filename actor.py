@@ -36,6 +36,11 @@ class Actor(entity.Entity):
             if sprite.solid:
                 if pygame.sprite.collide_rect(self,sprite):
                     self.update(keys.opposites[self.move_stack.pop()]) #'undo' our action.
+            if isinstance(sprite, tile.Spike):
+                if sprite.state:
+                    if pygame.sprite.collide_rect(self, sprite):
+                        pygame.sprite.Sprite.kill(self)
+
     def finished_level(self):
         """Returns True if the user has finished level. i.e. if they have
            destroyed the block and gotten out of the boundaries of the screen"""
