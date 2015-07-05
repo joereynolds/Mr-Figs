@@ -60,6 +60,5 @@ class Bomb(entity.Entity):
         for particle in self.particles:
             if pygame.sprite.collide_rect(particle,player):
                 return True
-                print('PARTICLE COLLISION')
 
 
