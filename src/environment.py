@@ -87,6 +87,6 @@ class LevelBase(SceneBase):
         self.__init__(self.file, self.next_level)
 
 Level4 = LevelBase('../levels/level4.txt','nothing')
-Level3 = LevelBase('../levels/level3.txt', Level4)
-Level2 = LevelBase('../levels/level2.txt', Level3)
+Level3 = LevelBase('../levels/level3.csv', Level4)
+Level2 = LevelBase('../levels/level2.csv', Level3)
 Level1 = LevelBase('../levels/level1.csv', Level2) 

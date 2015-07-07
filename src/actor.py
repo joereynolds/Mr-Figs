@@ -36,7 +36,7 @@ class Actor(entity.Entity):
                 if pygame.sprite.collide_rect(self,sprite):
                     self.update(keys.opposites[self.move_stack.pop()]) #'undo' our action.
             if isinstance(sprite, tile.Spike):
-                if not sprite.state:
+                if sprite.state:
                     if pygame.sprite.collide_rect(self, sprite):
                         pygame.sprite.Sprite.kill(self)
 
