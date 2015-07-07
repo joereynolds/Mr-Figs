@@ -56,10 +56,17 @@ class LevelBase(SceneBase):
                 self.terminate()
             for k,v in keys.keys.items():
                 if pressed_keys[k]:
-                    self.player.update(v)
-                    for sprite in self.sprites:
-                        if isinstance(sprite,tile.Spike):
-                            sprite.change_state()
+                    print(pressed_keys[k])
+                    if v == 'reset':
+                        self.reset()
+                        
+                    else:
+                        self.player.update(v)
+                        for sprite in self.sprites:
+                            if isinstance(sprite,tile.Spike):
+                                sprite.change_state()
+                        for bomb in self.player.bombs:
+                            bomb.bomb_collisions(self.player.bombs)
         
     def update(self):
         self.sprites.add(self.player.bombs)

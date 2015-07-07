@@ -6,6 +6,7 @@ keys = {pygame.K_UP:'up',
         pygame.K_RIGHT:'right',
         pygame.K_SPACE:'space',
         pygame.K_u:'u',
+        pygame.K_r:'reset'
         }
 
 opposites = {'up':'down',
