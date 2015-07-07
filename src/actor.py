@@ -31,7 +31,7 @@ class Actor(entity.Entity):
         self.direction = command 
 
     def collide(self):
-        for sprite in self.level.created_level:
+        for sprite in self.level.level_data:
             if sprite.solid:
                 if pygame.sprite.collide_rect(self,sprite):
                     self.update(keys.opposites[self.move_stack.pop()]) #'undo' our action.
