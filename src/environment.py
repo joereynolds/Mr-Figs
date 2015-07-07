@@ -45,7 +45,6 @@ class LevelBase(SceneBase):
         self.level_tiles = self.level.level_data
         self.sprites = pygame.sprite.LayeredUpdates()
         self.sprites.add(self.level_tiles, self.player)
-        print(self.sprites)
 
     def process_input(self):
         #Maybe create an InputHandler class for all of this?
@@ -90,4 +89,4 @@ class LevelBase(SceneBase):
 Level4 = LevelBase('../levels/level4.txt','nothing')
 Level3 = LevelBase('../levels/level3.txt', Level4)
 Level2 = LevelBase('../levels/level2.txt', Level3)
-Level1 = LevelBase('../src/level4.csv', Level2) 
+Level1 = LevelBase('../levels/level1.csv', Level2) 

@@ -88,6 +88,12 @@ class TiledEditor():
         self.level_data = pygame.sprite.Group()
         self.make_level()
 
+    def get_tile(self,x,y):
+        """Returns the tile at x,y position"""
+        for tile in self.level_data:
+            if tile.rect.x == x and tile.rect.y == y:
+                return tile
+
     def get_data(self, map_csv):
         data = []
         with open(map_csv, newline='') as csvfile:
@@ -111,13 +117,9 @@ class TiledEditor():
         """Converts our csv data into objects and adds them to a sprite.Group"""
         #Go through each individual tile and check it against our tiles dict
         for y, row in enumerate(self.csv_data):
-            
             for x, cell in enumerate(row):
                 for tile_icon, attributes in TiledEditor.tiles.items():
                     if cell == tile_icon:
-                        print('CREATING OBJECT')
-                        print('X:',x*50)
-                        print('Y:',y*50)
                         obj = TiledEditor.tiles[cell][0](x * 50,
                                         y * 50,
                                         50,
@@ -127,4 +129,5 @@ class TiledEditor():
                                         TiledEditor.tiles[cell][3])
                         self.level_data.add(obj)
         
+t = TiledEditor('../levels/level1.csv')
 

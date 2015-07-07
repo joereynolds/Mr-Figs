@@ -44,11 +44,11 @@ class Bomb(entity.Entity):
                 self.particles.add(obj) 
             elif self.level.get_tile(x,y).destructable:
                 #If it's destructable, kill it and change its attributes
-                self.level.get_tile(x,y).image = graphics.spritesheet.subsurface(466,68,50,50)
+                self.level.get_tile(x,y).image = graphics.FLOOR_SPRITE
                 self.level.get_tile(x,y).solid = False
                 self.level.get_tile(x,y).destructable = False 
         except AttributeError:
-            pass#print('Attribute Error : Tried to place bomb on non-existent block')
+            print('Attribute Error : Tried to place bomb on non-existent block')
     
     def particle_collision(self, player):
         """Returns True if any of the bombs particles collide with player. If they do, we'll probably reset the level."""
