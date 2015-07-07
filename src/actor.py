@@ -12,7 +12,6 @@ class Actor(entity.Entity):
     def __init__(self, x, y, width, height, level, image=None):
         entity.Entity.__init__(self, x, y, width, height, image)
 
-        self.image.fill(colours.RED)
         self.direction = 'down'
         self.speed = 50
         self.level = level
@@ -36,7 +35,7 @@ class Actor(entity.Entity):
                 if pygame.sprite.collide_rect(self,sprite):
                     self.update(keys.opposites[self.move_stack.pop()]) #'undo' our action.
             if isinstance(sprite, tile.Spike):
-                if sprite.state:
+                if not sprite.state:
                     if pygame.sprite.collide_rect(self, sprite):
                         pygame.sprite.Sprite.kill(self)
 
@@ -59,7 +58,8 @@ class Actor(entity.Entity):
                                    self.rect.y,
                                    50,
                                    50,
-                                   self.level))
+                                   self.level,
+                                   graphics.BOMB_SPRITE))
         elif command == 'u':
             self.undo_action()
         else:

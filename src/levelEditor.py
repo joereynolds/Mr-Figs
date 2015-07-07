@@ -79,7 +79,8 @@ class TiledEditor():
              '1' : [tile.Tile, True, True, graphics.TREE_SPRITE],
              '2' : [tile.Tile, True, False, graphics.ROCK_SPRITE],
              '3' : [tile.Tile, True, True, graphics.GOAL_SPRITE],
-             '4' : [tile.Spike, False, False, graphics.SPIKEDOWN_SPRITE]
+             '4' : [tile.Spike, False, False, graphics.SPIKEDOWN_SPRITE],
+             '5' : [tile.Spike, False, False, graphics.SPIKEUP_SPRITE]
            }
     
     def __init__(self, map_csv):

@@ -11,6 +11,7 @@ class Tile(entity.Entity):
         entity.Entity.__init__(self, x, y, width, height, image)
         self.solid = solid 
         self.destructable = destructable 
+
     
 """Extends Tile. If an actor collides with this class whilst it's up, the player dies"""
 class Spike(Tile):
