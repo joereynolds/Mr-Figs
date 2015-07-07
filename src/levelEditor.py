@@ -121,6 +121,8 @@ class TiledEditor():
             for x, cell in enumerate(row):
                 for tile_icon, attributes in TiledEditor.tiles.items():
                     if cell == tile_icon:
+                        arguments = TiledEditor.tiles[cell][1:]
+                        print(arguments)
                         obj = TiledEditor.tiles[cell][0](x * 50,
                                         y * 50,
                                         50,
