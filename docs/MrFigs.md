@@ -10,7 +10,6 @@
 - Make the modules properly importable rather than having to copy and paste them into things
 - Bomberman's starting position should be on the text file
 - Create a backdrop for the game so that it's not just a horrible white background on smaller levels
-- Pressing 'r' should restart the level
 - Need a main menu at the start
 - Need a menu to display when you press 'esc'
 
@@ -29,6 +28,12 @@
 
 Spikes are an idea whereby every other move, the spikes will 'spike' up. If you are on the spike when it spikes up, you die and get reset to your original position.
 If the spike is in the 'down' position, then you're safe :)
+
+There are 3 options of how bombs can be implemented. 
+
+1. Bombs can be planted on the spike as long as the spike is down. When the spike comes up, it will detonate the bomb.
+2. Bombs cannot be planted on spikes.
+3. Bombs can be planted on spikes regardless of position.
 
 ##Useful Links
 [Bomberman mechanics](http://www.gamedev.net/page/resources/_/technical/game-programming/case-study-bomberman-mechanics-in-an-entity-component-system-r3159)

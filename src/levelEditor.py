@@ -23,8 +23,9 @@ class TiledEditor():
              '1' : [tile.Tile, True, True, graphics.TREE_SPRITE],
              '2' : [tile.Tile, True, False, graphics.ROCK_SPRITE],
              '3' : [tile.Tile, True, True, graphics.GOAL_SPRITE],
-             '4' : [tile.Spike, False, False, graphics.SPIKEDOWN_SPRITE],
-             '5' : [tile.Spike, False, False, graphics.SPIKEUP_SPRITE]
+             '4' : [tile.Spike, False, False, 0, graphics.SPIKEDOWN_SPRITE],
+             '5' : [tile.Spike, False, False, 1, graphics.SPIKEUP_SPRITE],
+             '9' : [tile.FinishTile, False, False, graphics.FINISHED_SPRITE]
            }
     
     def __init__(self, map_csv):
@@ -65,16 +66,29 @@ class TiledEditor():
             for x, cell in enumerate(row):
                 for tile_icon, attributes in TiledEditor.tiles.items():
                     if cell == tile_icon:
-                        arguments = TiledEditor.tiles[cell][1:]
-                        print(arguments)
-                        obj = TiledEditor.tiles[cell][0](x * 50,
-                                        y * 50,
-                                        50,
-                                        50,
-                                        TiledEditor.tiles[cell][1],
-                                        TiledEditor.tiles[cell][2],
-                                        TiledEditor.tiles[cell][3])
+                        if TiledEditor.tiles[cell][0] == tile.Spike:
+                            obj = TiledEditor.tiles[cell][0](x * 50,
+                                            y * 50,
+                                            50,
+                                            50,
+                                            TiledEditor.tiles[cell][1],
+                                            TiledEditor.tiles[cell][2],
+                                            TiledEditor.tiles[cell][3],
+                                            TiledEditor.tiles[cell][4])
+                        elif TiledEditor.tiles[cell][0] == tile.FinishTile:
+                            obj = TiledEditor.tiles[cell][0](x * 50,
+                                            y * 50,
+                                            50,
+                                            50,
+                                            TiledEditor.tiles[cell][1],
+                                            TiledEditor.tiles[cell][2],
+                                            TiledEditor.tiles[cell][3])
+                        else:
+                            obj = TiledEditor.tiles[cell][0](x * 50,
+                                            y * 50,
+                                            50,
+                                            50,
+                                            TiledEditor.tiles[cell][1],
+                                            TiledEditor.tiles[cell][2],
+                                            TiledEditor.tiles[cell][3])
                         self.level_data.add(obj)
-        
-t = TiledEditor('../levels/level1.csv')
-

@@ -41,7 +41,7 @@ class LevelBase(SceneBase):
         self.next_level = next_level
         self.file = file
         self.level = levelEditor.TiledEditor(file)
-        self.player = actor.Actor(50,50,50,50, self.level, graphics.TREE_SPRITE)
+        self.player = actor.Actor(50,50,50,50, self.level, graphics.ACTOR_SPRITE)
         self.level_tiles = self.level.level_data
         self.sprites = pygame.sprite.LayeredUpdates()
         self.sprites.add(self.level_tiles, self.player)
@@ -61,11 +61,12 @@ class LevelBase(SceneBase):
                         
                     else:
                         self.player.update(v)
-                        for sprite in self.sprites:
-                            if isinstance(sprite,tile.Spike):
-                                sprite.change_state()
                         for bomb in self.player.bombs:
                             bomb.bomb_collisions(self.player.bombs)
+                        if v != 'space': 
+                            for sprite in self.sprites:
+                                if isinstance(sprite,tile.Spike):
+                                    sprite.change_state()
         
     def update(self):
         self.sprites.add(self.player.bombs)

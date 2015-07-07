@@ -42,11 +42,10 @@ class Actor(entity.Entity):
     def finished_level(self):
         """Returns True if the user has finished level. i.e. if they have
            destroyed the block and gotten out of the boundaries of the screen"""
-        if self.rect.x >= graphics.WIDTH or \
-           self.rect.x <= 0 or \
-           self.rect.y > graphics.HEIGHT or \
-           self.rect.y <= 0:
-           return True
+        for sprite in self.level.level_data:
+            if isinstance(sprite, tile.FinishTile):
+                if pygame.sprite.collide_rect(self, sprite):
+                    return True
     
     def undo_action(self):
         if self.move_stack:

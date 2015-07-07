@@ -1,4 +1,5 @@
 import pygame
+import tile
 import graphics
 import entity
 
@@ -65,5 +66,11 @@ class Bomb(entity.Entity):
                     if pygame.sprite.collide_rect(self, particle):
                         self.lifespan = bomb.lifespan #remember to detonate both bombs at the same time!`
                         self.explode()
+        for sprite in self.level.level_data:
+            if isinstance(sprite, tile.Spike):
+                if not sprite.state:
+                    if pygame.sprite.collide_rect(self,sprite):
+                        self.explode()
+                    
 
                      

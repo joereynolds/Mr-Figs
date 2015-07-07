@@ -12,12 +12,16 @@ class Tile(entity.Entity):
         self.solid = solid 
         self.destructable = destructable 
 
+class FinishTile(Tile):
+    def __init__(self, x, y, width, height,solid, destructable, image=None):
+        Tile.__init__(self, x, y, width, height, solid, destructable, image)
+
     
 """Extends Tile. If an actor collides with this class whilst it's up, the player dies"""
 class Spike(Tile):
-    def __init__(self, x, y, width, height, solid, destructable, image):
+    def __init__(self, x, y, width, height, solid, destructable, state, image):
         Tile.__init__(self, x, y, width, height, solid, destructable, image)
-        self.state = 0 
+        self.state = state 
     
     def change_state(self):
         """Changes our state from 0(friendly) to 1(deadly) and vice versa.
