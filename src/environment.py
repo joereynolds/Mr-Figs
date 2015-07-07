@@ -40,9 +40,9 @@ class LevelBase(SceneBase):
         SceneBase.__init__(self)
         self.next_level = next_level
         self.file = file
-        self.level = levelEditor.Editor(file)
+        self.level = levelEditor.TiledEditor(file)
         self.player = actor.Actor(50,50,50,50, self.level)
-        self.level_tiles = self.level.created_level
+        self.level_tiles = self.level.level_data
         self.sprites = pygame.sprite.LayeredUpdates()
         self.sprites.add(self.level_tiles, self.player)
 
@@ -56,7 +56,6 @@ class LevelBase(SceneBase):
                 self.terminate()
             for k,v in keys.keys.items():
                 if pressed_keys[k]:
-                    print(pressed_keys[k])
                     if v == 'reset':
                         self.reset()
                         
