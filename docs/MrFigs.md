@@ -9,13 +9,15 @@
 - music
 - Make the modules properly importable rather than having to copy and paste them into things
 - Bomberman's starting position should be on the text file
-- Create a backdrop for the game so that it's not just a horrible white background on smaller levels 
+- Create a backdrop for the game so that it's not just a horrible white background on smaller levels
 - Pressing 'r' should restart the level
 - Need a main menu at the start
 - Need a menu to display when you press 'esc'
 
 ###Code
 - Hunt down all instances of subsurface that aren't in graphics.py and replace their hardcoded values with the variable defined in graphics.py
+- Package it into an exe
+- Debug options such as '<' to go back a level, and '>' to go forward a level
 
 
 
