@@ -2,6 +2,7 @@
 Handles our Scene logic and input processing/updating/rendering
 """
 import pygame
+import os
 import levelEditor
 import keys
 import tile
@@ -87,7 +88,16 @@ class LevelBase(SceneBase):
     def reset(self):
         self.__init__(self.file, self.next_level)
 
-Level4 = LevelBase('../levels/level4.csv','nothing')
-Level3 = LevelBase('../levels/level3.csv', Level4)
-Level2 = LevelBase('../levels/level2.csv', Level3)
-Level1 = LevelBase('../levels/level1.csv', Level2) 
+#Automaitc level loading
+levels_dir = '../levels/'
+levels = os.listdir('../levels/')
+level_obj_list = [LevelBase(levels_dir + level,'temp') 
+                      for level in levels 
+                         if level.endswith('csv')
+                 ]
+
+for i in range(len(level_obj_list)):
+    if i == len(level_obj_list)-1:
+        level_obj_list[i].next_level = 'NoNextLevelNeeded'
+    else:
+        level_obj_list[i].next_level = level_obj_list[i+1]
