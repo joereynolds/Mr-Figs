@@ -20,18 +20,44 @@ class TiledEditor():
         path/to/img is the path to the image if you have one
     """
     tiles = {
-             '0' : [tile.Tile, False, False,graphics.FLOOR_SPRITE],
-             '1' : [tile.Tile, True, True, graphics.TREE_SPRITE],
-             '2' : [tile.Tile, True, False, graphics.ROCK_STANDALONE_SPRITE],
-             '3' : [tile.Tile, True, True, graphics.GOAL_SPRITE],
-             '4' : [tile.Spike, False, False, 0, graphics.SPIKEDOWN_SPRITE],
-             '5' : [tile.Spike, False, False, 1, graphics.SPIKEUP_SPRITE],
-             '7' : [bomb.Bomb, True, graphics.BOMB_SPRITE ],
-             '9' : [tile.FinishTile, False, False, graphics.FINISHED_SPRITE],
-             '11': [tile.Tile,True,False, graphics.ROCK_CORNER_TOP_LEFT_SPRITE],
-             '33': [tile.Tile,True,False, graphics.ROCK_CORNER_BOTTOM_LEFT_SPRITE],
-             '34': [tile.Tile,True,False, graphics.ROCK_CORNER_BOTTOM_MID_SPRITE]
+             
+             '0' : ['floor', graphics.FLOOR_SPRITE],
+             '1' : ['tree',graphics.TREE_SPRITE],
+             '3' : ['goal',graphics.GOAL_SPRITE],
+             '4' : ['spike', 0, graphics.SPIKEDOWN_SPRITE],
+             '5' : ['spike', 1, graphics.SPIKEUP_SPRITE],
+             '7' : ['bomb', graphics.BOMB_SPRITE ],
+             '9' : ['end', graphics.FINISHED_SPRITE],
+             '2' : ['rock',graphics.ROCK_STANDALONE_SPRITE],
+             '11': ['rock', graphics.ROCK_CORNER_TOP_LEFT_SPRITE],
+             '33': ['rock', graphics.ROCK_CORNER_BOTTOM_LEFT_SPRITE],
+             '34': ['rock', graphics.ROCK_CORNER_BOTTOM_MID_SPRITE]
            }
+
+    def create_goal_tile(self, x, y, surface):
+        return tile.Tile(x * 50, y * 50,50,50,True,True, surface)
+
+    def create_tree_tile(self,x,y,surface):
+        return tile.Tile(x * 50, y *50, 50, 50, True, True, surface)
+    
+    def create_rock_tile(self,x,y,surface):
+        """Convenience function to shorten the make_level() function"""
+        return tile.Tile(x * 50, y * 50, 50,50,solid=True,destructable=False,image=surface)
+
+    def create_spike_tile(self, x, y, _state, surface):
+        return tile.Spike(x * 50, y * 50, 50, 50, solid=False, destructable=False,state=_state, image=surface)
+
+    def create_bomb_tile(self,x, y, surface):
+        return bomb.Bomb(x*50, y*50, 50, 50, self, surface)
+
+    def create_floor_tile(self,x,y,surface):
+        return tile.Tile(x * 50, y * 50, 50, 50, False, False, surface)
+
+    def create_finish_tile(self,x,y,surface):
+        return tile.FinishTile(x *50, y*50, 50, 50, False, False, surface)
+    
+
+
     
     def __init__(self, map_csv):
         self.reader = csv.reader(map_csv)
@@ -71,38 +97,21 @@ class TiledEditor():
             for x, cell in enumerate(row):
                 for tile_icon, attributes in TiledEditor.tiles.items():
                     if cell == tile_icon:
-                        if TiledEditor.tiles[cell][0] == tile.Spike:
-                            obj = TiledEditor.tiles[cell][0](x * 50,
-                                            y * 50,
-                                            50,
-                                            50,
-                                            TiledEditor.tiles[cell][1],
-                                            TiledEditor.tiles[cell][2],
-                                            TiledEditor.tiles[cell][3],
-                                            TiledEditor.tiles[cell][4])
-
-                        elif TiledEditor.tiles[cell][0] == tile.FinishTile:
-                            obj = TiledEditor.tiles[cell][0](x * 50,
-                                            y * 50,
-                                            50,
-                                            50,
-                                            TiledEditor.tiles[cell][1],
-                                            TiledEditor.tiles[cell][2],
-                                            TiledEditor.tiles[cell][3])
-
-                        elif TiledEditor.tiles[cell][0] == bomb.Bomb:
-                            obj = TiledEditor.tiles[cell][0](x *50,
-                                            y * 50,
-                                            50,
-                                            50,
-                                            self,
-                                            TiledEditor.tiles[cell][2])
-                        else:
-                            obj = TiledEditor.tiles[cell][0](x * 50,
-                                            y * 50,
-                                            50,
-                                            50,
-                                            TiledEditor.tiles[cell][1],
-                                            TiledEditor.tiles[cell][2],
-                                            TiledEditor.tiles[cell][3])
+                        tile_type = TiledEditor.tiles[cell][0]
+                        tile_surface = TiledEditor.tiles[cell][-1]
+ 
+                        if tile_type == 'rock':
+                            obj = self.create_rock_tile(x,y, tile_surface)
+                        elif tile_type == 'spike':
+                            obj = self.create_spike_tile(x, y, TiledEditor.tiles[cell][1],tile_surface)
+                        elif tile_type == 'bomb':
+                            obj = self.create_bomb_tile(x, y, self, tile_surface)
+                        elif tile_type == 'floor':
+                            obj = self.create_floor_tile(x,y,tile_surface)
+                        elif tile_type == 'tree' :
+                            obj = self.create_tree_tile(x,y,tile_surface)
+                        elif tile_type == 'goal':
+                            obj = self.create_goal_tile(x,y,tile_surface)
+                        elif tile_type == 'end':
+                            obj = self.create_finish_tile(x,y,tile_surface)
                         self.level_data.add(obj)
