@@ -17,6 +17,16 @@
 - Hunt down all instances of subsurface that aren't in graphics.py and replace their hardcoded values with the variable defined in graphics.py
 - Package it into an exe
 - Debug options such as '<' to go back a level, and '>' to go forward a level
+- Automatic level loading : Once you drop a CSV into the 'levels' directory it should automatically create it as an object and link the previous level to it. Here's some pseudo code for it
+
+```
+for i in range(levels):
+    #If we're on the final level. Set the next level to garbage
+    if i == len(levels):
+        level = Level(levels[i], 'No next level')
+    else:
+        level = Level(levels[i], levels[i+1])
+```
 
 
 

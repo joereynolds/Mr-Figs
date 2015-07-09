@@ -1,4 +1,5 @@
 import pygame
+import bomb
 import random
 import tile
 import graphics
@@ -21,11 +22,15 @@ class TiledEditor():
     tiles = {
              '0' : [tile.Tile, False, False,graphics.FLOOR_SPRITE],
              '1' : [tile.Tile, True, True, graphics.TREE_SPRITE],
-             '2' : [tile.Tile, True, False, graphics.ROCK_SPRITE],
+             '2' : [tile.Tile, True, False, graphics.ROCK_STANDALONE_SPRITE],
              '3' : [tile.Tile, True, True, graphics.GOAL_SPRITE],
              '4' : [tile.Spike, False, False, 0, graphics.SPIKEDOWN_SPRITE],
              '5' : [tile.Spike, False, False, 1, graphics.SPIKEUP_SPRITE],
-             '9' : [tile.FinishTile, False, False, graphics.FINISHED_SPRITE]
+             '7' : [bomb.Bomb, True, graphics.BOMB_SPRITE ],
+             '9' : [tile.FinishTile, False, False, graphics.FINISHED_SPRITE],
+             '11': [tile.Tile,True,False, graphics.ROCK_CORNER_TOP_LEFT_SPRITE],
+             '33': [tile.Tile,True,False, graphics.ROCK_CORNER_BOTTOM_LEFT_SPRITE],
+             '34': [tile.Tile,True,False, graphics.ROCK_CORNER_BOTTOM_MID_SPRITE]
            }
     
     def __init__(self, map_csv):
@@ -75,6 +80,7 @@ class TiledEditor():
                                             TiledEditor.tiles[cell][2],
                                             TiledEditor.tiles[cell][3],
                                             TiledEditor.tiles[cell][4])
+
                         elif TiledEditor.tiles[cell][0] == tile.FinishTile:
                             obj = TiledEditor.tiles[cell][0](x * 50,
                                             y * 50,
@@ -83,6 +89,14 @@ class TiledEditor():
                                             TiledEditor.tiles[cell][1],
                                             TiledEditor.tiles[cell][2],
                                             TiledEditor.tiles[cell][3])
+
+                        elif TiledEditor.tiles[cell][0] == bomb.Bomb:
+                            obj = TiledEditor.tiles[cell][0](x *50,
+                                            y * 50,
+                                            50,
+                                            50,
+                                            self,
+                                            TiledEditor.tiles[cell][2])
                         else:
                             obj = TiledEditor.tiles[cell][0](x * 50,
                                             y * 50,

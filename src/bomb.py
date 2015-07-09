@@ -52,7 +52,7 @@ class Bomb(entity.Entity):
             print('Attribute Error : Tried to place bomb on non-existent block')
     
     def particle_collision(self, player):
-        """Returns True if any of the bombs particles collide with player. If they do, we'll probably reset the level."""
+        """Returns True if any of the bombs particles collide with player. If they do, we'll reset the level."""
         for particle in self.particles:
             if pygame.sprite.collide_rect(particle,player):
                 return True
@@ -66,11 +66,14 @@ class Bomb(entity.Entity):
                     if pygame.sprite.collide_rect(self, particle):
                         self.lifespan = bomb.lifespan #remember to detonate both bombs at the same time!`
                         self.explode()
+        #Blow our bomb up if it hits a spike tile on th e up position
         for sprite in self.level.level_data:
             if isinstance(sprite, tile.Spike):
                 if not sprite.state:
                     if pygame.sprite.collide_rect(self,sprite):
                         self.explode()
+
+        
                     
 
                      

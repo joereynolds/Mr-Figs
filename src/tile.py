@@ -22,6 +22,7 @@ class Spike(Tile):
     def __init__(self, x, y, width, height, solid, destructable, state, image):
         Tile.__init__(self, x, y, width, height, solid, destructable, image)
         self.state = state 
+        self.images = [graphics.SPIKEMID_SPRITE, graphics.SPIKEUP_SPRITE]
     
     def change_state(self):
         """Changes our state from 0(friendly) to 1(deadly) and vice versa.
@@ -31,7 +32,14 @@ class Spike(Tile):
             self.image = graphics.SPIKEDOWN_SPRITE
         else: 
             self.state = 1
-            self.image = graphics.SPIKEUP_SPRITE
+            self.animate()
+            #self.image = graphics.SPIKEUP_SPRITE
+
+    def animate(self):
+        print('getting called')
+        for image in self.images:
+             self.image = image
+             return 
 
     def update(self):
         self.change_state()

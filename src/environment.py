@@ -98,6 +98,6 @@ level_obj_list = [LevelBase(levels_dir + level,'temp')
 
 for i in range(len(level_obj_list)):
     if i == len(level_obj_list)-1:
-        level_obj_list[i].next_level = 'NoNextLevelNeeded'
+        level_obj_list[i].next_level = level_obj_list[0]
     else:
         level_obj_list[i].next_level = level_obj_list[i+1]

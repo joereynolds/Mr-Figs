@@ -24,4 +24,4 @@ def main(fps, scene):
 
 
 if __name__ == '__main__':
-    main(60,environment.Level1)
+    main(60,environment.level_obj_list[0])
