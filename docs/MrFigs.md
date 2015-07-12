@@ -2,7 +2,6 @@
 
 
 ###General
-- Need a main menu at the start
 - Need a menu to display when you press 'esc'
 
 ###Imagery
@@ -50,7 +49,6 @@ There will need to be sound effects for the following sounds
 ###Code
 
 - Package it into an exe
-- Debug options such as '<' to go back a level, and '>' to go forward a level
 - Make the modules properly importable rather than having to copy and paste them into things
 - Bomberman's starting position should be on the text file
 - Fix undo functionality

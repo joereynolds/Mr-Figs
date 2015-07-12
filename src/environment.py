@@ -36,6 +36,9 @@ class SceneBase():
 
 class StartMenu(SceneBase):
     def __init__(self):
+        pygame.mixer.init()
+        pygame.mixer.music.load('../data/audio/BeachAudio.mp3')
+        pygame.mixer.music.play()
         SceneBase.__init__(self)
         self.start_button = guiBase.ClickableElement(50,50,50,50,(150,150,150))
         self.exit_button = guiBase.ClickableElement(50,200,50,50,(150,150,150)) 
@@ -46,7 +49,7 @@ class StartMenu(SceneBase):
         for event in pygame.event.get():
             if event.type == pygame.MOUSEBUTTONDOWN:
                 self.start_button.on_click(self.switch_to_scene, level_obj_list[1])
-                self.exit_button.on_click(terminate)
+                self.exit_button.on_click(self.terminate)
     def render(self):
         self.surface.fill((255,255,255))
         self.buttons.draw(self.surface)
@@ -67,10 +70,10 @@ class LevelBase(SceneBase):
         self.level_tiles = self.level.level_data
         self.sprites = pygame.sprite.LayeredUpdates()
         self.sprites.add(self.level_tiles, self.player)
+
         pygame.mixer.init()
         pygame.mixer.music.load('../data/audio/BeachAudio.mp3')
         pygame.mixer.music.play()
-
     def process_input(self):
         #Maybe create an InputHandler class for all of this?
         pressed_keys = pygame.key.get_pressed()
@@ -83,7 +86,10 @@ class LevelBase(SceneBase):
                 if pressed_keys[k]:
                     if v == 'reset':
                         self.reset()
-                        
+                    elif v == 'next_level':
+                        self.switch_to_scene(self.next_level)
+                    elif v == 'previous_level':
+                        self.switch_to_scene(level_obj_list[level_obj_list.index(self)-1])
                     else:
                         pass
                         self.player.update(v)
