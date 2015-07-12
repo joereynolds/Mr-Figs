@@ -69,7 +69,7 @@ class Bomb(entity.Entity):
         #Blow our bomb up if it hits a spike tile on th e up position
         for sprite in self.level.level_data:
             if isinstance(sprite, tile.Spike):
-                if not sprite.state:
+                if sprite.state:
                     if pygame.sprite.collide_rect(self,sprite):
                         self.explode()
 

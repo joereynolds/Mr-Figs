@@ -3,6 +3,7 @@
 
 ###General
 - Need a menu to display when you press 'esc'
+- Level select area
 
 ###Imagery
 
@@ -44,6 +45,8 @@ There will need to be sound effects for the following sounds
 	- Ambience for each level
 		- Wind for the desert level
 		- Birds/tweets for grass etc...
+
+- Button presses
 
 
 ###Code

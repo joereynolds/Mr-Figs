@@ -41,9 +41,10 @@ class StartMenu(SceneBase):
         pygame.mixer.music.play()
         SceneBase.__init__(self)
         self.start_button = guiBase.ClickableElement(50,50,50,50,(150,150,150))
+        self.level_button = guiBase.ClickableElement(150,50,50,50,(150,150,150))
         self.exit_button = guiBase.ClickableElement(50,200,50,50,(150,150,150)) 
         self.buttons = pygame.sprite.Group()
-        self.buttons.add(self.start_button, self.exit_button)
+        self.buttons.add(self.start_button, self.exit_button, self.level_button)
 
     def update(self):
         for event in pygame.event.get():

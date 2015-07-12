@@ -28,12 +28,12 @@ class Spike(Tile):
         """Changes our state from 0(friendly) to 1(deadly) and vice versa.
            Changing state also requires that we change the image of our spike too"""
         if self.state:
-            self.state = 0
             self.image = graphics.SPIKEDOWN_SPRITE
+            self.state = 0
         else: 
+            self.image = graphics.SPIKEUP_SPRITE
             self.state = 1
             self.animate()
-            #self.image = graphics.SPIKEUP_SPRITE
 
     def animate(self):
         print('getting called')
