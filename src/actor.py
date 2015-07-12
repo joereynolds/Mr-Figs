@@ -29,9 +29,11 @@ class Actor(entity.Entity):
         self.rect.y += directions[command][1] * self.speed
         self.direction = command 
 
+
     def collide(self):
+        """Goes through the level data assessing the correct tiles in the level that aren't itself and seeing what happens if we collide with them"""
         for sprite in self.level.level_data:
-            if sprite.solid:
+            if sprite.solid :
                 if pygame.sprite.collide_rect(self,sprite):
                     self.update(keys.opposites[self.move_stack.pop()]) #'undo' our action.
             if isinstance(sprite, tile.Spike):

@@ -34,6 +34,16 @@ class TiledEditor():
              '34': ['rock', graphics.ROCK_CORNER_BOTTOM_MID_SPRITE]
            }
 
+
+    
+    def __init__(self, map_csv):
+        self.reader = csv.reader(map_csv)
+        self.csv_data = self.get_data(map_csv)
+        self.level_data = pygame.sprite.Group()
+        self.generate_player = False
+        self.make_level()
+        self.player = self.get_player()
+
     def create_goal_tile(self, x, y, surface):
         return tile.Tile(x * 50, y * 50,50,50,True,True, surface)
 
@@ -55,20 +65,20 @@ class TiledEditor():
 
     def create_finish_tile(self,x,y,surface):
         return tile.FinishTile(x *50, y*50, 50, 50, False, False, surface)
-    
 
-
-    
-    def __init__(self, map_csv):
-        self.reader = csv.reader(map_csv)
-        self.csv_data = self.get_data(map_csv)
-        self.level_data = pygame.sprite.Group()
-        self.make_level()
+    def create_player(self,x,y,surface):
+        return actor.Actor(x * 50, y *50, 50, 50, self, surface)
 
     def get_tile(self,x,y):
         """Returns the tile at x,y position"""
         for tile in self.level_data:
             if tile.rect.x == x and tile.rect.y == y:
+                return tile
+
+    def get_player(self):
+        """Returns the player instance present in the level data. This is used to pass to the Scene so that we can update our character as usual"""
+        for tile in self.level_data:
+            if isinstance(tile, actor.Actor):
                 return tile
 
     def get_data(self, map_csv):

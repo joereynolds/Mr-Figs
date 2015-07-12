@@ -34,11 +34,32 @@ class SceneBase():
     def terminate(self):
         pygame.quit()
 
+class StartMenu(SceneBase):
+    def __init__(self):
+        SceneBase.__init__(self)
+        self.start_button = guiBase.ClickableElement(50,50,50,50,(150,150,150))
+        self.exit_button = guiBase.ClickableElement(50,200,50,50,(150,150,150)) 
+        self.buttons = pygame.sprite.Group()
+        self.buttons.add(self.start_button, self.exit_button)
+
+    def update(self):
+        for event in pygame.event.get():
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                self.start_button.on_click(self.switch_to_scene, level_obj_list[1])
+                self.exit_button.on_click(terminate)
+    def render(self):
+        self.surface.fill((255,255,255))
+        self.buttons.draw(self.surface)
+        self.start_button.render_text('START')
+        self.exit_button.render_text('EXIT')
+        
+        pygame.display.flip()
 
 class LevelBase(SceneBase):
 
     def __init__(self,file,next_level):
         SceneBase.__init__(self)
+
         self.next_level = next_level
         self.file = file
         self.level = levelEditor.TiledEditor(file)
@@ -46,6 +67,9 @@ class LevelBase(SceneBase):
         self.level_tiles = self.level.level_data
         self.sprites = pygame.sprite.LayeredUpdates()
         self.sprites.add(self.level_tiles, self.player)
+        pygame.mixer.init()
+        pygame.mixer.music.load('../data/audio/BeachAudio.mp3')
+        pygame.mixer.music.play()
 
     def process_input(self):
         #Maybe create an InputHandler class for all of this?
@@ -61,6 +85,7 @@ class LevelBase(SceneBase):
                         self.reset()
                         
                     else:
+                        pass
                         self.player.update(v)
                         for bomb in self.player.bombs:
                             bomb.bomb_collisions(self.player.bombs)
@@ -96,6 +121,7 @@ level_obj_list = [LevelBase(levels_dir + level,'temp')
                          if level.endswith('csv')
                  ]
 
+level_obj_list.insert(0, StartMenu())
 for i in range(len(level_obj_list)):
     if i == len(level_obj_list)-1:
         level_obj_list[i].next_level = level_obj_list[0]

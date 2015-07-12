@@ -10,6 +10,7 @@ def main(fps, scene):
     ,rendering, and updating.
     """
     pygame.init()
+    pygame.mixer.init()
     done = False
     clock = pygame.time.Clock()
 
