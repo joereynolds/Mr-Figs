@@ -17,13 +17,14 @@ class Bomb(entity.Entity):
         self.lifespan = 5 
         self.level = level
         self.particles = pygame.sprite.Group()
+        self.images = [graphics.BOMB_SPRITE_5,graphics.BOMB_SPRITE_4,graphics.BOMB_SPRITE_3,graphics.BOMB_SPRITE_2,graphics.BOMB_SPRITE_1,graphics.BOMB_SPRITE_OFF]
 
     def blow_up(self):
         """Destroys our bomb and then all of its particles associated with it.
            Returns True on success so that outside classes can know it's completed successfull"""
         if self.lifespan ==0:
             self.explode()
-        if self. lifespan <= -2:
+        if self.lifespan <= -1:
             for particle in self.particles: 
                 pygame.sprite.Sprite.kill(particle)
             pygame.sprite.Sprite.kill(self)
@@ -31,11 +32,11 @@ class Bomb(entity.Entity):
 
     def explode(self):
         """Explodes our bomb making sure that the particles only go to the correct boundaries of the walls. Or is meant to..."""
-        for i in range(50,250,50):
-            self.create_particle(self.rect.x + i, self.rect.y, 50, graphics.trans_height)
-            self.create_particle(self.rect.x - i, self.rect.y, 50, graphics.trans_height)
-            self.create_particle(self.rect.x, self.rect.y + i, 50, graphics.trans_height)
-            self.create_particle(self.rect.x, self.rect.y - i, 50, graphics.trans_height)
+        for i in range(graphics.trans_width,graphics.trans_width * 4, graphics.trans_width):
+            self.create_particle(self.rect.x + i, self.rect.y, graphics.trans_width, graphics.trans_height)
+            self.create_particle(self.rect.x - i, self.rect.y, graphics.trans_width, graphics.trans_height)
+            self.create_particle(self.rect.x, self.rect.y + i, graphics.trans_width, graphics.trans_height)
+            self.create_particle(self.rect.x, self.rect.y - i, graphics.trans_width, graphics.trans_height)
        
     def create_particle(self,x,y,width,height):
         obj = entity.Entity(x,y,graphics.trans_width,graphics.trans_height)
@@ -44,7 +45,10 @@ class Bomb(entity.Entity):
                 self.particles.add(obj) 
             elif self.level.get_tile(x,y).destructable:
                 #If it's destructable, kill it and change its attributes
-                self.level.get_tile(x,y).image = graphics.FLOOR_SPRITE
+                try:
+                    self.level.get_tile(x,y).image = graphics.FLOOR_SPRITE_1
+                except Exception as e:
+                    print(e)
                 self.level.get_tile(x,y).solid = False
                 self.level.get_tile(x,y).destructable = False 
         except AttributeError:

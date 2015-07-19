@@ -42,7 +42,7 @@ class InputHandler():
                         player.update(v)
                         for bomb in player.bombs: #Why is there collision code in our input handler???
                             bomb.bomb_collisions(player.bombs)
-                        if v != 'space':
+                        if v != 'space':#don't change state on the spikes when we plant a bomb
                             for sprite in level.sprites:
                                 if isinstance(sprite ,tile.Spike):
                                     sprite.change_state()

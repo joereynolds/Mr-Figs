@@ -61,13 +61,14 @@ class Actor(entity.Entity):
     def create_bomb(self):
         self.bombs.add(bomb.Bomb(self.rect.x,
                                  self.rect.y,
-                                 graphics.sprite_width,
-                                 graphics.sprite_height,
+                                 graphics.trans_width,
+                                 graphics.trans_height,
                                  self.level,
-                                 graphics.BOMB_SPRITE))
+                                 graphics.BOMB_SPRITE_5))
            
     def update_bombs(self):
         for bomb in self.bombs:
+            bomb.image = bomb.images[-bomb.lifespan]
             bomb.lifespan -= 1
             if bomb.blow_up():
                 self.bombs.remove(bomb)

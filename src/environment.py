@@ -69,7 +69,7 @@ class LevelBase(SceneBase):
         self.next_level = next_level
         self.file = file
         self.level = levelEditor.TiledEditor(file)
-        self.player = actor.Actor(50,50,graphics.trans_width,graphics.trans_height, self.level, graphics.ACTOR_SPRITE)
+        self.player = actor.Actor(48,48,graphics.trans_width,graphics.trans_height, self.level, graphics.ACTOR_SPRITE)
         self.level_tiles = self.level.level_data
         self.sprites = pygame.sprite.LayeredUpdates()
         self.sprites.add(self.level_tiles, self.player)

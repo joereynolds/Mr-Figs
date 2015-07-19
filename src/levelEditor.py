@@ -21,12 +21,22 @@ class TiledEditor():
     """
     tiles = {
              '32' : ['end', graphics.STAIRS], 
-             '20' : ['rock', graphics.ROCK_SPRITE],
+             '29' : ['solid', graphics.WALL_LOWER_RIGHT],
+             '28' : ['solid', graphics.WALL_UPPER_LEFT],
+             '27' : ['solid', graphics.WALL_UPPER_RIGHT],
+             '20' : ['destruct', graphics.ROCK_SPRITE],
              '19' : ['floor', graphics.FLOOR_SPRITE_1],
              '18' : ['floor', graphics.FLOOR_SPRITE_2],
-             '10' : ['rock' , graphics.WALL_RIGHT],
-             '9'  : ['rock' , graphics.WALL_UP],
-             '0'  : ['rock' , graphics.WALL_DOWN],
+             '14' : ['floor', graphics.LASER_ON],
+             '13' : ['floor', graphics.LASER_OFF],
+             '2' : ['solid', graphics.WALL_DOWN_RIGHT],
+             '3'   : ['solid', graphics.WALL_DOWN_LEFT],
+             '12' : ['solid' , graphics.WALL_UP_LEFT],
+             '11' : ['solid', graphics.WALL_UP_RIGHT],
+             '10' : ['solid' , graphics.WALL_RIGHT],
+             '9'  : ['solid' , graphics.WALL_UP],
+             '0'  : ['solid' , graphics.WALL_DOWN],
+             '1'  : ['solid' , graphics.WALL_LEFT]
            }
 
     
@@ -41,12 +51,12 @@ class TiledEditor():
     def create_goal_tile(self, x, y, surface):
         return tile.Tile(x * self.spacing, y * self.spacing, graphics.sprite_width,graphics.sprite_height,True,True, surface)
 
-    def create_tree_tile(self,x,y,surface):
+    def create_destructable_tile(self,x,y,surface):
         return tile.Tile(x * self.spacing, y * self.spacing, graphics.sprite_width, graphics.sprite_height, True, True, surface)
     
-    def create_rock_tile(self,x,y,surface):
+    def create_solid_tile(self,x,y,surface):
         """Convenience function to shorten the make_level() function"""
-        return tile.Tile(x * self.spacing, y * self.spacing, graphics.sprite_width,graphics.sprite_height,solid=True,destructable=False,image=surface)
+        return tile.Tile(x * self.spacing, y * self.spacing, graphics.trans_width,graphics.trans_height,solid=True,destructable=False,image=surface)
 
     def create_spike_tile(self, x, y, _state, surface):
         return tile.Spike(x * self.spacing, y * self.spacing, graphics.sprite_width, graphics.sprite_height, solid=False, destructable=False,state=_state, image=surface)
@@ -67,6 +77,7 @@ class TiledEditor():
         """Returns the player instance present in the level data. This is used to pass to the Scene so that we can update our character as usual"""
         for tile in self.level_data:
             if isinstance(tile, actor.Actor):
+                print(tile)
                 return tile
 
     def get_data(self, map_csv):
@@ -98,16 +109,14 @@ class TiledEditor():
                         tile_type = TiledEditor.tiles[cell][0]
                         tile_surface = TiledEditor.tiles[cell][-1]
  
-                        if tile_type == 'rock':
-                            obj = self.create_rock_tile(x,y, tile_surface)
-                        elif tile_type == 'spike':
-                            obj = self.create_spike_tile(x, y, TiledEditor.tiles[cell][1],tile_surface)
+                        if tile_type == 'solid':
+                            obj = self.create_solid_tile(x,y, tile_surface)
                         elif tile_type == 'bomb':
                             obj = self.create_bomb_tile(x, y, self, tile_surface)
                         elif tile_type == 'floor':
                             obj = self.create_floor_tile(x,y,tile_surface)
-                        elif tile_type == 'tree' :
-                            obj = self.create_tree_tile(x,y,tile_surface)
+                        elif tile_type == 'destruct' :
+                            obj = self.create_destructable_tile(x,y,tile_surface)
                         elif tile_type == 'goal':
                             obj = self.create_goal_tile(x,y,tile_surface)
                         elif tile_type == 'end':
