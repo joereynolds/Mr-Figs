@@ -75,17 +75,21 @@ class LevelBase(SceneBase):
         self.sprites.add(self.level_tiles, self.player)
         self.i_handler = input_handler.InputHandler()
 
+    def check_player_hasnt_died_a_horrible_death(self):
+        if not self.player in self.sprites:
+            self.reset()
+
     def process_input(self):
         self.i_handler.handle_input(self.player,self) 
-
+        
     def update(self):
+        self.check_player_hasnt_died_a_horrible_death()
         self.sprites.add(self.player.bombs)
         #Move this into a function
         for bomb in self.player.bombs:
             self.sprites.add(bomb.particles)
             if bomb.particle_collision(self.player):
                 self.reset()
-
         if self.player.finished_level():
             self.switch_to_scene(self.next_level)
 

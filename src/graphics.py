@@ -36,6 +36,9 @@ BOMB_SPRITE_OFF= subsurf(grid(5,4))
 
 LASER_ON       = subsurf(grid(5,1))
 LASER_OFF      = subsurf(grid(4,1))
+LASER_PULSE    = subsurf(grid(6,1))
+LASER_PULSE_HARD = subsurf(grid(7,1))
+LASER_IMAGES   = [LASER_OFF, LASER_ON, LASER_PULSE, LASER_PULSE_HARD]
 
 WALL_UP        = subsurf(grid(0,1))
 WALL_DOWN      = subsurf(grid(0,0))

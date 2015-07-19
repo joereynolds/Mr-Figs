@@ -29,7 +29,7 @@ class Actor(entity.Entity):
             if sprite.solid :
                 if pygame.sprite.collide_rect(self,sprite):
                     self.update(keys.opposites[self.move_stack.pop()]) #'undo' our action.
-            if isinstance(sprite, tile.Spike):
+            if isinstance(sprite, tile.Stateful):
                 if not sprite.state:
                     if pygame.sprite.collide_rect(self, sprite):
                         pygame.sprite.Sprite.kill(self)
@@ -67,6 +67,7 @@ class Actor(entity.Entity):
                                  graphics.BOMB_SPRITE_5))
            
     def update_bombs(self):
+ 
         for bomb in self.bombs:
             bomb.image = bomb.images[-bomb.lifespan]
             bomb.lifespan -= 1

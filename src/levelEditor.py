@@ -27,8 +27,8 @@ class TiledEditor():
              '20' : ['destruct', graphics.ROCK_SPRITE],
              '19' : ['floor', graphics.FLOOR_SPRITE_1],
              '18' : ['floor', graphics.FLOOR_SPRITE_2],
-             '14' : ['floor', graphics.LASER_ON],
-             '13' : ['floor', graphics.LASER_OFF],
+             '14' : ['state',1,graphics.LASER_IMAGES, graphics.LASER_ON],
+             '13' : ['state',0,graphics.LASER_IMAGES, graphics.LASER_OFF],
              '2' : ['solid', graphics.WALL_DOWN_RIGHT],
              '3'   : ['solid', graphics.WALL_DOWN_LEFT],
              '12' : ['solid' , graphics.WALL_UP_LEFT],
@@ -38,7 +38,6 @@ class TiledEditor():
              '0'  : ['solid' , graphics.WALL_DOWN],
              '1'  : ['solid' , graphics.WALL_LEFT]
            }
-
     
     def __init__(self, map_csv):
         self.reader = csv.reader(map_csv)
@@ -57,6 +56,9 @@ class TiledEditor():
     def create_solid_tile(self,x,y,surface):
         """Convenience function to shorten the make_level() function"""
         return tile.Tile(x * self.spacing, y * self.spacing, graphics.trans_width,graphics.trans_height,solid=True,destructable=False,image=surface)
+
+    def create_stateful_tile(self,x,y,images,state):
+        return tile.Stateful(x * self.spacing, y * self.spacing, graphics.trans_width, graphics.trans_height, False, False, state, images[state], images)
 
     def create_spike_tile(self, x, y, _state, surface):
         return tile.Spike(x * self.spacing, y * self.spacing, graphics.sprite_width, graphics.sprite_height, solid=False, destructable=False,state=_state, image=surface)
@@ -111,10 +113,10 @@ class TiledEditor():
  
                         if tile_type == 'solid':
                             obj = self.create_solid_tile(x,y, tile_surface)
-                        elif tile_type == 'bomb':
-                            obj = self.create_bomb_tile(x, y, self, tile_surface)
                         elif tile_type == 'floor':
                             obj = self.create_floor_tile(x,y,tile_surface)
+                        elif tile_type == 'state' :
+                            obj = self.create_stateful_tile(x,y,TiledEditor.tiles[cell][2],TiledEditor.tiles[cell][1])
                         elif tile_type == 'destruct' :
                             obj = self.create_destructable_tile(x,y,tile_surface)
                         elif tile_type == 'goal':

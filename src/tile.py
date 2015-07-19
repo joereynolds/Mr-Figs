@@ -16,29 +16,21 @@ class FinishTile(Tile):
     def __init__(self, x, y, width, height,solid, destructable, image=None):
         Tile.__init__(self, x, y, width, height, solid, destructable, image)
 
-    
-"""Extends Tile. If an actor collides with this class whilst it's up, the player dies"""
-class Spike(Tile):
-    def __init__(self, x, y, width, height, solid, destructable, state, image):
-        Tile.__init__(self, x, y, width, height, solid, destructable, image)
-        self.state = state 
-        self.images = [graphics.SPIKEMID_SPRITE, graphics.SPIKEUP_SPRITE]
-    
-    def change_state(self):
-        """Changes our state from 0(friendly) to 1(deadly) and vice versa.
-           Changing state also requires that we change the image of our spike too"""
-        if self.state:
-            self.image = graphics.SPIKEDOWN_SPRITE
-            self.state = 0
-        else: 
-            self.image = graphics.SPIKEUP_SPRITE
-            self.state = 1
-            self.animate()
 
-    def animate(self):
-        for image in self.images:
-             self.image = image
-
+class Stateful(Tile):
+    def __init__(self, x, y, width, height, solid, destructable, state, image, images):
+        Tile.__init__(self,x,y,width,height,solid,destructable,image)
+        self.state = state
+        self.images = images
+   
     def update(self):
         self.change_state()
+
+    def change_state(self):
+        if self.state:
+            self.image = self.images[0]
+            self.state = 0
+        elif not self.state:
+            self.image = self.images[1]
+            self.state = 1
 

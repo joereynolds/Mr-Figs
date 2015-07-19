@@ -1,3 +1,4 @@
+import event_handler
 import pygame
 import tile
 
@@ -16,6 +17,12 @@ class InputHandler():
             pygame.K_h:'previous_level'
             }
 
+    def __init__(self):
+        self.e_handler = event_handler.EventHandler()
+        self.e_handler.add_event('laser_anim',27,2000)
+        self.e_handler.add_event('bomb_anim',28,500)
+        self.e_handler.handle_events() #est timers for all our events
+
     def handle_player_input(self,player, command):
         """Specialised function for dealing with a player's input"""
         directions = {'up':(0,-1),
@@ -29,24 +36,25 @@ class InputHandler():
         player.direction = command 
 
     def handle_input(self,player, level):
-        pressed_keys = pygame.key.get_pressed()
-
         for event in pygame.event.get():
-            for k,v in InputHandler.keys.items():
-                if pressed_keys[k]:
-                    if v == 'reset':
-                        level.reset()
-                    elif v == 'next_level':
-                        level.switch_to_scene(level.next_level)
-                    else:
-                        player.update(v)
-                        for bomb in player.bombs: #Why is there collision code in our input handler???
-                            bomb.bomb_collisions(player.bombs)
-                        if v != 'space':#don't change state on the spikes when we plant a bomb
-                            for sprite in level.sprites:
-                                if isinstance(sprite ,tile.Spike):
-                                    sprite.change_state()
-
+            if event.type == 28:
+                for bomb in player.bombs:
+                    bomb.animate()
+            if event.type == pygame.KEYDOWN:
+                for k,v in InputHandler.keys.items():
+                    if event.key == k:
+                        if v == 'reset':
+                            level.reset()
+                        elif v == 'next_level':
+                            level.switch_to_scene(level.next_level)
+                        else:
+                            player.update(v)
+                            for bomb in player.bombs: #Why is there collision code in our input handler???
+                                bomb.bomb_collisions(player.bombs)
+                            if v != 'space':#don't change state on the spikes when we plant a bomb
+                                for sprite in level.level.level_data:
+                                    if isinstance(sprite, tile.Stateful):
+                                        sprite.update()
 
  
 

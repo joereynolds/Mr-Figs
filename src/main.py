@@ -13,7 +13,7 @@ def main(fps, scene):
     pygame.mixer.init()
     done = False
     clock = pygame.time.Clock()
-
+    
     while not done:
         scene.process_input()
         scene.update()
