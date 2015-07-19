@@ -12,6 +12,7 @@
 - Need bomb sprite images
 - Need player sprite images
 - Create a backdrop for the game so that it's not just a horrible white background on smaller levels
+- Maybe have sprites that are taller than 50px but only their bottom 50px is collidable/solid? Might make visuals more interesting.
 
 ###Music & SFX
 
@@ -23,11 +24,13 @@ Ideally the music will be the same track but maybe with different themes going o
 
 #####Music
 
-- Grass Track
-- Desert Track
-- Snow Track
-- Cave Track
-- Castle Track
+Names are after the : but may be subject to change.
+
+- Grass Track   : Mr Figs' Lawn
+- Desert Track  : Mr Figs' Sandbox
+- Snow Track    : Mr Figs' Snowman
+- Cave Track    : Mr Figs' Safeplace
+- Castle Track  : Mr Figs' Castle
 
 #####SFX
 

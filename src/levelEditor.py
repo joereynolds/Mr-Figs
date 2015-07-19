@@ -21,17 +21,9 @@ class TiledEditor():
     """
     tiles = {
              
-             '0' : ['floor', graphics.FLOOR_SPRITE],
-             '1' : ['tree',graphics.TREE_SPRITE],
-             '3' : ['goal',graphics.GOAL_SPRITE],
-             '4' : ['spike', 0, graphics.SPIKEDOWN_SPRITE],
-             '5' : ['spike', 1, graphics.SPIKEUP_SPRITE],
-             '7' : ['bomb', graphics.BOMB_SPRITE ],
-             '9' : ['end', graphics.FINISHED_SPRITE],
-             '2' : ['rock',graphics.ROCK_STANDALONE_SPRITE],
-             '11': ['rock', graphics.ROCK_CORNER_TOP_LEFT_SPRITE],
-             '33': ['rock', graphics.ROCK_CORNER_BOTTOM_LEFT_SPRITE],
-             '34': ['rock', graphics.ROCK_CORNER_BOTTOM_MID_SPRITE]
+             '20' : ['rock', graphics.ROCK_SPRITE],
+             '19' : ['floor', graphics.FLOOR_SPRITE_1],
+             '18' : ['floor', graphics.FLOOR_SPRITE_2]
            }
 
 
@@ -45,29 +37,29 @@ class TiledEditor():
         self.player = self.get_player()
 
     def create_goal_tile(self, x, y, surface):
-        return tile.Tile(x * 50, y * 50,50,50,True,True, surface)
+        return tile.Tile(x * 50, y * 50,graphics.sprite_width,graphics.sprite_height,True,True, surface)
 
     def create_tree_tile(self,x,y,surface):
-        return tile.Tile(x * 50, y *50, 50, 50, True, True, surface)
+        return tile.Tile(x * 50, y *50, graphics.sprite_width, graphics.sprite_height, True, True, surface)
     
     def create_rock_tile(self,x,y,surface):
         """Convenience function to shorten the make_level() function"""
-        return tile.Tile(x * 50, y * 50, 50,50,solid=True,destructable=False,image=surface)
+        return tile.Tile(x * 50, y * 50, graphics.sprite_width,graphics.sprite_height,solid=True,destructable=False,image=surface)
 
     def create_spike_tile(self, x, y, _state, surface):
-        return tile.Spike(x * 50, y * 50, 50, 50, solid=False, destructable=False,state=_state, image=surface)
+        return tile.Spike(x * 50, y * 50, graphics.sprite_width, graphics.sprite_height, solid=False, destructable=False,state=_state, image=surface)
 
     def create_bomb_tile(self,x, y, surface):
-        return bomb.Bomb(x*50, y*50, 50, 50, self, surface)
+        return bomb.Bomb(x*50, y*50, graphics.sprite_width, graphics.sprite_height, self, surface)
 
     def create_floor_tile(self,x,y,surface):
-        return tile.Tile(x * 50, y * 50, 50, 50, False, False, surface)
+        return tile.Tile(x * 50, y * 50, graphics.sprite_width, graphics.sprite_height, False, False, surface)
 
     def create_finish_tile(self,x,y,surface):
-        return tile.FinishTile(x *50, y*50, 50, 50, False, False, surface)
+        return tile.FinishTile(x *50, y*50, graphics.sprite_width, graphics.sprite_height, False, False, surface)
 
     def create_player(self,x,y,surface):
-        return actor.Actor(x * 50, y *50, 50, 50, self, surface)
+        return actor.Actor(x * 50, y *50, graphics.sprite_width, graphics.sprite_height, self, surface)
 
     def get_tile(self,x,y):
         """Returns the tile at x,y position"""

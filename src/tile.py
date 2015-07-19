@@ -36,10 +36,8 @@ class Spike(Tile):
             self.animate()
 
     def animate(self):
-        print('getting called')
         for image in self.images:
              self.image = image
-             return 
 
     def update(self):
         self.change_state()

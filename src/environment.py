@@ -1,6 +1,7 @@
 """
 Handles our Scene logic and input processing/updating/rendering
 """
+import input_handler
 import pygame
 import os
 import levelEditor
@@ -8,7 +9,7 @@ import keys
 import tile
 import colours
 import graphics
-import guiBase
+import gui_base
 import actor
 
 class SceneBase():
@@ -40,17 +41,18 @@ class StartMenu(SceneBase):
         pygame.mixer.music.load('../data/audio/BeachAudio.mp3')
         pygame.mixer.music.play()
         SceneBase.__init__(self)
-        self.start_button = guiBase.ClickableElement(50,50,50,50,(150,150,150))
-        self.level_button = guiBase.ClickableElement(150,50,50,50,(150,150,150))
-        self.exit_button = guiBase.ClickableElement(50,200,50,50,(150,150,150)) 
+        self.start_button = gui_base.ClickableElement(50,50,50,50,(150,150,150))
+        self.level_button = gui_base.ClickableElement(150,50,50,50,(150,150,150))
+        self.exit_button = gui_base.ClickableElement(50,200,50,50,(150,150,150)) 
         self.buttons = pygame.sprite.Group()
         self.buttons.add(self.start_button, self.exit_button, self.level_button)
-
+        
     def update(self):
         for event in pygame.event.get():
             if event.type == pygame.MOUSEBUTTONDOWN:
                 self.start_button.on_click(self.switch_to_scene, level_obj_list[1])
                 self.exit_button.on_click(self.terminate)
+
     def render(self):
         self.surface.fill((255,255,255))
         self.buttons.draw(self.surface)
@@ -71,36 +73,14 @@ class LevelBase(SceneBase):
         self.level_tiles = self.level.level_data
         self.sprites = pygame.sprite.LayeredUpdates()
         self.sprites.add(self.level_tiles, self.player)
-
+        self.i_handler = input_handler.InputHandler()
         pygame.mixer.init()
         pygame.mixer.music.load('../data/audio/BeachAudio.mp3')
         pygame.mixer.music.play()
+
     def process_input(self):
-        #Maybe create an InputHandler class for all of this?
-        pressed_keys = pygame.key.get_pressed()
-        for event in pygame.event.get():
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                pass
-            if event.type == pygame.QUIT:
-                self.terminate()
-            for k,v in keys.keys.items():
-                if pressed_keys[k]:
-                    if v == 'reset':
-                        self.reset()
-                    elif v == 'next_level':
-                        self.switch_to_scene(self.next_level)
-                    elif v == 'previous_level':
-                        self.switch_to_scene(level_obj_list[level_obj_list.index(self)-1])
-                    else:
-                        pass
-                        self.player.update(v)
-                        for bomb in self.player.bombs:
-                            bomb.bomb_collisions(self.player.bombs)
-                        if v != 'space': 
-                            for sprite in self.sprites:
-                                if isinstance(sprite,tile.Spike):
-                                    sprite.change_state()
-        
+        self.i_handler.handle_input(self.player,self) 
+
     def update(self):
         self.sprites.add(self.player.bombs)
         #Move this into a function

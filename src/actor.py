@@ -4,6 +4,7 @@ import bomb
 import entity
 import colours
 import tile
+import input_handler
 import graphics
 
 
@@ -13,22 +14,14 @@ class Actor(entity.Entity):
         entity.Entity.__init__(self, x, y, width, height, image)
 
         self.direction = 'down'
-        self.speed = 50
+        self.speed = graphics.sprite_width
         self.level = level
         self.bombs = pygame.sprite.Group()
         self.move_stack = [] #contains the last 10 moves the user did. We keep this so that a user can undo their actions. 
+        self.i_handler = input_handler.InputHandler()
 
     def move(self,command):
-        directions = {'up':(0,-1),
-                      'down':(0,1),
-                      'left':(-1,0),
-                      'right':(1,0),
-                      'nothing':(0,0)}
-
-        self.rect.x += directions[command][0] * self.speed
-        self.rect.y += directions[command][1] * self.speed
-        self.direction = command 
-
+        self.i_handler.handle_player_input(self,command) 
 
     def collide(self):
         """Goes through the level data assessing the correct tiles in the level that aren't itself and seeing what happens if we collide with them"""
@@ -55,12 +48,7 @@ class Actor(entity.Entity):
 
     def update(self, command):
         if command == 'space':
-            self.bombs.add(bomb.Bomb(self.rect.x,
-                                   self.rect.y,
-                                   50,
-                                   50,
-                                   self.level,
-                                   graphics.BOMB_SPRITE))
+            self.create_bomb()
         elif command == 'u':
             self.undo_action()
         else:
@@ -69,6 +57,14 @@ class Actor(entity.Entity):
             self.collide()
             self.update_bombs()
             self.finished_level()
+
+    def create_bomb(self):
+        self.bombs.add(bomb.Bomb(self.rect.x,
+                                 self.rect.y,
+                                 graphics.sprite_width,
+                                 graphics.sprite_height,
+                                 self.level,
+                                 graphics.BOMB_SPRITE))
            
     def update_bombs(self):
         for bomb in self.bombs:
