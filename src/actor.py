@@ -14,7 +14,7 @@ class Actor(entity.Entity):
         entity.Entity.__init__(self, x, y, width, height, image)
 
         self.direction = 'down'
-        self.speed = graphics.sprite_width
+        self.speed = graphics.trans_width
         self.level = level
         self.bombs = pygame.sprite.Group()
         self.move_stack = [] #contains the last 10 moves the user did. We keep this so that a user can undo their actions. 

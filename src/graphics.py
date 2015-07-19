@@ -1,6 +1,3 @@
-"""
-Constants pertaining to graphical use. Note that this can probably be moved to constants without too much bother.
-"""
 import pygame
 
 WIDTH  = 700
@@ -12,14 +9,28 @@ sprite_width = 16
 sprite_height = 16
 spritesheet = pygame.image.load('../data/newtiledsheet.png')
 
+trans_width = 48
+trans_height = 48
 
-def subsurf(x, y):
+def grid(x,y):
+    """Returns the sprite at the gridded position of n m rather than having to work out the time table for sprite widths!"""
+    return sprite_width * x, sprite_height * y 
+
+def subsurf(grid_pos):
     """Quick wrapper around pygame's subsurface so we don't keep having to pass in the width and height"""
-    
-    return spritesheet.subsurface(x, y, sprite_width, sprite_height)
+    surface = spritesheet.subsurface(grid_pos[0], grid_pos[1], sprite_width, sprite_height) 
+    return pygame.transform.scale(surface, (trans_width, trans_height)) 
 
 
-ROCK_SPRITE  = subsurf(32,32)
-FLOOR_SPRITE_1 = subsurf(0,48)
-FLOOR_SPRITE_2 = subsurf(16,48)
-ACTOR_SPRITE = subsurf(64,64)
+ROCK_SPRITE    = subsurf(grid(2,2))
+FLOOR_SPRITE_1 = subsurf(grid(1,2))
+FLOOR_SPRITE_2 = subsurf(grid(0,2))
+ACTOR_SPRITE   = subsurf(grid(0,5))
+BOMB_SPRITE    = subsurf(grid(0,4))
+WALL_UP        = subsurf(grid(0,1))
+WALL_DOWN      = subsurf(grid(0,0))
+WALL_RIGHT     = subsurf(grid(1,1))
+STAIRS         = subsurf(grid(3,5))
+
+for i in range(0,400,16):
+    print(i)

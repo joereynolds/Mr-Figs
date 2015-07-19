@@ -4,7 +4,6 @@ import graphics
 import entity
 
 """
-
 @solid     = Whether the actor can walk through it
 @lifespan  = The amount of steps actor must take before the bomb detonates
 @level     = level data from the LevelEditor class
@@ -33,13 +32,13 @@ class Bomb(entity.Entity):
     def explode(self):
         """Explodes our bomb making sure that the particles only go to the correct boundaries of the walls. Or is meant to..."""
         for i in range(50,250,50):
-            self.create_particle(self.rect.x + i, self.rect.y, 50, 50)
-            self.create_particle(self.rect.x - i, self.rect.y, 50, 50)
-            self.create_particle(self.rect.x, self.rect.y + i, 50, 50)
-            self.create_particle(self.rect.x, self.rect.y - i, 50, 50)
+            self.create_particle(self.rect.x + i, self.rect.y, 50, graphics.trans_height)
+            self.create_particle(self.rect.x - i, self.rect.y, 50, graphics.trans_height)
+            self.create_particle(self.rect.x, self.rect.y + i, 50, graphics.trans_height)
+            self.create_particle(self.rect.x, self.rect.y - i, 50, graphics.trans_height)
        
     def create_particle(self,x,y,width,height):
-        obj = entity.Entity(x,y,50,50)
+        obj = entity.Entity(x,y,graphics.trans_width,graphics.trans_height)
         try:
             if not self.level.get_tile(x,y).solid:#Check to make sure we're not trying to put a particle on a solid block
                 self.particles.add(obj) 

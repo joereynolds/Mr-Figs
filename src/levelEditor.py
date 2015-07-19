@@ -20,46 +20,42 @@ class TiledEditor():
         path/to/img is the path to the image if you have one
     """
     tiles = {
-             
+             '32' : ['end', graphics.STAIRS], 
              '20' : ['rock', graphics.ROCK_SPRITE],
              '19' : ['floor', graphics.FLOOR_SPRITE_1],
-             '18' : ['floor', graphics.FLOOR_SPRITE_2]
+             '18' : ['floor', graphics.FLOOR_SPRITE_2],
+             '10' : ['rock' , graphics.WALL_RIGHT],
+             '9'  : ['rock' , graphics.WALL_UP],
+             '0'  : ['rock' , graphics.WALL_DOWN],
            }
-
 
     
     def __init__(self, map_csv):
         self.reader = csv.reader(map_csv)
         self.csv_data = self.get_data(map_csv)
         self.level_data = pygame.sprite.Group()
-        self.generate_player = False
+        self.spacing = graphics.trans_width
         self.make_level()
         self.player = self.get_player()
 
     def create_goal_tile(self, x, y, surface):
-        return tile.Tile(x * 50, y * 50,graphics.sprite_width,graphics.sprite_height,True,True, surface)
+        return tile.Tile(x * self.spacing, y * self.spacing, graphics.sprite_width,graphics.sprite_height,True,True, surface)
 
     def create_tree_tile(self,x,y,surface):
-        return tile.Tile(x * 50, y *50, graphics.sprite_width, graphics.sprite_height, True, True, surface)
+        return tile.Tile(x * self.spacing, y * self.spacing, graphics.sprite_width, graphics.sprite_height, True, True, surface)
     
     def create_rock_tile(self,x,y,surface):
         """Convenience function to shorten the make_level() function"""
-        return tile.Tile(x * 50, y * 50, graphics.sprite_width,graphics.sprite_height,solid=True,destructable=False,image=surface)
+        return tile.Tile(x * self.spacing, y * self.spacing, graphics.sprite_width,graphics.sprite_height,solid=True,destructable=False,image=surface)
 
     def create_spike_tile(self, x, y, _state, surface):
-        return tile.Spike(x * 50, y * 50, graphics.sprite_width, graphics.sprite_height, solid=False, destructable=False,state=_state, image=surface)
-
-    def create_bomb_tile(self,x, y, surface):
-        return bomb.Bomb(x*50, y*50, graphics.sprite_width, graphics.sprite_height, self, surface)
+        return tile.Spike(x * self.spacing, y * self.spacing, graphics.sprite_width, graphics.sprite_height, solid=False, destructable=False,state=_state, image=surface)
 
     def create_floor_tile(self,x,y,surface):
-        return tile.Tile(x * 50, y * 50, graphics.sprite_width, graphics.sprite_height, False, False, surface)
+        return tile.Tile(x * self.spacing, y * self.spacing, graphics.sprite_width, graphics.sprite_height, False, False, surface)
 
     def create_finish_tile(self,x,y,surface):
-        return tile.FinishTile(x *50, y*50, graphics.sprite_width, graphics.sprite_height, False, False, surface)
-
-    def create_player(self,x,y,surface):
-        return actor.Actor(x * 50, y *50, graphics.sprite_width, graphics.sprite_height, self, surface)
+        return tile.FinishTile(x * self.spacing, y* self.spacing, graphics.sprite_width, graphics.sprite_height, False, False, surface)
 
     def get_tile(self,x,y):
         """Returns the tile at x,y position"""

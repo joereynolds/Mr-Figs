@@ -69,14 +69,11 @@ class LevelBase(SceneBase):
         self.next_level = next_level
         self.file = file
         self.level = levelEditor.TiledEditor(file)
-        self.player = actor.Actor(50,50,50,50, self.level, graphics.ACTOR_SPRITE)
+        self.player = actor.Actor(50,50,graphics.trans_width,graphics.trans_height, self.level, graphics.ACTOR_SPRITE)
         self.level_tiles = self.level.level_data
         self.sprites = pygame.sprite.LayeredUpdates()
         self.sprites.add(self.level_tiles, self.player)
         self.i_handler = input_handler.InputHandler()
-        pygame.mixer.init()
-        pygame.mixer.music.load('../data/audio/BeachAudio.mp3')
-        pygame.mixer.music.play()
 
     def process_input(self):
         self.i_handler.handle_input(self.player,self) 
@@ -103,7 +100,7 @@ class LevelBase(SceneBase):
 #Automaitc level loading
 levels_dir = '../levels/'
 levels = os.listdir('../levels/')
-level_obj_list = [LevelBase(levels_dir + level,'temp') 
+level_obj_list = [LevelBase(levels_dir + level,'NoNextScene') 
                       for level in levels 
                          if level.endswith('csv')
                  ]
