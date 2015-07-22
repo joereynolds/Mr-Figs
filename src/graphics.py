@@ -16,6 +16,10 @@ def grid(x,y):
     """Returns the sprite at the gridded position of n m rather than having to work out the time table for sprite widths!"""
     return sprite_width * x, sprite_height * y 
 
+def degrid(x,y):
+    """Turns grid positions into coordinates"""
+    return sprite_width // x, sprite_height // y 
+
 def subsurf(grid_pos):
     """Quick wrapper around pygame's subsurface so we don't keep having to pass in the width and height"""
     surface = spritesheet.subsurface(grid_pos[0], grid_pos[1], sprite_width, sprite_height) 
@@ -40,16 +44,17 @@ LASER_PULSE    = subsurf(grid(6,1))
 LASER_PULSE_HARD = subsurf(grid(7,1))
 LASER_IMAGES   = [LASER_OFF, LASER_ON, LASER_PULSE, LASER_PULSE_HARD]
 
-WALL_UP        = subsurf(grid(0,1))
-WALL_DOWN      = subsurf(grid(0,0))
-WALL_LEFT      = subsurf(grid(1,0))
-WALL_RIGHT     = subsurf(grid(1,1))
-WALL_DOWN_RIGHT= subsurf(grid(2,0))
-WALL_DOWN_LEFT = subsurf(grid(3,0))
-WALL_UP_RIGHT  = subsurf(grid(2,1))
+WALL_UP        = subsurf(grid(0,1))#
+WALL_DOWN      = subsurf(grid(0,0))#
+WALL_LEFT      = subsurf(grid(1,0))#
+WALL_RIGHT     = subsurf(grid(1,1))#
+WALL_DOWN_RIGHT= subsurf(grid(2,0))#
+WALL_DOWN_LEFT = subsurf(grid(3,0))#
+WALL_UP_RIGHT  = subsurf(grid(2,1))#
 WALL_UP_LEFT   = subsurf(grid(3,1))
 WALL_LOWER_RIGHT = subsurf(grid(2,3))
 WALL_UPPER_LEFT = subsurf(grid(1,3))
 WALL_UPPER_RIGHT = subsurf(grid(0,3))
+WALL_SPRITES = ((0,1),(0,0),(1,0),(1,1),(2,0),(3,0),(2,1),(3,1),(2,3),(1,3),(0,3))
 STAIRS         = subsurf(grid(5,3))
 

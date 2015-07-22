@@ -137,12 +137,10 @@ def get_map_data(tmx_file):
     spacing = 48 #16 * 3 = 48 hence the number/Sprites are scaled up 3 times from 16x16
     for layer in map:
         for _tile in layer.tiles():
-            x = _tile[0]
-            y = _tile[1]
-            surface = graphics.spritesheet.subsurface(x,y,16,16)
-            _surface = pygame.transform.scale(surface,(spacing, spacing))
-            if graphics.grid(x,y) == (0,0):
-                obj = tile.Tile(x * spacing, y *spacing, spacing, spacing, solid = True, destructable = False, image=surface)
+            x, y = _tile[0], _tile[1]
+            if (x,y) in graphics.WALL_SPRITES:
+                _surface = graphics.subsurf(graphics.grid(x,y))
+                obj = tile.Tile(x * spacing, y *spacing, spacing, spacing, solid = True, destructable = False, image=_surface)
                 level_data.add(obj) 
     return level_data
 

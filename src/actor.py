@@ -63,7 +63,7 @@ class Actor(entity.Entity):
                                  self.rect.y,
                                  graphics.trans_width,
                                  graphics.trans_height,
-                                 self.level,
+                                 self.level_data,
                                  graphics.BOMB_SPRITE_5))
            
     def update_bombs(self):

@@ -38,7 +38,7 @@ class InputHandler():
     def handle_input(self,player, level):
         for event in pygame.event.get():
             if event.type == 27:
-                for laser in level.level.level_data:
+                for laser in level.level_tiles:
                     pass
             if event.type == 28:
                 for bomb in player.bombs:
@@ -56,6 +56,6 @@ class InputHandler():
                             for bomb in player.bombs: #Why is there collision code in our input handler???
                                 bomb.bomb_collisions(player.bombs)
                             if v != 'space':#don't change state on the spikes when we plant a bomb
-                                for sprite in level.level.level_data:
+                                for sprite in level.level_tiles:
                                     if isinstance(sprite, tile.Stateful):
                                         sprite.update()

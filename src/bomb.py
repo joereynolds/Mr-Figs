@@ -16,7 +16,7 @@ class Bomb(entity.Entity):
         entity.Entity.__init__(self, x, y, width, height, image)
         self.solid = True 
         self.lifespan = 5 
-        self.level = level
+        self.level_data = level
         self.particles = pygame.sprite.Group()
         self.clock = clock.Clock()
         self.images = [graphics.BOMB_SPRITE_5,graphics.BOMB_SPRITE_4,graphics.BOMB_SPRITE_3,graphics.BOMB_SPRITE_2,graphics.BOMB_SPRITE_1,graphics.BOMB_SPRITE_OFF]
@@ -73,7 +73,7 @@ class Bomb(entity.Entity):
                         self.lifespan = bomb.lifespan #remember to detonate both bombs at the same time!`
                         self.explode()
         #Blow our bomb up if it hits a spike tile on th e up position
-        for sprite in self.level.level_data:
+        for sprite in self.level_data:
             if isinstance(sprite, tile.Stateful):
                 if sprite.state:
                     if pygame.sprite.collide_rect(self,sprite):
