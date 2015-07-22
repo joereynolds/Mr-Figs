@@ -37,9 +37,13 @@ class InputHandler():
 
     def handle_input(self,player, level):
         for event in pygame.event.get():
+            if event.type == 27:
+                for laser in level.level.level_data:
+                    pass
             if event.type == 28:
                 for bomb in player.bombs:
                     bomb.animate()
+            
             if event.type == pygame.KEYDOWN:
                 for k,v in InputHandler.keys.items():
                     if event.key == k:
@@ -47,7 +51,7 @@ class InputHandler():
                             level.reset()
                         elif v == 'next_level':
                             level.switch_to_scene(level.next_level)
-                        else:
+                        else: 
                             player.update(v)
                             for bomb in player.bombs: #Why is there collision code in our input handler???
                                 bomb.bomb_collisions(player.bombs)
@@ -55,6 +59,3 @@ class InputHandler():
                                 for sprite in level.level.level_data:
                                     if isinstance(sprite, tile.Stateful):
                                         sprite.update()
-
- 
-

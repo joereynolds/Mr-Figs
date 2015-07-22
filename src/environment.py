@@ -58,7 +58,7 @@ class StartMenu(SceneBase):
         self.buttons.draw(self.surface)
         self.start_button.render_text('START')
         self.exit_button.render_text('EXIT')
-        
+         
         pygame.display.flip()
 
 class LevelBase(SceneBase):
@@ -74,7 +74,7 @@ class LevelBase(SceneBase):
         self.sprites = pygame.sprite.LayeredUpdates()
         self.sprites.add(self.level_tiles, self.player)
         self.i_handler = input_handler.InputHandler()
-
+        self.clock = pygame.time.Clock()
     def check_player_hasnt_died_a_horrible_death(self):
         if not self.player in self.sprites:
             self.reset()
@@ -85,6 +85,8 @@ class LevelBase(SceneBase):
     def update(self):
         self.check_player_hasnt_died_a_horrible_death()
         self.sprites.add(self.player.bombs)
+        self.sprites.move_to_front(self.player)
+       
         #Move this into a function
         for bomb in self.player.bombs:
             self.sprites.add(bomb.particles)
@@ -92,7 +94,9 @@ class LevelBase(SceneBase):
                 self.reset()
         if self.player.finished_level():
             self.switch_to_scene(self.next_level)
-
+        
+        
+        
     def render(self):
         self.surface.fill(colours.WHITE)        
         self.sprites.draw(self.surface)

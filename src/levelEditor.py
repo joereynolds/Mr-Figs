@@ -1,4 +1,5 @@
 import pygame
+import pytmx
 import bomb
 import random
 import tile
@@ -124,3 +125,24 @@ class TiledEditor():
                         elif tile_type == 'end':
                             obj = self.create_finish_tile(x,y,tile_surface)
                         self.level_data.add(obj)
+
+
+def get_map_data(tmx_file):
+    """@tmx_file : A valid .tmx map file
+    e.g.
+        '../levels/tmx/level1.tmx' 
+    """
+    level_data = pygame.sprite.LayeredUpdates()
+    map = pytmx.TiledMap(tmx_file)
+
+    for layer in map:
+        for tile in layer:
+            print(tile)
+
+get_map_data('../levels/tmx/level1.tmx')
+
+
+
+
+
+

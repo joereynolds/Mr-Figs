@@ -1,10 +1,16 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" nextobjectid="1">
- <tileset firstgid="1" name="newtiledsheet" tilewidth="16" tileheight="16">
-  <image source="../../data/newtiledsheet.png" trans="ff00ff" width="144" height="112"/>
- </tileset>
- <layer name="Tile Layer 1" width="14" height="10">
-  <data encoding="csv">
+[header]
+width=14
+height=10
+tilewidth=16
+tileheight=16
+orientation=orthogonal
+
+[tilesets]
+tileset=../data/newtiledsheet.png,16,16,0,0
+
+[layer]
+type=Tile Layer 1
+data=
 3,1,1,1,1,1,1,4,0,0,0,0,0,0,
 11,20,19,20,20,19,20,2,0,0,0,0,0,0,
 11,19,20,19,29,28,21,2,0,0,0,0,0,0,
@@ -15,10 +21,10 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0
-</data>
- </layer>
- <layer name="Tile Layer 2" width="14" height="10">
-  <data encoding="csv">
+
+[layer]
+type=Tile Layer 2
+data=
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -29,6 +35,4 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0
-</data>
- </layer>
-</map>
+

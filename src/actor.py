@@ -16,7 +16,7 @@ class Actor(entity.Entity):
         self.direction = 'down'
         self.speed = graphics.trans_width
         self.level = level
-        self.bombs = pygame.sprite.Group()
+        self.bombs = pygame.sprite.LayeredUpdates()
         self.move_stack = [] #contains the last 10 moves the user did. We keep this so that a user can undo their actions. 
         self.i_handler = input_handler.InputHandler()
 
@@ -69,7 +69,6 @@ class Actor(entity.Entity):
     def update_bombs(self):
  
         for bomb in self.bombs:
-            bomb.image = bomb.images[-bomb.lifespan]
             bomb.lifespan -= 1
             if bomb.blow_up():
                 self.bombs.remove(bomb)
