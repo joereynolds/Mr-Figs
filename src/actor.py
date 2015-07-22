@@ -15,7 +15,7 @@ class Actor(entity.Entity):
 
         self.direction = 'down'
         self.speed = graphics.trans_width
-        self.level = level
+        self.level_data = level
         self.bombs = pygame.sprite.LayeredUpdates()
         self.move_stack = [] #contains the last 10 moves the user did. We keep this so that a user can undo their actions. 
         self.i_handler = input_handler.InputHandler()
@@ -25,7 +25,7 @@ class Actor(entity.Entity):
 
     def collide(self):
         """Goes through the level data assessing the correct tiles in the level that aren't itself and seeing what happens if we collide with them"""
-        for sprite in self.level.level_data:
+        for sprite in self.level_data:
             if sprite.solid :
                 if pygame.sprite.collide_rect(self,sprite):
                     self.update(keys.opposites[self.move_stack.pop()]) #'undo' our action.
@@ -37,7 +37,7 @@ class Actor(entity.Entity):
     def finished_level(self):
         """Returns True if the user has finished level. i.e. if they have
            destroyed the block and gotten out of the boundaries of the screen"""
-        for sprite in self.level.level_data:
+        for sprite in self.level_data:
             if isinstance(sprite, tile.FinishTile):
                 if pygame.sprite.collide_rect(self, sprite):
                     return True

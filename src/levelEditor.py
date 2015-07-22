@@ -134,15 +134,19 @@ def get_map_data(tmx_file):
     """
     level_data = pygame.sprite.LayeredUpdates()
     map = pytmx.TiledMap(tmx_file)
-
+    spacing = 48 #16 * 3 = 48 hence the number/Sprites are scaled up 3 times from 16x16
     for layer in map:
-        for tile in layer:
-            print(tile)
+        for _tile in layer.tiles():
+            x = _tile[0]
+            y = _tile[1]
+            surface = graphics.spritesheet.subsurface(x,y,16,16)
+            _surface = pygame.transform.scale(surface,(spacing, spacing))
+            if graphics.grid(x,y) == (0,0):
+                obj = tile.Tile(x * spacing, y *spacing, spacing, spacing, solid = True, destructable = False, image=surface)
+                level_data.add(obj) 
+    return level_data
 
-get_map_data('../levels/tmx/level1.tmx')
-
-
-
-
+get_map_data('../levels/tmx/new-level1.tmx')
+ 
 
 
