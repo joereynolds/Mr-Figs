@@ -7,38 +7,8 @@ import graphics
 import actor
 import csv
 
-class TiledEditor():
-    """This class is designed to work with the CSV files passed on from the Tiled program"""
+"""class TiledEditor():
 
-    """A dictionary containing attributes about each tile
-       For example
-       '0' : [tile.Tile,True, True, path/to/img]
-       
-       '0' is the representation of the tile in the Tiled csv file
-        tile.Tile is the type of object to be created
-        True Is whether the tile is solid or not
-        True Is whether this tile can be destroyed via a bomb
-        path/to/img is the path to the image if you have one
-    """
-    tiles = {
-             '32' : ['end', graphics.STAIRS], 
-             '29' : ['solid', graphics.WALL_LOWER_RIGHT],
-             '28' : ['solid', graphics.WALL_UPPER_LEFT],
-             '27' : ['solid', graphics.WALL_UPPER_RIGHT],
-             '20' : ['destruct', graphics.ROCK_SPRITE],
-             '19' : ['floor', graphics.FLOOR_SPRITE_1],
-             '18' : ['floor', graphics.FLOOR_SPRITE_2],
-             '14' : ['state',1,graphics.LASER_IMAGES, graphics.LASER_ON],
-             '13' : ['state',0,graphics.LASER_IMAGES, graphics.LASER_OFF],
-             '2' : ['solid', graphics.WALL_DOWN_RIGHT],
-             '3'   : ['solid', graphics.WALL_DOWN_LEFT],
-             '12' : ['solid' , graphics.WALL_UP_LEFT],
-             '11' : ['solid', graphics.WALL_UP_RIGHT],
-             '10' : ['solid' , graphics.WALL_RIGHT],
-             '9'  : ['solid' , graphics.WALL_UP],
-             '0'  : ['solid' , graphics.WALL_DOWN],
-             '1'  : ['solid' , graphics.WALL_LEFT]
-           }
     
     def __init__(self, map_csv):
         self.reader = csv.reader(map_csv)
@@ -55,7 +25,6 @@ class TiledEditor():
         return tile.Tile(x * self.spacing, y * self.spacing, graphics.sprite_width, graphics.sprite_height, True, True, surface)
     
     def create_solid_tile(self,x,y,surface):
-        """Convenience function to shorten the make_level() function"""
         return tile.Tile(x * self.spacing, y * self.spacing, graphics.trans_width,graphics.trans_height,solid=True,destructable=False,image=surface)
 
     def create_stateful_tile(self,x,y,images,state):
@@ -71,13 +40,11 @@ class TiledEditor():
         return tile.FinishTile(x * self.spacing, y* self.spacing, graphics.sprite_width, graphics.sprite_height, False, False, surface)
 
     def get_tile(self,x,y):
-        """Returns the tile at x,y position"""
         for tile in self.level_data:
             if tile.rect.x == x and tile.rect.y == y:
                 return tile
 
     def get_player(self):
-        """Returns the player instance present in the level data. This is used to pass to the Scene so that we can update our character as usual"""
         for tile in self.level_data:
             if isinstance(tile, actor.Actor):
                 print(tile)
@@ -93,9 +60,6 @@ class TiledEditor():
         return data
 
     def clean_row(self, row):
-        """Removes anything after a -1 in the row of the CSV.
-        A -1 is Tiled's way of denoting that there is no tile present here.
-        In this case we want to remove every -1"""
         try:
             row = row[:row.index('-1')]
         except ValueError:
@@ -103,7 +67,6 @@ class TiledEditor():
         return row
 
     def make_level(self):
-        """Converts our csv data into objects and adds them to a sprite.Group"""
         #Go through each individual tile and check it against our tiles dict
         for y, row in enumerate(self.csv_data):
             for x, cell in enumerate(row):
@@ -125,7 +88,7 @@ class TiledEditor():
                         elif tile_type == 'end':
                             obj = self.create_finish_tile(x,y,tile_surface)
                         self.level_data.add(obj)
-
+"""
 
 def get_map_data(tmx_file):
     """@tmx_file : A valid .tmx map file
@@ -138,10 +101,19 @@ def get_map_data(tmx_file):
     for layer in map:
         for _tile in layer.tiles():
             x, y = _tile[0], _tile[1]
-            if (x,y) in graphics.WALL_SPRITES:
-                _surface = graphics.subsurf(graphics.grid(x,y))
+            pix_x = _tile[2][1][0]
+            pix_y = _tile[2][1][1] 
+            if (pix_x//16,pix_y//16) in graphics.SPRITES['wall']:
+                _surface = graphics.subsurf((pix_x,pix_y))
                 obj = tile.Tile(x * spacing, y *spacing, spacing, spacing, solid = True, destructable = False, image=_surface)
-                level_data.add(obj) 
+            elif (pix_x//16,pix_y//16) in graphics.SPRITES['floor']:
+                _surface = graphics.subsurf((pix_x,pix_y))
+                obj = tile.Tile(x * spacing, y *spacing, spacing, spacing, solid = False, destructable = False, image=_surface)
+            elif (pix_x//16,pix_y//16) in graphics.SPRITES['rocks']:
+                print('yES')
+                _surface = graphics.subsurf((pix_x, pix_y))
+                obj = tile.Tile(x * spacing, y *spacing, spacing, spacing, solid=True, destructable=True, image=_surface)
+            level_data.add(obj) 
     return level_data
 
 get_map_data('../levels/tmx/new-level1.tmx')

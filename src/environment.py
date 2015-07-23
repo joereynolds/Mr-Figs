@@ -37,9 +37,6 @@ class SceneBase():
 
 class StartMenu(SceneBase):
     def __init__(self):
-        pygame.mixer.init()
-        pygame.mixer.music.load('../data/audio/BeachAudio.mp3')
-        pygame.mixer.music.play()
         SceneBase.__init__(self)
         self.start_button = gui_base.ClickableElement(50,50,50,50,(150,150,150))
         self.level_button = gui_base.ClickableElement(150,50,50,50,(150,150,150))
@@ -68,6 +65,7 @@ class LevelBase(SceneBase):
         self.file = file
         self.next_level = next_level
         self.level_tiles = levelEditor.get_map_data('../levels/tmx/new-level1.tmx')
+        print(self.level_tiles)
         self.player = actor.Actor(48,48,graphics.trans_width,graphics.trans_height, self.level_tiles, graphics.ACTOR_SPRITE)
         self.sprites = pygame.sprite.LayeredUpdates()
         self.sprites.add(self.level_tiles, self.player)
@@ -105,13 +103,9 @@ class LevelBase(SceneBase):
         self.__init__(self.file, self.next_level)
 
 #Automaitc level loading
-levels_dir = '../levels/'
-levels = os.listdir('../levels/')
-level_obj_list = [LevelBase(levels_dir + level,'NoNextScene') 
-                      for level in levels 
-                         if level.endswith('csv')
-                 ]
-
+levels_dir = '../levels/tmx/'
+levels = os.listdir('../levels/tmx/')
+level_obj_list = [LevelBase(levels_dir + level,'NoNextScene') for level in levels]
 level_obj_list.insert(0, StartMenu())
 for i in range(len(level_obj_list)):
     if i == len(level_obj_list)-1:

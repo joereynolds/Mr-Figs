@@ -4,7 +4,6 @@ WIDTH  = 700
 HEIGHT = 500
 SCREEN = pygame.display.set_mode((WIDTH, HEIGHT))
 
-#sprite width, sprite height
 sprite_width = 16 
 sprite_height = 16
 spritesheet = pygame.image.load('../data/newtiledsheet.png')
@@ -16,9 +15,6 @@ def grid(x,y):
     """Returns the sprite at the gridded position of n m rather than having to work out the time table for sprite widths!"""
     return sprite_width * x, sprite_height * y 
 
-def degrid(x,y):
-    """Turns grid positions into coordinates"""
-    return sprite_width // x, sprite_height // y 
 
 def subsurf(grid_pos):
     """Quick wrapper around pygame's subsurface so we don't keep having to pass in the width and height"""
@@ -26,9 +22,6 @@ def subsurf(grid_pos):
     return pygame.transform.scale(surface, (trans_width, trans_height)) 
 
 
-ROCK_SPRITE    = subsurf(grid(2,2))
-FLOOR_SPRITE_1 = subsurf(grid(1,2))
-FLOOR_SPRITE_2 = subsurf(grid(0,2))
 ACTOR_SPRITE   = subsurf(grid(0,5))
 
 BOMB_SPRITE_5  = subsurf(grid(0,4))
@@ -44,17 +37,24 @@ LASER_PULSE    = subsurf(grid(6,1))
 LASER_PULSE_HARD = subsurf(grid(7,1))
 LASER_IMAGES   = [LASER_OFF, LASER_ON, LASER_PULSE, LASER_PULSE_HARD]
 
-WALL_UP        = subsurf(grid(0,1))#
-WALL_DOWN      = subsurf(grid(0,0))#
-WALL_LEFT      = subsurf(grid(1,0))#
-WALL_RIGHT     = subsurf(grid(1,1))#
-WALL_DOWN_RIGHT= subsurf(grid(2,0))#
-WALL_DOWN_LEFT = subsurf(grid(3,0))#
-WALL_UP_RIGHT  = subsurf(grid(2,1))#
-WALL_UP_LEFT   = subsurf(grid(3,1))
-WALL_LOWER_RIGHT = subsurf(grid(2,3))
-WALL_UPPER_LEFT = subsurf(grid(1,3))
-WALL_UPPER_RIGHT = subsurf(grid(0,3))
-WALL_SPRITES = ((0,1),(0,0),(1,0),(1,1),(2,0),(3,0),(2,1),(3,1),(2,3),(1,3),(0,3))
-STAIRS         = subsurf(grid(5,3))
 
+"""
+
+Note that you can't check membership in a tuple if there's only one element (wtf?)
+
+So this:
+    if (2,2) in ((2,2))
+Doesn't work.
+But
+    if (2,2) in ((2,2),(2,2))
+Does...
+"""
+SPRITES = {
+           'wall'   : ((0,1),(0,0),(1,0),(1,1),
+                       (2,0),(3,0),(2,1),(3,1),
+                       (2,3),(1,3),(0,3)),
+           'floor'  : ((1,2),(0,2)),
+           'bombs'   : ((0,4),(1,4),(2,4),(3,4),(4,4),(5,4)),
+           'stairs' : ((5,3),),
+           'rocks'  : ((2,2),)
+           }
