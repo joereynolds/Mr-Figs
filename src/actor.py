@@ -18,9 +18,9 @@ class Actor(entity.Entity):
                         make Actor aware of its surroundings.
     @self.bombs       = A list of Bomb objects planted by Actor
     @self.move_stack  = (not used) a stack of the previous moves of the actor
+    @self.i_handler   = An InputHandler object
     @self.destination = [x,y] a 2 element list containing the next destination the sprite will be travelling to
     @self.distance    = How far the Actor moves in one turn 
-    @self.moving      = Whether Actor is moving
                         
     """
     def __init__(self, x, y, width, height, level, image=None):
@@ -32,9 +32,7 @@ class Actor(entity.Entity):
         self.level = level
         self.bombs = pygame.sprite.LayeredUpdates()
         self.move_stack = []
-        self.i_handler = input_handler.InputHandler()
         self.destination = [self.rect.x,self.rect.y]
-        self.moving = False
 
     def move(self):
         """Checks to see if we've reached the destination given, if we have,
@@ -42,7 +40,8 @@ class Actor(entity.Entity):
         differing results from pc to pc"""
         target_x = self.destination[0]
         target_y = self.destination[1]
-        if self.rect.x == target_x and self.rect.y == target_y : return
+        if (self.rect.x == target_x and self.rect.y == target_y) or self.level.get_tile(target_x, target_y).solid : 
+            return 
         else: 
             if target_x < self.rect.x:
                 self.rect.x -= self.speed
@@ -120,7 +119,7 @@ class Actor(entity.Entity):
                                  graphics.trans_width,
                                  graphics.trans_height,
                                  self.level,
-                                 graphics.BOMB_SPRITE_5))
+                                 graphics.sprites['bomb']['sprites'][0]))
            
     def update_bombs(self):
  

@@ -19,7 +19,8 @@ class Bomb(entity.Entity):
         self.level = level
         self.particles = pygame.sprite.Group()
         self.clock = clock.Clock()
-        self.images = [graphics.subsurf(graphics.grid(sprite[0], sprite[1])) for sprite in graphics.SPRITES['bombs']['coords']]
+        self.images = [sprite for sprite in graphics.sprites['bomb']['sprites']]
+        print(self.images)
 
     def blow_up(self):
         """Destroys our bomb and then all of its particles associated with it.

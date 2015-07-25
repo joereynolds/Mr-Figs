@@ -23,15 +23,8 @@ def subsurf(grid_pos):
 
 
 ACTOR_SPRITE   = subsurf(grid(0,5))
-
 FLOOR_SPRITE_1 = subsurf(grid(1,2))
-BOMB_SPRITE_5  = subsurf(grid(0,4))
-BOMB_SPRITE_4  = subsurf(grid(1,4))
-BOMB_SPRITE_3  = subsurf(grid(2,4))
-BOMB_SPRITE_2  = subsurf(grid(3,4))
-BOMB_SPRITE_1  = subsurf(grid(4,4))
 BOMB_SPRITE_OFF= subsurf(grid(5,4))
-
 LASER_ON       = subsurf(grid(5,1))
 LASER_OFF      = subsurf(grid(4,1))
 LASER_PULSE    = subsurf(grid(6,1))
@@ -50,7 +43,12 @@ But
     if (2,2) in ((2,2),)
 Does...
 """
-SPRITES = {
+
+"""A dictionary of sprites and their properties
+    coords = Their location on the spritesheet
+    sprites = pygame surfaces of their location
+"""
+sprites = {
            'wall'   : {
                        'coords' : ((0,1),(0,0),(1,0),(1,1),
                                    (2,0),(3,0),(2,1),(3,1),
@@ -61,17 +59,22 @@ SPRITES = {
                        'sprite_1': subsurf(grid(1,2)),
                        'sprite_2': subsurf(grid(0,2))
                       },
-           'bombs'  : {
+           'bomb'  : {
                        'coords'  : ((0,4),(1,4),(2,4),(3,4),(4,4),(5,4)),
-                       'sprite_5': subsurf(grid(0,4)),
-                       'sprite_4': subsurf(grid(1,4)),
-                       'sprite_3': subsurf(grid(2,4)),
-                       'sprite_2': subsurf(grid(3,4)),
-                       'sprite_1': subsurf(grid(4,4)),
-                       'sprite_0': subsurf(grid(5,4)),
-                       },
-           'stairs' : {
+                       'sprites' : [subsurf(grid(0,4)),
+                                    subsurf(grid(1,4)),
+                                    subsurf(grid(2,4)),
+                                    subsurf(grid(3,4)),
+                                    subsurf(grid(4,4)),
+                                    subsurf(grid(5,4))]
+                     },
+           'stair' : {
                        'sprite_1' : subsurf(grid(5,3)),
-                      },
-           'rocks'  : {'coords' : ((2,2),)}
+                     },
+           'rock'  : {
+                       'coords' : ((2,2),)
+                     },
+           'player': {
+                       'coords' : ((0,5),)
+                     }
            }
