@@ -66,7 +66,8 @@ class LevelBase(SceneBase):
         self.next_level = next_level
         self.level = levelEditor.LevelData(file)
         self.level_tiles = self.level.data
-        self.player = actor.Actor(48,48,graphics.trans_width,graphics.trans_height, self.level, graphics.ACTOR_SPRITE)
+        self.player = actor.Actor(self.level.get_player().rect.x,self.level.get_player().rect.y,graphics.trans_width,graphics.trans_height, self.level, graphics.sprites['player']['sprites'][0])
+        self.level.remove_dummy_player()
         self.sprites = pygame.sprite.LayeredUpdates()
         self.sprites.add(self.level_tiles, self.player)
         self.i_handler = input_handler.InputHandler()

@@ -22,15 +22,6 @@ def subsurf(grid_pos):
     return pygame.transform.scale(surface, (trans_width, trans_height)) 
 
 
-ACTOR_SPRITE   = subsurf(grid(0,5))
-FLOOR_SPRITE_1 = subsurf(grid(1,2))
-BOMB_SPRITE_OFF= subsurf(grid(5,4))
-LASER_ON       = subsurf(grid(5,1))
-LASER_OFF      = subsurf(grid(4,1))
-LASER_PULSE    = subsurf(grid(6,1))
-LASER_PULSE_HARD = subsurf(grid(7,1))
-LASER_IMAGES   = [LASER_OFF, LASER_ON, LASER_PULSE, LASER_PULSE_HARD]
-
 
 """
 
@@ -75,6 +66,17 @@ sprites = {
                        'coords' : ((2,2),)
                      },
            'player': {
-                       'coords' : ((0,5),)
-                     }
+                       'coords' : ((0,5),),
+                       'sprites':[subsurf(grid(0,5))]
+                     },
+           'laser' : {
+                       'coords' : ((4,1),(5,1),(6,1),(7,1)),
+                       'sprites': [subsurf(grid(4,1)),
+                                   subsurf(grid(5,1)),
+                                   subsurf(grid(6,1)),
+                                   subsurf(grid(7,1))]
+                     },
            }
+
+
+

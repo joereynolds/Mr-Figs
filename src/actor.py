@@ -14,13 +14,15 @@ class Actor(entity.Entity):
                         to display the correct image for the sprite depending on where they're
                         facing.
     @self.speed       = The movement speed of the sprite from tile to tile
+    @self.distance    = How far the Actor moves in one turn 
     @self.level       = A level object. This contains all tile information for that level and helps
                         make Actor aware of its surroundings.
     @self.bombs       = A list of Bomb objects planted by Actor
     @self.move_stack  = (not used) a stack of the previous moves of the actor
     @self.i_handler   = An InputHandler object
     @self.destination = [x,y] a 2 element list containing the next destination the sprite will be travelling to
-    @self.distance    = How far the Actor moves in one turn 
+    @self.valid_destinations = A list of valid moves that the user can make. i.e. they can't move 13pixels if they themselves are 48px big. They
+    
                         
     """
     def __init__(self, x, y, width, height, level, image=None):
@@ -33,6 +35,7 @@ class Actor(entity.Entity):
         self.bombs = pygame.sprite.LayeredUpdates()
         self.move_stack = []
         self.destination = [self.rect.x,self.rect.y]
+        self.valid_destinations = [graphics.trans_width * x for x in range(-100, 100)]
 
     def move(self):
         """Checks to see if we've reached the destination given, if we have,
@@ -51,14 +54,18 @@ class Actor(entity.Entity):
                 self.rect.y -= self.speed
             elif target_y > self.rect.y:
                 self.rect.y += self.speed
+        
 
     def set_destination(self, x, y):
         """Set's the next destination that our sprite is going to be
         moving/interpolating to"""
+        if self.is_valid_move(x, y): 
+            self.destination[0] = self.rect.x + (x * self.distance)
+            self.destination[1] = self.rect.y + (y * self.distance)
 
-        self.destination[0] = self.rect.x + (x * self.distance)
-        self.destination[1] = self.rect.y + (y * self.distance)
-        print(self.destination)
+    def is_valid_move(self, x, y):
+        if x * self.distance in self.valid_destinations and y * self.distance in self.valid_destinations:
+            return True
 
     def set_direction(self, direction):
         self.direction = direction
@@ -100,9 +107,9 @@ class Actor(entity.Entity):
                 if pygame.sprite.collide_rect(self, sprite):
                     return True
     
-    #def undo_action(self):
-        #if self.move_stack:
-            #self.move(keys.opposites[self.move_stack.pop()]) #undo
+    def undo_action(self):
+        if self.move_stack:
+            self.move(keys.opposites[self.move_stack.pop()]) #undo
 
     def update(self):
         """These are actions that SHOULD be called every frame. Animation, collision checking etc..."""

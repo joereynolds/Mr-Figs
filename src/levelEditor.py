@@ -44,7 +44,7 @@ class LevelData():
         return tile
     
     def _create_player_tile(self, surface, x, y):
-        pass
+        return actor.Actor(x * self.tile_spacing, y * self.tile_spacing, self.tile_spacing, self.tile_spacing, 'pass', image = surface) 
 
     def _create_wall_tile(self, surface, x, y):
         return tile.Tile(x * self.tile_spacing, y * self.tile_spacing, self.tile_spacing, self.tile_spacing, solid = True, destructable = False, image=surface)
@@ -61,9 +61,15 @@ class LevelData():
                 return tile
 
     def get_player(self):
+        """Returns the dummy player"""
         for tile in self.data:
             if isinstance(tile, actor.Actor):
                 return tile
 
+    def remove_dummy_player(self):
+        """Takes the dummy player out of our group"""
+        for tile in self.data:
+            if isinstance(tile, actor.Actor):
+                pygame.sprite.Sprite.kill(tile)
+
 mock = LevelData('../levels/tmx/new-level1.tmx')
-mock.get_player()

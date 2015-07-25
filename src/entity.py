@@ -10,6 +10,7 @@ class Entity(pygame.sprite.Sprite):
         self.rect = self.image.get_rect() 
         self.rect.x = x
         self.rect.y = y
+        self.solid = False
 
     def load_image(self, image, width, height):
         """attempts to load an image, falls back onto a pygame surface otherwise"""

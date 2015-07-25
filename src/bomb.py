@@ -76,9 +76,9 @@ class Bomb(entity.Entity):
                         self.explode()
 
     def animate(self):
-        if self.image == graphics.BOMB_SPRITE_OFF:
+        if self.image == graphics.sprites['bomb']['sprites'][-1]:
             self.image = self.images[-self.lifespan-1]
         else:
-            self.image = graphics.BOMB_SPRITE_OFF
+            self.image = graphics.sprites['bomb']['sprites'][-1]
 
                      
