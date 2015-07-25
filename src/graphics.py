@@ -24,6 +24,7 @@ def subsurf(grid_pos):
 
 ACTOR_SPRITE   = subsurf(grid(0,5))
 
+FLOOR_SPRITE_1 = subsurf(grid(1,2))
 BOMB_SPRITE_5  = subsurf(grid(0,4))
 BOMB_SPRITE_4  = subsurf(grid(1,4))
 BOMB_SPRITE_3  = subsurf(grid(2,4))
@@ -46,15 +47,31 @@ So this:
     if (2,2) in ((2,2))
 Doesn't work.
 But
-    if (2,2) in ((2,2),(2,2))
+    if (2,2) in ((2,2),)
 Does...
 """
 SPRITES = {
-           'wall'   : ((0,1),(0,0),(1,0),(1,1),
-                       (2,0),(3,0),(2,1),(3,1),
-                       (2,3),(1,3),(0,3)),
-           'floor'  : ((1,2),(0,2)),
-           'bombs'   : ((0,4),(1,4),(2,4),(3,4),(4,4),(5,4)),
-           'stairs' : ((5,3),),
-           'rocks'  : ((2,2),)
+           'wall'   : {
+                       'coords' : ((0,1),(0,0),(1,0),(1,1),
+                                   (2,0),(3,0),(2,1),(3,1),
+                                   (2,3),(1,3),(0,3)),
+                      },
+           'floor'  : {
+                       'coords'  : ((1,2),(0,2)),
+                       'sprite_1': subsurf(grid(1,2)),
+                       'sprite_2': subsurf(grid(0,2))
+                      },
+           'bombs'  : {
+                       'coords'  : ((0,4),(1,4),(2,4),(3,4),(4,4),(5,4)),
+                       'sprite_5': subsurf(grid(0,4)),
+                       'sprite_4': subsurf(grid(1,4)),
+                       'sprite_3': subsurf(grid(2,4)),
+                       'sprite_2': subsurf(grid(3,4)),
+                       'sprite_1': subsurf(grid(4,4)),
+                       'sprite_0': subsurf(grid(5,4)),
+                       },
+           'stairs' : {
+                       'sprite_1' : subsurf(grid(5,3)),
+                      },
+           'rocks'  : {'coords' : ((2,2),)}
            }

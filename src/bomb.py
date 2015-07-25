@@ -14,12 +14,12 @@ class Bomb(entity.Entity):
 
     def __init__(self, x, y, width, height, level, image=None):
         entity.Entity.__init__(self, x, y, width, height, image)
-        self.solid = True 
+        self.solid = False 
         self.lifespan = 5 
-        self.level_data = level
+        self.level = level
         self.particles = pygame.sprite.Group()
         self.clock = clock.Clock()
-        self.images = [graphics.BOMB_SPRITE_5,graphics.BOMB_SPRITE_4,graphics.BOMB_SPRITE_3,graphics.BOMB_SPRITE_2,graphics.BOMB_SPRITE_1,graphics.BOMB_SPRITE_OFF]
+        self.images = [graphics.subsurf(graphics.grid(sprite[0], sprite[1])) for sprite in graphics.SPRITES['bombs']['coords']]
 
     def blow_up(self):
         """Destroys our bomb and then all of its particles associated with it.
@@ -43,16 +43,11 @@ class Bomb(entity.Entity):
     def create_particle(self,x,y,width,height):
         obj = entity.Entity(x,y,graphics.trans_width,graphics.trans_height)
         try:
-            if not self.level.get_tile(x,y).solid:#Check to make sure we're not trying to put a particle on a solid block
+            retrieved_tile = self.level.get_tile(x,y)
+            if not retrieved_tile.solid:#Check to make sure we're not trying to put a particle on a solid block
                 self.particles.add(obj) 
-            elif self.level.get_tile(x,y).destructable:
-                #If it's destructable, kill it and change its attributes
-                try:
-                    self.level.get_tile(x,y).image = graphics.FLOOR_SPRITE_1
-                except Exception as e:
-                    print(e)
-                self.level.get_tile(x,y).solid = False
-                self.level.get_tile(x,y).destructable = False 
+            elif retrieved_tile.destructable:
+                pygame.sprite.Sprite.kill(retrieved_tile)
         except AttributeError:
             print('Attribute Error : Tried to place bomb on non-existent block')
     
@@ -73,7 +68,7 @@ class Bomb(entity.Entity):
                         self.lifespan = bomb.lifespan #remember to detonate both bombs at the same time!`
                         self.explode()
         #Blow our bomb up if it hits a spike tile on th e up position
-        for sprite in self.level_data:
+        for sprite in self.level.data:
             if isinstance(sprite, tile.Stateful):
                 if sprite.state:
                     if pygame.sprite.collide_rect(self,sprite):

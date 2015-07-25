@@ -23,18 +23,6 @@ class InputHandler():
         self.e_handler.add_event('bomb_anim',28,500)
         self.e_handler.handle_events() #est timers for all our events
 
-    def handle_player_input(self,player, command):
-        """Specialised function for dealing with a player's input"""
-        directions = {'up':(0,-1),
-                      'down':(0,1),
-                      'left':(-1,0),
-                      'right':(1,0),
-                      'nothing':(0,0)}
-
-        player.rect.x += directions[command][0] * player.speed
-        player.rect.y += directions[command][1] * player.speed
-        player.direction = command 
-
     def handle_input(self,player, level):
         for event in pygame.event.get():
             if event.type == 27:
@@ -52,7 +40,7 @@ class InputHandler():
                         elif v == 'next_level':
                             level.switch_to_scene(level.next_level)
                         else: 
-                            player.update(v)
+                            player.event_update(v)
                             for bomb in player.bombs: #Why is there collision code in our input handler???
                                 bomb.bomb_collisions(player.bombs)
                             if v != 'space':#don't change state on the spikes when we plant a bomb

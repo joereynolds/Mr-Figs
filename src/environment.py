@@ -64,9 +64,9 @@ class LevelBase(SceneBase):
         SceneBase.__init__(self)
         self.file = file
         self.next_level = next_level
-        self.level_tiles = levelEditor.get_map_data('../levels/tmx/new-level1.tmx')
-        print(self.level_tiles)
-        self.player = actor.Actor(48,48,graphics.trans_width,graphics.trans_height, self.level_tiles, graphics.ACTOR_SPRITE)
+        self.level = levelEditor.LevelData(file)
+        self.level_tiles = self.level.data
+        self.player = actor.Actor(48,48,graphics.trans_width,graphics.trans_height, self.level, graphics.ACTOR_SPRITE)
         self.sprites = pygame.sprite.LayeredUpdates()
         self.sprites.add(self.level_tiles, self.player)
         self.i_handler = input_handler.InputHandler()
@@ -80,6 +80,8 @@ class LevelBase(SceneBase):
         self.i_handler.handle_input(self.player,self) 
         
     def update(self):
+        delta = self.clock.tick(60) / 1000.0
+        self.player.update()
         self.check_player_hasnt_died_a_horrible_death()
         self.sprites.add(self.player.bombs)
         self.sprites.move_to_front(self.player)
