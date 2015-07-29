@@ -1,3 +1,5 @@
+import itertools
+import bomb
 import event_handler
 import pygame
 import tile
@@ -29,8 +31,8 @@ class InputHandler():
                 for laser in level.level_tiles:
                     pass
             if event.type == 28:
-                for bomb in player.bombs:
-                    bomb.animate()
+                for _bomb in player.bombs:
+                    _bomb.animate()
             
             if event.type == pygame.KEYDOWN:
                 for k,v in InputHandler.keys.items():
@@ -41,8 +43,8 @@ class InputHandler():
                             level.switch_to_scene(level.next_level)
                         else: 
                             player.event_update(v)
-                            for bomb in player.bombs: #Why is there collision code in our input handler???
-                                bomb.bomb_collisions(player.bombs)
+                            for _bomb in player.bombs: #Why is there collision code in our input handler???
+                                _bomb.bomb_collisions(player.bombs)
                             if v != 'space':#don't change state on the spikes when we plant a bomb
                                 for sprite in level.level_tiles:
                                     if isinstance(sprite, tile.Stateful):

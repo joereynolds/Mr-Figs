@@ -1,4 +1,3 @@
-import clock
 import pygame
 import tile
 import graphics
@@ -18,9 +17,7 @@ class Bomb(entity.Entity):
         self.lifespan = 5 
         self.level = level
         self.particles = pygame.sprite.Group()
-        self.clock = clock.Clock()
         self.images = [sprite for sprite in graphics.sprites['bomb']['sprites']]
-        print(self.images)
 
     def blow_up(self):
         """Destroys our bomb and then all of its particles associated with it.
@@ -44,10 +41,11 @@ class Bomb(entity.Entity):
     def create_particle(self,x,y,width,height):
         obj = entity.Entity(x,y,graphics.trans_width,graphics.trans_height)
         try:
-            retrieved_tile = self.level.get_tile(x,y)
-            if not retrieved_tile.solid:#Check to make sure we're not trying to put a particle on a solid block
+            retrieved_tile = self.level.get_tile_from_layer(x,y,1)
+            base_tile = self.level.get_tile_from_layer(x,y,0)
+            if not base_tile.solid:
                 self.particles.add(obj) 
-            elif retrieved_tile.destructable:
+            if retrieved_tile.destructable:
                 pygame.sprite.Sprite.kill(retrieved_tile)
         except AttributeError:
             print('Attribute Error : Tried to place bomb on non-existent block')

@@ -1,4 +1,6 @@
 import pygame
+import interpolate
+import math
 import keys
 import bomb
 import entity
@@ -37,10 +39,12 @@ class Actor(entity.Entity):
         self.destination = [self.rect.x,self.rect.y]
         self.valid_destinations = [graphics.trans_width * x for x in range(-100, 100)]
 
-    def move(self):
+    def move(self, delta_time):
         """Checks to see if we've reached the destination given, if we have,
         we can stop moving. Note that we need to use delta-time otherwise we'll get
-        differing results from pc to pc"""
+        differing results from pc to pc. Also without delta time we can't use fancy
+        schmancy interpolation effects"""
+        dt = delta_time
         target_x = self.destination[0]
         target_y = self.destination[1]
         if (self.rect.x == target_x and self.rect.y == target_y) or self.level.get_tile(target_x, target_y).solid : 
@@ -49,11 +53,14 @@ class Actor(entity.Entity):
             if target_x < self.rect.x:
                 self.rect.x -= self.speed
             elif target_x > self.rect.x:
+                self.speed = interpolate.decelerate(self.rect.x, target_x)
                 self.rect.x += self.speed 
             elif target_y < self.rect.y:
                 self.rect.y -= self.speed
             elif target_y > self.rect.y:
                 self.rect.y += self.speed
+            print('distance from target = ', target_x - self.rect.x)
+
         
 
     def set_destination(self, x, y):
@@ -79,11 +86,11 @@ class Actor(entity.Entity):
                       'right':(1,0),
                       'nothing':(0,0)}
 
-        self.update_bombs()
+        if command != 'space' :
+            self.update_bombs()
         if command in directions.keys():
             self.set_destination(directions[command][0], directions[command][1])
             self.set_direction(command)
-
         if command == 'space':
             self.create_bomb()
 
@@ -93,7 +100,6 @@ class Actor(entity.Entity):
             if sprite.solid :
                 if pygame.sprite.collide_rect(self,sprite):
                     pass
-                    #self.update(keys.opposites[self.move_stack.pop()]) #'undo' our action.
             if isinstance(sprite, tile.Stateful):
                 if not sprite.state:
                     if pygame.sprite.collide_rect(self, sprite):
@@ -111,14 +117,15 @@ class Actor(entity.Entity):
         if self.move_stack:
             self.move(keys.opposites[self.move_stack.pop()]) #undo
 
-    def update(self):
+    def update(self, delta_time):
         """These are actions that SHOULD be called every frame. Animation, collision checking etc..."""
         #elif command == 'u':
         #    self.undo_action()
-        self.move()
+        self.move(delta_time)
         #self.move_stack.append(command)
         self.collide()
         self.finished_level()
+        self.update_bomb_collection()
 
     def create_bomb(self):
         self.bombs.add(bomb.Bomb(self.rect.x,
@@ -128,6 +135,13 @@ class Actor(entity.Entity):
                                  self.level,
                                  graphics.sprites['bomb']['sprites'][0]))
            
+    def update_bomb_collection(self):
+        """Makes sure that not only do we process the bombs that we planted, but also
+        the bombs that were already on the level"""
+        for sprite in self.level.data:
+            if isinstance(sprite, bomb.Bomb):
+                self.bombs.add(sprite)
+        
     def update_bombs(self):
  
         for bomb in self.bombs:

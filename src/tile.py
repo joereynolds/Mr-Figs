@@ -9,7 +9,7 @@ class Tile(entity.Entity):
 
     def __init__(self, x, y, width, height, solid, destructable, image=None):
         entity.Entity.__init__(self, x, y, width, height, image)
-        self.solid = solid 
+        self.solid = bool(solid) 
         self.destructable = destructable 
 
 class FinishTile(Tile):
