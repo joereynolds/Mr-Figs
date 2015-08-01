@@ -2,6 +2,7 @@
 Handles our Scene logic and input processing/updating/rendering
 """
 import input_handler
+import collision_handler
 import helpers
 import pygame
 import os
@@ -67,18 +68,16 @@ class LevelBase(SceneBase):
         self.next_level = next_level
         self.level = levelEditor.LevelData(file)
         self.level_tiles = self.level.data
-        print(self.level.get_player())
-        print(self.level.get_player().rect.x)
         self.player = actor.Actor(48,
                                   48,
                                   graphics.trans_width,
                                   graphics.trans_height,
                                   self.level,
                                   graphics.sprites['player']['sprites'][0])
-        #self.level.remove_dummy_player()
         self.sprites = pygame.sprite.LayeredUpdates()
         self.sprites.add(self.level_tiles, self.player)
         self.i_handler = input_handler.InputHandler()
+        self.c_handler = collision_handler.CollisionHandler(self.player, self.level) 
         self.clock = pygame.time.Clock()
 
     def check_player_hasnt_died_a_horrible_death(self):
@@ -91,6 +90,7 @@ class LevelBase(SceneBase):
     def update(self):
         delta = self.clock.tick(60) / 1000.0
         self.player.update(delta)
+        self.c_handler.update()
         self.check_player_hasnt_died_a_horrible_death()
         self.sprites.add(self.player.bombs)
         self.sprites.move_to_front(self.player)
@@ -102,8 +102,6 @@ class LevelBase(SceneBase):
                 self.reset()
         if self.player.finished_level():
             self.switch_to_scene(self.next_level)
-        
-        
         
     def render(self):
         self.surface.fill(colours.WHITE)        
@@ -117,9 +115,11 @@ class LevelBase(SceneBase):
 levels_dir = '../levels/tmx/'
 levels = os.listdir('../levels/tmx/')
 level_obj_list = [LevelBase(levels_dir + level,'NoNextScene') for level in levels]
+
 level_obj_list.insert(0, StartMenu())
 for i in range(len(level_obj_list)):
     if i == len(level_obj_list)-1:
         level_obj_list[i].next_level = level_obj_list[0]
     else:
         level_obj_list[i].next_level = level_obj_list[i+1]
+

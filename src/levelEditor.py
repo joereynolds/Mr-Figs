@@ -90,7 +90,7 @@ class LevelData():
                 print('killing player')
                 pygame.sprite.Sprite.kill(tile)
 
-mock = LevelData('../levels/tmx/new-level1.tmx')
+mock = LevelData('../levels/tmx/new-level2.tmx')
 #print(mock.get_player().rect.x)
 #print(mock.get_player().rect.y)
 #print(graphics.sprites['player']['sprites'][0])

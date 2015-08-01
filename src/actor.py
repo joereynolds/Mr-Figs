@@ -59,9 +59,6 @@ class Actor(entity.Entity):
                 self.rect.y -= self.speed
             elif target_y > self.rect.y:
                 self.rect.y += self.speed
-            print('distance from target = ', target_x - self.rect.x)
-
-        
 
     def set_destination(self, x, y):
         """Set's the next destination that our sprite is going to be
@@ -71,8 +68,7 @@ class Actor(entity.Entity):
             self.destination[1] = self.rect.y + (y * self.distance)
 
     def is_valid_move(self, x, y):
-        if x * self.distance in self.valid_destinations and y * self.distance in self.valid_destinations:
-            return True
+        return (x * self.distance) in self.valid_destinations and (y * self.distance) in self.valid_destinations
 
     def set_direction(self, direction):
         self.direction = direction
@@ -94,17 +90,6 @@ class Actor(entity.Entity):
         if command == 'space':
             self.create_bomb()
 
-    def collide(self):
-        """Goes through the level data assessing the correct tiles in the level that aren't itself and seeing what happens if we collide with them"""
-        for sprite in self.level.data:
-            if sprite.solid :
-                if pygame.sprite.collide_rect(self,sprite):
-                    pass
-            if isinstance(sprite, tile.Stateful):
-                if not sprite.state:
-                    if pygame.sprite.collide_rect(self, sprite):
-                        pygame.sprite.Sprite.kill(self)
-
     def finished_level(self):
         """Returns True if the user has finished level. i.e. if they have
            destroyed the block and gotten out of the boundaries of the screen"""
@@ -112,18 +97,10 @@ class Actor(entity.Entity):
             if isinstance(sprite, tile.FinishTile):
                 if pygame.sprite.collide_rect(self, sprite):
                     return True
-    
-    def undo_action(self):
-        if self.move_stack:
-            self.move(keys.opposites[self.move_stack.pop()]) #undo
 
     def update(self, delta_time):
         """These are actions that SHOULD be called every frame. Animation, collision checking etc..."""
-        #elif command == 'u':
-        #    self.undo_action()
         self.move(delta_time)
-        #self.move_stack.append(command)
-        self.collide()
         self.finished_level()
         self.update_bomb_collection()
 
