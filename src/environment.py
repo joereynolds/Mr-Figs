@@ -37,6 +37,7 @@ class SceneBase():
     def terminate(self):
         pygame.quit()
 
+
 class StartMenu(SceneBase):
     def __init__(self):
         SceneBase.__init__(self)
@@ -57,8 +58,8 @@ class StartMenu(SceneBase):
         self.buttons.draw(self.surface)
         self.start_button.render_text('START')
         self.exit_button.render_text('EXIT')
-         
         pygame.display.flip()
+
 
 class LevelBase(SceneBase):
 

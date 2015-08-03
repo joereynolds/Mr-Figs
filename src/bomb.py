@@ -22,9 +22,10 @@ class Bomb(entity.Entity):
     def blow_up(self):
         """Destroys our bomb and then all of its particles associated with it.
            Returns True on success so that outside classes can know it's completed successfull"""
-        if self.lifespan ==0:
+        print(self.lifespan)
+        if self.lifespan == 0:
             self.explode()
-        if self.lifespan <= -1:
+        if self.lifespan <= -1 :
             for particle in self.particles: 
                 pygame.sprite.Sprite.kill(particle)
             pygame.sprite.Sprite.kill(self)
@@ -53,7 +54,7 @@ class Bomb(entity.Entity):
     def particle_collision(self, player):
         """Returns True if any of the bombs particles collide with player. If they do, we'll reset the level."""
         for particle in self.particles:
-            if pygame.sprite.collide_rect(particle,player):
+            if pygame.sprite.collide_rect(particle,player) and not player.moving:
                 pygame.sprite.Sprite.kill(player)
                 return True
 

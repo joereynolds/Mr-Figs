@@ -38,6 +38,7 @@ class Actor(entity.Entity):
         self.move_stack = []
         self.destination = [self.rect.x,self.rect.y]
         self.valid_destinations = [graphics.trans_width * x for x in range(-100, 100)]
+        self.moving = False
 
     def move(self, delta_time):
         """Checks to see if we've reached the destination given, if we have,
@@ -52,13 +53,21 @@ class Actor(entity.Entity):
         else: 
             if target_x < self.rect.x:
                 self.rect.x -= self.speed
+                self.moving = True
             elif target_x > self.rect.x:
                 self.speed = interpolate.decelerate(self.rect.x, target_x)
                 self.rect.x += self.speed 
+                self.moving = True
             elif target_y < self.rect.y:
                 self.rect.y -= self.speed
+                self.moving = True
             elif target_y > self.rect.y:
                 self.rect.y += self.speed
+                self.moving = True
+
+        #If we have reached our destination, we're not moving anymore
+        if self.rect.x == target_x and self.rect.y == target_y:
+            self.moving = False
 
     def set_destination(self, x, y):
         """Set's the next destination that our sprite is going to be
@@ -82,11 +91,11 @@ class Actor(entity.Entity):
                       'right':(1,0),
                       'nothing':(0,0)}
 
-        if command != 'space' :
-            self.update_bombs()
         if command in directions.keys():
             self.set_destination(directions[command][0], directions[command][1])
             self.set_direction(command)
+            if command != 'space' : 
+                self.update_bombs()
         if command == 'space':
             self.create_bomb()
 
@@ -100,9 +109,10 @@ class Actor(entity.Entity):
 
     def update(self, delta_time):
         """These are actions that SHOULD be called every frame. Animation, collision checking etc..."""
-        self.move(delta_time)
         self.finished_level()
         self.update_bomb_collection()
+        self.move(delta_time)
+        print(self.moving)
 
     def create_bomb(self):
         self.bombs.add(bomb.Bomb(self.rect.x,
