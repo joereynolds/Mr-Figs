@@ -92,10 +92,11 @@ class Actor(entity.Entity):
                       'nothing':(0,0)}
 
         if command in directions.keys():
-            self.set_destination(directions[command][0], directions[command][1])
-            self.set_direction(command)
-            if command != 'space' : 
-                self.update_bombs()
+            if not self.moving:
+                self.set_destination(directions[command][0], directions[command][1])
+                self.set_direction(command)
+        if command != 'space' : 
+            self.update_bombs()
         if command == 'space':
             self.create_bomb()
 
