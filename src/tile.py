@@ -34,3 +34,27 @@ class Stateful(Tile):
             self.image = self.images[1]
             self.state = 1
 
+
+class Triggerable(Tile):
+    """A Triggerable class is linked to the stateful class. It takes a Stateful
+       and if that Stateful's state is 'on' it affects the Triggerable and triggers
+       whatever the effect of the Triggerable is.
+
+       i.e.
+           A Door and switch.
+           Door = Triggerable
+           Switch = Stateful
+        
+           When a switch is pressed, it triggers the door to open...simples!"""
+
+    def __init__(self,x, y, width, height, solid, destructable, stateful, image):
+        Tile.__init__(self, x, y, width, height, solid, destructable, image)
+        self.stateful = stateful 
+
+    def trigger(self):
+        """To be called when our stateful tile is 'on'"""
+        if self.stateful.state == 1:
+            print('triggered!')
+
+
+

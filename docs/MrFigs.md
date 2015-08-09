@@ -57,22 +57,12 @@ There will need to be sound effects for the following sounds
 - Package it into an exe
 - Make the modules properly importable rather than having to copy and paste them into things
 - Bomberman's starting position should be on the text file
-- Fix undo functionality
+
 
 ##Ideas
 
 - Have a target amount of moves for each level. (i.e. let the user know it's possible to finish this level in 7 moves).
 
-##Spike implementation
-
-Spikes are an idea whereby every other move, the spikes will 'spike' up. If you are on the spike when it spikes up, you die and get reset to your original position.
-If the spike is in the 'down' position, then you're safe :)
-
-There are 3 options of how bombs can be implemented. 
-
-1. Bombs can be planted on the spike as long as the spike is down. When the spike comes up, it will detonate the bomb.
-2. Bombs cannot be planted on spikes.
-3. ~~Bombs can be planted on spikes regardless of position.~~
 
 ##Useful Links
 [Bomberman mechanics](http://www.gamedev.net/page/resources/_/technical/game-programming/case-study-bomberman-mechanics-in-an-entity-component-system-r3159)

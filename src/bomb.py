@@ -22,7 +22,6 @@ class Bomb(entity.Entity):
     def blow_up(self):
         """Destroys our bomb and then all of its particles associated with it.
            Returns True on success so that outside classes can know it's completed successfull"""
-        print(self.lifespan)
         if self.lifespan == 0:
             self.explode()
         if self.lifespan <= -1 :
@@ -66,12 +65,6 @@ class Bomb(entity.Entity):
                 for particle in bomb.particles:
                     if pygame.sprite.collide_rect(self, particle):
                         self.lifespan = bomb.lifespan #remember to detonate both bombs at the same time!`
-                        self.explode()
-        #Blow our bomb up if it hits a spike tile on th e up position
-        for sprite in self.level.data:
-            if isinstance(sprite, tile.Stateful):
-                if sprite.state:
-                    if pygame.sprite.collide_rect(self,sprite):
                         self.explode()
 
     def animate(self):

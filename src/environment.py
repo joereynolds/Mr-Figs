@@ -75,6 +75,7 @@ class LevelBase(SceneBase):
                                   graphics.trans_height,
                                   self.level,
                                   graphics.sprites['player']['sprites'][0])
+        #self.level.remove_dummy_player()
         self.sprites = pygame.sprite.LayeredUpdates()
         self.sprites.add(self.level_tiles, self.player)
         self.i_handler = input_handler.InputHandler()

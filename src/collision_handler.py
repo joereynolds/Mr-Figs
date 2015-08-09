@@ -17,8 +17,4 @@ class CollisionHandler():
             if sprite.solid:
                 if pygame.sprite.collide_rect(self.player, sprite):
                     pass
-            if isinstance(sprite, tile.Stateful):
-                if not sprite.state:
-                    if pygame.sprite.collide_rect(self.player, sprite):
-                        pygame.sprite.Sprite.kill(self.player)
 

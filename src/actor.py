@@ -113,7 +113,6 @@ class Actor(entity.Entity):
         self.finished_level()
         self.update_bomb_collection()
         self.move(delta_time)
-        print(self.moving)
 
     def create_bomb(self):
         self.bombs.add(bomb.Bomb(self.rect.x,

@@ -215,6 +215,20 @@
     <property name="type" value="actor"/>
    </properties>
   </tile>
+  <tile id="54">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value="True"/>
+    <property name="type" value="triggerable"/>
+   </properties>
+  </tile>
+  <tile id="58">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value=""/>
+    <property name="type" value="stateful"/>
+   </properties>
+  </tile>
  </tileset>
  <layer name="layer0" width="14" height="10">
   <data encoding="csv">
@@ -231,14 +245,25 @@
 </data>
  </layer>
  <layer name="layer1" width="14" height="10">
-  <properties>
-   <property name="player" value="player"/>
-  </properties>
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,21,0,0,0,0,0,0,0,
-0,0,0,0,0,0,21,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,55,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer name="switches" width="14" height="10">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,59,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,
