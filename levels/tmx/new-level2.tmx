@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" nextobjectid="1">
- <tileset firstgid="1" name="newtiledsheet" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" name="newtiledsheet" tilewidth="16" tileheight="16" tilecount="63">
   <image source="../../data/newtiledsheet.png" trans="ff00ff" width="144" height="112"/>
   <tile id="0">
    <properties>
@@ -147,26 +147,31 @@
   </tile>
   <tile id="36">
    <properties>
+    <property name="lifespan" value="5"/>
     <property name="type" value="bomb"/>
    </properties>
   </tile>
   <tile id="37">
    <properties>
+    <property name="lifespan" value="4"/>
     <property name="type" value="bomb"/>
    </properties>
   </tile>
   <tile id="38">
    <properties>
+    <property name="lifespan" value="3"/>
     <property name="type" value="bomb"/>
    </properties>
   </tile>
   <tile id="39">
    <properties>
+    <property name="lifespan" value="2"/>
     <property name="type" value="bomb"/>
    </properties>
   </tile>
   <tile id="40">
    <properties>
+    <property name="lifespan" value="1"/>
     <property name="type" value="bomb"/>
    </properties>
   </tile>
@@ -193,10 +198,10 @@
  <layer name="Tile Layer 2" width="14" height="10">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,37,0,0,0,0,0,0,0,0,0,0,0,
-0,0,37,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,41,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,37,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,21,21,0,0,0,0,0,0,
