@@ -45,7 +45,6 @@ class LevelData():
         elif sprite['type'] == 'bomb':
            _tile = self._create_bomb_tile(sprite['lifespan'], surface, x, y)
         elif sprite['type'] == 'stateful':
-            
             _tile = tile.Stateful(x,
                                   y,
                                   self.tile_spacing,
@@ -85,6 +84,18 @@ class LevelData():
             if tile.rect.x == x and tile.rect.y == y:
                 return tile
 
+    def get_tile_all_layers(self, x, y):
+        """The same as get_tile but gets tiles at x, and y, on
+        all layers instead of the first layer it sees to match
+        the x and y"""
+        return [tile for tile in self.data if tile.rect.x == x and tile.rect.y == y] 
+
+    def get_layer_count(self):
+        """Returns the total count of layers.
+        count starts at 1."""
+        layers = [layer for layer in self._map]
+        return len(layers)
+
     def get_tile_from_layer(self, x, y, layer):
         for tile in self.data.get_sprites_from_layer(layer):
             if tile.rect.x == x and tile.rect.y == y:
@@ -110,6 +121,13 @@ class LevelData():
             if isinstance(tile, actor.Actor):
                 pygame.sprite.Sprite.kill(tile)
 
+    #This function is gross and not needed. It's only used in the actor class and that could easily be a map over all 
+    #of the tiles. Do this asap
+    def find_solid_tile(self, tiles):
+        """Returns true if it finds a solid tile in a list of tiles"""
+        for tile in tiles:
+            if tile.solid:
+                return True
 mock = LevelData('../levels/tmx/new-level1.tmx')
-print(mock.get_player(1))
-print(mock.get_player(0))
+#print(mock.get_player(1))
+#print(mock.get_player(0))

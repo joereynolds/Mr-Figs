@@ -48,8 +48,11 @@ class Actor(entity.Entity):
         dt = delta_time
         target_x = self.destination[0]
         target_y = self.destination[1]
-        if (self.rect.x == target_x and self.rect.y == target_y) or self.level.get_tile(target_x, target_y).solid : 
+
+        #Stop moving if the next tile we're going to is a solid
+        if (self.rect.x == target_x and self.rect.y == target_y) or self.level.find_solid_tile(self.level.get_tile_all_layers(target_x, target_y)) : 
             return 
+        
         else: 
             if target_x < self.rect.x:
                 self.rect.x -= self.speed
@@ -59,7 +62,7 @@ class Actor(entity.Entity):
                 self.rect.x += self.speed 
                 self.moving = True
             elif target_y < self.rect.y:
-                self.rect.y -= self.speed
+                self.rect.y -= interpolate.decelerate(self.rect.x, target_x)
                 self.moving = True
             elif target_y > self.rect.y:
                 self.rect.y += self.speed
@@ -120,7 +123,7 @@ class Actor(entity.Entity):
                                  graphics.trans_width,
                                  graphics.trans_height,
                                  self.level,
-				 5,
+                                 5,
                                  graphics.sprites['bomb']['sprites'][0]))
            
     def update_bomb_collection(self):
