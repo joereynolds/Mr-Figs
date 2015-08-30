@@ -1,4 +1,5 @@
 import itertools
+import graphics
 import bomb
 import event_handler
 import pygame
@@ -23,8 +24,10 @@ class InputHandler():
         self.e_handler = event_handler.EventHandler()
         self.e_handler.add_event('laser_anim',27,2000)
         self.e_handler.add_event('bomb_anim',28,500)
+        self.e_handler.add_event('particle anim',29,100)
         self.e_handler.handle_events() #est timers for all our events
 
+        self.i = 0 #REMOVE THIS
     def handle_input(self,player, level):
         for event in pygame.event.get():
             if event.type == 27:
@@ -33,6 +36,16 @@ class InputHandler():
             if event.type == 28:
                 for _bomb in player.bombs:
                     _bomb.animate()
+
+            if event.type == 29:
+                print(self.i)
+                for _bomb in player.bombs:
+                    for particle in _bomb.particles:
+                        particle.image = graphics.sprites['explosion']['sprites'][self.i]
+                self.i +=1
+                if self.i >5 :
+                    self.i = 0
+                #This is handled terribly. We should be using delta times for ANY animation. 
             
             if event.type == pygame.KEYDOWN:
                 for k,v in InputHandler.keys.items():
