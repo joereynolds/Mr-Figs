@@ -156,20 +156,16 @@ class CheckBox(ClickableElement):
 """A container is a collection of components. Make as many components
 as you need. If we need to, we can refactor the container to make it better
 but at the moment it serves its purpose."""
-class Container(pygame.sprite.Sprite):
+class StartContainer(pygame.sprite.Sprite):
 
     def __init__(self, x, y, width, height, color):
-        pygame.sprite.Sprite.__init__(self)
-        self.width = width
-        self.height = height
-        self.image = pygame.Surface([self.width, self.height])
-        self.rect = self.image.get_rect()
-        self.rect.x = x
-        self.rect.y = y
-        self.components = {'Hoverable' : Hoverable(x,y,width,height)} 
+        self.components = {'start-game' : Clickable(x,y,width,height),
+                           'exit-game' : Clickable(x*2,y,width,height),
+                           'settings' : Clickable(x*3,y,width,height),
+                           'level-select' : Clickable(x*3.5,y,width,height)} 
         
     def update(self):
-        self.components['Hoverable'].on_hover(print,'test')
+        pass
 
 
 class BaseComponent(pygame.sprite.Sprite):
