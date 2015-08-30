@@ -18,7 +18,6 @@ class Bomb(entity.Entity):
         self.level = level
         self.particles = pygame.sprite.Group()
         self.images = [sprite for sprite in graphics.sprites['bomb']['sprites']]
-        self.__debug()
         
     def __debug(self):
         print(self.lifespan)
@@ -44,7 +43,11 @@ class Bomb(entity.Entity):
             self.create_particle(self.rect.x, self.rect.y - i, graphics.trans_width, graphics.trans_height)
        
     def create_particle(self,x,y,width,height):
-        obj = entity.Entity(x,y,graphics.trans_width,graphics.trans_height)
+        obj = entity.Entity(x,
+                            y,
+                            graphics.trans_width,
+                            graphics.trans_height,
+                            graphics.sprites['explosion']['sprites'][0])
         try:
             retrieved_tile = self.level.get_tile_from_layer(x,y,1)
             base_tile = self.level.get_tile_from_layer(x,y,0)

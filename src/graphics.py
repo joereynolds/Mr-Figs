@@ -76,6 +76,15 @@ sprites = {
                                     subsurf(grid(4,4)),
                                     subsurf(grid(5,4))]
                      },
+           'explosion' :{
+                         'coords' : (),
+                         'sprites':[subsurf(grid(0,6)),
+                                    subsurf(grid(1,6)),
+                                    subsurf(grid(2,6)),
+                                    subsurf(grid(3,6)),
+                                    subsurf(grid(4,6)),
+                                    subsurf(grid(5,6))]
+                        },
            'stair' : {
                        'sprite_1' : subsurf(grid(5,3)),
                      },

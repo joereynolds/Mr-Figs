@@ -7,12 +7,9 @@ import environment
 class StartMenu(scene_base.SceneBase):
     def __init__(self):
         scene_base.SceneBase.__init__(self)
-        self.start_container = gui_base.StartContainer(
-                            90,90,90,90,
-                            (255,0,0))
+        self.start_container = gui_base.StartContainer(90,90,90,90)
         self.buttons = pygame.sprite.Group()
         self.buttons.add(
-                         
                          self.start_container.components['start-game'],
                          self.start_container.components['exit-game'],
                          self.start_container.components['settings'],
@@ -28,13 +25,18 @@ class StartMenu(scene_base.SceneBase):
 
     def render(self):
         self.surface.fill((255,255,255))
-        self.start_container.components['start-game'].image.fill((255,0,0))
-        self.start_container.components['exit-game'].image.fill((255,255,0))
-        self.start_container.components['settings'].image.fill((255,0,255))
-        self.start_container.components['level-select'].image.fill((0,0,255))
+        self.components['start-game'].image.fill((255,0,0))
+        self.components['start-game'].render_text('START GAME')
+
+        self.components['exit-game'].image.fill((255,255,0))
+        self.components['exit-game'].render_text('QUIT')
+
+        self.components['settings'].image.fill((255,0,255))
+        self.components['settings'].render_text('SETTINGS')
+
+        self.components['level-select'].image.fill((0,0,255))
+        self.components['level-select'].render_text('LEVEL SELECT')
         self.buttons.draw(self.surface)
-        #self.start_button.render_text('START')
-        #self.exit_button.render_text('EXIT')
         pygame.display.flip()
 
 
