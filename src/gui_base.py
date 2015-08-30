@@ -66,12 +66,6 @@ class VisualElement(pygame.sprite.Sprite):
         rendered_text = font_object.render(self.text.text,False,((0,0,0)))
         self.image.blit(rendered_text, self.text.position)
 
-    def fade_in(self):
-        pass #do fade in 
-
-    def fade_out(self):
-        pass #do fade out
-
     def enlarge(self, speed):
         """Makes the elements surface larger."""
         speeds = {
@@ -155,3 +149,67 @@ class CheckBox(ClickableElement):
         if not self.clicked:
             function(*args)
     
+
+
+#New component system attempt
+
+class Container(pygame.sprite.Sprite):
+
+    def __init__(self, x, y, width, height, color, **components):
+        pygame.sprite.Sprite.__init__(self)
+        self.width = width
+        self.height = height
+        self.image = pygame.Surface([self.width, self.height])
+        self.rect = self.image.get_rect()
+        self.rect.x = x
+        self.rect.y = y
+        self.components = components 
+        
+    def update(self):
+        component = self.components['component']
+        for arg in component['args']:
+            component['function'](arg)
+
+class BaseComponent(pygame.sprite.Sprite):
+
+    def __init__(self,x,y,width,height):
+        pygame.sprite.Sprite.__init__(self)
+        self.width = width
+        self.height = height
+        self.image = pygame.Surface([self.width, self.height]).convert_alpha()
+        self.rect = self.image.get_rect()
+        self.rect.x = x
+        self.rect.y = y
+
+
+class Hoverable(BaseComponent):
+
+    def __init__(self,x,y,width,height):
+        BaseComponent.__init__(self,x,y,width,height)
+    
+    def on_hover(self,function, *args):
+        """Calls a function when ClickableElement is hovered over with
+           the mouse cursor"""
+        if self.rect.collidepoint(pygame.mouse.get_pos()):
+            #self.hovering = True
+            function(*args)
+        #else:
+            #self.hovering = False
+
+    def off_hover(self, function, *args):
+        if not self.rect.collidepoint(pygame.mouse.get_pos()):
+            function(*args)
+
+
+class Clickable(BaseComponent):
+
+    def on_click(self,function, *args):
+        """Calls a function when ClickableComponent is clicked.
+        Note that it is identical to on_hover. The only differences are
+        where the function SHOULD be called. This function should be called
+        in the input_handling portion of the loop as opposed to on_hover
+        which should be called in the render part of the loop."""
+        if self.rect.collidepoint(pygame.mouse.get_pos()):
+            function(*args)
+
+
