@@ -153,9 +153,12 @@ class CheckBox(ClickableElement):
 
 #New component system attempt
 
+"""A container is a collection of components. Make as many components
+as you need. If we need to, we can refactor the container to make it better
+but at the moment it serves its purpose."""
 class Container(pygame.sprite.Sprite):
 
-    def __init__(self, x, y, width, height, color, **components):
+    def __init__(self, x, y, width, height, color):
         pygame.sprite.Sprite.__init__(self)
         self.width = width
         self.height = height
@@ -163,12 +166,11 @@ class Container(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
-        self.components = components 
+        self.components = {'Hoverable' : Hoverable(x,y,width,height)} 
         
     def update(self):
-        component = self.components['component']
-        for arg in component['args']:
-            component['function'](arg)
+        self.components['Hoverable'].on_hover(print,'test')
+
 
 class BaseComponent(pygame.sprite.Sprite):
 
@@ -176,7 +178,7 @@ class BaseComponent(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.width = width
         self.height = height
-        self.image = pygame.Surface([self.width, self.height]).convert_alpha()
+        self.image = pygame.Surface([self.width, self.height]).convert()
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
@@ -184,9 +186,6 @@ class BaseComponent(pygame.sprite.Sprite):
 
 class Hoverable(BaseComponent):
 
-    def __init__(self,x,y,width,height):
-        BaseComponent.__init__(self,x,y,width,height)
-    
     def on_hover(self,function, *args):
         """Calls a function when ClickableElement is hovered over with
            the mouse cursor"""
