@@ -4,6 +4,7 @@ import bomb
 import event_handler
 import pygame
 import tile
+import collision_handler
 
 class InputHandler():
     """Handles all input events. Key presses etc...
@@ -21,25 +22,33 @@ class InputHandler():
             pygame.K_ESCAPE:'escape'
             }
 
-    def __init__(self):
+    def __init__(self, player, level, level_base):
+        """
+        @self.player = The player on the level
+        @self.level = The TiledMap LevelData for this level
+        @self.e_handler = An EventHandler() object
+        @self.c_handler = A CollisionHandler() object
+        @self.level_base = The Base level. This is needed to access functions that aren't available in the TiledMap LevelData object 
+        
+        """
+        self.player = player
+        self.level = level
+        self.level_base = level_base
         self.e_handler = event_handler.EventHandler()
-        self.e_handler.add_event('laser_anim',27,2000)
-        self.e_handler.add_event('bomb_anim',28,500)
-        self.e_handler.add_event('particle anim',29,100)
-        self.e_handler.handle_events() #est timers for all our events
-
+        self.c_handler = collision_handler.CollisionHandler(self.player, level)
+      
         self.i = 0 #REMOVE THIS
-    def handle_input(self,player, level):
+    def handle_input(self):
         for event in pygame.event.get():
             if event.type == 27:
-                for laser in level.level_tiles:
+                for laser in self.level.data:
                     pass
             if event.type == 28:
-                for _bomb in player.bombs:
+                for _bomb in self.player.bombs:
                     _bomb.animate()
 
             if event.type == 29:
-                for _bomb in player.bombs:
+                for _bomb in self.player.bombs:
                     for particle in _bomb.particles:
                         particle.image = graphics.sprites['explosion']['sprites'][self.i]
                 self.i +=1
@@ -51,17 +60,15 @@ class InputHandler():
                 for k,v in InputHandler.keys.items():
                     if event.key == k:
                         if v == 'escape' :
-                            print('Escape menu')
-                            level.render_escape_menu()
+                            self.level_base.render_escape_menu()
                         if v == 'reset':
-                            level.reset()
+                            self.level_base.reset()
                         elif v == 'next_level':
-                            level.switch_to_scene(level.next_level)
+                            self.level_base.switch_to_scene(self.level_base.next_level)
                         else: 
-                            player.event_update(v)
-                            for _bomb in player.bombs: #Why is there collision code in our input handler???
-                                _bomb.bomb_collisions(player.bombs)
+                            self.player.event_update(v)
+                            self.c_handler.bomb_collisions()
                             if v != 'space':#don't change state on the spikes when we plant a bomb
-                                for sprite in level.level_tiles:
+                                for sprite in self.level.data:
                                     if isinstance(sprite, tile.Stateful):
                                         sprite.update()

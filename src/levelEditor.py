@@ -7,7 +7,12 @@ import actor
 
 
 class LevelData():
-
+    """
+    @self.file = Tiled map filename
+    @self.tile_spacing = The spacing between each tile when rendered
+    @self._map = The TiledMap object of self.file
+    @self.data = A sprite group of all of the tiles in self._map
+    """
     def __init__(self, file):
         self.file = file
         self.tile_spacing = 48
@@ -16,7 +21,10 @@ class LevelData():
         self.get_map_data()
         self.give_dynamic_sprites_data()
 
+
     def get_map_data(self):
+        """Iterates through the TiledMap file adding tiles to
+        the self.data sprite group"""
         for i, layer in enumerate(self._map):
             for _tile in layer.tiles():
                 x, y = _tile[0], _tile[1]
@@ -29,6 +37,8 @@ class LevelData():
                     self.data.add(obj, layer=i)  
 
     def _create_tile(self,x,y,surface, sprite):
+        """Creates tiles passed to it. It finds the type of the
+        sprite and then creates the corresponding tile"""
         x = x * self.tile_spacing
         y = y * self.tile_spacing
         if sprite['type'] == 'tile':
@@ -80,6 +90,7 @@ class LevelData():
                 sprite.level = self
     
     def get_tile(self,x,y):
+        """Returns the tile object at @x and @y"""
         for tile in self.data:
             if tile.rect.x == x and tile.rect.y == y:
                 return tile
@@ -97,6 +108,7 @@ class LevelData():
         return len(layers)
 
     def get_tile_from_layer(self, x, y, layer):
+        """The same as get_tile but returns the tile only from that layer"""
         for tile in self.data.get_sprites_from_layer(layer):
             if tile.rect.x == x and tile.rect.y == y:
                 return tile
@@ -128,6 +140,7 @@ class LevelData():
         for tile in tiles:
             if tile.solid:
                 return True
+
 mock = LevelData('../levels/tmx/new-level1.tmx')
 #print(mock.get_player(1))
 #print(mock.get_player(0))

@@ -117,6 +117,7 @@ class Actor(entity.Entity):
         self.move(delta_time)
 
     def create_bomb(self):
+        """Creates a bomb underneath the players position"""
         self.bombs.add(bomb.Bomb(self.rect.x,
                                  self.rect.y,
                                  graphics.trans_width,
@@ -133,7 +134,9 @@ class Actor(entity.Entity):
                 self.bombs.add(sprite)
         
     def update_bombs(self):
- 
+        """Updates all bombs that are owned by the player.
+        Usually, all bombs on the map are owned by the player,
+        even the ones the player did not plant""" 
         for bomb in self.bombs:
             bomb.lifespan -= 1
             if bomb.blow_up():

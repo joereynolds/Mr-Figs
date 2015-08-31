@@ -18,3 +18,6 @@ class CollisionHandler():
                 if pygame.sprite.collide_rect(self.player, sprite):
                     pass
 
+    def bomb_collisions(self):
+        for _bomb in self.player.bombs:
+            _bomb.bomb_collisions(self.player.bombs)

@@ -16,17 +16,15 @@ class LevelBase(scene_base.SceneBase):
         self.next_level = next_level
         self.level = levelEditor.LevelData(file)
         self.level_tiles = self.level.data
-        self.player = actor.Actor(48,
-                                  48,
+        self.player = actor.Actor(48, 48,
                                   graphics.trans_width,
                                   graphics.trans_height,
                                   self.level,
                                   graphics.sprites['player']['sprites'][0])
-        #self.level.remove_dummy_player()
         self.sprites = pygame.sprite.LayeredUpdates()
         self.sprites.add(self.level_tiles, self.player)
-        self.i_handler = input_handler.InputHandler()
-        self.c_handler = collision_handler.CollisionHandler(self.player, self.level) 
+        self.i_handler = input_handler.InputHandler(self.player, self.level, self)
+        self.c_handler = self.i_handler.c_handler
         self.clock = pygame.time.Clock()
         self.escape_menu = escape_menu.EscapeMenu()
         self.menu_open = False
@@ -42,11 +40,12 @@ class LevelBase(scene_base.SceneBase):
             self.menu_open = False
 
     def check_player_hasnt_died_a_horrible_death(self):
+        """If the player has been destroyed, restart the level"""
         if not self.player in self.sprites:
             self.reset()
 
     def process_input(self):
-        self.i_handler.handle_input(self.player,self) 
+        self.i_handler.handle_input() 
         
     def update(self):
         delta = self.clock.tick(60) / 1000.0
