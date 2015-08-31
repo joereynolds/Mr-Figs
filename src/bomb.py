@@ -82,4 +82,4 @@ class Bomb(entity.Entity):
         else:
             self.image = graphics.sprites['bomb']['sprites'][-1]
 
-                     
+                       

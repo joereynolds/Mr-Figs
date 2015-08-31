@@ -17,7 +17,8 @@ class InputHandler():
             pygame.K_u:'u',
             pygame.K_r:'reset',
             pygame.K_l:'next_level',
-            pygame.K_h:'previous_level'
+            pygame.K_h:'previous_level',
+            pygame.K_ESCAPE:'escape'
             }
 
     def __init__(self):
@@ -38,7 +39,6 @@ class InputHandler():
                     _bomb.animate()
 
             if event.type == 29:
-                print(self.i)
                 for _bomb in player.bombs:
                     for particle in _bomb.particles:
                         particle.image = graphics.sprites['explosion']['sprites'][self.i]
@@ -50,6 +50,9 @@ class InputHandler():
             if event.type == pygame.KEYDOWN:
                 for k,v in InputHandler.keys.items():
                     if event.key == k:
+                        if v == 'escape' :
+                            print('Escape menu')
+                            level.render_escape_menu()
                         if v == 'reset':
                             level.reset()
                         elif v == 'next_level':

@@ -1,7 +1,6 @@
 import pygame
 import interpolate
 import math
-import keys
 import bomb
 import entity
 import colours
