@@ -102,17 +102,8 @@ class Actor(entity.Entity):
         if command == 'space':
             self.create_bomb()
 
-    def finished_level(self):
-        """Returns True if the user has finished level. i.e. if they have
-           destroyed the block and gotten out of the boundaries of the screen"""
-        for sprite in self.level.data:
-            if isinstance(sprite, tile.FinishTile):
-                if pygame.sprite.collide_rect(self, sprite):
-                    return True
-
     def update(self, delta_time):
         """These are actions that SHOULD be called every frame. Animation, collision checking etc..."""
-        self.finished_level()
         self.update_bomb_collection()
         self.move(delta_time)
 

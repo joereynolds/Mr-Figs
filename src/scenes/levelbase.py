@@ -58,10 +58,8 @@ class LevelBase(scene_base.SceneBase):
         #Move this into a function
         for bomb in self.player.bombs:
             self.sprites.add(bomb.particles)
-            if bomb.particle_collision(self.player):
+            if self.c_handler.bomb_particle_collision(bomb):
                 self.reset()
-        if self.player.finished_level():
-            self.switch_to_scene(self.next_level)
         
     def render(self):
         self.surface.fill(colours.WHITE)        
