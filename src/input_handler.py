@@ -6,6 +6,7 @@ import pygame
 import tile
 import collision_handler
 
+
 class InputHandler():
     """Handles all input events. Key presses etc...
     Helps keep code clean...ish""" 

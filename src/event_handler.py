@@ -1,4 +1,6 @@
 import pygame
+
+
 class EventHandler():
 
     def __init__(self):
