@@ -112,12 +112,14 @@ class EscapeContainer(BaseContainer):
         @quit-menu    : Quits the game and returns the user to the main menu
         @quit-desktop : Quits the game and returns to the desktop
         """
-
+        self.height = 50
+        self.width = width //2
         self.components = {
-                            'resume' : Clickable(x, y, width, height),
-                            'settings' : Clickable(x, y, width, height),
-                            'quit-menu' : Clickable(x, y, width, height),
-                            'quit-desktop' : Clickable(x, y, width, height)
+                            'overlay'      : BaseComponent(x, y, width, height),
+                            'resume'       : Clickable(x, 100, self.width, self.height),
+                            'settings'     : Clickable(x, 200, self.width, self.height),
+                            'quit-menu'    : Clickable(x, 300, self.width, self.height),
+                            'quit-desktop' : Clickable(x, 400, self.width, self.height)
                           } 
 
 class BaseComponent(pygame.sprite.Sprite):

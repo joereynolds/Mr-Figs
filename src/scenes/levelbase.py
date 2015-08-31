@@ -34,7 +34,6 @@ class LevelBase(scene_base.SceneBase):
     def render_escape_menu(self):
         """Adds the escape menu to ours sprites group therefore
         getting rendered to the screen"""
-        print(self.menu_open)
         if not self.menu_open:
             self.sprites.add(self.escape_menu.components)
             self.menu_open = True

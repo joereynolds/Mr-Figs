@@ -9,7 +9,7 @@ class EscapeMenu(scene_base.SceneBase):
     def __init__(self):
         scene_base.SceneBase.__init__(self)
         self.container= gui_base.EscapeContainer(0,0,graphics.WIDTH,graphics.HEIGHT)
-        self.components = pygame.sprite.Group()
+        self.components = pygame.sprite.LayeredUpdates()
         self.components.add(self.container.components['resume'],
                             self.container.components['settings'],
                             self.container.components['quit-menu'],
@@ -22,10 +22,8 @@ class EscapeMenu(scene_base.SceneBase):
                 print('click')
 
     def render(self):
-        self.surface.fill((255,255,255))
-
+        self.container.components['overlay'].image.fill((255,0,5))
         self.components.draw(self.surface)
-
         pygame.display.flip()
 
 
