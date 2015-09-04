@@ -20,6 +20,7 @@ class LevelData():
         self.data = pygame.sprite.LayeredUpdates()
         self.get_map_data()
         self.give_dynamic_sprites_data()
+        self.link_doors_and_switches()
 
     def get_map_data(self):
         """Iterates through the TiledMap file adding tiles to
@@ -63,8 +64,8 @@ class LevelData():
                                   destructable=sprite['destructable'],
                                   state=0,
                                   image=surface,
-                                  images=[surface, surface])
-            states_and_triggers.append(_tile)
+                                  images=[surface, surface],
+                                  triggers=sprite['triggers'])
         elif sprite['type'] == 'triggerable':
             _tile = tile.Triggerable(x,
                                      y,
@@ -73,17 +74,21 @@ class LevelData():
                                      solid=sprite['solid'],
                                      destructable=sprite['destructable'],
                                      stateful='pass',
-                                     image=surface) 
-            states_and_triggers.append(_tile)
-
-        
+                                     image=surface,
+                                     id=sprite['id']) 
         return _tile
 
 
     def link_doors_and_switches(self):
         """Makes sure that the switches are passed to the correct
            door object(Triggerable)"""
-        pass
+        for state in self.data:
+            if isinstance(state, tile.Stateful):
+                for trigger in self.data:
+                    if isinstance(trigger, tile.Triggerable):
+                        if state.triggers == trigger.id:
+                            print('linked the tiles')
+                            trigger.stateful = state
 
     def _create_bomb_tile(self,lifespan, surface, x, y):
         return bomb.Bomb(x, y, self.tile_spacing, self.tile_spacing,'pass', lifespan, image=surface) 

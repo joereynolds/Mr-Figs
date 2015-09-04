@@ -32,9 +32,8 @@ class Stateful(Tile):
    
     def update(self):
         self.change_state()
-
-    
-
+        print('changing state')
+        print('STATE :', self.state)
     def change_state(self):
         if self.state:
             self.image = self.images[0]
@@ -64,10 +63,15 @@ class Triggerable(Tile):
         Tile.__init__(self, x, y, width, height, solid, destructable, image)
         self.stateful = stateful 
         self.id = id 
+
     def trigger(self):
         """To be called when our stateful tile is 'on'"""
         if self.stateful.state == 1:
-            print('triggered!')
+            self.solid = False
+        if self.stateful.state == 0:
+            self.solid = True
 
+    def update(self):
+        self.trigger()
 
 

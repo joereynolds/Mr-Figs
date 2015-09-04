@@ -50,16 +50,12 @@ class LevelBase(scene_base.SceneBase):
     def update(self):
         delta = self.clock.tick(60) / 1000.0
         self.player.update(delta)
-        self.c_handler.update()
         self.check_player_hasnt_died_a_horrible_death()
         self.sprites.add(self.player.bombs)
         self.sprites.move_to_front(self.player)
        
-        #Move this into a function
         for bomb in self.player.bombs:
             self.sprites.add(bomb.particles)
-            if self.c_handler.bomb_particle_collision(bomb):
-                self.reset()
         
     def render(self):
         self.surface.fill(colours.WHITE)        
@@ -68,5 +64,3 @@ class LevelBase(scene_base.SceneBase):
 
     def reset(self):
         self.__init__(self.file, self.next_level)
-
-

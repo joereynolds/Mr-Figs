@@ -10,7 +10,10 @@ class CollisionHandler():
 
     def update(self):
         self.player_collision()
-
+        self.bomb_collisions()       
+        for bomb in self.player.bombs:
+            self.bomb_particle_collision(bomb)
+ 
     def player_collision(self):
         """Goes through the level data assessing the correct tiles in the level that aren't itself and seeing what happens if we collide with them"""
         for sprite in self.level.data:
@@ -35,8 +38,7 @@ class CollisionHandler():
             for _tile in self.level.data:
                 if isinstance(_tile, tile.Stateful):
                     if pygame.sprite.collide_rect(particle, _tile):
-                        print('thing be happening!')
-                        _tile.change_state()
+                        _tile.update()
                         return
 
 

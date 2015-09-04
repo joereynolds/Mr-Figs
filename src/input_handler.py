@@ -37,8 +37,8 @@ class InputHandler():
         self.level_base = level_base
         self.e_handler = event_handler.EventHandler()
         self.c_handler = collision_handler.CollisionHandler(self.player, level)
-      
         self.i = 0 #REMOVE THIS
+
     def handle_input(self):
         for event in pygame.event.get():
             if event.type == 27:
@@ -47,7 +47,6 @@ class InputHandler():
             if event.type == 28:
                 for _bomb in self.player.bombs:
                     _bomb.animate()
-
             if event.type == 29:
                 for _bomb in self.player.bombs:
                     for particle in _bomb.particles:
@@ -68,8 +67,8 @@ class InputHandler():
                             self.level_base.switch_to_scene(self.level_base.next_level)
                         else: 
                             self.player.event_update(v)
-                            self.c_handler.bomb_collisions()
+                            self.c_handler.update()
                             if v != 'space':#don't change state on the spikes when we plant a bomb
                                 for sprite in self.level.data:
-                                    if isinstance(sprite, tile.Stateful):
+                                    if isinstance(sprite, tile.Triggerable):
                                         sprite.update()
