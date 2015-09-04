@@ -18,7 +18,7 @@ class CollisionHandler():
                 if pygame.sprite.collide_rect(self.player, sprite):
                     pass
             if isinstance(sprite, tile.FinishTile):
-                if pygame.sprite.collide_resct(self.player, sprite):
+                if pygame.sprite.collide_rect(self.player, sprite):
                     return 'SIGNAL HERE TO LET LEVEL KNOW THE PLAYER HAS FINISHED THE LEVEL'
 
     def bomb_collisions(self):
@@ -32,5 +32,11 @@ class CollisionHandler():
             if pygame.sprite.collide_rect(particle,self.player) and not self.player.moving:
                 pygame.sprite.Sprite.kill(self.player)
                 return True
+            for _tile in self.level.data:
+                if isinstance(_tile, tile.Stateful):
+                    if pygame.sprite.collide_rect(particle, _tile):
+                        print('thing be happening!')
+                        _tile.change_state()
+                        return
 
 

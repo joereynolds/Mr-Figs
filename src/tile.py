@@ -18,13 +18,22 @@ class FinishTile(Tile):
 
 
 class Stateful(Tile):
-    def __init__(self, x, y, width, height, solid, destructable, state, image, images):
+    """The stateful class is a tile that can be either on or off. 
+       It's a binary state. 
+       It usually links to the Triggerable class so that it can affect (trigger) an effect.
+       @self.state = The starting state of the class
+       @self.images = an array of pygame surfaces
+       @self.triggers = The numeric id of the Triggerable if there is one to be triggered"""
+    def __init__(self, x, y, width, height, solid, destructable, state, image, images, triggers=0):
         Tile.__init__(self,x,y,width,height,solid,destructable,image)
         self.state = state
         self.images = images
+        self.triggers = triggers 
    
     def update(self):
         self.change_state()
+
+    
 
     def change_state(self):
         if self.state:
@@ -45,12 +54,16 @@ class Triggerable(Tile):
            Door = Triggerable
            Switch = Stateful
         
-           When a switch is pressed, it triggers the door to open...simples!"""
+           When a switch is pressed, it triggers the door to open...simples!
+           
+       @self.stateful = The Stateful that it is linked to
+       @self.id = The numeric id of the Triggerable. This is used to link the state and
+                  Triggerable together"""
 
-    def __init__(self,x, y, width, height, solid, destructable, stateful, image):
+    def __init__(self,x, y, width, height, solid, destructable, stateful, image, id=0):
         Tile.__init__(self, x, y, width, height, solid, destructable, image)
         self.stateful = stateful 
-
+        self.id = id 
     def trigger(self):
         """To be called when our stateful tile is 'on'"""
         if self.stateful.state == 1:

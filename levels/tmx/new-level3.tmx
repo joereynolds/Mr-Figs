@@ -2,6 +2,14 @@
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="75" height="75" tilewidth="16" tileheight="16" nextobjectid="1">
  <tileset firstgid="1" name="newtiledsheet" tilewidth="16" tileheight="16" tilecount="63">
   <image source="../../data/newtiledsheet.png" width="144" height="112"/>
+  <tile id="5">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="id" value="1"/>
+    <property name="solid" value="true"/>
+    <property name="type" value="triggerable"/>
+   </properties>
+  </tile>
   <tile id="18">
    <properties>
     <property name="destructable" value=""/>
@@ -14,6 +22,14 @@
     <property name="destructable" value=""/>
     <property name="solid" value="true"/>
     <property name="type" value="triggerable"/>
+   </properties>
+  </tile>
+  <tile id="55">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value="true"/>
+    <property name="triggers" value="1"/>
+    <property name="type" value="stateful"/>
    </properties>
   </tile>
   <tile id="58">
@@ -31,7 +47,7 @@
  </layer>
  <layer name="Tile Layer 2" width="75" height="75">
   <data encoding="base64" compression="zlib">
-   eJztzjEJAAAIADBbedi/lxkEQZAtwSLYUNcBXsjrAAAAAAAAAAAAAAAAAAAAAAAAAAAAMNJuHgBz
+   eJztzjERAAAIBCAnM9k/mSU8f4EEVHFt0gEAeNLpAAAAAAAAAAAAAAAAAAAAAAAAAACELSZHAD8=
   </data>
  </layer>
 </map>

@@ -21,7 +21,6 @@ class LevelData():
         self.get_map_data()
         self.give_dynamic_sprites_data()
 
-
     def get_map_data(self):
         """Iterates through the TiledMap file adding tiles to
         the self.data sprite group"""
@@ -39,6 +38,7 @@ class LevelData():
     def _create_tile(self,x,y,surface, sprite):
         """Creates tiles passed to it. It finds the type of the
         sprite and then creates the corresponding tile"""
+        states_and_triggers = []
         x = x * self.tile_spacing
         y = y * self.tile_spacing
         if sprite['type'] == 'tile':
@@ -64,6 +64,7 @@ class LevelData():
                                   state=0,
                                   image=surface,
                                   images=[surface, surface])
+            states_and_triggers.append(_tile)
         elif sprite['type'] == 'triggerable':
             _tile = tile.Triggerable(x,
                                      y,
@@ -73,8 +74,16 @@ class LevelData():
                                      destructable=sprite['destructable'],
                                      stateful='pass',
                                      image=surface) 
+            states_and_triggers.append(_tile)
+
+        
         return _tile
 
+
+    def link_doors_and_switches(self):
+        """Makes sure that the switches are passed to the correct
+           door object(Triggerable)"""
+        pass
 
     def _create_bomb_tile(self,lifespan, surface, x, y):
         return bomb.Bomb(x, y, self.tile_spacing, self.tile_spacing,'pass', lifespan, image=surface) 
