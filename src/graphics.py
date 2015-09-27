@@ -1,7 +1,7 @@
 import pygame
 
 WIDTH  = 700
-HEIGHT = 500
+HEIGHT = 600
 SCREEN = pygame.display.set_mode((WIDTH, HEIGHT))
 
 sprite_width = 16 
@@ -102,6 +102,11 @@ sprites = {
                                    subsurf(grid(6,1)),
                                    subsurf(grid(7,1))]
                      },
+           'switch': {
+                        'coords' : ((6,3),(7,3)),
+                        'sprites': [subsurf(grid(6,3)),
+                                    subsurf(grid(7,3))]
+                     }
            }
 
 

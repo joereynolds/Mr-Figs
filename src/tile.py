@@ -24,16 +24,17 @@ class Stateful(Tile):
        @self.state = The starting state of the class
        @self.images = an array of pygame surfaces
        @self.triggers = The numeric id of the Triggerable if there is one to be triggered"""
-    def __init__(self, x, y, width, height, solid, destructable, state, image, images, triggers=0):
+    def __init__(self, x, y, width, height, solid, destructable, state, image, triggers=0):
         Tile.__init__(self,x,y,width,height,solid,destructable,image)
         self.state = state
-        self.images = images
+        self.images = [sprite for sprite in graphics.sprites['switch']['sprites']]
         self.triggers = triggers 
    
     def update(self):
         self.change_state()
         print('changing state')
         print('STATE :', self.state)
+
     def change_state(self):
         if self.state:
             self.image = self.images[0]
@@ -63,13 +64,16 @@ class Triggerable(Tile):
         Tile.__init__(self, x, y, width, height, solid, destructable, image)
         self.stateful = stateful 
         self.id = id 
+        self.images = [sprite for sprite in graphics.sprites['laser']['sprites']]
 
     def trigger(self):
         """To be called when our stateful tile is 'on'"""
         if self.stateful.state == 1:
             self.solid = False
+            self.image = self.images[0]
         if self.stateful.state == 0:
             self.solid = True
+            self.image = self.images[1]
 
     def update(self):
         self.trigger()

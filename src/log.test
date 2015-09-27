@@ -1,0 +1,211 @@
+         4828219 function calls (4821116 primitive calls) in 115.992 seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+      420    0.000    0.000    0.000    0.000 <string>:12(__new__)
+        1    0.000    0.000    0.001    0.001 ElementTree.py:1177(parse)
+        1    0.000    0.000    0.000    0.000 ElementTree.py:554(__init__)
+        1    0.000    0.000    0.000    0.000 ElementTree.py:560(getroot)
+        1    0.000    0.000    0.001    0.001 ElementTree.py:574(parse)
+     8308    0.032    0.000    2.368    0.000 __init__.py:1114(resource_exists)
+     8308    0.030    0.000    2.133    0.000 __init__.py:1130(resource_stream)
+    16616    0.082    0.000    0.536    0.000 __init__.py:1556(__init__)
+     8308    0.023    0.000    1.073    0.000 __init__.py:1569(has_resource)
+    16616    0.054    0.000    0.500    0.000 __init__.py:1638(_fn)
+    16616    0.050    0.000    2.100    0.000 __init__.py:1656(__init__)
+    16616    0.208    0.000    1.514    0.000 __init__.py:1660(_setup_prefix)
+     8308    0.017    0.000    0.792    0.000 __init__.py:1677(_has)
+     8308    0.021    0.000    1.031    0.000 __init__.py:1686(get_resource_stream)
+    16616    0.022    0.000    0.025    0.000 __init__.py:2935(_get_mro)
+    16616    0.060    0.000    0.093    0.000 __init__.py:2942(_find_adapter)
+    16616    0.105    0.000    2.335    0.000 __init__.py:389(get_provider)
+     4716    0.019    0.000    0.476    0.000 actor.py:105(update)
+       15    0.000    0.000    0.001    0.000 actor.py:110(create_bomb)
+     4716    0.174    0.000    0.354    0.000 actor.py:120(update_bomb_collection)
+      144    0.001    0.000    0.053    0.000 actor.py:127(update_bombs)
+        1    0.000    0.000    0.000    0.000 actor.py:29(__init__)
+        1    0.000    0.000    0.000    0.000 actor.py:39(<listcomp>)
+     4716    0.039    0.000    0.103    0.000 actor.py:42(move)
+      143    0.001    0.000    0.002    0.000 actor.py:74(set_destination)
+      143    0.001    0.000    0.001    0.000 actor.py:81(is_valid_move)
+      143    0.000    0.000    0.000    0.000 actor.py:84(set_direction)
+      159    0.002    0.000    0.059    0.000 actor.py:87(event_update)
+       15    0.000    0.000    0.001    0.000 bomb.py:14(__init__)
+       15    0.000    0.000    0.000    0.000 bomb.py:20(<listcomp>)
+       89    0.000    0.000    0.051    0.001 bomb.py:26(blow_up)
+       18    0.002    0.000    0.078    0.004 bomb.py:37(explode)
+      216    0.004    0.000    0.077    0.000 bomb.py:45(create_particle)
+       96    0.000    0.000    0.029    0.000 bomb.py:61(bomb_collisions)
+       82    0.000    0.000    0.000    0.000 bomb.py:72(animate)
+      159    0.001    0.000    0.061    0.000 collision_handler.py:11(update)
+      159    0.013    0.000    0.023    0.000 collision_handler.py:17(player_collision)
+      159    0.000    0.000    0.030    0.000 collision_handler.py:27(bomb_collisions)
+       96    0.003    0.000    0.007    0.000 collision_handler.py:32(bomb_particle_collision)
+        1    0.000    0.000    0.000    0.000 collision_handler.py:7(__init__)
+      422    0.001    0.000    0.002    0.000 cp850.py:18(encode)
+      290    0.000    0.000    0.000    0.000 entity.py:15(load_image)
+      290    0.002    0.000    0.003    0.000 entity.py:7(__init__)
+        1    0.000    0.000    0.002    0.002 escapemenu.py:9(__init__)
+        3    0.000    0.000    0.000    0.000 event_handler.py:16(add_event)
+        1    0.000    0.000    0.000    0.000 event_handler.py:26(handle_events)
+        1    0.000    0.000    0.000    0.000 event_handler.py:6(__init__)
+     8308    0.023    0.000    0.776    0.000 genericpath.py:16(exists)
+       58    0.000    0.000    0.001    0.000 graphics.py:19(subsurf)
+        1    0.000    0.000    0.002    0.002 gui_base.py:107(__init__)
+        5    0.001    0.000    0.002    0.000 gui_base.py:127(__init__)
+     8308    3.338    0.000   10.880    0.001 gui_base.py:137(render_text)
+       12    0.000    0.000    0.000    0.000 gui_base.py:155(on_click)
+        5    0.000    0.000    0.000    0.000 gui_base.py:193(__init__)
+     2077    0.351    0.000   11.307    0.005 gui_base.py:88(render)
+        1    0.000    0.000    0.000    0.000 input_handler.py:26(__init__)
+     4716    0.052    0.000    0.785    0.000 input_handler.py:42(handle_input)
+      558    0.001    0.000    0.001    0.000 interpolate.py:3(decelerate)
+        1    0.000    0.000    0.000    0.000 levelEditor.py:103(give_dynamic_sprites_data)
+     1426    0.007    0.000    0.062    0.000 levelEditor.py:116(get_tile_all_layers)
+     1426    0.050    0.000    0.050    0.000 levelEditor.py:120(<listcomp>)
+      432    0.004    0.000    0.017    0.000 levelEditor.py:128(get_tile_from_layer)
+     1426    0.002    0.000    0.002    0.000 levelEditor.py:156(find_solid_tile)
+        1    0.000    0.000    0.007    0.007 levelEditor.py:16(__init__)
+        1    0.000    0.000    0.002    0.002 levelEditor.py:25(get_map_data)
+       58    0.000    0.000    0.000    0.000 levelEditor.py:44(_create_tile)
+        1    0.000    0.000    0.000    0.000 levelEditor.py:86(link_doors_and_switches)
+        1    0.000    0.000    0.009    0.009 levelbase.py:13(__init__)
+     4716    0.013    0.000    0.056    0.000 levelbase.py:42(check_player_hasnt_died_a_horrible_death)
+     4716    0.024    0.000    0.809    0.000 levelbase.py:47(process_input)
+     4716    0.081    0.000    3.356    0.001 levelbase.py:50(update)
+     4716    0.065    0.000   37.063    0.008 levelbase.py:60(render)
+        1    0.000    0.000    0.009    0.009 levelbase.py:65(reset)
+        1    0.201    0.201  115.992  115.992 main.py:16(run)
+    16617    0.100    0.000    0.419    0.000 ntpath.py:104(join)
+   132931    0.652    0.000    1.215    0.000 ntpath.py:139(splitdrive)
+    99697    0.602    0.000    1.658    0.000 ntpath.py:210(split)
+    16617    0.027    0.000    0.445    0.000 ntpath.py:251(dirname)
+   132931    0.068    0.000    0.118    0.000 ntpath.py:35(_get_empty)
+   149548    0.076    0.000    0.133    0.000 ntpath.py:41(_get_sep)
+   132931    0.066    0.000    0.115    0.000 ntpath.py:47(_get_altsep)
+   116314    0.067    0.000    0.118    0.000 ntpath.py:53(_get_bothseps)
+   149548    0.077    0.000    0.136    0.000 ntpath.py:65(_get_colon)
+     8308    0.026    0.000    4.528    0.001 pkgdata.py:34(getResource)
+       42    0.000    0.000    0.000    0.000 pytmx.py:123(parse_properties)
+        5    0.000    0.000    0.000    0.000 pytmx.py:139(__init__)
+        5    0.000    0.000    0.000    0.000 pytmx.py:151(cast_and_set_attributes_from_node_items)
+        5    0.000    0.000    0.000    0.000 pytmx.py:156(contains_invalid_property_name)
+        5    0.000    0.000    0.000    0.000 pytmx.py:171(set_properties)
+        1    0.000    0.000    0.005    0.005 pytmx.py:202(__init__)
+        1    0.000    0.000    0.000    0.000 pytmx.py:264(__iter__)
+        1    0.000    0.000    0.004    0.004 pytmx.py:267(parse_xml)
+        1    0.000    0.000    0.000    0.000 pytmx.py:302(<listcomp>)
+        1    0.000    0.000    0.000    0.000 pytmx.py:324(reload_images)
+        1    0.000    0.000    0.000    0.000 pytmx.py:372(<genexpr>)
+       58    0.000    0.000    0.000    0.000 pytmx.py:466(get_tile_properties)
+        1    0.000    0.000    0.000    0.000 pytmx.py:48(default_image_loader)
+       16    0.000    0.000    0.000    0.000 pytmx.py:51(load)
+       16    0.000    0.000    0.000    0.000 pytmx.py:526(set_tile_properties)
+        3    0.000    0.000    0.000    0.000 pytmx.py:557(add_layer)
+        1    0.000    0.000    0.000    0.000 pytmx.py:569(add_tileset)
+      420    0.001    0.000    0.001    0.000 pytmx.py:57(decode_gid)
+        2    0.000    0.000    0.000    0.000 pytmx.py:622(objectgroups)
+        2    0.000    0.000    0.000    0.000 pytmx.py:628(<genexpr>)
+        2    0.000    0.000    0.000    0.000 pytmx.py:631(objects)
+      420    0.000    0.000    0.000    0.000 pytmx.py:665(register_gid)
+      100    0.000    0.000    0.000    0.000 pytmx.py:688(map_gid)
+        1    0.000    0.000    0.001    0.001 pytmx.py:711(__init__)
+        1    0.000    0.000    0.001    0.001 pytmx.py:730(parse_xml)
+        3    0.000    0.000    0.003    0.001 pytmx.py:809(__init__)
+       61    0.000    0.000    0.000    0.000 pytmx.py:830(tiles)
+        3    0.001    0.000    0.003    0.001 pytmx.py:846(parse_xml)
+      907    0.000    0.000    0.000    0.000 pytmx.py:868(<genexpr>)
+       30    0.000    0.000    0.000    0.000 pytmx.py:913(<lambda>)
+       33    0.000    0.000    0.000    0.000 pytmx.py:917(<genexpr>)
+     2077    0.003    0.000    0.003    0.000 scenebase.py:12(process_input)
+       13    0.000    0.000    0.000    0.000 scenebase.py:21(switch_to_scene)
+        2    0.000    0.000    0.000    0.000 scenebase.py:8(__init__)
+      295    0.001    0.000    0.001    0.000 sprite.py:121(__init__)
+     7567    0.004    0.000    0.005    0.000 sprite.py:1287(collide_rect)
+      350    0.000    0.000    0.000    0.000 sprite.py:162(add_internal)
+      116    0.000    0.000    0.001    0.000 sprite.py:183(kill)
+       19    0.000    0.000    0.000    0.000 sprite.py:299(__init__)
+     7415    0.024    0.000    0.024    0.000 sprite.py:303(sprites)
+      108    0.000    0.000    0.000    0.000 sprite.py:316(add_internal)
+       89    0.000    0.000    0.000    0.000 sprite.py:319(remove_internal)
+    10414    0.009    0.000    0.009    0.000 sprite.py:325(has_internal)
+    20460    0.036    0.000    0.102    0.000 sprite.py:339(__iter__)
+     4716    0.008    0.000    0.034    0.000 sprite.py:342(__contains__)
+      123    0.000    0.000    0.001    0.000 sprite.py:345(add)
+       14    0.000    0.000    0.000    0.000 sprite.py:380(remove)
+     4716    0.016    0.000    0.026    0.000 sprite.py:412(has)
+     2077    0.028    0.000    0.141    0.000 sprite.py:464(draw)
+     7103    0.009    0.000    0.017    0.000 sprite.py:518(__len__)
+       15    0.000    0.000    0.000    0.000 sprite.py:550(__init__)
+        4    0.000    0.000    0.000    0.000 sprite.py:625(__init__)
+      242    0.002    0.000    0.002    0.000 sprite.py:645(add_internal)
+14694/7591    0.056    0.000    0.105    0.000 sprite.py:681(add)
+      142    0.000    0.000    0.001    0.000 sprite.py:727(remove_internal)
+    26940    0.076    0.000    0.076    0.000 sprite.py:744(sprites)
+     4715    0.929    0.000   33.827    0.007 sprite.py:752(draw)
+     4716    0.065    0.000    0.121    0.000 sprite.py:821(change_layer)
+     4716    0.007    0.000    0.007    0.000 sprite.py:865(get_top_layer)
+     4716    0.011    0.000    0.139    0.000 sprite.py:881(move_to_front)
+      432    0.011    0.000    0.013    0.000 sprite.py:912(get_sprites_from_layer)
+     2077    0.018    0.000    1.754    0.001 startmenu.py:19(update)
+     2077    0.038    0.000   13.140    0.006 startmenu.py:26(render)
+       58    0.000    0.000    0.000    0.000 tile.py:10(__init__)
+        3    0.000    0.000    0.001    0.000 tile.py:33(update)
+        3    0.000    0.000    0.000    0.000 tile.py:38(change_state)
+      118    0.000    0.000    0.000    0.000 tile.py:69(trigger)
+      118    0.000    0.000    0.000    0.000 tile.py:78(update)
+        2    0.000    0.000    0.000    0.000 {built-in method Clock}
+      420    0.000    0.000    0.000    0.000 {built-in method __new__ of type object at 0x6D985E78}
+      422    0.002    0.000    0.002    0.000 {built-in method charmap_encode}
+    13584    6.014    0.000    6.014    0.000 {built-in method flip}
+       12    0.000    0.000    0.000    0.000 {built-in method get_pos}
+    66465    0.024    0.000    0.024    0.000 {built-in method getattr}
+     6793    2.041    0.000    2.041    0.000 {built-in method get}
+     4976    0.023    0.000    0.023    0.000 {built-in method hasattr}
+        1    0.240    0.240    0.240    0.240 {built-in method init}
+  1152679    0.443    0.000    0.443    0.000 {built-in method isinstance}
+    20460    0.007    0.000    0.007    0.000 {built-in method iter}
+   244689    0.035    0.000    0.035    0.000 {built-in method len}
+      420    0.000    0.000    0.000    0.000 {built-in method next}
+     8309    0.769    0.000    0.769    0.000 {built-in method open}
+      208    0.051    0.000    0.054    0.000 {built-in method print}
+        2    0.294    0.147    0.294    0.147 {built-in method quit}
+       58    0.000    0.000    0.000    0.000 {built-in method scale}
+        3    0.000    0.000    0.000    0.000 {built-in method set_timer}
+       22    0.000    0.000    0.000    0.000 {built-in method setattr}
+     8308    0.753    0.000    0.753    0.000 {built-in method stat}
+        1    0.000    0.000    0.000    0.000 {method '_parse_whole' of 'xml.etree.ElementTree.XMLParser' objects}
+   412732    0.106    0.000    0.106    0.000 {method 'append' of 'list' objects}
+   410986   32.823    0.000   32.823    0.000 {method 'blit' of 'pygame.Surface' objects}
+      116    0.000    0.000    0.000    0.000 {method 'clear' of 'dict' objects}
+        1    0.000    0.000    0.000    0.000 {method 'close' of '_io.BufferedReader' objects}
+       12    0.000    0.000    0.000    0.000 {method 'collidepoint' of 'pygame.Rect' objects}
+   401479    0.069    0.000    0.069    0.000 {method 'colliderect' of 'pygame.Rect' objects}
+        5    0.001    0.000    0.001    0.000 {method 'convert' of 'pygame.Surface' objects}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+    83080    0.041    0.000    0.041    0.000 {method 'endswith' of 'str' objects}
+    15101    2.237    0.000    2.237    0.000 {method 'fill' of 'pygame.Surface' objects}
+       42    0.000    0.000    0.000    0.000 {method 'find' of 'xml.etree.ElementTree.Element' objects}
+       83    0.000    0.000    0.000    0.000 {method 'findall' of 'xml.etree.ElementTree.Element' objects}
+       24    0.000    0.000    0.000    0.000 {method 'get' of 'dict' objects}
+      207    0.000    0.000    0.000    0.000 {method 'get' of 'xml.etree.ElementTree.Element' objects}
+      295    0.000    0.000    0.000    0.000 {method 'get_rect' of 'pygame.Surface' objects}
+        1    0.000    0.000    0.000    0.000 {method 'getiterator' of 'xml.etree.ElementTree.Element' objects}
+     4958    0.005    0.000    0.005    0.000 {method 'insert' of 'list' objects}
+      174    0.000    0.000    0.000    0.000 {method 'items' of 'dict' objects}
+        5    0.000    0.000    0.000    0.000 {method 'items' of 'xml.etree.ElementTree.Element' objects}
+        3    0.000    0.000    0.001    0.000 {method 'join' of 'str' objects}
+      159    0.000    0.000    0.000    0.000 {method 'keys' of 'dict' objects}
+    83080    0.024    0.000    0.024    0.000 {method 'lower' of 'str' objects}
+     4716    0.002    0.000    0.002    0.000 {method 'pop' of 'dict' objects}
+     4858    0.024    0.000    0.024    0.000 {method 'remove' of 'list' objects}
+     8308    2.907    0.000    2.907    0.000 {method 'render' of 'pygame.font.Font' objects}
+   132931    0.071    0.000    0.071    0.000 {method 'replace' of 'str' objects}
+    16619    0.027    0.000    0.027    0.000 {method 'split' of 'str' objects}
+      907    0.000    0.000    0.000    0.000 {method 'strip' of 'str' objects}
+       58    0.000    0.000    0.000    0.000 {method 'subsurface' of 'pygame.Surface' objects}
+    11508   58.567    0.005   58.567    0.005 {method 'tick' of 'Clock' objects}
+   393912    0.088    0.000    0.088    0.000 {method 'union' of 'pygame.Rect' objects}
+
+

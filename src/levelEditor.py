@@ -24,7 +24,12 @@ class LevelData():
 
     def get_map_data(self):
         """Iterates through the TiledMap file adding tiles to
-        the self.data sprite group"""
+        the self.data sprite group
+        @x = 
+        @y =
+        @pix_x = 
+        @pix_y = 
+        """
         for i, layer in enumerate(self._map):
             for _tile in layer.tiles():
                 x, y = _tile[0], _tile[1]
@@ -64,7 +69,6 @@ class LevelData():
                                   destructable=sprite['destructable'],
                                   state=0,
                                   image=surface,
-                                  images=[surface, surface],
                                   triggers=sprite['triggers'])
         elif sprite['type'] == 'triggerable':
             _tile = tile.Triggerable(x,

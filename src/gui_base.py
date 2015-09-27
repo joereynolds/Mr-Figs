@@ -159,7 +159,7 @@ class Clickable(BaseComponent):
         in the input_handling portion of the loop as opposed to on_hover
         which should be called in the render part of the loop."""
         if self.rect.collidepoint(pygame.mouse.get_pos()):
-            function(*args)
+           function(*args)
 
     def on_hover(self,function, *args):
             """Calls a function when ClickableElement is hovered over with

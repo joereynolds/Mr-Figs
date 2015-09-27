@@ -55,7 +55,9 @@ class InputHandler():
                 if self.i >5 :
                     self.i = 0
                 #This is handled terribly. We should be using delta times for ANY animation. 
-            
+
+            if event.type == pygame.QUIT:
+                pygame.quit()
             if event.type == pygame.KEYDOWN:
                 for k,v in InputHandler.keys.items():
                     if event.key == k:
