@@ -2,7 +2,6 @@ import pygame
 from constants import *
 import environment
 
-
    
 def enlarge(self, speed):
     """Makes the elements surface larger."""
@@ -33,49 +32,23 @@ def shrink(self):
 
 
 
-       
-#class CheckBox(ClickableElement):
- #   """A checkbox..."""
-##
-  #  def __init__(self, x, y, width, height, colour):
-   #     ClickableElement.__init__(self, x, y, width, height, colour)
-    #    self.clicked = False
-#
- #   def on_click(self, function, *args):
-  #      """Extends the on_click to toggle whether self.clicked is true or false
-   #     When it is clicked, we change the icon to a 'clicked' icon"""
-    #    if self.rect.collidepoint(pygame.mouse.get_pos()) and not self.clicked:
-     #       self.clicked = True
-      #      function(*args)
-       # else: self.clicked = False
-
-#    def toggle_on(self, function, *args):
- #       """If our checkbox has been toggled in, do this stuff"""
-  #      if self.clicked:
-   #         function(*args)
-#
- #   def toggle_off(self, function, *args):
-  #      if not self.clicked:
-   #         function(*args)
-    
-
-
 #New component system attempt
 
-"""
-The base container for all other containers to inherit from.
-It doesn't do much apart from remove some boilerplate
-"""
 class BaseContainer(pygame.sprite.Sprite):
+    """
+    The base container for all other containers to inherit from.
+    It doesn't do much apart from remove some boilerplate
+    
+    A container is a collection of components. Make as many components
+    as you need. If we need to, we can refactor the container to make it better
+    but at the moment it serves its purpose."""
 
     def __init__(self, x, y, width, height):
         pygame.sprite.Sprite.__init__(self)
 
 
-"""A container is a collection of components. Make as many components
-as you need. If we need to, we can refactor the container to make it better
-but at the moment it serves its purpose."""
 class StartContainer(BaseContainer):
+    """Container for our start menu"""
 
     def __init__(self, x, y, width, height):
         self.components = {'start-game' : Clickable(x,y,width,height),
@@ -97,9 +70,23 @@ class StartContainer(BaseContainer):
         
 
 class LevelSelectContainer(BaseContainer):
+    """Container for the components for the level select menu.
+    Note that self.components is iterating through the level_list
+    so can find out how many levels there are"""
 
     def __init__(self, x, y, width, height):
-        self.components = [Clickable(x,y,width,height) for level in environment.level_obj_list]
+        self.components = [
+            Clickable(x*i ,y*i ,width,height) 
+                for i, level in enumerate(environment.level_obj_list)
+        ]
+        print(self.components)
+
+
+    def update(self):
+        pass
+
+    def render(self):
+        pass
 
 
 class EscapeContainer(BaseContainer):
@@ -113,14 +100,14 @@ class EscapeContainer(BaseContainer):
         @quit-desktop : Quits the game and returns to the desktop
         """
         self.height = 50
-        self.width = width //2
+        self.width = width // 2
         self.components = {
-                            'overlay'      : BaseComponent(x, y, width, height),
-                            'resume'       : Clickable(x, 100, self.width, self.height),
-                            'settings'     : Clickable(x, 200, self.width, self.height),
-                            'quit-menu'    : Clickable(x, 300, self.width, self.height),
-                            'quit-desktop' : Clickable(x, 400, self.width, self.height)
-                          } 
+            'overlay'      : BaseComponent(x, y, width, height),
+            'resume'       : Clickable(x, 100, self.width, self.height),
+            'settings'     : Clickable(x, 200, self.width, self.height),
+            'quit-menu'    : Clickable(x, 300, self.width, self.height),
+            'quit-desktop' : Clickable(x, 400, self.width, self.height)
+        } 
 
 class BaseComponent(pygame.sprite.Sprite):
 
@@ -162,13 +149,13 @@ class Clickable(BaseComponent):
            function(*args)
 
     def on_hover(self,function, *args):
-            """Calls a function when ClickableElement is hovered over with
-               the mouse cursor"""
-            if self.rect.collidepoint(pygame.mouse.get_pos()):
-                #self.hovering = True
-                function(*args)
-            #else:
-                #self.hovering = False
+        """Calls a function when ClickableElement is hovered over with
+           the mouse cursor"""
+        if self.rect.collidepoint(pygame.mouse.get_pos()):
+            #self.hovering = True
+            function(*args)
+        #else:
+            #self.hovering = False
 
     def off_hover(self, function, *args):
         if not self.rect.collidepoint(pygame.mouse.get_pos()):

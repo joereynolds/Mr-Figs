@@ -10,17 +10,20 @@ class LevelMenu(scene_base.SceneBase):
         self.level_container = gui_base.LevelSelectContainer(90,90,90,90)
         self.buttons = pygame.sprite.Group()
         self.components = self.level_container.components
-        
+        self.buttons.add(self.level_container.components)
+
 
     def update(self):
         for event in pygame.event.get():
             if event.type == pygame.MOUSEBUTTONDOWN:
                 self.components['start-game'].on_click(self.switch_to_scene, environment.level_obj_list[1])
                 self.components['exit-game'].on_click(self.terminate)
+                for level in self.level_container.components:
+                    level.on_click(self.switch_to_scene, environment.level_obj_list[1])
 
     def render(self):
+        """Renders a button for each level that is in the game"""
         self.surface.fill((255,255,255))
-
         self.buttons.draw(self.surface)
         pygame.display.flip()
 

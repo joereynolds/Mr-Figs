@@ -2,7 +2,7 @@ import actor
 import pygame
 import colours
 import graphics
-import levelEditor
+import level_editor
 import input_handler
 import collision_handler 
 import scenes.scenebase as scene_base
@@ -14,7 +14,7 @@ class LevelBase(scene_base.SceneBase):
         scene_base.SceneBase.__init__(self)
         self.file = file
         self.next_level = next_level
-        self.level = levelEditor.LevelData(file)
+        self.level = level_editor.LevelData(file)
         self.level_tiles = self.level.data
         self.player = actor.Actor(48, 48,
                                   graphics.trans_width,
