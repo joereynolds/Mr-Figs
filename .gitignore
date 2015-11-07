@@ -61,4 +61,4 @@ Thumbs.db
 
 #Vim
 *.swp
-*~
+*.py~
