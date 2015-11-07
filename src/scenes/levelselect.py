@@ -13,6 +13,7 @@ class LevelMenu(scene_base.SceneBase):
         self.components = self.level_container.components
         self.buttons.add(self.level_container.components)
         self.game_levels = environment.create_level_list()
+
     def update(self):
         for event in pygame.event.get():
             for i, level in enumerate(self.level_container.components):

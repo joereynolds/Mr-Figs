@@ -37,17 +37,39 @@ class Bomb(entity.Entity):
     def explode(self):
         """Explodes our bomb making sure that the particles only go to the correct boundaries of the walls. Or is meant to..."""
         for i in range(graphics.trans_width,graphics.trans_width * 4, graphics.trans_width):
-            self.create_particle(self.rect.x + i, self.rect.y, graphics.trans_width, graphics.trans_height)
-            self.create_particle(self.rect.x - i, self.rect.y, graphics.trans_width, graphics.trans_height)
-            self.create_particle(self.rect.x, self.rect.y + i, graphics.trans_width, graphics.trans_height)
-            self.create_particle(self.rect.x, self.rect.y - i, graphics.trans_width, graphics.trans_height)
+            self.create_particle(
+                self.rect.x + i, 
+                self.rect.y, 
+                graphics.trans_width, 
+                graphics.trans_height
+            )
+            self.create_particle(
+                self.rect.x - i, 
+                self.rect.y, 
+                graphics.trans_width, 
+                graphics.trans_height
+            )
+            self.create_particle(
+                self.rect.x, 
+                self.rect.y + i, 
+                graphics.trans_width, 
+                graphics.trans_height
+            )
+            self.create_particle(
+                self.rect.x, 
+                self.rect.y - i, 
+                graphics.trans_width, 
+                graphics.trans_height
+            )
        
     def create_particle(self,x,y,width,height):
-        obj = entity.Entity(x,
-                            y,
-                            graphics.trans_width,
-                            graphics.trans_height,
-                            graphics.sprites['explosion']['sprites'][0])
+        obj = entity.Entity(
+            x,
+            y,
+            graphics.trans_width,
+            graphics.trans_height,
+            graphics.sprites['explosion']['sprites'][0]
+        )
         try:
             retrieved_tile = self.level.get_tile_from_layer(x,y,1)
             base_tile = self.level.get_tile_from_layer(x,y,0)

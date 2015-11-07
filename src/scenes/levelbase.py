@@ -35,10 +35,9 @@ class LevelBase(scene_base.SceneBase):
         """Adds the escape menu to ours sprites group therefore
         getting rendered to the screen"""
         if not self.menu_open:
-            self.sprites.add(self.escape_menu.components)
+            self.escape_menu.render()
             self.menu_open = True
         else : 
-            self.sprites.remove(self.escape_menu.components)
             self.menu_open = False
 
     def check_player_hasnt_died_a_horrible_death(self):
@@ -62,6 +61,9 @@ class LevelBase(scene_base.SceneBase):
     def render(self):
         self.surface.fill(colours.WHITE)        
         self.sprites.draw(self.surface)
+
+        if self.menu_open:
+            self.escape_menu.render()
         pygame.display.flip()
 
     def reset(self):

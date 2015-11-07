@@ -1,12 +1,12 @@
-import pygame
-import interpolate
-import math
 import bomb
-import entity
-import colours
+import math
 import tile
-import input_handler
+import entity
+import pygame
+import colours
 import graphics
+import interpolate
+import input_handler
 
 
 class Actor(entity.Entity):
@@ -87,11 +87,13 @@ class Actor(entity.Entity):
     def event_update(self, command):
         """These events should only happen on a keypress. They do not need to be checked
            every frame"""
-        directions = {'up':(0,-1),
-                      'down':(0,1),
-                      'left':(-1,0),
-                      'right':(1,0),
-                      'nothing':(0,0)}
+        directions = {
+            'up'     : ( 0, -1),
+            'down'   : ( 0,  1),
+            'left'   : (-1,  0),
+            'right'  : ( 1,  0),
+            'nothing': ( 0,  0)
+        }
 
         if command in directions.keys():
             if not self.moving:
@@ -109,13 +111,15 @@ class Actor(entity.Entity):
 
     def create_bomb(self):
         """Creates a bomb underneath the players position"""
-        self.bombs.add(bomb.Bomb(self.rect.x,
-                                 self.rect.y,
-                                 graphics.trans_width,
-                                 graphics.trans_height,
-                                 self.level,
-                                 5,
-                                 graphics.sprites['bomb']['sprites'][0]))
+        self.bombs.add(bomb.Bomb(
+            self.rect.x,
+            self.rect.y,
+            graphics.trans_width,
+            graphics.trans_height,
+            self.level,
+            5,
+            graphics.sprites['bomb']['sprites'][0]
+        ))
            
     def update_bomb_collection(self):
         """Makes sure that not only do we process the bombs that we planted, but also

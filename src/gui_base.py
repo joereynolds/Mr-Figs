@@ -76,7 +76,7 @@ class LevelSelectContainer(BaseContainer):
 
     def __init__(self, x, y, width, height):
         self.components = [
-            Clickable(x*i ,y*i ,width,height) 
+            Clickable(x*i, y*i ,width,height) 
                 for i, level in enumerate(environment.create_level_list())
         ]
 
@@ -113,7 +113,7 @@ class BaseComponent(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.width = width
         self.height = height
-        self.image = pygame.Surface([self.width, self.height]).convert()
+        self.image = pygame.Surface([self.width, self.height]).convert_alpha()
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
