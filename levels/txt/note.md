@@ -1,1 +1,0 @@
-These aren't actually used anymore. We've replaced them with CSV files but are kept for historical purposes.

@@ -1,6 +1,7 @@
 import pygame
-from constants import *
+import graphics
 import environment
+from constants import *
 
    
 def enlarge(self, speed):
@@ -51,10 +52,13 @@ class StartContainer(BaseContainer):
     """Container for our start menu"""
 
     def __init__(self, x, y, width, height):
-        self.components = {'start-game' : Clickable(x,y,width,height),
-                           'exit-game' : Clickable(x*2,y,width,height),
-                           'settings' : Clickable(x*3,y,width,height),
-                           'level-select' : Clickable(x*4,y,width,height)} 
+        self.components = {
+           'start-game' : Clickable(x,y,width,height),
+           'exit-game' : Clickable(x*2,y,width,height),
+           'settings' : Clickable(x*3,y,width,height),
+           'level-select' : Clickable(x*4,y,width,height)
+       } 
+
     def update(self):
         pass
 
@@ -101,10 +105,10 @@ class EscapeContainer(BaseContainer):
         self.width = width // 2
         self.components = {
             'overlay'      : BaseComponent(x, y, width, height),
-            'resume'       : Clickable(x, 100, self.width, self.height),
-            'settings'     : Clickable(x, 200, self.width, self.height),
-            'quit-menu'    : Clickable(x, 300, self.width, self.height),
-            'quit-desktop' : Clickable(x, 400, self.width, self.height)
+            'resume'       : Clickable(graphics.WIDTH // 4, 100, self.width, self.height),
+            'settings'     : Clickable(graphics.WIDTH // 4, 200, self.width, self.height),
+            'quit-menu'    : Clickable(graphics.WIDTH // 4, 300, self.width, self.height),
+            'quit-desktop' : Clickable(graphics.WIDTH // 4, 400, self.width, self.height)
         } 
 
 class BaseComponent(pygame.sprite.Sprite):

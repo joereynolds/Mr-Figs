@@ -36,9 +36,10 @@ def interpolate_images(image_from, image_to):
             result.set_at((x,y),(255,255,0))
             #get an intermediate value from these 2 values
     pygame.image.save(result,'bl.png')
-image_from = pygame.image.load('../data/test1.png')
-image_to = pygame.image.load('../data/test2.png')
-interpolate_images(image_from, image_to)
+    
+#image_from = pygame.image.load('../data/test1.png')
+#image_to = pygame.image.load('../data/test2.png')
+#interpolate_images(image_from, image_to)
 
 """
 

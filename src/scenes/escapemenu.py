@@ -25,7 +25,7 @@ class EscapeMenu(scene_base.SceneBase):
                 print('click')
 
     def render(self):
-        self.container.components['overlay'].image.fill((0,0,0,20))
+        self.container.components['overlay'].image.fill((0,0,0,100))
         self.components.draw(self.surface)
         pygame.display.flip()
 
