@@ -77,10 +77,8 @@ class LevelSelectContainer(BaseContainer):
     def __init__(self, x, y, width, height):
         self.components = [
             Clickable(x*i ,y*i ,width,height) 
-                for i, level in enumerate(environment.level_obj_list)
+                for i, level in enumerate(environment.create_level_list())
         ]
-        print(self.components)
-
 
     def update(self):
         pass

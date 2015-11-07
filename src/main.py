@@ -32,8 +32,6 @@ class Game():
 
 
 if __name__ == '__main__':
-
-
     game = Game(60)
     game.run(environment.level_obj_list[0])
 
