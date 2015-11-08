@@ -7,10 +7,10 @@ from constants import *
 def enlarge(self, speed):
     """Makes the elements surface larger."""
     speeds = {
-              'fast':    10,
-              'average': 5,
-              'slow':    1
-              }
+        'fast':    10,
+        'average': 5,
+        'slow':    1
+    }
 
     now = pygame.time.get_ticks()
     if now <= self.cooldown:

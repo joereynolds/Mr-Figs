@@ -1,5 +1,6 @@
-import graphics
 import pygame
+import graphics
+import container_reader
 
 
 class SceneBase():
@@ -8,6 +9,7 @@ class SceneBase():
     def __init__(self):
         self.next = self
         self.surface = graphics.SCREEN
+        
 
     def process_input(self):
         pass
