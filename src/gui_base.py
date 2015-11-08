@@ -34,64 +34,6 @@ def shrink(self):
 
 
 #New component system attempt
-
-class BaseContainer(pygame.sprite.Sprite):
-    """
-    The base container for all other containers to inherit from.
-    It doesn't do much apart from remove some boilerplate
-    
-    A container is a collection of components. Make as many components
-    as you need. If we need to, we can refactor the container to make it better
-    but at the moment it serves its purpose."""
-
-    def __init__(self, x, y, width, height):
-        pygame.sprite.Sprite.__init__(self)
-
-
-class StartContainer(BaseContainer):
- """Container for our start menu"""
-
- def __init__(self, x, y, width, height):
-     self.components = {
-        'start-game' : Clickable(x,y,width,height),
-        'exit-game' : Clickable(x*2,y,width,height),
-        'settings' : Clickable(x*3,y,width,height),
-        'level-select' : Clickable(x*4,y,width,height)
-    } 
-
- def update(self):
-     pass
-
- def render(self):
-     self.components['start-game'].image.fill((255,0,0))
-     self.components['start-game'].render_text('START GAME')
-     self.components['exit-game'].image.fill((255,255,0))
-     self.components['exit-game'].render_text('QUIT')
-     self.components['settings'].image.fill((255,0,255))
-     self.components['settings'].render_text('SETTINGS')
-     self.components['level-select'].image.fill((0,0,255))
-     self.components['level-select'].render_text('LEVEL SELECT')
-
-class EscapeContainer(BaseContainer):
-
-    def __init__(self, x, y, width, height):
-        """
-        **Components**
-        @resume       : Resumes the game and exits the menu
-        @settings     : Takes the user to the settings menu
-        @quit-menu    : Quits the game and returns the user to the main menu
-        @quit-desktop : Quits the game and returns to the desktop
-        """
-        self.height = 50
-        self.width = width // 2
-        self.components = {
-            'overlay'      : BaseComponent(x, y, width, height),
-            'resume'       : Clickable(graphics.WIDTH // 4, 100, self.width, self.height),
-            'settings'     : Clickable(graphics.WIDTH // 4, 200, self.width, self.height),
-            'quit-menu'    : Clickable(graphics.WIDTH // 4, 300, self.width, self.height),
-            'quit-desktop' : Clickable(graphics.WIDTH // 4, 400, self.width, self.height)
-        } 
-
 class BaseComponent(pygame.sprite.Sprite):
 
     def __init__(self,x,y,width,height):
