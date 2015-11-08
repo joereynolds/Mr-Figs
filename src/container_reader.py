@@ -12,7 +12,7 @@ class ContainerReader():
         self.root = self.tree.getroot()
         self.xml_components = self.root.find('components').findall('component')
         self.component_dict = self.get_components()
-        self.components = list(self.component_dict['components'])
+        self.components = self.component_dict['components']
 
     def get_components(self):
         """
@@ -44,7 +44,3 @@ class ContainerReader():
             component_objects.add(obj_component)
         component_dict['components'] = component_objects
         return component_dict
-
-a = ContainerReader('scenes/containers/start.xml')
-
-

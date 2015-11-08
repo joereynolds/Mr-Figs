@@ -91,7 +91,6 @@ class LevelData():
                 for trigger in self.data:
                     if isinstance(trigger, tile.Triggerable):
                         if state.triggers == trigger.id:
-                            print('linked the tiles')
                             trigger.stateful = state
 
     def _create_bomb_tile(self,lifespan, surface, x, y):
