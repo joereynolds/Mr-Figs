@@ -1,12 +1,11 @@
 import pygame
+import config
 
-WIDTH  = 700
-HEIGHT = 600
-SCREEN = pygame.display.set_mode((WIDTH, HEIGHT))
+SCREEN = pygame.display.set_mode((config.screen_width, config.screen_height))
 
 sprite_width = 16 
 sprite_height = 16
-spritesheet = pygame.image.load('../data/newtiledsheet.png')
+spritesheet = pygame.image.load(config.spritesheet_location)
 
 trans_width = 48
 trans_height = 48
@@ -58,57 +57,69 @@ Does...
     sprites = pygame surfaces of their location
 """
 sprites = {
-           'wall'   : {
-                       'coords' : ((0,1),(0,0),(1,0),(1,1),
-                                   (2,0),(3,0),(2,1),(3,1),
-                                   (2,3),(1,3),(0,3)),
-                      },
-           'floor'  : {
-                       'coords'  : ((1,2),(0,2)),
-                       'sprite_1': subsurf(grid(1,2)),
-                       'sprite_2': subsurf(grid(0,2))
-                      },
-           'bomb'  : {
-                       'coords'  : ((0,4),(1,4),(2,4),(3,4),(4,4),(5,4)),
-                       'sprites' : [subsurf(grid(0,4)),
-                                    subsurf(grid(1,4)),
-                                    subsurf(grid(2,4)),
-                                    subsurf(grid(3,4)),
-                                    subsurf(grid(4,4)),
-                                    subsurf(grid(5,4))]
-                     },
-           'explosion' :{
-                         'coords' : (),
-                         'sprites':[subsurf(grid(0,6)),
-                                    subsurf(grid(1,6)),
-                                    subsurf(grid(2,6)),
-                                    subsurf(grid(3,6)),
-                                    subsurf(grid(4,6)),
-                                    subsurf(grid(5,6))]
-                        },
-           'stair' : {
-                       'sprite_1' : subsurf(grid(5,3)),
-                     },
-           'rock'  : {
-                       'coords' : ((2,2),)
-                     },
-           'player': {
-                       'coords' : ((0,5),),
-                       'sprites':[subsurf(grid(0,5))]
-                     },
-           'laser' : {
-                       'coords' : ((4,1),(5,1),(6,1),(7,1)),
-                       'sprites': [subsurf(grid(4,1)),
-                                   subsurf(grid(5,1)),
-                                   subsurf(grid(6,1)),
-                                   subsurf(grid(7,1))]
-                     },
-           'switch': {
-                        'coords' : ((6,3),(7,3)),
-                        'sprites': [subsurf(grid(6,3)),
-                                    subsurf(grid(7,3))]
-                     }
-           }
+    'wall'   : {
+        'coords' : (
+            (0,1),(0,0),(1,0),
+            (1,1),(2,0),(3,0),
+            (2,1),(3,1),(2,3),
+            (1,3),(0,3)
+        ),
+    },
+    'floor'  : {
+        'coords'  : ((1,2),(0,2)),
+        'sprite_1': subsurf(grid(1,2)),
+        'sprite_2': subsurf(grid(0,2))
+    },
+    'bomb'  : {
+        'coords'  : (
+            (0,4),(1,4),(2,4),
+            (3,4),(4,4),(5,4)
+        ),
+        'sprites' : [
+            subsurf(grid(0,4)),
+            subsurf(grid(1,4)),
+            subsurf(grid(2,4)),
+            subsurf(grid(3,4)),
+            subsurf(grid(4,4)),
+            subsurf(grid(5,4))
+        ]
+    },
+    'explosion' :{
+        'coords' : (),
+        'sprites':[
+            subsurf(grid(0,6)),
+            subsurf(grid(1,6)),
+            subsurf(grid(2,6)),
+            subsurf(grid(3,6)),
+            subsurf(grid(4,6)),
+            subsurf(grid(5,6))
+        ]
+    },
+    'stair' : {
+        'sprite_1' : subsurf(grid(5,3)),
+    },
+    'rock'  : {
+        'coords' : ((2,2),)
+    },
+    'player': {
+        'coords' : ((0,5),),
+        'sprites':[subsurf(grid(0,5))]
+    },
+    'laser' : {
+        'coords' : ((4,1),(5,1),(6,1),(7,1)),
+        'sprites': [
+            subsurf(grid(4,1)),
+            subsurf(grid(5,1)),
+            subsurf(grid(6,1)),
+            subsurf(grid(7,1))
+        ]
+    },
+    'switch': {
+                 'coords' : ((6,3),(7,3)),
+                 'sprites': [subsurf(grid(6,3)),
+                             subsurf(grid(7,3))]
+    }
+}
 
 
 

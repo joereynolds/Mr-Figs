@@ -32,8 +32,6 @@ class Stateful(Tile):
    
     def update(self):
         self.change_state()
-        print('changing state')
-        print('STATE :', self.state)
 
     def change_state(self):
         if self.state:

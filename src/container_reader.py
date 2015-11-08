@@ -1,4 +1,5 @@
 import pygame
+import config
 import gui_base
 import xml.etree.ElementTree as etree 
 
@@ -9,7 +10,7 @@ class ContainerReader():
 
         #maybe create a config file for all of these
         #various paths to go into?
-        self.xml_file = 'scenes\layouts\\' + xml_file
+        self.xml_file = config.layout_location + xml_file
         self.tree = etree.parse(self.xml_file)
         self.root = self.tree.getroot()
         self.xml_components = self.root.find('components').findall('component')

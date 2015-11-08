@@ -48,13 +48,15 @@ class LevelData():
         x = x * self.tile_spacing
         y = y * self.tile_spacing
         if sprite['type'] == 'tile':
-           _tile = tile.Tile(x,
-                             y, 
-                             self.tile_spacing, 
-                             self.tile_spacing, 
-                             solid=sprite['solid'], 
-                             destructable=sprite['destructable'],
-                             image=surface)
+           _tile = tile.Tile(
+               x,
+               y, 
+               self.tile_spacing, 
+               self.tile_spacing, 
+               solid=sprite['solid'], 
+               destructable=sprite['destructable'],
+               image=surface
+           )
 
         elif sprite['type'] == 'actor':
            _tile = self._create_player_tile(surface, x, y)
