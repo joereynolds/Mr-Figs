@@ -7,7 +7,9 @@ class ContainerReader():
 
     def __init__(self, xml_file):
 
-        self.xml_file = xml_file
+        #maybe create a config file for all of these
+        #various paths to go into?
+        self.xml_file = 'scenes\layouts\\' + xml_file
         self.tree = etree.parse(self.xml_file)
         self.root = self.tree.getroot()
         self.xml_components = self.root.find('components').findall('component')
