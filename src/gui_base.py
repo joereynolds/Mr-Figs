@@ -49,47 +49,28 @@ class BaseContainer(pygame.sprite.Sprite):
 
 
 class StartContainer(BaseContainer):
-    """Container for our start menu"""
+ """Container for our start menu"""
 
-    def __init__(self, x, y, width, height):
-        self.components = {
-           'start-game' : Clickable(x,y,width,height),
-           'exit-game' : Clickable(x*2,y,width,height),
-           'settings' : Clickable(x*3,y,width,height),
-           'level-select' : Clickable(x*4,y,width,height)
-       } 
+ def __init__(self, x, y, width, height):
+     self.components = {
+        'start-game' : Clickable(x,y,width,height),
+        'exit-game' : Clickable(x*2,y,width,height),
+        'settings' : Clickable(x*3,y,width,height),
+        'level-select' : Clickable(x*4,y,width,height)
+    } 
 
-    def update(self):
-        pass
+ def update(self):
+     pass
 
-    def render(self):
-        self.components['start-game'].image.fill((255,0,0))
-        self.components['start-game'].render_text('START GAME')
-        self.components['exit-game'].image.fill((255,255,0))
-        self.components['exit-game'].render_text('QUIT')
-        self.components['settings'].image.fill((255,0,255))
-        self.components['settings'].render_text('SETTINGS')
-        self.components['level-select'].image.fill((0,0,255))
-        self.components['level-select'].render_text('LEVEL SELECT')
-        
-
-class LevelSelectContainer(BaseContainer):
-    """Container for the components for the level select menu.
-    Note that self.components is iterating through the level_list
-    so can find out how many levels there are"""
-
-    def __init__(self, x, y, width, height):
-        self.components = [
-            Clickable(x*i, y*i ,width,height) 
-                for i, level in enumerate(environment.create_level_list())
-        ]
-
-    def update(self):
-        pass
-
-    def render(self):
-        pass
-
+ def render(self):
+     self.components['start-game'].image.fill((255,0,0))
+     self.components['start-game'].render_text('START GAME')
+     self.components['exit-game'].image.fill((255,255,0))
+     self.components['exit-game'].render_text('QUIT')
+     self.components['settings'].image.fill((255,0,255))
+     self.components['settings'].render_text('SETTINGS')
+     self.components['level-select'].image.fill((0,0,255))
+     self.components['level-select'].render_text('LEVEL SELECT')
 
 class EscapeContainer(BaseContainer):
 
@@ -135,7 +116,7 @@ class BaseComponent(pygame.sprite.Sprite):
 
         self.text.text = text
         font_object = pygame.font.Font(None, 20)
-        rendered_text = font_object.render(self.text.text,False,((0,0,0)))
+        rendered_text = font_object.render(self.text.text,False,((0,255,0)))
         self.image.blit(rendered_text, self.text.position)
 
     

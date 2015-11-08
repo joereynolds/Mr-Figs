@@ -3,12 +3,13 @@ import gui_base
 import graphics
 import environment
 import scenes.scenebase as scene_base
+import scenes.containers.level_select_container as container
 
 class LevelMenu(scene_base.SceneBase):
 
     def __init__(self):
         scene_base.SceneBase.__init__(self)
-        self.level_container = gui_base.LevelSelectContainer(90,90,90,90)
+        self.level_container = container.LevelSelectContainer(90,90,90,90)
         self.buttons = pygame.sprite.Group()
         self.components = self.level_container.components
         self.buttons.add(self.level_container.components)
