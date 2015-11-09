@@ -1,24 +1,20 @@
 import pygame
+import events
 
-
-def animate_bombs():
-    print('animate_bombs')
-
-def animate_particles():
-    print('animate_particles')
 
 class EventHandler():
 
     events = {
-        28 : animate_bombs,
-        29 : animate_particles
+        28 : events.animate_bombs,
+        29 : events.animate_particles
     }
 
 
-    def __init__(self):
+    def __init__(self, player):
         """
         @self.events : An array of our custom events        
         """
+        self.player = player
         self.events = [] 
         self.add_event('laser_anim', 27, 2000)
         self.add_event('bomb_anim', 28, 500)
@@ -45,5 +41,5 @@ class EventHandler():
         and if it's on that is in our events dictionary. It calls
         that events action"""
         for event_id, action in EventHandler.events.items():
-            EventHandler.events[event_id]()
-
+            if event.type == event_id:
+                EventHandler.events[event_id](self.player)

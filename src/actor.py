@@ -6,24 +6,36 @@ import pygame
 import colours
 import graphics
 import interpolate
-import collision_handler 
+import collision_handler
 import input_handlers.player_input_handler as p_i_handler
 
 
 class Actor(entity.Entity):
     """
-    @self.direction   = The last pressed direction. When the sprite is still it will use this
-                        to display the correct image for the sprite depending on where they're
-                        facing.
+    @self.direction   = The last pressed direction.
+                        When the sprite is still it will use this
+                        to display the correct image for the sprite
+                        depending on where they're facing.
+
     @self.speed       = The movement speed of the sprite from tile to tile
-    @self.distance    = How far the Actor moves in one turn 
-    @self.level       = A level object. This contains all tile information for that level and helps
+
+    @self.distance    = How far the Actor moves in one turn
+
+    @self.level       = A level object. This contains
+                        all tile information for that level and helps
                         make Actor aware of its surroundings.
+
     @self.bombs       = A list of Bomb objects planted by Actor
+
     @self.move_stack  = (not used) a stack of the previous moves of the actor
+
     @self.i_handler   = An InputHandler object
-    @self.destination = [x,y] a 2 element list containing the next destination the sprite will be travelling to
-    @self.valid_destinations = A list of valid moves that the user can make. i.e. they can't move 13pixels if they themselves are 48px big. They
+
+    @self.destination = [x,y] a 2 element list containing
+                        the next destination the sprite will be travelling to
+
+    @self.valid_destinations = A list of valid moves that the user can make. 
+                               i.e. they can't move 13pixels if they themselves are 48px big. They
     
                         
     """
@@ -53,7 +65,10 @@ class Actor(entity.Entity):
         target_y = self.destination[1]
 
         #Stop moving if the next tile we're going to is a solid
-        if (self.rect.x == target_x and self.rect.y == target_y) or self.level.find_solid_tile(self.level.get_tile_all_layers(target_x, target_y)) : 
+        if (self.rect.x == target_x and self.rect.y == target_y) \
+            or self.level.find_solid_tile(
+                self.level.get_tile_all_layers(target_x, target_y)
+            ) : 
             return 
         
         else: 
@@ -83,7 +98,8 @@ class Actor(entity.Entity):
             self.destination[1] = self.rect.y + (y * self.distance)
 
     def is_valid_move(self, x, y):
-        return (x * self.distance) in self.valid_destinations and (y * self.distance) in self.valid_destinations
+        return (x * self.distance) in self.valid_destinations \
+            and (y * self.distance) in self.valid_destinations
 
     def set_direction(self, direction):
         self.direction = direction
@@ -140,4 +156,3 @@ class Actor(entity.Entity):
             bomb.lifespan -= 1
             if bomb.blow_up():
                 self.bombs.remove(bomb)
-

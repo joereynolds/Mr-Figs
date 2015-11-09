@@ -28,7 +28,7 @@ class LevelBase(scene_base.SceneBase):
         self.sprites.add(self.level_tiles, self.player)
         self.i_handler = input_handler.InputHandler(self.player, self.level, self)
         self.gi_handler = g_i_handler.GlobalInputHandler(
-            self.player.input_handler,
+            self.player,
             self.i_handler
         )
         self.clock = pygame.time.Clock()
@@ -43,11 +43,10 @@ class LevelBase(scene_base.SceneBase):
         """Process the input for the level. Note that
         if the escape menu is open, we don't want to process input
         for the game itself but only for the escape menu.'"""
-        self.gi_handler.process_input()
+        if not self.escape_menu.is_open:
+            self.gi_handler.process_input()
+        self.escape_menu.process_input()
 
-        if self.escape_menu.is_open:
-            self.escape_menu.process_input()
-        
     def update(self):
         delta = self.clock.tick(60) / 1000.0
         self.player.update(delta)
@@ -63,7 +62,10 @@ class LevelBase(scene_base.SceneBase):
 
         if self.escape_menu.is_open:
             self.escape_menu.render()
+
         pygame.display.flip()
 
     def reset(self):
+        """Reinitialises our level, kind of a hacky way
+        of resetting the level again."""
         self.__init__(self.file, self.next_level)

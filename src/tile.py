@@ -66,6 +66,7 @@ class Triggerable(Tile):
 
     def trigger(self):
         """To be called when our stateful tile is 'on'"""
+        print('laser gate :my state has changed')
         if self.stateful.state == 1:
             self.solid = False
             self.image = self.images[0]

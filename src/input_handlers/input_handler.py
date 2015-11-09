@@ -1,15 +1,12 @@
 """
 
 """
-
-import itertools
-import graphics
-import bomb
-import event_handler
-import pygame
 import tile
+import bomb
+import pygame
+import graphics
+import event_handler
 import collision_handler
-
 
 
 class InputHandler():
@@ -29,7 +26,6 @@ class InputHandler():
         """
         @self.player = The player on the level
         @self.level = The TiledMap LevelData for this level
-        @self.e_handler = An EventHandler() object
         @self.c_handler = A CollisionHandler() object
         @self.level_base = The Base level. This is needed to access functions that aren't available in the TiledMap LevelData object 
         
@@ -37,7 +33,6 @@ class InputHandler():
         self.player = player
         self.level = level
         self.level_base = level_base
-        self.e_handler = event_handler.EventHandler()
         self.i = 0 #REMOVE THIS
 
     def process_input(self, event):
@@ -45,6 +40,7 @@ class InputHandler():
             if event.key == k:
                 if v == 'escape' :
                     self.level_base.escape_menu.toggle()
+                    print('toggling')
                 if v == 'reset':
                     self.level_base.reset()
                 elif v == 'next_level':
@@ -54,11 +50,9 @@ class InputHandler():
                         for sprite in self.level.data:
                             if isinstance(sprite, tile.Triggerable):
                                 sprite.update()
+
     def process_input_old(self):
         for event in pygame.event.get():
-            if event.type == 28:
-                for _bomb in self.player.bombs:
-                    _bomb.animate()
             if event.type == 29:
                 for _bomb in self.player.bombs:
                     for particle in _bomb.particles:

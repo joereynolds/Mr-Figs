@@ -41,7 +41,7 @@ class LevelData():
                     obj = self._create_tile(x,y,surface,current_tile)
                     self.data.add(obj, layer=i)  
 
-    def _create_tile(self,x,y,surface, sprite):
+    def _create_tile(self, x, y, surface, sprite):
         """Creates tiles passed to it. It finds the type of the
         sprite and then creates the corresponding tile"""
         states_and_triggers = []
@@ -73,17 +73,18 @@ class LevelData():
                                   image=surface,
                                   triggers=sprite['triggers'])
         elif sprite['type'] == 'triggerable':
-            _tile = tile.Triggerable(x,
-                                     y,
-                                     self.tile_spacing,
-                                     self.tile_spacing,
-                                     solid=sprite['solid'],
-                                     destructable=sprite['destructable'],
-                                     stateful='pass',
-                                     image=surface,
-                                     id=sprite['id']) 
+            _tile = tile.Triggerable(
+                x,
+                y,
+                self.tile_spacing,
+                self.tile_spacing,
+                solid=sprite['solid'],
+                destructable=sprite['destructable'],
+                stateful='pass',
+                image=surface,
+                id=sprite['id']
+            )
         return _tile
-
 
     def link_doors_and_switches(self):
         """Makes sure that the switches are passed to the correct
@@ -95,11 +96,26 @@ class LevelData():
                         if state.triggers == trigger.id:
                             trigger.stateful = state
 
-    def _create_bomb_tile(self,lifespan, surface, x, y):
-        return bomb.Bomb(x, y, self.tile_spacing, self.tile_spacing,'pass', lifespan, image=surface) 
+    def _create_bomb_tile(self, lifespan, surface, x, y):
+        return bomb.Bomb(
+            x,
+            y,
+            self.tile_spacing,
+            self.tile_spacing,
+            'pass',
+            lifespan,
+            image=surface
+        ) 
 
     def _create_player_tile(self, surface, x, y):
-        return actor.Actor(x , y, self.tile_spacing, self.tile_spacing, 'pass', image = surface) 
+        return actor.Actor(
+            x,
+            y,
+            self.tile_spacing,
+            self.tile_spacing,
+            'pass',
+            image = surface
+        ) 
 
     def give_dynamic_sprites_data(self):
         """Once the map has been generated, go back and give the sprites
@@ -159,7 +175,3 @@ class LevelData():
         for tile in tiles:
             if tile.solid:
                 return True
-
-mock = LevelData('../levels/tmx/new-level1.tmx')
-#print(mock.get_player(1))
-#print(mock.get_player(0))

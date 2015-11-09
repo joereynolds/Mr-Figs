@@ -1,6 +1,6 @@
-import pygame
-import tile
 import bomb
+import tile
+import pygame
 
 
 class PlayerCollisionHandler():

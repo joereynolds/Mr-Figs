@@ -15,17 +15,13 @@ class GlobalInputHandler():
         pygame.K_ESCAPE:'escape'
     }
 
-    def __init__(self, player_input_handler, level_input_handler):
+    def __init__(self, player, level_input_handler):
         """
-        @self.player = The player on the level
-        @self.level = The TiledMap LevelData for this level
-        @self.e_handler = An EventHandler() object
-        @self.c_handler = A CollisionHandler() object
         
         """
-        self.player_input_handler = player_input_handler
+        self.player_input_handler = player.input_handler
         self.level_input_handler = level_input_handler
-        self.e_handler = event_handler.EventHandler()
+        self.e_handler = event_handler.EventHandler(player)
 
     def process_input(self):
         for event in pygame.event.get():
