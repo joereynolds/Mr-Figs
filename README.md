@@ -24,6 +24,6 @@ These are already included/not needed but I thought I'd include them just to cov
     - Pytmx is a 3rd party library for Tiled map formats. It's pretty neat and I'd recommend it to any sane person using Tiled
 
 ####Write-ups
-['Undo' Functionality](http://joereynoldsaudio.com/Programming/Articles/undo-in-pygame)
+['Undo' Functionality](http://joereynoldsaudio.com/programming/Articles/undo-in-pygame)
 
-[Building a Level Editor](http://joereynoldsaudio.com/Programming/Articles/building-a-level-editor)
+[Building a Level Editor](http://joereynoldsaudio.com/programming/Articles/building-a-level-editor)
