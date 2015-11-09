@@ -1,11 +1,17 @@
 import pygame
 
 
+def animate_bombs():
+    print('animate_bombs')
+
+def animate_particles():
+    print('animate_particles')
+
 class EventHandler():
 
     events = {
-        28 : print,
-        29 : print
+        28 : animate_bombs,
+        29 : animate_particles
     }
 
 
@@ -39,5 +45,5 @@ class EventHandler():
         and if it's on that is in our events dictionary. It calls
         that events action"""
         for event_id, action in EventHandler.events.items():
-            EventHandler.events[event_id]('event is happening')
+            EventHandler.events[event_id]()
 

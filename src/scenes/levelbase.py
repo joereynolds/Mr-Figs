@@ -3,11 +3,11 @@ import pygame
 import colours
 import graphics
 import level_editor
-import input_handler
 import collision_handler 
 import scenes.scenebase as scene_base
 import scenes.escapemenu as escape_menu
-import global_input_handler as g_i_handler
+import input_handlers.input_handler as input_handler
+import input_handlers.global_input_handler as g_i_handler
 
 class LevelBase(scene_base.SceneBase):
 

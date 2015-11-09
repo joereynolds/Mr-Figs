@@ -7,7 +7,7 @@ import colours
 import graphics
 import interpolate
 import collision_handler 
-import player_input_handler as p_i_handler
+import input_handlers.player_input_handler as p_i_handler
 
 
 class Actor(entity.Entity):

@@ -1,14 +1,11 @@
-import itertools
-import graphics
-import bomb
-import event_handler
 import pygame
-import tile
+import event_handler
 import collision_handler
 
 class GlobalInputHandler():
-    """Handles all input events. Key presses etc...
-    Helps keep code clean...ish""" 
+    """Takes all other input handler, and encapsulates them
+    so that we don't get any conflicts between key presses and
+    we keep code clean"""
 
     keys = {
         pygame.K_u:'u',

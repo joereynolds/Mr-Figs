@@ -19,7 +19,6 @@ class InputHandler():
     via the PlayerInputHandler class"""
 
     keys = {
-        pygame.K_u:'u',
         pygame.K_r:'reset',
         pygame.K_l:'next_level',
         pygame.K_h:'previous_level',
@@ -57,9 +56,6 @@ class InputHandler():
                                 sprite.update()
     def process_input_old(self):
         for event in pygame.event.get():
-            if event.type == 27:
-                for laser in self.level.data:
-                    pass
             if event.type == 28:
                 for _bomb in self.player.bombs:
                     _bomb.animate()
