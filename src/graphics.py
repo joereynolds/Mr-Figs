@@ -14,7 +14,6 @@ def grid(x,y):
     """Returns the sprite at the gridded position of n m rather than having to work out the time table for sprite widths!"""
     return sprite_width * x, sprite_height * y 
 
-
 def subsurf(grid_pos):
     """Quick wrapper around pygame's subsurface so we don't keep having to pass in the width and height"""
     surface = spritesheet.subsurface(grid_pos[0], grid_pos[1], sprite_width, sprite_height) 
@@ -36,9 +35,6 @@ def interpolate_images(image_from, image_to):
             #get an intermediate value from these 2 values
     pygame.image.save(result,'bl.png')
     
-#image_from = pygame.image.load('../data/test1.png')
-#image_to = pygame.image.load('../data/test2.png')
-#interpolate_images(image_from, image_to)
 
 """
 
@@ -120,6 +116,3 @@ sprites = {
                              subsurf(grid(7,3))]
     }
 }
-
-
-

@@ -2,9 +2,10 @@ import pygame
 import tile
 import bomb
 
+
 class CollisionHandler():
 
-    def __init__(self, player,  level):
+    def __init__(self, player, level):
         self.player = player
         self.level = level
 

@@ -29,14 +29,14 @@ def shrink(self):
             self.height -=5 
             self.image = pygame.Surface([self.width, self.height]).convert_alpha() 
             self.image.fill(self.colour)
-            self.render_text(self.text.text,self.text.position)  
+            self.render_text(self.text.text, self.text.position)  
 
 
 
 #New component system attempt
 class BaseComponent(pygame.sprite.Sprite):
 
-    def __init__(self,x,y,width,height):
+    def __init__(self, x, y, width, height, string='Default'):
         pygame.sprite.Sprite.__init__(self)
         self.width = width
         self.height = height
@@ -44,9 +44,9 @@ class BaseComponent(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
-        self.text = TextElement()
+        self.text = TextElement(text=string)
 
-    def render_text(self,text,position = False):
+    def render_text(self, position = False):
         """Renders text at the default position of (0,0) or otherwise 
         if a position is supplied.
         @text = The text you wish to be displayed
@@ -56,7 +56,6 @@ class BaseComponent(pygame.sprite.Sprite):
             self.text.position = position
         else: self.text.position = (0,0)
 
-        self.text.text = text
         font_object = pygame.font.Font(None, 20)
         rendered_text = font_object.render(self.text.text,False,((0,255,0)))
         self.image.blit(rendered_text, self.text.position)
@@ -64,7 +63,7 @@ class BaseComponent(pygame.sprite.Sprite):
     
 class Clickable(BaseComponent):
 
-    def on_click(self,function, *args):
+    def on_click(self, function, *args):
         """Calls a function when ClickableComponent is clicked.
         Note that it is identical to on_hover. The only differences are
         where the function SHOULD be called. This function should be called
@@ -73,7 +72,7 @@ class Clickable(BaseComponent):
         if self.rect.collidepoint(pygame.mouse.get_pos()):
            function(*args)
 
-    def on_hover(self,function, *args):
+    def on_hover(self, function, *args):
         """Calls a function when ClickableElement is hovered over with
            the mouse cursor"""
         if self.rect.collidepoint(pygame.mouse.get_pos()):
@@ -102,7 +101,7 @@ class TextElement(pygame.font.Font):
     @text = The string you want to display
     @size = The size of the font
     @position = The position of the text relative to the surface"""
-    def __init__(self,text='Change me',size='12',position=(0,0)):
+    def __init__(self, text='Change me', size='12', position=(0,0)):
         self.text = text
         self.size = size
         self.position = position

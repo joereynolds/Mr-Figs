@@ -8,8 +8,6 @@ class ContainerReader():
 
     def __init__(self, xml_file):
 
-        #maybe create a config file for all of these
-        #various paths to go into?
         self.xml_file = config.layout_location + xml_file
         self.tree = etree.parse(self.xml_file)
         self.root = self.tree.getroot()
@@ -41,8 +39,10 @@ class ContainerReader():
                 int(component.attrib['x']),
                 int(component.attrib['y']),
                 int(component.attrib['width']),
-                int(component.attrib['height'])
+                int(component.attrib['height']),
+                string=component.find('text').text
             )
+            print(component.findall('text'))
             component_dict[component.attrib['name']] = obj_component
             component_objects.add(obj_component)
         component_dict['components'] = component_objects

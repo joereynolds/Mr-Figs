@@ -62,7 +62,7 @@ class InputHandler():
                 for k,v in InputHandler.keys.items():
                     if event.key == k:
                         if v == 'escape' :
-                            self.level_base.render_escape_menu()
+                            self.level_base.escape_menu.toggle()
                         if v == 'reset':
                             self.level_base.reset()
                         elif v == 'next_level':

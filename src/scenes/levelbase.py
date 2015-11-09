@@ -29,16 +29,6 @@ class LevelBase(scene_base.SceneBase):
         self.c_handler = self.i_handler.c_handler
         self.clock = pygame.time.Clock()
         self.escape_menu = escape_menu.EscapeMenu()
-        self.menu_open = False
-
-    def render_escape_menu(self):
-        """Adds the escape menu to ours sprites group therefore
-        getting rendered to the screen"""
-        if not self.menu_open:
-            self.escape_menu.render()
-            self.menu_open = True
-        else : 
-            self.menu_open = False
 
     def check_player_hasnt_died_a_horrible_death(self):
         """If the player has been destroyed, restart the level"""
@@ -47,6 +37,9 @@ class LevelBase(scene_base.SceneBase):
 
     def process_input(self):
         self.i_handler.handle_input() 
+
+        if self.escape_menu.is_open:
+            self.escape_menu.process_input()
         
     def update(self):
         delta = self.clock.tick(60) / 1000.0
@@ -54,15 +47,14 @@ class LevelBase(scene_base.SceneBase):
         self.check_player_hasnt_died_a_horrible_death()
         self.sprites.add(self.player.bombs)
         self.sprites.move_to_front(self.player)
-       
         for bomb in self.player.bombs:
             self.sprites.add(bomb.particles)
-        
+
     def render(self):
         self.surface.fill(colours.WHITE)        
         self.sprites.draw(self.surface)
 
-        if self.menu_open:
+        if self.escape_menu.is_open:
             self.escape_menu.render()
         pygame.display.flip()
 
