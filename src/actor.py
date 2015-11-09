@@ -6,7 +6,8 @@ import pygame
 import colours
 import graphics
 import interpolate
-import input_handler
+import collision_handler 
+import player_input_handler as p_i_handler
 
 
 class Actor(entity.Entity):
@@ -38,7 +39,10 @@ class Actor(entity.Entity):
         self.destination = [self.rect.x,self.rect.y]
         self.valid_destinations = [graphics.trans_width * x for x in range(-100, 100)]
         self.moving = False
-
+        self.input_handler = p_i_handler.PlayerInputHandler(self)
+        self.collision_handler = collision_handler.PlayerCollisionHandler(
+            self, self.level        
+        ) 
     def move(self, delta_time):
         """Checks to see if we've reached the destination given, if we have,
         we can stop moving. Note that we need to use delta-time otherwise we'll get

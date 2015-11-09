@@ -15,7 +15,7 @@ class StartMenu(scene_base.SceneBase):
         self.component_dict = self.reader.component_dict
         self.components = self.reader.components
 
-    def update(self):
+    def process_input(self):
         """Handles the scenes to go to when we
         click on certain clickable components"""
         for event in pygame.event.get():

@@ -7,6 +7,7 @@ import input_handler
 import collision_handler 
 import scenes.scenebase as scene_base
 import scenes.escapemenu as escape_menu
+import global_input_handler as g_i_handler
 
 class LevelBase(scene_base.SceneBase):
 
@@ -26,7 +27,10 @@ class LevelBase(scene_base.SceneBase):
         self.sprites = pygame.sprite.LayeredUpdates()
         self.sprites.add(self.level_tiles, self.player)
         self.i_handler = input_handler.InputHandler(self.player, self.level, self)
-        self.c_handler = self.i_handler.c_handler
+        self.gi_handler = g_i_handler.GlobalInputHandler(
+            self.player.input_handler,
+            self.i_handler
+        )
         self.clock = pygame.time.Clock()
         self.escape_menu = escape_menu.EscapeMenu()
 
@@ -36,7 +40,10 @@ class LevelBase(scene_base.SceneBase):
             self.reset()
 
     def process_input(self):
-        self.i_handler.handle_input() 
+        """Process the input for the level. Note that
+        if the escape menu is open, we don't want to process input
+        for the game itself but only for the escape menu.'"""
+        self.gi_handler.process_input()
 
         if self.escape_menu.is_open:
             self.escape_menu.process_input()

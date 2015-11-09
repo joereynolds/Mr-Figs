@@ -1,3 +1,7 @@
+"""
+
+"""
+
 import itertools
 import graphics
 import bomb
@@ -7,21 +11,20 @@ import tile
 import collision_handler
 
 
-class InputHandler():
-    """Handles all input events. Key presses etc...
-    Helps keep code clean...ish""" 
 
-    keys = {pygame.K_UP:'up',
-            pygame.K_DOWN:'down',
-            pygame.K_LEFT:'left',
-            pygame.K_RIGHT:'right',
-            pygame.K_SPACE:'space',
-            pygame.K_u:'u',
-            pygame.K_r:'reset',
-            pygame.K_l:'next_level',
-            pygame.K_h:'previous_level',
-            pygame.K_ESCAPE:'escape'
-            }
+class InputHandler():
+    """Handlws all inputs for the game itself
+    anything related to menu navigation etc...
+    is kept in here. All player input is handler
+    via the PlayerInputHandler class"""
+
+    keys = {
+        pygame.K_u:'u',
+        pygame.K_r:'reset',
+        pygame.K_l:'next_level',
+        pygame.K_h:'previous_level',
+        pygame.K_ESCAPE:'escape'
+    }
 
     def __init__(self, player, level, level_base):
         """
@@ -36,10 +39,23 @@ class InputHandler():
         self.level = level
         self.level_base = level_base
         self.e_handler = event_handler.EventHandler()
-        self.c_handler = collision_handler.CollisionHandler(self.player, level)
         self.i = 0 #REMOVE THIS
 
-    def handle_input(self):
+    def process_input(self, event):
+         for k,v in InputHandler.keys.items():
+            if event.key == k:
+                if v == 'escape' :
+                    self.level_base.escape_menu.toggle()
+                if v == 'reset':
+                    self.level_base.reset()
+                elif v == 'next_level':
+                    self.level_base.switch_to_scene(self.level_base.next_level)
+                else: 
+                    if v != 'space':#don't change state on the spikes when we plant a bomb
+                        for sprite in self.level.data:
+                            if isinstance(sprite, tile.Triggerable):
+                                sprite.update()
+    def process_input_old(self):
         for event in pygame.event.get():
             if event.type == 27:
                 for laser in self.level.data:
@@ -55,22 +71,3 @@ class InputHandler():
                 if self.i >5 :
                     self.i = 0
                 #This is handled terribly. We should be using delta times for ANY animation. 
-
-            if event.type == pygame.QUIT:
-                pygame.quit()
-            if event.type == pygame.KEYDOWN:
-                for k,v in InputHandler.keys.items():
-                    if event.key == k:
-                        if v == 'escape' :
-                            self.level_base.escape_menu.toggle()
-                        if v == 'reset':
-                            self.level_base.reset()
-                        elif v == 'next_level':
-                            self.level_base.switch_to_scene(self.level_base.next_level)
-                        else: 
-                            self.player.event_update(v)
-                            self.c_handler.update()
-                            if v != 'space':#don't change state on the spikes when we plant a bomb
-                                for sprite in self.level.data:
-                                    if isinstance(sprite, tile.Triggerable):
-                                        sprite.update()

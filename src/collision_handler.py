@@ -3,7 +3,7 @@ import tile
 import bomb
 
 
-class CollisionHandler():
+class PlayerCollisionHandler():
 
     def __init__(self, player, level):
         self.player = player
