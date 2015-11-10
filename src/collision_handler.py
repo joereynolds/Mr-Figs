@@ -10,21 +10,10 @@ class PlayerCollisionHandler():
         self.level = level
 
     def update(self):
-        self.player_collision()
         self.bomb_collisions()       
         for bomb in self.player.bombs:
             self.bomb_particle_collision(bomb)
  
-    def player_collision(self):
-        """Goes through the level data assessing the correct tiles in the level that aren't itself and seeing what happens if we collide with them"""
-        for sprite in self.level.data:
-            if sprite.solid:
-                if pygame.sprite.collide_rect(self.player, sprite):
-                    pass
-            if isinstance(sprite, tile.FinishTile):
-                if pygame.sprite.collide_rect(self.player, sprite):
-                    return 'SIGNAL HERE TO LET LEVEL KNOW THE PLAYER HAS FINISHED THE LEVEL'
-
     def bomb_collisions(self):
         """This is just a wrapper that calls the function for each bomb"""
         for _bomb in self.player.bombs:
