@@ -23,6 +23,14 @@ class EscapeMenu(scene_base.SceneBase):
         self.components = self.reader.components
         self.is_open = False
 
+    def set_open(self, boolean):
+        """Sets the open status of the escape
+        menu to a value. This is useful for our click
+        handlers since they need to be passed a function
+        in order to work
+        @boolean should be a...boolean. True or False """
+        self.is_open = boolean
+
     def toggle(self):
         """Toggles the open state of the escape menu. 
         This is called in the levelbase's input_handler"""
@@ -31,19 +39,21 @@ class EscapeMenu(scene_base.SceneBase):
         else :
             self.is_open = False 
 
-    def process_input(self):
-        for e in pygame.event.get():
-            if e.type == pygame.MOUSEBUTTONDOWN:
-                print('Click')
-                self.component_dict['resume'].on_click(
-                    print, 'he'        
-                )
+    def process_input(self, event):
+        """Processes any input for the escape menu. Note that the iteration
+        through all of the events is handled in the GlobalInputHandler so that
+        we're only iterating through once"""
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            self.component_dict['resume'].on_click(
+                self.set_open,
+                False
+            )
 
     def render(self):
         """render a slightly transparent overlay,
         draw the components,
         and render any text on components"""
-        self.component_dict['overlay'].image.fill((255,0,0,100))
+        self.component_dict['overlay'].image.fill((255, 0, 0, 100))
         self.components.draw(self.surface)
         for component in self.components:
             component.render_text()

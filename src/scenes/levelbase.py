@@ -6,8 +6,11 @@ import level_editor
 import collision_handler 
 import scenes.scenebase as scene_base
 import scenes.escapemenu as escape_menu
+import renderers.level_base_renderer as renderers
+import renderers.global_renderer as grenderers
 import input_handlers.input_handler as input_handler
 import input_handlers.global_input_handler as g_i_handler
+
 
 class LevelBase(scene_base.SceneBase):
 
@@ -26,11 +29,18 @@ class LevelBase(scene_base.SceneBase):
         )
         self.sprites = pygame.sprite.LayeredUpdates()
         self.sprites.add(self.level_tiles, self.player)
+
+        #input handling
         self.i_handler = input_handler.InputHandler(self.player, self.level, self)
         self.gi_handler = g_i_handler.GlobalInputHandler(
             self.player,
-            self.i_handler
+            self
         )
+
+        #rendering
+        self.renderer = renderers.LevelBaseRenderer(self)
+        self.g_renderer = grenderers.GlobalRenderer(self)
+
         self.clock = pygame.time.Clock()
         self.escape_menu = escape_menu.EscapeMenu()
 
@@ -40,12 +50,9 @@ class LevelBase(scene_base.SceneBase):
             self.reset()
 
     def process_input(self):
-        """Process the input for the level. Note that
-        if the escape menu is open, we don't want to process input
-        for the game itself but only for the escape menu.'"""
-        if not self.escape_menu.is_open:
-            self.gi_handler.process_input()
-        self.escape_menu.process_input()
+        """Process the input for the level via the global
+        input handler"""
+        self.gi_handler.process_input()
 
     def update(self):
         delta = self.clock.tick(60) / 1000.0
@@ -57,13 +64,8 @@ class LevelBase(scene_base.SceneBase):
             self.sprites.add(bomb.particles)
 
     def render(self):
-        self.surface.fill(colours.WHITE)        
-        self.sprites.draw(self.surface)
-
-        if self.escape_menu.is_open:
-            self.escape_menu.render()
-
-        pygame.display.flip()
+        """Calls the global renderer to render"""
+        self.g_renderer.render()
 
     def reset(self):
         """Reinitialises our level, kind of a hacky way
