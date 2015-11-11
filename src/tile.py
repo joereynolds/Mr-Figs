@@ -13,7 +13,7 @@ class Tile(entity.Entity):
         self.destructable = destructable 
 
 class FinishTile(Tile):
-    def __init__(self, x, y, width, height,solid, destructable, image=None):
+    def __init__(self, x, y, width, height, solid, destructable, image=None):
         Tile.__init__(self, x, y, width, height, solid, destructable, image)
 
 
@@ -25,7 +25,7 @@ class Stateful(Tile):
        @self.images = an array of pygame surfaces
        @self.triggers = The numeric id of the Triggerable if there is one to be triggered"""
     def __init__(self, x, y, width, height, solid, destructable, state, image, triggers=0):
-        Tile.__init__(self,x,y,width,height,solid,destructable,image)
+        Tile.__init__(self, x, y, width, height, solid, destructable, image)
         self.state = state
         self.images = [sprite for sprite in graphics.sprites['switch']['sprites']]
         self.triggers = triggers 

@@ -29,6 +29,7 @@ class LevelBase(scene_base.SceneBase):
         )
         self.sprites = pygame.sprite.LayeredUpdates()
         self.sprites.add(self.level_tiles, self.player)
+        self.escape_menu = escape_menu.EscapeMenu()
 
         #input handling
         self.i_handler = input_handler.InputHandler(
@@ -46,7 +47,6 @@ class LevelBase(scene_base.SceneBase):
         self.g_renderer = grenderers.GlobalRenderer(self)
 
         self.clock = pygame.time.Clock()
-        self.escape_menu = escape_menu.EscapeMenu()
 
     def check_player_hasnt_died_a_horrible_death(self):
         """If the player has been destroyed, restart the level"""

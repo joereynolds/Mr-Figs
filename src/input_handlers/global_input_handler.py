@@ -7,14 +7,6 @@ class GlobalInputHandler():
     so that we don't get any conflicts between key presses and
     we keep code clean"""
 
-    keys = {
-        pygame.K_u:'u',
-        pygame.K_r:'reset',
-        pygame.K_l:'next_level',
-        pygame.K_h:'previous_level',
-        pygame.K_ESCAPE:'escape'
-    }
-
     def __init__(self, player, level):
         """
         

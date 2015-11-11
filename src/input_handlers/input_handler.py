@@ -15,12 +15,6 @@ class InputHandler():
     is kept in here. All player input is handler
     via the PlayerInputHandler class"""
 
-    keys = {
-        pygame.K_r:'reset',
-        pygame.K_l:'next_level',
-        pygame.K_h:'previous_level',
-        pygame.K_ESCAPE:'escape'
-    }
 
     def __init__(self, player, level, level_base):
         """
@@ -33,31 +27,24 @@ class InputHandler():
         self.player = player
         self.level = level
         self.level_base = level_base
-        self.i = 0 #REMOVE THIS
+
+        self.keys = {
+            pygame.K_ESCAPE: self.level_base.escape_menu.toggle,
+            pygame.K_r: self.level_base.reset,
+        }
 
     def process_input(self, event):
-         for k,v in InputHandler.keys.items():
-            if event.key == k:
-                if v == 'escape' :
-                    self.level_base.escape_menu.toggle()
-                if v == 'reset':
-                    self.level_base.reset()
-                elif v == 'next_level':
-                    self.level_base.switch_to_scene(self.level_base.next_level)
-                else: 
-                    if v != 'space':#don't change state on the spikes when we plant a bomb
-                        for sprite in self.level.data:
-                            if isinstance(sprite, tile.Triggerable):
-                                sprite.update()
+        """Processes therelated actions that are present in self.keys.
+        self.keys is a mapping of keyboard input to a function.
+        Note also that if we're not pressing the spacebar then we want
+        to update everything in the game. The reason being is that we
+        don't want to update things when we plant a bomb (press spacebar)"""
+        for key in self.keys.keys():
+            if event.key != pygame.K_SPACE:
+                for sprite in self.level.data:
+                    if isinstance(sprite, tile.Triggerable):
+                        sprite.update()
+            if event.key == key:
+                self.keys[key]()
 
-    def process_input_old(self):
-        """To be refactored..."""
-        for event in pygame.event.get():
-            if event.type == 29:
-                for _bomb in self.player.bombs:
-                    for particle in _bomb.particles:
-                        particle.image = graphics.sprites['explosion']['sprites'][self.i]
-                self.i +=1
-                if self.i >5 :
-                    self.i = 0
-                #This is handled terribly. We should be using delta times for ANY animation. 
+
