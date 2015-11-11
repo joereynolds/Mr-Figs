@@ -33,7 +33,3 @@ class StartMenu(scene_base.SceneBase):
         self.components.draw(self.surface)
         for component in self.components:
             component.render_text()
-        pygame.display.flip()
-
-
-

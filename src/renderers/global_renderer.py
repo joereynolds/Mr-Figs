@@ -10,4 +10,3 @@ class GlobalRenderer():
 
     def render(self):
         self.level.renderer.render()
-        pygame.display.flip()
