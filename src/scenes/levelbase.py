@@ -31,7 +31,11 @@ class LevelBase(scene_base.SceneBase):
         self.sprites.add(self.level_tiles, self.player)
 
         #input handling
-        self.i_handler = input_handler.InputHandler(self.player, self.level, self)
+        self.i_handler = input_handler.InputHandler(
+            self.player,
+            self.level,
+            self
+        )
         self.gi_handler = g_i_handler.GlobalInputHandler(
             self.player,
             self
