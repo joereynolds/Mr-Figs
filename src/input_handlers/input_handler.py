@@ -10,7 +10,7 @@ import collision_handler
 
 
 class InputHandler():
-    """Handlws all inputs for the game itself
+    """Handles all inputs for the game itself
     anything related to menu navigation etc...
     is kept in here. All player input is handler
     via the PlayerInputHandler class"""
@@ -40,7 +40,6 @@ class InputHandler():
             if event.key == k:
                 if v == 'escape' :
                     self.level_base.escape_menu.toggle()
-                    print('toggling')
                 if v == 'reset':
                     self.level_base.reset()
                 elif v == 'next_level':
@@ -52,6 +51,7 @@ class InputHandler():
                                 sprite.update()
 
     def process_input_old(self):
+        """To be refactored..."""
         for event in pygame.event.get():
             if event.type == 29:
                 for _bomb in self.player.bombs:

@@ -16,6 +16,9 @@ class LevelMenu(scene_base.SceneBase):
 
     def update(self):
         for event in pygame.event.get():
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    self.switch_to_scene(environment.level_obj_list[0])
             for i, level in enumerate(self.components):
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     level.on_click(

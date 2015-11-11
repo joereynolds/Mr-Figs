@@ -5,12 +5,12 @@ As with all other scenes, it's found in the scenes directory
 and uses the escape_menu.xml file for layout
 """
 
+import pygame
 import graphics
 import gui_base
-import pygame
+import environment
 import container_reader
 import scenes.scenebase as scene_base
-import environment
 
 
 class EscapeMenu(scene_base.SceneBase):
@@ -47,6 +47,13 @@ class EscapeMenu(scene_base.SceneBase):
             self.component_dict['resume'].on_click(
                 self.set_open,
                 False
+            )
+            self.component_dict['quit-main'].on_click(
+               self.switch_to_scene,
+               environment.level_obj_list[0]
+            )
+            self.component_dict['quit-desktop'].on_click(
+                self.terminate,
             )
 
     def render(self):
