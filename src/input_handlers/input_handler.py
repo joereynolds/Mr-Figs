@@ -1,12 +1,11 @@
 """
-
+Contains our input handler class.
+This particular input handler is used for all actions
+that aren't player related. i.e. navigating menus
+etc...
 """
 import tile
-import bomb
 import pygame
-import graphics
-import event_handler
-import collision_handler
 
 
 class InputHandler():
@@ -15,14 +14,14 @@ class InputHandler():
     is kept in here. All player input is handler
     via the PlayerInputHandler class"""
 
-
     def __init__(self, player, level, level_base):
         """
-        @self.player = The player on the level
-        @self.level = The TiledMap LevelData for this level
-        @self.c_handler = A CollisionHandler() object
-        @self.level_base = The Base level. This is needed to access functions that aren't available in the TiledMap LevelData object 
-        
+        @self.player     = The player on the level
+        @self.level      = The TiledMap LevelData for this level
+        @self.c_handler  = A CollisionHandler() object
+        @self.level_base = The Base level.
+                           This is needed to access functions that aren't
+                           available in the TiledMap LevelData object
         """
         self.player = player
         self.level = level
