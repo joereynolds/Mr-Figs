@@ -1,7 +1,10 @@
+"""
+Contains all of our graphical elements
+as well as a few effects for our elements.
+"""
 import pygame
 import graphics
 import environment
-from constants import *
 
    
 def enlarge(self, speed):
