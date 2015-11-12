@@ -1,12 +1,19 @@
-import main
+"""
+This module contains a mock player. It is
+the mock players job to play the game
+over and over discovering any bugs. The mock player
+follows a series of predefined movements by me
+"""
+from game import Game
 import pygame
 import environment
 
-#start the game
-mock_game = main.Game(60)
-mock_game.run(environment.level_obj_list[0])
+scenes = {
+    'start-menu' : environment.level_obj_list[0],
+    'level-1' : environment.level_obj_list[1]
+} 
 
-#click the start button
-start_menu = environment.level_obj_list[0]
-print('####################')
-print(start_menu.component_dict)
+#need to look into this
+mocker = Game(60)
+mocker.run_mock(scenes['start-menu'])
+scenes['start-menu'].switch_to_scene(scenes['level-1'])
