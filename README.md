@@ -6,6 +6,9 @@ The player must blast their way through various puzzles to reach the end goal.
 
 ![alt text](figDemo.gif)
 
+####Status
+
+The game is currently in a playable state but far from complete.
 ####Requirements
 
 - Python 3.4 
