@@ -49,8 +49,8 @@ class EscapeMenu(scene_base.SceneBase):
                 False
             )
             self.component_dict['quit-main'].on_click(
-               self.switch_to_scene,
-               environment.level_obj_list[0]
+                self.switch_to_scene,
+                environment.level_obj_list[0]
             )
             self.component_dict['quit-desktop'].on_click(
                 self.terminate,

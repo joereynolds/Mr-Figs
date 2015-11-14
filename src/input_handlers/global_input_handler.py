@@ -21,10 +21,17 @@ class GlobalInputHandler():
         """Processes input for everything. Note that
         in certain cases we are only processing input if a key has
         been pressed. No need to process something unless needed"""
-        for event in pygame.event.get():
-            self.e_handler.handle_events(event)
-            self.level.escape_menu.process_input(event)
-            if event.type == pygame.KEYDOWN:
-                self.player_input_handler.process_input(event)
-                self.level_input_handler.process_input(event)
-
+        if self.level.escape_menu.is_open:
+            for event in pygame.event.get():
+                self.level.escape_menu.process_input(event)
+        if not self.level.escape_menu.is_open:
+            for event in pygame.event.get():
+                self.e_handler.handle_events(event)
+                self.level.escape_menu.process_input(event)
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    pass
+                if event.type == pygame.KEYDOWN:
+                    self.player_input_handler.process_input(event)
+                    self.level_input_handler.process_input(event)

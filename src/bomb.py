@@ -18,10 +18,6 @@ class Bomb(entity.Entity):
         self.level = level
         self.particles = pygame.sprite.Group()
         self.images = [sprite for sprite in graphics.sprites['bomb']['sprites']]
-        
-    def __debug(self):
-        print(self.lifespan)
-        print(type(self.lifespan))
 
     def blow_up(self):
         """Destroys our bomb and then all of its particles associated with it.

@@ -3,14 +3,17 @@ import graphics
 import pygame
 
 
-"""The tile class represents any tile in the game background or foreground.
-It extends the entity class to add collision mechanics and various other bits"""
 class Tile(entity.Entity):
+    """The tile class represents any tile in the game background,
+        or foreground.
+        It extends the entity class
+        to add collision mechanics and various other bits"""
 
     def __init__(self, x, y, width, height, solid, destructable, image=None):
         entity.Entity.__init__(self, x, y, width, height, image)
-        self.solid = bool(solid) 
-        self.destructable = destructable 
+        self.solid = bool(solid)
+        self.destructable = destructable
+
 
 class FinishTile(Tile):
     def __init__(self, x, y, width, height, solid, destructable, image=None):
@@ -20,15 +23,18 @@ class FinishTile(Tile):
 class Stateful(Tile):
     """The stateful class is a tile that can be either on or off. 
        It's a binary state. 
-       It usually links to the Triggerable class so that it can affect (trigger) an effect.
-       @self.state = The starting state of the class
-       @self.images = an array of pygame surfaces
-       @self.triggers = The numeric id of the Triggerable if there is one to be triggered"""
+       It usually links to the Triggerable class
+       so that it can affect (trigger) an effect.
+
+       @self.state    = The starting state of the class
+       @self.images   = an array of pygame surfaces
+       @self.triggers = The numeric id of the Triggerable 
+                        if there is one to be triggered"""
     def __init__(self, x, y, width, height, solid, destructable, state, image, triggers=0):
         Tile.__init__(self, x, y, width, height, solid, destructable, image)
         self.state = state
         self.images = [sprite for sprite in graphics.sprites['switch']['sprites']]
-        self.triggers = triggers 
+        self.triggers = triggers
    
     def update(self):
         self.change_state()
@@ -60,13 +66,12 @@ class Triggerable(Tile):
 
     def __init__(self,x, y, width, height, solid, destructable, stateful, image, id=0):
         Tile.__init__(self, x, y, width, height, solid, destructable, image)
-        self.stateful = stateful 
-        self.id = id 
+        self.stateful = stateful
+        self.id = id
         self.images = [sprite for sprite in graphics.sprites['laser']['sprites']]
 
     def trigger(self):
         """To be called when our stateful tile is 'on'"""
-        print('laser gate :my state has changed')
         if self.stateful.state == 1:
             self.solid = False
             self.image = self.images[0]
@@ -76,5 +81,3 @@ class Triggerable(Tile):
 
     def update(self):
         self.trigger()
-
-

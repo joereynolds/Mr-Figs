@@ -28,7 +28,6 @@ class SceneBase():
         """Goes to the next scene. Note that SceneBase is
         sort of similar to a linked list in implementation.
         It is a linked list of scenes"""
-        print('switching')
         self.next = next_scene
         next_scene.next = next_scene
 

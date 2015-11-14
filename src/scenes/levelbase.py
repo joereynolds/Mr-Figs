@@ -46,8 +46,6 @@ class LevelBase(scene_base.SceneBase):
         self.renderer = renderers.LevelBaseRenderer(self)
         self.g_renderer = grenderers.GlobalRenderer(self)
 
-        self.clock = pygame.time.Clock()
-
     def check_player_hasnt_died_a_horrible_death(self):
         """If the player has been destroyed, restart the level"""
         if not self.player in self.sprites:
@@ -59,8 +57,8 @@ class LevelBase(scene_base.SceneBase):
         self.gi_handler.process_input()
 
     def update(self):
-        delta = self.clock.tick(60) / 1000.0
-        self.player.update(delta)
+        self.player.update(1) #I added a random value whilst we refactor.
+                              #this number doesn't do anything...yet
         self.check_player_hasnt_died_a_horrible_death()
         self.sprites.add(self.player.bombs)
         self.sprites.move_to_front(self.player)
