@@ -34,10 +34,7 @@ class EscapeMenu(scene_base.SceneBase):
     def toggle(self):
         """Toggles the open state of the escape menu. 
         This is called in the levelbase's input_handler"""
-        if not self.is_open:
-            self.is_open = True
-        else :
-            self.is_open = False 
+        self.is_open = not self.is_open
 
     def process_input(self, event):
         """Processes any input for the escape menu. Note that the iteration
