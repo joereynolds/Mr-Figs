@@ -8,7 +8,6 @@
 - [] Bombs should only update when I move. i.e. I can mash the arrows really quick and only move one tile but the bomb will have counted down multiple steps
 - [] A bomb can destroy multiple blocks that are in a row. This should not work, it should be similar to Bomberman
 - [] Bombs shouldn't pass through solids
-- [] The game should pause when we press 'esc'
 - [] You can survive an explosion if you're standing on the bomb when it goes off. This is probably because no 'explosion particles' are hitting you . To fix this maybe check for collision against the bomb itself when it goes off? 
 - [] the trigger() function for Triggerable objects gets called 4 times perkeypress instead of once.
 
@@ -19,5 +18,11 @@
 
 
 ##Fixed bugs
+
+- [x] The game should pause when we press 'esc'.
+This was fixed by adding a state to GlobalInputHandler. If we're paused we 
+execute a smaller portion of all input instead of the entire input from
+the player. 
+
 - [x] 'X' on the program window doesn't shut the application. 
 Fixed by adding the correct event. if pygame.event == pygame.QUIT : pygame.quit()
