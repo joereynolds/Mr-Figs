@@ -3,7 +3,8 @@
 - [ ] Can't quit to main menu
 - [ ] Game starts at level 3 
 - [ ] level-select menu is linking to the wrong level (possible related to game starting at level 3) 
-- [ ] Bombs don't kill you at the correct point. If you play level-2, When you walk down as your first move, that's meant to immediately kill you, but doesn't. 
+- [ ] Bombs don't kill you at the correct point. If you play level-2, When you walk down as your first move, that's meant to immediately kill you, but doesn't.
+If you look at the blow_up() method that belongs to Bomb, it's very likely related to that
 - [ ] Hitting the stairs should advance you to the next level 
 - [ ] A bomb can destroy multiple blocks that are in a row. This should not work, it should be similar to Bomberman
 - [ ] Bombs shouldn't pass through solids

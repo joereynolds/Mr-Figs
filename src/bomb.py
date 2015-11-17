@@ -1,7 +1,7 @@
-import pygame
 import tile
-import graphics
 import entity
+import pygame
+import graphics
 
 """
 @solid     = Whether the actor can walk through it
@@ -88,6 +88,8 @@ class Bomb(entity.Entity):
                         self.explode()
 
     def animate(self):
+        """Switches the images of our bomb sprite depending
+        on the bomb's lifespan"""
         if self.image == graphics.sprites['bomb']['sprites'][-1]:
             self.image = self.images[int(-self.lifespan)-1]
         else:
