@@ -7,7 +7,7 @@ import graphics
 import environment
 
    
-def enlarge(self, speed):
+def enlarge(self, speed, delta_time):
     """Makes the elements surface larger."""
     speeds = {
         'fast':    10,
@@ -48,6 +48,7 @@ class BaseComponent(pygame.sprite.Sprite):
         self.rect.x = x
         self.rect.y = y
         self.text = TextElement(text=string)
+        self.fade_out()
 
     def render_text(self, position = False):
         """Renders text at the default position of (0,0) or otherwise 

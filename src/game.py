@@ -8,6 +8,7 @@ class Game():
 
         self.done = False
         self.fps = fps
+        self.clock = pygame.time.Clock()
 
     def run(self, scene):
         """Our main function call. inits pygame, starts our fps clock,
@@ -19,13 +20,14 @@ class Game():
         """ 
         pygame.init()
         pygame.mixer.init()
-        clock = pygame.time.Clock()
 
+        delta_time = 0
+        self.clock.tick(self.fps)
         while not self.done:
             scene.process_input()
-            scene.update()
+            scene.update(delta_time)
             scene.render()
             scene = scene.next
             pygame.display.flip()
-            clock.tick(self.fps)
+            delta_time = self.clock.tick(self.fps)/1000.0
         pygame.quit()

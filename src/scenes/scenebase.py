@@ -16,7 +16,7 @@ class SceneBase():
         """Stub for our class that inherit this class"""
         pass
 
-    def update(self):
+    def update(self, delta_time):
         """Stub for our class that inherit this class"""
         pass
 

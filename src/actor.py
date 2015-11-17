@@ -55,6 +55,7 @@ class Actor(entity.Entity):
         self.collision_handler = collision_handler.PlayerCollisionHandler(
             self, self.level        
         ) 
+
     def move(self, delta_time):
         """Checks to see if we've reached the destination given, if we have,
         we can stop moving. Note that we need to use delta-time otherwise we'll get
@@ -73,7 +74,7 @@ class Actor(entity.Entity):
         
         else: 
             if target_x < self.rect.x:
-                self.rect.x -= self.speed
+                self.rect.x -= self.speed 
                 self.moving = True
             elif target_x > self.rect.x:
                 self.speed = interpolate.decelerate(self.rect.x, target_x)

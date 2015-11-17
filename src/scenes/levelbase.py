@@ -56,9 +56,8 @@ class LevelBase(scene_base.SceneBase):
         input handler"""
         self.gi_handler.process_input()
 
-    def update(self):
-        self.player.update(1) #I added a random value whilst we refactor.
-                              #this number doesn't do anything...yet
+    def update(self, delta_time):
+        self.player.update(delta_time)
         self.check_player_hasnt_died_a_horrible_death()
         self.sprites.add(self.player.bombs)
         self.sprites.move_to_front(self.player)
