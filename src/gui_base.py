@@ -36,6 +36,7 @@ def shrink(self):
 
 
 
+
 #New component system attempt
 class BaseComponent(pygame.sprite.Sprite):
 
@@ -48,7 +49,6 @@ class BaseComponent(pygame.sprite.Sprite):
         self.rect.x = x
         self.rect.y = y
         self.text = TextElement(text=string)
-        self.fade_out()
 
     def render_text(self, position = False):
         """Renders text at the default position of (0,0) or otherwise 

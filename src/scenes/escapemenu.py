@@ -46,8 +46,10 @@ class EscapeMenu(scene_base.SceneBase):
                 False
             )
             self.component_dict['quit-main'].on_click(
-                self.switch_to_scene,
-                environment.level_obj_list[0]
+                gui_base.fade_out,
+                self.component_dict['quit-main'].image
+                #self.switch_to_scene,
+                #environment.level_obj_list[0]
             )
             self.component_dict['quit-desktop'].on_click(
                 self.terminate,
@@ -61,3 +63,6 @@ class EscapeMenu(scene_base.SceneBase):
         self.components.draw(self.surface)
         for component in self.components:
             component.render_text()
+
+        gui_base.fade_out(self.component_dict['quit-main'].image)
+
