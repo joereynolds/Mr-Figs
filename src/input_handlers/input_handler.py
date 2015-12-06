@@ -18,7 +18,6 @@ class InputHandler():
         """
         @self.player     = The player on the level
         @self.level      = The TiledMap LevelData for this level
-        @self.c_handler  = A CollisionHandler() object
         @self.level_base = The Base level.
                            This is needed to access functions that aren't
                            available in the TiledMap LevelData object
@@ -40,7 +39,7 @@ class InputHandler():
         don't want to update things when we plant a bomb (press spacebar)"""
         for key in self.keys.keys():
             if event.key != pygame.K_SPACE:
-                for sprite in self.level.data:
+                for sprite in self.level.sprites:
                     if isinstance(sprite, tile.Triggerable):
                         sprite.update()
             if event.key == key:

@@ -25,7 +25,7 @@ class LevelBase(scene_base.SceneBase):
         self.file = file
         self.next_level = next_level
         self.level = level_editor.LevelData(file)
-        self.level_tiles = self.level.data
+        self.level_tiles = self.level.sprites
         self.player = actor.Actor(
             48, 48,
             graphics.trans_width,
@@ -37,15 +37,9 @@ class LevelBase(scene_base.SceneBase):
         self.sprites.add(self.level_tiles, self.player)
         self.escape_menu = escape_menu.EscapeMenu()
 
-        #input handling
-        self.i_handler = input_handler.InputHandler(
-            self.player,
-            self.level,
-            self
-        )
-
         self.gi_handler = g_i_handler.GlobalInputHandler(
             self.player,
+            self.level,
             self
         )
 

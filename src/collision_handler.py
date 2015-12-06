@@ -25,7 +25,7 @@ class PlayerCollisionHandler():
             if pygame.sprite.collide_rect(particle,self.player) and not self.player.moving:
                 pygame.sprite.Sprite.kill(self.player)
                 return True
-            for _tile in self.level.data:
+            for _tile in self.level.sprites:
                 if isinstance(_tile, tile.Stateful):
                     if pygame.sprite.collide_rect(particle, _tile):
                         _tile.update()

@@ -148,7 +148,7 @@ class Actor(entity.Entity):
     def update_bomb_collection(self):
         """Makes sure that not only do we process the bombs that we planted, but also
         the bombs that were already on the level"""
-        for sprite in self.level.data:
+        for sprite in self.level.sprites:
             if isinstance(sprite, bomb.Bomb):
                 self.bombs.add(sprite)
         
