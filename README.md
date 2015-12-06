@@ -6,6 +6,12 @@ The player must blast their way through various puzzles to reach the end goal.
 
 ![alt text](figDemo.gif)
 
+####Installation
+```
+git clone https://github.com/joereynolds/Mr-Figs
+cd mr-figs/src
+python3 run.py
+```
 ####Status
 
 The game is currently in a playable state but far from complete.
