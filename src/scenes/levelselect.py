@@ -14,7 +14,7 @@ class LevelMenu(scene_base.SceneBase):
         self.components = self.reader.components
         self.game_levels = environment.create_level_list()
 
-    def update(self):
+    def update(self, delta_time):
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:

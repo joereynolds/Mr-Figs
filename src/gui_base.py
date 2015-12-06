@@ -61,7 +61,7 @@ class BaseComponent(pygame.sprite.Sprite):
         else: self.text.position = (0,0)
 
         font_object = pygame.font.Font(None, 20)
-        rendered_text = font_object.render(self.text.text,False,((0,255,0)))
+        rendered_text = font_object.render(self.text.text,False, self.text.color)
         self.image.blit(rendered_text, self.text.position)
 
     
@@ -102,10 +102,14 @@ class Clickable(BaseComponent):
 
 class TextElement(pygame.font.Font):
     """Contains all methods and parameters for text.
-    @text = The string you want to display
+    @text = The string of text you want to display
     @size = The size of the font
     @position = The position of the text relative to the surface"""
     def __init__(self, text='Change me', size='12', position=(0,0)):
         self.text = text
         self.size = size
+        self.color = ((0,255,0))
         self.position = position
+
+    def set_color(self, color):
+        self.color = color

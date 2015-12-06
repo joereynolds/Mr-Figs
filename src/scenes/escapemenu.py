@@ -46,10 +46,8 @@ class EscapeMenu(scene_base.SceneBase):
                 False
             )
             self.component_dict['quit-main'].on_click(
-                gui_base.fade_out,
-                self.component_dict['quit-main'].image
-                #self.switch_to_scene,
-                #environment.level_obj_list[0]
+                self.switch_to_scene,
+                environment.level_obj_list[0]
             )
             self.component_dict['quit-desktop'].on_click(
                 self.terminate,
@@ -61,8 +59,19 @@ class EscapeMenu(scene_base.SceneBase):
         and render any text on components"""
         self.component_dict['overlay'].image.fill((255, 0, 0, 100))
         self.components.draw(self.surface)
+
         for component in self.components:
             component.render_text()
 
-        gui_base.fade_out(self.component_dict['quit-main'].image)
-
+            if isinstance(component, gui_base.Clickable):
+                #NOTE change hover so that we don't have to call 'off hover'.
+                #we need to revert back to its previous state when we're
+                #no longer hovering
+                component.on_hover(
+                    component.text.set_color,
+                    (255, 0, 0)
+                )
+                component.off_hover(
+                    component.text.set_color,
+                    (0, 255, 0)
+                )
