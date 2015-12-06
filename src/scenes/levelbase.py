@@ -14,7 +14,13 @@ import input_handlers.global_input_handler as g_i_handler
 
 class LevelBase(scene_base.SceneBase):
 
-    def __init__(self,file,next_level):
+    def __init__(self, file, next_level):
+        """
+        @file = The .tmx level file
+        @next_level = A reference to the next level
+        @level = A TMXMap object of the level (I think)
+        @level_tiles = A sprite group of all tiles on the level
+        """
         scene_base.SceneBase.__init__(self)
         self.file = file
         self.next_level = next_level
@@ -37,6 +43,7 @@ class LevelBase(scene_base.SceneBase):
             self.level,
             self
         )
+
         self.gi_handler = g_i_handler.GlobalInputHandler(
             self.player,
             self

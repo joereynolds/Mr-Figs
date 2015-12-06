@@ -7,6 +7,7 @@ sprite_width = 16
 sprite_height = 16
 spritesheet = pygame.image.load(config.spritesheet_location)
 
+#scaled width and height
 trans_width = 48
 trans_height = 48
 
@@ -19,34 +20,6 @@ def subsurf(grid_pos):
     surface = spritesheet.subsurface(grid_pos[0], grid_pos[1], sprite_width, sprite_height) 
     return pygame.transform.scale(surface, (trans_width, trans_height)) 
 
-def interpolate_images(image_from, image_to):
-    """Creates an image that is the result of an interpolation between
-    @image_from and @image_to	
-    @image_from = A pygame surface
-    @image_to = A pygame surface"""
-
-    result = pygame.Surface((image_from.get_width(), image_from.get_height())).convert() 
-
-    for y in range(image_from.get_height()):
-        for x in range(image_from.get_width()):
-            image_from.get_at((x,y))
-            image_to.get_at((x,y))
-            result.set_at((x,y),(255,255,0))
-            #get an intermediate value from these 2 values
-    pygame.image.save(result,'bl.png')
-    
-
-"""
-
-Note that you can't check membership in a tuple if there's only one element (wtf?)
-
-So this:
-    if (2,2) in ((2,2))
-Doesn't work.
-But
-    if (2,2) in ((2,2),)
-Does...
-"""
 
 """A dictionary of sprites and their properties
     coords = Their location on the spritesheet

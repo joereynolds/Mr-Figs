@@ -1,9 +1,9 @@
-import pygame
-import pytmx
 import bomb
 import tile
-import graphics
 import actor
+import pytmx
+import pygame
+import graphics
 
 
 class LevelData():
@@ -48,42 +48,15 @@ class LevelData():
         x = x * self.tile_spacing
         y = y * self.tile_spacing
         if sprite['type'] == 'tile':
-           _tile = tile.Tile(
-               x,
-               y, 
-               self.tile_spacing, 
-               self.tile_spacing, 
-               solid=sprite['solid'], 
-               destructable=sprite['destructable'],
-               image=surface
-           )
-
+            _tile = self._create_standard_tile(x, y, sprite['solid'], sprite['destructable'], surface)
         elif sprite['type'] == 'actor':
            _tile = self._create_player_tile(surface, x, y)
         elif sprite['type'] == 'bomb':
            _tile = self._create_bomb_tile(sprite['lifespan'], surface, x, y)
         elif sprite['type'] == 'stateful':
-            _tile = tile.Stateful(x,
-                                  y,
-                                  self.tile_spacing,
-                                  self.tile_spacing,
-                                  solid=sprite['solid'],
-                                  destructable=sprite['destructable'],
-                                  state=0,
-                                  image=surface,
-                                  triggers=sprite['triggers'])
+            _tile = self._create_stateful_tile(x, y, sprite['solid'], sprite['destructable'], surface, sprite['triggers'] )
         elif sprite['type'] == 'triggerable':
-            _tile = tile.Triggerable(
-                x,
-                y,
-                self.tile_spacing,
-                self.tile_spacing,
-                solid=sprite['solid'],
-                destructable=sprite['destructable'],
-                stateful='pass',
-                image=surface,
-                id=sprite['id']
-            )
+            _tile = self._create_triggerable_tile(x, y, sprite['solid'], sprite['destructable'],'pass', surface, sprite['id'])
         return _tile
 
     def link_doors_and_switches(self):
@@ -96,21 +69,55 @@ class LevelData():
                         if state.triggers == trigger.id:
                             trigger.stateful = state
 
-    def _create_bomb_tile(self, lifespan, surface, x, y):
-        return bomb.Bomb(
+
+    def _create_standard_tile(self, x, y, solid, destructable, surface):
+        return tile.Tile(
+           x, y, 
+           self.tile_spacing, 
+           self.tile_spacing, 
+           solid, 
+           destructable,
+           surface
+       )
+
+    def _create_stateful_tile(self, x, y, solid, destructable, surface, triggers):
+       return tile.Stateful(
+          x, y,
+          self.tile_spacing,
+          self.tile_spacing,
+          solid,
+          destructable,
+          0,
+          surface,
+          triggers
+       )
+
+    def _create_triggerable_tile(self, x, y, solid, destructable, stateful, surface, id):
+        return tile.Triggerable(
             x,
             y,
+            self.tile_spacing,
+            self.tile_spacing,
+            solid,
+            destructable,
+            stateful,
+            surface,
+            id
+        )
+        
+    def _create_bomb_tile(self, lifespan, surface, x, y):
+        return bomb.Bomb(
+            x, y,
             self.tile_spacing,
             self.tile_spacing,
             'pass',
             lifespan,
-            image=surface
+            image = surface
         ) 
 
     def _create_player_tile(self, surface, x, y):
         return actor.Actor(
-            x,
-            y,
+            x, y,
             self.tile_spacing,
             self.tile_spacing,
             'pass',

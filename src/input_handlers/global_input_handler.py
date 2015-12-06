@@ -14,6 +14,8 @@ class GlobalInputHandler():
         self.level = level
         self.player = player
         self.player_input_handler = player.input_handler
+        #NOTE we should be creating the input handler in here,
+        #not getting it passed thrrough by the lelve...WTF
         self.level_input_handler = level.i_handler
         self.e_handler = event_handler.EventHandler(player)
 
