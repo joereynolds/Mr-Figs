@@ -15,22 +15,3 @@
         </component>
     </components>
 </container>
-<!--
-COMMENTS
-
-Note that the 'type attribute is the type of componentElement from gui_base
-that we are creating
-
-
-name is the name of the component should we need to reference it in our scripts
-
-We also have some other attributes in here that are self explanatory
-x
-y
-width
-height
-I am not a fan of these ones.
-
-
-
--->
