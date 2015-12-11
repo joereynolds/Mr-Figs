@@ -35,9 +35,6 @@ def shrink(self):
             self.render_text(self.text.text, self.text.position)  
 
 
-
-
-#New component system attempt
 class BaseComponent(pygame.sprite.Sprite):
 
     def __init__(self, x, y, width, height, string='Default'):
@@ -80,10 +77,7 @@ class Clickable(BaseComponent):
         """Calls a function when ClickableElement is hovered over with
            the mouse cursor"""
         if self.rect.collidepoint(pygame.mouse.get_pos()):
-            #self.hovering = True
             function(*args)
-        #else:
-            #self.hovering = False
 
     def off_hover(self, function, *args):
         if not self.rect.collidepoint(pygame.mouse.get_pos()):
