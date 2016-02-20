@@ -2,7 +2,7 @@ import pygame
 import environment
 
 
-class Game():
+class Game(object):
 
     def __init__(self, fps):
 
@@ -15,9 +15,10 @@ class Game():
         and then begins our main loop
 
         @fps = The fps you desire for the program
-        @scene = The scene from environment.py that you wish to use for processing
+        @scene = The scene from environment.py that you wish to use
+                 for processing
         ,rendering, and updating.
-        """ 
+        """
         pygame.init()
         pygame.mixer.init()
 
