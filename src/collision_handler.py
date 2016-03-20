@@ -1,6 +1,7 @@
 import bomb
 import tile
 import pygame
+import environment
 
 
 class PlayerCollisionHandler():
@@ -10,10 +11,12 @@ class PlayerCollisionHandler():
         self.level = level
 
     def update(self):
-        self.bomb_collisions()       
+        self.finish_tile_collision()
+
+        self.bomb_collisions()
         for bomb in self.player.bombs:
             self.bomb_particle_collision(bomb)
- 
+
     def bomb_collisions(self):
         """This is just a wrapper that calls the function for each bomb"""
         for _bomb in self.player.bombs:
@@ -31,4 +34,8 @@ class PlayerCollisionHandler():
                         _tile.update()
                         return
 
-
+    def finish_tile_collision(self):
+        for _tile in self.level.sprites:
+            if isinstance(_tile, tile.FinishTile):
+                if pygame.sprite.collide_rect(self.player, _tile):
+                    print('go to next level')

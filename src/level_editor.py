@@ -25,21 +25,21 @@ class LevelData():
     def get_map_data(self):
         """Iterates through the TiledMap file adding tiles to
         the self.sprites sprite group
-        @x = 
+        @x =
         @y =
-        @pix_x = 
-        @pix_y = 
+        @pix_x =
+        @pix_y =
         """
         for i, layer in enumerate(self._map):
             for _tile in layer.tiles():
                 x, y = _tile[0], _tile[1]
                 pix_x, pix_y = _tile[2][1][0], _tile[2][1][1]
                 surface = graphics.subsurf((pix_x, pix_y))
-                
+
                 current_tile = self._map.get_tile_properties(x,y,i)
                 if current_tile:
                     obj = self._create_tile(x,y,surface,current_tile)
-                    self.sprites.add(obj, layer=i)  
+                    self.sprites.add(obj, layer=i)
 
     def _create_tile(self, x, y, surface, sprite):
         """Creates tiles passed to it. It finds the type of the
@@ -53,6 +53,9 @@ class LevelData():
            _tile = self._create_player_tile(surface, x, y)
         elif sprite['type'] == 'bomb':
            _tile = self._create_bomb_tile(sprite['lifespan'], surface, x, y)
+        elif sprite['type'] == 'finish_tile':
+            print('creating')
+            _tile = self._create_finish_tile(x, y, sprite['solid'], sprite['destructable'], surface)
         elif sprite['type'] == 'stateful':
             _tile = self._create_stateful_tile(x, y, sprite['solid'], sprite['destructable'], surface, sprite['triggers'] )
         elif sprite['type'] == 'triggerable':
@@ -72,10 +75,10 @@ class LevelData():
 
     def _create_standard_tile(self, x, y, solid, destructable, surface):
         return tile.Tile(
-           x, y, 
-           self.tile_spacing, 
-           self.tile_spacing, 
-           solid, 
+           x, y,
+           self.tile_spacing,
+           self.tile_spacing,
+           solid,
            destructable,
            surface
        )
@@ -104,7 +107,7 @@ class LevelData():
             surface,
             id
         )
-        
+
     def _create_bomb_tile(self, lifespan, surface, x, y):
         return bomb.Bomb(
             x, y,
@@ -113,7 +116,7 @@ class LevelData():
             'pass',
             lifespan,
             image = surface
-        ) 
+        )
 
     def _create_player_tile(self, surface, x, y):
         return actor.Actor(
@@ -122,7 +125,17 @@ class LevelData():
             self.tile_spacing,
             'pass',
             image = surface
-        ) 
+        )
+
+    def _create_finish_tile(self, x, y, solid, destructable, surface):
+        return tile.FinishTile(
+           x, y,
+           self.tile_spacing,
+           self.tile_spacing,
+           solid,
+           destructable,
+           surface
+       )
 
     def give_dynamic_sprites_data(self):
         """Once the map has been generated, go back and give the sprites
@@ -130,7 +143,7 @@ class LevelData():
         for sprite in self.sprites:
             if hasattr(sprite,'level'):
                 sprite.level = self
-    
+
     def get_tile(self,x,y):
         """Returns the tile object at @x and @y"""
         for tile in self.sprites:
@@ -141,7 +154,7 @@ class LevelData():
         """The same as get_tile but gets tiles at x, and y, on
         all layers instead of the first layer it sees to match
         the x and y"""
-        return [tile for tile in self.sprites if tile.rect.x == x and tile.rect.y == y] 
+        return [tile for tile in self.sprites if tile.rect.x == x and tile.rect.y == y]
 
     def get_layer_count(self):
         """Returns the total count of layers.
@@ -167,7 +180,7 @@ class LevelData():
         for sprite in self.sprites:
             if isinstance(sprite, _type):
                 sprites.append(sprite)
-        return sprites 
+        return sprites
 
     def remove_dummy_player(self):
         """Takes the dummy player out of our group"""
@@ -175,7 +188,7 @@ class LevelData():
             if isinstance(tile, actor.Actor):
                 pygame.sprite.Sprite.kill(tile)
 
-    #This function is gross and not needed. It's only used in the actor class and that could easily be a map over all 
+    #This function is gross and not needed. It's only used in the actor class and that could easily be a map over all
     #of the tiles. Do this asap
     def find_solid_tile(self, tiles):
         """Returns true if it finds a solid tile in a list of tiles"""
