@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="75" height="75" tilewidth="16" tileheight="16" nextobjectid="1">
+ <tileset firstgid="1" name="newtiledsheet" tilewidth="16" tileheight="16" tilecount="63" columns="9">
+  <image source="../../data/newtiledsheet.png" width="144" height="112"/>
+  <terraintypes>
+   <terrain name="New Terrain" tile="-1"/>
+  </terraintypes>
+  <tile id="0">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value="true"/>
+    <property name="type" value="tile"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value="true"/>
+    <property name="type" value="tile"/>
+   </properties>
+  </tile>
+  <tile id="5">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="id" value="1"/>
+    <property name="solid" value="true"/>
+    <property name="type" value="triggerable"/>
+   </properties>
+  </tile>
+  <tile id="9">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value="true"/>
+    <property name="type" value="tile"/>
+   </properties>
+  </tile>
+  <tile id="10">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value="true"/>
+    <property name="type" value="tile"/>
+   </properties>
+  </tile>
+  <tile id="18">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value=""/>
+    <property name="type" value="tile"/>
+   </properties>
+  </tile>
+  <tile id="19">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value=""/>
+    <property name="type" value="tile"/>
+   </properties>
+  </tile>
+  <tile id="20">
+   <properties>
+    <property name="destructable" value="true"/>
+    <property name="solid" value="true"/>
+    <property name="type" value="tile"/>
+   </properties>
+  </tile>
+  <tile id="27">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value="true"/>
+    <property name="type" value="tile"/>
+   </properties>
+  </tile>
+  <tile id="28">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value="true"/>
+    <property name="type" value="tile"/>
+   </properties>
+  </tile>
+  <tile id="29">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value="true"/>
+    <property name="type" value="tile"/>
+   </properties>
+  </tile>
+  <tile id="30">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value="true"/>
+    <property name="type" value="tile"/>
+   </properties>
+  </tile>
+  <tile id="31">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value=""/>
+    <property name="type" value="tile"/>
+   </properties>
+  </tile>
+  <tile id="33">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value="true"/>
+    <property name="triggers" value="1"/>
+    <property name="type" value="stateful"/>
+   </properties>
+  </tile>
+  <tile id="54">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value="true"/>
+    <property name="type" value="triggerable"/>
+   </properties>
+  </tile>
+  <tile id="55">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value="true"/>
+    <property name="triggers" value="1"/>
+    <property name="type" value="stateful"/>
+   </properties>
+  </tile>
+  <tile id="58">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value=""/>
+    <property name="type" value="stateful"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="Tile Layer 1" width="75" height="75">
+  <data encoding="base64" compression="zlib">
+   eJzt1rEKg0AQBNBNyqRMG2P+/yujxeJ5csd1SngPBttjGHCniHgUeQct9yWvIs9zn3Np2dUU+33Z2FG9Kxtry67yu/aTu9LVXt2VXbVlR/OSW5XPie+6onJX9OlqnK7G6Wqcrsb1/oNr3O6b3t3+DTdWqbUnNxYAAAAAAAAAAAAAAAAAAAAAAP/qByZUBFY=
+  </data>
+ </layer>
+ <layer name="Tile Layer 2" width="75" height="75">
+  <data encoding="base64" compression="zlib">
+   eJzt1iEOADAIA0DUHkKy/39xnuAZyZ2sqqhoBPCjnC7AerfJ7Kp3pgsAAGv4DQAAAAAAAAAAAAAAAAAAAAAAQPUA4OMAdg==
+  </data>
+ </layer>
+ <layer name="Tile Layer 3" width="75" height="75" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJztwzENAAAIA7CZwL9Vnkngo02aAPDBNAAAAAAAAAAAAAAAAAAAAAAAAAAAdxbKWwAr
+  </data>
+ </layer>
+</map>
