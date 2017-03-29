@@ -5,5 +5,5 @@ def install(package):
 
 if __name__ == '__main__':
     install('wheel')
-    install('pygame-1.9.2a0-cp35-none-win32.whl')
+    install('pygame')
     install('pytmx')
