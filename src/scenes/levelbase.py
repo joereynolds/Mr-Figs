@@ -49,13 +49,6 @@ class LevelBase(scene_base.SceneBase):
         self.renderer = renderers.LevelBaseRenderer(self)
         self.g_renderer = grenderers.GlobalRenderer(self)
 
-        #seems like an easy (albeit feels hacky) way to move all sprites at once?
-        #useful for centering our level on the screen
-        #for sprite in self.sprites:
-        #    sprite.rect.x += 96
-
-
-
     def check_player_hasnt_died_a_horrible_death(self):
         """If the player has been destroyed, restart the level"""
         if not self.player in self.sprites:

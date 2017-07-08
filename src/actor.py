@@ -54,7 +54,7 @@ class Actor(entity.Entity):
         self.moving = False
         self.input_handler = p_i_handler.PlayerInputHandler(self)
         self.collision_handler = collision_handler.PlayerCollisionHandler(
-            self, self.tiled_level        
+            self, self.level
         ) 
 
     def move(self, delta_time):

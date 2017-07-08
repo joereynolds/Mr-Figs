@@ -10,6 +10,15 @@ class PlayerCollisionHandler():
         self.player = player
         self.level = level
 
+    #TODO Move this to the level object
+    def get_next_level(self):
+        """
+        Returns an index from environment.level_obj_list of our next level
+        """
+
+        next_level_index = environment.level_obj_list.index(self.level.next_level)
+        return next_level_index
+
     def update(self):
         self.finish_tile_collision()
 
@@ -28,14 +37,18 @@ class PlayerCollisionHandler():
             if pygame.sprite.collide_rect(particle,self.player) and not self.player.moving:
                 pygame.sprite.Sprite.kill(self.player)
                 return True
-            for _tile in self.level.sprites:
+            for _tile in self.level.tiled_level.sprites:
                 if isinstance(_tile, tile.Stateful):
                     if pygame.sprite.collide_rect(particle, _tile):
                         _tile.update()
                         return
 
     def finish_tile_collision(self):
-        for _tile in self.level.sprites:
+
+        for _tile in self.level.tiled_level.sprites:
             if isinstance(_tile, tile.FinishTile):
                 if self.player.rect.x == _tile.rect.x and self.player.rect.y == _tile.rect.y:
-                    print('next level')
+                    print(self.level.file)
+                    self.level.switch_to_scene(environment.level_obj_list[
+                        self.get_next_level()
+                        ])
