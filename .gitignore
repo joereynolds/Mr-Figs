@@ -62,3 +62,9 @@ Thumbs.db
 #Vim
 *.swp
 *.py~
+
+#tag files
+tags
+GTAGS
+GRTAGS
+GPATH
