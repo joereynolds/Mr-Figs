@@ -37,5 +37,5 @@ class PlayerCollisionHandler():
     def finish_tile_collision(self):
         for _tile in self.level.sprites:
             if isinstance(_tile, tile.FinishTile):
-                if pygame.sprite.collide_rect(self.player, _tile):
-                    print('go to next level')
+                if self.player.rect.x == _tile.rect.x and self.player.rect.y == _tile.rect.y:
+                    print('next level')

@@ -27,21 +27,21 @@ class LevelBase(scene_base.SceneBase):
         scene_base.SceneBase.__init__(self)
         self.file = file
         self.next_level = next_level
-        self.level = level_editor.LevelData(file)
+        self.tiled_level = level_editor.LevelData(file)
         self.player = actor.Actor(
             48, 48,
             graphics.trans_width,
             graphics.trans_height,
-            self.level,
+            self,
             graphics.sprites['player']['sprites'][0]
         )
         self.sprites = pygame.sprite.LayeredUpdates()
-        self.sprites.add(self.level.sprites, self.player)
+        self.sprites.add(self.tiled_level.sprites, self.player)
         self.escape_menu = escape_menu.EscapeMenu()
 
         self.gi_handler = g_i_handler.GlobalInputHandler(
             self.player,
-            self.level,
+            self.tiled_level,
             self
         )
 

@@ -2,13 +2,13 @@ import bomb
 import math
 import tile
 import entity
+
 import pygame
 import colours
 import graphics
 import interpolate
 import collision_handler
 import input_handlers.player_input_handler as p_i_handler
-
 
 class Actor(entity.Entity):
     """
@@ -21,7 +21,7 @@ class Actor(entity.Entity):
 
     @self.distance    = How far the Actor moves in one turn
 
-    @self.level       = A level object. This contains
+    @self.tiled_level       = A level object. This contains
                         all tile information for that level and helps
                         make Actor aware of its surroundings.
 
@@ -46,6 +46,7 @@ class Actor(entity.Entity):
         self.speed = 6
         self.distance = graphics.trans_width
         self.level = level
+        self.tiled_level = self.level.tiled_level
         self.bombs = pygame.sprite.LayeredUpdates()
         self.move_stack = []
         self.destination = [self.rect.x,self.rect.y]
@@ -53,7 +54,7 @@ class Actor(entity.Entity):
         self.moving = False
         self.input_handler = p_i_handler.PlayerInputHandler(self)
         self.collision_handler = collision_handler.PlayerCollisionHandler(
-            self, self.level        
+            self, self.tiled_level        
         ) 
 
     def move(self, delta_time):
@@ -67,8 +68,8 @@ class Actor(entity.Entity):
 
         #Stop moving if the next tile we're going to is a solid
         if (self.rect.x == target_x and self.rect.y == target_y) \
-            or self.level.find_solid_tile(
-                self.level.get_tile_all_layers(target_x, target_y)
+            or self.tiled_level.find_solid_tile(
+                self.tiled_level.get_tile_all_layers(target_x, target_y)
             ) : 
             return 
         
@@ -140,7 +141,7 @@ class Actor(entity.Entity):
             self.rect.y,
             graphics.trans_width,
             graphics.trans_height,
-            self.level,
+            self.tiled_level,
             5,
             graphics.sprites['bomb']['sprites'][0]
         ))
@@ -148,7 +149,7 @@ class Actor(entity.Entity):
     def update_bomb_collection(self):
         """Makes sure that not only do we process the bombs that we planted, but also
         the bombs that were already on the level"""
-        for sprite in self.level.sprites:
+        for sprite in self.tiled_level.sprites:
             if isinstance(sprite, bomb.Bomb):
                 self.bombs.add(sprite)
         
