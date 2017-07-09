@@ -8,6 +8,8 @@ def create_level_list():
     """Returns an array of LevelBase's, each one
     created from a level in our levels directory"""
     levels = os.listdir(config.level_location)
+    levels.sort()
+
     level_list = [
         level_base.LevelBase(config.level_location + level, 'NoNextScene')
         for level in levels

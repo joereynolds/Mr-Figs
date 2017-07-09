@@ -8,8 +8,6 @@
 #Bugs
 
 - TODO Can't quit to main menu
-- TODO Game starts at level 3 
-- TODO level-select menu is linking to the wrong level (possible related to game starting at level 3) 
 - TODO Bombs don't kill you at the correct point. If you play level-2, When you walk down as your first move, that's meant to immediately kill you, but doesn't.
 If you look at the blow_up() method that belongs to Bomb, it's very likely related to that
 - TODO A bomb can destroy multiple blocks that are in a row. This should not work, it should be similar to Bomberman
