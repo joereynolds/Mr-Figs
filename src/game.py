@@ -21,6 +21,7 @@ class Game(object):
         """
         pygame.init()
         pygame.mixer.init()
+        pygame.display.set_caption('Mr Figs')
 
         delta_time = 0
         self.clock.tick(self.fps)
@@ -30,5 +31,5 @@ class Game(object):
             scene.render()
             scene = scene.next
             pygame.display.flip()
-            delta_time = self.clock.tick(self.fps)/1000.0
+            delta_time = self.clock.tick(self.fps) / 1000.0
         pygame.quit()
