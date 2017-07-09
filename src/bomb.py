@@ -11,7 +11,7 @@ import graphics
 """
 class Bomb(entity.Entity):
 
-    def __init__(self, x, y, width, height, level,lifespan=5, image=None):
+    def __init__(self, x, y, width, height, level, lifespan=5, image=None):
         entity.Entity.__init__(self, x, y, width, height, image)
         self.solid = False 
         self.lifespan = int(lifespan)
@@ -76,6 +76,7 @@ class Bomb(entity.Entity):
         except AttributeError:
             print('Attribute Error : Tried to place bomb on non-existent block')
     
+    #TODO this should be in the collision handler
     def bomb_collisions(self, bomb_sprite_group):
         """Checks to see if our bomb has touched another bombs explosion. If it has,
         it also explodes"""

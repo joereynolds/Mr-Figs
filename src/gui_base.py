@@ -6,6 +6,7 @@ import pygame
 import graphics
 import environment
 
+#TODO each class should have its own file.
    
 def enlarge(self, speed, delta_time):
     """Makes the elements surface larger."""
@@ -85,7 +86,7 @@ class Clickable(BaseComponent):
 
     def highlight(self):
         """Highlights VisualElement"""
-        highlighted =  [x+30 for x in self.colour if x < 225]
+        highlighted = [x + 30 for x in self.colour if x < 225]
         self.image.fill(highlighted)
 
     def lowlight(self):

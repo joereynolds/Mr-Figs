@@ -23,6 +23,9 @@ class EscapeMenu(scene_base.SceneBase):
         self.components = self.reader.components
         self.is_open = False
 
+    def is_menu_open(self):
+        return self.is_open
+
     def set_open(self, boolean):
         """Sets the open status of the escape
         menu to a value. This is useful for our click
@@ -32,7 +35,7 @@ class EscapeMenu(scene_base.SceneBase):
         self.is_open = boolean
 
     def toggle(self):
-        """Toggles the open state of the escape menu. 
+        """Toggles the open state of the escape menu.
         This is called in the levelbase's input_handler"""
         self.is_open = not self.is_open
 
@@ -40,6 +43,7 @@ class EscapeMenu(scene_base.SceneBase):
         """Processes any input for the escape menu. Note that the iteration
         through all of the events is handled in the GlobalInputHandler so that
         we're only iterating through once"""
+
         if event.type == pygame.MOUSEBUTTONDOWN:
             self.component_dict['resume'].on_click(
                 self.set_open,
@@ -47,7 +51,7 @@ class EscapeMenu(scene_base.SceneBase):
             )
             self.component_dict['quit-main'].on_click(
                 self.switch_to_scene,
-                environment.level_obj_list[0]
+                environment.level_obj_list[1]
             )
             self.component_dict['quit-desktop'].on_click(
                 self.terminate,
@@ -64,7 +68,7 @@ class EscapeMenu(scene_base.SceneBase):
             component.render_text()
 
             if isinstance(component, gui_base.Clickable):
-                #NOTE change hover so that we don't have to call 'off hover'.
+                #TODO change hover so that we don't have to call 'off hover'.
                 #we need to revert back to its previous state when we're
                 #no longer hovering
                 component.on_hover(

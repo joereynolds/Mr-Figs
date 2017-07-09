@@ -38,11 +38,11 @@ class InputHandler():
         to update everything in the game. The reason being is that we
         don't want to update things when we plant a bomb (press spacebar)"""
         for key in self.keys.keys():
-            if event.key != pygame.K_SPACE:
+            if event.key == key:
+                self.keys[key]()
+            elif event.key != pygame.K_SPACE:
                 for sprite in self.level.sprites:
                     if isinstance(sprite, tile.Triggerable):
                         sprite.update()
-            if event.key == key:
-                self.keys[key]()
 
 

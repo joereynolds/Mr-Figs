@@ -1,10 +1,10 @@
-import bomb
+
 import math
-import tile
+
+import bomb
 import entity
 
 import pygame
-import colours
 import graphics
 import interpolate
 import collision_handler
@@ -49,7 +49,7 @@ class Actor(entity.Entity):
         self.tiled_level = self.level.tiled_level
         self.bombs = pygame.sprite.LayeredUpdates()
         self.move_stack = []
-        self.destination = [self.rect.x,self.rect.y]
+        self.destination = [self.rect.x, self.rect.y]
         self.valid_destinations = [graphics.trans_width * x for x in range(-100, 100)]
         self.moving = False
         self.input_handler = p_i_handler.PlayerInputHandler(self)
@@ -62,7 +62,6 @@ class Actor(entity.Entity):
         we can stop moving. Note that we need to use delta-time otherwise we'll get
         differing results from pc to pc. Also without delta time we can't use fancy
         schmancy interpolation effects"""
-        dt = delta_time
         target_x = self.destination[0]
         target_y = self.destination[1]
 
