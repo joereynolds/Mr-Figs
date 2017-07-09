@@ -1,5 +1,4 @@
 import pygame
-import environment
 
 
 class Game(object):
