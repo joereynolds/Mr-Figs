@@ -1,14 +1,11 @@
 import actor
 import pygame
-import colours
 import graphics
 import level_editor
-import collision_handler 
 import scenes.scenebase as scene_base
 import scenes.escapemenu as escape_menu
 import renderers.global_renderer as grenderers
 import renderers.level_base_renderer as renderers
-import input_handlers.input_handler as input_handler
 import input_handlers.global_input_handler as g_i_handler
 
 
@@ -51,7 +48,7 @@ class LevelBase(scene_base.SceneBase):
 
     def check_player_hasnt_died_a_horrible_death(self):
         """If the player has been destroyed, restart the level"""
-        if not self.player in self.sprites:
+        if self.player not in self.sprites:
             self.reset()
 
     def process_input(self):
