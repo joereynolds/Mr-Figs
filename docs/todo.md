@@ -5,10 +5,10 @@
 - Add TODO annotations all over the code
 - Center the level. At the moment the entire scene is in the top left corner.  This looks shit
 - The window needs a title, probably in the format of 'MR Figs - CURRENT LEVEL TITLE'
+- There's no way for the game to save your progress'
 
 #Bugs
 - TODO Pressing 'X' only quits the game in the actual game, not the menus
-- TODO Can't quit to main menu
 - TODO Bombs don't kill you at the correct point. If you play level-2, When you walk down as your first move, that's meant to immediately kill you, but doesn't.
 If you look at the blow_up() method that belongs to Bomb, it's very likely related to that
 - TODO A bomb can destroy multiple blocks that are in a row. This should not work, it should be similar to Bomberman

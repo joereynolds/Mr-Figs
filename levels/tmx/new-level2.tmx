@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" nextobjectid="1">
- <tileset firstgid="1" name="newtiledsheet" tilewidth="16" tileheight="16" tilecount="63">
+<map version="1.0" tiledversion="1.0.2" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" nextobjectid="1">
+ <tileset firstgid="1" name="newtiledsheet" tilewidth="16" tileheight="16" tilecount="63" columns="9">
   <image source="../../data/newtiledsheet.png" trans="ff00ff" width="144" height="112"/>
   <tile id="0">
    <properties>
@@ -135,14 +135,14 @@
    <properties>
     <property name="destructable" value=""/>
     <property name="solid" value=""/>
-    <property name="type" value="tile"/>
+    <property name="type" value="finish_tile"/>
    </properties>
   </tile>
   <tile id="32">
    <properties>
     <property name="destructable" value=""/>
     <property name="solid" value=""/>
-    <property name="type" value="tile"/>
+    <property name="type" value="finish_tile"/>
    </properties>
   </tile>
   <tile id="36">
