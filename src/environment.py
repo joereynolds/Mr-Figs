@@ -1,8 +1,11 @@
+#TODO Call this file scenes and place in the
+#scenes directory?
 import os
 import config
 import scenes.levelbase as level_base
 import scenes.startmenu as start_menu
 import scenes.levelselect as level_select
+import scenes.escapemenu_no_overlay as escape_menu
 
 def create_level_list():
     """Returns an array of LevelBase's, each one
@@ -10,6 +13,8 @@ def create_level_list():
     levels = os.listdir(config.level_location)
     levels.sort()
 
+    #TODO Turn this into a dictionary so we can reference
+    #scenes by name
     level_list = [
         level_base.LevelBase(config.level_location + level, 'NoNextScene')
         for level in levels
@@ -33,9 +38,11 @@ def link_levels(level_list):
         else:
             level_list[i].next_level = level_list[i+1]
 
+
 #Create our default level list and forcibly add our
 #level select menu and start menu to it.
 level_obj_list = create_level_list()
 level_obj_list.insert(0, start_menu.StartMenu())
 level_obj_list.insert(1, level_select.LevelMenu())
+level_obj_list.insert(2, escape_menu.EscapeMenuNoOverlay())
 link_levels(level_obj_list)

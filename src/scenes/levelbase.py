@@ -6,7 +6,7 @@ import scenes.scenebase as scene_base
 import scenes.escapemenu as escape_menu
 import renderers.global_renderer as grenderers
 import renderers.level_base_renderer as renderers
-import input_handlers.global_input_handler as g_i_handler
+import input_handlers.global_input_handler as input_handler
 
 
 class LevelBase(scene_base.SceneBase):
@@ -34,9 +34,9 @@ class LevelBase(scene_base.SceneBase):
         )
         self.sprites = pygame.sprite.LayeredUpdates()
         self.sprites.add(self.tiled_level.sprites, self.player)
-        self.escape_menu = escape_menu.EscapeMenu()
+        # self.escape_menu = escape_menu.EscapeMenu()
 
-        self.gi_handler = g_i_handler.GlobalInputHandler(
+        self.gi_handler = input_handler.GlobalInputHandler(
             self.player,
             self.tiled_level,
             self

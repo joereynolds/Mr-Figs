@@ -10,8 +10,9 @@ See the XML file for how to implement a new layout
 
 import pygame
 import config
-import gui_base
 import xml.etree.ElementTree as etree 
+import gui_base #This actually imported, don't trust the linter
+
 
 class ContainerReader():
     """Takes an XML file for a layout and returns

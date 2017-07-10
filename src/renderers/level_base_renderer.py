@@ -12,7 +12,7 @@ class LevelBaseRenderer():
         self.level_base.surface.fill(self.colour)
         self.level_base.sprites.draw(self.level_base.surface)
 
-        if self.level_base.escape_menu.is_open:
-            self.level_base.escape_menu.render()
+        # if self.level_base.escape_menu.is_open:
+        #     self.level_base.escape_menu.render()
 
 

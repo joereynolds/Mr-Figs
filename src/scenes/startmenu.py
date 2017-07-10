@@ -5,7 +5,6 @@ import environment
 import container_reader
 import scenes.scenebase as scene_base
 
-
 class StartMenu(scene_base.SceneBase):
     """Initial start menu at the start of the game"""
 
@@ -14,6 +13,7 @@ class StartMenu(scene_base.SceneBase):
         self.reader = container_reader.ContainerReader('start.xml')
         self.component_dict = self.reader.component_dict
         self.components = self.reader.components
+
 
     def process_input(self):
         """Handles the scenes to go to when we

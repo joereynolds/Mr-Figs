@@ -9,6 +9,8 @@ class GlobalInputHandler():
     so that we don't get any conflicts between key presses and
     we keep code clean"""
 
+    #TODO instantiation here could be simpler, I think
+    #level_base is already contained inside level
     def __init__(self, player, level, level_base):
         """
         
