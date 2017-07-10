@@ -1,6 +1,5 @@
 import pygame
 import graphics
-import gui_base
 import environment
 import container_reader
 import scenes.scenebase as scene_base

@@ -1,10 +1,10 @@
 import pygame
-import gui_base
 import graphics
 import environment
 import container_reader
 import scenes.scenebase as scene_base
 import input_handlers.escape_menu_input_handler as input_handler
+import gui.clickable as clickable
 
 class EscapeMenuNoOverlay(scene_base.SceneBase):
 
@@ -23,7 +23,7 @@ class EscapeMenuNoOverlay(scene_base.SceneBase):
             #TODO should just be a call to render() that does everything for us
             component.render_text()
 
-            if isinstance(component, gui_base.Clickable):
+            if isinstance(component, clickable.Clickable):
                 #TODO change hover so that we don't have to call 'off hover'.
                 #we need to revert back to its previous state when we're
                 #no longer hovering
