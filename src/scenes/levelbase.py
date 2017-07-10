@@ -36,7 +36,6 @@ class LevelBase(scene_base.SceneBase):
 
         self.gi_handler = input_handler.GlobalInputHandler(
             self.player,
-            self.tiled_level,
             self
         )
 

@@ -9,20 +9,18 @@ class GlobalInputHandler():
     so that we don't get any conflicts between key presses and
     we keep code clean"""
 
-    #TODO instantiation here could be simpler, I think
-    #level_base is already contained inside level
-    def __init__(self, player, level, level_base):
+    def __init__(self, player, level):
         """
-        
+        @player = The Actor object
+        @level = The level base object
         """
         self.level = level
-        self.level_base = level_base
+        self.tiled_level = self.level.tiled_level
         self.player = player
         self.player_input_handler = player.input_handler
         self.level_input_handler = input_handler.InputHandler(
             self.player,
-            self.level,
-            self.level_base
+            self.level
         )
         self.e_handler = event_handler.EventHandler(player)
 
