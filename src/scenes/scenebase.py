@@ -5,16 +5,27 @@ import graphics
 class SceneBase():
     """The base class for all scenes to inherit from."""
 
-    def __init__(self):
+    def __init__(self, input_handler):
         """self.next is a sort of 'pointer' to the next level.
         See the environment file for how levels are linked together.
-        Essentially we have a linked list of levels."""
+        Essentially we have a linked list of levels.
+        
+        @input_handler = The input handler for processing input.
+                         Each scene has a separate input handler,
+                         this allows us to define different key
+                         bindings per screen.
+                         
+                         All levels have 1 input handler
+                         The start menu has its own input handler
+                         The escape menu has its own input handler
+                         """
         self.next = self
         self.surface = graphics.SCREEN
+        self.input_handler = input_handler
 
     def process_input(self):
         """Stub for our class that inherit this class"""
-        pass
+        self.input_handler.process_input()
 
     def update(self, delta_time):
         """Stub for our class that inherit this class"""

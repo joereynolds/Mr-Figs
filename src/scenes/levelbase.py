@@ -20,10 +20,8 @@ class LevelBase(scene_base.SceneBase):
         @level = A TMXMap object of the level (I think)
         @level_tiles = A sprite group of all tiles on the level
         """
-        scene_base.SceneBase.__init__(self)
-        self.file = file
-        self.next_level = next_level
         self.tiled_level = level_editor.LevelData(file)
+
         self.player = actor.Actor(
             48, 48,
             graphics.trans_width,
@@ -31,13 +29,19 @@ class LevelBase(scene_base.SceneBase):
             self,
             graphics.sprites['player']['sprites'][0]
         )
+
+        scene_base.SceneBase.__init__(
+            self,
+            input_handler.GlobalInputHandler(
+                self.player,
+                self
+            )
+        )
+
+        self.file = file
+        self.next_level = next_level
         self.sprites = pygame.sprite.LayeredUpdates()
         self.sprites.add(self.tiled_level.sprites, self.player)
-
-        self.gi_handler = input_handler.GlobalInputHandler(
-            self.player,
-            self
-        )
 
         #rendering
         self.renderer = renderers.LevelBaseRenderer(self)
@@ -47,11 +51,6 @@ class LevelBase(scene_base.SceneBase):
         """If the player has been destroyed, restart the level"""
         if self.player not in self.sprites:
             self.reset()
-
-    def process_input(self):
-        """Process the input for the level via the global
-        input handler"""
-        self.gi_handler.process_input()
 
     def update(self, delta_time):
         self.check_player_hasnt_died_a_horrible_death()

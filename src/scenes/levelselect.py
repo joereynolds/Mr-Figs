@@ -4,6 +4,7 @@ import graphics
 import environment
 import container_reader
 import scenes.scenebase as scene_base
+import input_handlers.level_select_input_handler as input_handler
 
 class LevelMenu(scene_base.SceneBase):
 
@@ -11,23 +12,16 @@ class LevelMenu(scene_base.SceneBase):
         """
         @levels A dict of our levels that comes from environment.create_level_list
         """
-        scene_base.SceneBase.__init__(self)
+        scene_base.SceneBase.__init__(
+            self,
+            input_handler.LevelSelectInput(
+                self
+            )
+        )
         self.reader = container_reader.ContainerReader('level_select.xml') 
         self.component_dict = self.reader.component_dict
         self.components = self.reader.components
         self.game_levels = levels
-
-    def process_input(self):
-        for event in pygame.event.get():
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_ESCAPE:
-                    self.switch_to_scene(environment.level_obj_list['start-menu'])
-            for i, level in enumerate(self.components):
-                if event.type == pygame.MOUSEBUTTONDOWN:
-                    level.on_click(
-                        self.switch_to_scene, 
-                        self.game_levels['level-' + str(i)]
-                    )
 
     def render(self):
         """Renders a button for each level that is in the game"""

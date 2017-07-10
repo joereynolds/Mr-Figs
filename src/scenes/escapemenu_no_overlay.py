@@ -4,15 +4,15 @@ import graphics
 import environment
 import container_reader
 import scenes.scenebase as scene_base
+import input_handlers.escape_menu_input_handler as input_handler
 
 class EscapeMenuNoOverlay(scene_base.SceneBase):
 
     def __init__(self):
-        scene_base.SceneBase.__init__(self)
+        scene_base.SceneBase.__init__(self, input_handler.EscapeMenuInput(self)) 
         self.reader = container_reader.ContainerReader('escape_menu_no_overlay.xml') 
         self.component_dict = self.reader.component_dict
         self.components = self.reader.components
-
 
     def process_input(self):
         for event in pygame.event.get():

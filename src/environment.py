@@ -16,7 +16,6 @@ def create_level_list():
     level_dict = {}
     for index, level in enumerate(levels):
         key_name = 'level-' + str(index)
-        print(key_name)
         level_dict[key_name] = level_base.LevelBase(config.level_location + level, 'NoNextScene')
 
     level_dict['start-menu'] = start_menu.StartMenu()
