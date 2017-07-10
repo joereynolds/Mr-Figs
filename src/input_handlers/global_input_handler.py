@@ -15,7 +15,6 @@ class GlobalInputHandler():
         @level = The level base object
         """
         self.level = level
-        self.tiled_level = self.level.tiled_level
         self.player = player
         self.player_input_handler = player.input_handler
         self.level_input_handler = input_handler.InputHandler(

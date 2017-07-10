@@ -36,8 +36,8 @@ class Actor(entity.Entity):
 
     @self.valid_destinations = A list of valid moves that the user can make. 
                                i.e. they can't move 13pixels if they themselves are 48px big. They
-    
-                        
+
+
     """
     def __init__(self, x, y, width, height, level, image=None):
         entity.Entity.__init__(self, x, y, width, height, image)
