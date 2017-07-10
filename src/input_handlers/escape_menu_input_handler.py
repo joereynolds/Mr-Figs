@@ -19,20 +19,22 @@ class EscapeMenuInput():
 
         self.escape_menu = escape_menu
 
-        self.keys = { }
+        self.keys = {
+            pygame.K_r: 'level-1',
+            pygame.K_m: 'start-menu'
+        }
 
-    def process_input(self):
+    def process_input(self, event):
         """Handles the scenes to go to when we
         click on certain clickable components"""
-        for event in pygame.event.get():
+        if event.type == pygame.KEYDOWN:
             for key in self.keys.keys():
                 if event.key == key:
-                    self.level_select_menu.switch_to_scene, environment.level_obj_list['start-menu']
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                self.level_select_menu.component_dict['start-game'].on_click(
-                    self.level_select_menu.switch_to_scene, environment.level_obj_list['start-menu']
-                )
-                self.level_select_menu.component_dict['exit-game'].on_click(self.level_select_menu.terminate)
-                self.level_select_menu.component_dict['level-select'].on_click(
-                    self.level_select_menu.switch_to_scene, environment.level_obj_list['level-select']
-                )
+                    self.escape_menu.switch_to_scene(
+                        environment.level_obj_list[self.keys[key]]
+                    )
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            self.escape_menu.component_dict['resume'].on_click(
+                self.escape_menu.switch_to_scene, environment.level_obj_list['level-1']
+            )
+            self.escape_menu.component_dict['quit-desktop'].on_click(self.escape_menu.terminate)

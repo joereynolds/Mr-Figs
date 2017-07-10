@@ -25,7 +25,8 @@ class SceneBase():
 
     def process_input(self):
         """Stub for our class that inherit this class"""
-        self.input_handler.process_input()
+        for event in pygame.event.get():
+            self.input_handler.process_input(event)
 
     def update(self, delta_time):
         """Stub for our class that inherit this class"""

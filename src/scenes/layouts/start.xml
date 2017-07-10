@@ -2,16 +2,16 @@
 <container>
     <components>
         <component x='350' y='100' width='100' height='50' type="gui_base.Clickable" name="start-game">
-            <text>START GAME</text>
+            <text>[S]TART GAME</text>
         </component>
         <component x='350' y='200' width='100' height='50' type="gui_base.Clickable" name="exit-game">
-            <text>EXIT GAME</text>
+            <text>[E]XIT GAME</text>
         </component>
         <component x='350' y='300' width='100' height='50' type="gui_base.Clickable" name="settings">
-            <text>SETTINGS</text>
+            <text>[C]ONFIGURE</text>
         </component>
         <component x='350' y='400' width='100' height='50' type="gui_base.Clickable" name="level-select">
-            <text>LEVEL SELECT</text>
+            <text>[L]EVEL SELECT</text>
         </component>
     </components>
 </container>

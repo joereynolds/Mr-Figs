@@ -2,16 +2,16 @@
 <container>
     <components>
         <component x='350' y='200' width='100' height='50' type="gui_base.Clickable" name="resume">
-            <text>RESUME</text>
+            <text>[R]ESUME</text>
         </component>
         <component x='350' y='300' width='100' height='50' type="gui_base.Clickable" name="settings">
-            <text>SETTINGS</text>
+            <text>[S]ETTINGS</text>
         </component>
         <component x='350' y='400' width='100' height='50' type="gui_base.Clickable" name="quit-main">
-            <text>QUIT TO MAIN MENU</text>
+            <text>[M]AIN MENU</text>
         </component>
         <component x='350' y='500' width='100' height='50' type="gui_base.Clickable" name="quit-desktop">
-            <text>QUIT TO DESKTOP</text>
+            <text>[Q]UIT TO DESKTOP</text>
         </component>
     </components>
 </container>
