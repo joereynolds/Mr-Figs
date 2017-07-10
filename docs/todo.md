@@ -4,7 +4,6 @@
 - Add a hotkey to display debugging info on the screen
 - Add TODO annotations all over the code
 - Center the level. At the moment the entire scene is in the top left corner.  This looks shit
-- The window needs a title, probably in the format of 'MR Figs - CURRENT LEVEL TITLE'
 - There's no way for the game to save your progress'
 
 #Bugs
