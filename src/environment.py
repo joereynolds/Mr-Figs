@@ -13,36 +13,26 @@ def create_level_list():
     levels = os.listdir(config.level_location)
     levels.sort()
 
-    #TODO Turn this into a dictionary so we can reference
-    #scenes by name
-    level_list = [
-        level_base.LevelBase(config.level_location + level, 'NoNextScene')
-        for level in levels
-    ]
-    link_levels(level_list)
-    return level_list
+    level_dict = {}
+    for index, level in enumerate(levels):
+        key_name = 'level-' + str(index)
+        print(key_name)
+        level_dict[key_name] = level_base.LevelBase(config.level_location + level, 'NoNextScene')
+
+    level_dict['start-menu'] = start_menu.StartMenu()
+    level_dict['escape-menu'] = escape_menu.EscapeMenuNoOverlay()
+    level_dict['level-select'] = level_select.LevelMenu(level_dict)
+
+    return level_dict
 
 def link_levels(level_list):
-    """Links all of ours levels to one another
-    i.e. when you finish a level, it knows to go
-    to the next one
+    """Sets the next level for each level so that when
+    we finish that level it automatically takes us to
+    the next one specified"""
+    level_list['level-0'].next_level = level_list['level-1']
+    level_list['level-1'].next_level = level_list['level-2']
+    level_list['level-2'].next_level = level_list['level-3']
 
-    We make sure that if we're on the final level, then we link
-    back to the first level.
-
-    Otherwise, just link to the next level in the list"""
-    for i in range(len(level_list)):
-        #Loop back to the first item in the menu if we're at the end
-        if i == len(level_list)-1:
-            level_list[i].next_level = level_list[0]
-        else:
-            level_list[i].next_level = level_list[i+1]
-
-
-#Create our default level list and forcibly add our
-#level select menu and start menu to it.
 level_obj_list = create_level_list()
-level_obj_list.insert(0, start_menu.StartMenu())
-level_obj_list.insert(1, level_select.LevelMenu())
-level_obj_list.insert(2, escape_menu.EscapeMenuNoOverlay())
+#TODO this works on reference, gross.
 link_levels(level_obj_list)

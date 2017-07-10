@@ -7,23 +7,26 @@ import scenes.scenebase as scene_base
 
 class LevelMenu(scene_base.SceneBase):
 
-    def __init__(self):
+    def __init__(self, levels):
+        """
+        @levels A dict of our levels that comes from environment.create_level_list
+        """
         scene_base.SceneBase.__init__(self)
         self.reader = container_reader.ContainerReader('level_select.xml') 
         self.component_dict = self.reader.component_dict
         self.components = self.reader.components
-        self.game_levels = environment.create_level_list()
+        self.game_levels = levels
 
     def process_input(self):
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
-                    self.switch_to_scene(environment.level_obj_list[0])
+                    self.switch_to_scene(environment.level_obj_list['start-menu'])
             for i, level in enumerate(self.components):
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     level.on_click(
                         self.switch_to_scene, 
-                        self.game_levels[i]
+                        self.game_levels['level-' + str(i)]
                     )
 
     def render(self):

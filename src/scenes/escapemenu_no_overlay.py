@@ -19,11 +19,12 @@ class EscapeMenuNoOverlay(scene_base.SceneBase):
             if event.type == pygame.MOUSEBUTTONDOWN:
                 self.component_dict['resume'].on_click(
                     self.switch_to_scene,
-                    environment.level_obj_list[3]
+                    #Make this be our current level
+                    environment.level_obj_list['level-1']
                 )
                 self.component_dict['quit-main'].on_click(
                     self.switch_to_scene,
-                    environment.level_obj_list[1]
+                    environment.level_obj_list['start-menu']
                 )
                 self.component_dict['quit-desktop'].on_click(
                     self.terminate,

@@ -28,7 +28,6 @@ class InputHandler():
         self.level_base = level_base
 
         self.keys = {
-            # pygame.K_ESCAPE: self.level_base.escape_menu.toggle,
             pygame.K_r: self.level_base.reset,
         }
 
@@ -39,7 +38,7 @@ class InputHandler():
         to update everything in the game. The reason being is that we
         don't want to update things when we plant a bomb (press spacebar)"""
         if event.key == pygame.K_ESCAPE:
-            self.level_base.switch_to_scene(environment.level_obj_list[2])
+            self.level_base.switch_to_scene(environment.level_obj_list['escape-menu'])
         for key in self.keys.keys():
             if event.key == key:
                 self.keys[key]()
