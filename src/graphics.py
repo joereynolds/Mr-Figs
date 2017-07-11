@@ -2,7 +2,7 @@ import pygame
 import config
 
 #TODO this file is disgusting
-SCREEN = pygame.display.set_mode((config.screen_width, config.screen_height))
+WINDOW_SURFACE = pygame.display.set_mode((config.screen_width, config.screen_height))
 
 
 sprite_width = 16 
@@ -28,7 +28,7 @@ def subsurf(grid_pos):
     sprites = pygame surfaces of their location
     
 """
-#TODO this should be moved to the editor? Or maybe a SpriteMap class
+#TODO this should be moved to the editor? Or maye a SpriteMap class
 sprites = {
     'wall'   : {
         'coords' : (

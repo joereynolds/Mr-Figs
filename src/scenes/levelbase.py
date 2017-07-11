@@ -44,6 +44,8 @@ class LevelBase(scene_base.SceneBase):
         self.sprites.add(self.tiled_level.sprites, self.player)
 
         #rendering
+        #TODO removing this should not break the game
+        #we shouldn't have to include the level renderer
         self.renderer = renderers.LevelBaseRenderer(self)
         self.g_renderer = grenderers.GlobalRenderer(self)
 
