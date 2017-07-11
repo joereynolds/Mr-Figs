@@ -1,4 +1,5 @@
 import pygame
+import config
 
 
 class Game(object):
@@ -20,7 +21,7 @@ class Game(object):
         """
         pygame.init()
         pygame.mixer.init()
-        pygame.display.set_caption('Mr Figs')
+        pygame.display.set_caption(config.game_title)
 
         delta_time = 0
         self.clock.tick(self.fps)

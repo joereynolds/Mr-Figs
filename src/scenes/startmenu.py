@@ -18,6 +18,7 @@ class StartMenu(scene_base.SceneBase):
         self.components = self.reader.components
 
     def render(self):
+        """Fill our surface and render our buttons"""
         self.surface.fill((255, 255, 255))
         self.components.draw(self.surface)
         for component in self.components:

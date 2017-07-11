@@ -5,6 +5,10 @@
 - Add TODO annotations all over the code
 - Center the level. At the moment the entire scene is in the top left corner.  This looks shit
 - There's no way for the game to save your progress'
+- Add WASD and HJKL controls
+- Change the SCREEN variable in graphics.py to allow alpha transparency.
+  This will allow us to 'overlay' other scenes onto one another i.e.
+  having an escape menu and the level rendered behind it
 
 #Bugs
 - TODO Pressing 'X' only quits the game in the actual game, not the menus

@@ -1,24 +1,18 @@
-"""
-Contains our input handler class.
-This particular input handler is used for all actions
-that aren't player related. i.e. navigating menus
-etc...
-"""
-import tile
 import environment
 import pygame
 
 
 class LevelSelectInput():
-    """Handles all inputs for the game itself
-    anything related to menu navigation etc...
-    is kept in here. All player input is handler
-    via the PlayerInputHandler class"""
+    """Handles input for the level select screen"""
 
     def __init__(self, level_select_menu):
+        """
+        @level_select_menu = The LevelMenu object
+        """
 
         self.level_select_menu = level_select_menu
 
+        #Note that the indexing is 0 based
         self.keys = {
             pygame.K_1: 'level-0',
             pygame.K_2: 'level-1',
@@ -28,6 +22,11 @@ class LevelSelectInput():
         }
 
     def process_input(self, event):
+        """
+        Process either the clicks on a certain level
+        or the presses of a key and redirect to that
+        level.
+        """
         #TODO this check is littered on every input handler
         #move it up to scene base?
         if event.type == pygame.KEYDOWN:
@@ -41,7 +40,7 @@ class LevelSelectInput():
         for i, level in enumerate(self.level_select_menu.components):
             if event.type == pygame.MOUSEBUTTONDOWN:
                 level.on_click(
-                    self.level_select_menu.switch_to_scene, 
+                    self.level_select_menu.switch_to_scene,
                     self.level_select_menu.game_levels['level-' + str(i)]
                 )
 

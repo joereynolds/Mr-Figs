@@ -1,7 +1,9 @@
 import pygame
 import config
 
+#TODO this file is disgusting
 SCREEN = pygame.display.set_mode((config.screen_width, config.screen_height))
+
 
 sprite_width = 16 
 sprite_height = 16
@@ -11,7 +13,7 @@ spritesheet = pygame.image.load(config.spritesheet_location)
 trans_width = 48
 trans_height = 48
 
-def grid(x,y):
+def grid(x, y):
     """Returns the sprite at the gridded position of n m rather than having to work out the time table for sprite widths!"""
     return sprite_width * x, sprite_height * y 
 
@@ -24,7 +26,9 @@ def subsurf(grid_pos):
 """A dictionary of sprites and their properties
     coords = Their location on the spritesheet
     sprites = pygame surfaces of their location
+    
 """
+#TODO this should be moved to the editor? Or maybe a SpriteMap class
 sprites = {
     'wall'   : {
         'coords' : (

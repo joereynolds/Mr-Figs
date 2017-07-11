@@ -1,14 +1,11 @@
 """
-Contains all of our graphical elements
-as well as a few effects for our elements.
+Contains any extra effects needed to
+be applied on to gui elements
 """
-import pygame
-import graphics
-import environment
 
-#TODO each class should have its own file.
-   
-def enlarge(self, speed, delta_time):
+import pygame
+
+def enlarge(self, speed):
     """Makes the elements surface larger."""
     speeds = {
         'fast':    10,
@@ -19,18 +16,19 @@ def enlarge(self, speed, delta_time):
     now = pygame.time.get_ticks()
     if now <= self.cooldown:
         if self.width < self.original_width * 2:
-            self.width  += speeds[speed]
+            self.width += speeds[speed]
             self.height += speeds[speed]
-            self.image = pygame.Surface([self.width, self.height]).convert_alpha() 
+            self.image = pygame.Surface([self.width, self.height]).convert_alpha()
             self.image.fill(self.colour)
-            self.render_text(self.text.text,self.text.position)  
+            self.render_text(self.text.text, self.text.position)
 
 def shrink(self):
+    """Makes the elements surface smaller."""
     now = pygame.time.get_ticks()
     if now <= self.cooldown:
-        if self.width > self.original_width :
+        if self.width > self.original_width:
             self.width -= 5
-            self.height -=5 
-            self.image = pygame.Surface([self.width, self.height]).convert_alpha() 
+            self.height -= 5
+            self.image = pygame.Surface([self.width, self.height]).convert_alpha()
             self.image.fill(self.colour)
-            self.render_text(self.text.text, self.text.position)  
+            self.render_text(self.text.text, self.text.position)
