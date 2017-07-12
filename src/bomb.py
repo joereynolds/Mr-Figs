@@ -1,6 +1,7 @@
 import entity
 import pygame
 import graphics
+import random
 
 class Bomb(entity.Entity):
     """
@@ -75,8 +76,10 @@ class Bomb(entity.Entity):
                 self.particles.add(obj) 
             if retrieved_tile.destructable:
                 pygame.sprite.Sprite.kill(retrieved_tile)
-        except AttributeError:
+        except AttributeError as error:
+            print(error)
             print('Attribute Error: Tried to place bomb on non-existent block')
+            print(random.random())
 
     #TODO this should be in the collision handler
     def bomb_collisions(self, bomb_sprite_group):

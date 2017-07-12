@@ -1,9 +1,9 @@
 import actor
 import pygame
 import graphics
+import environment
 import level_editor
 import scenes.scenebase as scene_base
-import renderers.global_renderer as grenderers
 import renderers.level_base_renderer as renderers
 import input_handlers.global_input_handler as input_handler
 
@@ -42,16 +42,13 @@ class LevelBase(scene_base.SceneBase):
         self.next_level = next_level
         self.sprites = pygame.sprite.LayeredUpdates()
         self.sprites.add(self.tiled_level.sprites, self.player)
-
-        #rendering
-        #TODO removing this should not break the game
-        #we shouldn't have to include the level renderer
         self.renderer = renderers.LevelBaseRenderer(self)
-        self.g_renderer = grenderers.GlobalRenderer(self)
 
     def check_player_hasnt_died_a_horrible_death(self):
         """If the player has been destroyed, restart the level"""
         if self.player not in self.sprites:
+            #TODO doesn't switch to the game over screen for some reason'
+            # self.switch_to_scene(environment.level_obj_list['game-over-menu'])
             self.reset()
 
     def update(self, delta_time):
@@ -64,7 +61,7 @@ class LevelBase(scene_base.SceneBase):
 
     def render(self):
         """Calls the global renderer to render"""
-        self.g_renderer.render()
+        self.renderer.render()
 
     def reset(self):
         """Reinitialises our level, kind of a hacky way

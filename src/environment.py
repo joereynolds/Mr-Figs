@@ -4,6 +4,7 @@ import os
 import config
 import scenes.levelbase as level_base
 import scenes.startmenu as start_menu
+import scenes.game_over_menu as game_over_menu
 import scenes.levelselect as level_select
 import scenes.escapemenu_no_overlay as escape_menu
 
@@ -19,6 +20,7 @@ def create_level_list():
         level_dict[key_name] = level_base.LevelBase(config.level_location + level, 'NoNextScene')
 
     level_dict['start-menu'] = start_menu.StartMenu()
+    level_dict['game-over-menu'] = game_over_menu.GameOverMenu()
     level_dict['escape-menu'] = escape_menu.EscapeMenuNoOverlay()
     level_dict['level-select'] = level_select.LevelMenu(level_dict)
 

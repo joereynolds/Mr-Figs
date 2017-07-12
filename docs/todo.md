@@ -1,4 +1,6 @@
 # Todo
+- Shake the screen when a bomb explodes
+- Add a game over screen
 - Add typehints where possible, this is painful
 - Add __repr__'s for most things so debugging is easier and more useful
 - Add a hotkey to display debugging info on the screen
