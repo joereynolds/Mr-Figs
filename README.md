@@ -9,10 +9,9 @@ mr-figs runs on python 3.x
 ![alt text](figDemo.gif)
 
 #### Installation
+
 ```
-git clone https://github.com/joereynolds/Mr-Figs
-cd mr-figs
-python3 install.py
+make install
 ```
 
 You can then play mr-figs by navigating into ```src``` and running ```run.py```
