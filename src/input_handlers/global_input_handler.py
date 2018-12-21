@@ -1,6 +1,5 @@
 import pygame
 import event_handler
-import collision_handler
 import input_handlers.input_handler as input_handler
 
 

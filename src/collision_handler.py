@@ -1,8 +1,8 @@
-import tile
 import pygame
+import tile
 
 
-class PlayerCollisionHandler():
+class PlayerCollisionHandler(object):
 
     def __init__(self, player, level):
         self.player = player
