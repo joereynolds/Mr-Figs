@@ -1,3 +1,3 @@
-grep -i todo -r src/ > todo.md
+grep -i todo -r src/ > todo
 git add .
 git commit
