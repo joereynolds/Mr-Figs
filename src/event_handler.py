@@ -3,13 +3,15 @@ Contains our EventHandler class which is used to handle all
 events in the event queue
 
 ...By the way, putting this docstring in made my code
-10/10 from the linter...ho yeah"""
+10/10 from the linter...ho yeah
+"""
 
 
 import pygame
 import events
+import logger
 
-class EventHandler():
+class EventHandler(object):
     """Handles the setting up, addition, and timing
     of custom events. each event has 3 things associated with it,
     friendly name = A human readable version of the event
@@ -39,7 +41,7 @@ class EventHandler():
             event = (event_name, event_id, _time)
             self.events.append(event)
         else:
-            print('Event Ids must be greater than 25')
+            logger.LOGGER.info('Event Ids must be greater than 25')
 
     def set_timers(self):
         """Adds all of the events in our events queue to pygames event queue"""

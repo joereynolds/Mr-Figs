@@ -1,7 +1,12 @@
-import entity
+"""
+Everything related to the bomb that mr-figs drops.
+"""
+
 import pygame
+
+import entity
 import graphics
-import random
+import logger
 
 class Bomb(entity.Entity):
     """
@@ -26,7 +31,7 @@ class Bomb(entity.Entity):
         if self.lifespan == 0:
             self.explode()
         if self.lifespan <= -1:
-            for particle in self.particles: 
+            for particle in self.particles:
                 pygame.sprite.Sprite.kill(particle)
             pygame.sprite.Sprite.kill(self)
             return True
@@ -35,30 +40,30 @@ class Bomb(entity.Entity):
         """Explodes our bomb making sure that the particles only go to the correct boundaries of the walls."""
         for i in range(graphics.trans_width,graphics.trans_width * 4, graphics.trans_width):
             self.create_particle(
-                self.rect.x + i, 
-                self.rect.y, 
-                graphics.trans_width, 
+                self.rect.x + i,
+                self.rect.y,
+                graphics.trans_width,
                 graphics.trans_height
             )
             self.create_particle(
-                self.rect.x - i, 
-                self.rect.y, 
-                graphics.trans_width, 
+                self.rect.x - i,
+                self.rect.y,
+                graphics.trans_width,
                 graphics.trans_height
             )
             self.create_particle(
-                self.rect.x, 
-                self.rect.y + i, 
-                graphics.trans_width, 
+                self.rect.x,
+                self.rect.y + i,
+                graphics.trans_width,
                 graphics.trans_height
             )
             self.create_particle(
-                self.rect.x, 
-                self.rect.y - i, 
-                graphics.trans_width, 
+                self.rect.x,
+                self.rect.y - i,
+                graphics.trans_width,
                 graphics.trans_height
             )
-       
+
     def create_particle(self,x,y,width,height):
         obj = entity.Entity(
             x,
@@ -70,22 +75,20 @@ class Bomb(entity.Entity):
 
         #TODO split this code below into a separate function
         try:
-            retrieved_tile = self.level.get_tile_from_layer(x,y,1)
-            base_tile = self.level.get_tile_from_layer(x,y,0)
+            retrieved_tile = self.level.get_tile_from_layer(x, y, 1)
+            base_tile = self.level.get_tile_from_layer(x, y, 0)
             if not base_tile.solid:
-                self.particles.add(obj) 
+                self.particles.add(obj)
             if retrieved_tile.destructable:
                 pygame.sprite.Sprite.kill(retrieved_tile)
         except AttributeError as error:
-            print(error)
-            print('Attribute Error: Tried to place bomb on non-existent block')
-            print(random.random())
+            logger.LOGGER.error(error)
+            logger.LOGGER.info('Attribute Error: Tried to place bomb on non-existent block')
 
     #TODO this should be in the collision handler
     def bomb_collisions(self, bomb_sprite_group):
         """Checks to see if our bomb has touched another bombs explosion. If it has,
         it also explodes"""
-        #This might be able to be moved into our collision handler
         for bomb in bomb_sprite_group:
             if bomb != self:
                 for particle in bomb.particles:
