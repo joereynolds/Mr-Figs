@@ -48,3 +48,14 @@ in the codebase and do one of those :D
 ```
 python3 -m unittest discover -v
 ```
+
+#### Directory structure
+
+```
+├── build (Build scripts)
+├── data (Game data e.g. images, audio)
+├── docs (Extra documentation)
+├── levels (Level data)
+├── src (source code)
+└── test (tests live here)
+```

@@ -24,6 +24,11 @@ class Bomb(entity.Entity):
         self.particles = pygame.sprite.Group()
         self.images = [sprite for sprite in graphics.sprites['bomb']['sprites']]
 
+        # self.bomb_creation_sound = pygame.mixer.Sound('../data/audio/fx/bomb-place.wav')
+        # self.bomb_beep_sound = pygame.mixer.Sound('../data/audio/fx/bomb-beep.wav')
+
+        # self.bomb_creation_sound.play()
+
     #TODO two methods, one called blow_up, one called explode it's confusing
     def blow_up(self):
         """Destroys our bomb and then all of its particles associated with it.

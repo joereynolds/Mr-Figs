@@ -21,7 +21,6 @@ class Game(object):
         ,rendering, and updating.
         """
         pygame.init()
-        pygame.mixer.init()
         pygame.display.set_caption(config.game_title)
 
         delta_time = 0

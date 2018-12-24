@@ -142,7 +142,6 @@ class Actor(entity.Entity):
             graphics.sprites['bomb']['sprites'][0]
         ))
 
-
     def is_dead(self):
         """Returns true if the player is dead"""
         return self not in self.level.sprites
