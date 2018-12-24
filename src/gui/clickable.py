@@ -1,6 +1,4 @@
 import pygame
-import graphics
-import environment
 import gui.base_component as base_component
 
     

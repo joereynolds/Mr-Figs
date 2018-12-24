@@ -1,6 +1,4 @@
-import pygame
-import graphics
-import environment
+import colours
 import container_reader
 import scenes.scenebase as scene_base
 import input_handlers.level_select_input_handler as input_handler
@@ -24,7 +22,7 @@ class LevelMenu(scene_base.SceneBase):
 
     def render(self):
         """Renders a button for each level that is in the game"""
-        self.surface.fill((255, 255, 255))
+        self.surface.fill(colours.WHITE)
 
         self.components.draw(self.surface)
         for component in self.components:

@@ -1,6 +1,5 @@
-import entity
 import graphics
-import pygame
+import entity
 
 
 class Tile(entity.Entity):

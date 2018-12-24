@@ -1,5 +1,4 @@
-import graphics
-import environment
+import colours
 import container_reader
 import scenes.scenebase as scene_base
 import input_handlers.start_menu_input_handler as input_handler
@@ -18,7 +17,7 @@ class StartMenu(scene_base.SceneBase):
 
     def render(self):
         """Fill our surface and render our buttons"""
-        self.surface.fill((255, 255, 255))
+        self.surface.fill(colours.WHITE)
         self.components.draw(self.surface)
         for component in self.components:
             component.render_text()

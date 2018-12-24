@@ -44,7 +44,6 @@ class LevelData():
     def _create_tile(self, x, y, surface, sprite):
         """Creates tiles passed to it. It finds the type of the
         sprite and then creates the corresponding tile"""
-        states_and_triggers = []
         x = x * self.tile_spacing
         y = y * self.tile_spacing
         if sprite['type'] == 'tile':

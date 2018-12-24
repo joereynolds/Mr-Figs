@@ -1,5 +1,6 @@
 import pygame
 import config
+import save
 
 
 class Game(object):
@@ -25,6 +26,7 @@ class Game(object):
 
         delta_time = 0
         self.clock.tick(self.fps)
+        save.SaveGame.create(save.SaveGame.LOCATION + save.SaveGame.FILENAME)
         while not self.done:
             scene.process_input()
             scene.update(delta_time)
