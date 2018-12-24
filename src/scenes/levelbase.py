@@ -45,7 +45,7 @@ class LevelBase(scene_base.SceneBase):
 
     def check_player_hasnt_died_a_horrible_death(self):
         """If the player has been destroyed, restart the level"""
-        if self.player not in self.sprites:
+        if self.player.is_dead():
             self.reset()
 
     def update(self, delta_time):

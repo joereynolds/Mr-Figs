@@ -142,6 +142,14 @@ class Actor(entity.Entity):
             graphics.sprites['bomb']['sprites'][0]
         ))
 
+
+    def is_dead(self):
+        """Returns true if the player is dead"""
+        return self not in self.level.sprites
+
+    def animate_death(self):
+        pass
+
     def update_bomb_collection(self):
         """Makes sure that not only do we process the bombs that we planted, but also
         the bombs that were already on the level"""

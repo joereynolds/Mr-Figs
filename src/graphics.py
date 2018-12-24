@@ -5,7 +5,7 @@ import config
 WINDOW_SURFACE = pygame.display.set_mode((config.screen_width, config.screen_height))
 
 
-sprite_width = 16 
+sprite_width = 16
 sprite_height = 16
 spritesheet = pygame.image.load(config.spritesheet_location)
 
@@ -15,18 +15,18 @@ tile_height = 48
 
 def grid(x, y):
     """Returns the sprite at the gridded position of n m rather than having to work out the time table for sprite widths!"""
-    return sprite_width * x, sprite_height * y 
+    return sprite_width * x, sprite_height * y
 
 def subsurf(grid_pos):
     """Quick wrapper around pygame's subsurface so we don't keep having to pass in the width and height"""
-    surface = spritesheet.subsurface(grid_pos[0], grid_pos[1], sprite_width, sprite_height) 
-    return pygame.transform.scale(surface, (tile_width, tile_height)) 
+    surface = spritesheet.subsurface(grid_pos[0], grid_pos[1], sprite_width, sprite_height)
+    return pygame.transform.scale(surface, (tile_width, tile_height))
 
 
 """A dictionary of sprites and their properties
     coords = Their location on the spritesheet
     sprites = pygame surfaces of their location
-    
+
 """
 #TODO this should be moved to the editor? Or maye a SpriteMap class
 sprites = {
@@ -75,21 +75,21 @@ sprites = {
         'coords' : ((2,2),)
     },
     'player': {
-        'coords' : ((0,5),),
+        'coords' : ((0, 5),),
         'sprites':[subsurf(grid(0,5))]
     },
     'laser' : {
-        'coords' : ((4,1),(5,1),(6,1),(7,1)),
+        'coords' : ((4, 1), (5, 1), (6, 1), (7, 1)),
         'sprites': [
-            subsurf(grid(4,1)),
-            subsurf(grid(5,1)),
-            subsurf(grid(6,1)),
-            subsurf(grid(7,1))
+            subsurf(grid(4, 1)),
+            subsurf(grid(5, 1)),
+            subsurf(grid(6, 1)),
+            subsurf(grid(7, 1))
         ]
     },
     'switch': {
-                 'coords' : ((6,3),(7,3)),
-                 'sprites': [subsurf(grid(6,3)),
-                             subsurf(grid(7,3))]
+                 'coords' : ((6, 3), (7, 3)),
+                 'sprites': [subsurf(grid(6, 3)),
+                             subsurf(grid(7, 3))]
     }
 }
