@@ -1,7 +1,6 @@
 import actor
 import pygame
 import graphics
-import environment
 import level_editor
 import scenes.scenebase as scene_base
 import renderers.level_base_renderer as renderers
@@ -24,8 +23,8 @@ class LevelBase(scene_base.SceneBase):
 
         self.player = actor.Actor(
             48, 48,
-            graphics.trans_width,
-            graphics.trans_height,
+            graphics.tile_width,
+            graphics.tile_height,
             self,
             graphics.sprites['player']['sprites'][0]
         )
@@ -47,8 +46,6 @@ class LevelBase(scene_base.SceneBase):
     def check_player_hasnt_died_a_horrible_death(self):
         """If the player has been destroyed, restart the level"""
         if self.player not in self.sprites:
-            #TODO doesn't switch to the game over screen for some reason'
-            # self.switch_to_scene(environment.level_obj_list['game-over-menu'])
             self.reset()
 
     def update(self, delta_time):

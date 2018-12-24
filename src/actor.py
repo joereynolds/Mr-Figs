@@ -1,10 +1,7 @@
-
-import math
+import pygame
 
 import bomb
 import entity
-
-import pygame
 import graphics
 import interpolate
 import collision_handler
@@ -34,7 +31,7 @@ class Actor(entity.Entity):
     @self.destination = [x,y] a 2 element list containing
                         the next destination the sprite will be travelling to
 
-    @self.valid_destinations = A list of valid moves that the user can make. 
+    @self.valid_destinations = A list of valid moves that the user can make.
                                i.e. they can't move 13pixels if they themselves are 48px big. They
 
 
@@ -44,18 +41,18 @@ class Actor(entity.Entity):
 
         self.direction = 'down'
         self.speed = 6
-        self.distance = graphics.trans_width
+        self.distance = graphics.tile_width
         self.level = level
         self.tiled_level = self.level.tiled_level
         self.bombs = pygame.sprite.LayeredUpdates()
         self.move_stack = []
         self.destination = [self.rect.x, self.rect.y]
-        self.valid_destinations = [graphics.trans_width * x for x in range(-100, 100)]
+        self.valid_destinations = [graphics.tile_width * x for x in range(-100, 100)]
         self.moving = False
         self.input_handler = p_i_handler.PlayerInputHandler(self)
         self.collision_handler = collision_handler.PlayerCollisionHandler(
             self, self.level
-        ) 
+        )
 
     def move(self, delta_time):
         """Checks to see if we've reached the destination given, if we have,
@@ -69,16 +66,16 @@ class Actor(entity.Entity):
         if (self.rect.x == target_x and self.rect.y == target_y) \
             or self.tiled_level.find_solid_tile(
                 self.tiled_level.get_tile_all_layers(target_x, target_y)
-            ) : 
-            return 
-        
-        else: 
+            ) :
+            return
+
+        else:
             if target_x < self.rect.x:
-                self.rect.x -= self.speed 
+                self.rect.x -= self.speed
                 self.moving = True
             elif target_x > self.rect.x:
                 self.speed = interpolate.decelerate(self.rect.x, target_x)
-                self.rect.x += self.speed 
+                self.rect.x += self.speed
                 self.moving = True
             elif target_y < self.rect.y:
                 self.rect.y -= interpolate.decelerate(self.rect.x, target_x)
@@ -94,7 +91,7 @@ class Actor(entity.Entity):
     def set_destination(self, x, y):
         """Set's the next destination that our sprite is going to be
         moving/interpolating to"""
-        if self.is_valid_move(x, y): 
+        if self.is_valid_move(x, y):
             self.destination[0] = self.rect.x + (x * self.distance)
             self.destination[1] = self.rect.y + (y * self.distance)
 
@@ -109,11 +106,11 @@ class Actor(entity.Entity):
         """These events should only happen on a keypress. They do not need to be checked
            every frame"""
         directions = {
-            'up'     : ( 0, -1),
-            'down'   : ( 0,  1),
-            'left'   : (-1,  0),
-            'right'  : ( 1,  0),
-            'nothing': ( 0,  0)
+            'up'     : (0, -1),
+            'down'   : (0, 1),
+            'left'   : (-1, 0),
+            'right'  : (1, 0),
+            'nothing': (0, 0)
         }
 
         if command in directions.keys():
@@ -123,7 +120,7 @@ class Actor(entity.Entity):
                     directions[command][1]
                 )
                 self.set_direction(command)
-                if command != 'space' : 
+                if command != 'space' :
                     self.update_bombs()
         if command == 'space':
             self.create_bomb()
@@ -138,24 +135,24 @@ class Actor(entity.Entity):
         self.bombs.add(bomb.Bomb(
             self.rect.x,
             self.rect.y,
-            graphics.trans_width,
-            graphics.trans_height,
+            graphics.tile_width,
+            graphics.tile_height,
             self.tiled_level,
             5,
             graphics.sprites['bomb']['sprites'][0]
         ))
-           
+
     def update_bomb_collection(self):
         """Makes sure that not only do we process the bombs that we planted, but also
         the bombs that were already on the level"""
         for sprite in self.tiled_level.sprites:
             if isinstance(sprite, bomb.Bomb):
                 self.bombs.add(sprite)
-        
+
     def update_bombs(self):
         """Updates all bombs that are owned by the player.
         Usually, all bombs on the map are owned by the player,
-        even the ones the player did not plant""" 
+        even the ones the player did not plant"""
         for bomb in self.bombs:
             bomb.lifespan -= 1
             if bomb.blow_up():

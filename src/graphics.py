@@ -10,8 +10,8 @@ sprite_height = 16
 spritesheet = pygame.image.load(config.spritesheet_location)
 
 #scaled width and height
-trans_width = 48
-trans_height = 48
+tile_width = 48
+tile_height = 48
 
 def grid(x, y):
     """Returns the sprite at the gridded position of n m rather than having to work out the time table for sprite widths!"""
@@ -20,7 +20,7 @@ def grid(x, y):
 def subsurf(grid_pos):
     """Quick wrapper around pygame's subsurface so we don't keep having to pass in the width and height"""
     surface = spritesheet.subsurface(grid_pos[0], grid_pos[1], sprite_width, sprite_height) 
-    return pygame.transform.scale(surface, (trans_width, trans_height)) 
+    return pygame.transform.scale(surface, (tile_width, tile_height)) 
 
 
 """A dictionary of sprites and their properties

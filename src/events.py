@@ -2,8 +2,6 @@
 Contains all events that 
 are passed into the event handler
 """
-import bomb
-
 
 def animate_bombs(player):
     """A wrapper to animate all bombs

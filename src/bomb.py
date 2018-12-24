@@ -37,39 +37,42 @@ class Bomb(entity.Entity):
             return True
 
     def explode(self):
-        """Explodes our bomb making sure that the particles only go to the correct boundaries of the walls."""
-        for i in range(graphics.trans_width,graphics.trans_width * 4, graphics.trans_width):
+        """
+        Explodes our bomb making sure that the particles
+        only go to the correct boundaries of the walls.
+        """
+        for i in range(graphics.tile_width, graphics.tile_width * 4, graphics.tile_width):
             self.create_particle(
                 self.rect.x + i,
                 self.rect.y,
-                graphics.trans_width,
-                graphics.trans_height
+                graphics.tile_width,
+                graphics.tile_height
             )
             self.create_particle(
                 self.rect.x - i,
                 self.rect.y,
-                graphics.trans_width,
-                graphics.trans_height
+                graphics.tile_width,
+                graphics.tile_height
             )
             self.create_particle(
                 self.rect.x,
                 self.rect.y + i,
-                graphics.trans_width,
-                graphics.trans_height
+                graphics.tile_width,
+                graphics.tile_height
             )
             self.create_particle(
                 self.rect.x,
                 self.rect.y - i,
-                graphics.trans_width,
-                graphics.trans_height
+                graphics.tile_width,
+                graphics.tile_height
             )
 
     def create_particle(self,x,y,width,height):
         obj = entity.Entity(
             x,
             y,
-            graphics.trans_width,
-            graphics.trans_height,
+            graphics.tile_width,
+            graphics.tile_height,
             graphics.sprites['explosion']['sprites'][0]
         )
 

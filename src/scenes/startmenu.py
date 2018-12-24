@@ -1,4 +1,3 @@
-import pygame
 import graphics
 import environment
 import container_reader

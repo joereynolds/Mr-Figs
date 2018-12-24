@@ -42,3 +42,9 @@ These are already included/not needed but I thought I'd include them just to cov
 
 Any contributions are welcome but ideally, grep for 'TODO'
 in the codebase and do one of those :D
+
+#### Running the tests
+
+```
+python3 -m unittest discover -v
+```
