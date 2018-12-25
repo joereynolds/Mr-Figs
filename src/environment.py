@@ -15,10 +15,10 @@ def create_level_list():
     level_dict = {}
 
     # TODO - This is very bad. This creates all of our levels at once.
-    level_dict[levels.level1.KEY_NAME] = level_base.LevelBase(levels.level1.LOCATION, 'NoNextScene')
-    level_dict[levels.level2.KEY_NAME] = level_base.LevelBase(levels.level2.LOCATION, 'NoNextScene')
-    level_dict[levels.level3.KEY_NAME] = level_base.LevelBase(levels.level3.LOCATION, 'NoNextScene')
-    level_dict[levels.level4.KEY_NAME] = level_base.LevelBase(levels.level4.LOCATION, 'NoNextScene')
+    level_dict[levels.level1.KEY_NAME] = level_base.LevelBase(levels.level1.LOCATION, 'NoNextScene', 1)
+    level_dict[levels.level2.KEY_NAME] = level_base.LevelBase(levels.level2.LOCATION, 'NoNextScene', 2)
+    level_dict[levels.level3.KEY_NAME] = level_base.LevelBase(levels.level3.LOCATION, 'NoNextScene', 3)
+    level_dict[levels.level4.KEY_NAME] = level_base.LevelBase(levels.level4.LOCATION, 'NoNextScene', 4)
     level_dict['start-menu'] = start_menu.StartMenu()
     level_dict['game-over-menu'] = game_over_menu.GameOverMenu()
     level_dict['escape-menu'] = escape_menu.EscapeMenuNoOverlay()

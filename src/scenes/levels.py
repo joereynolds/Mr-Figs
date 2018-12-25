@@ -7,6 +7,7 @@ There's a class per level.'
 @IS_COMPLETE = Whether the level has been completed or not
 """
 import config
+import scenes.levelbase as level_base
 
 
 class level4(object):
@@ -32,5 +33,5 @@ class level1(object):
     NAME = 'new-level1.tmx'
     LOCATION = config.level_location + NAME
     IS_COMPLETE = False
-    NEXT_LEVEL = level2
+    NEXT_LEVEL = (level2.LOCATION, 'NoNextScene')
 

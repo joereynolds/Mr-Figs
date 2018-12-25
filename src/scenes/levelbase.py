@@ -12,7 +12,7 @@ class LevelBase(scene_base.SceneBase):
     So far (probably because it's huge), there has
     been no need to extend this class."""
 
-    def __init__(self, file, next_level):
+    def __init__(self, file, next_level, level_number):
         """
         @file = The .tmx level file
         @next_level = A reference to the next level
@@ -20,6 +20,7 @@ class LevelBase(scene_base.SceneBase):
         @level_tiles = A sprite group of all tiles on the level
         """
         self.tiled_level = level_editor.LevelData(file)
+        self.level_number = level_number
 
         self.player = actor.Actor(
             48, 48,
@@ -69,4 +70,4 @@ class LevelBase(scene_base.SceneBase):
     def reset(self):
         """Reinitialises our level, kind of a hacky way
         of resetting the level again."""
-        self.__init__(self.file, self.next_level)
+        self.__init__(self.file, self.next_level, self.level_number)

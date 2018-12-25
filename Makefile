@@ -1,3 +1,5 @@
+.PHONY: test
+
 all: install lint todo
 
 install: 
@@ -8,3 +10,6 @@ lint:
 
 todo:
 	./build/build-todo.sh
+
+test:
+	python3 -m unittest discover -v
