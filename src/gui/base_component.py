@@ -18,15 +18,18 @@ class BaseComponent(pygame.sprite.Sprite):
         """A wrapper to encapsulate all rendering"""
         self.render_text(position)
 
-    def render_text(self, position = False):
-        """Renders text at the default position of (0,0) or otherwise 
+    def render_text(self, position=False, color=False):
+        """Renders text at the default position of (0,0) or otherwise
         if a position is supplied.
         @position = Position for the text to be rendered (optional)
         """
-        self.text.position = (0,0)
+        self.text.position = (0, 0)
         if position:
             self.text.position = position
 
+        if color:
+            self.text.set_color(color)
+
         font_object = pygame.font.Font(None, 20)
-        rendered_text = font_object.render(self.text.text,False, self.text.color)
+        rendered_text = font_object.render(self.text.text, False, self.text.color)
         self.image.blit(rendered_text, self.text.position)
