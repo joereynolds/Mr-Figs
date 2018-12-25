@@ -19,7 +19,7 @@ class EventHandler(object):
     timer = How often the event should be triggered (in ms)"""
 
     events_map = {
-        28 : events.animate_bombs,
+        28 : events.call_bomb_events,
         29 : events.animate_particles
     }
 

@@ -112,4 +112,10 @@ class Bomb(entity.Entity):
         else:
             self.image = graphics.sprites['bomb']['sprites'][-1]
 
+    def beep(self):
+        """
+        Plays the bombs beep sound
+        """
+        self.bomb_beep_sound.play()
+
 
