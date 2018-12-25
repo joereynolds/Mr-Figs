@@ -3,7 +3,7 @@
 #Directories
 spritesheet_location = '../data/newtiledsheet.png'
 layout_location = 'scenes/layouts/'
-level_location = '../levels/tmx/'
+level_location = '../data/levels/tmx/'
 game_title = 'Mr Figs'
 
 #Magic numbers
