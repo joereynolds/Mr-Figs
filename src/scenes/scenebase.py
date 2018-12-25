@@ -20,7 +20,7 @@ class SceneBase():
                          The escape menu has its own input handler
                          """
         self.next = self
-        self.surface = graphics.WINDOW_SURFACE
+        self.surface = graphics.get_window_surface()
         self.input_handler = input_handler
 
     def process_input(self):

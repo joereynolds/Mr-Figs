@@ -2,9 +2,6 @@ import pygame
 import src.config as config
 
 #TODO this file is disgusting
-WINDOW_SURFACE = pygame.display.set_mode((config.screen_width, config.screen_height))
-
-
 sprite_width = 16
 sprite_height = 16
 spritesheet = pygame.image.load(config.spritesheet_location)
@@ -13,12 +10,20 @@ spritesheet = pygame.image.load(config.spritesheet_location)
 tile_width = 48
 tile_height = 48
 
+def get_window_surface():
+    return pygame.display.set_mode((config.screen_width, config.screen_height))
+
 def grid(x, y):
-    """Returns the sprite at the gridded position of n m rather than having to work out the time table for sprite widths!"""
+    """
+    Returns the sprite at the gridded position of n m rather
+    than having to work out the time table for sprite widths!
+    """
     return sprite_width * x, sprite_height * y
 
 def subsurf(grid_pos):
-    """Quick wrapper around pygame's subsurface so we don't keep having to pass in the width and height"""
+    """
+    Quick wrapper around pygame's subsurface so we don't keep having to pass in the width and height
+    """
     surface = spritesheet.subsurface(grid_pos[0], grid_pos[1], sprite_width, sprite_height)
     return pygame.transform.scale(surface, (tile_width, tile_height))
 
@@ -88,8 +93,8 @@ sprites = {
         ]
     },
     'switch': {
-                 'coords' : ((6, 3), (7, 3)),
-                 'sprites': [subsurf(grid(6, 3)),
-                             subsurf(grid(7, 3))]
+        'coords' : ((6, 3), (7, 3)),
+        'sprites': [subsurf(grid(6, 3)),
+                    subsurf(grid(7, 3))]
     }
 }

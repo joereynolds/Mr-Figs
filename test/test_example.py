@@ -4,7 +4,7 @@ from src.bomb import Bomb
 class TestChecker(unittest.TestCase):
 
     def test_check_is_instantiable(self):
-        self.assertEqual(1, 1)
+        self.assertEqual(1, 2)
 
     def test_our_bomb_explodes_when_the_lifespan_is_zero(self):
         pass
