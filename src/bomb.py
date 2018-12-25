@@ -27,6 +27,9 @@ class Bomb(entity.Entity):
         self.bomb_creation_sound = pygame.mixer.Sound('../data/audio/fx/bomb-place.wav')
         self.bomb_beep_sound = pygame.mixer.Sound('../data/audio/fx/bomb-beep.wav')
 
+        self.bomb_explosion_sound = pygame.mixer.Sound('../data/audio/fx/bomb-explode.wav')
+        self.bomb_explosion_sound.set_volume(0.2)
+
         self.bomb_creation_sound.play()
 
     #TODO two methods, one called blow_up, one called explode it's confusing
@@ -71,6 +74,9 @@ class Bomb(entity.Entity):
                 graphics.tile_width,
                 graphics.tile_height
             )
+
+        # TODO Not a fan of this explosion sound, get another one 
+        # self.bomb_explosion_sound.play()
 
     def create_particle(self,x,y,width,height):
         obj = entity.Entity(
