@@ -37,6 +37,8 @@ class LevelBase(scene_base.SceneBase):
             )
         )
 
+        pygame.mixer.init()
+
         self.file = file
         self.next_level = next_level
         self.sprites = pygame.sprite.LayeredUpdates()

@@ -1,5 +1,4 @@
 import pygame
-import environment
 import gui.text_element as text_element
 
 

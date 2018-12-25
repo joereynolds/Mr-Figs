@@ -4,7 +4,6 @@ This particular input handler is used for all actions
 that aren't player related. i.e. navigating menus
 etc...
 """
-import tile
 import environment
 import pygame
 
