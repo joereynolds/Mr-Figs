@@ -9,15 +9,9 @@ There's a class per level.'
 import config
 
 
-class level1(object):
-    KEY_NAME = 'level-1'
-    NAME = 'new-level1.tmx'
-    LOCATION = config.level_location + NAME
-    IS_COMPLETE = False
-
-class level2(object):
-    KEY_NAME = 'level-2'
-    NAME = 'new-level2.tmx'
+class level4(object):
+    KEY_NAME = 'level-4'
+    NAME = 'new-level4.tmx'
     LOCATION = config.level_location + NAME
     IS_COMPLETE = False
 
@@ -27,8 +21,16 @@ class level3(object):
     LOCATION = config.level_location + NAME
     IS_COMPLETE = False
 
-class level4(object):
-    KEY_NAME = 'level-4'
-    NAME = 'new-level4.tmx'
+class level2(object):
+    KEY_NAME = 'level-2'
+    NAME = 'new-level2.tmx'
     LOCATION = config.level_location + NAME
     IS_COMPLETE = False
+
+class level1(object):
+    KEY_NAME = 'level-1'
+    NAME = 'new-level1.tmx'
+    LOCATION = config.level_location + NAME
+    IS_COMPLETE = False
+    NEXT_LEVEL = level2
+

@@ -13,6 +13,8 @@ def create_level_list():
     """Returns an array of LevelBase's, each one
     created from a level in our levels directory"""
     level_dict = {}
+
+    # TODO - This is very bad. This creates all of our levels at once.
     level_dict[levels.level1.KEY_NAME] = level_base.LevelBase(levels.level1.LOCATION, 'NoNextScene')
     level_dict[levels.level2.KEY_NAME] = level_base.LevelBase(levels.level2.LOCATION, 'NoNextScene')
     level_dict[levels.level3.KEY_NAME] = level_base.LevelBase(levels.level3.LOCATION, 'NoNextScene')

@@ -1,3 +1,5 @@
+import pygame
+
 import graphics
 import entity
 
@@ -20,21 +22,21 @@ class FinishTile(Tile):
 
 
 class Stateful(Tile):
-    """The stateful class is a tile that can be either on or off. 
-       It's a binary state. 
+    """The stateful class is a tile that can be either on or off.
+       It's a binary state.
        It usually links to the Triggerable class
        so that it can affect (trigger) an effect.
 
        @self.state    = The starting state of the class
        @self.images   = an array of pygame surfaces
-       @self.triggers = The numeric id of the Triggerable 
+       @self.triggers = The numeric id of the Triggerable
                         if there is one to be triggered"""
     def __init__(self, x, y, width, height, solid, destructable, state, image, triggers=0):
         Tile.__init__(self, x, y, width, height, solid, destructable, image)
         self.state = state
         self.images = [sprite for sprite in graphics.sprites['switch']['sprites']]
         self.triggers = triggers
-   
+
     def update(self):
         self.change_state()
 
@@ -56,9 +58,9 @@ class Triggerable(Tile):
            A Door and switch.
            Door = Triggerable
            Switch = Stateful
-        
+
            When a switch is pressed, it triggers the door to open...simples!
-           
+
        @self.stateful = The Stateful that it is linked to
        @self.id = The numeric id of the Triggerable. This is used to link the state and
                   Triggerable together"""
@@ -68,6 +70,9 @@ class Triggerable(Tile):
         self.stateful = stateful
         self.id = id
         self.images = [sprite for sprite in graphics.sprites['laser']['sprites']]
+
+        self.laser_hum_sound = pygame.mixer.Sound('../data/audio/fx/laser-hum.wav')
+        # self.laser_hum_sound.play(-1)
 
     def trigger(self):
         """To be called when our stateful tile is 'on'"""
