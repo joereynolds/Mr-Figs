@@ -6,7 +6,7 @@ class SaveGame(object):
     LOCATION = '../data/saved-games/'
     FILENAME = 'mr-figs.json'
 
-    def create(path):
+    def create(path: str):
         """Creates an empty save file"""
         if os.path.exists(path):
             return

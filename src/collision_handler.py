@@ -1,4 +1,5 @@
 import pygame
+import bomb
 import tile
 
 
@@ -21,7 +22,7 @@ class PlayerCollisionHandler(object):
         for _bomb in self.player.bombs:
             _bomb.bomb_collisions(self.player.bombs)
 
-    def bomb_particle_collision(self, bomb):
+    def bomb_particle_collision(self, bomb: bomb.Bomb):
         """Returns True if any of the bombs particles collide with player.
         If they do, we'll reset the level."""
         for particle in bomb.particles:
