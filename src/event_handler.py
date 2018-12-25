@@ -8,8 +8,8 @@ events in the event queue
 
 
 import pygame
-import events
-import logger
+import src.events as events
+import src.logger as logger
 
 class EventHandler(object):
     """Handles the setting up, addition, and timing

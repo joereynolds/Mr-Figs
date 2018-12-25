@@ -1,7 +1,7 @@
-import colours
-import container_reader
-import scenes.scenebase as scene_base
-import input_handlers.game_over_input_handler as input_handler
+import src.colours
+import src.container_reader as container_reader
+import src.scenes.scenebase as scene_base
+import src.input_handlers.game_over_input_handler as input_handler
 
 class GameOverMenu(scene_base.SceneBase):
     """Initial start menu at the start of the game"""

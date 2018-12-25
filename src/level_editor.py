@@ -1,9 +1,9 @@
-import bomb
-import tile
-import actor
+import src.bomb as bomb
+import src.tile as tile
+import src.actor as actor
 import pytmx
 import pygame
-import graphics
+import src.graphics as graphics
 
 
 class LevelData():

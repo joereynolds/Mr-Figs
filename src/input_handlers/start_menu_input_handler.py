@@ -4,7 +4,7 @@ This particular input handler is used for all actions
 that aren't player related. i.e. navigating menus
 etc...
 """
-import environment
+import src.environment
 import pygame
 
 
@@ -35,13 +35,13 @@ class StartMenuInput():
             for key in self.keys.keys():
                 if event.key == key:
                     self.start_menu.switch_to_scene(
-                        environment.level_obj_list[self.keys[key]]
+                        src.environment.level_obj_list[self.keys[key]]
                     )
         if event.type == pygame.MOUSEBUTTONDOWN:
             self.start_menu.component_dict['start-game'].on_click(
-                self.start_menu.switch_to_scene, environment.level_obj_list['game-over-menu']
+                self.start_menu.switch_to_scene, src.environment.level_obj_list['game-over-menu']
             )
             self.start_menu.component_dict['exit-game'].on_click(self.start_menu.terminate)
             self.start_menu.component_dict['level-select'].on_click(
-                self.start_menu.switch_to_scene, environment.level_obj_list['level-select']
+                self.start_menu.switch_to_scene, src.environment.level_obj_list['level-select']
             )

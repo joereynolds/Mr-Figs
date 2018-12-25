@@ -1,10 +1,10 @@
-import actor
+import src.actor as actor
 import pygame
-import graphics
-import level_editor
-import scenes.scenebase as scene_base
-import renderers.level_base_renderer as renderers
-import input_handlers.global_input_handler as input_handler
+import src.graphics as graphics
+import src.level_editor as level_editor
+import src.scenes.scenebase as scene_base
+import src.renderers.level_base_renderer as renderers
+import src.input_handlers.global_input_handler as input_handler
 
 
 class LevelBase(scene_base.SceneBase):
@@ -41,7 +41,7 @@ class LevelBase(scene_base.SceneBase):
         pygame.mixer.pre_init(44100, -16, 2, 512)
 
         pygame.mixer.init()
-        pygame.mixer.music.load('../data/audio/music/carmack.mp3')
+        pygame.mixer.music.load('./data/audio/music/carmack.mp3')
         pygame.mixer.music.play(-1)
 
         self.file = file

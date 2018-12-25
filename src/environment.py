@@ -1,13 +1,13 @@
 #TODO Call this file scenes and place in the
 #scenes directory?
 import os
-import config
-import scenes.levelbase as level_base
-import scenes.levels as levels
-import scenes.startmenu as start_menu
-import scenes.game_over_menu as game_over_menu
-import scenes.levelselect as level_select
-import scenes.escapemenu_no_overlay as escape_menu
+import src.config as config
+import src.scenes.levelbase as level_base
+import src.scenes.levels as levels
+import src.scenes.startmenu as start_menu
+import src.scenes.game_over_menu as game_over_menu
+import src.scenes.levelselect as level_select
+import src.scenes.escapemenu_no_overlay as escape_menu
 
 def create_level_list():
     """Returns an array of LevelBase's, each one

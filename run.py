@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
-import game
-import environment
+import src.game as game
+import src.environment as environment
 
 if __name__ == '__main__':
     GAME = game.Game(60)

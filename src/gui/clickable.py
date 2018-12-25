@@ -1,5 +1,5 @@
 import pygame
-import gui.base_component as base_component
+import src.gui.base_component as base_component
 
     
 class Clickable(base_component.BaseComponent):

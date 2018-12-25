@@ -4,8 +4,8 @@ This particular input handler is used for all actions
 that aren't player related. i.e. navigating menus
 etc...
 """
-import tile
-import environment
+import src.tile
+import src.environment
 import pygame
 
 
@@ -36,13 +36,13 @@ class InputHandler():
         to update everything in the game. The reason being is that we
         don't want to update things when we plant a bomb (press spacebar)"""
         if event.key == pygame.K_ESCAPE:
-            self.level.switch_to_scene(environment.level_obj_list['escape-menu'])
+            self.level.switch_to_scene(src.environment.level_obj_list['escape-menu'])
         for key in self.keys.keys():
             if event.key == key:
                 self.keys[key]()
             elif event.key != pygame.K_SPACE:
                 for sprite in self.level.tiled_level.sprites:
-                    if isinstance(sprite, tile.Triggerable):
+                    if isinstance(sprite, src.tile.Triggerable):
                         sprite.update()
 
 

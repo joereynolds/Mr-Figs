@@ -3,7 +3,7 @@ import os.path
 
 class SaveGame(object):
 
-    LOCATION = '../data/saved-games/'
+    LOCATION = './data/saved-games/'
     FILENAME = 'mr-figs.json'
 
     def create(path: str):

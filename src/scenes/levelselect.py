@@ -1,7 +1,7 @@
-import colours
-import container_reader
-import scenes.scenebase as scene_base
-import input_handlers.level_select_input_handler as input_handler
+import src.colours as colours
+import src.container_reader as container_reader
+import src.scenes.scenebase as scene_base
+import src.input_handlers.level_select_input_handler as input_handler
 
 class LevelMenu(scene_base.SceneBase):
 

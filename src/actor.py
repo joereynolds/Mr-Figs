@@ -1,11 +1,11 @@
 import pygame
 
-import bomb
-import entity
-import graphics
-import interpolate
-import collision_handler
-import input_handlers.player_input_handler as p_i_handler
+import src.bomb as bomb
+import src.entity as entity
+import src.graphics as graphics
+import src.interpolate as interpolate
+import src.collision_handler as collision_handler
+import src.input_handlers.player_input_handler as p_i_handler
 
 class Actor(entity.Entity):
     """

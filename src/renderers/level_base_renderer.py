@@ -1,5 +1,5 @@
 import random
-import colours
+import src.colours as colours
 
 class LevelBaseRenderer():
 

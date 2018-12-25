@@ -4,11 +4,11 @@ Everything related to the bomb that mr-figs drops.
 
 import pygame
 
-import entity
-import graphics
-import logger
+from src.entity import Entity
+import src.graphics as graphics
+import src.logger as logger
 
-class Bomb(entity.Entity):
+class Bomb(Entity):
     """
     @solid     = Whether the actor can walk through it
     @lifespan  = The amount of steps actor must take before the bomb detonates
@@ -17,17 +17,17 @@ class Bomb(entity.Entity):
     """
 
     def __init__(self, x, y, width, height, level, lifespan=5, image=None):
-        entity.Entity.__init__(self, x, y, width, height, image)
+        Entity.__init__(self, x, y, width, height, image)
         self.solid = False
         self.lifespan = int(lifespan)
         self.level = level
         self.particles = pygame.sprite.Group()
         self.images = [sprite for sprite in graphics.sprites['bomb']['sprites']]
 
-        self.bomb_creation_sound = pygame.mixer.Sound('../data/audio/fx/bomb-place.wav')
-        self.bomb_beep_sound = pygame.mixer.Sound('../data/audio/fx/bomb-beep.wav')
+        self.bomb_creation_sound = pygame.mixer.Sound('./data/audio/fx/bomb-place.wav')
+        self.bomb_beep_sound = pygame.mixer.Sound('./data/audio/fx/bomb-beep.wav')
 
-        self.bomb_explosion_sound = pygame.mixer.Sound('../data/audio/fx/bomb-explode.wav')
+        self.bomb_explosion_sound = pygame.mixer.Sound('./data/audio/fx/bomb-explode.wav')
         self.bomb_explosion_sound.set_volume(0.2)
 
         self.bomb_creation_sound.play()
@@ -79,7 +79,7 @@ class Bomb(entity.Entity):
         # self.bomb_explosion_sound.play()
 
     def create_particle(self,x,y,width,height):
-        obj = entity.Entity(
+        obj = Entity(
             x,
             y,
             graphics.tile_width,

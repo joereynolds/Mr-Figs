@@ -1,4 +1,4 @@
-import environment
+import src.environment
 import pygame
 
 
@@ -33,10 +33,10 @@ class LevelSelectInput():
             for key in self.keys.keys():
                 if event.key == key:
                     self.level_select_menu.switch_to_scene(
-                        environment.level_obj_list[self.keys[key]]
+                        src.environment.level_obj_list[self.keys[key]]
                     )
             if event.key == pygame.K_ESCAPE:
-                self.level_select_menu.switch_to_scene(environment.level_obj_list['start-menu'])
+                self.level_select_menu.switch_to_scene(src.environment.level_obj_list['start-menu'])
         for i, level in enumerate(self.level_select_menu.components):
             if event.type == pygame.MOUSEBUTTONDOWN:
                 level.on_click(

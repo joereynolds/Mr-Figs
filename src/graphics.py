@@ -1,5 +1,5 @@
 import pygame
-import config
+import src.config as config
 
 #TODO this file is disgusting
 WINDOW_SURFACE = pygame.display.set_mode((config.screen_width, config.screen_height))

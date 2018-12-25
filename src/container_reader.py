@@ -9,12 +9,12 @@ See the XML file for how to implement a new layout
 """
 
 import pygame
-import config
+import src.config as config
 import xml.etree.ElementTree as etree 
-import gui.base_component #This is actually imported, don't trust the linter
-import gui.clickable #This is actually imported, don't trust the linter
-import gui.effects #This is actually imported, don't trust the linter
-import gui.text_element #This is actually imported, don't trust the linter
+import src.gui.base_component #This is actually imported, don't trust the linter
+import src.gui.clickable #This is actually imported, don't trust the linter
+import src.gui.effects #This is actually imported, don't trust the linter
+import src.gui.text_element #This is actually imported, don't trust the linter
 
 
 class ContainerReader():

@@ -6,8 +6,8 @@ There's a class per level.'
 @LOCATION    = The full path to the level data
 @IS_COMPLETE = Whether the level has been completed or not
 """
-import config
-import scenes.levelbase as level_base
+import src.config as config
+import src.scenes.levelbase as level_base
 
 
 class level4(object):

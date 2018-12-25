@@ -1,6 +1,6 @@
 import pygame
-import config
-import save
+import src.config as config
+import src.save as save
 
 
 class Game(object):

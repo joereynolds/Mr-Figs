@@ -1,9 +1,9 @@
 import pygame
-import config
-import container_reader
-import scenes.scenebase as scene_base
-import input_handlers.escape_menu_input_handler as input_handler
-import gui.clickable as clickable
+import src.config as config
+import src.container_reader as container_reader
+import src.scenes.scenebase as scene_base
+import src.input_handlers.escape_menu_input_handler as input_handler
+import src.gui.clickable as clickable
 
 class EscapeMenuNoOverlay(scene_base.SceneBase):
     """The menu that pops up during game when we press escape"""

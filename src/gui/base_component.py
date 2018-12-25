@@ -1,5 +1,5 @@
 import pygame
-import gui.text_element as text_element
+import src.gui.text_element as text_element
 
 
 class BaseComponent(pygame.sprite.Sprite):

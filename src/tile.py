@@ -1,7 +1,7 @@
 import pygame
 
-import graphics
-import entity
+import src.graphics as graphics
+import src.entity as entity
 
 
 class Tile(entity.Entity):
@@ -71,7 +71,7 @@ class Triggerable(Tile):
         self.id = id
         self.images = [sprite for sprite in graphics.sprites['laser']['sprites']]
 
-        self.laser_hum_sound = pygame.mixer.Sound('../data/audio/fx/laser-hum.wav')
+        self.laser_hum_sound = pygame.mixer.Sound('./data/audio/fx/laser-hum.wav')
         # self.laser_hum_sound.play(-1)
 
     def trigger(self):

@@ -1,6 +1,6 @@
 import pygame
-import event_handler
-import input_handlers.input_handler as input_handler
+import src.event_handler as event_handler
+import src.input_handlers.input_handler as input_handler
 
 
 class GlobalInputHandler():
