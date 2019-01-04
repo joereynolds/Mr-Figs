@@ -3,7 +3,7 @@
 all: install lint todo
 
 install: 
-	python3 install.py
+	pip3 install -r requirements.txt
 
 lint:
 	-./build/lint.sh

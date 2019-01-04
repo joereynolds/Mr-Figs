@@ -1,0 +1,5 @@
+python3-xlib
+wheel
+pygame
+pytmx
+pyautogui
