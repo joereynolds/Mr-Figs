@@ -3,3 +3,4 @@ wheel
 pygame
 pytmx
 pyautogui
+pyflakes
