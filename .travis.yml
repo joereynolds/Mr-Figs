@@ -1,0 +1,14 @@
+language: node_js
+
+os:
+    - linux
+    - osx
+
+python:
+    - "3.6"
+
+install:
+    - pip3 install -r requirements.txt
+
+script:
+    - python3 -m unittest discover -v
