@@ -31,23 +31,23 @@ class LevelData():
         @pix_x =
         @pix_y =
         """
+        factory = TileFactory()
         for i, layer in enumerate(self._map):
             for _tile in layer.tiles():
                 x, y = _tile[0], _tile[1]
                 pix_x, pix_y = _tile[2][1][0], _tile[2][1][1]
                 surface = graphics.subsurf((pix_x, pix_y))
 
-                current_tile = self._map.get_tile_properties(x,y,i)
+                current_tile = self._map.get_tile_properties(x, y, i)
                 if current_tile:
-                    obj = self._create_tile(x,y,surface,current_tile)
+                    obj = self._create_tile(x, y, surface, current_tile, factory)
                     self.sprites.add(obj, layer=i)
 
-    def _create_tile(self, x, y, surface, sprite):
+    def _create_tile(self, x, y, surface, sprite, factory):
         """Creates tiles passed to it. It finds the type of the
         sprite and then creates the corresponding tile"""
         x = x * self.tile_spacing
         y = y * self.tile_spacing
-        f = TileFactory()
 
         common = {
             'x': x,
@@ -57,53 +57,44 @@ class LevelData():
             'image': surface
         }
 
-        if sprite['type'] == 'tile':
-            _args = {
+        type_map = {
+            'tile': {
                 **common,
                 'solid':sprite.get('solid'),
                 'destructable':sprite.get('destructable'),
-            }
-
-        elif sprite['type'] == 'actor':
-            _args =  {
+            },
+            'actor':{
                 **common,
                 'level':'pass',
                 'image':surface
-            }
-
-        elif sprite['type'] == 'bomb':
-            _args = {
+            },
+            'bomb': {
                 **common,
                 'level':'pass',
                 'lifespan': sprite.get('lifespan'),
-            }
-
-        elif sprite['type'] == 'finish_tile':
-            _args = {
+            },
+            'finish_tile': {
                 **common,
                 'solid':sprite.get('solid'),
                 'destructable':sprite.get('destructable'),
-            }
-
-        elif sprite['type'] == 'stateful':
-            _args = {
+            },
+            'stateful': {
                 **common,
                 'solid':sprite.get('solid'),
                 'destructable':sprite.get('destructable'),
                 'state':0,
                 'triggers':sprite.get('triggers'),
-            }
-
-        elif sprite['type'] == 'triggerable':
-            _args = {
+            },
+            'triggerable': {
                 **common,
                 'solid':sprite.get('solid'),
                 'destructable':sprite.get('destructable'),
                 'stateful':'pass',
                 'id':sprite.get('id')
             }
+        }
 
-        return f.build(sprite.get('type'), **_args)
+        return factory.build(sprite.get('type'), **type_map[sprite.get('type')])
 
     def link_doors_and_switches(self):
         """Makes sure that the switches are passed to the correct

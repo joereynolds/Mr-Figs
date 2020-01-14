@@ -15,6 +15,6 @@ class TileFactory():
             'bomb': Bomb,
             'actor': Actor,
             'tile': Tile
-                }
+        }
 
         return tile_map[tile_type](**kwargs)
