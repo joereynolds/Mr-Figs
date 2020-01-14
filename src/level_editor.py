@@ -60,8 +60,8 @@ class LevelData():
         if sprite['type'] == 'tile':
             _args = {
                 **common,
-                'solid':sprite['solid'],
-                'destructable':sprite['destructable'],
+                'solid':sprite.get('solid'),
+                'destructable':sprite.get('destructable'),
             }
 
         elif sprite['type'] == 'actor':
@@ -75,35 +75,35 @@ class LevelData():
             _args = {
                 **common,
                 'level':'pass',
-                'lifespan':sprite['lifespan'],
+                'lifespan': sprite.get('lifespan'),
             }
 
         elif sprite['type'] == 'finish_tile':
             _args = {
                 **common,
-                'solid':sprite['solid'],
-                'destructable':sprite['destructable'],
+                'solid':sprite.get('solid'),
+                'destructable':sprite.get('destructable'),
             }
 
         elif sprite['type'] == 'stateful':
             _args = {
                 **common,
-                'solid':sprite['solid'],
-                'destructable':sprite['destructable'],
+                'solid':sprite.get('solid'),
+                'destructable':sprite.get('destructable'),
                 'state':0,
-                'triggers':sprite['triggers'],
+                'triggers':sprite.get('triggers'),
             }
 
         elif sprite['type'] == 'triggerable':
             _args = {
                 **common,
-                'solid':sprite['solid'],
-                'destructable':sprite['destructable'],
+                'solid':sprite.get('solid'),
+                'destructable':sprite.get('destructable'),
                 'stateful':'pass',
-                'id':sprite['id']
+                'id':sprite.get('id')
             }
 
-        return f.build(sprite['type'], **_args)
+        return f.build(sprite.get('type'), **_args)
 
     def link_doors_and_switches(self):
         """Makes sure that the switches are passed to the correct
