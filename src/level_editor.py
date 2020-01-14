@@ -5,6 +5,7 @@ import pytmx
 import pygame
 import src.graphics as graphics
 
+from src.tile_factory import TileFactory
 
 class LevelData():
     """
@@ -46,20 +47,63 @@ class LevelData():
         sprite and then creates the corresponding tile"""
         x = x * self.tile_spacing
         y = y * self.tile_spacing
+        f = TileFactory()
+
+        common = {
+            'x': x,
+            'y': y,
+            'width': self.tile_spacing,
+            'height': self.tile_spacing,
+            'image': surface
+        }
+
         if sprite['type'] == 'tile':
-            _tile = self._create_standard_tile(x, y, sprite['solid'], sprite['destructable'], surface)
+            _args = {
+                **common,
+                'solid':sprite['solid'],
+                'destructable':sprite['destructable'],
+            }
+
         elif sprite['type'] == 'actor':
-           _tile = self._create_player_tile(surface, x, y)
+            _args =  {
+                **common,
+                'level':'pass',
+                'image':surface
+            }
+
         elif sprite['type'] == 'bomb':
-           _tile = self._create_bomb_tile(sprite['lifespan'], surface, x, y)
+            _args = {
+                **common,
+                'level':'pass',
+                'lifespan':sprite['lifespan'],
+            }
+
         elif sprite['type'] == 'finish_tile':
-            print('creating')
-            _tile = self._create_finish_tile(x, y, sprite['solid'], sprite['destructable'], surface)
+            _args = {
+                **common,
+                'solid':sprite['solid'],
+                'destructable':sprite['destructable'],
+            }
+
         elif sprite['type'] == 'stateful':
-            _tile = self._create_stateful_tile(x, y, sprite['solid'], sprite['destructable'], surface, sprite['triggers'] )
+            _args = {
+                **common,
+                'solid':sprite['solid'],
+                'destructable':sprite['destructable'],
+                'state':0,
+                'triggers':sprite['triggers'],
+            }
+
         elif sprite['type'] == 'triggerable':
-            _tile = self._create_triggerable_tile(x, y, sprite['solid'], sprite['destructable'],'pass', surface, sprite['id'])
-        return _tile
+            _args = {
+                **common,
+                'solid':sprite['solid'],
+                'destructable':sprite['destructable'],
+                'stateful':'pass',
+                'id':sprite['id']
+            }
+
+        return f.build(sprite['type'], **_args)
 
     def link_doors_and_switches(self):
         """Makes sure that the switches are passed to the correct
@@ -71,70 +115,6 @@ class LevelData():
                         if state.triggers == trigger.id:
                             trigger.stateful = state
                             #much nest
-
-    def _create_standard_tile(self, x, y, solid, destructable, surface):
-        return tile.Tile(
-           x, y,
-           self.tile_spacing,
-           self.tile_spacing,
-           solid,
-           destructable,
-           surface
-       )
-
-    def _create_stateful_tile(self, x, y, solid, destructable, surface, triggers):
-       return tile.Stateful(
-          x, y,
-          self.tile_spacing,
-          self.tile_spacing,
-          solid,
-          destructable,
-          0,
-          surface,
-          triggers
-       )
-
-    def _create_triggerable_tile(self, x, y, solid, destructable, stateful, surface, id):
-        return tile.Triggerable(
-            x,
-            y,
-            self.tile_spacing,
-            self.tile_spacing,
-            solid,
-            destructable,
-            stateful,
-            surface,
-            id
-        )
-
-    def _create_bomb_tile(self, lifespan, surface, x, y):
-        return bomb.Bomb(
-            x, y,
-            self.tile_spacing,
-            self.tile_spacing,
-            'pass',
-            lifespan,
-            image = surface
-        )
-
-    def _create_player_tile(self, surface, x, y):
-        return actor.Actor(
-            x, y,
-            self.tile_spacing,
-            self.tile_spacing,
-            'pass',
-            image = surface
-        )
-
-    def _create_finish_tile(self, x, y, solid, destructable, surface):
-        return tile.FinishTile(
-           x, y,
-           self.tile_spacing,
-           self.tile_spacing,
-           solid,
-           destructable,
-           surface
-       )
 
     def give_dynamic_sprites_data(self):
         """Once the map has been generated, go back and give the sprites
