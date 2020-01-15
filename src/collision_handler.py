@@ -25,6 +25,12 @@ class PlayerCollisionHandler(object):
     def bomb_particle_collision(self, bomb: bomb.Bomb):
         """Returns True if any of the bombs particles collide with player.
         If they do, we'll reset the level."""
+        for _bomb in self.player.bombs:
+            if isinstance(_bomb, type(bomb)):
+                if self.player.rect.x == _bomb.rect.x and self.player.rect.y == _bomb.rect.y and _bomb.lifespan == 0:
+                    pygame.sprite.Sprite.kill(self.player)
+                    return True
+
         for particle in bomb.particles:
             if pygame.sprite.collide_rect(particle, self.player) and not self.player.moving:
                 pygame.sprite.Sprite.kill(self.player)
