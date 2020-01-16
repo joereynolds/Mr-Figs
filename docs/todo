@@ -1,4 +1,6 @@
-./src/renderers/level_base_renderer.py:            #TODO shake the screen here
+./src/graphics.py:#TODO this file is disgusting
+./src/graphics.py:#TODO this should be moved to the editor? Or maye a SpriteMap class
+./src/input_handlers/level_select_input_handler.py:        #TODO this check is littered on every input handler
 ./src/bomb.py:    #TODO two methods, one called blow_up, one called explode it's confusing
 ./src/bomb.py:        # TODO Not a fan of this explosion sound, get another one 
 ./src/bomb.py:        #TODO split this code below into a separate function
@@ -6,10 +8,8 @@
 ./src/environment.py:#TODO Call this file scenes and place in the
 ./src/environment.py:    # TODO - This is very bad. This creates all of our levels at once.
 ./src/environment.py:#TODO this works on reference, gross.
+./src/renderers/level_base_renderer.py:            #TODO shake the screen here
 ./src/scenes/escapemenu_no_overlay.py:        #TODO honour the alpha value
 ./src/scenes/escapemenu_no_overlay.py:        #TODO Maybe this should be in SceneBase?
 ./src/scenes/escapemenu_no_overlay.py:            #TODO should just be a call to render() that does everything for us
 ./src/scenes/escapemenu_no_overlay.py:                #TODO change hover so that we don't have to call 'off hover'.
-./src/graphics.py:#TODO this file is disgusting
-./src/graphics.py:#TODO this should be moved to the editor? Or maye a SpriteMap class
-./src/input_handlers/level_select_input_handler.py:        #TODO this check is littered on every input handler
