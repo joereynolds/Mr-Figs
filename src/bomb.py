@@ -135,5 +135,3 @@ class Bomb(Entity):
         Plays the bombs beep sound
         """
         self.bomb_beep_sound.play()
-
-
