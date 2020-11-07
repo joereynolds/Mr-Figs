@@ -20,7 +20,6 @@ class LevelData():
         self._map = pytmx.TiledMap(self.tmx_file)
         self.sprites = pygame.sprite.LayeredUpdates()
         self.get_map_data()
-        self.give_dynamic_sprites_data()
         self.link_doors_and_switches()
 
     def get_map_data(self):
@@ -65,12 +64,12 @@ class LevelData():
             },
             'actor':{
                 **common,
-                'level':'pass',
+                'level': self,
                 'image':surface
             },
             'bomb': {
                 **common,
-                'level':'pass',
+                'level': self,
                 'lifespan': sprite.get('lifespan'),
             },
             'finish_tile': {
@@ -105,14 +104,6 @@ class LevelData():
                     if isinstance(trigger, tile.Triggerable):
                         if state.triggers == trigger.id:
                             trigger.stateful = state
-                            #much nest
-
-    def give_dynamic_sprites_data(self):
-        """Once the map has been generated, go back and give the sprites
-        that take a Level object the map data"""
-        for sprite in self.sprites:
-            if hasattr(sprite,'level'):
-                sprite.level = self
 
     def get_tile(self,x,y):
         """Returns the tile object at @x and @y"""
@@ -164,4 +155,4 @@ class LevelData():
         """Returns true if it finds a solid tile in a list of tiles"""
         for tile in tiles:
             if tile.solid:
-                return True
+                return tile
