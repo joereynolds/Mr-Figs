@@ -50,30 +50,42 @@ class Bomb(Entity):
         only go to the correct boundaries of the walls.
         """
         for i in range(graphics.tile_width, graphics.tile_width * 4, graphics.tile_width):
+
+            right = self.rect.x + i
+            left = self.rect.x - i
+            up = self.rect.y - i
+            down = self.rect.y + i
+
+#            # TODO
+#            #Don't blow up on solid tiles (or past them)
             self.create_particle(
-                self.rect.x + i,
+                right,
                 self.rect.y,
                 graphics.tile_width,
                 graphics.tile_height
             )
+
             self.create_particle(
-                self.rect.x - i,
+                left,
                 self.rect.y,
                 graphics.tile_width,
                 graphics.tile_height
             )
+
             self.create_particle(
                 self.rect.x,
-                self.rect.y + i,
+                down,
                 graphics.tile_width,
                 graphics.tile_height
             )
+
             self.create_particle(
                 self.rect.x,
-                self.rect.y - i,
+                up,
                 graphics.tile_width,
                 graphics.tile_height
             )
+
 
         # TODO Not a fan of this explosion sound, get another one 
         # self.bomb_explosion_sound.play()
