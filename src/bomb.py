@@ -20,7 +20,7 @@ class Bomb(Entity):
         Entity.__init__(self, x, y, width, height, image)
         self.solid = False
         self.lifespan = int(lifespan)
-        self.level = level
+        self.tiled_level = level
         self.particles = pygame.sprite.Group()
         self.images = [sprite for sprite in graphics.sprites['bomb']['sprites']]
 
@@ -89,8 +89,8 @@ class Bomb(Entity):
 
         #TODO split this code below into a separate function
         try:
-            retrieved_tile = self.level.get_tile_from_layer(x, y, 1)
-            base_tile = self.level.get_tile_from_layer(x, y, 0)
+            retrieved_tile = self.tiled_level.get_tile_from_layer(x, y, 1)
+            base_tile = self.tiled_level.get_tile_from_layer(x, y, 0)
             if not base_tile.solid:
                 self.particles.add(obj)
             if retrieved_tile.destructable:
