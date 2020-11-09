@@ -32,6 +32,7 @@ def link_levels(level_list):
     the next one specified"""
     level_list['level-1'].next_level = level_list['level-2']
     level_list['level-2'].next_level = level_list['level-3']
+    level_list['level-3'].next_level = level_list['level-4']
 
 level_obj_list = create_level_list()
 #TODO this works on reference, gross.

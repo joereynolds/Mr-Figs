@@ -1,7 +1,5 @@
 """
 Renders out a minimap of the game.
-Currently this does very little.
-At the moment just a red square is overlayed with some transparency.
 """
 import pygame
 

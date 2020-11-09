@@ -1,5 +1,6 @@
 python3-xlib
 wheel
-pygame
+pygame==1.9.6
 pytmx
 pyflakes
+mypy
