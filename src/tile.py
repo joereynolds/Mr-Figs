@@ -24,6 +24,11 @@ class Tile(entity.Entity):
             self.minimap_colour = colours.BROWN_HIGHLIGHT
 
 
+class MoveableTile(Tile):
+    def __init__(self, x, y, width, height, solid, destructable, moveable=False, image=None):
+        Tile.__init__(self, x, y, width, height, solid, destructable, image)
+
+
 class FinishTile(Tile):
     def __init__(self, x, y, width, height, solid, destructable, image=None):
         Tile.__init__(self, x, y, width, height, solid, destructable, image)

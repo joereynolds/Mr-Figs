@@ -22,7 +22,6 @@ class LevelBase(scene_base.SceneBase):
         self.tiled_level = level_editor.LevelData(file)
         self.level_number = level_number
 
-
         self.player = actor.Actor(
             48, 48,
             graphics.tile_width,
