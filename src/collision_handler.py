@@ -48,7 +48,7 @@ class PlayerCollisionHandler(object):
         """Go to the next level when we collide with the finish tile"""
         for _tile in self.level.tiled_level.sprites:
             if isinstance(_tile, tile.FinishTile):
-                if self.player.rect.x == _tile.rect.x and self.player.rect.y == _tile.rect.y:
+                if self.player.destination[0] == _tile.rect.x and self.player.destination[1] == _tile.rect.y:
                     self.level.switch_to_scene(self.level.next_level)
 
     def moveable_tile_collision(self):
