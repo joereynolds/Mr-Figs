@@ -1,5 +1,4 @@
-import random
-import src.minimap as minimap
+from src.minimap import Minimap
 import src.colours as colours
 import src.config as config
 
@@ -7,14 +6,15 @@ class LevelBaseRenderer():
 
     def __init__(self, level):
         self.level = level
-        self.colour = random.choice(colours.BASE_COLOURS)
+        self.colour = colours.WHITE
         self.bomb_count = len(self.level.player.bombs)
 
-        self.minimap = minimap.Minimap(
-                config.screen_width - (minimap.Minimap.WIDTH + 5), 
+        self.minimap = Minimap(
+                config.screen_width - (Minimap.WIDTH + 5), 
                 5, 
-                minimap.Minimap.WIDTH, 
-                minimap.Minimap.HEIGHT, level
+                Minimap.WIDTH, 
+                Minimap.HEIGHT, level,
+                self.level.surface
         )
         self.level.sprites.add(self.minimap)
 
@@ -24,5 +24,5 @@ class LevelBaseRenderer():
             #TODO shake the screen here
         else: self.level.surface.fill(self.colour)
 
-        self.minimap.map.draw(self.level.surface)
+        self.minimap.render()
         self.level.sprites.draw(self.level.surface)

@@ -7,6 +7,6 @@ level_location = './data/levels/tmx/'
 game_title = 'Mr Figs'
 
 #Magic numbers
-screen_width  = 700
-screen_height = 600
+screen_width  = 1720
+screen_height = 672
 

@@ -5,8 +5,10 @@ Everything related to the bomb that mr-figs drops.
 import pygame
 
 from src.entity import Entity
+from src.bomb_particle import BombParticle
 import src.graphics as graphics
 import src.logger as logger
+import src.colours as colours
 
 class Bomb(Entity):
     """
@@ -31,6 +33,8 @@ class Bomb(Entity):
         self.bomb_explosion_sound.set_volume(0.2)
 
         self.bomb_creation_sound.play()
+
+        self.minimap_colour = colours.BLACK
 
     #TODO two methods, one called blow_up, one called explode it's confusing
     def blow_up(self):
@@ -86,17 +90,15 @@ class Bomb(Entity):
                 graphics.tile_height
             )
 
-
         # TODO Not a fan of this explosion sound, get another one 
         # self.bomb_explosion_sound.play()
 
     def create_particle(self,x,y,width,height):
-        obj = Entity(
+        obj = BombParticle(
             x,
             y,
             graphics.tile_width,
             graphics.tile_height,
-            graphics.sprites['explosion']['sprites'][0]
         )
 
         #TODO split this code below into a separate function
