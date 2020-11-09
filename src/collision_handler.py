@@ -35,7 +35,7 @@ class PlayerCollisionHandler(object):
                     return True
 
         for particle in bomb.particles:
-            if pygame.sprite.collide_rect(particle, self.player) and not self.player.moving:
+            if self.player.destination[0] == particle.rect.x and self.player.destination[1] == particle.rect.y:
                 pygame.sprite.Sprite.kill(self.player)
                 return True
             for _tile in self.level.tiled_level.sprites:
