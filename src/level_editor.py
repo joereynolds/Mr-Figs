@@ -78,6 +78,12 @@ class LevelData():
                 'solid':sprite.get('solid'),
                 'destructable':sprite.get('destructable'),
             },
+            'moveable_tile': {
+                **common,
+                'solid':sprite.get('solid'),
+                'destructable':sprite.get('destructable'),
+                'moveable':sprite.get('moveable', False),
+            },
             'stateful': {
                 **common,
                 'solid':sprite.get('solid'),

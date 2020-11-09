@@ -12,6 +12,7 @@ class PlayerCollisionHandler(object):
     def update(self):
         """Check for collisions against the finish tile and bombs"""
         self.finish_tile_collision()
+        self.moveable_tile_collision()
 
         self.bomb_collisions()
         for bomb in self.player.bombs:
@@ -47,3 +48,10 @@ class PlayerCollisionHandler(object):
             if isinstance(_tile, tile.FinishTile):
                 if self.player.rect.x == _tile.rect.x and self.player.rect.y == _tile.rect.y:
                     self.level.switch_to_scene(self.level.next_level)
+
+    def moveable_tile_collision(self):
+        for _tile in self.level.tiled_level.sprites:
+            if isinstance(_tile, tile.MoveableTile):
+                if self.player.rect.x == _tile.rect.x and self.player.rect.y == _tile.rect.y:
+                    _tile.handle_collision(self.player)
+                    print('colliding')

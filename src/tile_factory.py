@@ -1,4 +1,5 @@
 from src.tile import Triggerable
+from src.tile import MoveableTile
 from src.tile import FinishTile
 from src.tile import Stateful
 from src.tile import Tile
@@ -11,6 +12,7 @@ class TileFactory():
         tile_map = {
             'triggerable': Triggerable,
             'finish_tile': FinishTile,
+            'moveable_tile': MoveableTile,
             'stateful': Stateful,
             'bomb': Bomb,
             'actor': Actor,

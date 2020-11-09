@@ -3,8 +3,8 @@
  <properties>
   <property name="player_bomb_count" value="1"/>
  </properties>
- <tileset firstgid="1" name="newtiledsheet" tilewidth="16" tileheight="16" tilecount="27" columns="9">
-  <image source="../../data/newtiledsheet.png" trans="ff00ff" width="144" height="112"/>
+ <tileset firstgid="1" name="newtiledsheet" tilewidth="16" tileheight="16" tilecount="63" columns="9">
+  <image source="../../newtiledsheet.png" trans="ff00ff" width="144" height="112"/>
   <tile id="0">
    <properties>
     <property name="destructable" value=""/>
@@ -183,6 +183,14 @@
     <property name="type" value="bomb"/>
    </properties>
   </tile>
+  <tile id="44">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="moveable" value="True"/>
+    <property name="solid" value="True"/>
+    <property name="type" value="moveable_tile"/>
+   </properties>
+  </tile>
  </tileset>
  <layer id="1" name="Tile Layer 1" width="14" height="10">
   <data encoding="csv">
@@ -207,8 +215,8 @@
 0,0,37,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,21,21,0,0,0,0,0,0,
-0,0,0,0,0,0,21,21,0,0,0,0,0,0,
+0,0,0,0,0,0,21,21,45,0,0,0,0,0,
+0,0,0,0,0,0,21,21,45,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
