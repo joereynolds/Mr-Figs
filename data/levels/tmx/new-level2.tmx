@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.2" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" nextobjectid="1">
- <tileset firstgid="1" name="newtiledsheet" tilewidth="16" tileheight="16" tilecount="63" columns="9">
+<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="3" nextobjectid="1">
+ <properties>
+  <property name="player_bomb_count" value="1"/>
+ </properties>
+ <tileset firstgid="1" name="newtiledsheet" tilewidth="16" tileheight="16" tilecount="27" columns="9">
   <image source="../../data/newtiledsheet.png" trans="ff00ff" width="144" height="112"/>
   <tile id="0">
    <properties>
@@ -181,7 +184,7 @@
    </properties>
   </tile>
  </tileset>
- <layer name="Tile Layer 1" width="14" height="10">
+ <layer id="1" name="Tile Layer 1" width="14" height="10">
   <data encoding="csv">
 3,10,10,10,10,10,4,3,10,10,10,10,10,4,
 11,19,20,19,20,19,2,11,20,19,20,19,20,32,
@@ -195,7 +198,7 @@
 12,10,10,10,10,10,10,10,10,10,10,10,10,13
 </data>
  </layer>
- <layer name="Tile Layer 2" width="14" height="10">
+ <layer id="2" name="Tile Layer 2" width="14" height="10">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,

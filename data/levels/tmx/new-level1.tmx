@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" nextobjectid="35">
+<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="35">
+ <properties>
+  <property name="player_bomb_count" value="2"/>
+ </properties>
  <tileset firstgid="1" name="newtiledsheet" tilewidth="16" tileheight="16" tilecount="63" columns="9">
-  <image source="../../data/newtiledsheet.png" trans="ff00ff" width="144" height="112"/>
+  <image source="../../newtiledsheet.png" trans="ff00ff" width="144" height="112"/>
   <tile id="0">
    <properties>
     <property name="destructable" value=""/>
@@ -230,7 +233,7 @@
    </properties>
   </tile>
  </tileset>
- <layer name="layer0" width="14" height="10">
+ <layer id="1" name="layer0" width="14" height="10">
   <data encoding="csv">
 3,1,1,1,1,1,1,4,0,0,0,0,0,0,
 11,20,19,20,20,19,20,2,0,0,0,0,0,0,
@@ -244,7 +247,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <layer name="layer1" width="14" height="10">
+ <layer id="2" name="layer1" width="14" height="10">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -258,7 +261,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <layer name="switches" width="14" height="10">
+ <layer id="3" name="switches" width="14" height="10">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,
