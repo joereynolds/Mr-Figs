@@ -54,4 +54,5 @@ class PlayerCollisionHandler(object):
         for _tile in self.level.tiled_level.sprites:
             if isinstance(_tile, tile.MoveableTile):
                 if self.player.destination[0] == _tile.rect.x and self.player.destination[1] == _tile.rect.y:
-                    print('move the rock here')
+                    _tile.rect.x = _tile.rect.x + (movement_vector.vector[self.player.direction][0] * 48)
+                    _tile.rect.y = _tile.rect.y + (movement_vector.vector[self.player.direction][1] * 48)
