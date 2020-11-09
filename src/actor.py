@@ -4,6 +4,7 @@ import src.bomb as bomb
 import src.colours as colours
 import src.entity as entity
 import src.graphics as graphics
+import src.movement_vector as movement_vector
 import src.interpolate as interpolate
 import src.collision_handler as collision_handler
 import src.input_handlers.player_input_handler as p_i_handler
@@ -115,13 +116,7 @@ class Actor(entity.Entity):
     def event_update(self, command):
         """These events should only happen on a keypress. They do not need to be checked
            every frame"""
-        directions = {
-            'up'     : (0, -1),
-            'down'   : (0, 1),
-            'left'   : (-1, 0),
-            'right'  : (1, 0),
-            'nothing': (0, 0)
-        }
+        directions = movement_vector.vector
 
         if command in directions.keys():
             if not self.moving:
