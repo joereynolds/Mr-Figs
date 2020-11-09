@@ -16,7 +16,7 @@ class LevelData():
     """
     def __init__(self, file):
         self.tmx_file = file
-        self.tile_spacing = 48
+        self.tile_spacing = graphics.tile_width
         self._map = pytmx.TiledMap(self.tmx_file)
         self.properties = self._map.properties
         self.sprites = pygame.sprite.LayeredUpdates()

@@ -1,9 +1,6 @@
 """
 Contains our EventHandler class which is used to handle all
 events in the event queue
-
-...By the way, putting this docstring in made my code
-10/10 from the linter...ho yeah
 """
 
 
@@ -11,7 +8,7 @@ import pygame
 import src.events as events
 import src.logger as logger
 
-class EventHandler(object):
+class EventHandler():
     """Handles the setting up, addition, and timing
     of custom events. each event has 3 things associated with it,
     friendly name = A human readable version of the event

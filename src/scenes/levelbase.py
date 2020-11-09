@@ -23,7 +23,8 @@ class LevelBase(scene_base.SceneBase):
         self.level_number = level_number
 
         self.player = actor.Actor(
-            48, 48,
+            48, 
+            48,
             graphics.tile_width,
             graphics.tile_height,
             self,

@@ -12,7 +12,6 @@ import src.colours as colours
 
 class Bomb(Entity):
     """
-    @solid     = Whether the actor can walk through it
     @lifespan  = The amount of steps actor must take before the bomb detonates
     @level     = level data from the LevelEditor class
     @particles = A container for a bomb's particles
@@ -20,7 +19,6 @@ class Bomb(Entity):
 
     def __init__(self, x, y, width, height, level, lifespan=5, image=None):
         Entity.__init__(self, x, y, width, height, image)
-        self.solid = False
         self.lifespan = int(lifespan)
         self.tiled_level = level
         self.particles = pygame.sprite.Group()
@@ -53,15 +51,10 @@ class Bomb(Entity):
         Explodes our bomb making sure that the particles
         only go to the correct boundaries of the walls.
         """
+       # TODO - Don't blow up on solid tiles (or past them)
         for i in range(graphics.tile_width, graphics.tile_width * 4, graphics.tile_width):
-
             right = self.rect.x + i
-            left = self.rect.x - i
-            up = self.rect.y - i
-            down = self.rect.y + i
-
-#            # TODO
-#            #Don't blow up on solid tiles (or past them)
+            
             self.create_particle(
                 right,
                 self.rect.y,
@@ -69,6 +62,17 @@ class Bomb(Entity):
                 graphics.tile_height
             )
 
+            retrieved_tile = self.tiled_level.get_tile_from_layer(right, self.rect.y, 1)
+            base_tile = self.tiled_level.get_tile_from_layer(right, self.rect.y, 0)
+
+            if (retrieved_tile and retrieved_tile.solid) \
+                or (retrieved_tile and retrieved_tile.destructable) \
+                or (base_tile and base_tile.solid) \
+                or (base_tile and base_tile.destructable):
+                break
+
+        for i in range(graphics.tile_width, graphics.tile_width * 4, graphics.tile_width):
+            left = self.rect.x - i
             self.create_particle(
                 left,
                 self.rect.y,
@@ -76,6 +80,8 @@ class Bomb(Entity):
                 graphics.tile_height
             )
 
+        for i in range(graphics.tile_width, graphics.tile_width * 4, graphics.tile_width):
+            down = self.rect.y + i
             self.create_particle(
                 self.rect.x,
                 down,
@@ -83,6 +89,8 @@ class Bomb(Entity):
                 graphics.tile_height
             )
 
+        for i in range(graphics.tile_width, graphics.tile_width * 4, graphics.tile_width):
+            up = self.rect.y - i
             self.create_particle(
                 self.rect.x,
                 up,
@@ -93,12 +101,12 @@ class Bomb(Entity):
         # TODO Not a fan of this explosion sound, get another one 
         # self.bomb_explosion_sound.play()
 
-    def create_particle(self,x,y,width,height):
+    def create_particle(self, x, y, width, height):
         obj = BombParticle(
             x,
             y,
-            graphics.tile_width,
-            graphics.tile_height,
+            width,
+            height,
         )
 
         #TODO split this code below into a separate function
