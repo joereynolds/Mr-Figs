@@ -1,6 +1,7 @@
 import pygame
 
 import src.bomb as bomb
+import src.colours as colours
 import src.entity as entity
 import src.graphics as graphics
 import src.interpolate as interpolate
@@ -32,7 +33,7 @@ class Actor(entity.Entity):
                         the next destination the sprite will be travelling to
 
     @self.valid_destinations = A list of valid moves that the user can make.
-                               i.e. they can't move 13pixels if they themselves are 48px big. They
+                               i.e. they can't move 13pixels if they themselves are 48px big.
 
 
     """
@@ -53,6 +54,8 @@ class Actor(entity.Entity):
         self.collision_handler = collision_handler.PlayerCollisionHandler(
             self, self.level
         )
+
+        self.minimap_colour = colours.BLUE_HIGHLIGHT
 
     def move(self, delta_time):
         """Checks to see if we've reached the destination given, if we have,

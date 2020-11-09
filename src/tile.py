@@ -1,8 +1,8 @@
 import pygame
 
+import src.colours as colours
 import src.graphics as graphics
 import src.entity as entity
-
 
 class Tile(entity.Entity):
     """The tile class represents any tile in the game background,
@@ -14,6 +14,7 @@ class Tile(entity.Entity):
         entity.Entity.__init__(self, x, y, width, height, image)
         self.solid = bool(solid)
         self.destructable = destructable
+        self.minimap_colour = colours.GREEN
 
 
 class FinishTile(Tile):

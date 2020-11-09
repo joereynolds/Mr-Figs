@@ -12,7 +12,7 @@ class Entity(pygame.sprite.Sprite):
         self.rect.y = y
         self.solid = False
 
-    def load_image(self, image, width, height):
+    def load_image(self, image, width, height, colour=None):
         """attempts to load an image, falls back onto a pygame surface otherwise"""
         if image:
             return image
