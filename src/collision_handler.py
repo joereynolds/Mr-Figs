@@ -30,11 +30,18 @@ class PlayerCollisionHandler(object):
     def bomb_particle_collision(self, bomb: bomb.Bomb):
         """Returns True if any of the bombs particles collide with player.
         If they do, we'll reset the level."""
-        for _bomb in self.player.bombs:
-            if isinstance(_bomb, type(bomb)):
-                if self.player.rect.x == _bomb.rect.x and self.player.rect.y == _bomb.rect.y and _bomb.lifespan == 0:
+        if isinstance(bomb, type(bomb)):
+            if self.player.rect.x == bomb.rect.x and self.player.rect.y == bomb.rect.y:
+                if bomb.lifespan == 0:
                     pygame.sprite.Sprite.kill(self.player)
                     return True
+            if self.player.destination[0] == bomb.rect.x and self.player.destination[1] == bomb.rect.y:
+                # Bit of a hack but if 5 is our max lifespan for a bomb then it's impossible to be
+                # travelling to it and for it to have that lifespan since we would have moved
+                # and decreased the bomb's lifespan
+                if bomb.lifespan != 0 and bomb.lifespan < 5:
+                    pygame.sprite.Sprite.kill(bomb)
+                    self.player.add_bomb()
 
         for particle in bomb.particles:
             if self.player.destination[0] == particle.rect.x and self.player.destination[1] == particle.rect.y:
@@ -58,7 +65,7 @@ class PlayerCollisionHandler(object):
         for _tile in self.level.tiled_level.sprites:
             if isinstance(_tile, PickupBomb):
                 if self.player.destination[0] == _tile.rect.x and self.player.destination[1] == _tile.rect.y:
-                    self.player.remaining_bombs += 1
+                    self.player.add_bomb()
                     pygame.sprite.Sprite.kill(_tile)
 
     def moveable_tile_collision(self):

@@ -113,6 +113,9 @@ class Actor(entity.Entity):
     def get_direction(self):
         return self.direction
 
+    def add_bomb(self):
+        self.remaining_bombs += 1
+
     def event_update(self, command):
         """These events should only happen on a keypress. They do not need to be checked
            every frame"""
