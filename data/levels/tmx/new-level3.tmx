@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="75" height="75" tilewidth="16" tileheight="16" nextobjectid="1">
- <tileset firstgid="1" name="newtiledsheet" tilewidth="16" tileheight="16" tilecount="63">
+<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="75" height="75" tilewidth="16" tileheight="16" infinite="0" nextlayerid="3" nextobjectid="1">
+ <properties>
+  <property name="player_bomb_count" value="2"/>
+ </properties>
+ <tileset firstgid="1" name="newtiledsheet" tilewidth="16" tileheight="16" tilecount="17" columns="0">
   <image source="../../data/newtiledsheet.png" width="144" height="112"/>
   <terraintypes>
    <terrain name="New Terrain" tile="-1"/>
@@ -128,12 +131,12 @@
    </properties>
   </tile>
  </tileset>
- <layer name="Tile Layer 1" width="75" height="75">
+ <layer id="1" name="Tile Layer 1" width="75" height="75">
   <data encoding="base64" compression="zlib">
    eJzt1jEOwjAQBEBDCWUoCfD/V+JIPvliRWmdYkba4jprZZ29llIeLe+adZjp7jVLy7PNrzTTjd3k7paJ57qi6Gbra+zKvdob71EkuqP71txaoqeYPxPPdXV21Ln8R4gd789wLL+D9tW5ratf2XfkHTyWd/sYux0AAAAAAAAAAAAAAAAAAAAAAADm+QMCVgS+
   </data>
  </layer>
- <layer name="Tile Layer 2" width="75" height="75">
+ <layer id="2" name="Tile Layer 2" width="75" height="75">
   <data encoding="base64" compression="zlib">
    eJztzrEJACAMAMFUbpAF3H9ILdKnEQW5g+8/Au7J3Xw9wReyojcqAAAAAAAAAAAAAAAAAAAAAAAAAADOWzFYAG4=
   </data>

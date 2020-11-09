@@ -18,6 +18,7 @@ class LevelData():
         self.tmx_file = file
         self.tile_spacing = 48
         self._map = pytmx.TiledMap(self.tmx_file)
+        self.properties = self._map.properties
         self.sprites = pygame.sprite.LayeredUpdates()
         self.get_map_data()
         self.link_doors_and_switches()

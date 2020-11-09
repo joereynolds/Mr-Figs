@@ -1,4 +1,5 @@
 from src.minimap import Minimap
+from src.bomb_display import BombDisplay
 import src.colours as colours
 import src.config as config
 
@@ -10,11 +11,20 @@ class LevelBaseRenderer():
         self.bomb_count = len(self.level.player.bombs)
 
         self.minimap = Minimap(
-                config.screen_width - (Minimap.WIDTH + 5), 
-                5, 
-                Minimap.WIDTH, 
-                Minimap.HEIGHT, level,
-                self.level.surface
+            config.screen_width - (Minimap.WIDTH + 5),
+            5,
+            Minimap.WIDTH,
+            Minimap.HEIGHT,
+            level,
+            self.level.surface
+        )
+
+        self.bomb_display = BombDisplay(
+            config.screen_width - (Minimap.WIDTH + 5),
+            200,
+            Minimap.WIDTH,
+            Minimap.HEIGHT,
+            self.level.surface,
         )
         self.level.sprites.add(self.minimap)
 
@@ -25,4 +35,5 @@ class LevelBaseRenderer():
         else: self.level.surface.fill(self.colour)
 
         self.minimap.render()
+        self.bomb_display.render(self.level.player.remaining_bombs)
         self.level.sprites.draw(self.level.surface)

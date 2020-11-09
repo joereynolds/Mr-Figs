@@ -32,14 +32,18 @@ class Actor(entity.Entity):
     @self.destination = [x,y] a 2 element list containing
                         the next destination the sprite will be travelling to
 
+    @self.remaining_bombs = The number of bombs remaining in a level. This data is contained
+                            in the tiled level data
+
     @self.valid_destinations = A list of valid moves that the user can make.
                                i.e. they can't move 13pixels if they themselves are 48px big.
 
 
     """
-    def __init__(self, x, y, width, height, level, image=None):
+    def __init__(self, x, y, width, height, level, remaining_bombs, image=None):
         entity.Entity.__init__(self, x, y, width, height, image)
 
+        self.remaining_bombs = int(remaining_bombs)
         self.direction = 'down'
         self.speed = 6
         self.distance = graphics.tile_width
@@ -135,15 +139,17 @@ class Actor(entity.Entity):
 
     def create_bomb(self):
         """Creates a bomb underneath the players position"""
-        self.bombs.add(bomb.Bomb(
-            self.rect.x,
-            self.rect.y,
-            graphics.tile_width,
-            graphics.tile_height,
-            self.tiled_level,
-            5,
-            graphics.sprites['bomb']['sprites'][0]
-        ))
+        if self.remaining_bombs:
+            self.bombs.add(bomb.Bomb(
+                self.rect.x,
+                self.rect.y,
+                graphics.tile_width,
+                graphics.tile_height,
+                self.tiled_level,
+                5,
+                graphics.sprites['bomb']['sprites'][0]
+            ))
+            self.remaining_bombs -= 1
 
     def is_dead(self):
         """Returns true if the player is dead"""

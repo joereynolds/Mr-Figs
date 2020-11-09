@@ -22,12 +22,14 @@ class LevelBase(scene_base.SceneBase):
         self.tiled_level = level_editor.LevelData(file)
         self.level_number = level_number
 
+
         self.player = actor.Actor(
             48, 48,
             graphics.tile_width,
             graphics.tile_height,
             self,
-            graphics.sprites['player']['sprites'][0]
+            self.tiled_level.properties.get('player_bomb_count', 0),
+            graphics.sprites['player']['sprites'][0],
         )
 
         scene_base.SceneBase.__init__(
