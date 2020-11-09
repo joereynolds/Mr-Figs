@@ -9,16 +9,24 @@ Mr-Figs runs on python 3.x
 
 ![alt text](figDemo.gif)
 
+#### Gameplay
+
+- Plant bombs with `<space>`
+- Move with either `WASD`, `HJKL` or the arrow keys
+- Pickup bombs to add to your inventory
+- Pickup previously planted bombs if you made a mistake
+- Make your way to the stairs
+
 #### Installing
 
 ```
 make install
 ```
 
-and then
+Then
 
 ```
-python3 ./run.py
+./run.py
 ```
 
 ##### Troubleshooting
