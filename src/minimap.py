@@ -38,6 +38,7 @@ class Minimap(Entity):
         Note the magic number '6'. This is just 48 (the size of our sprites) divided by 8
         (A number that looked good enough)
         """
+        self.map.empty()
         for sprite in self.tiled_level.sprites:
             minimap_sprite = Entity(
                 self.rect.x + sprite.rect.x / 8,
