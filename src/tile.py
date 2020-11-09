@@ -47,7 +47,7 @@ class Stateful(Tile):
     def __init__(self, x, y, width, height, solid, destructable, state, image, triggers=0):
         Tile.__init__(self, x, y, width, height, solid, destructable, image)
         self.state = state
-        self.images = [sprite for sprite in graphics.sprites['switch']['sprites']]
+        self.images = graphics.sprites['switch']['sprites']
         self.triggers = triggers
 
     def update(self):
@@ -82,7 +82,7 @@ class Triggerable(Tile):
         Tile.__init__(self, x, y, width, height, solid, destructable, image)
         self.stateful = stateful
         self.id = id
-        self.images = [sprite for sprite in graphics.sprites['laser']['sprites']]
+        self.images = graphics.sprites['laser']['sprites']
 
         self.laser_hum_sound = pygame.mixer.Sound('./data/audio/fx/laser-hum.wav')
         # self.laser_hum_sound.play(-1)

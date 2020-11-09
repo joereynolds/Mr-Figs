@@ -22,7 +22,7 @@ class Bomb(Entity):
         self.lifespan = int(lifespan)
         self.tiled_level = level
         self.particles = pygame.sprite.Group()
-        self.images = [sprite for sprite in graphics.sprites['bomb']['sprites']]
+        self.images = graphics.sprites['bomb']['sprites']
 
         self.bomb_creation_sound = pygame.mixer.Sound('./data/audio/fx/bomb-place.wav')
         self.bomb_beep_sound = pygame.mixer.Sound('./data/audio/fx/bomb-beep.wav')
@@ -102,7 +102,7 @@ class Bomb(Entity):
         # self.bomb_explosion_sound.play()
 
     def create_particle(self, x, y, width, height):
-        obj = BombParticle(
+        particle = BombParticle(
             x,
             y,
             width,
@@ -114,7 +114,7 @@ class Bomb(Entity):
             retrieved_tile = self.tiled_level.get_tile_from_layer(x, y, 1)
             base_tile = self.tiled_level.get_tile_from_layer(x, y, 0)
             if not base_tile.solid:
-                self.particles.add(obj)
+                self.particles.add(particle)
             if retrieved_tile.destructable:
                 pygame.sprite.Sprite.kill(retrieved_tile)
         except AttributeError as error:
