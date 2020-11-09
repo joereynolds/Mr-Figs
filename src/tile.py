@@ -14,7 +14,14 @@ class Tile(entity.Entity):
         entity.Entity.__init__(self, x, y, width, height, image)
         self.solid = bool(solid)
         self.destructable = destructable
+        
         self.minimap_colour = colours.GREEN
+
+        if self.solid:
+            self.minimap_colour = colours.GREEN_BASE
+
+        if self.destructable:
+            self.minimap_colour = colours.BROWN_HIGHLIGHT
 
 
 class FinishTile(Tile):
