@@ -3,6 +3,7 @@ import src.bomb as bomb
 import src.tile as tile
 import src.graphics as graphics
 import src.movement_vector as movement_vector
+from src.pickup_bomb import PickupBomb
 
 
 class PlayerCollisionHandler(object):
@@ -15,6 +16,7 @@ class PlayerCollisionHandler(object):
         """Check for collisions against the finish tile and bombs"""
         self.finish_tile_collision()
         self.moveable_tile_collision()
+        self.bomb_pickup_collision()
 
         self.bomb_collisions()
         for bomb in self.player.bombs:
@@ -44,12 +46,20 @@ class PlayerCollisionHandler(object):
                         _tile.update()
                         return
 
+    #TODO think of a good way of refactoring this
     def finish_tile_collision(self):
         """Go to the next level when we collide with the finish tile"""
         for _tile in self.level.tiled_level.sprites:
             if isinstance(_tile, tile.FinishTile):
                 if self.player.destination[0] == _tile.rect.x and self.player.destination[1] == _tile.rect.y:
                     self.level.switch_to_scene(self.level.next_level)
+
+    def bomb_pickup_collision(self):
+        for _tile in self.level.tiled_level.sprites:
+            if isinstance(_tile, PickupBomb):
+                if self.player.destination[0] == _tile.rect.x and self.player.destination[1] == _tile.rect.y:
+                    self.player.remaining_bombs += 1
+                    pygame.sprite.Sprite.kill(_tile)
 
     def moveable_tile_collision(self):
         for _tile in self.level.tiled_level.sprites:

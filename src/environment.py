@@ -19,6 +19,7 @@ def create_level_list():
     level_dict[levels.level2.KEY_NAME] = level_base.LevelBase(levels.level2.LOCATION, 'NoNextScene', 2)
     level_dict[levels.level3.KEY_NAME] = level_base.LevelBase(levels.level3.LOCATION, 'NoNextScene', 3)
     level_dict[levels.level4.KEY_NAME] = level_base.LevelBase(levels.level4.LOCATION, 'NoNextScene', 4)
+    level_dict[levels.level5.KEY_NAME] = level_base.LevelBase(levels.level5.LOCATION, 'NoNextScene', 4)
     level_dict['start-menu'] = start_menu.StartMenu()
     level_dict['game-over-menu'] = game_over_menu.GameOverMenu()
     level_dict['escape-menu'] = escape_menu.EscapeMenuNoOverlay()
@@ -30,9 +31,11 @@ def link_levels(level_list):
     """Sets the next level for each level so that when
     we finish that level it automatically takes us to
     the next one specified"""
+    level_list['level-0'].next_level = level_list['level-1']
     level_list['level-1'].next_level = level_list['level-2']
     level_list['level-2'].next_level = level_list['level-3']
     level_list['level-3'].next_level = level_list['level-4']
+    level_list['level-4'].next_level = level_list['level-0']
 
 level_obj_list = create_level_list()
 #TODO this works on reference, gross.

@@ -5,6 +5,7 @@ from src.tile import Stateful
 from src.tile import Tile
 from src.bomb import Bomb
 from src.actor import Actor
+from src.pickup_bomb import PickupBomb
 
 class TileFactory():
 
@@ -16,7 +17,8 @@ class TileFactory():
             'stateful': Stateful,
             'bomb': Bomb,
             'actor': Actor,
-            'tile': Tile
+            'tile': Tile,
+            'pickup_bomb': PickupBomb
         }
 
         return tile_map[tile_type](**kwargs)

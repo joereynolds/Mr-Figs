@@ -9,28 +9,33 @@ There's a class per level.'
 import src.config as config
 import src.scenes.levelbase as level_base
 
+class level5(object):
+    KEY_NAME = 'level-4'
+    NAME = '4-level.tmx'
+    LOCATION = config.level_location + NAME
+    IS_COMPLETE = False
 
 class level4(object):
-    KEY_NAME = 'level-4'
-    NAME = 'new-level4.tmx'
+    KEY_NAME = 'level-3'
+    NAME = '3-level.tmx'
     LOCATION = config.level_location + NAME
     IS_COMPLETE = False
 
 class level3(object):
-    KEY_NAME = 'level-3'
-    NAME = 'new-level3.tmx'
+    KEY_NAME = 'level-2'
+    NAME = '2-level.tmx'
     LOCATION = config.level_location + NAME
     IS_COMPLETE = False
 
 class level2(object):
-    KEY_NAME = 'level-2'
-    NAME = 'new-level2.tmx'
+    KEY_NAME = 'level-1'
+    NAME = '1-level.tmx'
     LOCATION = config.level_location + NAME
     IS_COMPLETE = False
 
 class level1(object):
-    KEY_NAME = 'level-1'
-    NAME = 'new-level1.tmx'
+    KEY_NAME = 'level-0'
+    NAME = '0-introduction.tmx'
     LOCATION = config.level_location + NAME
     IS_COMPLETE = False
     NEXT_LEVEL = (level2.LOCATION, 'NoNextScene')

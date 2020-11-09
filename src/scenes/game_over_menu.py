@@ -1,4 +1,4 @@
-import src.colours
+import src.colours as colours
 import src.container_reader as container_reader
 import src.scenes.scenebase as scene_base
 import src.input_handlers.game_over_input_handler as input_handler

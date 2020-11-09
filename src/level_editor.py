@@ -73,6 +73,9 @@ class LevelData():
                 'level': self,
                 'lifespan': sprite.get('lifespan'),
             },
+            'pickup_bomb': {
+                **common
+            },
             'finish_tile': {
                 **common,
                 'solid':sprite.get('solid'),

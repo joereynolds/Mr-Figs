@@ -24,7 +24,7 @@ class StartMenuInput():
         self.start_menu = start_menu
 
         self.keys = {
-            pygame.K_s: 'level-1',
+            pygame.K_s: 'level-0',
             pygame.K_l: 'level-select'
         }
 
@@ -39,9 +39,12 @@ class StartMenuInput():
                     )
         if event.type == pygame.MOUSEBUTTONDOWN:
             self.start_menu.component_dict['start-game'].on_click(
-                self.start_menu.switch_to_scene, src.environment.level_obj_list['game-over-menu']
+                self.start_menu.switch_to_scene, 
+                src.environment.level_obj_list['game-over-menu']
             )
+
             self.start_menu.component_dict['exit-game'].on_click(self.start_menu.terminate)
+
             self.start_menu.component_dict['level-select'].on_click(
                 self.start_menu.switch_to_scene, src.environment.level_obj_list['level-select']
             )
