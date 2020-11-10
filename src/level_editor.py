@@ -22,25 +22,19 @@ class LevelData():
         self._map = load_pygame(self.tmx_file)
         self.map_data_for_camera = pyscroll.TiledMapData(self._map)
 
-        ###########
-        # START CAMERA
         self.map_layer_for_camera = pyscroll.BufferedRenderer(
             self.map_data_for_camera,
-            (400, 400)
+            (100, 100)
         )
+
         self.sprites = pyscroll.PyscrollGroup(
             map_layer=self.map_layer_for_camera
         )
-        # END CAMERA
-        ###########
-
 
         self.tile_spacing = graphics.tile_width
         self.properties = self._map.properties
-        self.sprites = pygame.sprite.LayeredUpdates()
         self.get_map_data()
         self.link_doors_and_switches()
-
 
     def get_map_data(self):
         """Iterates through the TiledMap file adding tiles to
@@ -53,15 +47,13 @@ class LevelData():
         factory = TileFactory()
         for i, layer in enumerate(self._map):
             for _tile in layer.tiles():
-                x, y = _tile[0], _tile[1]
-                print(_tile[2].get_rect())
-                # pix_x, pix_y = _tile[2][1][0], _tile[2][1][1]
-                # surface = graphics.subsurf((pix_x, pix_y))
-
-                # current_tile = self._map.get_tile_properties(x, y, i)
-                # if current_tile:
-                #     obj = self._create_tile(x, y, surface, current_tile, factory)
-                #     self.sprites.add(obj, layer=i)
+                x, y, surface = _tile[0], _tile[1], _tile[2]
+                print(_tile)
+                current_tile = self._map.get_tile_properties(x, y, i)
+                if current_tile:
+                    scaled = graphics.scale_up(surface)
+                    obj = self._create_tile(x, y, scaled, current_tile, factory)
+                    self.sprites.add(obj, layer=i)
 
     def _create_tile(self, x, y, surface, sprite, factory):
         """Creates tiles passed to it. It finds the type of the

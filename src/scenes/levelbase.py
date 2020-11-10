@@ -48,8 +48,8 @@ class LevelBase(scene_base.SceneBase):
 
         self.file = file
         self.next_level = next_level
-        self.sprites = pygame.sprite.LayeredUpdates()
-        self.sprites.add(self.tiled_level.sprites, self.player)
+        self.sprites = self.tiled_level.sprites
+        self.sprites.add(self.player)
         self.renderer = renderers.LevelBaseRenderer(self)
 
     def check_player_hasnt_died_a_horrible_death(self):

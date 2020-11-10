@@ -27,6 +27,9 @@ def subsurf(grid_pos):
     surface = spritesheet.subsurface(grid_pos[0], grid_pos[1], sprite_width, sprite_height)
     return pygame.transform.scale(surface, (tile_width, tile_height))
 
+def scale_up(surface):
+    return pygame.transform.scale(surface, (tile_width, tile_height))
+
 
 """A dictionary of sprites and their properties
     coords = Their location on the spritesheet

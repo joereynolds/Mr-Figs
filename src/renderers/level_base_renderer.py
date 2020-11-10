@@ -36,4 +36,6 @@ class LevelBaseRenderer():
 
         self.minimap.render()
         self.bomb_display.render(self.level.player.remaining_bombs)
+        self.level.sprites.center(self.level.player.rect.center)
+
         self.level.sprites.draw(self.level.surface)
