@@ -54,7 +54,6 @@ class Bomb(Entity):
         Explodes our bomb making sure that the particles
         only go to the correct boundaries of the walls.
         """
-       # TODO - Don't blow up on solid tiles (or past them)
         for i in range(graphics.tile_width, graphics.tile_width * 4, graphics.tile_width):
             right = self.rect.x + i
             
