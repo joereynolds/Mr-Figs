@@ -4,6 +4,7 @@ import src.actor as actor
 import pytmx
 import pygame
 import src.graphics as graphics
+import pyscroll
 
 from src.tile_factory import TileFactory
 
@@ -19,9 +20,25 @@ class LevelData():
         self.tile_spacing = graphics.tile_width
         self._map = pytmx.TiledMap(self.tmx_file)
         self.properties = self._map.properties
-        self.sprites = pygame.sprite.LayeredUpdates()
-        self.get_map_data()
-        self.link_doors_and_switches()
+        # self.sprites = pygame.sprite.LayeredUpdates()
+
+        ###########
+        # START CAMERA
+        self.map_data_for_camera = pyscroll.TiledMapData(self._map)
+        self.map_layer_for_camera = pyscroll.BufferedRenderer(
+            self.map_data_for_camera,
+            (400, 400)
+        )
+        # self.sprites = pyscroll.PyscrollGroup(
+        #     map_layer=self.map_layer_for_camera
+        # )
+        # END CAMERA
+        ###########
+
+
+        # self.get_map_data()
+        # self.link_doors_and_switches()
+
 
     def get_map_data(self):
         """Iterates through the TiledMap file adding tiles to
