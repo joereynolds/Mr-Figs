@@ -4,11 +4,14 @@ Everything related to the bomb that mr-figs drops.
 
 import pygame
 
+from src.tile import MoveableTile
 from src.entity import Entity
 from src.bomb_particle import BombParticle
 import src.graphics as graphics
 import src.logger as logger
 import src.colours as colours
+from pprint import pprint
+
 
 class Bomb(Entity):
     """
@@ -55,48 +58,54 @@ class Bomb(Entity):
         for i in range(graphics.tile_width, graphics.tile_width * 4, graphics.tile_width):
             right = self.rect.x + i
             
-            self.create_particle(
+            has_created_particle = self.create_particle(
                 right,
                 self.rect.y,
                 graphics.tile_width,
                 graphics.tile_height
             )
 
-            retrieved_tile = self.tiled_level.get_tile_from_layer(right, self.rect.y, 1)
-            base_tile = self.tiled_level.get_tile_from_layer(right, self.rect.y, 0)
-
-            if (retrieved_tile and retrieved_tile.solid) \
-                or (retrieved_tile and retrieved_tile.destructable) \
-                or (base_tile and base_tile.solid) \
-                or (base_tile and base_tile.destructable):
+            if not has_created_particle:
                 break
 
         for i in range(graphics.tile_width, graphics.tile_width * 4, graphics.tile_width):
             left = self.rect.x - i
-            self.create_particle(
+
+            has_created_particle = self.create_particle(
                 left,
                 self.rect.y,
                 graphics.tile_width,
                 graphics.tile_height
             )
 
+            if not has_created_particle:
+                break
+
         for i in range(graphics.tile_width, graphics.tile_width * 4, graphics.tile_width):
             down = self.rect.y + i
-            self.create_particle(
+
+            has_created_particle = self.create_particle(
                 self.rect.x,
                 down,
                 graphics.tile_width,
                 graphics.tile_height
             )
 
+            if not has_created_particle:
+                break
+
         for i in range(graphics.tile_width, graphics.tile_width * 4, graphics.tile_width):
             up = self.rect.y - i
-            self.create_particle(
+
+            has_created_particle = self.create_particle(
                 self.rect.x,
                 up,
                 graphics.tile_width,
                 graphics.tile_height
             )
+
+            if not has_created_particle:
+                break
 
         # TODO Not a fan of this explosion sound, get another one 
         # self.bomb_explosion_sound.play()
@@ -109,19 +118,25 @@ class Bomb(Entity):
             height,
         )
 
-        #TODO split this code below into a separate function
+        created = False
+
         try:
             retrieved_tile = self.tiled_level.get_tile_from_layer(x, y, 1)
             base_tile = self.tiled_level.get_tile_from_layer(x, y, 0)
+
+            if isinstance(retrieved_tile, MoveableTile):
+                return False
             if not base_tile.solid:
                 self.particles.add(particle)
+                created = True
             if retrieved_tile.destructable:
                 pygame.sprite.Sprite.kill(retrieved_tile)
         except AttributeError as error:
             logger.LOGGER.error(error)
             logger.LOGGER.info('Attribute Error: Tried to place bomb on non-existent block')
+        finally:
+            return created
 
-    #TODO this should be in the collision handler
     def bomb_collisions(self, bomb_sprite_group):
         """Checks to see if our bomb has touched another bombs explosion. If it has,
         it also explodes"""
