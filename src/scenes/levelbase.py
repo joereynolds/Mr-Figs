@@ -41,9 +41,8 @@ class LevelBase(scene_base.SceneBase):
         )
 
         pygame.mixer.pre_init(44100, -16, 2, 512)
-
         pygame.mixer.init()
-        pygame.mixer.music.load('./data/audio/music/carmack.mp3')
+        pygame.mixer.music.load('./data/audio/music/carmack.ogg')
         pygame.mixer.music.play(-1)
 
         self.file = file

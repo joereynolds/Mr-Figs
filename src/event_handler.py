@@ -16,8 +16,8 @@ class EventHandler():
     timer = How often the event should be triggered (in ms)"""
 
     events_map = {
-        28 : events.call_bomb_events,
-        29 : events.animate_particles
+        pygame.USEREVENT: events.call_bomb_events,
+        pygame.USEREVENT + 1: events.animate_particles
     }
 
     def __init__(self, player):
@@ -25,25 +25,19 @@ class EventHandler():
         @self.events : An array of our custom events
         """
         self.player = player
-        self.events = []
-        self.add_event('laser_anim', 27, 2000)
-        self.add_event('bomb_anim', 28, 500)
-        self.add_event('particle_anim', 29, 100)
-        self.set_timers()
 
-    def add_event(self, event_name, event_id, time):
-        """Adds an event to the events array"""
-        if event_id > 25:
-            _time = time
-            event = (event_name, event_id, _time)
-            self.events.append(event)
-        else:
-            logger.LOGGER.info('Event Ids must be greater than 25')
+        self.events = [
+            (pygame.USEREVENT, 500, 'bomb animation and sound effects'),
+            (pygame.USEREVENT + 1, 100, 'particle animation'),
+            (pygame.USEREVENT + 2, 2000, 'laser animation'),
+        ]
+
+        self.set_timers()
 
     def set_timers(self):
         """Adds all of the events in our events queue to pygames event queue"""
         for event in self.events:
-            pygame.time.set_timer(event[1], event[2])
+            pygame.time.set_timer(event[0], event[1])
 
     def handle_events(self, event):
         """Looks at the events coming through the event queue
