@@ -3,6 +3,7 @@ import pygame
 import src.colours as colours
 import src.graphics as graphics
 import src.entity as entity
+from src.movement_vector import vector
 
 class Tile(entity.Entity):
     """The tile class represents any tile in the game background,
@@ -28,11 +29,19 @@ class MoveableTile(Tile):
     def __init__(self, x, y, width, height, solid, destructable, moveable=False, image=None):
         Tile.__init__(self, x, y, width, height, solid, destructable, image)
 
+    def handle_collision(self, player, level):
+        if player.destination[0] == self.rect.x and player.destination[1] == self.rect.y:
+            self.rect.x = self.rect.x + (vector[player.direction][0] * graphics.tile_width)
+            self.rect.y = self.rect.y + (vector[player.direction][1] * graphics.tile_width)
+
 
 class FinishTile(Tile):
     def __init__(self, x, y, width, height, solid, destructable, image=None):
         Tile.__init__(self, x, y, width, height, solid, destructable, image)
 
+    def handle_collision(self, player, level):
+        if player.destination[0] == self.rect.x and player.destination[1] == self.rect.y:
+            level.switch_to_scene(level.next_level)
 
 class Stateful(Tile):
     """The stateful class is a tile that can be either on or off.

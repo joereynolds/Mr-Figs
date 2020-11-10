@@ -14,9 +14,7 @@ class PlayerCollisionHandler(object):
 
     def update(self):
         """Check for collisions against the finish tile and bombs"""
-        self.finish_tile_collision()
-        self.moveable_tile_collision()
-        self.bomb_pickup_collision()
+        self.handle_collisions()
 
         self.bomb_collisions()
         for bomb in self.player.bombs:
@@ -53,24 +51,7 @@ class PlayerCollisionHandler(object):
                         _tile.update()
                         return
 
-    #TODO think of a good way of refactoring this
-    def finish_tile_collision(self):
-        """Go to the next level when we collide with the finish tile"""
+    def handle_collisions(self):
         for _tile in self.level.tiled_level.sprites:
-            if isinstance(_tile, tile.FinishTile):
-                if self.player.destination[0] == _tile.rect.x and self.player.destination[1] == _tile.rect.y:
-                    self.level.switch_to_scene(self.level.next_level)
-
-    def bomb_pickup_collision(self):
-        for _tile in self.level.tiled_level.sprites:
-            if isinstance(_tile, PickupBomb):
-                if self.player.destination[0] == _tile.rect.x and self.player.destination[1] == _tile.rect.y:
-                    self.player.add_bomb()
-                    pygame.sprite.Sprite.kill(_tile)
-
-    def moveable_tile_collision(self):
-        for _tile in self.level.tiled_level.sprites:
-            if isinstance(_tile, tile.MoveableTile):
-                if self.player.destination[0] == _tile.rect.x and self.player.destination[1] == _tile.rect.y:
-                    _tile.rect.x = _tile.rect.x + (movement_vector.vector[self.player.direction][0] * graphics.tile_width)
-                    _tile.rect.y = _tile.rect.y + (movement_vector.vector[self.player.direction][1] * graphics.tile_width)
+            if hasattr(_tile, 'handle_collision'):
+                _tile.handle_collision(self.player, self.level)
