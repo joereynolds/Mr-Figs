@@ -26,7 +26,6 @@ class LevelBaseRenderer():
             Minimap.HEIGHT,
             self.level.surface,
         )
-        self.level.sprites.add(self.minimap)
 
     def render(self):
         if len(self.level.player.bombs) != self.bomb_count:

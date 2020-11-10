@@ -27,6 +27,8 @@ class LevelData():
             (100, 100)
         )
 
+        self.map_layer_for_camera.zoom = 1
+
         self.sprites = pyscroll.PyscrollGroup(
             map_layer=self.map_layer_for_camera
         )
@@ -48,7 +50,6 @@ class LevelData():
         for i, layer in enumerate(self._map):
             for _tile in layer.tiles():
                 x, y, surface = _tile[0], _tile[1], _tile[2]
-                print(_tile)
                 current_tile = self._map.get_tile_properties(x, y, i)
                 if current_tile:
                     scaled = graphics.scale_up(surface)
