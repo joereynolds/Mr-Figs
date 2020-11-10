@@ -19,7 +19,8 @@ class LevelBase(scene_base.SceneBase):
         @level = A TMXMap object of the level (I think)
         @level_tiles = A sprite group of all tiles on the level
         """
-        self.tiled_level = level_editor.LevelData(file)
+        screen = graphics.get_window_surface()
+        self.tiled_level = level_editor.LevelData(file, screen)
         self.level_number = level_number
 
         self.player = actor.Actor(

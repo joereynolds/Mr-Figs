@@ -8,7 +8,7 @@ class BaseComponent(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.width = width
         self.height = height
-        self.image = pygame.Surface([self.width, self.height]).convert_alpha()
+        self.image = pygame.Surface([self.width, self.height])
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y

@@ -3,8 +3,8 @@
  <properties>
   <property name="player_bomb_count" value="5"/>
  </properties>
- <tileset firstgid="1" name="newtiledsheet" tilewidth="16" tileheight="16" tilecount="17" columns="9">
-  <image source="../../data/newtiledsheet.png" width="144" height="112"/>
+ <tileset firstgid="1" name="newtiledsheet" tilewidth="16" tileheight="16" tilecount="63" columns="9">
+  <image source="../../newtiledsheet.png" width="144" height="112"/>
   <terraintypes>
    <terrain name="New Terrain" tile="-1"/>
   </terraintypes>
