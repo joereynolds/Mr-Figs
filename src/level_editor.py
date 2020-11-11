@@ -16,7 +16,7 @@ class LevelData():
     @self._map = The TiledMap object of self.file
     @self.data = A sprite group of all of the tiles in self._map
     """
-    def __init__(self, file, screen):
+    def __init__(self, file, screen: pygame.Surface):
         self.tmx_file = file
 
         self._map = load_pygame(self.tmx_file)
@@ -24,10 +24,9 @@ class LevelData():
 
         self.map_layer_for_camera = pyscroll.BufferedRenderer(
             self.map_data_for_camera,
-            (100, 100)
+            # screen.get_size(),
+            (100, 100),
         )
-
-        self.map_layer_for_camera.zoom = 1
 
         self.sprites = pyscroll.PyscrollGroup(
             map_layer=self.map_layer_for_camera
@@ -128,7 +127,7 @@ class LevelData():
                         if state.triggers == trigger.id:
                             trigger.stateful = state
 
-    def get_tile(self,x,y):
+    def get_tile(self, x, y):
         """Returns the tile object at @x and @y"""
         for tile in self.sprites:
             if tile.rect.x == x and tile.rect.y == y:
@@ -139,12 +138,6 @@ class LevelData():
         all layers instead of the first layer it sees to match
         the x and y"""
         return [tile for tile in self.sprites if tile.rect.x == x and tile.rect.y == y]
-
-    def get_layer_count(self):
-        """Returns the total count of layers.
-        count starts at 1."""
-        layers = [layer for layer in self._map]
-        return len(layers)
 
     def get_tile_from_layer(self, x, y, layer):
         """The same as get_tile but returns the tile only from that layer"""
