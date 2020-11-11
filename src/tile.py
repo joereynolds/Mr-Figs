@@ -31,8 +31,16 @@ class MoveableTile(Tile):
 
     def handle_collision(self, player, level):
         if player.destination[0] == self.rect.x and player.destination[1] == self.rect.y:
-            self.rect.x = self.rect.x + (vector[player.direction][0] * graphics.tile_width)
-            self.rect.y = self.rect.y + (vector[player.direction][1] * graphics.tile_width)
+            target_x = self.rect.x + (vector[player.direction][0] * graphics.tile_width)
+            target_y = self.rect.y + (vector[player.direction][1] * graphics.tile_width)
+
+            if level.tiled_level.find_solid_tile(
+                level.tiled_level.get_tile_all_layers(target_x, target_y)
+            ):
+                return
+
+            self.rect.x = target_x
+            self.rect.y = target_y
 
 
 class FinishTile(Tile):

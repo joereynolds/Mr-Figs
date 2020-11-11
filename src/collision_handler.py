@@ -16,14 +16,9 @@ class PlayerCollisionHandler(object):
         """Check for collisions against the finish tile and bombs"""
         self.handle_collisions()
 
-        self.bomb_collisions()
         for bomb in self.player.bombs:
+            bomb.bomb_collisions(self.player.bombs)
             self.bomb_particle_collision(bomb)
-
-    def bomb_collisions(self):
-        """This is just a wrapper that calls the function for each bomb"""
-        for _bomb in self.player.bombs:
-            _bomb.bomb_collisions(self.player.bombs)
 
     def bomb_particle_collision(self, bomb: bomb.Bomb):
         """Returns True if any of the bombs particles collide with player.
