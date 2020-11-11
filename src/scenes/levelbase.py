@@ -23,7 +23,7 @@ class LevelBase(scene_base.SceneBase):
         self.tiled_level = level_editor.LevelData(file, screen)
         self.level_number = level_number
 
-        starting_position = graphics.tile_grid(
+        starting_position = graphics.grid(
             int(self.tiled_level.properties.get('player_starting_x', 1)),
             int(self.tiled_level.properties.get('player_starting_y', 1))
         )

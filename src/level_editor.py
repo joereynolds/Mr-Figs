@@ -24,7 +24,6 @@ class LevelData():
 
         self.map_layer_for_camera = pyscroll.BufferedRenderer(
             self.map_data_for_camera,
-            # screen.get_size(),
             (100, 100),
         )
 
@@ -32,10 +31,14 @@ class LevelData():
             map_layer=self.map_layer_for_camera
         )
 
+        # Would've touch .5 would make it smaller but actually makes it bigger?
+        self.map_layer_for_camera.zoom = .5
+
         self.tile_spacing = graphics.tile_width
         self.properties = self._map.properties
         self.get_map_data()
         self.link_doors_and_switches()
+
 
     def get_map_data(self):
         """Iterates through the TiledMap file adding tiles to
@@ -51,9 +54,9 @@ class LevelData():
                 x, y, surface = _tile[0], _tile[1], _tile[2]
                 current_tile = self._map.get_tile_properties(x, y, i)
                 if current_tile:
-                    scaled = graphics.scale_up(surface)
-                    obj = self._create_tile(x, y, scaled, current_tile, factory)
+                    obj = self._create_tile(x, y, surface, current_tile, factory)
                     self.sprites.add(obj, layer=i)
+                    current_tile = obj
 
     def _create_tile(self, x, y, surface, sprite, factory):
         """Creates tiles passed to it. It finds the type of the
