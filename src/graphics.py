@@ -7,8 +7,8 @@ sprite_height = 16
 spritesheet = pygame.image.load(config.spritesheet_location)
 
 #scaled width and height
-tile_width = 48
-tile_height = 48
+tile_width = 16
+tile_height = 16
 
 def get_window_surface():
     return pygame.display.set_mode((config.screen_width, config.screen_height))
