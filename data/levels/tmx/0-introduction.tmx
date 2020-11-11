@@ -2,6 +2,8 @@
 <map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="3" nextobjectid="1">
  <properties>
   <property name="player_bomb_count" value="0"/>
+  <property name="player_starting_x" value="1"/>
+  <property name="player_starting_y" value="1"/>
  </properties>
  <tileset firstgid="1" name="newtiledsheet" tilewidth="16" tileheight="16" tilecount="63" columns="9">
   <image source="../../newtiledsheet.png" trans="ff00ff" width="144" height="112"/>
@@ -189,6 +191,11 @@
     <property name="moveable" value="True"/>
     <property name="solid" value="True"/>
     <property name="type" value="moveable_tile"/>
+   </properties>
+  </tile>
+  <tile id="45">
+   <properties>
+    <property name="type" value="actor"/>
    </properties>
   </tile>
  </tileset>

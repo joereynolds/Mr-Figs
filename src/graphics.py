@@ -20,6 +20,14 @@ def grid(x, y):
     """
     return sprite_width * x, sprite_height * y
 
+def tile_grid(x, y):
+    """
+    Returns the sprite at the gridded position of n m rather
+    than having to work out the time table for sprite widths!
+    """
+    return tile_width * x, tile_height * y
+
+
 def subsurf(grid_pos):
     """
     Quick wrapper around pygame's subsurface so we don't keep having to pass in the width and height
