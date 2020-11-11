@@ -31,7 +31,7 @@ class LevelData():
             map_layer=self.map_layer_for_camera
         )
 
-        # Would've touch .5 would make it smaller but actually makes it bigger?
+        # Would've thought .5 would make it smaller but actually makes it bigger?
         self.map_layer_for_camera.zoom = .5
 
         self.tile_spacing = graphics.tile_width
@@ -56,7 +56,6 @@ class LevelData():
                 if current_tile:
                     obj = self._create_tile(x, y, surface, current_tile, factory)
                     self.sprites.add(obj, layer=i)
-                    current_tile = obj
 
     def _create_tile(self, x, y, surface, sprite, factory):
         """Creates tiles passed to it. It finds the type of the
