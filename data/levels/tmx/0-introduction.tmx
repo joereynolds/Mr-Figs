@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="3" nextobjectid="1">
+<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="21">
  <properties>
   <property name="player_bomb_count" value="0"/>
   <property name="player_starting_x" value="1"/>
@@ -199,11 +199,11 @@
    </properties>
   </tile>
  </tileset>
- <layer id="1" name="Tile Layer 1" width="14" height="10">
+ <layer id="1" name="background" width="14" height="10">
   <data encoding="csv">
-3,10,10,10,10,10,4,22,22,22,22,22,22,22,
-11,19,20,19,20,19,2,22,22,22,22,22,22,22,
-11,10,10,10,20,10,2,22,22,22,22,22,22,22,
+3,0,0,0,0,0,4,22,22,22,22,22,22,22,
+0,19,20,19,20,19,0,22,22,22,22,22,22,22,
+12,0,0,0,0,0,13,22,22,22,22,22,22,22,
 22,22,22,22,22,22,22,22,22,22,22,22,22,22,
 22,22,22,22,22,22,22,22,22,22,22,22,22,22,
 22,22,22,22,22,22,22,22,22,22,22,22,22,22,
@@ -213,18 +213,19 @@
 22,22,22,22,22,22,22,22,22,22,22,22,22,22
 </data>
  </layer>
- <layer id="2" name="Tile Layer 2" width="14" height="10">
-  <data encoding="csv">
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,45,0,0,0,0,0,0,0,0,0,
-0,0,0,0,32,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0
-</data>
- </layer>
+ <objectgroup id="3" name="objects">
+  <object id="5" name="boulder" type="moveable_tile" gid="45" x="64" y="32" width="16" height="16"/>
+  <object id="9" name="wall-up" type="tile" gid="10" x="32" y="48" width="16" height="16"/>
+  <object id="10" name="wall-right" type="tile" gid="11" x="0" y="32" width="16" height="16"/>
+  <object id="11" name="wall-left" type="tile" gid="2" x="96" y="32" width="16" height="16"/>
+  <object id="12" name="wall-up" type="tile" gid="10" x="16" y="48" width="16" height="16"/>
+  <object id="13" name="wall-up" type="tile" gid="10" x="48" y="48" width="16" height="16"/>
+  <object id="14" name="wall-up" type="tile" gid="10" x="80" y="48" width="16" height="16"/>
+  <object id="15" name="wall-down" type="tile" gid="1" x="16" y="16" width="16" height="16"/>
+  <object id="16" name="wall-down" type="tile" gid="1" x="32" y="16" width="16" height="16"/>
+  <object id="17" name="wall-down" type="tile" gid="1" x="48" y="16" width="16" height="16"/>
+  <object id="18" name="wall-down" type="tile" gid="1" x="64" y="16" width="16" height="16"/>
+  <object id="19" name="wall-down" type="tile" gid="1" x="80.25" y="16" width="16" height="16"/>
+  <object id="20" name="finish" type="finish_tile" gid="32" x="64" y="48" width="16" height="16"/>
+ </objectgroup>
 </map>

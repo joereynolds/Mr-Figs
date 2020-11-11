@@ -110,6 +110,8 @@ class Bomb(Entity):
         # self.bomb_explosion_sound.play()
 
     def create_particle(self, x, y, width, height):
+        created = False
+
         particle = BombParticle(
             x,
             y,
@@ -117,24 +119,23 @@ class Bomb(Entity):
             height,
         )
 
-        created = False
+        tile_object = self.tiled_level.get_tile_from_object_layer(x, y)
+        base_tile = self.tiled_level.get_tile_from_layer(x, y, 0)
 
-        try:
-            retrieved_tile = self.tiled_level.get_tile_from_layer(x, y, 1)
-            base_tile = self.tiled_level.get_tile_from_layer(x, y, 0)
+        if tile_object and tile_object.type == 'moveable_tile':
+            return False
 
-            if isinstance(retrieved_tile, MoveableTile):
-                return False
-            if not base_tile.solid:
-                self.particles.add(particle)
-                created = True
-            if retrieved_tile.destructable:
-                pygame.sprite.Sprite.kill(retrieved_tile)
-        except AttributeError as error:
-            logger.LOGGER.error(error)
-            logger.LOGGER.info('Attribute Error: Tried to place bomb on non-existent block')
-        finally:
-            return created
+        self.particles.add(particle)
+        created = True
+
+        if tile_object and tile_object.destructable:
+            pass
+            # self.tiled_level.sprites.remove(tile_object)
+            # Remove the tile_object from the sprites
+            # self.tiled_level.sprites.remove(tile_object)
+            # pygame.sprite.Sprite.kill(tile_object)
+
+        return created
 
     def bomb_collisions(self, bomb_sprite_group):
         """Checks to see if our bomb has touched another bombs explosion. If it has,
