@@ -7,7 +7,7 @@ Mr-Figs runs on python 3.x
 
 #### Demo (WIP)
 
-![alt text](figDemo.gif)
+![](https://i.imgur.com/mrOF1PC.gif)
 
 #### Gameplay
 
