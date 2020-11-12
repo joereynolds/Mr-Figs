@@ -1,5 +1,5 @@
-from src.minimap import Minimap
-from src.bomb_display import BombDisplay
+from src.gui.minimap import Minimap
+from src.gui.bomb_display import BombDisplay
 import src.colours as colours
 import src.config as config
 import src.graphics as graphics
