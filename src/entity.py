@@ -18,3 +18,6 @@ class Entity(pygame.sprite.Sprite):
             return image
         else:
             return pygame.Surface((width, height))
+
+class MoveableEntity(Entity):
+    pass
