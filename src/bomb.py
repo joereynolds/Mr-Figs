@@ -110,15 +110,6 @@ class Bomb(Entity):
         # self.bomb_explosion_sound.play()
 
     def create_particle(self, x, y, width, height):
-        created = False
-
-        particle = BombParticle(
-            x,
-            y,
-            width,
-            height,
-        )
-
         tile = self.tiled_level.get_tile_from_object_layer(x, y)
         base_tile = self.tiled_level.get_tile_from_layer(x, y, 0)
 
@@ -128,13 +119,19 @@ class Bomb(Entity):
         if tile and tile.solid and not tile.destructable:
             return False
 
+        particle = BombParticle(
+            x,
+            y,
+            width,
+            height,
+        )
+
         self.particles.add(particle)
-        created = True
 
         if tile and tile.destructable:
             self.tiled_level.sprites.remove(tile)
 
-        return created
+        return True
 
     def bomb_collisions(self, bomb_sprite_group):
         """Checks to see if our bomb has touched another bombs explosion. If it has,
