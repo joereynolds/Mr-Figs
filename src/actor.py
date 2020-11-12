@@ -39,7 +39,8 @@ class Actor(entity.Entity):
     @self.valid_destinations = A list of valid moves that the user can make.
                                i.e. they can't move 13pixels if they themselves are 48px big.
 
-
+    @self.turns_taken = How many turns the player has taken
+                        
     """
     def __init__(self, x, y, width, height, level, remaining_bombs, image=None):
         entity.Entity.__init__(self, x, y, width, height, image)
@@ -56,6 +57,7 @@ class Actor(entity.Entity):
         self.valid_destinations = [graphics.tile_width * x for x in range(-100, 100)]
         self.moving = False
         self.input_handler = p_i_handler.PlayerInputHandler(self)
+        self.turns_taken = 0
         self.collision_handler = collision_handler.PlayerCollisionHandler(
             self, self.level
         )
@@ -67,6 +69,7 @@ class Actor(entity.Entity):
         we can stop moving. Note that we need to use delta-time otherwise we'll get
         differing results from pc to pc. Also without delta time we can't use fancy
         schmancy interpolation effects"""
+        
         target_x = self.destination[0]
         target_y = self.destination[1]
 
@@ -115,6 +118,9 @@ class Actor(entity.Entity):
 
     def add_bomb(self):
         self.remaining_bombs += 1
+
+    def add_turn(self):
+        self.turns_taken += 1
 
     def event_update(self, command):
         """These events should only happen on a keypress. They do not need to be checked

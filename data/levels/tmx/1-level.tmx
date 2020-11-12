@@ -3,8 +3,8 @@
  <properties>
   <property name="player_bomb_count" value="0"/>
  </properties>
- <tileset firstgid="1" name="newtiledsheet" tilewidth="16" tileheight="16" tilecount="63" columns="9">
-  <image source="../../newtiledsheet.png" trans="ff00ff" width="144" height="112"/>
+ <tileset firstgid="1" name="newtiledsheet" tilewidth="16" tileheight="16" tilecount="90" columns="9">
+  <image source="../../newtiledsheet.png" trans="ff00ff" width="144" height="160"/>
   <tile id="0">
    <properties>
     <property name="destructable" value=""/>

@@ -9,24 +9,22 @@ from src.actor import Actor
 import src.colours as colours
 import src.config as config
 
-class BombDisplay(Entity):
+class DataDisplay(Entity):
 
-    def __init__(self, x: int, y: int, width: int, height: int, surface, image=None):
+    def __init__(self, x: int, y: int, width: int, height: int, surface, text: str, image=None):
         Entity.__init__(self, x, y, width, height, image)
-        self.image.fill(colours.RED_GLOW)
-        self.image.set_alpha(50)
         self.x = x
         self.y = y
         self.width = width
         self.height = height
         self.surface = surface
-        self.text = TextElement(text = 'BOMBS: ' )
+        self.text = TextElement(text=text)
 
     def render(self, bomb_count):
         """Renders text at the default position of (0,0) or otherwise
         if a position is supplied.
         @position = Position for the text to be rendered (optional)
         """
-        font_object = pygame.font.Font(None, 20)
-        rendered_text = font_object.render(self.text.text + str(bomb_count), False, colours.BLACK)
+        font_object = pygame.font.Font('./data/font-arcade-classic.ttf', 20)
+        rendered_text = font_object.render(self.text.text + str(bomb_count), False, colours.WHITE)
         self.surface.blit(rendered_text, (self.x, self.y))

@@ -33,9 +33,16 @@ class level2(object):
     LOCATION = config.level_location + NAME
     IS_COMPLETE = False
 
-class level1(object):
-    KEY_NAME = 'level-0'
+class TutorialMovement():
+    KEY_NAME = 'tutorial-movement'
     NAME = '0-introduction.tmx'
+    LOCATION = config.level_location + NAME
+    IS_COMPLETE = False
+    NEXT_LEVEL = (level2.LOCATION, 'NoNextScene')
+
+class TutorialPushing():
+    KEY_NAME = 'tutorial-pushing'
+    NAME = '1-introduction.tmx'
     LOCATION = config.level_location + NAME
     IS_COMPLETE = False
     NEXT_LEVEL = (level2.LOCATION, 'NoNextScene')

@@ -33,3 +33,4 @@ class PlayerInputHandler():
             if event.key == key:
                 self.player.event_update(action)
                 self.player.collision_handler.update()
+                self.player.add_turn()
