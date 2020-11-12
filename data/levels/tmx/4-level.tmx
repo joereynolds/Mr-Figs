@@ -3,8 +3,8 @@
  <properties>
   <property name="player_bomb_count" value="5"/>
  </properties>
- <tileset firstgid="1" name="newtiledsheet" tilewidth="16" tileheight="16" tilecount="17" columns="9">
-  <image source="../../data/newtiledsheet.png" width="144" height="112"/>
+ <tileset firstgid="1" name="newtiledsheet" tilewidth="16" tileheight="16" tilecount="63" columns="9">
+  <image source="../../newtiledsheet.png" width="144" height="112"/>
   <terraintypes>
    <terrain name="New Terrain" tile="-1"/>
   </terraintypes>
@@ -12,14 +12,12 @@
    <properties>
     <property name="destructable" value=""/>
     <property name="solid" value="true"/>
-    <property name="type" value="tile"/>
    </properties>
   </tile>
   <tile id="1">
    <properties>
     <property name="destructable" value=""/>
     <property name="solid" value="true"/>
-    <property name="type" value="tile"/>
    </properties>
   </tile>
   <tile id="5">
@@ -27,77 +25,66 @@
     <property name="destructable" value=""/>
     <property name="id" value="1"/>
     <property name="solid" value="true"/>
-    <property name="type" value="triggerable"/>
    </properties>
   </tile>
   <tile id="9">
    <properties>
     <property name="destructable" value=""/>
     <property name="solid" value="true"/>
-    <property name="type" value="tile"/>
    </properties>
   </tile>
   <tile id="10">
    <properties>
     <property name="destructable" value=""/>
     <property name="solid" value="true"/>
-    <property name="type" value="tile"/>
    </properties>
   </tile>
   <tile id="18">
    <properties>
     <property name="destructable" value=""/>
     <property name="solid" value=""/>
-    <property name="type" value="tile"/>
    </properties>
   </tile>
   <tile id="19">
    <properties>
     <property name="destructable" value=""/>
     <property name="solid" value=""/>
-    <property name="type" value="tile"/>
    </properties>
   </tile>
   <tile id="20">
    <properties>
     <property name="destructable" value="true"/>
     <property name="solid" value="true"/>
-    <property name="type" value="tile"/>
    </properties>
   </tile>
   <tile id="27">
    <properties>
     <property name="destructable" value=""/>
     <property name="solid" value="true"/>
-    <property name="type" value="tile"/>
    </properties>
   </tile>
   <tile id="28">
    <properties>
     <property name="destructable" value=""/>
     <property name="solid" value="true"/>
-    <property name="type" value="tile"/>
    </properties>
   </tile>
   <tile id="29">
    <properties>
     <property name="destructable" value=""/>
     <property name="solid" value="true"/>
-    <property name="type" value="tile"/>
    </properties>
   </tile>
   <tile id="30">
    <properties>
     <property name="destructable" value=""/>
     <property name="solid" value="true"/>
-    <property name="type" value="tile"/>
    </properties>
   </tile>
   <tile id="31">
    <properties>
     <property name="destructable" value=""/>
     <property name="solid" value=""/>
-    <property name="type" value="tile"/>
    </properties>
   </tile>
   <tile id="33">
@@ -105,14 +92,12 @@
     <property name="destructable" value=""/>
     <property name="solid" value="true"/>
     <property name="triggers" value="1"/>
-    <property name="type" value="stateful"/>
    </properties>
   </tile>
   <tile id="54">
    <properties>
     <property name="destructable" value=""/>
     <property name="solid" value="true"/>
-    <property name="type" value="triggerable"/>
    </properties>
   </tile>
   <tile id="55">
@@ -120,14 +105,12 @@
     <property name="destructable" value=""/>
     <property name="solid" value="true"/>
     <property name="triggers" value="1"/>
-    <property name="type" value="stateful"/>
    </properties>
   </tile>
   <tile id="58">
    <properties>
     <property name="destructable" value=""/>
     <property name="solid" value=""/>
-    <property name="type" value="stateful"/>
    </properties>
   </tile>
  </tileset>

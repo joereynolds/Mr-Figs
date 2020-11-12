@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="3" nextobjectid="1">
+<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="21">
  <properties>
   <property name="player_bomb_count" value="0"/>
+  <property name="player_starting_x" value="1"/>
+  <property name="player_starting_y" value="1"/>
  </properties>
  <tileset firstgid="1" name="newtiledsheet" tilewidth="16" tileheight="16" tilecount="63" columns="9">
   <image source="../../newtiledsheet.png" trans="ff00ff" width="144" height="112"/>
@@ -9,143 +11,114 @@
    <properties>
     <property name="destructable" value=""/>
     <property name="solid" value="True"/>
-    <property name="type" value="tile"/>
    </properties>
   </tile>
   <tile id="1">
    <properties>
     <property name="destructable" value=""/>
     <property name="solid" value="True"/>
-    <property name="type" value="tile"/>
    </properties>
   </tile>
   <tile id="2">
    <properties>
     <property name="destructable" value=""/>
     <property name="solid" value="True"/>
-    <property name="type" value="tile"/>
    </properties>
   </tile>
   <tile id="3">
    <properties>
     <property name="destructable" value=""/>
     <property name="solid" value="True"/>
-    <property name="type" value="tile"/>
    </properties>
   </tile>
   <tile id="4">
    <properties>
     <property name="destructable" value=""/>
     <property name="solid" value=""/>
-    <property name="type" value="tile"/>
    </properties>
   </tile>
   <tile id="9">
    <properties>
     <property name="destructable" value=""/>
     <property name="solid" value="True"/>
-    <property name="type" value="tile"/>
    </properties>
   </tile>
   <tile id="10">
    <properties>
     <property name="destructable" value=""/>
     <property name="solid" value="True"/>
-    <property name="type" value="tile"/>
    </properties>
   </tile>
   <tile id="11">
    <properties>
     <property name="destructable" value=""/>
     <property name="solid" value="True"/>
-    <property name="type" value="tile"/>
    </properties>
   </tile>
   <tile id="12">
    <properties>
     <property name="destructable" value=""/>
     <property name="solid" value="True"/>
-    <property name="type" value="tile"/>
    </properties>
   </tile>
   <tile id="13">
    <properties>
     <property name="destructable" value=""/>
     <property name="solid" value=""/>
-    <property name="type" value="tile"/>
    </properties>
   </tile>
   <tile id="18">
    <properties>
     <property name="destructable" value=""/>
     <property name="solid" value=""/>
-    <property name="type" value="tile"/>
    </properties>
   </tile>
   <tile id="19">
    <properties>
     <property name="destructable" value=""/>
     <property name="solid" value=""/>
-    <property name="type" value="tile"/>
    </properties>
   </tile>
   <tile id="20">
    <properties>
     <property name="destructable" value="True"/>
     <property name="solid" value="True"/>
-    <property name="type" value="tile"/>
-   </properties>
-  </tile>
-  <tile id="21">
-   <properties>
-    <property name="type" value="tile"/>
-   </properties>
-  </tile>
-  <tile id="22">
-   <properties>
-    <property name="type" value="tile"/>
    </properties>
   </tile>
   <tile id="27">
    <properties>
     <property name="destructable" value=""/>
     <property name="solid" value="True"/>
-    <property name="type" value="tile"/>
    </properties>
   </tile>
   <tile id="28">
    <properties>
     <property name="destructable" value=""/>
     <property name="solid" value="True"/>
-    <property name="type" value="tile"/>
    </properties>
   </tile>
   <tile id="29">
    <properties>
     <property name="destructable" value=""/>
     <property name="solid" value="True"/>
-    <property name="type" value="tile"/>
    </properties>
   </tile>
   <tile id="30">
    <properties>
     <property name="destructable" value=""/>
     <property name="solid" value="True"/>
-    <property name="type" value="tile"/>
    </properties>
   </tile>
   <tile id="31">
    <properties>
     <property name="destructable" value=""/>
     <property name="solid" value=""/>
-    <property name="type" value="finish_tile"/>
    </properties>
   </tile>
   <tile id="32">
    <properties>
     <property name="destructable" value=""/>
     <property name="solid" value=""/>
-    <property name="type" value="finish_tile"/>
    </properties>
   </tile>
   <tile id="36">
@@ -188,36 +161,41 @@
     <property name="destructable" value=""/>
     <property name="moveable" value="True"/>
     <property name="solid" value="True"/>
-    <property name="type" value="moveable_tile"/>
+   </properties>
+  </tile>
+  <tile id="45">
+   <properties>
+    <property name="type" value="actor"/>
    </properties>
   </tile>
  </tileset>
- <layer id="1" name="Tile Layer 1" width="14" height="10">
+ <layer id="1" name="background" width="14" height="10">
   <data encoding="csv">
-3,10,10,10,10,10,4,0,0,0,0,0,0,0,
-11,19,20,19,20,19,2,0,0,0,0,0,0,0,
-11,10,10,10,20,10,2,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0
+3,0,0,0,0,0,4,22,22,22,22,22,22,22,
+0,19,20,19,20,19,0,22,22,22,22,22,22,22,
+12,0,0,0,0,0,13,22,22,22,22,22,22,22,
+22,22,22,22,22,22,22,22,22,22,22,22,22,22,
+22,22,22,22,22,22,22,22,22,22,22,22,22,22,
+22,22,22,22,22,22,22,22,22,22,22,22,22,22,
+22,22,22,22,22,22,22,22,22,22,22,22,22,22,
+22,22,22,22,22,22,22,22,22,22,22,22,22,22,
+22,22,22,22,22,22,22,22,22,22,22,22,22,22,
+22,22,22,22,22,22,22,22,22,22,22,22,22,22
 </data>
  </layer>
- <layer id="2" name="Tile Layer 2" width="14" height="10">
-  <data encoding="csv">
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,45,0,0,0,0,0,0,0,0,0,
-0,0,0,0,32,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0
-</data>
- </layer>
+ <objectgroup id="3" name="objects">
+  <object id="5" name="boulder" type="moveable_tile" gid="45" x="64" y="32" width="16" height="16"/>
+  <object id="9" name="wall-up" type="tile" gid="10" x="32" y="48" width="16" height="16"/>
+  <object id="10" name="wall-right" type="tile" gid="11" x="0" y="32" width="16" height="16"/>
+  <object id="11" name="wall-left" type="tile" gid="2" x="96" y="32" width="16" height="16"/>
+  <object id="12" name="wall-up" type="tile" gid="10" x="16" y="48" width="16" height="16"/>
+  <object id="13" name="wall-up" type="tile" gid="10" x="48" y="48" width="16" height="16"/>
+  <object id="14" name="wall-up" type="tile" gid="10" x="80" y="48" width="16" height="16"/>
+  <object id="15" name="wall-down" type="tile" gid="1" x="16" y="16" width="16" height="16"/>
+  <object id="16" name="wall-down" type="tile" gid="1" x="32" y="16" width="16" height="16"/>
+  <object id="17" name="wall-down" type="tile" gid="1" x="48" y="16" width="16" height="16"/>
+  <object id="18" name="wall-down" type="tile" gid="1" x="64" y="16" width="16" height="16"/>
+  <object id="19" name="wall-down" type="tile" gid="1" x="80.25" y="16" width="16" height="16"/>
+  <object id="20" name="finish" type="finish_tile" gid="32" x="64" y="48" width="16" height="16"/>
+ </objectgroup>
 </map>

@@ -27,13 +27,13 @@ class Bomb(Entity):
         self.particles = pygame.sprite.Group()
         self.images = graphics.sprites['bomb']['sprites']
 
-        self.bomb_creation_sound = pygame.mixer.Sound('./data/audio/fx/bomb-place.wav')
-        self.bomb_beep_sound = pygame.mixer.Sound('./data/audio/fx/bomb-beep.wav')
+#         self.bomb_creation_sound = pygame.mixer.Sound('./data/audio/fx/bomb-place.wav')
+#         self.bomb_beep_sound = pygame.mixer.Sound('./data/audio/fx/bomb-beep.wav')
 
-        self.bomb_explosion_sound = pygame.mixer.Sound('./data/audio/fx/bomb-explode.wav')
-        self.bomb_explosion_sound.set_volume(0.2)
+#         self.bomb_explosion_sound = pygame.mixer.Sound('./data/audio/fx/bomb-explode.wav')
+#         self.bomb_explosion_sound.set_volume(0.2)
 
-        self.bomb_creation_sound.play()
+#         self.bomb_creation_sound.play()
 
         self.minimap_colour = colours.BLACK
 
@@ -110,6 +110,15 @@ class Bomb(Entity):
         # self.bomb_explosion_sound.play()
 
     def create_particle(self, x, y, width, height):
+        tile = self.tiled_level.get_tile_from_object_layer(x, y)
+        base_tile = self.tiled_level.get_tile_from_layer(x, y, 0)
+
+        if tile and isinstance(tile, MoveableTile):
+            return False
+
+        if tile and tile.solid and not tile.destructable:
+            return False
+
         particle = BombParticle(
             x,
             y,
@@ -117,24 +126,12 @@ class Bomb(Entity):
             height,
         )
 
-        created = False
+        self.particles.add(particle)
 
-        try:
-            retrieved_tile = self.tiled_level.get_tile_from_layer(x, y, 1)
-            base_tile = self.tiled_level.get_tile_from_layer(x, y, 0)
+        if tile and tile.destructable:
+            self.tiled_level.sprites.remove(tile)
 
-            if isinstance(retrieved_tile, MoveableTile):
-                return False
-            if not base_tile.solid:
-                self.particles.add(particle)
-                created = True
-            if retrieved_tile.destructable:
-                pygame.sprite.Sprite.kill(retrieved_tile)
-        except AttributeError as error:
-            logger.LOGGER.error(error)
-            logger.LOGGER.info('Attribute Error: Tried to place bomb on non-existent block')
-        finally:
-            return created
+        return True
 
     def bomb_collisions(self, bomb_sprite_group):
         """Checks to see if our bomb has touched another bombs explosion. If it has,
@@ -158,4 +155,4 @@ class Bomb(Entity):
         """
         Plays the bombs beep sound
         """
-        self.bomb_beep_sound.play()
+        # self.bomb_beep_sound.play()

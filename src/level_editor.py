@@ -2,8 +2,10 @@ import src.bomb as bomb
 import src.tile as tile
 import src.actor as actor
 import pytmx
+from pytmx.util_pygame import load_pygame
 import pygame
 import src.graphics as graphics
+import pyscroll
 
 from src.tile_factory import TileFactory
 
@@ -14,40 +16,55 @@ class LevelData():
     @self._map = The TiledMap object of self.file
     @self.data = A sprite group of all of the tiles in self._map
     """
-    def __init__(self, file):
+    def __init__(self, file, screen: pygame.Surface):
         self.tmx_file = file
+
+        self._map = load_pygame(self.tmx_file)
+        self.map_data_for_camera = pyscroll.TiledMapData(self._map)
+
+        self.map_layer_for_camera = pyscroll.BufferedRenderer(
+            self.map_data_for_camera,
+            (100, 100),
+        )
+
+        self.sprites = pyscroll.PyscrollGroup(
+            map_layer=self.map_layer_for_camera
+        )
+
+        # Would've thought .5 would make it smaller but actually makes it bigger?
+        self.map_layer_for_camera.zoom = .5
+
         self.tile_spacing = graphics.tile_width
-        self._map = pytmx.TiledMap(self.tmx_file)
         self.properties = self._map.properties
-        self.sprites = pygame.sprite.LayeredUpdates()
         self.get_map_data()
         self.link_doors_and_switches()
 
     def get_map_data(self):
         """Iterates through the TiledMap file adding tiles to
         the self.sprites sprite group
-        @x =
-        @y =
-        @pix_x =
-        @pix_y =
         """
         factory = TileFactory()
-        for i, layer in enumerate(self._map):
-            for _tile in layer.tiles():
-                x, y = _tile[0], _tile[1]
-                pix_x, pix_y = _tile[2][1][0], _tile[2][1][1]
-                surface = graphics.subsurf((pix_x, pix_y))
+        
+        try:
+            for tile_object in self._map.get_layer_by_name('objects'):
+                surface = self._map.get_tile_image_by_gid(tile_object.gid)
+                obj = self._create_tile(tile_object, surface, factory)
+                self.sprites.add(obj)
+        except ValueError:
+            print('this scene doesnt have objects')
 
-                current_tile = self._map.get_tile_properties(x, y, i)
-                if current_tile:
-                    obj = self._create_tile(x, y, surface, current_tile, factory)
-                    self.sprites.add(obj, layer=i)
 
-    def _create_tile(self, x, y, surface, sprite, factory):
+    def _create_tile(self, tile_object, surface, factory):
         """Creates tiles passed to it. It finds the type of the
-        sprite and then creates the corresponding tile"""
-        x = x * self.tile_spacing
-        y = y * self.tile_spacing
+        tile_object and then creates the corresponding tile"""
+        x = tile_object.x
+        y = tile_object.y
+
+        # Safe fallbacks just in case objects don't have certain attributes
+        moveable = getattr(tile_object, 'moveable', False)
+        solid = getattr(tile_object, 'solid', False)
+        destructable = getattr(tile_object, 'destructable', False)
+        lifespan = getattr(tile_object, 'lifespan', False)
 
         common = {
             'x': x,
@@ -60,8 +77,8 @@ class LevelData():
         type_map = {
             'tile': {
                 **common,
-                'solid':sprite.get('solid'),
-                'destructable':sprite.get('destructable'),
+                'solid': solid,
+                'destructable':destructable,
             },
             'actor':{
                 **common,
@@ -71,39 +88,39 @@ class LevelData():
             'bomb': {
                 **common,
                 'level': self,
-                'lifespan': sprite.get('lifespan'),
+                'lifespan':lifespan,
             },
             'pickup_bomb': {
                 **common
             },
             'finish_tile': {
                 **common,
-                'solid':sprite.get('solid'),
-                'destructable':sprite.get('destructable'),
+                'solid': solid,
+                'destructable':destructable,
             },
             'moveable_tile': {
                 **common,
-                'solid':sprite.get('solid'),
-                'destructable':sprite.get('destructable'),
-                'moveable':sprite.get('moveable', False),
+                'solid': solid,
+                'destructable':destructable,
+                'moveable': moveable
             },
-            'stateful': {
-                **common,
-                'solid':sprite.get('solid'),
-                'destructable':sprite.get('destructable'),
-                'state':0,
-                'triggers':sprite.get('triggers'),
-            },
+            # 'stateful': {
+            #     **common,
+            #     'solid':tile_object.solid,
+            #     'destructable':destructable,
+            #     'state':0,
+            #     'triggers':tile_object.triggers,
+            # },
             'triggerable': {
                 **common,
-                'solid':sprite.get('solid'),
-                'destructable':sprite.get('destructable'),
+                'solid': solid,
+                'destructable':destructable,
                 'stateful':'pass',
-                'id':sprite.get('id')
+                'id':tile_object.id
             }
         }
 
-        return factory.build(sprite.get('type'), **type_map[sprite.get('type')])
+        return factory.build(tile_object.type, **type_map[tile_object.type])
 
     def link_doors_and_switches(self):
         """Makes sure that the switches are passed to the correct
@@ -115,23 +132,11 @@ class LevelData():
                         if state.triggers == trigger.id:
                             trigger.stateful = state
 
-    def get_tile(self,x,y):
-        """Returns the tile object at @x and @y"""
-        for tile in self.sprites:
-            if tile.rect.x == x and tile.rect.y == y:
-                return tile
-
     def get_tile_all_layers(self, x, y):
         """The same as get_tile but gets tiles at x, and y, on
         all layers instead of the first layer it sees to match
         the x and y"""
         return [tile for tile in self.sprites if tile.rect.x == x and tile.rect.y == y]
-
-    def get_layer_count(self):
-        """Returns the total count of layers.
-        count starts at 1."""
-        layers = [layer for layer in self._map]
-        return len(layers)
 
     def get_tile_from_layer(self, x, y, layer):
         """The same as get_tile but returns the tile only from that layer"""
@@ -139,25 +144,14 @@ class LevelData():
             if tile.rect.x == x and tile.rect.y == y:
                 return tile
 
-    def get_player(self, layer):
-        """Returns the dummy player"""
-        for _tile in self.sprites.get_sprites_from_layer(layer):
-            if isinstance(tile, actor.Actor):
-                return _tile
-
-    def get_tiles_of_type(self, _type):
-        """Returns all tiles from all layers that are an instance of type"""
-        sprites = []
-        for sprite in self.sprites:
-            if isinstance(sprite, _type):
-                sprites.append(sprite)
-        return sprites
-
-    def remove_dummy_player(self):
-        """Takes the dummy player out of our group"""
-        for tile in self.sprites:
-            if isinstance(tile, actor.Actor):
-                pygame.sprite.Sprite.kill(tile)
+    def get_tile_from_object_layer(self, x, y, layer_name='objects'):
+        """Gets the tile from the object layer and then maps it to the one in the
+        sprite group. This means we can kill our sprites etc..."""
+        for tile in self._map.get_layer_by_name(layer_name):
+            if tile.x == x and tile.y == y:
+                for sprite in self.sprites:
+                    if sprite.rect.x == tile.x and sprite.rect.y == tile.y:
+                        return sprite
 
     #This function is gross and not needed. It's only used in the actor class and that could easily be a map over all
     #of the tiles. Do this asap

@@ -19,12 +19,18 @@ class LevelBase(scene_base.SceneBase):
         @level = A TMXMap object of the level (I think)
         @level_tiles = A sprite group of all tiles on the level
         """
-        self.tiled_level = level_editor.LevelData(file)
+        screen = graphics.get_window_surface()
+        self.tiled_level = level_editor.LevelData(file, screen)
         self.level_number = level_number
 
+        starting_position = graphics.grid(
+            int(self.tiled_level.properties.get('player_starting_x', 1)),
+            int(self.tiled_level.properties.get('player_starting_y', 1))
+        )
+
         self.player = actor.Actor(
-            48, 
-            48,
+            starting_position[0],
+            starting_position[1],
             graphics.tile_width,
             graphics.tile_height,
             self,
@@ -47,8 +53,8 @@ class LevelBase(scene_base.SceneBase):
 
         self.file = file
         self.next_level = next_level
-        self.sprites = pygame.sprite.LayeredUpdates()
-        self.sprites.add(self.tiled_level.sprites, self.player)
+        self.sprites = self.tiled_level.sprites
+        self.sprites.add(self.player)
         self.renderer = renderers.LevelBaseRenderer(self)
 
     def check_player_hasnt_died_a_horrible_death(self):

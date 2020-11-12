@@ -18,7 +18,7 @@ def enlarge(self, speed):
         if self.width < self.original_width * 2:
             self.width += speeds[speed]
             self.height += speeds[speed]
-            self.image = pygame.Surface([self.width, self.height]).convert_alpha()
+            self.image = pygame.Surface([self.width, self.height])
             self.image.fill(self.colour)
             self.render_text(self.text.text, self.text.position)
 
@@ -29,6 +29,6 @@ def shrink(self):
         if self.width > self.original_width:
             self.width -= 5
             self.height -= 5
-            self.image = pygame.Surface([self.width, self.height]).convert_alpha()
+            self.image = pygame.Surface([self.width, self.height])
             self.image.fill(self.colour)
             self.render_text(self.text.text, self.text.position)

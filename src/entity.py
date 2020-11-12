@@ -17,7 +17,7 @@ class Entity(pygame.sprite.Sprite):
         if image:
             return image
         else:
-            return pygame.Surface((width, height)).convert()
+            return pygame.Surface((width, height))
 
 class MoveableEntity(Entity):
     pass
