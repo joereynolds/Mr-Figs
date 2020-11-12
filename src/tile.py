@@ -101,8 +101,8 @@ class Triggerable(Tile):
         self.id = id
         self.images = graphics.sprites['laser']['sprites']
 
-        self.laser_hum_sound = pygame.mixer.Sound('./data/audio/fx/laser-hum.wav')
-        # self.laser_hum_sound.play(-1)
+        self.laser_hum_sound = pygame.mixer.Sound('./data/audio/fx/laser-hum.ogg')
+        self.laser_hum_sound.play(-1)
 
     def trigger(self):
         """To be called when our stateful tile is 'on'"""

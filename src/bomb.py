@@ -27,13 +27,13 @@ class Bomb(Entity):
         self.particles = pygame.sprite.Group()
         self.images = graphics.sprites['bomb']['sprites']
 
-#         self.bomb_creation_sound = pygame.mixer.Sound('./data/audio/fx/bomb-place.wav')
-#         self.bomb_beep_sound = pygame.mixer.Sound('./data/audio/fx/bomb-beep.wav')
+        self.bomb_creation_sound = pygame.mixer.Sound('./data/audio/fx/bomb-place.ogg')
+        self.bomb_beep_sound = pygame.mixer.Sound('./data/audio/fx/bomb-beep.ogg')
 
-#         self.bomb_explosion_sound = pygame.mixer.Sound('./data/audio/fx/bomb-explode.wav')
-#         self.bomb_explosion_sound.set_volume(0.2)
+        self.bomb_explosion_sound = pygame.mixer.Sound('./data/audio/fx/bomb-explode.ogg')
+        self.bomb_explosion_sound.set_volume(0.2)
 
-#         self.bomb_creation_sound.play()
+        self.bomb_creation_sound.play()
 
         self.minimap_colour = colours.BLACK
 
@@ -155,4 +155,4 @@ class Bomb(Entity):
         """
         Plays the bombs beep sound
         """
-        # self.bomb_beep_sound.play()
+        self.bomb_beep_sound.play()
