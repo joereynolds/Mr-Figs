@@ -1,0 +1,600 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="200" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="8" nextobjectid="409">
+ <properties>
+  <property name="player_bomb_count" value="0"/>
+  <property name="player_starting_x" value="1"/>
+  <property name="player_starting_y" value="1"/>
+  <property name="turns_to_ace" type="int" value="4"/>
+ </properties>
+ <tileset firstgid="1" name="newtiledsheet" tilewidth="16" tileheight="16" tilecount="144" columns="9">
+  <image source="../../newtiledsheet.png" trans="ff00ff" width="144" height="256"/>
+  <tile id="0">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value="True"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value="True"/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value="True"/>
+   </properties>
+  </tile>
+  <tile id="3">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value="True"/>
+   </properties>
+  </tile>
+  <tile id="4">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value=""/>
+   </properties>
+  </tile>
+  <tile id="9">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value="True"/>
+   </properties>
+  </tile>
+  <tile id="10">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value="True"/>
+   </properties>
+  </tile>
+  <tile id="11">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value="True"/>
+   </properties>
+  </tile>
+  <tile id="12">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value="True"/>
+   </properties>
+  </tile>
+  <tile id="13">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value=""/>
+   </properties>
+  </tile>
+  <tile id="18">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value=""/>
+   </properties>
+  </tile>
+  <tile id="19">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value=""/>
+   </properties>
+  </tile>
+  <tile id="20">
+   <properties>
+    <property name="destructable" value="True"/>
+    <property name="solid" value="True"/>
+   </properties>
+  </tile>
+  <tile id="27">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value="True"/>
+   </properties>
+  </tile>
+  <tile id="28">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value="True"/>
+   </properties>
+  </tile>
+  <tile id="29">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value="True"/>
+   </properties>
+  </tile>
+  <tile id="30">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value="True"/>
+   </properties>
+  </tile>
+  <tile id="31">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value=""/>
+   </properties>
+  </tile>
+  <tile id="32">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value=""/>
+   </properties>
+  </tile>
+  <tile id="36">
+   <properties>
+    <property name="lifespan" value="5"/>
+    <property name="type" value="bomb"/>
+   </properties>
+  </tile>
+  <tile id="37">
+   <properties>
+    <property name="lifespan" value="4"/>
+    <property name="type" value="bomb"/>
+   </properties>
+  </tile>
+  <tile id="38">
+   <properties>
+    <property name="lifespan" value="3"/>
+    <property name="type" value="bomb"/>
+   </properties>
+  </tile>
+  <tile id="39">
+   <properties>
+    <property name="lifespan" value="2"/>
+    <property name="type" value="bomb"/>
+   </properties>
+  </tile>
+  <tile id="40">
+   <properties>
+    <property name="lifespan" value="1"/>
+    <property name="type" value="bomb"/>
+   </properties>
+  </tile>
+  <tile id="41">
+   <properties>
+    <property name="type" value="bomb"/>
+   </properties>
+  </tile>
+  <tile id="44">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="moveable" value="True"/>
+    <property name="solid" value="True"/>
+   </properties>
+  </tile>
+  <tile id="45">
+   <properties>
+    <property name="type" value="actor"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer id="1" name="background" width="200" height="10">
+  <data encoding="csv">
+3,0,0,0,0,0,4,22,22,22,22,22,22,22,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,4,25,
+0,19,20,19,20,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,25,25,
+12,0,0,0,0,0,13,22,22,22,22,22,22,22,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,13,25,
+22,22,22,22,22,22,22,22,22,22,22,22,22,22,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,
+22,22,22,22,22,22,22,22,22,22,22,22,22,22,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,
+25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,
+25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,
+25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,
+25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,
+25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25
+</data>
+ </layer>
+ <layer id="7" name="foreground" width="200" height="10">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,66,67,68,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup id="3" name="objects">
+  <object id="9" name="wall-up" type="tile" gid="10" x="32" y="48" width="16" height="16"/>
+  <object id="10" name="wall-right" type="tile" gid="11" x="0" y="32" width="16" height="16"/>
+  <object id="11" name="wall-left" type="tile" gid="2" x="3184" y="32" width="16" height="16"/>
+  <object id="12" name="wall-up" type="tile" gid="10" x="16" y="48" width="16" height="16"/>
+  <object id="13" name="wall-up" type="tile" gid="10" x="48" y="48" width="16" height="16"/>
+  <object id="14" name="wall-up" type="tile" gid="10" x="80" y="48" width="16" height="16"/>
+  <object id="15" name="wall-down" type="tile" gid="1" x="16" y="16" width="16" height="16"/>
+  <object id="16" name="wall-down" type="tile" gid="1" x="32" y="16" width="16" height="16"/>
+  <object id="17" name="wall-down" type="tile" gid="1" x="48" y="16" width="16" height="16"/>
+  <object id="18" name="wall-down" type="tile" gid="1" x="64" y="16" width="16" height="16"/>
+  <object id="19" name="wall-down" type="tile" gid="1" x="80.25" y="16" width="16" height="16"/>
+  <object id="20" name="finish" type="finish_tile" gid="32" x="3168" y="32" width="16" height="16"/>
+  <object id="23" name="wall-down" type="tile" gid="1" x="96" y="16" width="16" height="16"/>
+  <object id="24" name="wall-down" type="tile" gid="1" x="112" y="16" width="16" height="16"/>
+  <object id="25" name="wall-down" type="tile" gid="1" x="128" y="16" width="16" height="16"/>
+  <object id="26" name="wall-down" type="tile" gid="1" x="144" y="16" width="16" height="16"/>
+  <object id="27" name="wall-down" type="tile" gid="1" x="160.25" y="16" width="16" height="16"/>
+  <object id="28" name="wall-down" type="tile" gid="1" x="176" y="16" width="16" height="16"/>
+  <object id="29" name="wall-down" type="tile" gid="1" x="192" y="16" width="16" height="16"/>
+  <object id="30" name="wall-down" type="tile" gid="1" x="208" y="16" width="16" height="16"/>
+  <object id="31" name="wall-down" type="tile" gid="1" x="224" y="16" width="16" height="16"/>
+  <object id="32" name="wall-down" type="tile" gid="1" x="240.25" y="16" width="16" height="16"/>
+  <object id="33" name="wall-down" type="tile" gid="1" x="256" y="16" width="16" height="16"/>
+  <object id="34" name="wall-down" type="tile" gid="1" x="272" y="16" width="16" height="16"/>
+  <object id="35" name="wall-down" type="tile" gid="1" x="288" y="16" width="16" height="16"/>
+  <object id="36" name="wall-down" type="tile" gid="1" x="304" y="16" width="16" height="16"/>
+  <object id="37" name="wall-down" type="tile" gid="1" x="320.25" y="16" width="16" height="16"/>
+  <object id="38" name="wall-down" type="tile" gid="1" x="336" y="16" width="16" height="16"/>
+  <object id="39" name="wall-down" type="tile" gid="1" x="352" y="16" width="16" height="16"/>
+  <object id="40" name="wall-down" type="tile" gid="1" x="368" y="16" width="16" height="16"/>
+  <object id="41" name="wall-down" type="tile" gid="1" x="384" y="16" width="16" height="16"/>
+  <object id="42" name="wall-down" type="tile" gid="1" x="400.25" y="16" width="16" height="16"/>
+  <object id="43" name="wall-down" type="tile" gid="1" x="416" y="16" width="16" height="16"/>
+  <object id="44" name="wall-down" type="tile" gid="1" x="432" y="16" width="16" height="16"/>
+  <object id="45" name="wall-down" type="tile" gid="1" x="448" y="16" width="16" height="16"/>
+  <object id="46" name="wall-down" type="tile" gid="1" x="464" y="16" width="16" height="16"/>
+  <object id="47" name="wall-down" type="tile" gid="1" x="480.25" y="16" width="16" height="16"/>
+  <object id="48" name="wall-down" type="tile" gid="1" x="496" y="16" width="16" height="16"/>
+  <object id="49" name="wall-down" type="tile" gid="1" x="512" y="16" width="16" height="16"/>
+  <object id="50" name="wall-down" type="tile" gid="1" x="528" y="16" width="16" height="16"/>
+  <object id="51" name="wall-down" type="tile" gid="1" x="544" y="16" width="16" height="16"/>
+  <object id="52" name="wall-down" type="tile" gid="1" x="560.25" y="16" width="16" height="16"/>
+  <object id="53" name="wall-down" type="tile" gid="1" x="576" y="16" width="16" height="16"/>
+  <object id="54" name="wall-down" type="tile" gid="1" x="592" y="16" width="16" height="16"/>
+  <object id="55" name="wall-down" type="tile" gid="1" x="608" y="16" width="16" height="16"/>
+  <object id="56" name="wall-down" type="tile" gid="1" x="624" y="16" width="16" height="16"/>
+  <object id="57" name="wall-down" type="tile" gid="1" x="640.25" y="16" width="16" height="16"/>
+  <object id="58" name="wall-down" type="tile" gid="1" x="656" y="16" width="16" height="16"/>
+  <object id="59" name="wall-down" type="tile" gid="1" x="672" y="16" width="16" height="16"/>
+  <object id="60" name="wall-down" type="tile" gid="1" x="688" y="16" width="16" height="16"/>
+  <object id="61" name="wall-down" type="tile" gid="1" x="704" y="16" width="16" height="16"/>
+  <object id="62" name="wall-down" type="tile" gid="1" x="720.25" y="16" width="16" height="16"/>
+  <object id="63" name="wall-down" type="tile" gid="1" x="736" y="16" width="16" height="16"/>
+  <object id="64" name="wall-down" type="tile" gid="1" x="752" y="16" width="16" height="16"/>
+  <object id="65" name="wall-down" type="tile" gid="1" x="768" y="16" width="16" height="16"/>
+  <object id="66" name="wall-down" type="tile" gid="1" x="784" y="16" width="16" height="16"/>
+  <object id="67" name="wall-down" type="tile" gid="1" x="800.25" y="16" width="16" height="16"/>
+  <object id="68" name="wall-down" type="tile" gid="1" x="816" y="16" width="16" height="16"/>
+  <object id="69" name="wall-down" type="tile" gid="1" x="832.25" y="16" width="16" height="16"/>
+  <object id="70" name="wall-down" type="tile" gid="1" x="848" y="16" width="16" height="16"/>
+  <object id="71" name="wall-down" type="tile" gid="1" x="864" y="16" width="16" height="16"/>
+  <object id="72" name="wall-down" type="tile" gid="1" x="880" y="16" width="16" height="16"/>
+  <object id="73" name="wall-down" type="tile" gid="1" x="896" y="16" width="16" height="16"/>
+  <object id="74" name="wall-down" type="tile" gid="1" x="912.25" y="16" width="16" height="16"/>
+  <object id="75" name="wall-down" type="tile" gid="1" x="928" y="16" width="16" height="16"/>
+  <object id="76" name="wall-down" type="tile" gid="1" x="944" y="16" width="16" height="16"/>
+  <object id="77" name="wall-down" type="tile" gid="1" x="960" y="16" width="16" height="16"/>
+  <object id="78" name="wall-down" type="tile" gid="1" x="976" y="16" width="16" height="16"/>
+  <object id="79" name="wall-down" type="tile" gid="1" x="992.25" y="16" width="16" height="16"/>
+  <object id="80" name="wall-down" type="tile" gid="1" x="1008" y="16" width="16" height="16"/>
+  <object id="81" name="wall-down" type="tile" gid="1" x="1024" y="16" width="16" height="16"/>
+  <object id="82" name="wall-down" type="tile" gid="1" x="1040" y="16" width="16" height="16"/>
+  <object id="83" name="wall-down" type="tile" gid="1" x="1056" y="16" width="16" height="16"/>
+  <object id="84" name="wall-down" type="tile" gid="1" x="1072.25" y="16" width="16" height="16"/>
+  <object id="85" name="wall-down" type="tile" gid="1" x="1088" y="16" width="16" height="16"/>
+  <object id="86" name="wall-down" type="tile" gid="1" x="1104" y="16" width="16" height="16"/>
+  <object id="87" name="wall-down" type="tile" gid="1" x="1120" y="16" width="16" height="16"/>
+  <object id="88" name="wall-down" type="tile" gid="1" x="1136.25" y="16" width="16" height="16"/>
+  <object id="89" name="wall-down" type="tile" gid="1" x="1152" y="16" width="16" height="16"/>
+  <object id="90" name="wall-down" type="tile" gid="1" x="1168" y="16" width="16" height="16"/>
+  <object id="91" name="wall-down" type="tile" gid="1" x="1184" y="16" width="16" height="16"/>
+  <object id="92" name="wall-down" type="tile" gid="1" x="1200" y="16" width="16" height="16"/>
+  <object id="93" name="wall-down" type="tile" gid="1" x="1216.25" y="16" width="16" height="16"/>
+  <object id="94" name="wall-down" type="tile" gid="1" x="1232" y="16" width="16" height="16"/>
+  <object id="95" name="wall-down" type="tile" gid="1" x="1248.25" y="16" width="16" height="16"/>
+  <object id="96" name="wall-down" type="tile" gid="1" x="1264" y="16" width="16" height="16"/>
+  <object id="97" name="wall-down" type="tile" gid="1" x="1280" y="16" width="16" height="16"/>
+  <object id="98" name="wall-down" type="tile" gid="1" x="1296" y="16" width="16" height="16"/>
+  <object id="99" name="wall-down" type="tile" gid="1" x="1312" y="16" width="16" height="16"/>
+  <object id="100" name="wall-down" type="tile" gid="1" x="1328.25" y="16" width="16" height="16"/>
+  <object id="101" name="wall-down" type="tile" gid="1" x="1344" y="16" width="16" height="16"/>
+  <object id="102" name="wall-down" type="tile" gid="1" x="1360" y="16" width="16" height="16"/>
+  <object id="103" name="wall-down" type="tile" gid="1" x="1376" y="16" width="16" height="16"/>
+  <object id="104" name="wall-down" type="tile" gid="1" x="1392" y="16" width="16" height="16"/>
+  <object id="105" name="wall-down" type="tile" gid="1" x="1408.25" y="16" width="16" height="16"/>
+  <object id="106" name="wall-down" type="tile" gid="1" x="1424" y="16" width="16" height="16"/>
+  <object id="107" name="wall-down" type="tile" gid="1" x="1440" y="16" width="16" height="16"/>
+  <object id="108" name="wall-down" type="tile" gid="1" x="1456" y="16" width="16" height="16"/>
+  <object id="109" name="wall-down" type="tile" gid="1" x="1472" y="16" width="16" height="16"/>
+  <object id="110" name="wall-down" type="tile" gid="1" x="1488.25" y="16" width="16" height="16"/>
+  <object id="111" name="wall-down" type="tile" gid="1" x="1504" y="16" width="16" height="16"/>
+  <object id="112" name="wall-down" type="tile" gid="1" x="1520" y="16" width="16" height="16"/>
+  <object id="113" name="wall-down" type="tile" gid="1" x="1536.25" y="16" width="16" height="16"/>
+  <object id="114" name="wall-down" type="tile" gid="1" x="1552" y="16" width="16" height="16"/>
+  <object id="115" name="wall-down" type="tile" gid="1" x="1568" y="16" width="16" height="16"/>
+  <object id="116" name="wall-down" type="tile" gid="1" x="1584" y="16" width="16" height="16"/>
+  <object id="117" name="wall-down" type="tile" gid="1" x="1600" y="16" width="16" height="16"/>
+  <object id="118" name="wall-down" type="tile" gid="1" x="1616.25" y="16" width="16" height="16"/>
+  <object id="119" name="wall-down" type="tile" gid="1" x="1632" y="16" width="16" height="16"/>
+  <object id="120" name="wall-down" type="tile" gid="1" x="1648" y="16" width="16" height="16"/>
+  <object id="121" name="wall-down" type="tile" gid="1" x="1664" y="16" width="16" height="16"/>
+  <object id="122" name="wall-down" type="tile" gid="1" x="1680" y="16" width="16" height="16"/>
+  <object id="123" name="wall-down" type="tile" gid="1" x="1696.25" y="16" width="16" height="16"/>
+  <object id="124" name="wall-down" type="tile" gid="1" x="1712" y="16" width="16" height="16"/>
+  <object id="125" name="wall-down" type="tile" gid="1" x="1728" y="16" width="16" height="16"/>
+  <object id="126" name="wall-down" type="tile" gid="1" x="1744" y="16" width="16" height="16"/>
+  <object id="127" name="wall-down" type="tile" gid="1" x="1760.25" y="16" width="16" height="16"/>
+  <object id="128" name="wall-down" type="tile" gid="1" x="1776" y="16" width="16" height="16"/>
+  <object id="129" name="wall-down" type="tile" gid="1" x="1792" y="16" width="16" height="16"/>
+  <object id="130" name="wall-down" type="tile" gid="1" x="1808" y="16" width="16" height="16"/>
+  <object id="131" name="wall-down" type="tile" gid="1" x="1824" y="16" width="16" height="16"/>
+  <object id="132" name="wall-down" type="tile" gid="1" x="1840.25" y="16" width="16" height="16"/>
+  <object id="133" name="wall-down" type="tile" gid="1" x="1856" y="16" width="16" height="16"/>
+  <object id="134" name="wall-down" type="tile" gid="1" x="1872.25" y="16" width="16" height="16"/>
+  <object id="135" name="wall-down" type="tile" gid="1" x="1888" y="16" width="16" height="16"/>
+  <object id="136" name="wall-down" type="tile" gid="1" x="1904" y="16" width="16" height="16"/>
+  <object id="137" name="wall-down" type="tile" gid="1" x="1920" y="16" width="16" height="16"/>
+  <object id="138" name="wall-down" type="tile" gid="1" x="1936" y="16" width="16" height="16"/>
+  <object id="139" name="wall-down" type="tile" gid="1" x="1952.25" y="16" width="16" height="16"/>
+  <object id="140" name="wall-down" type="tile" gid="1" x="1968" y="16" width="16" height="16"/>
+  <object id="141" name="wall-down" type="tile" gid="1" x="1984" y="16" width="16" height="16"/>
+  <object id="142" name="wall-down" type="tile" gid="1" x="2000" y="16" width="16" height="16"/>
+  <object id="143" name="wall-down" type="tile" gid="1" x="2016" y="16" width="16" height="16"/>
+  <object id="144" name="wall-down" type="tile" gid="1" x="2032.25" y="16" width="16" height="16"/>
+  <object id="145" name="wall-down" type="tile" gid="1" x="2048" y="16" width="16" height="16"/>
+  <object id="146" name="wall-down" type="tile" gid="1" x="2064" y="16" width="16" height="16"/>
+  <object id="147" name="wall-down" type="tile" gid="1" x="2080" y="16" width="16" height="16"/>
+  <object id="148" name="wall-down" type="tile" gid="1" x="2096" y="16" width="16" height="16"/>
+  <object id="149" name="wall-down" type="tile" gid="1" x="2112.25" y="16" width="16" height="16"/>
+  <object id="150" name="wall-down" type="tile" gid="1" x="2128" y="16" width="16" height="16"/>
+  <object id="151" name="wall-down" type="tile" gid="1" x="2144" y="16" width="16" height="16"/>
+  <object id="152" name="wall-down" type="tile" gid="1" x="2160.25" y="16" width="16" height="16"/>
+  <object id="153" name="wall-down" type="tile" gid="1" x="2176" y="16" width="16" height="16"/>
+  <object id="154" name="wall-down" type="tile" gid="1" x="2192" y="16" width="16" height="16"/>
+  <object id="155" name="wall-down" type="tile" gid="1" x="2208" y="16" width="16" height="16"/>
+  <object id="156" name="wall-down" type="tile" gid="1" x="2224" y="16" width="16" height="16"/>
+  <object id="157" name="wall-down" type="tile" gid="1" x="2240.25" y="16" width="16" height="16"/>
+  <object id="158" name="wall-down" type="tile" gid="1" x="2256" y="16" width="16" height="16"/>
+  <object id="159" name="wall-down" type="tile" gid="1" x="2272" y="16" width="16" height="16"/>
+  <object id="160" name="wall-down" type="tile" gid="1" x="2288" y="16" width="16" height="16"/>
+  <object id="161" name="wall-down" type="tile" gid="1" x="2304" y="16" width="16" height="16"/>
+  <object id="162" name="wall-down" type="tile" gid="1" x="2320.25" y="16" width="16" height="16"/>
+  <object id="163" name="wall-down" type="tile" gid="1" x="2336" y="16" width="16" height="16"/>
+  <object id="164" name="wall-down" type="tile" gid="1" x="2352" y="16" width="16" height="16"/>
+  <object id="165" name="wall-down" type="tile" gid="1" x="2368" y="16" width="16" height="16"/>
+  <object id="166" name="wall-down" type="tile" gid="1" x="2384.25" y="16" width="16" height="16"/>
+  <object id="167" name="wall-down" type="tile" gid="1" x="2400" y="16" width="16" height="16"/>
+  <object id="168" name="wall-down" type="tile" gid="1" x="2416" y="16" width="16" height="16"/>
+  <object id="169" name="wall-down" type="tile" gid="1" x="2432" y="16" width="16" height="16"/>
+  <object id="170" name="wall-down" type="tile" gid="1" x="2448" y="16" width="16" height="16"/>
+  <object id="171" name="wall-down" type="tile" gid="1" x="2464.25" y="16" width="16" height="16"/>
+  <object id="172" name="wall-down" type="tile" gid="1" x="2480" y="16" width="16" height="16"/>
+  <object id="173" name="wall-down" type="tile" gid="1" x="2496.25" y="16" width="16" height="16"/>
+  <object id="174" name="wall-down" type="tile" gid="1" x="2512" y="16" width="16" height="16"/>
+  <object id="175" name="wall-down" type="tile" gid="1" x="2528" y="16" width="16" height="16"/>
+  <object id="176" name="wall-down" type="tile" gid="1" x="2544" y="16" width="16" height="16"/>
+  <object id="177" name="wall-down" type="tile" gid="1" x="2560" y="16" width="16" height="16"/>
+  <object id="178" name="wall-down" type="tile" gid="1" x="2576.25" y="16" width="16" height="16"/>
+  <object id="179" name="wall-down" type="tile" gid="1" x="2592" y="16" width="16" height="16"/>
+  <object id="180" name="wall-down" type="tile" gid="1" x="2608" y="16" width="16" height="16"/>
+  <object id="181" name="wall-down" type="tile" gid="1" x="2624" y="16" width="16" height="16"/>
+  <object id="182" name="wall-down" type="tile" gid="1" x="2640" y="16" width="16" height="16"/>
+  <object id="183" name="wall-down" type="tile" gid="1" x="2656.25" y="16" width="16" height="16"/>
+  <object id="184" name="wall-down" type="tile" gid="1" x="2672" y="16" width="16" height="16"/>
+  <object id="185" name="wall-down" type="tile" gid="1" x="2688" y="16" width="16" height="16"/>
+  <object id="186" name="wall-down" type="tile" gid="1" x="2704" y="16" width="16" height="16"/>
+  <object id="187" name="wall-down" type="tile" gid="1" x="2720" y="16" width="16" height="16"/>
+  <object id="188" name="wall-down" type="tile" gid="1" x="2736.25" y="16" width="16" height="16"/>
+  <object id="189" name="wall-down" type="tile" gid="1" x="2752" y="16" width="16" height="16"/>
+  <object id="190" name="wall-down" type="tile" gid="1" x="2767.75" y="16" width="16" height="16"/>
+  <object id="191" name="wall-down" type="tile" gid="1" x="2784" y="16" width="16" height="16"/>
+  <object id="192" name="wall-down" type="tile" gid="1" x="2799.75" y="16" width="16" height="16"/>
+  <object id="193" name="wall-down" type="tile" gid="1" x="2815.75" y="16" width="16" height="16"/>
+  <object id="194" name="wall-down" type="tile" gid="1" x="2831.75" y="16" width="16" height="16"/>
+  <object id="195" name="wall-down" type="tile" gid="1" x="2847.75" y="16" width="16" height="16"/>
+  <object id="196" name="wall-down" type="tile" gid="1" x="2864" y="16" width="16" height="16"/>
+  <object id="197" name="wall-down" type="tile" gid="1" x="2879.75" y="16" width="16" height="16"/>
+  <object id="198" name="wall-down" type="tile" gid="1" x="2895.75" y="16" width="16" height="16"/>
+  <object id="199" name="wall-down" type="tile" gid="1" x="2911.75" y="16" width="16" height="16"/>
+  <object id="200" name="wall-down" type="tile" gid="1" x="2927.75" y="16" width="16" height="16"/>
+  <object id="201" name="wall-down" type="tile" gid="1" x="2944" y="16" width="16" height="16"/>
+  <object id="202" name="wall-down" type="tile" gid="1" x="2959.75" y="16" width="16" height="16"/>
+  <object id="203" name="wall-down" type="tile" gid="1" x="2975.75" y="16" width="16" height="16"/>
+  <object id="204" name="wall-down" type="tile" gid="1" x="2991.75" y="16" width="16" height="16"/>
+  <object id="205" name="wall-down" type="tile" gid="1" x="3007.75" y="16" width="16" height="16"/>
+  <object id="206" name="wall-down" type="tile" gid="1" x="3024" y="16" width="16" height="16"/>
+  <object id="207" name="wall-down" type="tile" gid="1" x="3040" y="16" width="16" height="16"/>
+  <object id="208" name="wall-down" type="tile" gid="1" x="3056" y="16" width="16" height="16"/>
+  <object id="209" name="wall-down" type="tile" gid="1" x="3072" y="16" width="16" height="16"/>
+  <object id="210" name="wall-down" type="tile" gid="1" x="3088" y="16" width="16" height="16"/>
+  <object id="211" name="wall-down" type="tile" gid="1" x="3104.25" y="16" width="16" height="16"/>
+  <object id="212" name="wall-down" type="tile" gid="1" x="3120" y="16" width="16" height="16"/>
+  <object id="213" name="wall-down" type="tile" gid="1" x="3136" y="16" width="16" height="16"/>
+  <object id="214" name="wall-down" type="tile" gid="1" x="3152" y="16" width="16" height="16"/>
+  <object id="216" name="wall-up" type="tile" gid="10" x="112" y="48" width="16" height="16"/>
+  <object id="217" name="wall-up" type="tile" gid="10" x="96" y="48" width="16" height="16"/>
+  <object id="218" name="wall-up" type="tile" gid="10" x="128" y="48" width="16" height="16"/>
+  <object id="219" name="wall-up" type="tile" gid="10" x="160" y="48" width="16" height="16"/>
+  <object id="220" name="wall-up" type="tile" gid="10" x="144" y="48" width="16" height="16"/>
+  <object id="221" name="wall-up" type="tile" gid="10" x="176" y="48" width="16" height="16"/>
+  <object id="222" name="wall-up" type="tile" gid="10" x="208" y="48" width="16" height="16"/>
+  <object id="223" name="wall-up" type="tile" gid="10" x="192" y="48" width="16" height="16"/>
+  <object id="224" name="wall-up" type="tile" gid="10" x="224" y="48" width="16" height="16"/>
+  <object id="225" name="wall-up" type="tile" gid="10" x="256" y="48" width="16" height="16"/>
+  <object id="226" name="wall-up" type="tile" gid="10" x="240" y="48" width="16" height="16"/>
+  <object id="227" name="wall-up" type="tile" gid="10" x="272" y="48" width="16" height="16"/>
+  <object id="228" name="wall-up" type="tile" gid="10" x="304" y="48" width="16" height="16"/>
+  <object id="229" name="wall-up" type="tile" gid="10" x="288" y="48" width="16" height="16"/>
+  <object id="230" name="wall-up" type="tile" gid="10" x="320" y="48" width="16" height="16"/>
+  <object id="231" name="wall-up" type="tile" gid="10" x="352" y="48" width="16" height="16"/>
+  <object id="232" name="wall-up" type="tile" gid="10" x="336" y="48" width="16" height="16"/>
+  <object id="233" name="wall-up" type="tile" gid="10" x="368" y="48" width="16" height="16"/>
+  <object id="234" name="wall-up" type="tile" gid="10" x="400" y="48" width="16" height="16"/>
+  <object id="235" name="wall-up" type="tile" gid="10" x="384" y="48" width="16" height="16"/>
+  <object id="236" name="wall-up" type="tile" gid="10" x="416" y="48" width="16" height="16"/>
+  <object id="237" name="wall-up" type="tile" gid="10" x="448" y="48" width="16" height="16"/>
+  <object id="238" name="wall-up" type="tile" gid="10" x="432" y="48" width="16" height="16"/>
+  <object id="239" name="wall-up" type="tile" gid="10" x="464" y="48" width="16" height="16"/>
+  <object id="240" name="wall-up" type="tile" gid="10" x="64" y="48" width="16" height="16"/>
+  <object id="241" name="wall-up" type="tile" gid="10" x="480" y="48" width="16" height="16"/>
+  <object id="242" name="wall-up" type="tile" gid="10" x="512" y="48" width="16" height="16"/>
+  <object id="243" name="wall-up" type="tile" gid="10" x="496" y="48" width="16" height="16"/>
+  <object id="244" name="wall-up" type="tile" gid="10" x="528" y="48" width="16" height="16"/>
+  <object id="245" name="wall-up" type="tile" gid="10" x="560" y="48" width="16" height="16"/>
+  <object id="246" name="wall-up" type="tile" gid="10" x="544" y="48" width="16" height="16"/>
+  <object id="247" name="wall-up" type="tile" gid="10" x="576" y="48" width="16" height="16"/>
+  <object id="248" name="wall-up" type="tile" gid="10" x="608" y="48" width="16" height="16"/>
+  <object id="249" name="wall-up" type="tile" gid="10" x="592" y="48" width="16" height="16"/>
+  <object id="250" name="wall-up" type="tile" gid="10" x="624" y="48" width="16" height="16"/>
+  <object id="251" name="wall-up" type="tile" gid="10" x="656" y="48" width="16" height="16"/>
+  <object id="252" name="wall-up" type="tile" gid="10" x="640" y="48" width="16" height="16"/>
+  <object id="253" name="wall-up" type="tile" gid="10" x="672" y="48" width="16" height="16"/>
+  <object id="254" name="wall-up" type="tile" gid="10" x="704" y="48" width="16" height="16"/>
+  <object id="255" name="wall-up" type="tile" gid="10" x="688" y="48" width="16" height="16"/>
+  <object id="256" name="wall-up" type="tile" gid="10" x="720" y="48" width="16" height="16"/>
+  <object id="257" name="wall-up" type="tile" gid="10" x="752" y="48" width="16" height="16"/>
+  <object id="258" name="wall-up" type="tile" gid="10" x="736" y="48" width="16" height="16"/>
+  <object id="259" name="wall-up" type="tile" gid="10" x="768" y="48" width="16" height="16"/>
+  <object id="260" name="wall-up" type="tile" gid="10" x="800" y="48" width="16" height="16"/>
+  <object id="261" name="wall-up" type="tile" gid="10" x="784" y="48" width="16" height="16"/>
+  <object id="262" name="wall-up" type="tile" gid="10" x="816" y="48" width="16" height="16"/>
+  <object id="263" name="wall-up" type="tile" gid="10" x="848" y="48" width="16" height="16"/>
+  <object id="264" name="wall-up" type="tile" gid="10" x="832" y="48" width="16" height="16"/>
+  <object id="265" name="wall-up" type="tile" gid="10" x="864" y="48" width="16" height="16"/>
+  <object id="266" name="wall-up" type="tile" gid="10" x="896" y="48" width="16" height="16"/>
+  <object id="267" name="wall-up" type="tile" gid="10" x="880" y="48" width="16" height="16"/>
+  <object id="268" name="wall-up" type="tile" gid="10" x="912" y="48" width="16" height="16"/>
+  <object id="269" name="wall-up" type="tile" gid="10" x="928" y="48" width="16" height="16"/>
+  <object id="270" name="wall-up" type="tile" gid="10" x="960" y="48" width="16" height="16"/>
+  <object id="271" name="wall-up" type="tile" gid="10" x="944" y="48" width="16" height="16"/>
+  <object id="272" name="wall-up" type="tile" gid="10" x="976" y="48" width="16" height="16"/>
+  <object id="273" name="wall-up" type="tile" gid="10" x="1008" y="48" width="16" height="16"/>
+  <object id="274" name="wall-up" type="tile" gid="10" x="992" y="48" width="16" height="16"/>
+  <object id="275" name="wall-up" type="tile" gid="10" x="1024" y="48" width="16" height="16"/>
+  <object id="276" name="wall-up" type="tile" gid="10" x="1056" y="48" width="16" height="16"/>
+  <object id="277" name="wall-up" type="tile" gid="10" x="1040" y="48" width="16" height="16"/>
+  <object id="278" name="wall-up" type="tile" gid="10" x="1072" y="48" width="16" height="16"/>
+  <object id="279" name="wall-up" type="tile" gid="10" x="1104" y="48" width="16" height="16"/>
+  <object id="280" name="wall-up" type="tile" gid="10" x="1088" y="48" width="16" height="16"/>
+  <object id="281" name="wall-up" type="tile" gid="10" x="1120" y="48" width="16" height="16"/>
+  <object id="282" name="wall-up" type="tile" gid="10" x="1152" y="48" width="16" height="16"/>
+  <object id="283" name="wall-up" type="tile" gid="10" x="1136" y="48" width="16" height="16"/>
+  <object id="284" name="wall-up" type="tile" gid="10" x="1168" y="48" width="16" height="16"/>
+  <object id="285" name="wall-up" type="tile" gid="10" x="1200" y="48" width="16" height="16"/>
+  <object id="286" name="wall-up" type="tile" gid="10" x="1184" y="48" width="16" height="16"/>
+  <object id="287" name="wall-up" type="tile" gid="10" x="1216" y="48" width="16" height="16"/>
+  <object id="288" name="wall-up" type="tile" gid="10" x="1248" y="48" width="16" height="16"/>
+  <object id="289" name="wall-up" type="tile" gid="10" x="1232" y="48" width="16" height="16"/>
+  <object id="290" name="wall-up" type="tile" gid="10" x="1264" y="48" width="16" height="16"/>
+  <object id="291" name="wall-up" type="tile" gid="10" x="1296" y="48" width="16" height="16"/>
+  <object id="292" name="wall-up" type="tile" gid="10" x="1280" y="48" width="16" height="16"/>
+  <object id="293" name="wall-up" type="tile" gid="10" x="1312" y="48" width="16" height="16"/>
+  <object id="294" name="wall-up" type="tile" gid="10" x="1344" y="48" width="16" height="16"/>
+  <object id="295" name="wall-up" type="tile" gid="10" x="1328" y="48" width="16" height="16"/>
+  <object id="296" name="wall-up" type="tile" gid="10" x="1360" y="48" width="16" height="16"/>
+  <object id="297" name="wall-up" type="tile" gid="10" x="1392" y="48" width="16" height="16"/>
+  <object id="298" name="wall-up" type="tile" gid="10" x="1376" y="48" width="16" height="16"/>
+  <object id="299" name="wall-up" type="tile" gid="10" x="1408" y="48" width="16" height="16"/>
+  <object id="300" name="wall-up" type="tile" gid="10" x="1440" y="48" width="16" height="16"/>
+  <object id="301" name="wall-up" type="tile" gid="10" x="1424" y="48" width="16" height="16"/>
+  <object id="302" name="wall-up" type="tile" gid="10" x="1456" y="48" width="16" height="16"/>
+  <object id="303" name="wall-up" type="tile" gid="10" x="1488" y="48" width="16" height="16"/>
+  <object id="304" name="wall-up" type="tile" gid="10" x="1472" y="48" width="16" height="16"/>
+  <object id="305" name="wall-up" type="tile" gid="10" x="1504" y="48" width="16" height="16"/>
+  <object id="306" name="wall-up" type="tile" gid="10" x="1520" y="48" width="16" height="16"/>
+  <object id="307" name="wall-up" type="tile" gid="10" x="1552" y="48" width="16" height="16"/>
+  <object id="308" name="wall-up" type="tile" gid="10" x="1536" y="48" width="16" height="16"/>
+  <object id="309" name="wall-up" type="tile" gid="10" x="1568" y="48" width="16" height="16"/>
+  <object id="310" name="wall-up" type="tile" gid="10" x="1600" y="48" width="16" height="16"/>
+  <object id="311" name="wall-up" type="tile" gid="10" x="1584" y="48" width="16" height="16"/>
+  <object id="312" name="wall-up" type="tile" gid="10" x="1616" y="48" width="16" height="16"/>
+  <object id="313" name="wall-up" type="tile" gid="10" x="1648" y="48" width="16" height="16"/>
+  <object id="314" name="wall-up" type="tile" gid="10" x="1632" y="48" width="16" height="16"/>
+  <object id="315" name="wall-up" type="tile" gid="10" x="1664" y="48" width="16" height="16"/>
+  <object id="316" name="wall-up" type="tile" gid="10" x="1696" y="48" width="16" height="16"/>
+  <object id="317" name="wall-up" type="tile" gid="10" x="1680" y="48" width="16" height="16"/>
+  <object id="318" name="wall-up" type="tile" gid="10" x="1712" y="48" width="16" height="16"/>
+  <object id="319" name="wall-up" type="tile" gid="10" x="1744" y="48" width="16" height="16"/>
+  <object id="320" name="wall-up" type="tile" gid="10" x="1728" y="48" width="16" height="16"/>
+  <object id="321" name="wall-up" type="tile" gid="10" x="1760" y="48" width="16" height="16"/>
+  <object id="322" name="wall-up" type="tile" gid="10" x="1792" y="48" width="16" height="16"/>
+  <object id="323" name="wall-up" type="tile" gid="10" x="1776" y="48" width="16" height="16"/>
+  <object id="324" name="wall-up" type="tile" gid="10" x="1808" y="48" width="16" height="16"/>
+  <object id="325" name="wall-up" type="tile" gid="10" x="1840" y="48" width="16" height="16"/>
+  <object id="326" name="wall-up" type="tile" gid="10" x="1824" y="48" width="16" height="16"/>
+  <object id="327" name="wall-up" type="tile" gid="10" x="1856" y="48" width="16" height="16"/>
+  <object id="328" name="wall-up" type="tile" gid="10" x="1888" y="48" width="16" height="16"/>
+  <object id="329" name="wall-up" type="tile" gid="10" x="1872" y="48" width="16" height="16"/>
+  <object id="330" name="wall-up" type="tile" gid="10" x="1904" y="48" width="16" height="16"/>
+  <object id="331" name="wall-up" type="tile" gid="10" x="1936" y="48" width="16" height="16"/>
+  <object id="332" name="wall-up" type="tile" gid="10" x="1920" y="48" width="16" height="16"/>
+  <object id="333" name="wall-up" type="tile" gid="10" x="1952" y="48" width="16" height="16"/>
+  <object id="334" name="wall-up" type="tile" gid="10" x="1968" y="48" width="16" height="16"/>
+  <object id="335" name="wall-up" type="tile" gid="10" x="2000" y="48" width="16" height="16"/>
+  <object id="336" name="wall-up" type="tile" gid="10" x="1984" y="48" width="16" height="16"/>
+  <object id="337" name="wall-up" type="tile" gid="10" x="2016" y="48" width="16" height="16"/>
+  <object id="338" name="wall-up" type="tile" gid="10" x="2048" y="48" width="16" height="16"/>
+  <object id="339" name="wall-up" type="tile" gid="10" x="2032" y="48" width="16" height="16"/>
+  <object id="340" name="wall-up" type="tile" gid="10" x="2064" y="48" width="16" height="16"/>
+  <object id="341" name="wall-up" type="tile" gid="10" x="2096" y="48" width="16" height="16"/>
+  <object id="342" name="wall-up" type="tile" gid="10" x="2080" y="48" width="16" height="16"/>
+  <object id="343" name="wall-up" type="tile" gid="10" x="2112" y="48" width="16" height="16"/>
+  <object id="344" name="wall-up" type="tile" gid="10" x="2144" y="48" width="16" height="16"/>
+  <object id="345" name="wall-up" type="tile" gid="10" x="2128" y="48" width="16" height="16"/>
+  <object id="346" name="wall-up" type="tile" gid="10" x="2160" y="48" width="16" height="16"/>
+  <object id="347" name="wall-up" type="tile" gid="10" x="2192" y="48" width="16" height="16"/>
+  <object id="348" name="wall-up" type="tile" gid="10" x="2176" y="48" width="16" height="16"/>
+  <object id="349" name="wall-up" type="tile" gid="10" x="2208" y="48" width="16" height="16"/>
+  <object id="350" name="wall-up" type="tile" gid="10" x="2240" y="48" width="16" height="16"/>
+  <object id="351" name="wall-up" type="tile" gid="10" x="2224" y="48" width="16" height="16"/>
+  <object id="352" name="wall-up" type="tile" gid="10" x="2256" y="48" width="16" height="16"/>
+  <object id="353" name="wall-up" type="tile" gid="10" x="2288" y="48" width="16" height="16"/>
+  <object id="354" name="wall-up" type="tile" gid="10" x="2272" y="48" width="16" height="16"/>
+  <object id="355" name="wall-up" type="tile" gid="10" x="2304" y="48" width="16" height="16"/>
+  <object id="356" name="wall-up" type="tile" gid="10" x="2320" y="48" width="16" height="16"/>
+  <object id="357" name="wall-up" type="tile" gid="10" x="2352" y="48" width="16" height="16"/>
+  <object id="358" name="wall-up" type="tile" gid="10" x="2336" y="48" width="16" height="16"/>
+  <object id="359" name="wall-up" type="tile" gid="10" x="2368" y="48" width="16" height="16"/>
+  <object id="360" name="wall-up" type="tile" gid="10" x="2400" y="48" width="16" height="16"/>
+  <object id="361" name="wall-up" type="tile" gid="10" x="2384" y="48" width="16" height="16"/>
+  <object id="362" name="wall-up" type="tile" gid="10" x="2416" y="48" width="16" height="16"/>
+  <object id="363" name="wall-up" type="tile" gid="10" x="2448" y="48" width="16" height="16"/>
+  <object id="364" name="wall-up" type="tile" gid="10" x="2432" y="48" width="16" height="16"/>
+  <object id="365" name="wall-up" type="tile" gid="10" x="2464" y="48" width="16" height="16"/>
+  <object id="366" name="wall-up" type="tile" gid="10" x="2496" y="48" width="16" height="16"/>
+  <object id="367" name="wall-up" type="tile" gid="10" x="2480" y="48" width="16" height="16"/>
+  <object id="368" name="wall-up" type="tile" gid="10" x="2512" y="48" width="16" height="16"/>
+  <object id="369" name="wall-up" type="tile" gid="10" x="2544" y="48" width="16" height="16"/>
+  <object id="370" name="wall-up" type="tile" gid="10" x="2528" y="48" width="16" height="16"/>
+  <object id="371" name="wall-up" type="tile" gid="10" x="2560" y="48" width="16" height="16"/>
+  <object id="372" name="wall-up" type="tile" gid="10" x="2592" y="48" width="16" height="16"/>
+  <object id="373" name="wall-up" type="tile" gid="10" x="2576" y="48" width="16" height="16"/>
+  <object id="374" name="wall-up" type="tile" gid="10" x="2608" y="48" width="16" height="16"/>
+  <object id="375" name="wall-up" type="tile" gid="10" x="2624" y="48" width="16" height="16"/>
+  <object id="376" name="wall-up" type="tile" gid="10" x="2656" y="48" width="16" height="16"/>
+  <object id="377" name="wall-up" type="tile" gid="10" x="2640" y="48" width="16" height="16"/>
+  <object id="378" name="wall-up" type="tile" gid="10" x="2672" y="48" width="16" height="16"/>
+  <object id="379" name="wall-up" type="tile" gid="10" x="2704" y="48" width="16" height="16"/>
+  <object id="380" name="wall-up" type="tile" gid="10" x="2688" y="48" width="16" height="16"/>
+  <object id="381" name="wall-up" type="tile" gid="10" x="2720" y="48" width="16" height="16"/>
+  <object id="382" name="wall-up" type="tile" gid="10" x="2752" y="48" width="16" height="16"/>
+  <object id="383" name="wall-up" type="tile" gid="10" x="2736" y="48" width="16" height="16"/>
+  <object id="384" name="wall-up" type="tile" gid="10" x="2768" y="48" width="16" height="16"/>
+  <object id="385" name="wall-up" type="tile" gid="10" x="2800" y="48" width="16" height="16"/>
+  <object id="386" name="wall-up" type="tile" gid="10" x="2784" y="48" width="16" height="16"/>
+  <object id="387" name="wall-up" type="tile" gid="10" x="2816" y="48" width="16" height="16"/>
+  <object id="388" name="wall-up" type="tile" gid="10" x="2848" y="48" width="16" height="16"/>
+  <object id="389" name="wall-up" type="tile" gid="10" x="2832" y="48" width="16" height="16"/>
+  <object id="390" name="wall-up" type="tile" gid="10" x="2864" y="48" width="16" height="16"/>
+  <object id="391" name="wall-up" type="tile" gid="10" x="2896" y="48" width="16" height="16"/>
+  <object id="392" name="wall-up" type="tile" gid="10" x="2880" y="48" width="16" height="16"/>
+  <object id="393" name="wall-up" type="tile" gid="10" x="2912" y="48" width="16" height="16"/>
+  <object id="394" name="wall-up" type="tile" gid="10" x="2928" y="48" width="16" height="16"/>
+  <object id="395" name="wall-up" type="tile" gid="10" x="2960" y="48" width="16" height="16"/>
+  <object id="396" name="wall-up" type="tile" gid="10" x="2944" y="48" width="16" height="16"/>
+  <object id="397" name="wall-up" type="tile" gid="10" x="2976" y="48" width="16" height="16"/>
+  <object id="398" name="wall-up" type="tile" gid="10" x="3008" y="48" width="16" height="16"/>
+  <object id="399" name="wall-up" type="tile" gid="10" x="2992" y="48" width="16" height="16"/>
+  <object id="400" name="wall-up" type="tile" gid="10" x="3024" y="48" width="16" height="16"/>
+  <object id="401" name="wall-up" type="tile" gid="10" x="3040" y="48" width="16" height="16"/>
+  <object id="402" name="wall-up" type="tile" gid="10" x="3072" y="48" width="16" height="16"/>
+  <object id="403" name="wall-up" type="tile" gid="10" x="3056" y="48" width="16" height="16"/>
+  <object id="404" name="wall-up" type="tile" gid="10" x="3088" y="48" width="16" height="16"/>
+  <object id="405" name="wall-up" type="tile" gid="10" x="3104" y="48" width="16" height="16"/>
+  <object id="406" name="wall-up" type="tile" gid="10" x="3136" y="48" width="16" height="16"/>
+  <object id="407" name="wall-up" type="tile" gid="10" x="3120" y="48" width="16" height="16"/>
+  <object id="408" name="wall-up" type="tile" gid="10" x="3152" y="48" width="16" height="16"/>
+ </objectgroup>
+</map>
