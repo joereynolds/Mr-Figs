@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="3" nextobjectid="1">
+<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="59">
  <properties>
   <property name="player_bomb_count" value="1000"/>
  </properties>
@@ -192,32 +192,78 @@
    </properties>
   </tile>
  </tileset>
- <layer id="1" name="Tile Layer 1" width="14" height="10">
+ <layer id="1" name="background" width="14" height="10">
   <data encoding="csv">
-3,10,10,10,10,10,4,3,10,10,10,10,10,4,
-11,19,20,19,20,19,2,11,20,19,20,19,20,32,
-11,19,20,19,20,19,2,11,20,19,20,19,20,2,
-11,19,20,19,20,19,2,11,20,19,20,19,20,2,
-11,19,20,19,20,19,2,11,20,19,20,19,20,2,
-11,19,20,19,20,19,2,11,20,19,20,19,20,2,
-11,19,20,19,20,19,2,11,20,19,20,19,20,2,
-11,19,20,19,20,19,20,19,20,19,20,19,20,2,
-11,19,20,19,20,19,20,19,20,19,20,19,20,2,
-12,10,10,10,10,10,10,10,10,10,10,10,10,13
+3,0,0,0,0,0,4,3,0,0,0,0,0,4,
+0,19,20,19,20,19,0,0,20,19,20,19,20,0,
+0,19,20,19,20,19,0,0,20,19,20,19,20,0,
+0,19,20,19,20,19,0,0,20,19,20,19,20,0,
+0,19,20,19,20,19,0,0,20,19,20,19,20,0,
+0,19,20,19,20,19,0,0,20,19,20,19,20,0,
+0,19,20,19,20,19,0,0,20,19,20,19,20,0,
+0,19,20,19,20,19,20,20,20,19,20,19,20,0,
+0,19,20,19,20,19,20,19,20,19,20,19,20,0,
+12,0,0,0,0,0,0,0,0,0,0,0,0,13
 </data>
  </layer>
- <layer id="2" name="Tile Layer 2" width="14" height="10">
-  <data encoding="csv">
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,41,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,37,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,21,21,45,0,0,0,0,0,
-0,0,0,0,0,0,21,21,45,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0
-</data>
- </layer>
+ <objectgroup id="3" name="objects">
+  <object id="1" type="tile" gid="11" x="0" y="64" width="16" height="16"/>
+  <object id="2" type="tile" gid="11" x="0" y="48" width="16" height="16"/>
+  <object id="3" type="tile" gid="11" x="0" y="32" width="16" height="16"/>
+  <object id="4" type="tile" gid="11" x="0" y="80" width="16" height="16"/>
+  <object id="5" type="tile" gid="11" x="0" y="96" width="16" height="16"/>
+  <object id="6" type="tile" gid="11" x="0" y="112" width="16" height="16"/>
+  <object id="7" type="tile" gid="11" x="0" y="144" width="16" height="16"/>
+  <object id="8" type="tile" gid="11" x="0" y="128" width="16" height="16"/>
+  <object id="9" type="tile" gid="11" x="112" y="112" width="16" height="16"/>
+  <object id="10" type="tile" gid="11" x="112" y="96" width="16" height="16"/>
+  <object id="11" type="tile" gid="11" x="112" y="80" width="16" height="16"/>
+  <object id="12" type="tile" gid="11" x="112" y="64" width="16" height="16"/>
+  <object id="13" type="tile" gid="11" x="112" y="48" width="16" height="16"/>
+  <object id="14" type="tile" gid="11" x="112" y="32" width="16" height="16"/>
+  <object id="15" type="tile" gid="2" x="96" y="32" width="16" height="16"/>
+  <object id="16" type="tile" gid="2" x="96" y="48" width="16" height="16"/>
+  <object id="17" type="tile" gid="2" x="96" y="64" width="16" height="16"/>
+  <object id="18" type="tile" gid="2" x="96" y="96" width="16" height="16"/>
+  <object id="19" type="tile" gid="2" x="96" y="112" width="16" height="16"/>
+  <object id="20" type="tile" gid="2" x="96" y="80" width="16" height="16"/>
+  <object id="21" type="tile" gid="2" x="208" y="48" width="16" height="16"/>
+  <object id="22" type="tile" gid="2" x="208" y="64" width="16" height="16"/>
+  <object id="23" type="tile" gid="2" x="208" y="80" width="16" height="16"/>
+  <object id="24" type="tile" gid="2" x="208" y="96" width="16" height="16"/>
+  <object id="25" type="tile" gid="2" x="208" y="112" width="16" height="16"/>
+  <object id="26" type="tile" gid="2" x="208" y="128" width="16" height="16"/>
+  <object id="27" type="tile" gid="2" x="208" y="144" width="16" height="16"/>
+  <object id="28" type="tile" gid="10" x="192" y="160" width="16" height="16"/>
+  <object id="29" type="tile" gid="10" x="176" y="160" width="16" height="16"/>
+  <object id="30" type="tile" gid="10" x="160" y="160" width="16" height="16"/>
+  <object id="31" type="tile" gid="10" x="144" y="160" width="16" height="16"/>
+  <object id="32" type="tile" gid="10" x="16" y="160" width="16" height="16"/>
+  <object id="33" type="tile" gid="10" x="32" y="160" width="16" height="16"/>
+  <object id="34" type="tile" gid="10" x="48" y="160" width="16" height="16"/>
+  <object id="35" type="tile" gid="10" x="96" y="160" width="16" height="16"/>
+  <object id="36" type="tile" gid="10" x="64" y="160" width="16" height="16"/>
+  <object id="37" type="tile" gid="10" x="80" y="160" width="16" height="16"/>
+  <object id="38" type="tile" gid="10" x="112" y="160" width="16" height="16"/>
+  <object id="39" type="tile" gid="10" x="128" y="160" width="16" height="16"/>
+  <object id="40" type="tile" gid="1" x="16" y="16" width="16" height="16"/>
+  <object id="41" type="tile" gid="1" x="32" y="16" width="16" height="16"/>
+  <object id="42" type="tile" gid="1" x="48" y="16" width="16" height="16"/>
+  <object id="43" type="tile" gid="1" x="64" y="16" width="16" height="16"/>
+  <object id="44" type="tile" gid="1" x="80" y="16" width="16" height="16"/>
+  <object id="45" type="tile" gid="1" x="128" y="16" width="16" height="16"/>
+  <object id="46" type="tile" gid="1" x="144" y="16" width="16" height="16"/>
+  <object id="47" type="tile" gid="1" x="176" y="16" width="16" height="16"/>
+  <object id="48" type="tile" gid="1" x="192" y="16" width="16" height="16"/>
+  <object id="49" type="tile" gid="1" x="160" y="16" width="16" height="16"/>
+  <object id="50" type="finish_tile" gid="32" x="208" y="32" width="16" height="16"/>
+  <object id="51" type="moveable_tile" gid="45" x="128" y="144" width="16" height="16"/>
+  <object id="52" type="moveable_tile" gid="45" x="128" y="128" width="16" height="16"/>
+  <object id="53" type="tile" gid="21" x="96" y="128" width="16" height="16"/>
+  <object id="54" type="tile" gid="21" x="112" y="128" width="16" height="16"/>
+  <object id="55" type="tile" gid="21" x="112" y="144" width="16" height="16"/>
+  <object id="56" type="tile" gid="21" x="96" y="144" width="16" height="16"/>
+  <object id="57" type="bomb" gid="41" x="48" y="48" width="16" height="16"/>
+  <object id="58" type="bomb" gid="37" x="32" y="80" width="16" height="16"/>
+ </objectgroup>
 </map>

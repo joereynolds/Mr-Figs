@@ -27,13 +27,13 @@ class Bomb(Entity):
         self.particles = pygame.sprite.Group()
         self.images = graphics.sprites['bomb']['sprites']
 
-        self.bomb_creation_sound = pygame.mixer.Sound('./data/audio/fx/bomb-place.wav')
-        self.bomb_beep_sound = pygame.mixer.Sound('./data/audio/fx/bomb-beep.wav')
+#         self.bomb_creation_sound = pygame.mixer.Sound('./data/audio/fx/bomb-place.wav')
+#         self.bomb_beep_sound = pygame.mixer.Sound('./data/audio/fx/bomb-beep.wav')
 
-        self.bomb_explosion_sound = pygame.mixer.Sound('./data/audio/fx/bomb-explode.wav')
-        self.bomb_explosion_sound.set_volume(0.2)
+#         self.bomb_explosion_sound = pygame.mixer.Sound('./data/audio/fx/bomb-explode.wav')
+#         self.bomb_explosion_sound.set_volume(0.2)
 
-        self.bomb_creation_sound.play()
+#         self.bomb_creation_sound.play()
 
         self.minimap_colour = colours.BLACK
 
@@ -119,21 +119,20 @@ class Bomb(Entity):
             height,
         )
 
-        tile_object = self.tiled_level.get_tile_from_object_layer(x, y)
+        tile = self.tiled_level.get_tile_from_object_layer(x, y)
         base_tile = self.tiled_level.get_tile_from_layer(x, y, 0)
 
-        if tile_object and tile_object.type == 'moveable_tile':
+        if tile and isinstance(tile, MoveableTile):
+            return False
+
+        if tile and tile.solid and not tile.destructable:
             return False
 
         self.particles.add(particle)
         created = True
 
-        if tile_object and tile_object.destructable:
-            pass
-            # self.tiled_level.sprites.remove(tile_object)
-            # Remove the tile_object from the sprites
-            # self.tiled_level.sprites.remove(tile_object)
-            # pygame.sprite.Sprite.kill(tile_object)
+        if tile and tile.destructable:
+            self.tiled_level.sprites.remove(tile)
 
         return created
 
@@ -159,4 +158,4 @@ class Bomb(Entity):
         """
         Plays the bombs beep sound
         """
-        self.bomb_beep_sound.play()
+        # self.bomb_beep_sound.play()

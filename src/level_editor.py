@@ -48,29 +48,23 @@ class LevelData():
         try:
             for tile_object in self._map.get_layer_by_name('objects'):
                 surface = self._map.get_tile_image_by_gid(tile_object.gid)
-                obj = self._create_tile(tile_object, surface, tile_object, factory)
+                obj = self._create_tile(tile_object, surface, factory)
                 self.sprites.add(obj)
         except ValueError:
             print('this scene doesnt have objects')
 
-    def _create_tile(self, tile_object, surface, sprite, factory):
+
+    def _create_tile(self, tile_object, surface, factory):
         """Creates tiles passed to it. It finds the type of the
-        sprite and then creates the corresponding tile"""
+        tile_object and then creates the corresponding tile"""
         x = tile_object.x
         y = tile_object.y
 
         # Safe fallbacks just in case objects don't have certain attributes
-        moveable = False
-        if hasattr(sprite, 'moveable'):
-            moveable = sprite.moveable
-
-        solid = False
-        if hasattr(sprite, 'solid'):
-            solid = sprite.solid
-
-        destructable = False
-        if hasattr(sprite, 'destructable'):
-            destructable = sprite.destructable
+        moveable = getattr(tile_object, 'moveable', False)
+        solid = getattr(tile_object, 'solid', False)
+        destructable = getattr(tile_object, 'destructable', False)
+        lifespan = getattr(tile_object, 'lifespan', False)
 
         common = {
             'x': x,
@@ -91,11 +85,11 @@ class LevelData():
                 'level': self,
                 'image':surface
             },
-            # 'bomb': {
-            #     **common,
-            #     'level': self,
-            #     'lifespan': sprite.lifespan,
-            # },
+            'bomb': {
+                **common,
+                'level': self,
+                'lifespan':lifespan,
+            },
             'pickup_bomb': {
                 **common
             },
@@ -112,21 +106,21 @@ class LevelData():
             },
             # 'stateful': {
             #     **common,
-            #     'solid':sprite.solid,
+            #     'solid':tile_object.solid,
             #     'destructable':destructable,
             #     'state':0,
-            #     'triggers':sprite.triggers,
+            #     'triggers':tile_object.triggers,
             # },
             'triggerable': {
                 **common,
                 'solid': solid,
                 'destructable':destructable,
                 'stateful':'pass',
-                'id':sprite.id
+                'id':tile_object.id
             }
         }
 
-        return factory.build(sprite.type, **type_map[sprite.type])
+        return factory.build(tile_object.type, **type_map[tile_object.type])
 
     def link_doors_and_switches(self):
         """Makes sure that the switches are passed to the correct
@@ -151,9 +145,13 @@ class LevelData():
                 return tile
 
     def get_tile_from_object_layer(self, x, y, layer_name='objects'):
+        """Gets the tile from the object layer and then maps it to the one in the
+        sprite group. This means we can kill our sprites etc..."""
         for tile in self._map.get_layer_by_name(layer_name):
             if tile.x == x and tile.y == y:
-                return tile
+                for sprite in self.sprites:
+                    if sprite.rect.x == tile.x and sprite.rect.y == tile.y:
+                        return sprite
 
     #This function is gross and not needed. It's only used in the actor class and that could easily be a map over all
     #of the tiles. Do this asap
