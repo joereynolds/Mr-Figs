@@ -29,10 +29,6 @@ def subsurf(grid_pos):
 """
 #TODO this should be moved to the editor? Or maye a SpriteMap class
 sprites = {
-    'floor'  : {
-        'sprite_1': subsurf(grid(1,2)),
-        'sprite_2': subsurf(grid(0,2))
-    },
     'bomb'  : {
         'sprites' : [
             subsurf(grid(0,4)),
@@ -52,9 +48,6 @@ sprites = {
             subsurf(grid(4, 6)),
             subsurf(grid(5, 6))
         ]
-    },
-    'stair' : {
-        'sprite_1' : subsurf(grid(5,3)),
     },
     'player': {
         'sprites':[subsurf(grid(0,5))]

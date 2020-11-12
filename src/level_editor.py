@@ -24,7 +24,7 @@ class LevelData():
 
         self.map_layer_for_camera = pyscroll.BufferedRenderer(
             self.map_data_for_camera,
-            (100, 100),
+            (100, 100)
         )
 
         self.sprites = pyscroll.PyscrollGroup(
