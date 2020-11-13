@@ -7,16 +7,36 @@ import src.scenes.levelselect as level_select
 import src.scenes.escapemenu_no_overlay as escape_menu
 
 
+levels = {
+    './data/levels/tmx/tutorial-movement.tmx': {
+        'next_level': './data/levels/tmx/tutorial-pushing.tmx'
+    },
+    './data/levels/tmx/tutorial-pushing.tmx': {
+        'next_level': './data/levels/tmx/tutorial-bombing.tmx'
+    },
+    './data/levels/tmx/tutorial-bombing.tmx': {
+        'next_level': './data/levels/tmx/1-level.tmx'
+    },
+    './data/levels/tmx/1-level.tmx': {
+        'next_level': './data/levels/tmx/2-level.tmx'
+    },
+    './data/levels/tmx/2-level.tmx': {
+        'next_level': './data/levels/tmx/3-level.tmx'
+    },
+    './data/levels/tmx/3-level.tmx': {
+        'next_level': './data/levels/tmx/4-level.tmx'
+    },
+    './data/levels/tmx/4-level.tmx': {
+        'next_level': './data/levels/tmx/5-level.tmx'
+    }
+}
 def create_level_list():
     """Returns an array of LevelBase's, each one
     created from a level in our levels directory"""
     level_dict = {}
     level_dir = './data/levels/tmx/'
-    
-    # TODO - This is bad. This creates all of our levels at once.
-    for level in os.listdir(level_dir):
-        level_dict[level] = LevelBase(level_dir + level, 'NoNextScene')
 
+    level_dict['tutorial-movement.tmx'] = LevelBase(level_dir + 'tutorial-movement.tmx')
     level_dict['start-menu'] = start_menu.StartMenu()
     level_dict['game-over-menu'] = game_over_menu.GameOverMenu()
     level_dict['escape-menu'] = escape_menu.EscapeMenuNoOverlay()
@@ -24,17 +44,4 @@ def create_level_list():
 
     return level_dict
 
-def link_levels(level_list):
-    """Sets the next level for each level so that when
-    we finish that level it automatically takes us to
-    the next one specified"""
-    level_list['tutorial-movement.tmx'].next_level = level_list['tutorial-pushing.tmx']
-    level_list['tutorial-pushing.tmx'].next_level = level_list['tutorial-bombing.tmx']
-    level_list['tutorial-bombing.tmx'].next_level = level_list['1-level.tmx']
-    level_list['1-level.tmx'].next_level = level_list['2-level.tmx']
-    level_list['2-level.tmx'].next_level = level_list['3-level.tmx']
-    level_list['3-level.tmx'].next_level = level_list['4-level.tmx']
-    level_list['4-level.tmx'].next_level = level_list['1-level.tmx']
-
 level_obj_list = create_level_list()
-link_levels(level_obj_list)

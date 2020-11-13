@@ -5,6 +5,7 @@ import src.level_editor as level_editor
 import src.scenes.scenebase as scene_base
 import src.renderers.level_base_renderer as renderers
 import src.input_handlers.global_input_handler as input_handler
+import src.environment
 
 
 class LevelBase(scene_base.SceneBase):
@@ -12,7 +13,7 @@ class LevelBase(scene_base.SceneBase):
     So far (probably because it's huge), there has
     been no need to extend this class."""
 
-    def __init__(self, file, next_level):
+    def __init__(self, file):#, next_level):
         """
         @file = The .tmx level file
         @next_level = A reference to the next level
@@ -51,7 +52,6 @@ class LevelBase(scene_base.SceneBase):
         pygame.mixer.music.play(-1)
 
         self.file = file
-        self.next_level = next_level
         self.sprites = self.tiled_level.sprites
         self.sprites.add(self.player)
         self.renderer = renderers.LevelBaseRenderer(self)
@@ -73,7 +73,15 @@ class LevelBase(scene_base.SceneBase):
         """Calls the global renderer to render"""
         self.renderer.render()
 
+    def switch_to_scene(self, next_scene):
+        """Goes to the next scene. Note that SceneBase is
+        sort of similar to a linked list in implementation.
+        It is a linked list of scenes"""
+        self.next = LevelBase(
+            src.environment.levels[self.file]['next_level'],
+        )
+
     def reset(self):
         """Reinitialises our level, kind of a hacky way
         of resetting the level again."""
-        self.__init__(self.file, self.next_level)
+        self.__init__(self.file)
