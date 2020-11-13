@@ -1,7 +1,8 @@
 from src.game_object.tile import Triggerable
 from src.game_object.tile import MoveableTile
 from src.game_object.finish_tile import FinishTile
-from src.game_object.tile import Stateful
+from src.game_object.switch_tile import Switch
+from src.game_object.tile import PressurePlate
 from src.game_object.tile import Tile
 from src.game_object.bomb import Bomb
 from src.game_object.actor import Actor
@@ -15,10 +16,8 @@ class TileFactory():
             'finish_tile': FinishTile,
             'moveable_tile': MoveableTile,
 
-            # stateful and pressure_plate only differ by the sprites they have.
-            # I thought this easier than making separate classes for both, we'll see.
-            'stateful': Stateful,
-            'pressure_plate': Stateful,
+            'switch': Switch,
+            'pressure_plate': PressurePlate,
             'bomb': Bomb,
             'actor': Actor,
             'tile': Tile,

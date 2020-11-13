@@ -42,7 +42,7 @@ class MoveableTile(Tile):
             self.rect.x = target_x
             self.rect.y = target_y
 
-class Stateful(Tile):
+class PressurePlate(Tile):
     """The stateful class is a tile that can be either on or off.
        It's a binary state.
        It usually links to the Triggerable class
@@ -86,14 +86,14 @@ class Stateful(Tile):
                     self.turn_off()
 
 class Triggerable(Tile):
-    """A Triggerable class is linked to the stateful class. It takes a Stateful
-       and if that Stateful's state is 'on' it affects the Triggerable and triggers
+    """A Triggerable class is linked to the Switch or PressurePlate class. It takes a Switch/PressurePlate
+       and if that Switch/PressurePlate's state is 'on' it affects the Triggerable and triggers
        whatever the effect of the Triggerable is.
 
        i.e.
            A Door and switch.
            Door = Triggerable
-           Switch = Stateful
+           Switch = Switch/PressurePlate
 
            When a switch is pressed, it triggers the door to open...simples!
 

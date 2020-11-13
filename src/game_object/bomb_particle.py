@@ -1,5 +1,6 @@
 import pygame
 
+from src.game_object.switch_tile import Switch
 import src.game_object.tile as tile
 import src.entity as entity
 import src.colours as colours
@@ -25,9 +26,7 @@ class BombParticle(entity.Entity):
             pygame.sprite.Sprite.kill(player)
             return True
         for _tile in level.tiled_level.sprites:
-            if isinstance(_tile, tile.Stateful):
+            if isinstance(_tile, Switch):
                 if pygame.sprite.collide_rect(self, _tile):
                     _tile.update()
                     return
-
-
