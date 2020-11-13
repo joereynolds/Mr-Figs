@@ -147,6 +147,20 @@ class Bomb(Entity):
                         self.lifespan = bomb.lifespan #remember to detonate both bombs at the same time!`
                         self.explode()
 
+    def handle_collision(self, player, level):
+        if player.rect.x == self.rect.x and player.rect.y == self.rect.y:
+            if self.lifespan == 0:
+                pygame.sprite.Sprite.kill(player)
+                return True
+        if player.destination[0] == self.rect.x and player.destination[1] == self.rect.y:
+            # Bit of a hack but if 5 is our max lifespan for a bomb then it's impossible to be
+            # travelling to it and for it to have that lifespan since we would have moved
+            # and decreased the bomb's lifespan
+            if self.lifespan != 0 and self.lifespan < 5:
+                pygame.sprite.Sprite.kill(self)
+                player.add_bomb()
+
+
     def animate(self):
         """Switches the images of our bomb sprite depending
         on the bomb's lifespan"""
