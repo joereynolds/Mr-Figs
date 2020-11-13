@@ -33,6 +33,12 @@ class level2(object):
     LOCATION = config.level_location + NAME
     IS_COMPLETE = False
 
+class ButtonIntro():
+    KEY_NAME = 'button-intro'
+    NAME = '5-level.tmx'
+    LOCATION = config.level_location + NAME
+    IS_COMPLETE = False
+
 class TutorialBombing():
     KEY_NAME = 'tutorial-bombing'
     NAME = '2-introduction.tmx'

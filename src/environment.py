@@ -18,6 +18,8 @@ def create_level_list():
     level_dict[levels.TutorialMovement.KEY_NAME] = level_base.LevelBase(levels.TutorialMovement.LOCATION, 'NoNextScene', 1)
     level_dict[levels.TutorialPushing.KEY_NAME] = level_base.LevelBase(levels.TutorialPushing.LOCATION, 'NoNextScene', 1)
     level_dict[levels.TutorialBombing.KEY_NAME] = level_base.LevelBase(levels.TutorialBombing.LOCATION, 'NoNextScene', 1)
+    level_dict[levels.ButtonIntro.KEY_NAME] = level_base.LevelBase(levels.ButtonIntro.LOCATION, 'NoNextScene', 1)
+
     level_dict[levels.level2.KEY_NAME] = level_base.LevelBase(levels.level2.LOCATION, 'NoNextScene', 2)
     level_dict[levels.level3.KEY_NAME] = level_base.LevelBase(levels.level3.LOCATION, 'NoNextScene', 3)
     level_dict[levels.level4.KEY_NAME] = level_base.LevelBase(levels.level4.LOCATION, 'NoNextScene', 4)
@@ -35,7 +37,8 @@ def link_levels(level_list):
     the next one specified"""
     level_list['tutorial-movement'].next_level = level_list['tutorial-pushing']
     level_list['tutorial-pushing'].next_level = level_list['tutorial-bombing']
-    level_list['tutorial-bombing'].next_level = level_list['level-1']
+    level_list['tutorial-bombing'].next_level = level_list['button-intro']
+    level_list['button-intro'].next_level = level_list['level-1']
     level_list['level-1'].next_level = level_list['level-2']
     level_list['level-2'].next_level = level_list['level-3']
     level_list['level-3'].next_level = level_list['level-4']
