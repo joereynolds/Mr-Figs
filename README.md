@@ -5,9 +5,9 @@ The player must blast their way through various puzzles to reach the end goal.
 
 Mr-Figs runs on python 3.x
 
-#### Demo (WIP)
+#### Demo Gif (might take a while to load, it's long)
 
-![](https://i.imgur.com/mrOF1PC.gif)
+![](https://i.imgur.com/JPLm8tX.gif)
 
 #### Gameplay
 
