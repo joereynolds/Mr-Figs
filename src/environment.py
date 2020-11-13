@@ -35,6 +35,9 @@ levels = {
     './data/levels/tmx/5-level.tmx': {
         'next_level': './data/levels/tmx/6-level.tmx'
     },
+    './data/levels/tmx/6-level.tmx': {
+        'next_level': './data/levels/tmx/lotta-lasers.tmx'
+    },
 }
 def create_level_list():
     """Returns an array of LevelBase's, each one

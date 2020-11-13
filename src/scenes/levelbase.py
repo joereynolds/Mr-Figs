@@ -6,6 +6,7 @@ import src.scenes.scenebase as scene_base
 import src.renderers.level_base_renderer as renderers
 import src.input_handlers.global_input_handler as input_handler
 import src.environment
+from src.collision_handlers.polling_collision_handler import PollingCollisionHandler
 
 
 class LevelBase(scene_base.SceneBase):
@@ -50,6 +51,7 @@ class LevelBase(scene_base.SceneBase):
         self.sprites = self.tiled_level.sprites
         self.sprites.add(self.player)
         self.renderer = renderers.LevelBaseRenderer(self)
+        self.collision_handler = PollingCollisionHandler(self.player, self)
 
     def check_player_hasnt_died_a_horrible_death(self):
         """If the player has been destroyed, restart the level"""
@@ -63,6 +65,8 @@ class LevelBase(scene_base.SceneBase):
         self.sprites.move_to_front(self.player)
         for bomb in self.player.bombs:
             self.sprites.add(bomb.particles)
+
+        self.collision_handler.handle_collisions()
 
     def render(self):
         """Calls the global renderer to render"""

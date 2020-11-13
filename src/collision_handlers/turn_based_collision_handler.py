@@ -1,3 +1,11 @@
+"""
+`TurnBasedCollisionHandler` only checks for collisions per *turn* i.e. when a
+player has moved. As it's turn based this makes sense to use for the majority
+of things. There are times either for technical reasons or logical reasons that
+it instead makes sense to use the `PollingCollisionHandler` which checks on every
+iteration (like most games do)
+"""
+
 import pygame
 import src.game_object.bomb as bomb
 import src.game_object.tile as tile
@@ -6,7 +14,7 @@ import src.movement_vector as movement_vector
 from src.game_object.pickup_bomb import PickupBomb
 
 
-class PlayerCollisionHandler(object):
+class TurnBasedCollisionHandler():
 
     def __init__(self, player, level):
         self.player = player

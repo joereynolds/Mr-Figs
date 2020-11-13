@@ -22,10 +22,11 @@ class BombParticle(entity.Entity):
         # solid. To test it, plant a bomb and move up into a solid wall you'll
         # survive the blast because your destination is in the wall but really
         # you're still on the same tile.
-        if player.destination[0] == self.rect.x and player.destination[1] == self.rect.y:
-            pygame.sprite.Sprite.kill(player)
-            return True
-        if isinstance(tile, Switch):
-            if pygame.sprite.collide_rect(self, tile):
-                tile.update()
-                return
+        for _tile in level.tiled_level.sprites:
+            if player.destination[0] == self.rect.x and player.destination[1] == self.rect.y:
+                pygame.sprite.Sprite.kill(player)
+                return True
+            if isinstance(_tile, Switch):
+                if pygame.sprite.collide_rect(self, _tile):
+                    _tile.update()
+                    return

@@ -43,8 +43,7 @@ class MoveableTile(Tile):
             self.rect.y = target_y
 
 class PressurePlate(Tile):
-    """The stateful class is a tile that can be either on or off.
-       It's a binary state.
+    """The PressurePlate is a tile that can be either on or off.
        It usually links to the Triggerable class
        so that it can affect (trigger) an effect.
 

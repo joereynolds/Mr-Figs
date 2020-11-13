@@ -6,7 +6,7 @@ import src.entity as entity
 import src.graphics as graphics
 import src.movement_vector as movement_vector
 import src.interpolate as interpolate
-import src.collision_handler as collision_handler
+from src.collision_handlers.turn_based_collision_handler import TurnBasedCollisionHandler
 import src.input_handlers.player_input_handler as p_i_handler
 
 class Actor(entity.Entity):
@@ -58,7 +58,7 @@ class Actor(entity.Entity):
         self.moving = False
         self.input_handler = p_i_handler.PlayerInputHandler(self)
         self.turns_taken = 0
-        self.collision_handler = collision_handler.PlayerCollisionHandler(
+        self.collision_handler = TurnBasedCollisionHandler(
             self, self.level
         )
 
