@@ -1,7 +1,4 @@
-#TODO Call this file scenes and place in the
-#scenes directory?
 import os
-import src.config as config
 from src.scenes.levelbase import LevelBase
 import src.scenes.levelbase as level_base
 import src.scenes.startmenu as start_menu

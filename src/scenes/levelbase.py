@@ -12,8 +12,7 @@ class LevelBase(scene_base.SceneBase):
     So far (probably because it's huge), there has
     been no need to extend this class."""
 
-    #TODO - Delete level_number - looks unused
-    def __init__(self, file, next_level, level_number = 666):
+    def __init__(self, file, next_level):
         """
         @file = The .tmx level file
         @next_level = A reference to the next level
@@ -22,7 +21,6 @@ class LevelBase(scene_base.SceneBase):
         """
         screen = graphics.get_window_surface()
         self.tiled_level = level_editor.LevelData(file, screen)
-        self.level_number = level_number
 
         starting_position = graphics.grid(
             int(self.tiled_level.properties.get('player_starting_x', 1)),
@@ -78,4 +76,4 @@ class LevelBase(scene_base.SceneBase):
     def reset(self):
         """Reinitialises our level, kind of a hacky way
         of resetting the level again."""
-        self.__init__(self.file, self.next_level, self.level_number)
+        self.__init__(self.file, self.next_level)
