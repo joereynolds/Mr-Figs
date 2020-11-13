@@ -63,5 +63,14 @@ sprites = {
     'switch': {
         'sprites': [subsurf(grid(6, 3)),
                     subsurf(grid(7, 3))]
+    },
+    'pressure_plate': {
+        'sprites': [
+            # These are both the same surface for now
+            # I don't have an image for a pressure_plate in the 'on'
+            # position yet.
+            subsurf(grid(8, 5)),
+            subsurf(grid(8, 5)),
+        ]
     }
 }

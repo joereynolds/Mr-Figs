@@ -14,7 +14,11 @@ class TileFactory():
             'triggerable': Triggerable,
             'finish_tile': FinishTile,
             'moveable_tile': MoveableTile,
+
+            # stateful and pressure_plate only differ by the sprites they have.
+            # I thought this easier than making separate classes for both, we'll see.
             'stateful': Stateful,
+            'pressure_plate': Stateful,
             'bomb': Bomb,
             'actor': Actor,
             'tile': Tile,

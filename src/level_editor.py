@@ -65,6 +65,8 @@ class LevelData():
         solid = getattr(tile_object, 'solid', False)
         destructable = getattr(tile_object, 'destructable', False)
         lifespan = getattr(tile_object, 'lifespan', False)
+        triggers = getattr(tile_object, 'triggers', False)
+        triggered_id = getattr(tile_object, 'triggered_id', False)
 
         common = {
             'x': x,
@@ -104,19 +106,27 @@ class LevelData():
                 'destructable':destructable,
                 'moveable': moveable
             },
-            # 'stateful': {
-            #     **common,
-            #     'solid':tile_object.solid,
-            #     'destructable':destructable,
-            #     'state':0,
-            #     'triggers':tile_object.triggers,
-            # },
+            'stateful': {
+                **common,
+                'solid': solid,
+                'destructable':destructable,
+                'state': 0,
+                'triggers': triggers,
+            },
+            'pressure_plate': {
+                **common,
+                'solid': solid,
+                'destructable':destructable,
+                'state': 0,
+                'triggers': triggers,
+                'images': graphics.sprites['pressure_plate']['sprites']
+            },
             'triggerable': {
                 **common,
                 'solid': solid,
                 'destructable':destructable,
                 'stateful':'pass',
-                'id':tile_object.id
+                'id': triggered_id
             }
         }
 
@@ -129,7 +139,7 @@ class LevelData():
             if isinstance(state, tile.Stateful):
                 for trigger in self.sprites:
                     if isinstance(trigger, tile.Triggerable):
-                        if state.triggers == trigger.id:
+                        if state.triggers == trigger.triggered_id:
                             trigger.stateful = state
 
     def get_tile_all_layers(self, x, y):

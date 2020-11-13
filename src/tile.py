@@ -61,10 +61,10 @@ class Stateful(Tile):
        @self.images   = an array of pygame surfaces
        @self.triggers = The numeric id of the Triggerable
                         if there is one to be triggered"""
-    def __init__(self, x, y, width, height, solid, destructable, state, image, triggers=0):
+    def __init__(self, x, y, width, height, solid, destructable, state, image, images = graphics.sprites['switch']['sprites'], triggers=0):
         Tile.__init__(self, x, y, width, height, solid, destructable, image)
         self.state = state
-        self.images = graphics.sprites['switch']['sprites']
+        self.images = images
         self.triggers = triggers
 
     def update(self):
@@ -72,12 +72,27 @@ class Stateful(Tile):
 
     def change_state(self):
         if self.state:
-            self.image = self.images[0]
-            self.state = 0
+            self.turn_off()
         elif not self.state:
-            self.image = self.images[1]
-            self.state = 1
+            self.turn_on()
 
+    def turn_on(self):
+        self.image = self.images[1]
+        self.state = 1
+
+    def turn_off(self):
+        self.image = self.images[0]
+        self.state = 0
+
+    def handle_collision(self, player, level):
+        for _tile in level.tiled_level.sprites:
+            # TODO - rather than check every instance of the things we care about,
+            # we should just be able to grab anything from the object layer (and the player)
+            if isinstance(_tile, MoveableTile):
+                if pygame.sprite.collide_rect(self, _tile):
+                    self.turn_on()
+                else:
+                    self.turn_off()
 
 class Triggerable(Tile):
     """A Triggerable class is linked to the stateful class. It takes a Stateful
@@ -98,7 +113,7 @@ class Triggerable(Tile):
     def __init__(self,x, y, width, height, solid, destructable, stateful, image, id=0):
         Tile.__init__(self, x, y, width, height, solid, destructable, image)
         self.stateful = stateful
-        self.id = id
+        self.triggered_id = id
         self.images = graphics.sprites['laser']['sprites']
 
         self.laser_hum_sound = pygame.mixer.Sound('./data/audio/fx/laser-hum.ogg')
