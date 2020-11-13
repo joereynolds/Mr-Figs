@@ -1,9 +1,9 @@
 import pygame
-import src.bomb as bomb
-import src.tile as tile
+import src.game_object.bomb as bomb
+import src.game_object.tile as tile
 import src.graphics as graphics
 import src.movement_vector as movement_vector
-from src.pickup_bomb import PickupBomb
+from src.game_object.pickup_bomb import PickupBomb
 
 
 class PlayerCollisionHandler(object):

@@ -1,6 +1,6 @@
-import src.bomb as bomb
-import src.tile as tile
-import src.actor as actor
+import src.game_object.bomb as bomb
+import src.game_object.tile as tile
+import src.game_object.actor as actor
 import pytmx
 from pytmx.util_pygame import load_pygame
 import pygame

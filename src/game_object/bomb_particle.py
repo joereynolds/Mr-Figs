@@ -1,6 +1,6 @@
 import pygame
 
-import src.tile as tile
+import src.game_object.tile as tile
 import src.entity as entity
 import src.colours as colours
 import src.graphics as graphics

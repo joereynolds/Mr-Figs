@@ -1,4 +1,4 @@
-import src.actor as actor
+import src.game_object.actor as actor
 import pygame
 import src.graphics as graphics
 import src.level_editor as level_editor

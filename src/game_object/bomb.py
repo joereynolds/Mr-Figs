@@ -4,10 +4,10 @@ Everything related to the bomb that mr-figs drops.
 
 import pygame
 
-from src.tile import MoveableTile
-from src.tile import FinishTile
+from src.game_object.tile import MoveableTile
+from src.game_object.tile import FinishTile
 from src.entity import Entity
-from src.bomb_particle import BombParticle
+from src.game_object.bomb_particle import BombParticle
 import src.graphics as graphics
 import src.logger as logger
 import src.colours as colours

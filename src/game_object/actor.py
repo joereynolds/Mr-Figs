@@ -1,6 +1,6 @@
 import pygame
 
-import src.bomb as bomb
+import src.game_object.bomb as bomb
 import src.colours as colours
 import src.entity as entity
 import src.graphics as graphics
