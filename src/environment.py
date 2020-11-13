@@ -15,20 +15,26 @@ levels = {
         'next_level': './data/levels/tmx/tutorial-bombing.tmx'
     },
     './data/levels/tmx/tutorial-bombing.tmx': {
-        'next_level': './data/levels/tmx/1-level.tmx'
+        'next_level': './data/levels/tmx/tutorial-picking-up-easy.tmx'
     },
-    './data/levels/tmx/1-level.tmx': {
+    './data/levels/tmx/tutorial-picking-up-easy.tmx': {
+        'next_level': './data/levels/tmx/tutorial-picking-up.tmx'
+    },
+    './data/levels/tmx/tutorial-picking-up.tmx': {
         'next_level': './data/levels/tmx/2-level.tmx'
     },
     './data/levels/tmx/2-level.tmx': {
-        'next_level': './data/levels/tmx/3-level.tmx'
+        'next_level': './data/levels/tmx/5-level.tmx'
     },
     './data/levels/tmx/3-level.tmx': {
         'next_level': './data/levels/tmx/4-level.tmx'
     },
     './data/levels/tmx/4-level.tmx': {
         'next_level': './data/levels/tmx/5-level.tmx'
-    }
+    },
+    './data/levels/tmx/5-level.tmx': {
+        'next_level': './data/levels/tmx/6-level.tmx'
+    },
 }
 def create_level_list():
     """Returns an array of LevelBase's, each one
