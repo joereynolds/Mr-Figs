@@ -42,15 +42,6 @@ class MoveableTile(Tile):
             self.rect.x = target_x
             self.rect.y = target_y
 
-
-class FinishTile(Tile):
-    def __init__(self, x, y, width, height, solid, destructable, image=None):
-        Tile.__init__(self, x, y, width, height, solid, destructable, image)
-
-    def handle_collision(self, player, level):
-        if player.destination[0] == self.rect.x and player.destination[1] == self.rect.y:
-            level.switch_to_scene(level.next_level)
-
 class Stateful(Tile):
     """The stateful class is a tile that can be either on or off.
        It's a binary state.

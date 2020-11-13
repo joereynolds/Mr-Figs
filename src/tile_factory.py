@@ -1,6 +1,6 @@
 from src.game_object.tile import Triggerable
 from src.game_object.tile import MoveableTile
-from src.game_object.tile import FinishTile
+from src.game_object.finish_tile import FinishTile
 from src.game_object.tile import Stateful
 from src.game_object.tile import Tile
 from src.game_object.bomb import Bomb
