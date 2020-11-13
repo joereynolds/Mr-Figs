@@ -7,4 +7,3 @@ class FinishTile(Tile):
     def handle_collision(self, player, level):
         if player.destination[0] == self.rect.x and player.destination[1] == self.rect.y:
             level.switch_to_scene(level.next_level)
-

@@ -9,10 +9,8 @@ class LevelSelectInput():
         """
         @level_select_menu = The LevelMenu object
         """
-
         self.level_select_menu = level_select_menu
 
-        #Note that the indexing is 0 based
         self.keys = {
             pygame.K_1: 'level-0',
             pygame.K_2: 'level-1',

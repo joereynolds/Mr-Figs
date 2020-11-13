@@ -14,8 +14,6 @@ def create_level_list():
     level_dir = './data/levels/tmx/'
     
     # TODO - This is bad. This creates all of our levels at once.
-    # Might not be that bad? I think it's just memory (rather than CPU) hungry
-    # investigate and find out at some point.
     for level in os.listdir(level_dir):
         level_dict[level] = LevelBase(level_dir + level, 'NoNextScene')
 
