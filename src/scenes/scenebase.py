@@ -1,5 +1,6 @@
 import pygame
 import src.graphics as graphics
+import src.environment
 
 
 class SceneBase():
