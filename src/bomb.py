@@ -5,6 +5,7 @@ Everything related to the bomb that mr-figs drops.
 import pygame
 
 from src.tile import MoveableTile
+from src.tile import FinishTile
 from src.entity import Entity
 from src.bomb_particle import BombParticle
 import src.graphics as graphics
@@ -114,6 +115,9 @@ class Bomb(Entity):
         base_tile = self.tiled_level.get_tile_from_layer(x, y, 0)
 
         if tile and isinstance(tile, MoveableTile):
+            return False
+
+        if tile and isinstance(tile, FinishTile):
             return False
 
         if tile and tile.solid and not tile.destructable:
