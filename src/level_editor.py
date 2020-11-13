@@ -1,5 +1,6 @@
 import src.game_object.bomb as bomb
 import src.game_object.tile as tile
+from src.game_object.switch_tile import Switch
 import src.game_object.actor as actor
 import pytmx
 from pytmx.util_pygame import load_pygame
@@ -62,6 +63,7 @@ class LevelData():
 
         # Safe fallbacks just in case objects don't have certain attributes
         moveable = getattr(tile_object, 'moveable', False)
+        state = getattr(tile_object, 'state', False)
         solid = getattr(tile_object, 'solid', False)
         destructable = getattr(tile_object, 'destructable', False)
         lifespan = getattr(tile_object, 'lifespan', False)
@@ -106,18 +108,18 @@ class LevelData():
                 'destructable':destructable,
                 'moveable': moveable
             },
-            'stateful': {
+            'switch': {
                 **common,
                 'solid': solid,
                 'destructable':destructable,
-                'state': 0,
+                'state': state,
                 'triggers': triggers,
             },
             'pressure_plate': {
                 **common,
                 'solid': solid,
                 'destructable':destructable,
-                'state': 0,
+                'state': state,
                 'triggers': triggers,
                 'images': graphics.sprites['pressure_plate']['sprites']
             },
@@ -136,7 +138,7 @@ class LevelData():
         """Makes sure that the switches are passed to the correct
            door object(Triggerable)"""
         for state in self.sprites:
-            if isinstance(state, tile.Stateful):
+            if isinstance(state, Switch) or isinstance(state, tile.PressurePlate):
                 for trigger in self.sprites:
                     if isinstance(trigger, tile.Triggerable):
                         if state.triggers == trigger.triggered_id:
@@ -163,8 +165,6 @@ class LevelData():
                     if sprite.rect.x == tile.x and sprite.rect.y == tile.y:
                         return sprite
 
-    #This function is gross and not needed. It's only used in the actor class and that could easily be a map over all
-    #of the tiles. Do this asap
     def find_solid_tile(self, tiles):
         """Returns true if it finds a solid tile in a list of tiles"""
         for tile in tiles:

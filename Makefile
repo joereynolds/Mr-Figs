@@ -1,15 +1,12 @@
 .PHONY: test
 
-all: install lint todo
+all: install lint
 
 install: 
 	pip3 install -r requirements.txt
 
 lint:
 	-./build/lint.sh
-
-todo:
-	./build/build-todo.sh
 
 test:
 	python3 -m unittest discover -v
