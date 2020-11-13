@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 
+import faulthandler
+
 import src.game as game
 import src.environment as environment
-import faulthandler
 
 # Run program with
 # python3 -Xfaulthandler run.py
 # for better stacktraces
 faulthandler.enable()
-
 
 
 if __name__ == '__main__':

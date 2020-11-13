@@ -5,7 +5,7 @@ import pygame
 
 from src.gui.text_element import TextElement
 from src.entity import Entity
-from src.actor import Actor
+from src.game_object.actor import Actor
 import src.colours as colours
 import src.config as config
 

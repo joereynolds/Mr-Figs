@@ -1,5 +1,5 @@
 import unittest
-from src.bomb import Bomb
+from src.game_object.bomb import Bomb
 
 class TestChecker(unittest.TestCase):
 

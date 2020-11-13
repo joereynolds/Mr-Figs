@@ -4,7 +4,7 @@ This particular input handler is used for all actions
 that aren't player related. i.e. navigating menus
 etc...
 """
-import src.tile
+import src.game_object.tile
 import src.environment
 import pygame
 
@@ -42,7 +42,7 @@ class InputHandler():
                 self.keys[key]()
             elif event.key != pygame.K_SPACE:
                 for sprite in self.level.tiled_level.sprites:
-                    if isinstance(sprite, src.tile.Triggerable):
+                    if isinstance(sprite, src.game_object.tile.Triggerable):
                         sprite.update()
 
 

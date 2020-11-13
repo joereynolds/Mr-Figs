@@ -1,27 +1,22 @@
-#TODO Call this file scenes and place in the
-#scenes directory?
 import os
-import src.config as config
+from src.scenes.levelbase import LevelBase
 import src.scenes.levelbase as level_base
-import src.scenes.levels as levels
 import src.scenes.startmenu as start_menu
 import src.scenes.game_over_menu as game_over_menu
 import src.scenes.levelselect as level_select
 import src.scenes.escapemenu_no_overlay as escape_menu
 
+
 def create_level_list():
     """Returns an array of LevelBase's, each one
     created from a level in our levels directory"""
     level_dict = {}
+    level_dir = './data/levels/tmx/'
+    
+    # TODO - This is bad. This creates all of our levels at once.
+    for level in os.listdir(level_dir):
+        level_dict[level] = LevelBase(level_dir + level, 'NoNextScene')
 
-    # TODO - This is very bad. This creates all of our levels at once.
-    level_dict[levels.TutorialMovement.KEY_NAME] = level_base.LevelBase(levels.TutorialMovement.LOCATION, 'NoNextScene', 1)
-    level_dict[levels.TutorialPushing.KEY_NAME] = level_base.LevelBase(levels.TutorialPushing.LOCATION, 'NoNextScene', 1)
-    level_dict[levels.TutorialBombing.KEY_NAME] = level_base.LevelBase(levels.TutorialBombing.LOCATION, 'NoNextScene', 1)
-    level_dict[levels.level2.KEY_NAME] = level_base.LevelBase(levels.level2.LOCATION, 'NoNextScene', 2)
-    level_dict[levels.level3.KEY_NAME] = level_base.LevelBase(levels.level3.LOCATION, 'NoNextScene', 3)
-    level_dict[levels.level4.KEY_NAME] = level_base.LevelBase(levels.level4.LOCATION, 'NoNextScene', 4)
-    level_dict[levels.level5.KEY_NAME] = level_base.LevelBase(levels.level5.LOCATION, 'NoNextScene', 4)
     level_dict['start-menu'] = start_menu.StartMenu()
     level_dict['game-over-menu'] = game_over_menu.GameOverMenu()
     level_dict['escape-menu'] = escape_menu.EscapeMenuNoOverlay()
@@ -33,14 +28,13 @@ def link_levels(level_list):
     """Sets the next level for each level so that when
     we finish that level it automatically takes us to
     the next one specified"""
-    level_list['tutorial-movement'].next_level = level_list['tutorial-pushing']
-    level_list['tutorial-pushing'].next_level = level_list['tutorial-bombing']
-    level_list['tutorial-bombing'].next_level = level_list['level-1']
-    level_list['level-1'].next_level = level_list['level-2']
-    level_list['level-2'].next_level = level_list['level-3']
-    level_list['level-3'].next_level = level_list['level-4']
-    level_list['level-4'].next_level = level_list['level-1']
+    level_list['tutorial-movement.tmx'].next_level = level_list['tutorial-pushing.tmx']
+    level_list['tutorial-pushing.tmx'].next_level = level_list['tutorial-bombing.tmx']
+    level_list['tutorial-bombing.tmx'].next_level = level_list['1-level.tmx']
+    level_list['1-level.tmx'].next_level = level_list['2-level.tmx']
+    level_list['2-level.tmx'].next_level = level_list['3-level.tmx']
+    level_list['3-level.tmx'].next_level = level_list['4-level.tmx']
+    level_list['4-level.tmx'].next_level = level_list['1-level.tmx']
 
 level_obj_list = create_level_list()
-#TODO this works on reference, gross.
 link_levels(level_obj_list)

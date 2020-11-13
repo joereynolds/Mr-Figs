@@ -4,10 +4,10 @@ Everything related to the bomb that mr-figs drops.
 
 import pygame
 
-from src.tile import MoveableTile
-from src.tile import FinishTile
+from src.game_object.tile import MoveableTile
+from src.game_object.finish_tile import FinishTile
 from src.entity import Entity
-from src.bomb_particle import BombParticle
+from src.game_object.bomb_particle import BombParticle
 import src.graphics as graphics
 import src.logger as logger
 import src.colours as colours
@@ -146,6 +146,20 @@ class Bomb(Entity):
                     if pygame.sprite.collide_rect(self, particle):
                         self.lifespan = bomb.lifespan #remember to detonate both bombs at the same time!`
                         self.explode()
+
+    def handle_collision(self, player, level):
+        if player.rect.x == self.rect.x and player.rect.y == self.rect.y:
+            if self.lifespan == 0:
+                pygame.sprite.Sprite.kill(player)
+                return True
+        if player.destination[0] == self.rect.x and player.destination[1] == self.rect.y:
+            # Bit of a hack but if 5 is our max lifespan for a bomb then it's impossible to be
+            # travelling to it and for it to have that lifespan since we would have moved
+            # and decreased the bomb's lifespan
+            if self.lifespan != 0 and self.lifespan < 5:
+                pygame.sprite.Sprite.kill(self)
+                player.add_bomb()
+
 
     def animate(self):
         """Switches the images of our bomb sprite depending

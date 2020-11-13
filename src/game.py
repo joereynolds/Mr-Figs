@@ -22,7 +22,6 @@ class Game(object):
         """
         pygame.init()
         pygame.display.set_caption(config.game_title)
-        # screen = pygame.display.set_mode((0,0), pygame.SCALED)
 
         delta_time = 0
         self.clock.tick(self.fps)

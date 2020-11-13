@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="75" height="75" tilewidth="16" tileheight="16" infinite="0" nextlayerid="3" nextobjectid="1">
+<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="10" height="12" tilewidth="16" tileheight="16" infinite="0" nextlayerid="3" nextobjectid="1">
  <properties>
   <property name="player_bomb_count" value="2"/>
   <property name="player_starting_x" value="5"/>
   <property name="player_starting_y" value="1"/>
  </properties>
- <tileset firstgid="1" name="newtiledsheet" tilewidth="16" tileheight="16" tilecount="63" columns="9">
-  <image source="../../newtiledsheet.png" width="144" height="112"/>
+ <tileset firstgid="1" name="newtiledsheet" tilewidth="16" tileheight="16" tilecount="144" columns="9">
+  <image source="../../newtiledsheet.png" width="144" height="256"/>
   <terraintypes>
    <terrain name="New Terrain" tile="-1"/>
   </terraintypes>
@@ -122,14 +122,14 @@
    </properties>
   </tile>
  </tileset>
- <layer id="1" name="Tile Layer 1" width="75" height="75">
+ <layer id="1" name="Tile Layer 1" width="10" height="12">
   <data encoding="base64" compression="zlib">
-   eJzt1r0KwjAUgNHgqKPi1Krv/5Q2kEt+CCV7z4E7ZOxHets9pXQvsx2zD+f3ZK7qccyzzK2cX81Zq2ps07bLo1UVbXKvsZV71RvvUUy006r6prrLo1OcP0mrVjz/yrt39VbtP0LseP8Mc/kORSP76lzu8Ut9I9/BuXa3j2O39852uN3e02qdVuu0AgAAAAAAAAAAAAAAAAAAAADgav4Quw6m
+   eJyFkMEKwCAMQ4tHd2zwNOf+/yvnoEII3Tw8MCTUpt3ManBOuugWHBMPSmiQ5hwk54TOQ5LTeZ4AyQ3ae2WWvij31Ud9vgNkHt+lkP+33/u+xc/+5x5K1mPHA40pCDQ=
   </data>
  </layer>
- <layer id="2" name="Tile Layer 2" width="75" height="75">
+ <layer id="2" name="Tile Layer 2" width="10" height="12">
   <data encoding="base64" compression="zlib">
-   eJztzrEJACAMAMFUbpAF3H9ILdKnEQW5g+8/Au7J3Xw9wReyojcqAAAAAAAAAAAAAAAAAAAAAAAAAADOWzFYAG4=
+   eJxjYKAPEAViJSqYIUqEOjYoHgUMDACQzABu
   </data>
  </layer>
 </map>

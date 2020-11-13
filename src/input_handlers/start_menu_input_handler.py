@@ -24,7 +24,7 @@ class StartMenuInput():
         self.start_menu = start_menu
 
         self.keys = {
-            pygame.K_s: 'tutorial-movement',
+            pygame.K_s: 'tutorial-movement.tmx',
             pygame.K_l: 'level-select'
         }
 
