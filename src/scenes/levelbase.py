@@ -12,7 +12,8 @@ class LevelBase(scene_base.SceneBase):
     So far (probably because it's huge), there has
     been no need to extend this class."""
 
-    def __init__(self, file, next_level, level_number):
+    #TODO - Delete level_number - looks unused
+    def __init__(self, file, next_level, level_number = 666):
         """
         @file = The .tmx level file
         @next_level = A reference to the next level
