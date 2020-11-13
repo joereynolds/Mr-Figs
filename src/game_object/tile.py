@@ -29,7 +29,7 @@ class MoveableTile(Tile):
     def __init__(self, x, y, width, height, solid, destructable, moveable=False, image=None):
         Tile.__init__(self, x, y, width, height, solid, destructable, image)
 
-    def handle_collision(self, player, level):
+    def handle_collision(self, tile, player, level):
         if player.destination[0] == self.rect.x and player.destination[1] == self.rect.y:
             target_x = self.rect.x + (vector[player.direction][0] * graphics.tile_width)
             target_y = self.rect.y + (vector[player.direction][1] * graphics.tile_width)
@@ -75,7 +75,7 @@ class PressurePlate(Tile):
         self.image = self.images[0]
         self.state = 0
 
-    def handle_collision(self, player, level):
+    def handle_collision(self, tile, player, level):
         for _tile in level.tiled_level.sprites:
             # TODO - rather than check every instance of the things we care about,
             # we should just be able to grab anything from the object layer (and the player)
@@ -107,6 +107,7 @@ class Triggerable(Tile):
         self.triggered_id = id
         self.images = graphics.sprites['laser']['sprites']
 
+        # TODO - only play this when the state is on
         # self.laser_hum_sound = pygame.mixer.Sound('./data/audio/fx/laser-hum.ogg')
         # self.laser_hum_sound.play(-1)
 

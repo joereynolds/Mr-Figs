@@ -147,7 +147,7 @@ class Bomb(Entity):
                         self.lifespan = bomb.lifespan #remember to detonate both bombs at the same time!`
                         self.explode()
 
-    def handle_collision(self, player, level):
+    def handle_collision(self, tile, player, level):
         if player.rect.x == self.rect.x and player.rect.y == self.rect.y:
             if self.lifespan == 0:
                 pygame.sprite.Sprite.kill(player)

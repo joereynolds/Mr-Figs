@@ -13,7 +13,7 @@ class PickupBomb(entity.Entity):
 
         self.minimap_colour = colours.GREEN
 
-    def handle_collision(self, player, level):
+    def handle_collision(self, tile, player, level):
         if player.destination[0] == self.rect.x and player.destination[1] == self.rect.y:
             player.add_bomb()
             pygame.sprite.Sprite.kill(self)

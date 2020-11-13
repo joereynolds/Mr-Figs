@@ -25,9 +25,9 @@ class PlayerCollisionHandler(object):
         """Returns True if any of the bombs particles collide with player.
         If they do, we'll reset the level."""
         for particle in bomb.particles:
-            particle.handle_collision(self.player, self.level)
+            particle.handle_collision(None, self.player, self.level)
 
     def handle_collisions(self):
         for _tile in self.level.tiled_level.sprites:
             if hasattr(_tile, 'handle_collision'):
-                _tile.handle_collision(self.player, self.level)
+                _tile.handle_collision(_tile, self.player, self.level)
