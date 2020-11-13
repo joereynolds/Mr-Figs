@@ -1,13 +1,11 @@
 # Mr-Figs
 
-Mr Figs is a turn-based puzzler in the style of good ol' Bomberman.
+Mr Figs is a turn-based puzzler.
 The player must blast their way through various puzzles to reach the end goal.
 
-Mr-Figs runs on python 3.x
+#### Demo Gif
 
-#### Demo Gif (might take a while to load, it's long)
-
-![](https://i.imgur.com/JPLm8tX.gif)
+![](https://github.com/joereynolds/Mr-Figs/blob/master/figs-newest-demo.gif)
 
 #### Gameplay
 
@@ -16,6 +14,8 @@ Mr-Figs runs on python 3.x
 - Pickup bombs to add to your inventory
 - Pickup previously planted bombs if you made a mistake
 - Make your way to the stairs
+- Activate switches by blowing them up
+- Trigger pressure plates by putting something on them
 
 #### Installing
 
