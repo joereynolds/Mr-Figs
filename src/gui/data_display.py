@@ -20,11 +20,11 @@ class DataDisplay(Entity):
         self.surface = surface
         self.text = TextElement(text=text)
 
-    def render(self, bomb_count):
+    def render(self, display_this = ''):
         """Renders text at the default position of (0,0) or otherwise
         if a position is supplied.
         @position = Position for the text to be rendered (optional)
         """
         font_object = pygame.font.Font('./data/font-arcade-classic.ttf', 20)
-        rendered_text = font_object.render(self.text.text + str(bomb_count), False, colours.WHITE)
+        rendered_text = font_object.render(self.text.text + str(display_this), False, colours.WHITE)
         self.surface.blit(rendered_text, (self.x, self.y))
