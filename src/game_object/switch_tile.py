@@ -1,6 +1,12 @@
 from src.game_object.tile import Tile
 import src.graphics as graphics
 
+# TODO
+# In this class it'd be good to have an 'off_image' and an 'on_image'
+# attribute. The reason being is that sometimes we want one switches off
+# to look like another's "on". It'll confuse and make the game more puzzling
+# (in a good way)
+
 class Switch(Tile):
     """The switch class is a tile that can be either on or off.
        It usually links to the Triggerable class
@@ -26,10 +32,10 @@ class Switch(Tile):
             self.turn_on()
 
     def turn_on(self):
-        self.image = self.images[1]
         self.state = 1
+        self.image = self.images[self.state]
 
     def turn_off(self):
-        self.image = self.images[0]
         self.state = 0
+        self.image = self.images[self.state]
 

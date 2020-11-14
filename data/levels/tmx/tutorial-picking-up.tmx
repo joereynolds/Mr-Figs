@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="11" height="15" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="67">
  <properties>
-  <property name="next_level" value="./data/levels/tmx/2-level.tmx"/>
+  <property name="next_level" value="./data/levels/tmx/tutorial-pressure-plate.tmx"/>
   <property name="player_bomb_count" value="0"/>
   <property name="turns_to_ace" type="int" value="4"/>
  </properties>

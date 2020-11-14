@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="79">
+<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="83">
  <properties>
   <property name="next_level" value="./data/levels/tmx/6-level.tmx"/>
-  <property name="player_bomb_count" value="0"/>
+  <property name="player_bomb_count" value="1"/>
  </properties>
  <tileset firstgid="1" name="newtiledsheet" tilewidth="16" tileheight="16" tilecount="171" columns="9">
   <image source="../../newtiledsheet.png" width="144" height="304"/>
@@ -138,7 +138,7 @@
 3,0,0,0,0,0,0,4,22,22,22,22,22,22,
 0,20,19,20,20,19,20,0,22,22,22,22,22,22,
 0,19,20,19,0,0,19,0,22,22,22,22,22,22,
-12,36,36,36,36,0,19,0,22,22,22,22,22,22,
+12,36,36,36,36,20,19,0,22,22,22,22,22,22,
 3,0,0,0,0,0,20,0,22,22,22,22,22,22,
 0,0,14,14,14,14,20,0,22,22,22,22,22,22,
 12,0,0,0,0,0,19,13,22,22,22,22,22,22,
@@ -165,9 +165,8 @@
   <object id="49" name="wall" type="tile" gid="2" x="112" y="64" width="16" height="16"/>
   <object id="50" name="wall" type="tile" gid="2" x="112" y="80" width="16" height="16"/>
   <object id="51" name="wall" type="tile" gid="2" x="112" y="96" width="16" height="16"/>
-  <object id="52" name="wall" type="tile" gid="10" x="80" y="144" width="16" height="16"/>
+  <object id="52" name="wall" type="tile" gid="10" x="96" y="144" width="16" height="16"/>
   <object id="54" name="wall" type="tile" gid="28" x="80" y="48" width="16" height="16"/>
-  <object id="55" name="wall" type="tile" gid="11" x="80" y="64" width="16" height="16"/>
   <object id="56" name="wall" type="tile" gid="1" x="64" y="80" width="16" height="16"/>
   <object id="57" name="wall" type="tile" gid="1" x="48" y="80" width="16" height="16"/>
   <object id="58" name="wall" type="tile" gid="1" x="32" y="80" width="16" height="16"/>
@@ -201,16 +200,28 @@
     <property name="triggered_id" type="int" value="1"/>
    </properties>
   </object>
+  <object id="79" name="switch" type="switch" gid="34" x="64" y="64" width="16" height="16">
+   <properties>
+    <property name="triggers" type="int" value="2"/>
+   </properties>
+  </object>
+  <object id="81" name="laser" type="triggerable" gid="15" x="48" y="96" width="16" height="16">
+   <properties>
+    <property name="solid" type="bool" value="true"/>
+    <property name="triggered_id" type="int" value="2"/>
+   </properties>
+  </object>
+  <object id="82" name="wall" type="tile" gid="11" x="48" y="64" width="16" height="16"/>
  </objectgroup>
- <layer id="5" name="Tile Layer 2" width="14" height="10">
+ <layer id="5" name="foreground" width="14" height="10">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,100,101,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,163,164,0,0,0,
+0,0,0,0,0,0,0,125,126,165,166,167,0,0,
+0,0,0,0,0,0,0,134,135,168,169,170,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0

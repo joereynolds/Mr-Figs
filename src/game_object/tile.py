@@ -124,3 +124,7 @@ class Triggerable(Tile):
 
     def handle_collision(self, tile, player, level):
         self.update()
+        if player.destination[0] == self.rect.x and player.destination[1] == self.rect.y:
+            pygame.sprite.Sprite.kill(player)
+
+

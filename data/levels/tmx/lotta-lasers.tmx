@@ -204,11 +204,13 @@
   </object>
   <object id="74" name="switch" type="switch" gid="34" x="144" y="64" width="16" height="16">
    <properties>
+    <property name="state" type="int" value="0"/>
     <property name="triggers" type="int" value="3"/>
    </properties>
   </object>
   <object id="75" name="switch" type="switch" gid="34" x="0" y="64" width="16" height="16">
    <properties>
+    <property name="state" type="int" value="0"/>
     <property name="triggers" type="int" value="4"/>
    </properties>
   </object>
