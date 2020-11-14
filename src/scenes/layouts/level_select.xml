@@ -1,17 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <container>
     <components>
-        <component x='350' y='100' width='100' height='50' type="src.gui.clickable.Clickable" name="level-one">
-            <text>Level [1]</text>
+
+        <component x='25' y='25' width='100' height='50' type="src.gui.clickable.Clickable" name="level-one">
+            <text>Moving</text>
         </component>
-        <component x='350' y='200' width='100' height='50' type="src.gui.clickable.Clickable" name="level-two">
-            <text>Level [2]</text>
+
+        <component x='150' y='25' width='100' height='50' type="src.gui.clickable.Clickable" name="level-two">
+            <text>Pushing</text>
         </component>
-        <component x='350' y='300' width='100' height='50' type="src.gui.clickable.Clickable" name="level-three">
-            <text>Level [3]</text>
+
+        <component x='275' y='25' width='100' height='50' type="src.gui.clickable.Clickable" name="level-three">
+            <text>Bombs</text>
         </component>#
-        <component x='350' y='400' width='100' height='50' type="src.gui.clickable.Clickable" name="level-four">
-            <text>Level [4]</text>
+
+        <component x='400' y='25' width='100' height='50' type="src.gui.clickable.Clickable" name="level-four">
+            <text>Pickups</text>
         </component>
+
+        <component x='525' y='25' width='100' height='50' type="src.gui.clickable.Clickable" name="level-four">
+            <text>More Bombs</text>
+        </component>
+
+        <component x='650' y='25' width='100' height='50' type="src.gui.clickable.Clickable" name="level-four">
+            <text>Triggers</text>
+        </component>
+
     </components>
 </container>

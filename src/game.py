@@ -1,6 +1,6 @@
 import pygame
 import src.config as config
-import src.save as save
+from src.save import SaveGame
 
 
 class Game(object):
@@ -22,14 +22,13 @@ class Game(object):
         """
         pygame.init()
         pygame.display.set_caption(config.game_title)
-        pygame.mixer.pre_init(44100, -16, 2, 512)
-        pygame.mixer.init()
-        pygame.mixer.music.load('./data/audio/music/carmack.ogg')
-        pygame.mixer.music.play(-1)
+        # pygame.mixer.pre_init(44100, -16, 2, 512)
+        # pygame.mixer.init()
+        # pygame.mixer.music.load('./data/audio/music/carmack.ogg')
+        # pygame.mixer.music.play(-1)
 
         delta_time = 0
         self.clock.tick(self.fps)
-        save.SaveGame.create(save.SaveGame.LOCATION + save.SaveGame.FILENAME)
         while not self.done:
             scene.process_input()
             scene.update(delta_time)
