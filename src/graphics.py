@@ -8,7 +8,7 @@ tile_width = 16
 tile_height = 16
 
 def get_window_surface():
-    return pygame.display.set_mode((config.screen_width, config.screen_height))
+    return pygame.display.set_mode((0, 0), pygame.NOFRAME)
 
 def grid(x, y):
     """

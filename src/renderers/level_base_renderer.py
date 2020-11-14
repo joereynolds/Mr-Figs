@@ -14,21 +14,23 @@ class LevelBaseRenderer():
         self.colour = colours.WHITE
         self.bomb_count = len(self.level.player.bombs)
 
+        width, height = pygame.display.get_window_size()
+
         self.game_area = self.level.surface.subsurface(
             pygame.Rect(
                 0,
                 0,
-                config.screen_width - 300,
-                config.screen_height
+                width - 300,
+                height
             )
         )
 
         self.sidebar = self.level.surface.subsurface(
             pygame.Rect(
-                config.screen_width - 300,
+                width - 300,
                 0,
                 300,
-                config.screen_height
+                height
             )
         )
 
