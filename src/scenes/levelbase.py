@@ -7,6 +7,7 @@ import src.renderers.level_base_renderer as renderers
 import src.input_handlers.global_input_handler as input_handler
 import src.environment
 from src.collision_handlers.polling_collision_handler import PollingCollisionHandler
+from src.save import SaveGame
 
 
 class LevelBase(scene_base.SceneBase):
@@ -23,6 +24,7 @@ class LevelBase(scene_base.SceneBase):
         """
         screen = graphics.get_window_surface()
         self.tiled_level = level_editor.LevelData(file, screen)
+        self.game_saver = SaveGame()
 
         starting_position = graphics.grid(
             int(self.tiled_level.properties.get('player_starting_x', 1)),
@@ -76,6 +78,8 @@ class LevelBase(scene_base.SceneBase):
         """Goes to the next scene. Note that SceneBase is
         sort of similar to a linked list in implementation.
         It is a linked list of scenes"""
+
+        self.game_saver.save(self.file)
         self.next = LevelBase(
             self.tiled_level.properties['next_level']
         )

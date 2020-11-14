@@ -5,12 +5,12 @@ files in the /scenes/layouts directory.
 It takes an xml_file and returns a pygame sprite group of
 all of the components within that xml_file.
 
-See the XML file for how to implement a new layout 
+See the XML file for how to implement a new layout
 """
 
 import pygame
 import src.config as config
-import xml.etree.ElementTree as etree 
+import xml.etree.ElementTree as etree
 import src.gui.base_component #This is actually imported, don't trust the linter
 import src.gui.clickable #This is actually imported, don't trust the linter
 import src.gui.effects #This is actually imported, don't trust the linter
