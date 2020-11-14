@@ -77,7 +77,7 @@ class LevelBase(scene_base.SceneBase):
         sort of similar to a linked list in implementation.
         It is a linked list of scenes"""
         self.next = LevelBase(
-            src.environment.levels[self.file]['next_level'],
+            self.tiled_level.properties['next_level']
         )
 
     def reset(self):

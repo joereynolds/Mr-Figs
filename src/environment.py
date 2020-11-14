@@ -6,39 +6,6 @@ import src.scenes.game_over_menu as game_over_menu
 import src.scenes.levelselect as level_select
 import src.scenes.escapemenu_no_overlay as escape_menu
 
-
-levels = {
-    './data/levels/tmx/tutorial-movement.tmx': {
-        'next_level': './data/levels/tmx/tutorial-pushing.tmx'
-    },
-    './data/levels/tmx/tutorial-pushing.tmx': {
-        'next_level': './data/levels/tmx/tutorial-bombing.tmx'
-    },
-    './data/levels/tmx/tutorial-bombing.tmx': {
-        'next_level': './data/levels/tmx/tutorial-picking-up-easy.tmx'
-    },
-    './data/levels/tmx/tutorial-picking-up-easy.tmx': {
-        'next_level': './data/levels/tmx/tutorial-picking-up.tmx'
-    },
-    './data/levels/tmx/tutorial-picking-up.tmx': {
-        'next_level': './data/levels/tmx/2-level.tmx'
-    },
-    './data/levels/tmx/2-level.tmx': {
-        'next_level': './data/levels/tmx/5-level.tmx'
-    },
-    './data/levels/tmx/3-level.tmx': {
-        'next_level': './data/levels/tmx/4-level.tmx'
-    },
-    './data/levels/tmx/4-level.tmx': {
-        'next_level': './data/levels/tmx/5-level.tmx'
-    },
-    './data/levels/tmx/5-level.tmx': {
-        'next_level': './data/levels/tmx/6-level.tmx'
-    },
-    './data/levels/tmx/6-level.tmx': {
-        'next_level': './data/levels/tmx/lotta-lasers.tmx'
-    },
-}
 def create_level_list():
     """Returns an array of LevelBase's, each one
     created from a level in our levels directory"""
