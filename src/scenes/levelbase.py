@@ -61,12 +61,12 @@ class LevelBase(scene_base.SceneBase):
     def update(self, delta_time):
         self.check_player_hasnt_died_a_horrible_death()
         self.player.update(delta_time)
+        self.collision_handler.handle_collisions()
         self.sprites.add(self.player.bombs)
         self.sprites.move_to_front(self.player)
         for bomb in self.player.bombs:
             self.sprites.add(bomb.particles)
 
-        self.collision_handler.handle_collisions()
 
     def render(self):
         """Calls the global renderer to render"""

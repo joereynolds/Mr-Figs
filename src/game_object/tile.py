@@ -121,3 +121,6 @@ class Triggerable(Tile):
 
     def update(self):
         self.trigger()
+
+    def handle_collision(self, tile, player, level):
+        self.update()

@@ -11,6 +11,7 @@ import src.game_object.bomb as bomb
 import src.game_object.tile as tile
 import src.graphics as graphics
 from src.game_object.tile import PressurePlate
+from src.game_object.tile import Triggerable
 
 
 class PollingCollisionHandler():
@@ -24,9 +25,8 @@ class PollingCollisionHandler():
         self.handle_collisions()
 
     def handle_collisions(self):
-        for _tile in self.level.tiled_level.sprites:
+        for tile in self.level.tiled_level.sprites:
             if isinstance(tile, PressurePlate):
-                print('collide check here')
-                
-            # if hasattr(_tile, 'handle_collision'):
-            #     _tile.handle_collision(_tile, self.player, self.level)
+                tile.handle_collision(None, self.player, self.level)
+            if isinstance(tile, Triggerable):
+                tile.handle_collision(None, self.player, self.level)
