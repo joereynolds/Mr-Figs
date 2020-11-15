@@ -11,8 +11,9 @@ class BombParticle(entity.Entity):
     A graphical representation of the explosion surrounding the bomb
     """
     def __init__(self, x, y, width, height):
-        image = graphics.sprites['explosion']['sprites'][0]
-        entity.Entity.__init__(self, x, y, width, height, image)
+        self.last_image = 0
+        self.image = graphics.sprites['explosion']['sprites'][self.last_image]
+        entity.Entity.__init__(self, x, y, width, height, self.image)
         self.minimap_colour = colours.RED_GLOW
 
     def handle_collision(self, tile, player, level):
@@ -30,3 +31,11 @@ class BombParticle(entity.Entity):
                 if pygame.sprite.collide_rect(self, _tile):
                     _tile.update()
                     return
+
+    def animate(self):
+        if self.last_image >= 5:
+            return
+
+        self.last_image += 1
+        self.image = graphics.sprites['explosion']['sprites'][self.last_image]
+
