@@ -58,6 +58,7 @@ class Actor(entity.Entity):
         self.moving = False
         self.input_handler = p_i_handler.PlayerInputHandler(self)
         self.turns_taken = 0
+        self.is_teleporting = False
         self.collision_handler = TurnBasedCollisionHandler(
             self, self.level
         )

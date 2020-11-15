@@ -1,7 +1,9 @@
 import src.game_object.bomb as bomb
 import src.game_object.tile as tile
 from src.game_object.switch_tile import Switch
+from src.game_object.portal import Portal
 import src.game_object.actor as actor
+from pprint import pprint
 import pytmx
 from pytmx.util_pygame import load_pygame
 import pygame
@@ -39,6 +41,7 @@ class LevelData():
         self.properties = self._map.properties
         self.get_map_data()
         self.link_doors_and_switches()
+        self.link_portals()
 
     def get_map_data(self):
         """Iterates through the TiledMap file adding tiles to
@@ -69,6 +72,8 @@ class LevelData():
         lifespan = getattr(tile_object, 'lifespan', False)
         triggers = getattr(tile_object, 'triggers', False)
         triggered_id = getattr(tile_object, 'triggered_id', False)
+        portal_id = getattr(tile_object, 'portal_id', False)
+        travels_to_portal_id = getattr(tile_object, 'travels_to_portal_id', False)
 
         common = {
             'x': x,
@@ -129,10 +134,26 @@ class LevelData():
                 'destructable':destructable,
                 'stateful':'pass',
                 'id': triggered_id
+            },
+            'portal': {
+                **common,
+                'portal_id': portal_id,
+                'travels_to_portal_id': travels_to_portal_id
             }
         }
 
         return factory.build(tile_object.type, **type_map[tile_object.type])
+
+    def link_portals(self):
+        """Makes sure that the switches are passed to the correct
+           door object(Triggerable)"""
+        for sprite in self.sprites:
+            if isinstance(sprite, Portal):
+                for other_sprite in self.sprites:
+                    if isinstance(other_sprite, Portal):
+                        pprint(vars(sprite))
+                        if sprite.travels_to_portal_id == other_sprite.portal_id:
+                            sprite.destination_portal = other_sprite
 
     def link_doors_and_switches(self):
         """Makes sure that the switches are passed to the correct
