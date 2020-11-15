@@ -6,6 +6,7 @@ import pygame
 
 from src.game_object.tile import MoveableTile
 from src.game_object.finish_tile import FinishTile
+from src.game_object.switch_tile import Switch
 from src.entity import Entity
 from src.game_object.bomb_particle import BombParticle
 import src.graphics as graphics
@@ -121,7 +122,7 @@ class Bomb(Entity):
         if tile and isinstance(tile, FinishTile):
             return False
 
-        if tile and tile.solid and not tile.destructable:
+        if tile and tile.solid and not tile.destructable and not isinstance(tile, Switch):
             return False
 
         particle = BombParticle(
