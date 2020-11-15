@@ -3,6 +3,7 @@ import pygame
 import src.colours as colours
 import src.graphics as graphics
 import src.entity as entity
+
 from src.movement_vector import vector
 
 class Tile(entity.Entity):
@@ -78,11 +79,13 @@ class PressurePlate(Tile):
         for _tile in level.tiled_level.sprites:
             # TODO - rather than check every instance of the things we care about,
             # we should just be able to grab anything from the object layer (and the player)
-            if isinstance(_tile, MoveableTile):
+            if isinstance(_tile, (MoveableTile)):
                 if pygame.sprite.collide_rect(self, _tile):
                     self.turn_on()
                 else:
                     self.turn_off()
+        if pygame.sprite.collide_rect(player, self):
+            self.turn_on()
 
 class Triggerable(Tile):
     """A Triggerable class is linked to the Switch or PressurePlate class. It takes a Switch/PressurePlate
