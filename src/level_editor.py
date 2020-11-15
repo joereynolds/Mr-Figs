@@ -151,7 +151,6 @@ class LevelData():
             if isinstance(sprite, Portal):
                 for other_sprite in self.sprites:
                     if isinstance(other_sprite, Portal):
-                        pprint(vars(sprite))
                         if sprite.travels_to_portal_id == other_sprite.portal_id:
                             sprite.destination_portal = other_sprite
 
