@@ -40,8 +40,23 @@ class MoveableTile(Tile):
             ):
                 return
 
+            # Bit of an edge case that needs refactoring.  Basically a bug was
+            # introduced (or never caught in the first place) where once you
+            # pushed a moveable, bombs would pass through this was because we
+            # need to update the object data within the tiled map itself
+            # otherwise the tile itself has moved (which is fine) but it has
+            # not updated in the data so when we go to grab something at that x
+            # and y, it's not there.
+            objects = level.tiled_level._map.get_layer_by_name('objects')
+            for object in objects:
+                if object.x == self.rect.x and object.y == self.rect.y:
+                    object.x = target_x
+                    object.y = target_y
+
             self.rect.x = target_x
             self.rect.y = target_y
+
+
 
 class PressurePlate(Tile):
     """The PressurePlate is a tile that can be either on or off.
