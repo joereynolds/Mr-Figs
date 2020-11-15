@@ -133,7 +133,7 @@ class Bomb(Entity):
 
         self.particles.add(particle)
 
-        if tile and tile.destructable:
+        if tile and hasattr(tile, 'destructable') and tile.destructable:
             self.tiled_level.sprites.remove(tile)
 
         return True
