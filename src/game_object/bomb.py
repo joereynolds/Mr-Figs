@@ -115,7 +115,6 @@ class Bomb(Entity):
         tile = self.tiled_level.get_tile_from_object_layer(x, y)
         base_tile = self.tiled_level.get_tile_from_layer(x, y, 0)
 
-        print(tile)
         if tile and isinstance(tile, MoveableTile):
             return False
 
