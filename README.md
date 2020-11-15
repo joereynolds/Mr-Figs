@@ -59,3 +59,8 @@ python3 -m unittest discover -v
 ├── src (source code)
 └── test (tests live here)
 ```
+
+### Level design
+
+If you are designing levels for mr-figs please read the [level-design
+doc](./docs/level-design.md)
