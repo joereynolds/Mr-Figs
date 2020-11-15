@@ -27,6 +27,7 @@ class Bomb(Entity):
         self.lifespan = int(lifespan)
         self.tiled_level = level
         self.particles = pygame.sprite.Group()
+        self.image = image
         self.images = graphics.sprites['bomb']['sprites']
 
         # self.bomb_creation_sound = pygame.mixer.Sound('./data/audio/fx/bomb-place.ogg')
@@ -115,11 +116,7 @@ class Bomb(Entity):
         tile = self.tiled_level.get_tile_from_object_layer(x, y)
         base_tile = self.tiled_level.get_tile_from_layer(x, y, 0)
 
-        print(tile)
-        if tile and isinstance(tile, MoveableTile):
-            return False
-
-        if tile and isinstance(tile, FinishTile):
+        if tile and isinstance(tile, (MoveableTile, FinishTile)):
             return False
 
         if tile and tile.solid and not tile.destructable and not isinstance(tile, Switch):
