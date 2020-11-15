@@ -1,5 +1,4 @@
 import src.colours as colours
-import src.container_reader as container_reader
 import src.scenes.scenebase as scene_base
 import src.input_handlers.game_over_input_handler as input_handler
 
@@ -11,13 +10,7 @@ class GameOverMenu(scene_base.SceneBase):
             self,
             input_handler.GameOverInput(self)
         )
-        self.reader = container_reader.ContainerReader('game_over.xml')
-        self.component_dict = self.reader.component_dict
-        self.components = self.reader.components
 
     def render(self):
         """Fill our surface and render our buttons"""
-        self.surface.fill(colours.WHITE)
-        self.components.draw(self.surface)
-        for component in self.components:
-            component.render_text()
+        pass

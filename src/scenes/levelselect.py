@@ -1,5 +1,4 @@
 import src.colours as colours
-import src.container_reader as container_reader
 import src.scenes.scenebase as scene_base
 import src.input_handlers.level_select_input_handler as input_handler
 
@@ -15,15 +14,9 @@ class LevelMenu(scene_base.SceneBase):
                 self
             )
         )
-        self.reader = container_reader.ContainerReader('level_select.xml') 
-        self.component_dict = self.reader.component_dict
-        self.components = self.reader.components
+
         self.game_levels = levels
 
     def render(self):
         """Renders a button for each level that is in the game"""
-        self.surface.fill(colours.WHITE)
-
-        self.components.draw(self.surface)
-        for component in self.components:
-            component.render_text()
+        pass
