@@ -71,7 +71,8 @@ class LevelBaseRenderer():
         )
 
         file_without_extension = os.path.splitext(self.level.file)[0]
-        pretty_level_name = str.replace(file_without_extension, '-', ' ')
+        fallback_level_name = str.replace(file_without_extension, '-', ' ')
+        level_name = self.level.tiled_level.properties.get('display_name', fallback_level_name)
 
         self.level_name_display = DataDisplay(
             0,
@@ -79,7 +80,7 @@ class LevelBaseRenderer():
             Minimap.WIDTH,
             Minimap.HEIGHT,
             self.sidebar,
-            os.path.basename(pretty_level_name)
+            os.path.basename(level_name)
         )
 
     def render(self):
