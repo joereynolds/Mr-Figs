@@ -25,8 +25,6 @@ class LevelSelectInput():
         or the presses of a key and redirect to that
         level.
         """
-        #TODO this check is littered on every input handler
-        #move it up to scene base?
         if event.type == pygame.KEYDOWN:
             for key in self.keys.keys():
                 if event.key == key:
@@ -35,7 +33,7 @@ class LevelSelectInput():
                     )
             if event.key == pygame.K_ESCAPE:
                 self.level_select_menu.switch_to_scene(src.environment.level_obj_list['start-menu'])
-        for i, level in enumerate(self.level_select_menu.components):
+        for level in self.level_select_menu.components:
             if event.type == pygame.MOUSEBUTTONDOWN:
                 level.on_click(
                     self.level_select_menu.switch_to_scene,

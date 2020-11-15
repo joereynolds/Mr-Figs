@@ -249,9 +249,9 @@
   <object id="122" name="wall" type="tile" gid="10" x="160" y="144" width="16" height="16"/>
   <object id="123" name="wall" type="tile" gid="2" x="240" y="128" width="16" height="16"/>
   <object id="124" name="wall" type="tile" gid="2" x="240" y="96" width="16" height="16"/>
-  <object id="126" name="bomb" type="bomb" gid="39" x="80" y="80" width="16" height="16">
+  <object id="125" name="bomb" type="bomb" gid="38" x="80" y="80" width="16" height="16">
    <properties>
-    <property name="lifespan" type="int" value="3"/>
+    <property name="lifespan" type="int" value="4"/>
    </properties>
   </object>
  </objectgroup>
