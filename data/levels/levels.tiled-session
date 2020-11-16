@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "",
+    "activeFile": "tmx/lotta-lasers.tmx",
     "expandedProjectPaths": [
         "tmx"
     ],
@@ -103,7 +103,7 @@
             "scale": 3,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 117.66666666666669,
+                "x": 117.83333333333331,
                 "y": 91
             }
         },
@@ -171,8 +171,8 @@
             "scale": 3,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 136.16666666666666,
-                "y": 152
+                "x": 191.83333333333331,
+                "y": 80
             }
         },
         "tmx/lai-medium.tmx#newtiledsheet": {
@@ -182,8 +182,8 @@
             "scale": 4,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 151.625,
-                "y": 71.5
+                "x": 297.125,
+                "y": 99
             }
         },
         "tmx/lotta-lasers.tmx#newtiledsheet": {
@@ -287,7 +287,7 @@
             "scale": 5.225,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 112.05741626794257,
+                "x": 111.86602870813397,
                 "y": 80
             }
         },
@@ -298,8 +298,8 @@
             "scale": 5.225,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 95.311004784689,
-                "y": 119.42583732057415
+                "x": 95.21531100478468,
+                "y": 119.23444976076556
             }
         },
         "tmx/tutorial-picking-up.tmx#newtiledsheet": {
@@ -307,10 +307,10 @@
         },
         "tmx/tutorial-portals.tmx": {
             "scale": 3,
-            "selectedLayer": 2,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 188.33333333333331,
-                "y": 71.66666666666666
+                "x": 215.83333333333331,
+                "y": 56
             }
         },
         "tmx/tutorial-portals.tmx#newtiledsheet": {
@@ -357,21 +357,25 @@
     "map.tileWidth": 16,
     "map.width": 200,
     "openFiles": [
+        "tmx/tutorial-picking-up-easy.tmx",
+        "tmx/lai-medium.tmx",
+        "tmx/tutorial-portals.tmx",
+        "tmx/lotta-lasers.tmx"
     ],
     "project": "levels.tiled-project",
     "property.type": "bool",
     "recentFiles": [
+        "tmx/tutorial-picking-up-easy.tmx",
         "tmx/lai-medium.tmx",
+        "tmx/tutorial-portals.tmx",
+        "tmx/lotta-lasers.tmx",
         "tmx/2-level.tmx",
         "tmx/tutorial-pressure-plate.tmx",
-        "tmx/lotta-lasers.tmx",
-        "tmx/tutorial-picking-up-easy.tmx",
         "tmx/4-level.tmx",
         "tmx/3-level.tmx",
         "tmx/tutorial-picking-up.tmx",
         "tmx/sneaky-bastard.tmx",
         "tmx/completed-tutorial.tmx",
-        "tmx/tutorial-portals.tmx",
         "tmx/start-menu.tmx"
     ],
     "tileset.lastUsedFormat": "tsx",

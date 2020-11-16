@@ -139,6 +139,9 @@ class LevelData():
                 **common,
                 'portal_id': portal_id,
                 'travels_to_portal_id': travels_to_portal_id
+            },
+            'video_tape': {
+                **common,
             }
         }
 
