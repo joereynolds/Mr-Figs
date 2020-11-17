@@ -216,7 +216,7 @@
    </properties>
   </object>
   <object id="82" name="wall" type="tile" gid="11" x="48" y="64" width="16" height="16"/>
-  <object id="88" name="video-tape" type="tile" gid="66" x="192" y="32" width="16" height="16"/>
+  <object id="88" name="video-tape" type="video_tape" gid="66" x="192" y="32" width="16" height="16"/>
  </objectgroup>
  <layer id="5" name="foreground" width="14" height="10">
   <data encoding="csv">

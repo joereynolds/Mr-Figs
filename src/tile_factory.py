@@ -8,6 +8,7 @@ from src.game_object.tile import Tile
 from src.game_object.bomb import Bomb
 from src.game_object.actor import Actor
 from src.game_object.pickup_bomb import PickupBomb
+from src.game_object.video_tape import VideoTape
 
 class TileFactory():
 
@@ -22,7 +23,8 @@ class TileFactory():
             'actor': Actor,
             'tile': Tile,
             'pickup_bomb': PickupBomb,
-            'portal': Portal
+            'portal': Portal,
+            'video_tape': VideoTape,
         }
 
         return tile_map[tile_type](**kwargs)
