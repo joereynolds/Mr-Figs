@@ -17,19 +17,21 @@ class EventHandler():
 
     events_map = {
         pygame.USEREVENT: events.call_bomb_events,
-        pygame.USEREVENT + 1: events.animate_particles
+        pygame.USEREVENT + 1: events.animate_particles,
+        pygame.USEREVENT + 2: events.animate_lasers,
     }
 
-    def __init__(self, player):
+    def __init__(self, level, player):
         """
         @self.events : An array of our custom events
         """
+        self.level = level
         self.player = player
 
         self.events = [
             (pygame.USEREVENT, 500, 'bomb animation and sound effects'),
             (pygame.USEREVENT + 1, 100, 'particle animation'),
-            (pygame.USEREVENT + 2, 2000, 'laser animation'),
+            (pygame.USEREVENT + 2, 100, 'laser animation'),
         ]
 
         self.set_timers()
@@ -45,4 +47,4 @@ class EventHandler():
         that events action"""
         for event_id in EventHandler.events_map.keys():
             if event.type == event_id:
-                EventHandler.events_map[event_id](self.player)
+                EventHandler.events_map[event_id](self.player, self.level)

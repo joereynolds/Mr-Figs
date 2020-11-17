@@ -351,6 +351,7 @@
             "scaleInDock": 1
         }
     },
+    "frame.defaultDuration": 100,
     "map.height": 25,
     "map.lastUsedFormat": "tmx",
     "map.tileHeight": 16,
