@@ -26,7 +26,5 @@ class PollingCollisionHandler():
 
     def handle_collisions(self):
         for tile in self.level.tiled_level.sprites:
-            if isinstance(tile, PressurePlate):
-                tile.handle_collision(None, self.player, self.level)
-            if isinstance(tile, Triggerable):
+            if isinstance(tile, (PressurePlate, Triggerable)):
                 tile.handle_collision(None, self.player, self.level)
