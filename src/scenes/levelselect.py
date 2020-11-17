@@ -20,13 +20,37 @@ class LevelMenu(scene_base.SceneBase):
         )
 
         self.components = pygame.sprite.LayeredUpdates()
+        self.get_levels()
 
+        # Left arrow
+        self.components.add(Clickable(25, 400, 50, 50 ,'FIRST 10'))
+
+        # Right arrow
+        self.components.add(Clickable(700, 400, 50, 50, 'NEXT 10' ))
+
+    def get_levels(self):
         size = pygame.display.get_window_size()
-        center_x = size[0] // 2
+        width = size[0]
+        height = size[1]
+        x = width // 4
+        y = height // 2
+        levels = os.listdir('./data/levels/tmx')
+        level_button_width = 100
+        level_button_height = 25
 
-        for i, level in enumerate(os.listdir('./data/levels/tmx')):
-            self.components.add([Clickable(center_x, 75 * i, 100, 25, level), ])
+        self.components.empty()
 
+        for i in range(1, 2):
+            for j in range(5):
+                self.components.add([
+                    Clickable(x + (j * 125) , 75 * i, level_button_width, level_button_height, levels[j]),
+                    ])
+
+        for i in range(2, 3):
+            for j in range(5, 10):
+                self.components.add([
+                    Clickable(x + ((j - 5) * 125) , 75 * i, level_button_width, level_button_height, levels[j]),
+                    ])
 
     def render(self):
         """Renders a button for each level that is in the game"""

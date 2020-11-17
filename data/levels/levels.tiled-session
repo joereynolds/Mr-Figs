@@ -171,7 +171,7 @@
             "scale": 3,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 191.83333333333331,
+                "x": 192,
                 "y": 80
             }
         },
@@ -287,7 +287,7 @@
             "scale": 5.225,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 111.86602870813397,
+                "x": 111.96172248803828,
                 "y": 80
             }
         },
@@ -309,8 +309,8 @@
             "scale": 3,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 215.83333333333331,
-                "y": 56
+                "x": 112,
+                "y": 80
             }
         },
         "tmx/tutorial-portals.tmx#newtiledsheet": {
