@@ -145,6 +145,17 @@
         "tmx/6-level.tmx#newtiledsheet": {
             "scaleInDock": 1
         },
+        "tmx/are-you-joking.tmx": {
+            "scale": 2,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 103,
+                "y": 171.5
+            }
+        },
+        "tmx/are-you-joking.tmx#newtiledsheet": {
+            "scaleInDock": 1
+        },
         "tmx/completed-tutorial.tmx": {
             "scale": 3,
             "selectedLayer": 0,
@@ -171,7 +182,7 @@
             "scale": 3,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 191.83333333333331,
+                "x": 192,
                 "y": 80
             }
         },
@@ -179,11 +190,11 @@
             "scaleInDock": 1
         },
         "tmx/lotta-lasers.tmx": {
-            "scale": 4,
+            "scale": 2,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 297.125,
-                "y": 99
+                "x": 417,
+                "y": 103.75
             }
         },
         "tmx/lotta-lasers.tmx#newtiledsheet": {
@@ -287,7 +298,7 @@
             "scale": 5.225,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 111.86602870813397,
+                "x": 111.96172248803828,
                 "y": 80
             }
         },
@@ -309,8 +320,8 @@
             "scale": 3,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 215.83333333333331,
-                "y": 56
+                "x": 112,
+                "y": 80
             }
         },
         "tmx/tutorial-portals.tmx#newtiledsheet": {
@@ -351,6 +362,7 @@
             "scaleInDock": 1
         }
     },
+    "frame.defaultDuration": 100,
     "map.height": 25,
     "map.lastUsedFormat": "tmx",
     "map.tileHeight": 16,
@@ -365,6 +377,7 @@
     "project": "levels.tiled-project",
     "property.type": "bool",
     "recentFiles": [
+        "tmx/are-you-joking.tmx",
         "tmx/tutorial-picking-up-easy.tmx",
         "tmx/lai-medium.tmx",
         "tmx/tutorial-portals.tmx",
@@ -375,8 +388,7 @@
         "tmx/3-level.tmx",
         "tmx/tutorial-picking-up.tmx",
         "tmx/sneaky-bastard.tmx",
-        "tmx/completed-tutorial.tmx",
-        "tmx/start-menu.tmx"
+        "tmx/completed-tutorial.tmx"
     ],
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {

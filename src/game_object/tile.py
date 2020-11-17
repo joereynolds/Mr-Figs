@@ -124,10 +124,14 @@ class Triggerable(Tile):
                   Triggerable together"""
 
     def __init__(self,x, y, width, height, solid, destructable, stateful, image, id=0):
-        Tile.__init__(self, x, y, width, height, solid, destructable, image)
+        self.last_image = 0
+        self.image = graphics.sprites['laser']['sprites'][self.last_image]
+        Tile.__init__(self, x, y, width, height, solid, destructable, self.image)
         self.stateful = stateful
         self.triggered_id = id
         self.images = graphics.sprites['laser']['sprites']
+
+        self.reverse_animation = False
 
         # TODO - only play this when the state is on
         # self.laser_hum_sound = pygame.mixer.Sound('./data/audio/fx/laser-hum.ogg')
@@ -140,7 +144,7 @@ class Triggerable(Tile):
             self.image = self.images[0]
         if self.stateful.state == 0:
             self.solid = True
-            self.image = self.images[1]
+            self.image = graphics.sprites['laser']['sprites'][self.last_image]
 
     def update(self):
         self.trigger()
@@ -150,4 +154,19 @@ class Triggerable(Tile):
         if player.destination[0] == self.rect.x and player.destination[1] == self.rect.y and self.stateful.state == 0:
             pygame.sprite.Sprite.kill(player)
 
+    def animate(self):
+        if self.last_image >= 3:
+            self.last_image = 0
+            self.reverse_animation = True
 
+        if self.last_image <= 0:
+            self.last_image = 0
+            self.reverse_animation = False
+
+        if self.reverse_animation:
+            self.last_image -= 1
+        else:
+            self.last_image += 1
+
+
+        self.image = graphics.sprites['laser']['sprites'][self.last_image]
