@@ -173,20 +173,12 @@ class LevelData():
         the x and y"""
         return [tile for tile in self.sprites if tile.rect.x == x and tile.rect.y == y]
 
-    def get_tile_from_layer(self, x, y, layer):
-        """The same as get_tile but returns the tile only from that layer"""
-        for tile in self.sprites.get_sprites_from_layer(layer):
-            if tile.rect.x == x and tile.rect.y == y:
-                return tile
-
-    def get_tile_from_object_layer(self, x, y, layer_name='objects'):
+    def get_tile_from_object_layer(self, x, y):
         """Gets the tile from the object layer and then maps it to the one in the
         sprite group. This means we can kill our sprites etc..."""
-        for tile in self._map.get_layer_by_name(layer_name):
-            if tile.x == x and tile.y == y:
-                for sprite in self.sprites:
-                    if sprite.rect.x == tile.x and sprite.rect.y == tile.y:
-                        return sprite
+        for sprite in self.sprites:
+            if sprite.rect.x == x and sprite.rect.y == y:
+                return sprite
 
     def find_solid_tile(self, tiles):
         """Returns true if it finds a solid tile in a list of tiles"""

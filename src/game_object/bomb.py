@@ -114,7 +114,6 @@ class Bomb(Entity):
 
     def create_particle(self, x, y, width, height):
         tile = self.tiled_level.get_tile_from_object_layer(x, y)
-        base_tile = self.tiled_level.get_tile_from_layer(x, y, 0)
 
         if tile and isinstance(tile, (MoveableTile, FinishTile)):
             return False
