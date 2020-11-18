@@ -4,7 +4,7 @@ Everything related to the bomb that mr-figs drops.
 
 import pygame
 
-from src.game_object.tile import MoveableTile
+from src.game_object.moveable_tile import MoveableTile
 from src.game_object.finish_tile import FinishTile
 from src.game_object.switch_tile import Switch
 from src.entity import Entity
