@@ -25,12 +25,13 @@ class PlayerInputHandler():
         pygame.K_l: 'right',
     }
 
-    def __init__(self, player):
+    def __init__(self, player, level):
         self.player = player
+        self.level = level
 
     def process_input(self, event):
         for key, action in PlayerInputHandler.keys.items():
             if event.key == key:
                 self.player.event_update(action)
-                self.player.collision_handler.update()
+                self.level.turn_based_collision_handler.update()
                 self.player.add_turn()

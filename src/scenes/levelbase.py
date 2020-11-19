@@ -7,6 +7,7 @@ import src.renderers.level_base_renderer as renderers
 import src.input_handlers.global_input_handler as input_handler
 import src.environment
 from src.collision_handlers.polling_collision_handler import PollingCollisionHandler
+from src.collision_handlers.turn_based_collision_handler import TurnBasedCollisionHandler
 from src.save import SaveGame
 
 
@@ -54,6 +55,7 @@ class LevelBase(scene_base.SceneBase):
         self.sprites.add(self.player)
         self.renderer = renderers.LevelBaseRenderer(self)
         self.collision_handler = PollingCollisionHandler(self.player, self)
+        self.turn_based_collision_handler = TurnBasedCollisionHandler(self.player, self)
 
     def check_player_hasnt_died_a_horrible_death(self):
         """If the player has been destroyed, restart the level"""

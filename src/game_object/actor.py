@@ -46,8 +46,7 @@ class Actor(entity.Entity):
         self.direction = 'down'
         self.speed = 6
         self.distance = graphics.tile_width
-        self.level = level
-        self.tiled_level = self.level.tiled_level
+        self.tiled_level = level.tiled_level
         self.bombs = pygame.sprite.LayeredUpdates()
         self.move_stack = []
         self.destination = [self.rect.x, self.rect.y]
@@ -55,10 +54,6 @@ class Actor(entity.Entity):
         self.moving = False
         self.turns_taken = 0
         self.is_teleporting = False
-        self.collision_handler = TurnBasedCollisionHandler(
-            self, self.level
-        )
-
         self.minimap_colour = colours.BLUE_HIGHLIGHT
 
     def move(self, delta_time):
@@ -157,7 +152,7 @@ class Actor(entity.Entity):
 
     def is_dead(self):
         """Returns true if the player is dead"""
-        return self not in self.level.sprites
+        return self not in self.tiled_level.sprites
 
     def animate(self):
         pass

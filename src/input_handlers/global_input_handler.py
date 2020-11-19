@@ -18,12 +18,8 @@ class GlobalInputHandler():
         self.level = level
         self.player = player
 
-        self.player_input_handler = PlayerInputHandler(player)
-
-        self.level_input_handler = InputHandler(
-            self.player,
-            self.level
-        )
+        self.player_input_handler = PlayerInputHandler(player, level)
+        self.level_input_handler = InputHandler(player, level)
 
         self.event_handler = event_handler.EventHandler(level, player)
 
