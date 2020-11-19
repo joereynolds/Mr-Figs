@@ -1,4 +1,4 @@
-from src.game_object.tile import Triggerable
+from src.game_object.triggerable import Triggerable
 from src.game_object.moveable_tile import MoveableTile
 from src.game_object.finish_tile import FinishTile
 from src.game_object.switch_tile import Switch

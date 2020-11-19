@@ -1,4 +1,5 @@
 import src.game_object.tile as tile
+from src.game_object.triggerable import Triggerable
 """
 Contains all events that 
 are passed into the event handler
@@ -16,7 +17,7 @@ def animate_bombs(player, level=None):
 
 def animate_lasers(player, level):
     for sprite in level.tiled_level.sprites:
-        if isinstance(sprite, tile.Triggerable):
+        if isinstance(sprite, Triggerable):
             sprite.animate()
 
 def play_bomb_beeps(player, level=None):

@@ -2,6 +2,7 @@ import src.game_object.bomb as bomb
 import src.game_object.tile as tile
 from src.game_object.switch_tile import Switch
 from src.game_object.pressure_plate import PressurePlate
+from src.game_object.triggerable import Triggerable
 from src.game_object.portal import Portal
 import src.game_object.actor as actor
 from pprint import pprint
@@ -164,7 +165,7 @@ class LevelData():
         for state in self.sprites:
             if isinstance(state, Switch) or isinstance(state, PressurePlate):
                 for trigger in self.sprites:
-                    if isinstance(trigger, tile.Triggerable):
+                    if isinstance(trigger, Triggerable):
                         if state.triggers == trigger.triggered_id:
                             trigger.stateful = state
 
