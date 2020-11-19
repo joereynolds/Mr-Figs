@@ -7,7 +7,6 @@ import src.graphics as graphics
 import src.movement_vector as movement_vector
 import src.interpolate as interpolate
 from src.collision_handlers.turn_based_collision_handler import TurnBasedCollisionHandler
-import src.input_handlers.player_input_handler as p_i_handler
 
 class Actor(entity.Entity):
     """
@@ -27,8 +26,6 @@ class Actor(entity.Entity):
     @self.bombs       = A list of Bomb objects planted by Actor
 
     @self.move_stack  = (not used) a stack of the previous moves of the actor
-
-    @self.i_handler   = An InputHandler object
 
     @self.destination = [x,y] a 2 element list containing
                         the next destination the sprite will be travelling to
@@ -56,7 +53,6 @@ class Actor(entity.Entity):
         self.destination = [self.rect.x, self.rect.y]
         self.valid_destinations = [graphics.tile_width * x for x in range(-100, 100)]
         self.moving = False
-        self.input_handler = p_i_handler.PlayerInputHandler(self)
         self.turns_taken = 0
         self.is_teleporting = False
         self.collision_handler = TurnBasedCollisionHandler(

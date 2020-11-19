@@ -1,6 +1,8 @@
 import pygame
 import src.event_handler as event_handler
 import src.input_handlers.input_handler as input_handler
+from src.input_handlers.player_input_handler import PlayerInputHandler
+from src.input_handlers.input_handler import InputHandler
 
 
 class GlobalInputHandler():
@@ -15,11 +17,14 @@ class GlobalInputHandler():
         """
         self.level = level
         self.player = player
-        self.player_input_handler = player.input_handler
-        self.level_input_handler = input_handler.InputHandler(
+
+        self.player_input_handler = PlayerInputHandler(player)
+
+        self.level_input_handler = InputHandler(
             self.player,
             self.level
         )
+
         self.event_handler = event_handler.EventHandler(level, player)
 
     def process_input(self, event):
