@@ -10,8 +10,8 @@ import pygame
 import src.game_object.bomb as bomb
 import src.game_object.tile as tile
 import src.graphics as graphics
-from src.game_object.tile import PressurePlate
-from src.game_object.tile import Triggerable
+from src.game_object.pressure_plate import PressurePlate
+from src.game_object.triggerable import Triggerable
 
 
 class PollingCollisionHandler():
