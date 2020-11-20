@@ -46,7 +46,7 @@ class Actor(entity.Entity):
         self.direction = 'down'
         self.speed = 6
         self.distance = graphics.tile_width
-        self.tiled_level = level.tiled_level
+        self.tiled_level = level
         self.bombs = pygame.sprite.LayeredUpdates()
         self.move_stack = []
         self.destination = [self.rect.x, self.rect.y]

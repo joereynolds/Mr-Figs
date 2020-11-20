@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="11" height="15" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="67">
+<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="11" height="15" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="68">
  <properties>
   <property name="next_level" value="./data/levels/tmx/tutorial-pressure-plate.tmx"/>
   <property name="player_bomb_count" value="0"/>
@@ -218,6 +218,7 @@
   <object id="64" name="wall-right" type="tile" gid="11" x="0" y="192" width="16" height="16"/>
   <object id="65" name="wall-right" type="tile" gid="11" x="0" y="208" width="16" height="16"/>
   <object id="66" name="bomb" type="bomb" gid="37" x="16" y="80" width="16" height="16"/>
+  <object id="67" name="player" type="actor" gid="46" x="16" y="48" width="16" height="16"/>
  </objectgroup>
  <layer id="7" name="foreground" width="11" height="15">
   <data encoding="csv">
