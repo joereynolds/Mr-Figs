@@ -142,6 +142,11 @@ class LevelData():
             },
             'video_tape': {
                 **common,
+            },
+            'hole': {
+                **common,
+                'solid': solid,
+                'destructable':destructable,
             }
         }
 

@@ -1,4 +1,6 @@
+import pygame
 from src.game_object.tile import Tile
+from src.game_object.hole import Hole
 from src.movement_vector import vector
 import src.graphics as graphics
 
@@ -10,6 +12,12 @@ class MoveableTile(Tile):
         if player.destination[0] == self.rect.x and player.destination[1] == self.rect.y:
             target_x = self.rect.x + (vector[player.direction][0] * graphics.tile_width)
             target_y = self.rect.y + (vector[player.direction][1] * graphics.tile_width)
+
+            target_tile = level.tiled_level.get_tile_from_object_layer(target_x, target_y)
+
+            if target_tile and isinstance(target_tile, Hole):
+                pygame.sprite.Sprite.kill(self)
+
 
             if level.tiled_level.find_solid_tile(
                 level.tiled_level.get_tile_all_layers(target_x, target_y)

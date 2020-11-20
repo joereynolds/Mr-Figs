@@ -29,6 +29,7 @@ class Bomb(Entity):
         self.particles = pygame.sprite.Group()
         self.image = image
         self.images = graphics.sprites['bomb']['sprites']
+        self.range = 4
 
         # self.bomb_creation_sound = pygame.mixer.Sound('./data/audio/fx/bomb-place.ogg')
         # self.bomb_beep_sound = pygame.mixer.Sound('./data/audio/fx/bomb-beep.ogg')
@@ -57,7 +58,7 @@ class Bomb(Entity):
         Explodes our bomb making sure that the particles
         only go to the correct boundaries of the walls.
         """
-        for i in range(graphics.tile_width, graphics.tile_width * 4, graphics.tile_width):
+        for i in range(graphics.tile_width, graphics.tile_width * self.range, graphics.tile_width):
             right = self.rect.x + i
             
             has_created_particle = self.create_particle(
@@ -70,7 +71,7 @@ class Bomb(Entity):
             if not has_created_particle:
                 break
 
-        for i in range(graphics.tile_width, graphics.tile_width * 4, graphics.tile_width):
+        for i in range(graphics.tile_width, graphics.tile_width * self.range, graphics.tile_width):
             left = self.rect.x - i
 
             has_created_particle = self.create_particle(
@@ -83,7 +84,7 @@ class Bomb(Entity):
             if not has_created_particle:
                 break
 
-        for i in range(graphics.tile_width, graphics.tile_width * 4, graphics.tile_width):
+        for i in range(graphics.tile_width, graphics.tile_width * self.range, graphics.tile_width):
             down = self.rect.y + i
 
             has_created_particle = self.create_particle(
@@ -96,7 +97,7 @@ class Bomb(Entity):
             if not has_created_particle:
                 break
 
-        for i in range(graphics.tile_width, graphics.tile_width * 4, graphics.tile_width):
+        for i in range(graphics.tile_width, graphics.tile_width * self.range, graphics.tile_width):
             up = self.rect.y - i
 
             has_created_particle = self.create_particle(

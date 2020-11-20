@@ -1,5 +1,6 @@
 from src.game_object.triggerable import Triggerable
 from src.game_object.moveable_tile import MoveableTile
+from src.game_object.hole import Hole
 from src.game_object.finish_tile import FinishTile
 from src.game_object.switch_tile import Switch
 from src.game_object.portal import Portal
@@ -24,6 +25,7 @@ class TileFactory():
             'tile': Tile,
             'pickup_bomb': PickupBomb,
             'portal': Portal,
+            'hole': Hole,
             'video_tape': VideoTape,
         }
 
