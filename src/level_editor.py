@@ -1,12 +1,9 @@
-import src.game_object.bomb as bomb
-import src.game_object.tile as tile
 from src.game_object.switch_tile import Switch
 from src.game_object.pressure_plate import PressurePlate
 from src.game_object.triggerable import Triggerable
 from src.game_object.portal import Portal
 import src.game_object.actor as actor
 from pprint import pprint
-import pytmx
 from pytmx.util_pygame import load_pygame
 import pygame
 import src.graphics as graphics

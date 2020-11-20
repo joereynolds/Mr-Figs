@@ -1,10 +1,5 @@
-import pygame
-
 import src.colours as colours
-import src.graphics as graphics
 import src.entity as entity
-
-from src.movement_vector import vector
 
 class Tile(entity.Entity):
     """The tile class represents any tile in the game background,

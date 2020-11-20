@@ -1,11 +1,8 @@
-import src.game_object.actor as actor
-import pygame
 import src.graphics as graphics
 import src.level_editor as level_editor
 import src.scenes.scenebase as scene_base
 import src.renderers.level_base_renderer as renderers
 import src.input_handlers.global_input_handler as input_handler
-import src.environment
 from src.collision_handlers.polling_collision_handler import PollingCollisionHandler
 from src.collision_handlers.turn_based_collision_handler import TurnBasedCollisionHandler
 from src.save import SaveGame
