@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="8" nextobjectid="23">
+<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="8" nextobjectid="24">
  <properties>
   <property name="next_level" value="./data/levels/tmx/tutorial-pushing.tmx"/>
   <property name="player_bomb_count" value="0"/>
@@ -212,5 +212,6 @@
   <object id="18" name="wall-down" type="tile" gid="1" x="64" y="16" width="16" height="16"/>
   <object id="19" name="wall-down" type="tile" gid="1" x="80.25" y="16" width="16" height="16"/>
   <object id="20" name="finish" type="finish_tile" gid="32" x="64" y="48" width="16" height="16"/>
+  <object id="23" name="player" type="actor" gid="46" x="32" y="32" width="16" height="16"/>
  </objectgroup>
 </map>

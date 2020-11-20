@@ -1,3 +1,5 @@
+import pygame
+
 from src.game_object.tile import Tile
 import src.graphics as graphics
 

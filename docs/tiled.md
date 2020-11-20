@@ -9,13 +9,6 @@ optional, if you don't specify it, then the user is shown filepath
 
 `player_bomb_count` = The starting number of bombs for a player
 
-`player_starting_x` = The *grid* coordinates of the player's starting x position.
-Default is 1 you don't need to specify this
-
-`player_starting_y` = The *grid* coordinates of the player's starting y position.
-Default is 1 you don't need to specify this
-
-
 ### Game Object Properties
 
 `lifespan` = This is for bombs and it's how many turns a bomb will take until it

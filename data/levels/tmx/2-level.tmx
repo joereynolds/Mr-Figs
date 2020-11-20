@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="59">
+<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="60">
  <properties>
   <property name="next_level" value="./data/levels/tmx/lai-medium.tmx"/>
   <property name="player_bomb_count" value="200"/>
@@ -238,5 +238,6 @@
   <object id="56" type="tile" gid="21" x="96" y="144" width="16" height="16"/>
   <object id="57" type="bomb" gid="41" x="48" y="48" width="16" height="16"/>
   <object id="58" type="bomb" gid="37" x="32" y="80" width="16" height="16"/>
+  <object id="59" name="player" type="actor" gid="46" x="80" y="32" width="16" height="16"/>
  </objectgroup>
 </map>

@@ -6,14 +6,16 @@
 
 - Each level has a predefined amount of bombs that the player begins with (ranging from 0 and upwards)
 
-- The player can plant bombs which will destroy destructable terrain and activate switches
+- The player can plant bombs which will destroy destructible terrain and activate switches
 
 - A tile can be
-    - destructable (can be blown up by a bomb)
+    - destructible (can be blown up by a bomb)
     - solid (a player can't go through it)
     - moveable (a player can push it)
 
 ### In-game objects
+
+- Player - The player. Put him where you want on the map
 
 - Bomb - Pretty self explanatory. When a player plants a bomb, it starts
   counting from 5 meaning the player can make 5 turns and then it explodes.
@@ -26,14 +28,15 @@
 ```
 B = bomb
 x = part of explosion
+. = ground
 
-   x
-   x
-   x
+...x...
+...x...
+...x...
 xxxBxxx
-   x
-   x
-   x
+...x...
+...x...
+...x...
 ```
 
 - Rocks - Just a solid tile that can be destroyed by a bomb

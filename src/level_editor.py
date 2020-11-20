@@ -94,7 +94,8 @@ class LevelData():
             'actor':{
                 **common,
                 'level': self,
-                'image':surface
+                'image':surface,
+                'remaining_bombs': self.properties.get('player_bomb_count', 0),
             },
             'bomb': {
                 **common,
@@ -147,7 +148,10 @@ class LevelData():
             }
         }
 
-        return factory.build(tile_object.type, **type_map[tile_object.type])
+        try:
+            return factory.build(tile_object.type, **type_map[tile_object.type])
+        except KeyError:
+            print('You passed an invalid key to the factory for level: ' + self.tmx_file)
 
     def link_portals(self):
         """Makes sure that the switches are passed to the correct
@@ -181,6 +185,12 @@ class LevelData():
         for sprite in self.sprites:
             if sprite.rect.x == x and sprite.rect.y == y:
                 return sprite
+
+    def get_player(self, tiles):
+        """Returns true if it finds a solid tile in a list of tiles"""
+        for tile in tiles:
+            if isinstance(tile, actor.Actor):
+                return tile
 
     def find_solid_tile(self, tiles):
         """Returns true if it finds a solid tile in a list of tiles"""
