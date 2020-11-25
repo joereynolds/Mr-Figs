@@ -46,7 +46,7 @@ class Actor(entity.Entity):
 
         self.remaining_bombs = int(remaining_bombs)
         self.direction = 'down'
-        self.speed = 6
+        self.speed = graphics.tile_width // 2
         self.distance = graphics.tile_width
         self.tiled_level = level
         self.bombs = pygame.sprite.LayeredUpdates()
