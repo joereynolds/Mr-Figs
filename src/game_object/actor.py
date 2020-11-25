@@ -1,5 +1,7 @@
 import pygame
 
+from src.game_object.moveable_tile import MoveableTile
+from src.game_object.triggerable import Triggerable
 import src.game_object.bomb as bomb
 import src.colours as colours
 import src.entity as entity
@@ -99,6 +101,20 @@ class Actor(entity.Entity):
             self.destination[1] = self.rect.y + (y * self.distance)
 
     def is_valid_move(self, x, y):
+        # TODO - This calculation is identical to the one in set_destination
+        # refactor it out
+        player_wants_to_go_x = self.rect.x + (x * self.distance)
+        player_wants_to_go_y = self.rect.y + (y * self.distance)
+
+        tile = self.tiled_level.find_solid_tile(
+            self.tiled_level.get_tile_all_layers(
+                player_wants_to_go_x, player_wants_to_go_y
+            )
+        )
+
+        if tile and not isinstance(tile, (MoveableTile, Triggerable)):
+            return False
+
         return (x * self.distance) in self.valid_destinations \
             and (y * self.distance) in self.valid_destinations
 
