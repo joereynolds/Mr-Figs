@@ -1,5 +1,6 @@
 import src.environment
 import pygame
+from src.scenes.levelbase import LevelBase
 
 
 class LevelSelectInput():
@@ -10,13 +11,28 @@ class LevelSelectInput():
         @level_select_menu = The LevelMenu object
         """
         self.level_select_menu = level_select_menu
+        self.level_dir = './data/levels/tmx/'
 
+        """
+        When we press a number, it should take
+        us to that entry in the level list.
+        For example, pressing '1' should take
+        us to the first entry in the list.
+        We also respect the next and previous buttons
+        so that if we press next and then 1 it would be that entry + 10
+        0 means 10 in our case.
+        """
         self.keys = {
-            pygame.K_1: 'level-0',
-            pygame.K_2: 'level-1',
-            pygame.K_3: 'level-2',
-            pygame.K_4: 'level-3',
-            pygame.K_5: 'level-4',
+            pygame.K_1: 0,
+            pygame.K_2: 1,
+            pygame.K_3: 2,
+            pygame.K_4: 3,
+            pygame.K_5: 4,
+            pygame.K_6: 5,
+            pygame.K_7: 6,
+            pygame.K_8: 7,
+            pygame.K_9: 8,
+            pygame.K_0: 9,
         }
 
     def process_input(self, event):
@@ -29,8 +45,10 @@ class LevelSelectInput():
             for key in self.keys.keys():
                 if event.key == key:
                     self.level_select_menu.switch_to_scene(
-                        src.environment.level_obj_list[self.keys[key]]
-                    )
+                            LevelBase(
+                                self.level_dir + self.level_select_menu.levels[self.level_select_menu.level_group_index][self.keys[key]],
+                            )
+                        )
             if event.key == pygame.K_ESCAPE:
                 self.level_select_menu.switch_to_scene(src.environment.level_obj_list['start-menu'])
             if event.key in [pygame.K_n, pygame.K_d, pygame.K_RIGHT]:

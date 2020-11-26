@@ -16,19 +16,17 @@ class LevelMenu(scene_base.SceneBase):
         self.size = pygame.display.get_window_size()
         self.width = self.size[0]
         self.height = self.size[1]
-
-        scene_base.SceneBase.__init__(
-            self,
-            input_handler.LevelSelectInput(
-                self
-            )
-        )
+        self.level_group_index = 0
 
         self.menu_items = {
             'components': pygame.sprite.LayeredUpdates(),
             'previous': pygame.sprite.GroupSingle(),
             'next':  pygame.sprite.GroupSingle()
         }
+
+        self.levels = self.get_levels()
+        self.add_levels_to_sprite_group(self.levels[self.level_group_index])
+
 
         self.menu_items['previous'].add(
             Clickable(25, self.height // 2, 50, 50, 'FIRST 10')
@@ -38,9 +36,12 @@ class LevelMenu(scene_base.SceneBase):
             Clickable(self.width - 75, self.height // 2, 50, 50, 'NEXT 10')
         )
 
-        self.level_group_index = 0
-        self.levels = self.get_levels()
-        self.add_levels_to_sprite_group(self.levels[self.level_group_index])
+        scene_base.SceneBase.__init__(
+            self,
+            input_handler.LevelSelectInput(
+                self
+            )
+        )
 
     def go_forward(self):
         if self.level_group_index < 2:
