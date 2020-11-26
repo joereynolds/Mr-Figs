@@ -38,10 +38,10 @@ class Minimap(Entity):
         self.map.empty()
         for sprite in self.tiled_level.sprites:
             minimap_sprite = Entity(
-                self.rect.x + sprite.rect.x / 4,
-                self.rect.y + sprite.rect.y / 4,
-                4,
-                4
+                self.rect.x + sprite.rect.x / 2,
+                self.rect.y + sprite.rect.y / 2,
+                8,
+                8
             )
             minimap_sprite.image.fill(sprite.minimap_colour)
 
