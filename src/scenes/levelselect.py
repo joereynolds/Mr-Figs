@@ -5,6 +5,7 @@ import src.colours as colours
 import src.scenes.scenebase as scene_base
 import src.input_handlers.level_select_input_handler as input_handler
 from src.gui.clickable import Clickable
+from src.gui.level_select_item import LevelSelectItem
 
 class LevelMenu(scene_base.SceneBase):
 
@@ -42,12 +43,14 @@ class LevelMenu(scene_base.SceneBase):
         self.add_levels_to_sprite_group(self.levels[self.level_group_index])
 
     def go_forward(self):
-        self.level_group_index += 1
-        self.add_levels_to_sprite_group(self.levels[self.level_group_index])
+        if self.level_group_index < 2:
+            self.level_group_index += 1
+            self.add_levels_to_sprite_group(self.levels[self.level_group_index])
 
     def go_backward(self):
-        self.level_group_index -= 1
-        self.add_levels_to_sprite_group(self.levels[self.level_group_index])
+        if (self.level_group_index > 0):
+            self.level_group_index -= 1
+            self.add_levels_to_sprite_group(self.levels[self.level_group_index])
 
     def get_levels(self):
         levels = [
@@ -103,7 +106,7 @@ class LevelMenu(scene_base.SceneBase):
         # render first five of the group
         for j in range(5):
             self.menu_items['components'].add([
-                Clickable(
+                LevelSelectItem(
                     x + (j * (button_width + spacing)),
                     button_height * 1,
                     button_width,
@@ -115,7 +118,7 @@ class LevelMenu(scene_base.SceneBase):
         # render second five of the group
         for j in range(5, 10):
             self.menu_items['components'].add([
-                Clickable(
+                LevelSelectItem(
                     x + ((j - 5) * (button_width + spacing)),
                     button_height * 2 + spacing,
                     button_width,
