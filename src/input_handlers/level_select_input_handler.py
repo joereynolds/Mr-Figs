@@ -33,10 +33,19 @@ class LevelSelectInput():
                     )
             if event.key == pygame.K_ESCAPE:
                 self.level_select_menu.switch_to_scene(src.environment.level_obj_list['start-menu'])
-        for level in self.level_select_menu.components:
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                level.on_click(
-                    self.level_select_menu.switch_to_scene,
-                    self.level_select_menu.game_levels['level-' + str(i)]
-                )
+        # for level in self.level_select_menu.menu_items['components']:
+        #     if event.type == pygame.MOUSEBUTTONDOWN:
+        #         pass
+                # level.on_click(
+                #     self.level_select_menu.switch_to_scene,
+                #     level.text.text
+                # )
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            self.level_select_menu.menu_items['previous'].sprites()[0].on_click(
+                self.level_select_menu.go_backward,
+            )
+            self.level_select_menu.menu_items['next'].sprites()[0].on_click(
+                self.level_select_menu.go_forward,
+            )
+
 
