@@ -7,7 +7,7 @@ from src.gui.clickable import Clickable
 
 class LevelSelectItem(Clickable):
 
-    def __init__(self, x, y, width, height, string, image = './data/placeholder-card-image.png'):
+    def __init__(self, x, y, width, height, string, level_number, image = './data/placeholder-card-image.png'):
         Clickable.__init__(self, x, y, width, height, string)
 
         self.image = pygame.image.load(image)
@@ -20,6 +20,11 @@ class LevelSelectItem(Clickable):
 
         self.shaded_area.fill((50, 50, 50, 0))
         self.image.blit(self.shaded_area, (0, 0), special_flags=pygame.BLEND_RGBA_SUB)
+
+        pygame.font.init()
+        font_object = pygame.font.Font(None, 30)
+        rendered_text = font_object.render('[' + str(level_number) + ']', False, (255, 255, 255))
+        self.image.blit(rendered_text, (5, height - 25))
 
         # self.rect = self.image.get_rect() 
         # self.rect.x = x

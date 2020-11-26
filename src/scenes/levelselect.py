@@ -112,7 +112,8 @@ class LevelMenu(scene_base.SceneBase):
                     button_height * 1,
                     button_width,
                     button_height,
-                    levels[j]
+                    levels[j],
+                    j
                 ),
             ])
 
@@ -124,7 +125,8 @@ class LevelMenu(scene_base.SceneBase):
                     button_height * 2 + spacing,
                     button_width,
                     button_height,
-                    levels[j]
+                    levels[j],
+                    j
                 ),
             ])
 
