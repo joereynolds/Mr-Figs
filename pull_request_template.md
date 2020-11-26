@@ -11,3 +11,6 @@ Play through the game and confirm the following:
 - [ ] - Moveable tiles cannot be pushed through solid
 - [ ] - Explosions stop at stairs
 - [ ] - Lasers kill you if you walk into them
+- [ ] - A user walking into a solid tile while a bomb detonates will die
+- [ ] - A user cannot walk into a moveable tile if that tile is up against a
+  solid object

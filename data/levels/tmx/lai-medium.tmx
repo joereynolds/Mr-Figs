@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="25" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="127">
+<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="25" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="128">
  <properties>
-  <property name="next_level" value="./data/levels/tmx/tutorial-movement.tmx"/>
+  <property name="next_level" value="./data/levels/tmx/frankie-goes-to-hollywood.tmx"/>
   <property name="player_bomb_count" value="1"/>
   <property name="player_starting_x" type="int" value="1"/>
   <property name="player_starting_y" type="int" value="5"/>
@@ -254,6 +254,7 @@
     <property name="lifespan" type="int" value="4"/>
    </properties>
   </object>
+  <object id="127" name="player" type="actor" gid="46" x="16" y="96" width="16" height="16"/>
  </objectgroup>
  <layer id="5" name="foreground" width="25" height="10">
   <data encoding="csv">

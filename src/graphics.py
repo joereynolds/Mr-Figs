@@ -9,7 +9,8 @@ tile_height = 16
 
 def get_window_surface():
     # return pygame.display.set_mode((640, 480), )
-    return pygame.display.set_mode((0, 0), pygame.NOFRAME)
+    return pygame.display.set_mode((1280, 720), )
+    # return pygame.display.set_mode((0, 0), pygame.NOFRAME)
 
 def grid(x, y):
     """
@@ -28,7 +29,7 @@ def subsurf(grid_pos):
 """A dictionary of sprites and their properties
     sprites = pygame surfaces of their location
 """
-#TODO this should be moved to the editor? Or maye a SpriteMap class
+# TODO - These should be moved into the class responsible for them
 sprites = {
     'bomb'  : {
         'sprites' : [

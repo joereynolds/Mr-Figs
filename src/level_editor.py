@@ -1,10 +1,9 @@
-import src.game_object.bomb as bomb
-import src.game_object.tile as tile
 from src.game_object.switch_tile import Switch
+from src.game_object.pressure_plate import PressurePlate
+from src.game_object.triggerable import Triggerable
 from src.game_object.portal import Portal
 import src.game_object.actor as actor
 from pprint import pprint
-import pytmx
 from pytmx.util_pygame import load_pygame
 import pygame
 import src.graphics as graphics
@@ -92,7 +91,8 @@ class LevelData():
             'actor':{
                 **common,
                 'level': self,
-                'image':surface
+                'image':surface,
+                'remaining_bombs': self.properties.get('player_bomb_count', 0),
             },
             'bomb': {
                 **common,
@@ -145,7 +145,10 @@ class LevelData():
             }
         }
 
-        return factory.build(tile_object.type, **type_map[tile_object.type])
+        try:
+            return factory.build(tile_object.type, **type_map[tile_object.type])
+        except KeyError:
+            print('You passed an invalid key to the factory for level: ' + self.tmx_file)
 
     def link_portals(self):
         """Makes sure that the switches are passed to the correct
@@ -161,9 +164,9 @@ class LevelData():
         """Makes sure that the switches are passed to the correct
            door object(Triggerable)"""
         for state in self.sprites:
-            if isinstance(state, Switch) or isinstance(state, tile.PressurePlate):
+            if isinstance(state, Switch) or isinstance(state, PressurePlate):
                 for trigger in self.sprites:
-                    if isinstance(trigger, tile.Triggerable):
+                    if isinstance(trigger, Triggerable):
                         if state.triggers == trigger.triggered_id:
                             trigger.stateful = state
 
@@ -173,20 +176,18 @@ class LevelData():
         the x and y"""
         return [tile for tile in self.sprites if tile.rect.x == x and tile.rect.y == y]
 
-    def get_tile_from_layer(self, x, y, layer):
-        """The same as get_tile but returns the tile only from that layer"""
-        for tile in self.sprites.get_sprites_from_layer(layer):
-            if tile.rect.x == x and tile.rect.y == y:
-                return tile
-
-    def get_tile_from_object_layer(self, x, y, layer_name='objects'):
+    def get_tile_from_object_layer(self, x, y):
         """Gets the tile from the object layer and then maps it to the one in the
         sprite group. This means we can kill our sprites etc..."""
-        for tile in self._map.get_layer_by_name(layer_name):
-            if tile.x == x and tile.y == y:
-                for sprite in self.sprites:
-                    if sprite.rect.x == tile.x and sprite.rect.y == tile.y:
-                        return sprite
+        for sprite in self.sprites:
+            if sprite.rect.x == x and sprite.rect.y == y:
+                return sprite
+
+    def get_player(self, tiles):
+        """Returns true if it finds a solid tile in a list of tiles"""
+        for tile in tiles:
+            if isinstance(tile, actor.Actor):
+                return tile
 
     def find_solid_tile(self, tiles):
         """Returns true if it finds a solid tile in a list of tiles"""

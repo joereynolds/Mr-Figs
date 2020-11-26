@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="49">
+<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="50">
  <properties>
   <property name="next_level" value="./data/levels/tmx/tutorial-picking-up-easy.tmx"/>
   <property name="player_bomb_count" value="5"/>
@@ -221,5 +221,6 @@
   <object id="46" name="wall-up" type="tile" gid="10" x="96" y="112" width="16" height="16"/>
   <object id="47" name="rock" type="tile" gid="21" x="112" y="48" width="16" height="16"/>
   <object id="48" name="wall-left" type="tile" gid="2" x="112" y="64" width="16" height="16"/>
+  <object id="49" name="player" type="actor" gid="46" x="16" y="32" width="16" height="16"/>
  </objectgroup>
 </map>

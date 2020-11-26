@@ -4,7 +4,7 @@ Everything related to the bomb that mr-figs drops.
 
 import pygame
 
-from src.game_object.tile import MoveableTile
+from src.game_object.moveable_tile import MoveableTile
 from src.game_object.finish_tile import FinishTile
 from src.game_object.switch_tile import Switch
 from src.entity import Entity
@@ -114,7 +114,6 @@ class Bomb(Entity):
 
     def create_particle(self, x, y, width, height):
         tile = self.tiled_level.get_tile_from_object_layer(x, y)
-        base_tile = self.tiled_level.get_tile_from_layer(x, y, 0)
 
         if tile and isinstance(tile, (MoveableTile, FinishTile)):
             return False

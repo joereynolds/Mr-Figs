@@ -17,13 +17,8 @@ class BombParticle(entity.Entity):
         self.minimap_colour = colours.RED_GLOW
 
     def handle_collision(self, tile, player, level):
-        # TODO - There's a bug in here which means that if the player's
-        # destination is outside of the particles explosion area then they
-        # won't die. This is fine in most cases but it's not accounting for
-        # solid. To test it, plant a bomb and move up into a solid wall you'll
-        # survive the blast because your destination is in the wall but really
-        # you're still on the same tile.
         for _tile in level.tiled_level.sprites:
+            # TODO - does this need to be in the loop?
             if player.destination[0] == self.rect.x and player.destination[1] == self.rect.y:
                 pygame.sprite.Sprite.kill(player)
                 return True

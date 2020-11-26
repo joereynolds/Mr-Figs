@@ -4,7 +4,6 @@ Renders out a minimap of the game.
 import pygame
 
 from src.entity import Entity
-from src.game_object.actor import Actor
 import src.colours as colours
 import src.config as config
 

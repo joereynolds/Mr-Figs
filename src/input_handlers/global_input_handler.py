@@ -1,6 +1,8 @@
 import pygame
 import src.event_handler as event_handler
 import src.input_handlers.input_handler as input_handler
+from src.input_handlers.player_input_handler import PlayerInputHandler
+from src.input_handlers.input_handler import InputHandler
 
 
 class GlobalInputHandler():
@@ -15,18 +17,17 @@ class GlobalInputHandler():
         """
         self.level = level
         self.player = player
-        self.player_input_handler = player.input_handler
-        self.level_input_handler = input_handler.InputHandler(
-            self.player,
-            self.level
-        )
-        self.e_handler = event_handler.EventHandler(player)
+
+        self.player_input_handler = PlayerInputHandler(player, level)
+        self.level_input_handler = InputHandler(player, level)
+
+        self.event_handler = event_handler.EventHandler(level, player)
 
     def process_input(self, event):
         """Processes input for everything. Note that
         in certain cases we are only processing input if a key has
         been pressed. No need to process something unless needed"""
-        self.e_handler.handle_events(event)
+        self.event_handler.handle_events(event)
         if event.type == pygame.QUIT:
             pygame.quit()
         if event.type == pygame.MOUSEBUTTONDOWN:

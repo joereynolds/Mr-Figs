@@ -1,5 +1,7 @@
 import pygame
 
+from src.game_object.moveable_tile import MoveableTile
+from src.game_object.triggerable import Triggerable
 import src.game_object.bomb as bomb
 import src.colours as colours
 import src.entity as entity
@@ -7,7 +9,6 @@ import src.graphics as graphics
 import src.movement_vector as movement_vector
 import src.interpolate as interpolate
 from src.collision_handlers.turn_based_collision_handler import TurnBasedCollisionHandler
-import src.input_handlers.player_input_handler as p_i_handler
 
 class Actor(entity.Entity):
     """
@@ -28,8 +29,6 @@ class Actor(entity.Entity):
 
     @self.move_stack  = (not used) a stack of the previous moves of the actor
 
-    @self.i_handler   = An InputHandler object
-
     @self.destination = [x,y] a 2 element list containing
                         the next destination the sprite will be travelling to
 
@@ -47,22 +46,16 @@ class Actor(entity.Entity):
 
         self.remaining_bombs = int(remaining_bombs)
         self.direction = 'down'
-        self.speed = 6
+        self.speed = graphics.tile_width // 2
         self.distance = graphics.tile_width
-        self.level = level
-        self.tiled_level = self.level.tiled_level
+        self.tiled_level = level
         self.bombs = pygame.sprite.LayeredUpdates()
         self.move_stack = []
         self.destination = [self.rect.x, self.rect.y]
         self.valid_destinations = [graphics.tile_width * x for x in range(-100, 100)]
         self.moving = False
-        self.input_handler = p_i_handler.PlayerInputHandler(self)
         self.turns_taken = 0
         self.is_teleporting = False
-        self.collision_handler = TurnBasedCollisionHandler(
-            self, self.level
-        )
-
         self.minimap_colour = colours.BLUE_HIGHLIGHT
 
     def move(self, delta_time):
@@ -108,6 +101,20 @@ class Actor(entity.Entity):
             self.destination[1] = self.rect.y + (y * self.distance)
 
     def is_valid_move(self, x, y):
+        # TODO - This calculation is identical to the one in set_destination
+        # refactor it out
+        player_wants_to_go_x = self.rect.x + (x * self.distance)
+        player_wants_to_go_y = self.rect.y + (y * self.distance)
+
+        tile = self.tiled_level.find_solid_tile(
+            self.tiled_level.get_tile_all_layers(
+                player_wants_to_go_x, player_wants_to_go_y
+            )
+        )
+
+        if tile and not isinstance(tile, (MoveableTile, Triggerable)):
+            return False
+
         return (x * self.distance) in self.valid_destinations \
             and (y * self.distance) in self.valid_destinations
 
@@ -161,7 +168,7 @@ class Actor(entity.Entity):
 
     def is_dead(self):
         """Returns true if the player is dead"""
-        return self not in self.level.sprites
+        return self not in self.tiled_level.sprites
 
     def animate(self):
         pass
