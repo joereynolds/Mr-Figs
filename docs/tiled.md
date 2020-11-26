@@ -20,6 +20,33 @@ blows up
 
 `solid` = Whether or not the player can walk through it
 
+### Tile Types
+
+For every tile in the object layer, we need to give it a `type` so that the game knows how to build that tile correctly.
+
+Here's a list of the valid types
+
+`actor` - This is the player
+
+`bomb` - This is a normal bomb (not a pickup)
+
+`tile` - Just a normal tile
+
+`finish_tile` - The stairway
+
+`portal` - A portal
+
+`moveable_tile` - This is for boulders that can be pushed
+
+`pickup_bomb` - The bomb pickup (the one with the yellow face)
+
+`pressure_plate` - A pressure plate
+
+`switch` - The switch
+
+`triggerable` - The laser (bad name I know)
+
+
 #### Portals
 
 `portal_id` = The id of the portal
