@@ -5,7 +5,7 @@ from src.game_object.destructible_tile import Destructible
 from src.game_object.switch_tile import Switch
 from src.game_object.portal import Portal
 from src.game_object.pressure_plate import PressurePlate
-from src.game_object.tile import Tile
+from src.game_object.solid_tile import SolidTile
 from src.game_object.bomb import Bomb
 from src.game_object.actor import Actor
 from src.game_object.pickup_bomb import PickupBomb
@@ -22,7 +22,7 @@ class TileFactory():
             'pressure_plate': PressurePlate,
             'bomb': Bomb,
             'actor': Actor,
-            'tile': Tile,
+            'tile': SolidTile,
             'pickup_bomb': PickupBomb,
             'portal': Portal,
             'video_tape': VideoTape,

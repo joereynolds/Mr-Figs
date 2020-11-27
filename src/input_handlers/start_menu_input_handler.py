@@ -39,13 +39,13 @@ class StartMenuInput():
                         src.environment.level_obj_list[self.keys[key]]
                     )
         if event.type == pygame.MOUSEBUTTONDOWN:
-            self.start_menu.component_dict['start-game'].on_click(
+            self.start_menu.menu_items['start-button'].sprite.on_click(
                 self.start_menu.switch_to_scene, 
-                src.environment.level_obj_list['game-over-menu']
+                src.environment.level_obj_list['tutorial-movement.tmx']
             )
 
-            self.start_menu.component_dict['exit-game'].on_click(self.start_menu.terminate)
+            self.start_menu.menu_items['quit'].sprite.on_click(self.start_menu.terminate)
 
-            self.start_menu.component_dict['level-select'].on_click(
+            self.start_menu.menu_items['level-select'].sprite.on_click(
                 self.start_menu.switch_to_scene, src.environment.level_obj_list['level-select']
             )

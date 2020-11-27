@@ -4,7 +4,7 @@ This particular input handler is used for all actions
 that aren't player related. i.e. navigating menus
 etc...
 """
-import src.game_object.tile
+import src.game_object.solid_tile
 import src.environment
 import pygame
 

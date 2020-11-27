@@ -3,6 +3,7 @@ from src.game_object.pressure_plate import PressurePlate
 from src.game_object.triggerable import Triggerable
 from src.game_object.portal import Portal
 from src.game_object.destructible_tile import Destructible
+from src.game_object.solid_tile import SolidTile
 import src.game_object.actor as actor
 from pprint import pprint
 from pytmx.util_pygame import load_pygame
@@ -65,9 +66,7 @@ class LevelData():
         y = tile_object.y
 
         # Safe fallbacks just in case objects don't have certain attributes
-        moveable = getattr(tile_object, 'moveable', False)
         state = getattr(tile_object, 'state', False)
-        solid = getattr(tile_object, 'solid', False)
         lifespan = getattr(tile_object, 'lifespan', False)
         triggers = getattr(tile_object, 'triggers', False)
         triggered_id = getattr(tile_object, 'triggered_id', False)
@@ -85,7 +84,6 @@ class LevelData():
         type_map = {
             'tile': {
                 **common,
-                'solid': solid,
             },
             'actor':{
                 **common,
@@ -103,29 +101,23 @@ class LevelData():
             },
             'finish_tile': {
                 **common,
-                'solid': solid,
             },
             'moveable_tile': {
                 **common,
-                'solid': solid,
-                'moveable': moveable
             },
             'switch': {
                 **common,
-                'solid': solid,
                 'state': state,
                 'triggers': triggers,
             },
             'pressure_plate': {
                 **common,
-                'solid': solid,
                 'state': state,
                 'triggers': triggers,
                 'images': graphics.sprites['pressure_plate']['sprites']
             },
             'triggerable': {
                 **common,
-                'solid': solid,
                 'stateful':'pass',
                 'id': triggered_id
             },
@@ -181,7 +173,7 @@ class LevelData():
                 return sprite
 
     def get_player(self, tiles):
-        """Returns true if it finds a solid tile in a list of tiles"""
+        """Gets the player"""
         for tile in tiles:
             if isinstance(tile, actor.Actor):
                 return tile
@@ -189,5 +181,5 @@ class LevelData():
     def find_solid_tile(self, tiles):
         """Returns true if it finds a solid tile in a list of tiles"""
         for tile in tiles:
-            if tile.solid:
+            if isinstance(tile, SolidTile):
                 return tile

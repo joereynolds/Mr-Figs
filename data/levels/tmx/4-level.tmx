@@ -10,90 +10,73 @@
   </terraintypes>
   <tile id="0">
    <properties>
-    <property name="solid" value="true"/>
    </properties>
   </tile>
   <tile id="1">
    <properties>
-    <property name="solid" value="true"/>
    </properties>
   </tile>
   <tile id="5">
    <properties>
     <property name="id" value="1"/>
-    <property name="solid" value="true"/>
    </properties>
   </tile>
   <tile id="9">
    <properties>
-    <property name="solid" value="true"/>
    </properties>
   </tile>
   <tile id="10">
    <properties>
-    <property name="solid" value="true"/>
    </properties>
   </tile>
   <tile id="18">
    <properties>
-    <property name="solid" value=""/>
    </properties>
   </tile>
   <tile id="19">
    <properties>
-    <property name="solid" value=""/>
    </properties>
   </tile>
   <tile id="20">
    <properties>
-    <property name="solid" value="true"/>
    </properties>
   </tile>
   <tile id="27">
    <properties>
-    <property name="solid" value="true"/>
    </properties>
   </tile>
   <tile id="28">
    <properties>
-    <property name="solid" value="true"/>
    </properties>
   </tile>
   <tile id="29">
    <properties>
-    <property name="solid" value="true"/>
    </properties>
   </tile>
   <tile id="30">
    <properties>
-    <property name="solid" value="true"/>
    </properties>
   </tile>
   <tile id="31">
    <properties>
-    <property name="solid" value=""/>
    </properties>
   </tile>
   <tile id="33">
    <properties>
-    <property name="solid" value="true"/>
     <property name="triggers" value="1"/>
    </properties>
   </tile>
   <tile id="54">
    <properties>
-    <property name="solid" value="true"/>
    </properties>
   </tile>
   <tile id="55">
    <properties>
-    <property name="solid" value="true"/>
     <property name="triggers" value="1"/>
    </properties>
   </tile>
   <tile id="58">
    <properties>
-    <property name="solid" value=""/>
    </properties>
   </tile>
  </tileset>

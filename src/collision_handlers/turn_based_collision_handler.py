@@ -8,7 +8,7 @@ iteration (like most games do)
 
 import pygame
 import src.game_object.bomb as bomb
-import src.game_object.tile as tile
+import src.game_object.solid_tile as tile
 
 
 class TurnBasedCollisionHandler():

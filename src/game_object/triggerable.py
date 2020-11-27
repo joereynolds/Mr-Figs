@@ -1,9 +1,10 @@
 import pygame
 
-from src.game_object.tile import Tile
+from src.game_object.solid_tile import SolidTile
 import src.graphics as graphics
+import src.entity as entity
 
-class Triggerable(Tile):
+class Triggerable(entity.Entity):
     """A Triggerable class is linked to the Switch or PressurePlate class. It takes a Switch/PressurePlate
        and if that Switch/PressurePlate's state is 'on' it affects the Triggerable and triggers
        whatever the effect of the Triggerable is.
@@ -19,13 +20,14 @@ class Triggerable(Tile):
        @self.id = The numeric id of the Triggerable. This is used to link the state and
                   Triggerable together"""
 
-    def __init__(self,x, y, width, height, solid, stateful, image, id=0):
+    def __init__(self,x, y, width, height, stateful, image, id=0):
         self.last_image = 0
         self.image = graphics.sprites['laser']['sprites'][self.last_image]
-        Tile.__init__(self, x, y, width, height, solid, self.image)
+        entity.Entity.__init__(self, x, y, width, height, self.image)
         self.stateful = stateful
         self.triggered_id = id
         self.images = graphics.sprites['laser']['sprites']
+        self.minimap_colour = ((255,0,0))
 
         self.reverse_animation = False
 

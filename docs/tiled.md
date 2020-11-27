@@ -16,8 +16,6 @@ blows up
 
 `moveable` = Whether or not a tile can be moved by the player
 
-`solid` = Whether or not the player can walk through it
-
 ### Tile Types
 
 For every tile in the object layer, we need to give it a `type` so that the game knows how to build that tile correctly.

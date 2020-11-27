@@ -1,11 +1,11 @@
 import pygame
 
-from src.game_object.tile import Tile
 from src.game_object.moveable_tile import MoveableTile
 from src.movement_vector import vector
 import src.graphics as graphics
+import src.entity as entity
 
-class PressurePlate(Tile):
+class PressurePlate(entity.Entity):
     """The PressurePlate is a tile that can be either on or off.
        It usually links to the Triggerable class
        so that it can affect (trigger) an effect.
@@ -14,11 +14,12 @@ class PressurePlate(Tile):
        @self.images   = an array of pygame surfaces
        @self.triggers = The numeric id of the Triggerable
                         if there is one to be triggered"""
-    def __init__(self, x, y, width, height, solid, state, image, images = graphics.sprites['switch']['sprites'], triggers=0):
-        Tile.__init__(self, x, y, width, height, solid, image)
+    def __init__(self, x, y, width, height, state, image, images = graphics.sprites['switch']['sprites'], triggers=0):
+        entity.Entity.__init__(self, x, y, width, height, image)
         self.state = state
         self.images = images
         self.triggers = triggers
+        self.minimap_colour = (255,255,255)
 
     def update(self):
         self.change_state()

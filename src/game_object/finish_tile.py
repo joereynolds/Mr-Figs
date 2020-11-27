@@ -1,10 +1,14 @@
-from src.game_object.tile import Tile
+import src.entity as entity
 import src.environment
 
-class FinishTile(Tile):
-    def __init__(self, x, y, width, height, solid, image=None):
-        Tile.__init__(self, x, y, width, height, solid, image)
+class FinishTile(entity.Entity):
+    def __init__(self, x, y, width, height, image=None):
+        entity.Entity.__init__(self, x, y, width, height, image)
+        self.minimap_colour = ((255,255,255))
 
     def handle_collision(self, tile, player, level):
         if player.destination[0] == self.rect.x and player.destination[1] == self.rect.y:
             level.switch_to_scene(level.tiled_level.properties['next_level']);
+
+    def handle_pre_bomb_particle_creation(self, level):
+        return False

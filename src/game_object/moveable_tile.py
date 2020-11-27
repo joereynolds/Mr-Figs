@@ -1,19 +1,25 @@
-from src.game_object.tile import Tile
 from src.movement_vector import vector
 import src.graphics as graphics
+import src.entity as entity
 
-class MoveableTile(Tile):
-    def __init__(self, x, y, width, height, solid, moveable=False, image=None):
-        Tile.__init__(self, x, y, width, height, solid, image)
+from src.game_object.triggerable import Triggerable
+from src.game_object.solid_tile import SolidTile
+from src.game_object.bomb import Bomb
+
+class MoveableTile(SolidTile):
+    def __init__(self, x, y, width, height, image=None):
+        SolidTile.__init__(self, x, y, width, height, image)
+        self.minimap_colour = (255,255,255)
+
+        # A moveable tile cannot be pushed into any of these
+        self.disallowed_tiles = (SolidTile, Triggerable, Bomb)
 
     def handle_collision(self, tile, player, level):
         if player.destination[0] == self.rect.x and player.destination[1] == self.rect.y:
             target_x = self.rect.x + (vector[player.direction][0] * graphics.tile_width)
             target_y = self.rect.y + (vector[player.direction][1] * graphics.tile_width)
 
-            if level.tiled_level.find_solid_tile(
-                level.tiled_level.get_tile_all_layers(target_x, target_y)
-            ):
+            if isinstance(level.tiled_level.get_tile_from_object_layer(target_x, target_y), self.disallowed_tiles):
                 return
 
             # Bit of an edge case that needs refactoring.  Basically a bug was
@@ -32,3 +38,5 @@ class MoveableTile(Tile):
             self.rect.x = target_x
             self.rect.y = target_y
 
+    def handle_pre_bomb_particle_creation(self, level):
+        return False
