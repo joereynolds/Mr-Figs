@@ -102,8 +102,8 @@ class LevelMenu(scene_base.SceneBase):
         x = self.width // 14
         y = self.height // 2
 
-        button_width = 200
-        button_height = 175
+        button_width = self.width // 6
+        button_height = self.height // 4
         spacing = 25
 
         # render first five of the group
