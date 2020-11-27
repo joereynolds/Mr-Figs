@@ -4,10 +4,6 @@ Everything related to the bomb that mr-figs drops.
 
 import pygame
 
-from src.game_object.moveable_tile import MoveableTile
-from src.game_object.finish_tile import FinishTile
-from src.game_object.switch_tile import Switch
-from src.game_object.destructible_tile import Destructible
 from src.entity import Entity
 from src.game_object.bomb_particle import BombParticle
 import src.graphics as graphics
@@ -116,11 +112,19 @@ class Bomb(Entity):
     def create_particle(self, x, y, width, height):
         tile = self.tiled_level.get_tile_from_object_layer(x, y)
 
-        if tile and isinstance(tile, (MoveableTile, FinishTile)):
-            return False
+        """
+        Bomb collision handling has been refactored and now the responsiblity
+        of if a particle can be planted on a tile lies with that tile.
+        The tile has two methods it can call, one for before the particle is created
+        (we can return False in this function and tell it to not create one, or True to create a particle, or None to continue)
 
-        if tile and tile.solid and not isinstance(tile, (Switch, Destructible)):
-            return False
+        We also have a post function where we can do any necessary cleanup
+        (removing the tile from the level, playing a sound etc...)
+        """
+        if hasattr(tile, 'handle_pre_bomb_particle_creation'):
+            response = tile.handle_pre_bomb_particle_creation(self.tiled_level)
+            if response is not None:
+                return response
 
         particle = BombParticle(
             x,
@@ -131,8 +135,8 @@ class Bomb(Entity):
 
         self.particles.add(particle)
 
-        if isinstance(tile, Destructible):
-            self.tiled_level.sprites.remove(tile)
+        if hasattr(tile, 'handle_post_bomb_particle_creation'):
+            return tile.handle_post_bomb_particle_creation(self.tiled_level)
 
         return True
 

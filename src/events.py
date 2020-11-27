@@ -1,4 +1,3 @@
-import src.game_object.tile as tile
 from src.game_object.triggerable import Triggerable
 """
 Contains all events that 

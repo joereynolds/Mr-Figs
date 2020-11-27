@@ -1,7 +1,6 @@
 import pygame
 
 from src.game_object.switch_tile import Switch
-import src.game_object.tile as tile
 import src.entity as entity
 import src.colours as colours
 import src.graphics as graphics

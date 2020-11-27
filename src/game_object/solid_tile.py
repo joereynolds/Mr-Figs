@@ -11,3 +11,6 @@ class SolidTile(entity.Entity):
         entity.Entity.__init__(self, x, y, width, height, image)
         self.solid = True
         self.minimap_colour = colours.GREEN_BASE
+
+    def handle_pre_bomb_particle_creation(self, level):
+        return False
