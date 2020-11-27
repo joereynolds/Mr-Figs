@@ -17,6 +17,8 @@ class LevelMenu(scene_base.SceneBase):
         self.width = self.size[0]
         self.height = self.size[1]
         self.level_group_index = 0
+        self.image = pygame.image.load('./data/background-scene.png')
+        self.image = pygame.transform.scale(self.image, (self.width, self.height))
 
         self.menu_items = {
             'components': pygame.sprite.LayeredUpdates(),
@@ -132,7 +134,7 @@ class LevelMenu(scene_base.SceneBase):
 
     def render(self):
         """Renders a button for each level that is in the game"""
-        self.surface.fill(colours.BLUE_GLOW)
+        self.surface.blit(self.image, ((0,0)))
         self.menu_items['components'].draw(self.surface)
 
         for component in self.menu_items['components']:
