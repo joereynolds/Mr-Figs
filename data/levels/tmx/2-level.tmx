@@ -8,115 +8,96 @@
   <image source="../../newtiledsheet.png" width="144" height="304"/>
   <tile id="0">
    <properties>
-    <property name="destructable" value=""/>
     <property name="solid" value="True"/>
    </properties>
   </tile>
   <tile id="1">
    <properties>
-    <property name="destructable" value=""/>
     <property name="solid" value="True"/>
    </properties>
   </tile>
   <tile id="2">
    <properties>
-    <property name="destructable" value=""/>
     <property name="solid" value="True"/>
    </properties>
   </tile>
   <tile id="3">
    <properties>
-    <property name="destructable" value=""/>
     <property name="solid" value="True"/>
    </properties>
   </tile>
   <tile id="4">
    <properties>
-    <property name="destructable" value=""/>
     <property name="solid" value=""/>
    </properties>
   </tile>
   <tile id="9">
    <properties>
-    <property name="destructable" value=""/>
     <property name="solid" value="True"/>
    </properties>
   </tile>
   <tile id="10">
    <properties>
-    <property name="destructable" value=""/>
     <property name="solid" value="True"/>
    </properties>
   </tile>
   <tile id="11">
    <properties>
-    <property name="destructable" value=""/>
     <property name="solid" value="True"/>
    </properties>
   </tile>
   <tile id="12">
    <properties>
-    <property name="destructable" value=""/>
     <property name="solid" value="True"/>
    </properties>
   </tile>
   <tile id="13">
    <properties>
-    <property name="destructable" value=""/>
     <property name="solid" value=""/>
    </properties>
   </tile>
   <tile id="18">
    <properties>
-    <property name="destructable" value=""/>
     <property name="solid" value=""/>
    </properties>
   </tile>
   <tile id="19">
    <properties>
-    <property name="destructable" value=""/>
     <property name="solid" value=""/>
    </properties>
   </tile>
   <tile id="20">
    <properties>
-    <property name="destructable" value="True"/>
     <property name="solid" value="True"/>
    </properties>
   </tile>
   <tile id="27">
    <properties>
-    <property name="destructable" value=""/>
     <property name="solid" value="True"/>
    </properties>
   </tile>
   <tile id="28">
    <properties>
-    <property name="destructable" value=""/>
     <property name="solid" value="True"/>
    </properties>
   </tile>
   <tile id="29">
    <properties>
-    <property name="destructable" value=""/>
     <property name="solid" value="True"/>
    </properties>
   </tile>
   <tile id="30">
    <properties>
-    <property name="destructable" value=""/>
     <property name="solid" value="True"/>
    </properties>
   </tile>
   <tile id="31">
    <properties>
-    <property name="destructable" value=""/>
     <property name="solid" value=""/>
    </properties>
   </tile>
   <tile id="32">
    <properties>
-    <property name="destructable" value=""/>
     <property name="solid" value=""/>
    </properties>
   </tile>
@@ -147,7 +128,6 @@
   </tile>
   <tile id="44">
    <properties>
-    <property name="destructable" value=""/>
     <property name="moveable" value="True"/>
     <property name="solid" value="True"/>
    </properties>
@@ -220,22 +200,20 @@
   <object id="50" type="finish_tile" gid="32" x="208" y="32" width="16" height="16"/>
   <object id="51" type="moveable_tile" gid="45" x="128" y="144" width="16" height="16">
    <properties>
-    <property name="destructable" type="bool" value="false"/>
     <property name="moveable" type="bool" value="true"/>
     <property name="solid" type="bool" value="true"/>
    </properties>
   </object>
   <object id="52" type="moveable_tile" gid="45" x="128" y="128" width="16" height="16">
    <properties>
-    <property name="destructable" type="bool" value="false"/>
     <property name="moveable" type="bool" value="true"/>
     <property name="solid" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="53" type="tile" gid="21" x="96" y="128" width="16" height="16"/>
-  <object id="54" type="tile" gid="21" x="112" y="128" width="16" height="16"/>
-  <object id="55" type="tile" gid="21" x="112" y="144" width="16" height="16"/>
-  <object id="56" type="tile" gid="21" x="96" y="144" width="16" height="16"/>
+  <object id="53" name="rock" type="destructible" gid="21" x="96" y="128" width="16" height="16"/>
+  <object id="54" name="rock" type="destructible" gid="21" x="112" y="128" width="16" height="16"/>
+  <object id="55" name="rock" type="destructible" gid="21" x="112" y="144" width="16" height="16"/>
+  <object id="56" name="rock" type="destructible" gid="21" x="96" y="144" width="16" height="16"/>
   <object id="57" type="bomb" gid="41" x="48" y="48" width="16" height="16"/>
   <object id="58" type="bomb" gid="37" x="32" y="80" width="16" height="16"/>
   <object id="59" name="player" type="actor" gid="46" x="80" y="32" width="16" height="16"/>

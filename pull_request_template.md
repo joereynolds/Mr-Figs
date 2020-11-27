@@ -14,3 +14,4 @@ Play through the game and confirm the following:
 - [ ] - A user walking into a solid tile while a bomb detonates will die
 - [ ] - A user cannot walk into a moveable tile if that tile is up against a
   solid object
+- [ ] - Explosion blow up destructible objects

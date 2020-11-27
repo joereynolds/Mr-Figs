@@ -56,13 +56,12 @@ class LevelSelectInput():
             if event.key in [pygame.K_p, pygame.K_a, pygame.K_LEFT]:
                 self.level_select_menu.go_backward()
 
-        # for level in self.level_select_menu.menu_items['components']:
-        #     if event.type == pygame.MOUSEBUTTONDOWN:
-        #         pass
-                # level.on_click(
-                #     self.level_select_menu.switch_to_scene,
-                #     level.text.text
-                # )
+        for level in self.level_select_menu.menu_items['components']:
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                level.on_click(
+                    self.level_select_menu.switch_to_scene,
+                    LevelBase(self.level_dir + level.text.text)
+                )
         if event.type == pygame.MOUSEBUTTONDOWN:
             self.level_select_menu.menu_items['previous'].sprites()[0].on_click(
                 self.level_select_menu.go_backward,

@@ -14,8 +14,8 @@ class PressurePlate(Tile):
        @self.images   = an array of pygame surfaces
        @self.triggers = The numeric id of the Triggerable
                         if there is one to be triggered"""
-    def __init__(self, x, y, width, height, solid, destructable, state, image, images = graphics.sprites['switch']['sprites'], triggers=0):
-        Tile.__init__(self, x, y, width, height, solid, destructable, image)
+    def __init__(self, x, y, width, height, solid, state, image, images = graphics.sprites['switch']['sprites'], triggers=0):
+        Tile.__init__(self, x, y, width, height, solid, image)
         self.state = state
         self.images = images
         self.triggers = triggers

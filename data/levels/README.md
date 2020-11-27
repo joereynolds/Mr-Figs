@@ -15,6 +15,4 @@ Don't edit them manually.
 
 `solid`: Is the tile solid?
 
-`destructable`: Can the tile be destroyed?
-
 `moveable`: Can the tile be moved?

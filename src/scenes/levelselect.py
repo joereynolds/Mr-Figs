@@ -126,7 +126,7 @@ class LevelMenu(scene_base.SceneBase):
                     button_width,
                     button_height,
                     levels[j],
-                    j + 1
+                    j + 1 if j < 9 else 0
                 ),
             ])
 

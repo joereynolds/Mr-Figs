@@ -11,115 +11,96 @@
   <image source="../../newtiledsheet.png" width="144" height="304"/>
   <tile id="0">
    <properties>
-    <property name="destructable" value=""/>
     <property name="solid" value="True"/>
    </properties>
   </tile>
   <tile id="1">
    <properties>
-    <property name="destructable" value=""/>
     <property name="solid" value="True"/>
    </properties>
   </tile>
   <tile id="2">
    <properties>
-    <property name="destructable" value=""/>
     <property name="solid" value="True"/>
    </properties>
   </tile>
   <tile id="3">
    <properties>
-    <property name="destructable" value=""/>
     <property name="solid" value="True"/>
    </properties>
   </tile>
   <tile id="4">
    <properties>
-    <property name="destructable" value=""/>
     <property name="solid" value=""/>
    </properties>
   </tile>
   <tile id="9">
    <properties>
-    <property name="destructable" value=""/>
     <property name="solid" value="True"/>
    </properties>
   </tile>
   <tile id="10">
    <properties>
-    <property name="destructable" value=""/>
     <property name="solid" value="True"/>
    </properties>
   </tile>
   <tile id="11">
    <properties>
-    <property name="destructable" value=""/>
     <property name="solid" value="True"/>
    </properties>
   </tile>
   <tile id="12">
    <properties>
-    <property name="destructable" value=""/>
     <property name="solid" value="True"/>
    </properties>
   </tile>
   <tile id="13">
    <properties>
-    <property name="destructable" value=""/>
     <property name="solid" value=""/>
    </properties>
   </tile>
   <tile id="18">
    <properties>
-    <property name="destructable" value=""/>
     <property name="solid" value=""/>
    </properties>
   </tile>
   <tile id="19">
    <properties>
-    <property name="destructable" value=""/>
     <property name="solid" value=""/>
    </properties>
   </tile>
   <tile id="20">
    <properties>
-    <property name="destructable" value="True"/>
     <property name="solid" value="True"/>
    </properties>
   </tile>
   <tile id="27">
    <properties>
-    <property name="destructable" value=""/>
     <property name="solid" value="True"/>
    </properties>
   </tile>
   <tile id="28">
    <properties>
-    <property name="destructable" value=""/>
     <property name="solid" value="True"/>
    </properties>
   </tile>
   <tile id="29">
    <properties>
-    <property name="destructable" value=""/>
     <property name="solid" value="True"/>
    </properties>
   </tile>
   <tile id="30">
    <properties>
-    <property name="destructable" value=""/>
     <property name="solid" value="True"/>
    </properties>
   </tile>
   <tile id="31">
    <properties>
-    <property name="destructable" value=""/>
     <property name="solid" value=""/>
    </properties>
   </tile>
   <tile id="32">
    <properties>
-    <property name="destructable" value=""/>
     <property name="solid" value=""/>
    </properties>
   </tile>
@@ -160,7 +141,6 @@
   </tile>
   <tile id="44">
    <properties>
-    <property name="destructable" value=""/>
     <property name="moveable" value="True"/>
     <property name="solid" value="True"/>
    </properties>

@@ -7,6 +7,7 @@ import pygame
 from src.game_object.moveable_tile import MoveableTile
 from src.game_object.finish_tile import FinishTile
 from src.game_object.switch_tile import Switch
+from src.game_object.destructible_tile import Destructible
 from src.entity import Entity
 from src.game_object.bomb_particle import BombParticle
 import src.graphics as graphics
@@ -118,7 +119,7 @@ class Bomb(Entity):
         if tile and isinstance(tile, (MoveableTile, FinishTile)):
             return False
 
-        if tile and tile.solid and not tile.destructable and not isinstance(tile, Switch):
+        if tile and tile.solid and not isinstance(tile, (Switch, Destructible)):
             return False
 
         particle = BombParticle(
@@ -130,7 +131,7 @@ class Bomb(Entity):
 
         self.particles.add(particle)
 
-        if tile and hasattr(tile, 'destructable') and tile.destructable:
+        if isinstance(tile, Destructible):
             self.tiled_level.sprites.remove(tile)
 
         return True
