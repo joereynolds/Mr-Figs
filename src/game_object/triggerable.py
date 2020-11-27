@@ -19,10 +19,10 @@ class Triggerable(Tile):
        @self.id = The numeric id of the Triggerable. This is used to link the state and
                   Triggerable together"""
 
-    def __init__(self,x, y, width, height, solid, destructable, stateful, image, id=0):
+    def __init__(self,x, y, width, height, solid, stateful, image, id=0):
         self.last_image = 0
         self.image = graphics.sprites['laser']['sprites'][self.last_image]
-        Tile.__init__(self, x, y, width, height, solid, destructable, self.image)
+        Tile.__init__(self, x, y, width, height, solid, self.image)
         self.stateful = stateful
         self.triggered_id = id
         self.images = graphics.sprites['laser']['sprites']

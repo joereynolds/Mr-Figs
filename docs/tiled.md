@@ -14,8 +14,6 @@ optional, if you don't specify it, then the user is shown filepath
 `lifespan` = This is for bombs and it's how many turns a bomb will take until it
 blows up
 
-`destructable` = Whether or not a tile can be destroyed by a bomb
-
 `moveable` = Whether or not a tile can be moved by the player
 
 `solid` = Whether or not the player can walk through it
@@ -29,6 +27,8 @@ Here's a list of the valid types
 `actor` - This is the player
 
 `bomb` - This is a normal bomb (not a pickup)
+
+`destructible` - A destructible tile (usually a rock)
 
 `tile` - Just a normal tile
 

@@ -1,6 +1,7 @@
 from src.game_object.triggerable import Triggerable
 from src.game_object.moveable_tile import MoveableTile
 from src.game_object.finish_tile import FinishTile
+from src.game_object.destructible_tile import Destructible
 from src.game_object.switch_tile import Switch
 from src.game_object.portal import Portal
 from src.game_object.pressure_plate import PressurePlate
@@ -25,6 +26,7 @@ class TileFactory():
             'pickup_bomb': PickupBomb,
             'portal': Portal,
             'video_tape': VideoTape,
+            'destructible': Destructible
         }
 
         return tile_map[tile_type](**kwargs)

@@ -3,8 +3,8 @@ from src.movement_vector import vector
 import src.graphics as graphics
 
 class MoveableTile(Tile):
-    def __init__(self, x, y, width, height, solid, destructable, moveable=False, image=None):
-        Tile.__init__(self, x, y, width, height, solid, destructable, image)
+    def __init__(self, x, y, width, height, solid, moveable=False, image=None):
+        Tile.__init__(self, x, y, width, height, solid, image)
 
     def handle_collision(self, tile, player, level):
         if player.destination[0] == self.rect.x and player.destination[1] == self.rect.y:

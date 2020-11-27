@@ -7,15 +7,10 @@ class Tile(entity.Entity):
         It extends the entity class
         to add collision mechanics and various other bits"""
 
-    def __init__(self, x, y, width, height, solid, destructable, image=None):
+    def __init__(self, x, y, width, height, solid, image=None):
         entity.Entity.__init__(self, x, y, width, height, image)
         self.solid = bool(solid)
-        self.destructable = destructable
-        
         self.minimap_colour = colours.GREEN
 
         if self.solid:
             self.minimap_colour = colours.GREEN_BASE
-
-        if self.destructable:
-            self.minimap_colour = colours.BROWN_HIGHLIGHT

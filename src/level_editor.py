@@ -2,6 +2,7 @@ from src.game_object.switch_tile import Switch
 from src.game_object.pressure_plate import PressurePlate
 from src.game_object.triggerable import Triggerable
 from src.game_object.portal import Portal
+from src.game_object.destructible_tile import Destructible
 import src.game_object.actor as actor
 from pprint import pprint
 from pytmx.util_pygame import load_pygame
@@ -67,7 +68,6 @@ class LevelData():
         moveable = getattr(tile_object, 'moveable', False)
         state = getattr(tile_object, 'state', False)
         solid = getattr(tile_object, 'solid', False)
-        destructable = getattr(tile_object, 'destructable', False)
         lifespan = getattr(tile_object, 'lifespan', False)
         triggers = getattr(tile_object, 'triggers', False)
         triggered_id = getattr(tile_object, 'triggered_id', False)
@@ -86,7 +86,6 @@ class LevelData():
             'tile': {
                 **common,
                 'solid': solid,
-                'destructable':destructable,
             },
             'actor':{
                 **common,
@@ -105,25 +104,21 @@ class LevelData():
             'finish_tile': {
                 **common,
                 'solid': solid,
-                'destructable':destructable,
             },
             'moveable_tile': {
                 **common,
                 'solid': solid,
-                'destructable':destructable,
                 'moveable': moveable
             },
             'switch': {
                 **common,
                 'solid': solid,
-                'destructable':destructable,
                 'state': state,
                 'triggers': triggers,
             },
             'pressure_plate': {
                 **common,
                 'solid': solid,
-                'destructable':destructable,
                 'state': state,
                 'triggers': triggers,
                 'images': graphics.sprites['pressure_plate']['sprites']
@@ -131,7 +126,6 @@ class LevelData():
             'triggerable': {
                 **common,
                 'solid': solid,
-                'destructable':destructable,
                 'stateful':'pass',
                 'id': triggered_id
             },
@@ -140,9 +134,12 @@ class LevelData():
                 'portal_id': portal_id,
                 'travels_to_portal_id': travels_to_portal_id
             },
+            'destructible': {
+                **common,
+            },
             'video_tape': {
                 **common,
-            }
+            },
         }
 
         try:
