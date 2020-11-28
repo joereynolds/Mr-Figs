@@ -14,14 +14,20 @@ class MoveableTile(SolidTile):
         self.minimap_colour = src.colours.BROWN_BASE
 
         # A moveable tile cannot be pushed into any of these
-        self.disallowed_tiles = (SolidTile, Triggerable, Bomb)
+        self.disallowed_tiles = (SolidTile, Bomb)
 
     def handle_collision(self, tile, player, level):
         if player.destination[0] == self.rect.x and player.destination[1] == self.rect.y:
             target_x = self.rect.x + (vector[player.direction][0] * graphics.tile_width)
             target_y = self.rect.y + (vector[player.direction][1] * graphics.tile_width)
 
-            if isinstance(level.tiled_level.get_tile_from_object_layer(target_x, target_y), self.disallowed_tiles):
+            target_tile = level.tiled_level.get_tile_from_object_layer(target_x, target_y)
+
+
+            if isinstance(target_tile, Triggerable) and target_tile.solid:
+                return
+
+            if isinstance(target_tile, self.disallowed_tiles):
                 return
 
             # Bit of an edge case that needs refactoring.  Basically a bug was
