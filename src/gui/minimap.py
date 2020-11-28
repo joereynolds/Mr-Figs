@@ -9,8 +9,9 @@ import src.config as config
 
 class Minimap(Entity):
 
-    WIDTH = config.screen_width / 8
-    HEIGHT = config.screen_height / 8
+    # PRetty sure that although this is used,
+    # it's pointless
+    HEIGHT = 84
 
     SPRITE_WIDTH = 8
     SPRITE_HEIGHT = 8

@@ -38,8 +38,8 @@ class LevelBaseRenderer():
         self.minimap = Minimap(
             0,
             25,
-            Minimap.WIDTH,
-            Minimap.HEIGHT,
+            quarter_of_screen,
+            height,
             level,
             self.sidebar
         )
@@ -47,7 +47,7 @@ class LevelBaseRenderer():
         self.bomb_display = DataDisplay(
             0,
             200,
-            Minimap.WIDTH,
+            quarter_of_screen,
             Minimap.HEIGHT,
             self.sidebar,
             'BOMBS '
@@ -56,7 +56,7 @@ class LevelBaseRenderer():
         self.turn_display = DataDisplay(
             0,
             225,
-            Minimap.WIDTH,
+            quarter_of_screen,
             Minimap.HEIGHT,
             self.sidebar,
             'TURNS  TAKEN '
@@ -65,7 +65,7 @@ class LevelBaseRenderer():
         self.ace_turn_display = DataDisplay(
             0,
             250,
-            Minimap.WIDTH,
+            quarter_of_screen,
             Minimap.HEIGHT,
             self.sidebar,
             'TURNS  TO  ACE  '
@@ -78,7 +78,7 @@ class LevelBaseRenderer():
         self.level_name_display = DataDisplay(
             0,
             0,
-            Minimap.WIDTH,
+            quarter_of_screen,
             Minimap.HEIGHT,
             self.sidebar,
             os.path.basename(level_name)

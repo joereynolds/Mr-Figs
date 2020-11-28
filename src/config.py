@@ -5,8 +5,3 @@ spritesheet_location = './data/newtiledsheet.png'
 layout_location = './src/scenes/layouts/'
 level_location = './data/levels/tmx/'
 game_title = 'Mr Figs'
-
-#Magic numbers
-screen_width  = 960
-screen_height = 672
-
