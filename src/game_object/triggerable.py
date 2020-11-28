@@ -3,6 +3,7 @@ import pygame
 from src.game_object.solid_tile import SolidTile
 import src.graphics as graphics
 import src.entity as entity
+import src.colours
 
 class Triggerable(entity.Entity):
     """A Triggerable class is linked to the Switch or PressurePlate class. It takes a Switch/PressurePlate
@@ -27,7 +28,7 @@ class Triggerable(entity.Entity):
         self.stateful = stateful
         self.triggered_id = id
         self.images = graphics.sprites['laser']['sprites']
-        self.minimap_colour = ((255,0,0))
+        self.minimap_colour = src.colours.RED
 
         self.reverse_animation = False
 

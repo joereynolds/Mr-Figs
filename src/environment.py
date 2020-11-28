@@ -5,6 +5,7 @@ import src.scenes.startmenu as start_menu
 import src.scenes.game_over_menu as game_over_menu
 import src.scenes.levelselect as level_select
 import src.scenes.escapemenu_no_overlay as escape_menu
+import src.config as config
 from src.scenes.optionsmenu import OptionsMenu
 
 def create_level_list():
@@ -15,9 +16,8 @@ def create_level_list():
     are menus and other scenes *not* present in the Tiled editor.
     """
     level_dict = {}
-    level_dir = './data/levels/tmx/'
 
-    level_dict['tutorial-movement.tmx'] = LevelBase(level_dir + 'tutorial-movement.tmx')
+    level_dict['tutorial-movement.tmx'] = LevelBase(config.level_location + 'tutorial-movement.tmx')
     level_dict['start-menu'] = start_menu.StartMenu()
     level_dict['game-over-menu'] = game_over_menu.GameOverMenu()
     level_dict['escape-menu'] = escape_menu.EscapeMenuNoOverlay()

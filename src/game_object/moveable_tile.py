@@ -1,6 +1,8 @@
 from src.movement_vector import vector
 import src.graphics as graphics
 import src.entity as entity
+import src.colours
+
 
 from src.game_object.triggerable import Triggerable
 from src.game_object.solid_tile import SolidTile
@@ -9,7 +11,7 @@ from src.game_object.bomb import Bomb
 class MoveableTile(SolidTile):
     def __init__(self, x, y, width, height, image=None):
         SolidTile.__init__(self, x, y, width, height, image)
-        self.minimap_colour = (255,255,255)
+        self.minimap_colour = src.colours.BROWN_BASE
 
         # A moveable tile cannot be pushed into any of these
         self.disallowed_tiles = (SolidTile, Triggerable, Bomb)

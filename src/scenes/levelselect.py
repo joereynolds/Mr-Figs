@@ -138,7 +138,7 @@ class LevelMenu(scene_base.SceneBase):
         self.menu_items['components'].draw(self.surface)
 
         for component in self.menu_items['components']:
-            component.render_text()
+            component.render_text(color=colours.WHITE)
 
         if self.level_group_index > 0:
             self.menu_items['previous'].draw(self.surface)

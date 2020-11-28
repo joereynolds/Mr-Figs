@@ -1,10 +1,11 @@
 import src.entity as entity
 import src.environment
+import src.colours as colours
 
 class FinishTile(entity.Entity):
     def __init__(self, x, y, width, height, image=None):
         entity.Entity.__init__(self, x, y, width, height, image)
-        self.minimap_colour = ((255,255,255))
+        self.minimap_colour = colours.WHITE
 
     def handle_collision(self, tile, player, level):
         if player.destination[0] == self.rect.x and player.destination[1] == self.rect.y:

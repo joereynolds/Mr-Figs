@@ -1,5 +1,6 @@
 import src.environment
 import pygame
+import src.config as config
 from src.scenes.levelbase import LevelBase
 
 
@@ -11,7 +12,6 @@ class LevelSelectInput():
         @level_select_menu = The LevelMenu object
         """
         self.level_select_menu = level_select_menu
-        self.level_dir = './data/levels/tmx/'
 
         """
         When we press a number, it should take
@@ -46,7 +46,7 @@ class LevelSelectInput():
                 if event.key == key:
                     self.level_select_menu.switch_to_scene(
                             LevelBase(
-                                self.level_dir + self.level_select_menu.levels[self.level_select_menu.level_group_index][self.keys[key]],
+                                config.level_location + self.level_select_menu.levels[self.level_select_menu.level_group_index][self.keys[key]],
                             )
                         )
             if event.key == pygame.K_ESCAPE:
@@ -60,7 +60,7 @@ class LevelSelectInput():
             if event.type == pygame.MOUSEBUTTONDOWN:
                 level.on_click(
                     self.level_select_menu.switch_to_scene,
-                    LevelBase(self.level_dir + level.text.text)
+                    LevelBase(config.level_location + level.text.text)
                 )
         if event.type == pygame.MOUSEBUTTONDOWN:
             self.level_select_menu.menu_items['previous'].sprites()[0].on_click(

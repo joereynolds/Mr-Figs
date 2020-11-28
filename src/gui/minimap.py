@@ -12,8 +12,8 @@ class Minimap(Entity):
     WIDTH = config.screen_width / 8
     HEIGHT = config.screen_height / 8
 
-    SPRITE_WIDTH = 50
-    SPRITE_HEIGHT = 50
+    SPRITE_WIDTH = 8
+    SPRITE_HEIGHT = 8
 
     def __init__(self, x, y, width, height, level, surface, image=None):
         """
@@ -32,16 +32,14 @@ class Minimap(Entity):
     def populate_map(self):
         """
         Populates a minimap i.e. A smaller representation of the game itself.
-        Note the magic number '6'. This is just 48 (the size of our sprites) divided by 8
-        (A number that looked good enough)
         """
         self.map.empty()
         for sprite in self.tiled_level.sprites:
             minimap_sprite = Entity(
                 self.rect.x + sprite.rect.x / 2,
                 self.rect.y + sprite.rect.y / 2,
-                8,
-                8
+                Minimap.SPRITE_WIDTH,
+                Minimap.SPRITE_HEIGHT,
             )
             minimap_sprite.image.fill(sprite.minimap_colour)
 

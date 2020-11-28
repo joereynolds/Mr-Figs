@@ -1,5 +1,7 @@
 import src.graphics as graphics
+import src.colours
 from src.game_object.solid_tile import SolidTile
+
 
 # TODO
 # In this class it'd be good to have an 'off_image' and an 'on_image'
@@ -21,7 +23,7 @@ class Switch(SolidTile):
         self.state = state
         self.images = images
         self.triggers = triggers
-        self.minimap_colour = (255,0,0)
+        self.minimap_colour = src.colours.RED
 
     def update(self):
         self.change_state()

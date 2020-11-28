@@ -4,6 +4,7 @@ from src.game_object.moveable_tile import MoveableTile
 from src.movement_vector import vector
 import src.graphics as graphics
 import src.entity as entity
+import src.colours as colours
 
 class PressurePlate(entity.Entity):
     """The PressurePlate is a tile that can be either on or off.
@@ -19,7 +20,7 @@ class PressurePlate(entity.Entity):
         self.state = state
         self.images = images
         self.triggers = triggers
-        self.minimap_colour = (255,255,255)
+        self.minimap_colour = colours.BLUE_GLOW
 
     def update(self):
         self.change_state()
