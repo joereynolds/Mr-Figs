@@ -15,7 +15,7 @@ class LevelSelectItem(Clickable):
 
         map = pytmx.TiledMap(config.level_location + level_name)
 
-        level_name = map.properties.get('display_name', 'NEED A NAME')
+        level_name = map.properties.get('display_name', level_name + 'NEED A NAME')
 
 
         Clickable.__init__(self, x, y, width, height, level_name)

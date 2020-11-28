@@ -1,6 +1,7 @@
 import pygame
 
 import os
+import src.config as config
 import src.colours as colours
 import src.scenes.scenebase as scene_base
 import src.input_handlers.level_select_input_handler as input_handler
@@ -27,6 +28,7 @@ class LevelMenu(scene_base.SceneBase):
         }
 
         self.levels = self.get_levels()
+        self.pagination_max = len(self.levels) - 1
         self.add_levels_to_sprite_group(self.levels[self.level_group_index])
 
 
@@ -46,7 +48,7 @@ class LevelMenu(scene_base.SceneBase):
         )
 
     def go_forward(self):
-        if self.level_group_index < 2:
+        if self.level_group_index < self.pagination_max:
             self.level_group_index += 1
             self.add_levels_to_sprite_group(self.levels[self.level_group_index])
 
@@ -56,43 +58,13 @@ class LevelMenu(scene_base.SceneBase):
             self.add_levels_to_sprite_group(self.levels[self.level_group_index])
 
     def get_levels(self):
+
+        all_levels = os.listdir(config.level_location)
+
         levels = [
-            [
-                "tutorial-bombing.tmx",
-                "tutorial-movement.tmx",
-                "tutorial-picking-up-easy.tmx",
-                "tutorial-picking-up-easy.tmx",
-                "tutorial-picking-up-easy.tmx",
-                "tutorial-picking-up-easy.tmx",
-                "tutorial-picking-up-easy.tmx",
-                "tutorial-picking-up-easy.tmx",
-                "tutorial-picking-up-easy.tmx",
-                "tutorial-picking-up-easy.tmx",
-            ],
-            [
-                "tutorial-portals.tmx",
-                "tutorial-pressure-plate.tmx",
-                "tutorial-pushing.tmx",
-                "tutorial-pressure-plate.tmx",
-                "tutorial-pressure-plate.tmx",
-                "tutorial-pressure-plate.tmx",
-                "tutorial-pressure-plate.tmx",
-                "tutorial-pressure-plate.tmx",
-                "tutorial-pressure-plate.tmx",
-                "tutorial-pressure-plate.tmx",
-            ],
-            [
-                "lotta-lasers.tmx",
-                "sneaky-bastard.tmx",
-                "tutorial-picking-up.tmx",
-                "sneaky-bastard.tmx",
-                "sneaky-bastard.tmx",
-                "sneaky-bastard.tmx",
-                "sneaky-bastard.tmx",
-                "sneaky-bastard.tmx",
-                "sneaky-bastard.tmx",
-                "sneaky-bastard.tmx",
-            ]
+            all_levels[:10],
+            all_levels[10:20],
+            all_levels[10:20]
         ]
 
         return levels
@@ -143,5 +115,5 @@ class LevelMenu(scene_base.SceneBase):
         if self.level_group_index > 0:
             self.menu_items['previous'].draw(self.surface)
 
-        if self.level_group_index < 2:
+        if self.level_group_index < self.pagination_max:
             self.menu_items['next'].draw(self.surface)
