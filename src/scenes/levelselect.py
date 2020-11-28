@@ -64,7 +64,7 @@ class LevelMenu(scene_base.SceneBase):
         levels = [
             all_levels[:10],
             all_levels[10:20],
-            all_levels[10:20]
+            all_levels[20:]
         ]
 
         return levels

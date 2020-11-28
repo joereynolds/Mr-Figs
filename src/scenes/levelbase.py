@@ -1,5 +1,6 @@
 import src.graphics as graphics
 import src.level_editor as level_editor
+from src.game_object.video_tape import VideoTape
 import src.scenes.scenebase as scene_base
 import src.renderers.level_base_renderer as renderers
 import src.input_handlers.global_input_handler as input_handler
@@ -62,8 +63,15 @@ class LevelBase(scene_base.SceneBase):
         """Goes to the next scene. Note that SceneBase is
         sort of similar to a linked list in implementation.
         It is a linked list of scenes"""
+        # TODO - Pretty ugly
+        collected_tape = None
+        if self.tiled_level.properties.get('has_video_tape', False):
+            collected_tape = True
+            for sprite in self.sprites:
+                if isinstance(sprite, VideoTape):
+                    collected_tape = False
 
-        self.game_saver.save(self.file)
+        self.game_saver.save(self.file, self.player.turns_taken, collected_tape)
         self.next = LevelBase(
             self.tiled_level.properties['next_level']
         )

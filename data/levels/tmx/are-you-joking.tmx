@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="180">
+<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="181">
  <properties>
   <property name="display_name" value="Are You Joking?"/>
   <property name="next_level" value="./data/levels/tmx/sneaky-bastard.tmx"/>
@@ -9,90 +9,6 @@
  </properties>
  <tileset firstgid="1" name="newtiledsheet" tilewidth="16" tileheight="16" tilecount="171" columns="9">
   <image source="../../newtiledsheet.png" width="144" height="304"/>
-  <tile id="0">
-   <properties>
-   </properties>
-  </tile>
-  <tile id="1">
-   <properties>
-   </properties>
-  </tile>
-  <tile id="2">
-   <properties>
-   </properties>
-  </tile>
-  <tile id="3">
-   <properties>
-   </properties>
-  </tile>
-  <tile id="4">
-   <properties>
-   </properties>
-  </tile>
-  <tile id="9">
-   <properties>
-   </properties>
-  </tile>
-  <tile id="10">
-   <properties>
-   </properties>
-  </tile>
-  <tile id="11">
-   <properties>
-   </properties>
-  </tile>
-  <tile id="12">
-   <properties>
-   </properties>
-  </tile>
-  <tile id="13">
-   <properties>
-   </properties>
-  </tile>
-  <tile id="18">
-   <properties>
-   </properties>
-  </tile>
-  <tile id="19">
-   <properties>
-   </properties>
-  </tile>
-  <tile id="20">
-   <properties>
-   </properties>
-  </tile>
-  <tile id="27">
-   <properties>
-   </properties>
-  </tile>
-  <tile id="28">
-   <properties>
-   </properties>
-  </tile>
-  <tile id="29">
-   <properties>
-   </properties>
-  </tile>
-  <tile id="30">
-   <properties>
-   </properties>
-  </tile>
-  <tile id="31">
-   <properties>
-   </properties>
-  </tile>
-  <tile id="32">
-   <properties>
-   </properties>
-  </tile>
-  <tile id="54">
-   <properties>
-   </properties>
-  </tile>
-  <tile id="58">
-   <properties>
-   </properties>
-  </tile>
  </tileset>
  <layer id="1" name="background" width="20" height="20">
   <data encoding="csv">
@@ -225,6 +141,7 @@
     <property name="travels_to_portal_id" type="int" value="3"/>
    </properties>
   </object>
+  <object id="180" type="actor" gid="46" x="272" y="272" width="16" height="16"/>
  </objectgroup>
  <layer id="5" name="foreground" width="20" height="20">
   <data encoding="csv">

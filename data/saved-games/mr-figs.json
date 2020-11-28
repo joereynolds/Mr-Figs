@@ -1,1 +1,19 @@
-{"completed_levels": ["./data/levels/tmx/tutorial-movement.tmx", "./data/levels/tmx/tutorial-pushing.tmx", "./data/levels/tmx/tutorial-bombing.tmx", "./data/levels/tmx/tutorial-picking-up-easy.tmx", "./data/levels/tmx/tutorial-picking-up.tmx", "./data/levels/tmx/tutorial-pressure-plate.tmx", "./data/levels/tmx/6-level.tmx", "./data/levels/tmx/lotta-lasers.tmx", "./data/levels/tmx/tutorial-portals.tmx", "./data/levels/tmx/sneaky-bastard.tmx", "./data/levels/tmx/2-level.tmx", "./data/levels/tmx/lai-medium.tmx", "./data/levels/tmx/frankie-goes-to-hollywood.tmx", "./data/levels/tmx/L1-Walking.tmx", "./data/levels/tmx/L2-Walking2.tmx", "./data/levels/tmx/L3-Pushing.tmx", "./data/levels/tmx/L4-Pushing2.tmx", "./data/levels/tmx/L5-PushingS.tmx", "./data/levels/tmx/L6-PressurePlate1.tmx", "./data/levels/tmx/L7-PressurePlate2.tmx", "./data/levels/tmx/L8-PressurePlate3.tmx", "./data/levels/tmx/L9-PressurePlate4.tmx", "./data/levels/tmx/L10-PressurePlateS.tmx", "./data/levels/tmx/L11-Bomb.tmx", "./data/levels/tmx/L12-BombPlanting(Bomb=1).tmx", "./data/levels/tmx/L13-BombPicking.tmx", "./data/levels/tmx/L14-BombSwitch.tmx", "./data/levels/tmx/L15-BombBasicS.tmx", "./data/levels/tmx/L16-BombBasic1.tmx", "./data/levels/tmx/L17-BombBasic2(IntroToTimer).tmx", "./data/levels/tmx/L18-BombBasic3.tmx", "./data/levels/tmx/L19-BombBasic4.tmx", "./data/levels/tmx/L20-BombBasicS2.tmx", "./data/levels/tmx/L21-BombIntermediate1.tmx", "./data/levels/tmx/L22-BombIntermediate2.tmx", "./data/levels/tmx/L23-BombIntermediate3.tmx", "./data/levels/tmx/L24-BombIntermediate4.tmx"]}
+{
+    "./data/levels/tmx/L1-Walking.tmx": {
+        "completed_level": true,
+        "turns_taken": 4
+    },
+    "./data/levels/tmx/L2-Walking2.tmx": {
+        "completed_level": true,
+        "turns_taken": 9
+    },
+    "./data/levels/tmx/L3-Pushing.tmx": {
+        "completed_level": true,
+        "turns_taken": 6
+    },
+    "./data/levels/tmx/L4-Pushing2.tmx": {
+        "collected_tape": true,
+        "completed_level": true,
+        "turns_taken": 21
+    }
+}
