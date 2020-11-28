@@ -25,6 +25,6 @@ class DataDisplay(Entity):
         if a position is supplied.
         @position = Position for the text to be rendered (optional)
         """
-        font_object = pygame.font.Font('./data/font-arcade-classic.ttf', 20)
+        font_object = pygame.font.Font('./data/font-arcade-classic.ttf', 32)
         rendered_text = font_object.render(self.text.text + str(display_this), False, colours.WHITE)
         self.surface.blit(rendered_text, (self.x, self.y))

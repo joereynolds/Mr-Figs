@@ -4,6 +4,7 @@ Renders out a minimap of the game.
 import pygame
 
 from src.entity import Entity
+import src.graphics as graphics
 import src.colours as colours
 import src.config as config
 
@@ -12,9 +13,6 @@ class Minimap(Entity):
     # PRetty sure that although this is used,
     # it's pointless
     HEIGHT = 84
-
-    SPRITE_WIDTH = 8
-    SPRITE_HEIGHT = 8
 
     def __init__(self, x, y, width, height, level, surface, image=None):
         """
@@ -37,10 +35,10 @@ class Minimap(Entity):
         self.map.empty()
         for sprite in self.tiled_level.sprites:
             minimap_sprite = Entity(
-                self.rect.x + sprite.rect.x / 2,
-                self.rect.y + sprite.rect.y / 2,
-                Minimap.SPRITE_WIDTH,
-                Minimap.SPRITE_HEIGHT,
+                self.rect.x + sprite.rect.x,
+                self.rect.y + sprite.rect.y,
+                graphics.tile_width,
+                graphics.tile_height
             )
             minimap_sprite.image.fill(sprite.minimap_colour)
 

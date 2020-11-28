@@ -1,8 +1,6 @@
 import pygame
 import src.config as config
 
-#TODO this file is disgusting
-spritesheet = pygame.image.load(config.spritesheet_location)
 
 tile_width = 16
 tile_height = 16
@@ -11,6 +9,11 @@ def get_window_surface():
     # return pygame.display.set_mode((640, 480), )
     # return pygame.display.set_mode((1280, 720), )
     return pygame.display.set_mode((0, 0), pygame.NOFRAME)
+
+# TODO - implement this properly
+def get_suitable_font_size():
+    width, height = pygame.display.get_window_size()
+    return 32
 
 def grid(x, y):
     """
@@ -23,6 +26,7 @@ def subsurf(grid_pos):
     """
     Quick wrapper around pygame's subsurface so we don't keep having to pass in the width and height
     """
+    spritesheet = pygame.image.load(config.spritesheet_location)
     return spritesheet.subsurface(grid_pos[0], grid_pos[1], tile_width, tile_height)
 
 

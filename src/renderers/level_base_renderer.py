@@ -48,7 +48,7 @@ class LevelBaseRenderer():
             0,
             200,
             quarter_of_screen,
-            Minimap.HEIGHT,
+            height,
             self.sidebar,
             'BOMBS '
         )
@@ -57,7 +57,7 @@ class LevelBaseRenderer():
             0,
             225,
             quarter_of_screen,
-            Minimap.HEIGHT,
+            height,
             self.sidebar,
             'TURNS  TAKEN '
         )
@@ -66,7 +66,7 @@ class LevelBaseRenderer():
             0,
             250,
             quarter_of_screen,
-            Minimap.HEIGHT,
+            height,
             self.sidebar,
             'TURNS  TO  ACE  '
         )
@@ -79,7 +79,7 @@ class LevelBaseRenderer():
             0,
             0,
             quarter_of_screen,
-            Minimap.HEIGHT,
+            height,
             self.sidebar,
             os.path.basename(level_name)
         )
