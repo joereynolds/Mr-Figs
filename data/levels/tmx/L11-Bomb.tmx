@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.4" tiledversion="2020.10.30" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="111">
+ <properties>
+  <property name="next_level" value="./data/levels/tmx/L12-BombPlanting(Bomb=1).tmx"/>
+  <property name="player_bomb_count" value="1"/>
+ </properties>
+ <tileset firstgid="1" name="newtiledsheet" tilewidth="16" tileheight="16" tilecount="171" columns="9">
+  <image source="../../newtiledsheet.png" width="144" height="304"/>
+  <tile id="0">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value="1"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value="1"/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value="1"/>
+   </properties>
+  </tile>
+  <tile id="3">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value="1"/>
+   </properties>
+  </tile>
+  <tile id="4">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value=""/>
+   </properties>
+  </tile>
+  <tile id="9">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value="1"/>
+   </properties>
+  </tile>
+  <tile id="10">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value="1"/>
+   </properties>
+  </tile>
+  <tile id="11">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value="1"/>
+   </properties>
+  </tile>
+  <tile id="12">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value="1"/>
+   </properties>
+  </tile>
+  <tile id="13">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value=""/>
+   </properties>
+  </tile>
+  <tile id="18">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value=""/>
+   </properties>
+  </tile>
+  <tile id="19">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value=""/>
+   </properties>
+  </tile>
+  <tile id="20">
+   <properties>
+    <property name="destructable" type="bool" value="true"/>
+    <property name="solid" value="1"/>
+   </properties>
+  </tile>
+  <tile id="27">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value="1"/>
+   </properties>
+  </tile>
+  <tile id="28">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value="1"/>
+   </properties>
+  </tile>
+  <tile id="29">
+   <properties>
+    <property name="destructable" value="1"/>
+    <property name="solid" value="1"/>
+   </properties>
+  </tile>
+  <tile id="30">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value="1"/>
+   </properties>
+  </tile>
+  <tile id="31">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value=""/>
+   </properties>
+  </tile>
+  <tile id="32">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value=""/>
+   </properties>
+  </tile>
+  <tile id="54">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value="True"/>
+   </properties>
+  </tile>
+  <tile id="58">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value=""/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer id="1" name="background" width="14" height="10">
+  <data encoding="csv">
+27,27,27,27,27,27,27,27,22,22,22,22,22,22,
+27,27,27,27,27,27,27,27,22,22,22,22,22,22,
+27,19,20,19,20,19,20,27,22,22,22,22,22,22,
+27,27,36,27,19,27,27,27,27,22,22,22,22,22,
+27,27,27,27,27,27,27,27,27,22,22,22,22,22,
+27,27,27,27,27,27,27,27,27,22,22,22,22,22,
+27,27,27,27,27,27,27,27,22,22,22,22,22,22,
+22,27,22,22,27,27,27,22,22,22,22,22,22,22,
+22,22,22,22,22,22,22,22,22,22,22,22,22,22,
+22,22,22,22,22,22,22,22,22,22,22,22,22,22
+</data>
+ </layer>
+ <objectgroup id="4" name="objects">
+  <object id="83" type="finish_tile" gid="32" x="112" y="48" width="16" height="16"/>
+  <object id="84" type="actor" gid="46" x="16" y="48" width="16" height="16"/>
+  <object id="86" type="tile" gid="1" x="16" y="32" width="16" height="16"/>
+  <object id="87" type="tile" gid="1" x="32" y="32" width="16" height="16"/>
+  <object id="88" type="tile" gid="1" x="48" y="32" width="16" height="16"/>
+  <object id="89" type="tile" gid="1" x="64" y="32" width="16" height="16"/>
+  <object id="90" type="tile" gid="1" x="64" y="32" width="16" height="16"/>
+  <object id="91" type="tile" gid="1" x="80" y="32" width="16" height="16"/>
+  <object id="92" type="tile" gid="1" x="80" y="32" width="16" height="16"/>
+  <object id="93" type="tile" gid="1" x="96" y="32" width="16" height="16"/>
+  <object id="94" type="tile" gid="10" x="16" y="64" width="16" height="16"/>
+  <object id="95" type="tile" gid="10" x="48" y="64" width="16" height="16"/>
+  <object id="96" type="tile" gid="10" x="48" y="64" width="16" height="16"/>
+  <object id="97" type="tile" gid="10" x="32" y="64" width="16" height="16"/>
+  <object id="99" type="tile" gid="10" x="80" y="64" width="16" height="16"/>
+  <object id="101" type="tile" gid="10" x="96" y="64" width="16" height="16"/>
+  <object id="102" type="tile" gid="11" x="0" y="48" width="16" height="16"/>
+  <object id="103" type="tile" gid="10" x="64" y="80" width="16" height="16"/>
+  <object id="104" type="tile" gid="40" x="64" y="64" width="16" height="16"/>
+  <object id="105" type="tile" gid="1" x="112" y="32" width="16" height="16"/>
+  <object id="106" type="tile" gid="10" x="112" y="64" width="16" height="16"/>
+  <object id="107" type="tile" gid="10" x="48" y="80" width="16" height="16"/>
+  <object id="108" type="tile" gid="10" x="80" y="80" width="16" height="16"/>
+  <object id="109" type="tile" gid="43" x="64" y="64" width="16" height="16"/>
+  <object id="110" type="bomb" gid="39" x="64" y="64" width="16" height="16"/>
+ </objectgroup>
+</map>
