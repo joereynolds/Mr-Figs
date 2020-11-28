@@ -17,14 +17,21 @@ class StartMenu(scene_base.SceneBase):
         self.image = pygame.image.load('./data/background-scene.png')
 
         size = pygame.display.get_window_size()
-        center_x = size[0] // 2
+        width = size[0]
+        height = size[1]
+
+        offset = 256
+        spacing = 64
+        button_width = width // 4
+        button_height = height // 12
+
         self.image = pygame.transform.scale(self.image, (size[0], size[1]))
 
         self.menu_items = {
-            'start-button': pygame.sprite.GroupSingle(Clickable(center_x, 100, 100, 50, '[S]TART GAME')),
-            'level-select': pygame.sprite.GroupSingle(Clickable(center_x, 200, 100, 50, '[L]EVEL SELECT')),
-            'options': pygame.sprite.GroupSingle(Clickable(center_x, 300, 100, 50, '[O]PTIONS')),
-            'quit': pygame.sprite.GroupSingle(Clickable(center_x, 400, 100, 50, '[Q]UIT'))
+            'start-button': pygame.sprite.GroupSingle(Clickable(offset, offset, button_width, button_height, '[S]TART GAME')),
+            'level-select': pygame.sprite.GroupSingle(Clickable(offset, offset + button_height + spacing, button_width, button_height, '[L]EVEL SELECT')),
+            'options': pygame.sprite.GroupSingle(Clickable(offset, offset + (button_height * 2) + (spacing * 2), button_width, button_height, '[O]PTIONS')),
+            'quit': pygame.sprite.GroupSingle(Clickable(offset, offset + (button_height * 3) + (spacing * 3), button_width, button_height, '[Q]UIT'))
 
         }
 
