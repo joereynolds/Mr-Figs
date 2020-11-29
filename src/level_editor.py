@@ -66,7 +66,7 @@ class LevelData():
         y = tile_object.y
 
         # Safe fallbacks just in case objects don't have certain attributes
-        state = getattr(tile_object, 'state', False)
+        state = getattr(tile_object, 'state', 0)
         lifespan = getattr(tile_object, 'lifespan', False)
         triggers = getattr(tile_object, 'triggers', False)
         triggered_id = getattr(tile_object, 'triggered_id', False)
@@ -118,7 +118,7 @@ class LevelData():
             },
             'triggerable': {
                 **common,
-                'stateful':'pass',
+                'stateful': 'pass',
                 'id': triggered_id
             },
             'portal': {

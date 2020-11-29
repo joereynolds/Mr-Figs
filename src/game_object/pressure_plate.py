@@ -40,11 +40,9 @@ class PressurePlate(entity.Entity):
         self.state = 0
 
     def handle_collision(self, tile, player, level):
+        self.turn_off()
         for _tile in level.tiled_level.sprites:
-            if isinstance(_tile, (MoveableTile)):
-                if pygame.sprite.collide_rect(self, _tile):
-                    self.turn_on()
-                else:
-                    self.turn_off()
+            if isinstance(_tile, (MoveableTile)) and pygame.sprite.collide_rect(self, _tile):
+                self.turn_on()
         if pygame.sprite.collide_rect(player, self):
             self.turn_on()
