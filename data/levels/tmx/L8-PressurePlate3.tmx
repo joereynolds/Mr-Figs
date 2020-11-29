@@ -149,9 +149,6 @@
  </layer>
  <objectgroup id="4" name="objects">
   <object id="83" type="actor" gid="46" x="16" y="48" width="16" height="16"/>
-  <object id="84" type="moveable_tile" gid="45" x="48" y="48" width="16" height="16"/>
-  <object id="85" type="moveable_tile" gid="45" x="48" y="64" width="16" height="16"/>
-  <object id="86" type="moveable_tile" gid="45" x="112" y="48" width="16" height="16"/>
   <object id="87" type="pressure_plate" gid="54" x="192" y="48" width="16" height="16">
    <properties>
     <property name="triggers" type="int" value="1"/>
@@ -234,5 +231,8 @@
    </properties>
   </object>
   <object id="145" type="finish_tile" gid="32" x="176" y="112" width="16" height="16"/>
+  <object id="84" type="moveable_tile" gid="45" x="48" y="48" width="16" height="16"/>
+  <object id="85" type="moveable_tile" gid="45" x="48" y="64" width="16" height="16"/>
+  <object id="86" type="moveable_tile" gid="45" x="112" y="48" width="16" height="16"/>
  </objectgroup>
 </map>

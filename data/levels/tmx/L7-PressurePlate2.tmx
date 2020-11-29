@@ -160,8 +160,6 @@
   </object>
   <object id="140" type="finish_tile" gid="32" x="128" y="80" width="16" height="16"/>
   <object id="142" type="actor" gid="46" x="32" y="48" width="16" height="16"/>
-  <object id="143" type="moveable_tile" gid="45" x="64" y="48" width="16" height="16"/>
-  <object id="144" type="moveable_tile" gid="45" x="64" y="64" width="16" height="16"/>
   <object id="145" type="triggerable" gid="17" x="96" y="48" width="16" height="16">
    <properties>
     <property name="triggered_id" type="int" value="1"/>
@@ -184,6 +182,8 @@
   <object id="156" type="tile" gid="11" x="48" y="64" width="16" height="16"/>
   <object id="157" type="tile" gid="11" x="48" y="80" width="16" height="16"/>
   <object id="158" type="tile" gid="11" x="96" y="80" width="16" height="16"/>
+  <object id="143" type="moveable_tile" gid="45" x="64" y="48" width="16" height="16"/>
+  <object id="144" type="moveable_tile" gid="45" x="64" y="64" width="16" height="16"/>
   <object id="159" type="tile" gid="2" x="128" y="64" width="16" height="16"/>
   <object id="160" type="tile" gid="2" x="160" y="48" width="16" height="16"/>
   <object id="162" type="tile" gid="2" x="80" y="64" width="16" height="16"/>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="2020.10.30" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="108">
+<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="108">
  <properties>
   <property name="next_level" value="./data/levels/tmx/L18-BombBasic3.tmx"/>
   <property name="player_bomb_count" value="1"/>
@@ -149,7 +149,11 @@
  </layer>
  <objectgroup id="4" name="objects">
   <object id="83" type="moveable_tile" gid="45" x="32" y="48" width="16" height="16"/>
-  <object id="84" type="bomb" gid="39" x="48" y="64" width="16" height="16"/>
+  <object id="84" type="bomb" gid="39" x="48" y="64" width="16" height="16">
+   <properties>
+    <property name="lifespan" type="int" value="3"/>
+   </properties>
+  </object>
   <object id="85" type="destructible" gid="21" x="128" y="48" width="16" height="16"/>
   <object id="87" type="finish_tile" gid="32" x="144" y="48" width="16" height="16"/>
   <object id="88" type="tile" gid="1" x="16" y="32" width="16" height="16"/>
