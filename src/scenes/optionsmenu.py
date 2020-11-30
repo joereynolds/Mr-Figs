@@ -4,6 +4,7 @@ import src.colours as colours
 import src.scenes.scenebase as scene_base
 import src.input_handlers.start_menu_input_handler as input_handler
 from src.gui.clickable import Clickable
+from src.gui.checkbox import Checkbox
 
 class OptionsMenu(scene_base.SceneBase):
     """Options menu for toggling music etc..."""
@@ -22,7 +23,8 @@ class OptionsMenu(scene_base.SceneBase):
         center_x = size[0] // 2
 
         self.components.add([
-            Clickable(center_x, 100, 100, 50, '[M]USIC ON/OFF'),
+            Checkbox(center_x, 0, 50, 50, 0),
+            Clickable(center_x, 100, 100, 50, 'CLEAR GAME DATA'),
             Clickable(center_x, 200, 100, 50, '[B]ACK'),
         ])
 
