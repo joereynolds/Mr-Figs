@@ -4,6 +4,7 @@ import src.colours as colours
 import src.scenes.scenebase as scene_base
 import src.input_handlers.start_menu_input_handler as input_handler
 from src.gui.clickable import Clickable
+from src.resolution_asset_sizer import ResolutionAssetSizer
 
 class StartMenu(scene_base.SceneBase):
     """Initial start menu at the start of the game"""
@@ -19,9 +20,10 @@ class StartMenu(scene_base.SceneBase):
         size = pygame.display.get_window_size()
         width = size[0]
         height = size[1]
+        asset_sizer = ResolutionAssetSizer()
 
-        offset = 256
-        spacing = 64
+        offset = asset_sizer.get_button_offset(size)
+        spacing = asset_sizer.get_button_spacing(size)
         button_width = width // 4
         button_height = height // 12
 
