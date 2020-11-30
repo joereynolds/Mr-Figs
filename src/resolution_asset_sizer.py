@@ -5,6 +5,25 @@ class ResolutionAssetSizer():
     def __init__(self):
         self.available_resolutions = ((640, 480))
 
+    def get_nearest_available_resolution(self, screen_size):
+        resolutions = [
+            (640, 480),
+            (1280, 960),
+        ]
+
+        if screen_size in resolutions:
+            print('size is ' + str(screen_size))
+            return screen_size
+
+        for resolution in resolutions:
+            if resolution[0] >= screen_size[0] and resolution[1] >= screen_size[1]:
+                print('size is ' + str(resolution))
+                return resolution;
+
+        print('resolution not found in available_resolutions setting default scaling using 1280x960')
+        return (1280, 960)
+
+
     def get_font_size(self, screen_size):
         font_size_map = {
             (640, 480): 18

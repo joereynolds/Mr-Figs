@@ -22,6 +22,8 @@ class StartMenu(scene_base.SceneBase):
         height = size[1]
         asset_sizer = ResolutionAssetSizer()
 
+        asset_sizer.get_nearest_available_resolution(size)
+
         offset = asset_sizer.get_button_offset(size)
         spacing = asset_sizer.get_button_spacing(size)
         button_width = width // 4
