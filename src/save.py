@@ -35,3 +35,14 @@ class SaveGame():
 
         with open(SaveGame.FULL_PATH, 'w') as saved_game:
             saved_game.write(json.dumps(game_data))
+
+    def toggle_music_option(self):
+        with open(SaveGame.FULL_PATH) as saved_game:
+            game_data = json.load(saved_game)
+
+        settings = game_data['settings']
+        settings['music'] = not settings['music']
+
+        with open(SaveGame.FULL_PATH, 'w') as saved_game:
+            saved_game.write(json.dumps(game_data))
+

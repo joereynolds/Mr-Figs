@@ -41,8 +41,9 @@ class OptionsInputHandler():
                 self.level_select_menu.go_backward()
 
         if event.type == pygame.MOUSEBUTTONDOWN:
-            self.level_select_menu.menu_items['next'].sprites()[0].on_click(
-                self.level_select_menu.go_forward,
+            self.level_select_menu.menu_items['toggle_music'].sprite.on_click(
+                self.level_select_menu.menu_items['toggle_music'].sprite.toggle,
+                2 # TODO - placeholder until I get it to actually toggle music value
             )
 
 

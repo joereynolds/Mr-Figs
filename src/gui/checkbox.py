@@ -1,5 +1,6 @@
 import pygame
 from src.gui.clickable import Clickable
+import src.colours as colours
     
 class Checkbox(Clickable):
 
@@ -7,5 +8,14 @@ class Checkbox(Clickable):
         Clickable.__init__(self, x, y, width, height, '')
         self.state = 0
 
-    def toggle(self):
+        self.toggle_colours = {
+            0: colours.BLACK,
+            1: colours.RED
+        }
+
+    def toggle(self, function, *args):
         self.state = not self.state
+
+    def render(self):
+        self.image.fill(self.toggle_colours[self.state])
+

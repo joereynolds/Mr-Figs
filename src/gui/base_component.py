@@ -14,7 +14,7 @@ class BaseComponent(pygame.sprite.Sprite):
         self.rect.y = y
         self.text = text_element.TextElement(text=string)
 
-    def render(self, position):
+    def render(self, position=False):
         """A wrapper to encapsulate all rendering"""
         self.render_text(position)
 
