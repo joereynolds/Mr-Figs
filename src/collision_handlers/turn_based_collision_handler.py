@@ -23,7 +23,6 @@ class TurnBasedCollisionHandler():
 
         for bomb in self.player.bombs:
             bomb.bomb_collisions(self.player.bombs)
-            # bomb.handle_collision(self.player)
             self.bomb_particle_collision(bomb)
 
     def bomb_particle_collision(self, bomb: bomb.Bomb):

@@ -4,6 +4,8 @@ from src.game_object.triggerable import Triggerable
 from src.game_object.portal import Portal
 from src.game_object.destructible_tile import Destructible
 from src.game_object.solid_tile import SolidTile
+from src.game_object.path import Path
+from src.game_object.platform import Platform
 import src.game_object.actor as actor
 from pprint import pprint
 from pytmx.util_pygame import load_pygame
@@ -35,6 +37,8 @@ class LevelData():
             map_layer=self.map_layer_for_camera
         )
 
+        self.paths = {}
+
         # Would've thought .5 would make it smaller but actually makes it bigger?
         self.map_layer_for_camera.zoom = .5
 
@@ -43,6 +47,7 @@ class LevelData():
         self.get_map_data()
         self.link_doors_and_switches()
         self.link_portals()
+        self.link_platforms_to_paths()
 
     def get_map_data(self):
         """Iterates through the TiledMap file adding tiles to
@@ -51,10 +56,18 @@ class LevelData():
         factory = TileFactory()
         
         try:
+            for tile_object in self._map.get_layer_by_name('paths'):
+                self.paths[tile_object.path_id] = Path(
+                    tile_object.x, 
+                    tile_object.y, 
+                    tile_object.points, 
+                    tile_object.path_id
+                )
             for tile_object in self._map.get_layer_by_name('objects'):
                 surface = self._map.get_tile_image_by_gid(tile_object.gid)
                 obj = self._create_tile(tile_object, surface, factory)
                 self.sprites.add(obj)
+            
         except ValueError:
             print('this scene doesnt have objects')
 
@@ -72,6 +85,7 @@ class LevelData():
         triggered_id = getattr(tile_object, 'triggered_id', False)
         portal_id = getattr(tile_object, 'portal_id', False)
         travels_to_portal_id = getattr(tile_object, 'travels_to_portal_id', False)
+        follows_path_id = getattr(tile_object, 'follows_path_id', False)
 
         common = {
             'x': x,
@@ -126,6 +140,10 @@ class LevelData():
                 'portal_id': portal_id,
                 'travels_to_portal_id': travels_to_portal_id
             },
+            'platform': {
+                **common,
+                'follows_path_id': follows_path_id
+            },
             'destructible': {
                 **common,
             },
@@ -137,7 +155,12 @@ class LevelData():
         try:
             return factory.build(tile_object.type, **type_map[tile_object.type])
         except KeyError:
-            print('You passed an invalid key to the factory for level: ' + self.tmx_file)
+            print('You passed an invalid key "' + tile_object.type + '" to the factory for level: ' + self.tmx_file)
+
+    def link_platforms_to_paths(self):
+        for sprite in self.sprites:
+            if isinstance(sprite, Platform):
+                sprite.follows_path = self.paths[sprite.follows_path_id]
 
     def link_portals(self):
         """Makes sure that the switches are passed to the correct
