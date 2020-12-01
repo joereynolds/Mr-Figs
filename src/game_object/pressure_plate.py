@@ -1,6 +1,7 @@
 import pygame
 
 from src.game_object.moveable_tile import MoveableTile
+from src.game_object.bomb import Bomb
 from src.movement_vector import vector
 import src.graphics as graphics
 import src.entity as entity
@@ -42,7 +43,7 @@ class PressurePlate(entity.Entity):
     def handle_collision(self, tile, player, level):
         self.turn_off()
         for _tile in level.tiled_level.sprites:
-            if isinstance(_tile, (MoveableTile)) and pygame.sprite.collide_rect(self, _tile):
+            if isinstance(_tile, (MoveableTile, Bomb)) and pygame.sprite.collide_rect(self, _tile):
                 self.turn_on()
         if pygame.sprite.collide_rect(player, self):
             self.turn_on()

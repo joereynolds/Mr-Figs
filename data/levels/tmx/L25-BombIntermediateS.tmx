@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="2020.10.30" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="145">
+<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="145">
  <properties>
   <property name="next_level" value="./data/levels/tmx/L26-BombAdvanced1.tmx"/>
   <property name="player_bomb_count" value="1"/>
  </properties>
- <tileset firstgid="1" name="newtiledsheet" tilewidth="16" tileheight="16" tilecount="171" columns="9">
-  <image source="../../newtiledsheet.png" width="144" height="304"/>
+ <tileset firstgid="1" name="newtiledsheet" tilewidth="16" tileheight="16" tilecount="180" columns="9">
+  <image source="../../newtiledsheet.png" width="144" height="320"/>
   <tile id="0">
    <properties>
     <property name="destructable" value=""/>
@@ -156,11 +156,31 @@
   <object id="91" type="destructible" gid="21" x="48" y="80" width="16" height="16"/>
   <object id="93" type="destructible" gid="21" x="96" y="112" width="16" height="16"/>
   <object id="94" type="destructible" gid="21" x="96" y="128" width="16" height="16"/>
-  <object id="95" type="bomb" gid="37" x="96" y="80" width="16" height="16"/>
-  <object id="96" type="bomb" gid="37" x="144" y="32" width="16" height="16"/>
-  <object id="97" type="bomb" gid="37" x="48" y="32" width="16" height="16"/>
-  <object id="98" type="bomb" gid="37" x="48" y="128" width="16" height="16"/>
-  <object id="99" type="bomb" gid="37" x="144" y="128" width="16" height="16"/>
+  <object id="95" type="bomb" gid="37" x="96" y="80" width="16" height="16">
+   <properties>
+    <property name="lifespan" type="int" value="5"/>
+   </properties>
+  </object>
+  <object id="96" type="bomb" gid="37" x="144" y="32" width="16" height="16">
+   <properties>
+    <property name="lifespan" type="int" value="5"/>
+   </properties>
+  </object>
+  <object id="97" type="bomb" gid="37" x="48" y="32" width="16" height="16">
+   <properties>
+    <property name="lifespan" type="int" value="5"/>
+   </properties>
+  </object>
+  <object id="98" type="bomb" gid="37" x="48" y="128" width="16" height="16">
+   <properties>
+    <property name="lifespan" type="int" value="5"/>
+   </properties>
+  </object>
+  <object id="99" type="bomb" gid="37" x="144" y="128" width="16" height="16">
+   <properties>
+    <property name="lifespan" type="int" value="5"/>
+   </properties>
+  </object>
   <object id="100" type="actor" gid="46" x="80" y="96" width="16" height="16"/>
   <object id="101" type="finish_tile" gid="32" x="160" y="80" width="16" height="16"/>
   <object id="102" type="tile" gid="1" x="48" y="16" width="16" height="16"/>

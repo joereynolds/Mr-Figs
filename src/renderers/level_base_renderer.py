@@ -6,6 +6,7 @@ import src.colours as colours
 import src.config as config
 import src.graphics as graphics
 from src.entity import Entity
+from src.effects import Fader
 
 class LevelBaseRenderer():
 
@@ -13,6 +14,8 @@ class LevelBaseRenderer():
         self.level = level
         self.colour = colours.WHITE
         self.bomb_count = len(self.level.player.bombs)
+        # self.fader = Fader(self.level)
+        print(self.level.file)
 
         width, height = pygame.display.get_window_size()
         quarter_of_screen = width // 4

@@ -2,7 +2,7 @@
 <map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="138">
  <properties>
   <property name="next_level" value="./data/levels/tmx/L15-BombBasicS.tmx"/>
-  <property name="player_bomb_count" value="1"/>
+  <property name="player_bomb_count" value="0"/>
  </properties>
  <tileset firstgid="1" name="newtiledsheet" tilewidth="16" tileheight="16" tilecount="180" columns="9">
   <image source="../../newtiledsheet.png" width="144" height="320"/>
@@ -174,7 +174,11 @@
   <object id="126" type="triggerable" gid="17" x="112" y="96" width="16" height="16"/>
   <object id="127" type="tile" gid="10" x="112" y="112" width="16" height="16"/>
   <object id="128" type="tile" gid="10" x="128" y="112" width="16" height="16"/>
-  <object id="129" type="pickup_bomb" gid="37" x="48" y="64" width="16" height="16"/>
+  <object id="129" type="bomb" gid="37" x="48" y="64" width="16" height="16">
+   <properties>
+    <property name="lifespan" type="int" value="5"/>
+   </properties>
+  </object>
   <object id="130" type="tile" gid="1" x="128" y="48" width="16" height="16"/>
   <object id="131" type="tile" gid="1" x="144" y="48" width="16" height="16"/>
   <object id="132" type="tile" gid="2" x="144" y="64" width="16" height="16"/>

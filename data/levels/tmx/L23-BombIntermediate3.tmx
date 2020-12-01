@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="2020.10.30" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="143">
+<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="143">
  <properties>
   <property name="next_level" value="./data/levels/tmx/L24-BombIntermediate4.tmx"/>
   <property name="player_bomb_count" value="1"/>
  </properties>
- <tileset firstgid="1" name="newtiledsheet" tilewidth="16" tileheight="16" tilecount="171" columns="9">
-  <image source="../../newtiledsheet.png" width="144" height="304"/>
+ <tileset firstgid="1" name="newtiledsheet" tilewidth="16" tileheight="16" tilecount="180" columns="9">
+  <image source="../../newtiledsheet.png" width="144" height="320"/>
   <tile id="0">
    <properties>
     <property name="destructable" value=""/>
@@ -151,8 +151,6 @@
   <object id="84" type="destructible" gid="21" x="128" y="64" width="16" height="16"/>
   <object id="85" type="destructible" gid="21" x="80" y="32" width="16" height="16"/>
   <object id="88" type="destructible" gid="21" x="112" y="32" width="16" height="16"/>
-  <object id="89" type="moveable_tile" gid="45" x="128" y="32" width="16" height="16"/>
-  <object id="90" type="moveable_tile" gid="45" x="64" y="32" width="16" height="16"/>
   <object id="91" type="pressure_plate" gid="54" x="144" y="32" width="16" height="16"/>
   <object id="92" type="pressure_plate" gid="54" x="48" y="32" width="16" height="16"/>
   <object id="97" type="triggerable" gid="17" x="144" y="64" width="16" height="16"/>
@@ -160,6 +158,8 @@
   <object id="100" type="finish_tile" gid="32" x="192" y="64" width="16" height="16"/>
   <object id="101" type="destructible" gid="21" x="96" y="80" width="16" height="16"/>
   <object id="104" type="destructible" gid="21" x="96" y="64" width="16" height="16"/>
+  <object id="89" type="moveable_tile" gid="45" x="128" y="32" width="16" height="16"/>
+  <object id="90" type="moveable_tile" gid="45" x="64" y="32" width="16" height="16"/>
   <object id="108" type="tile" gid="10" x="32" y="80" width="16" height="16"/>
   <object id="109" type="tile" gid="10" x="48" y="80" width="16" height="16"/>
   <object id="110" type="tile" gid="10" x="64" y="80" width="16" height="16"/>
