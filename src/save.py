@@ -46,3 +46,10 @@ class SaveGame():
         with open(SaveGame.FULL_PATH, 'w') as saved_game:
             saved_game.write(json.dumps(game_data))
 
+    def has_video_for_level(self, level):
+        with open(SaveGame.FULL_PATH) as saved_game:
+            game_data = json.load(saved_game)
+
+        if level in game_data:
+            if 'collected_tape' in game_data[level] and game_data[level]['collected_tape'] == True:
+                return True
