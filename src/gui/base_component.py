@@ -19,7 +19,7 @@ class BaseComponent(pygame.sprite.Sprite):
             pygame.display.get_window_size()
         )
 
-    def render(self, position):
+    def render(self, position=False):
         """A wrapper to encapsulate all rendering"""
         self.render_text(position)
 
