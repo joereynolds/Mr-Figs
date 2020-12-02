@@ -39,8 +39,14 @@ class Platform(entity.Entity):
         if self.rect.x == target_x and self.rect.y == target_y:
             self.processed_points.append((target_x, target_y))
 
+    # def update(self):
+    #     self.move(delta_time)
+
     def has_reached_to_destination(self):
         return self.rect.x == self.path.points[-1][0] and self.rect.y == self.path.points[-1][1]
+
+    def has_reached_from_destination(self):
+        return self.rect.x == self.path.points[0][0] and self.rect.y == self.path.points[0][1]
 
     def handle_collision(self, tile, player, level):
         if self.has_reached_to_destination():

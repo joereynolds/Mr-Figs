@@ -74,7 +74,6 @@ class Actor(entity.Entity):
                 self.tiled_level.get_tile_all_layers(target_x, target_y)
             ) :
             return
-
         else:
             if target_x < self.rect.x:
                 self.rect.x -= self.speed
@@ -106,7 +105,6 @@ class Actor(entity.Entity):
         destination to x:160 and y:320 but instead to x * 160 * 16 and y * 320 * 16
         AKA batshit nonsense.
         """
-        print('moving to:', x, y)
         if self.is_valid_move(x, y):
             self.destination[0] = self.rect.x + (x * self.distance)
             self.destination[1] = self.rect.y + (y * self.distance)

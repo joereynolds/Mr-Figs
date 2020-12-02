@@ -58,6 +58,14 @@ class LevelData():
 
         
         try:
+            for tile_object in self._map.get_layer_by_name('objects'):
+                surface = self._map.get_tile_image_by_gid(tile_object.gid)
+                obj = self._create_tile(tile_object, surface, factory)
+                self.sprites.add(obj)
+        except ValueError:
+            print('this scene doesnt have objects')
+
+        try:
             for tile_object in self._map.get_layer_by_name('paths'):
                 self.paths[tile_object.path_id] = Path(
                     tile_object.x, 
@@ -65,12 +73,9 @@ class LevelData():
                     tile_object.points, 
                     tile_object.path_id
                 )
-            for tile_object in self._map.get_layer_by_name('objects'):
-                surface = self._map.get_tile_image_by_gid(tile_object.gid)
-                obj = self._create_tile(tile_object, surface, factory)
-                self.sprites.add(obj)
-        except ValueError:
-            print('this scene doesnt have objects')
+        except (AttributeError, ValueError):
+            print('Attempted to iterate through non-existent path layer')
+
 
 
     def _create_tile(self, tile_object, surface, factory):
