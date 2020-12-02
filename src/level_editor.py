@@ -25,6 +25,7 @@ class LevelData():
     def __init__(self, file, screen: pygame.Surface):
         self.tmx_file = file
 
+
         self._map = load_pygame(self.tmx_file)
         self.map_data_for_camera = pyscroll.TiledMapData(self._map)
 
@@ -54,6 +55,7 @@ class LevelData():
         the self.sprites sprite group
         """
         factory = TileFactory()
+
         
         try:
             for tile_object in self._map.get_layer_by_name('paths'):
@@ -67,7 +69,6 @@ class LevelData():
                 surface = self._map.get_tile_image_by_gid(tile_object.gid)
                 obj = self._create_tile(tile_object, surface, factory)
                 self.sprites.add(obj)
-            
         except ValueError:
             print('this scene doesnt have objects')
 
@@ -160,7 +161,7 @@ class LevelData():
     def link_platforms_to_paths(self):
         for sprite in self.sprites:
             if isinstance(sprite, Platform):
-                sprite.follows_path = self.paths[sprite.follows_path_id]
+                sprite.path = self.paths[sprite.follows_path_id]
 
     def link_portals(self):
         """Makes sure that the switches are passed to the correct
