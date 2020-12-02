@@ -1,6 +1,6 @@
-python3-xlib
 wheel
 pygame==2.0.0
 pytmx
 pyflakes
 mypy
+pyscroll
