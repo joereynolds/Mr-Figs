@@ -15,6 +15,7 @@ class Checkbox(Clickable):
 
     def toggle(self, function, *args):
         self.state = not self.state
+        function(*args)
 
     def render(self):
         self.image.fill(self.toggle_colours[self.state])
