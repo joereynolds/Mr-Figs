@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="137">
+<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="138">
  <properties>
   <property name="next_level" value="./data/levels/tmx/L15-BombBasicS.tmx"/>
   <property name="player_bomb_count" value="1"/>
  </properties>
- <tileset firstgid="1" name="newtiledsheet" tilewidth="16" tileheight="16" tilecount="171" columns="9">
-  <image source="../../newtiledsheet.png" width="144" height="304"/>
+ <tileset firstgid="1" name="newtiledsheet" tilewidth="16" tileheight="16" tilecount="180" columns="9">
+  <image source="../../newtiledsheet.png" width="144" height="320"/>
   <tile id="0">
    <properties>
     <property name="destructable" value=""/>
@@ -78,12 +78,6 @@
     <property name="solid" value=""/>
    </properties>
   </tile>
-  <tile id="20">
-   <properties>
-    <property name="destructable" type="bool" value="true"/>
-    <property name="solid" value="1"/>
-   </properties>
-  </tile>
   <tile id="27">
    <properties>
     <property name="destructable" value=""/>
@@ -136,7 +130,7 @@
  <layer id="1" name="background" width="14" height="10">
   <data encoding="csv">
 27,27,27,27,27,27,27,27,27,27,22,22,22,22,
-27,27,27,27,27,27,21,19,20,19,22,22,22,22,
+27,27,27,27,27,27,20,19,20,19,22,22,22,22,
 27,27,27,27,27,27,1,27,22,22,22,22,22,22,
 27,19,20,19,20,19,20,19,20,22,22,22,22,22,
 27,27,27,27,27,20,19,27,27,22,22,22,22,22,
@@ -187,6 +181,6 @@
   <object id="133" type="tile" gid="2" x="144" y="80" width="16" height="16"/>
   <object id="134" type="tile" gid="10" x="112" y="80" width="16" height="16"/>
   <object id="135" type="tile" gid="1" x="112" y="48" width="16" height="16"/>
-  <object id="136" type="destructible" gid="21" x="96" y="32" width="16" height="16"/>
+  <object id="137" name="rock" type="destructible" gid="21" x="96" y="32" width="16" height="16"/>
  </objectgroup>
 </map>

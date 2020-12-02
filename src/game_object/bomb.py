@@ -159,7 +159,7 @@ class Bomb(Entity):
             # Bit of a hack but if 5 is our max lifespan for a bomb then it's impossible to be
             # travelling to it and for it to have that lifespan since we would have moved
             # and decreased the bomb's lifespan
-            if self.lifespan != 0 and self.lifespan < 5:
+            if self.lifespan < 5:
                 pygame.sprite.Sprite.kill(self)
                 player.add_bomb()
 

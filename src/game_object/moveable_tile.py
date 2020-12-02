@@ -6,6 +6,7 @@ import src.colours
 
 from src.game_object.triggerable import Triggerable
 from src.game_object.solid_tile import SolidTile
+from src.game_object.finish_tile import FinishTile
 from src.game_object.bomb import Bomb
 
 class MoveableTile(SolidTile):
@@ -14,7 +15,7 @@ class MoveableTile(SolidTile):
         self.minimap_colour = src.colours.BROWN_BASE
 
         # A moveable tile cannot be pushed into any of these
-        self.disallowed_tiles = (SolidTile, Bomb)
+        self.disallowed_tiles = (SolidTile, Bomb, FinishTile)
 
     def handle_collision(self, tile, player, level):
         if player.destination[0] == self.rect.x and player.destination[1] == self.rect.y:
@@ -23,7 +24,8 @@ class MoveableTile(SolidTile):
 
             target_tile = level.tiled_level.get_tile_from_object_layer(target_x, target_y)
 
-
+            # Don't go through lasers if they're on
+            # TODO - This should rely on teh state attribute instead of solid
             if isinstance(target_tile, Triggerable) and target_tile.solid:
                 return
 

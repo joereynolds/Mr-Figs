@@ -4,8 +4,8 @@
   <property name="next_level" value="./data/levels/tmx/L10-PressurePlateS.tmx"/>
   <property name="player_bomb_count" value="1"/>
  </properties>
- <tileset firstgid="1" name="newtiledsheet" tilewidth="16" tileheight="16" tilecount="171" columns="9">
-  <image source="../../newtiledsheet.png" width="144" height="304"/>
+ <tileset firstgid="1" name="newtiledsheet" tilewidth="16" tileheight="16" tilecount="180" columns="9">
+  <image source="../../newtiledsheet.png" width="144" height="320"/>
   <tile id="0">
    <properties>
     <property name="destructable" value=""/>
@@ -220,9 +220,9 @@
   </object>
   <object id="235" type="video_tape" gid="46" x="176" y="144" width="16" height="16"/>
   <object id="237" type="tile" gid="11" x="48" y="64" width="16" height="16"/>
-  <object id="238" type="moveable_tile" gid="45" x="176" y="80" width="16" height="16"/>
   <object id="239" type="pressure_plate" gid="54" x="192" y="80" width="16" height="16"/>
   <object id="240" type="triggerable" gid="16" x="160" y="144" width="16" height="16"/>
+  <object id="238" type="moveable_tile" gid="45" x="176" y="80" width="16" height="16"/>
   <object id="183" type="moveable_tile" gid="45" x="80" y="48" width="16" height="16"/>
   <object id="184" type="moveable_tile" gid="45" x="112" y="80" width="16" height="16"/>
   <object id="185" type="moveable_tile" gid="45" x="80" y="112" width="16" height="16"/>

@@ -31,7 +31,6 @@ class LevelMenu(scene_base.SceneBase):
         self.pagination_max = len(self.levels) - 1
         self.add_levels_to_sprite_group(self.levels[self.level_group_index])
 
-
         self.menu_items['previous'].add(
             Clickable(25, self.height // 2, 50, 50, 'FIRST 10')
         )
@@ -111,7 +110,7 @@ class LevelMenu(scene_base.SceneBase):
         self.menu_items['components'].draw(self.surface)
 
         for component in self.menu_items['components']:
-            component.render_text(color=colours.WHITE)
+            component.render()
 
         if self.level_group_index > 0:
             self.menu_items['previous'].draw(self.surface)

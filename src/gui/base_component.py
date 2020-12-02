@@ -1,5 +1,6 @@
 import pygame
 import src.gui.text_element as text_element
+from src.resolution_asset_sizer import ResolutionAssetSizer
 
 
 class BaseComponent(pygame.sprite.Sprite):
@@ -13,6 +14,10 @@ class BaseComponent(pygame.sprite.Sprite):
         self.rect.x = x
         self.rect.y = y
         self.text = text_element.TextElement(text=string)
+        self.asset_sizer = ResolutionAssetSizer()
+        self.font_size = self.asset_sizer.get_font_size(
+            pygame.display.get_window_size()
+        )
 
     def render(self, position=False):
         """A wrapper to encapsulate all rendering"""
@@ -30,6 +35,6 @@ class BaseComponent(pygame.sprite.Sprite):
         if color:
             self.text.set_color(color)
 
-        font_object = pygame.font.Font(None, 20)
+        font_object = pygame.font.Font(None, self.font_size)
         rendered_text = font_object.render(self.text.text, False, self.text.color)
         self.image.blit(rendered_text, self.text.position)
