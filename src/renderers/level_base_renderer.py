@@ -6,7 +6,7 @@ import src.colours as colours
 import src.config as config
 import src.graphics as graphics
 from src.entity import Entity
-from src.effects import Fader
+# from src.effects import Fader
 
 class LevelBaseRenderer():
 
