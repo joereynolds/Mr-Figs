@@ -56,6 +56,7 @@ class Actor(entity.Entity):
         self.moving = False
         self.turns_taken = 0
         self.is_teleporting = False
+        self.has_finished_level = False
         self.minimap_colour = colours.BLUE_HIGHLIGHT
 
     def move(self, delta_time):

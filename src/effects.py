@@ -1,4 +1,8 @@
-class FadeOut():
+import pygame
+import math
+import src.colours as colours
+
+class Fade():
     """
     Fades out an element. This class should be passed 
     through to the component that requires fading
@@ -7,19 +11,19 @@ class FadeOut():
     https://github.com/iminurnamez/pyroller/edit/master/data/components/flair_pieces.py
     """
 
-    def __init__(self,surface, fade_speed=0.1):
-        self.parent_surface = surface
-        self.alpha = self.parent_surface.get_alpha()
-        self.faded= False
+    def __init__(self):
+        self.faded = False
+        self.veil = pygame.Surface(pygame.display.get_window_size()).convert()
+        self.veil.fill(colours.BLACK)
 
-    def update(self, delta_time):
+    def update(self, delta_time, ratio):
         """
         Gradually increment the alpha value of the parent's
         surface.
         Once we're fully faded out, we're finished
+
+        TODO - Consider delta time eventually
         """
-        self.alpha = min(self.alpha + self.fade_speed * delta_time, 255)
-        if self.alpha == 255:
-            self.faded = True
-        self.parent_surface.set_alpha(self.alpha)    
+        # TODO - this fades out nicely but I have no idea why
+        self.veil.set_alpha(1)
 
