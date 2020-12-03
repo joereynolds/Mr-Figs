@@ -49,6 +49,8 @@ class Platform(entity.Entity):
 
         player.rect.x = self.rect.x
         player.rect.y = self.rect.y
+        player.destination[0] = self.rect.x
+        player.destination[1] = self.rect.y
 
         if self.rect.x == target_x and self.rect.y == target_y:
             self.processed_points.append((target_x, target_y))
@@ -65,17 +67,17 @@ class Platform(entity.Entity):
             self.destination = self.path.points[0]
 
     def handle_collision(self, tile, player, level):
-        if self.has_reached_destination():
-            # self.toggle_destination()
+        if self.has_reached_destination() and not self.player_on_platform:
             self.processed_points = []
+            self.toggle_destination()
 
         if player.destination[0] == self.rect.x and player.destination[1] == self.rect.y:
             self.player_on_platform = True
             player.moving = False
+        else: 
+            self.player_on_platform = False
 
         if self.player_on_platform and not self.has_reached_destination():
             for point in self.path.points:
                 if point not in self.processed_points:
                     self.move_to(point[0], point[1], player)
-                    player.destination[0] = point[0]
-                    player.destination[1] = point[1]
