@@ -58,7 +58,8 @@ class LevelMenu(scene_base.SceneBase):
 
     def get_levels(self):
 
-        all_levels = os.listdir(config.level_location)
+        # TODO - sort by level number not string
+        all_levels = sorted(os.listdir(config.level_location))
 
         levels = [
             all_levels[:10],
