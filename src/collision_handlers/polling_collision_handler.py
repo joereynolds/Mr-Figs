@@ -4,6 +4,7 @@
 
 from src.game_object.pressure_plate import PressurePlate
 from src.game_object.triggerable import Triggerable
+from src.game_object.platform import Platform
 
 
 class PollingCollisionHandler():
@@ -17,5 +18,5 @@ class PollingCollisionHandler():
 
     def handle_collisions(self):
         for tile in self.level.tiled_level.sprites:
-            if isinstance(tile, (PressurePlate, Triggerable)):
+            if isinstance(tile, (PressurePlate, Triggerable, Platform)):
                 tile.handle_collision(None, self.player, self.level)
