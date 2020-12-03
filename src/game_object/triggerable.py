@@ -28,6 +28,7 @@ class Triggerable(entity.Entity):
         self.stateful = stateful
         self.triggered_id = id
         self.images = graphics.sprites['laser']['sprites']
+
         self.minimap_colour = src.colours.RED
 
         self.reverse_animation = False
@@ -41,9 +42,11 @@ class Triggerable(entity.Entity):
         if self.stateful.state == 1:
             self.solid = False
             self.image = self.images[0]
+            self.minimap_colour = src.colours.BLUE_BASE
         if self.stateful.state == 0:
             self.solid = True
             self.image = graphics.sprites['laser']['sprites'][self.last_image]
+            self.minimap_colour = src.colours.RED
 
     def update(self):
         self.trigger()
