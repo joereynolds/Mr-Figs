@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="143">
+<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="144">
  <properties>
+  <property name="has_video_tape" type="bool" value="true"/>
   <property name="next_level" value="./data/levels/tmx/L24-BombIntermediate4.tmx"/>
   <property name="player_bomb_count" value="1"/>
  </properties>
@@ -140,7 +141,7 @@
 27,27,27,27,27,19,20,19,22,22,22,22,22,22,
 27,27,19,20,19,20,19,20,19,19,20,19,22,22,
 27,27,27,27,27,27,20,27,22,22,22,22,22,22,
-27,27,27,27,27,27,46,27,22,22,22,22,22,22,
+27,27,27,27,27,27,20,27,22,22,22,22,22,22,
 27,27,27,27,27,27,27,27,22,22,22,22,22,22,
 22,22,27,27,27,27,27,27,22,22,22,22,22,22,
 22,22,27,27,27,22,27,27,22,22,22,22,22,22,
@@ -195,5 +196,6 @@
   <object id="140" type="tile" gid="28" x="80" y="80" width="16" height="16"/>
   <object id="141" type="tile" gid="29" x="112" y="80" width="16" height="16"/>
   <object id="142" type="actor" gid="46" x="32" y="64" width="16" height="16"/>
+  <object id="143" type="video_tape" gid="66" x="96" y="96" width="16" height="16"/>
  </objectgroup>
 </map>
