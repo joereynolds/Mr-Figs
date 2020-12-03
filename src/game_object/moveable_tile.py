@@ -8,6 +8,7 @@ from src.game_object.triggerable import Triggerable
 from src.game_object.solid_tile import SolidTile
 from src.game_object.finish_tile import FinishTile
 from src.game_object.bomb import Bomb
+from src.game_object.portal import Portal
 
 class MoveableTile(SolidTile):
     def __init__(self, x, y, width, height, image=None):
@@ -30,6 +31,13 @@ class MoveableTile(SolidTile):
                 return
 
             if isinstance(target_tile, self.disallowed_tiles):
+                return
+
+            if isinstance(target_tile, Portal):
+                # TODO - there exists a bug here. Basically we need to do what
+                # we're doing below and update the data
+                self.rect.x = target_tile.destination_portal.rect.x
+                self.rect.y = target_tile.destination_portal.rect.y
                 return
 
             # Bit of an edge case that needs refactoring.  Basically a bug was

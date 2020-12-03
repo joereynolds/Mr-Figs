@@ -71,7 +71,6 @@ class Platform(entity.Entity):
         self.destination = self.path.points[-1]
 
     def handle_collision(self, tile, player, level):
-        print('my destination is', self.destination[0], self.destination[1])
         if self.has_reached_destination() and not self.player_on_platform:
             self.processed_points = []
             self.toggle_destination()
