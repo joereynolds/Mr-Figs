@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="241">
+<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="242">
  <properties>
+  <property name="has_video_tape" type="bool" value="true"/>
   <property name="next_level" value="./data/levels/tmx/L10-PressurePlateS.tmx"/>
   <property name="player_bomb_count" value="0"/>
  </properties>
@@ -218,7 +219,6 @@
     <property name="triggered_id" type="int" value="3"/>
    </properties>
   </object>
-  <object id="235" type="video_tape" gid="46" x="176" y="144" width="16" height="16"/>
   <object id="237" type="tile" gid="11" x="48" y="64" width="16" height="16"/>
   <object id="239" type="pressure_plate" gid="54" x="192" y="80" width="16" height="16"/>
   <object id="240" type="triggerable" gid="16" x="160" y="144" width="16" height="16"/>
@@ -226,5 +226,6 @@
   <object id="183" type="moveable_tile" gid="45" x="80" y="48" width="16" height="16"/>
   <object id="184" type="moveable_tile" gid="45" x="112" y="80" width="16" height="16"/>
   <object id="185" type="moveable_tile" gid="45" x="80" y="112" width="16" height="16"/>
+  <object id="241" type="video_tape" gid="66" x="176" y="144" width="16" height="16"/>
  </objectgroup>
 </map>

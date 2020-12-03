@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="105">
+<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="106">
  <properties>
+  <property name="has_video_tape" type="bool" value="true"/>
   <property name="next_level" value="./data/levels/tmx/L19-BombBasic4.tmx"/>
   <property name="player_bomb_count" value="0"/>
  </properties>
@@ -140,7 +141,7 @@
 27,19,20,19,20,19,20,27,27,27,22,22,22,22,
 27,27,27,20,19,27,27,27,27,22,27,22,22,22,
 27,27,27,27,10,27,27,27,27,27,22,27,22,22,
-27,27,27,27,19,20,46,27,27,22,27,27,22,22,
+27,27,27,27,19,19,19,27,27,22,27,27,22,22,
 27,27,27,27,27,27,27,27,27,27,22,22,22,22,
 22,22,22,22,27,27,27,27,27,22,22,22,22,22,
 22,22,22,22,22,22,22,22,22,22,22,22,22,22,
@@ -180,5 +181,6 @@
    </properties>
   </object>
   <object id="103" type="destructible" gid="21" x="80" y="96" width="16" height="16"/>
+  <object id="105" type="video_tape" gid="66" x="96" y="96" width="16" height="16"/>
  </objectgroup>
 </map>

@@ -7,12 +7,17 @@ import pytmx
 import src.config as config
 import src.colours as colours
 
+from src.save import SaveGame
 from src.gui.clickable import Clickable
 
 class LevelSelectItem(Clickable):
 
     def __init__(self, x: int, y: int, width: int, height: int, level_name: str, level_number: str, image = './data/placeholder-card-image.png'):
         map = pytmx.TiledMap(config.level_location + level_name)
+
+        self.game_data = SaveGame()
+        self.has_video_tape = self.game_data.has_video_for_level(config.level_location + level_name)
+
         level_name = map.properties.get('display_name', level_name + 'NEED A NAME')
 
         Clickable.__init__(self, x, y, width, height, level_name)
@@ -31,3 +36,10 @@ class LevelSelectItem(Clickable):
         rendered_text = font_object.render('[' + self.level_number + ']', False, colours.WHITE)
         self.image.blit(rendered_text, (5, self.height - 25))
         self.render_text(color=colours.WHITE)
+
+        if self.has_video_tape:
+            font_object = pygame.font.Font(None, self.font_size)
+            rendered_text = font_object.render('[TAPE]', False, colours.RED)
+            self.image.blit(rendered_text, (self.width - 75, self.height - 25))
+            self.render_text(color=colours.WHITE)
+
