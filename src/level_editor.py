@@ -167,6 +167,8 @@ class LevelData():
         for sprite in self.sprites:
             if isinstance(sprite, Platform):
                 sprite.path = self.paths[sprite.follows_path_id]
+                # Set the destination of our platform to the last coordinate in the path
+                sprite.destination = self.paths[sprite.follows_path_id].points[-1]
 
     def link_portals(self):
         """Makes sure that the switches are passed to the correct
