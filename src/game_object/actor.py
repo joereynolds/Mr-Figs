@@ -63,6 +63,7 @@ class Actor(entity.Entity):
         we can stop moving. Note that we need to use delta-time otherwise we'll get
         differing results from pc to pc. Also without delta time we can't use fancy
         schmancy interpolation effects"""
+
         
         target_x = self.destination[0]
         target_y = self.destination[1]
@@ -73,7 +74,6 @@ class Actor(entity.Entity):
                 self.tiled_level.get_tile_all_layers(target_x, target_y)
             ) :
             return
-
         else:
             if target_x < self.rect.x:
                 self.rect.x -= self.speed
@@ -94,8 +94,17 @@ class Actor(entity.Entity):
             self.moving = False
 
     def set_destination(self, x, y):
-        """Set's the next destination that our sprite is going to be
-        moving/interpolating to"""
+        """
+        Set's the next destination that our sprite is going to be
+        moving/interpolating to.
+
+        This method name is a bit misleading, it doesn't take an x and a y.
+        It takes a vector of 0 or 1 for both x and y.
+
+        Passing something like player.set_destination(160, 320) will not set the
+        destination to x:160 and y:320 but instead to x * 160 * 16 and y * 320 * 16
+        AKA batshit nonsense.
+        """
         if self.is_valid_move(x, y):
             self.destination[0] = self.rect.x + (x * self.distance)
             self.destination[1] = self.rect.y + (y * self.distance)
