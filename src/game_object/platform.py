@@ -47,6 +47,9 @@ class Platform(entity.Entity):
         elif target_y > self.rect.y:
             self.rect.y += self.speed
 
+        player.rect.x = self.rect.x
+        player.rect.y = self.rect.y
+
         if self.rect.x == target_x and self.rect.y == target_y:
             self.processed_points.append((target_x, target_y))
 
@@ -68,9 +71,6 @@ class Platform(entity.Entity):
 
         if player.destination[0] == self.rect.x and player.destination[1] == self.rect.y:
             self.player_on_platform = True
-            # This is horrible, we shouldn't have to manually set this stuff
-            player.rect.x = self.rect.x
-            player.rect.y = self.rect.y
             player.moving = False
 
         if self.player_on_platform and not self.has_reached_destination():
