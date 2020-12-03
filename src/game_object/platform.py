@@ -63,10 +63,15 @@ class Platform(entity.Entity):
         When we arrive at our TO destination, if we get back on
         the platform, we want to be taken to our FROM destination.
         """
+
         if self.destination == self.path.points[-1]:
             self.destination = self.path.points[0]
+            return
+
+        self.destination = self.path.points[-1]
 
     def handle_collision(self, tile, player, level):
+        print('my destination is', self.destination[0], self.destination[1])
         if self.has_reached_destination() and not self.player_on_platform:
             self.processed_points = []
             self.toggle_destination()

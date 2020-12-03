@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="186">
+<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="187">
  <properties>
   <property name="next_level" value="./data/levels/tmx/L2-Walking2.tmx"/>
   <property name="player_bomb_count" value="0"/>
@@ -148,17 +148,17 @@
 </data>
  </layer>
  <objectgroup id="6" name="paths">
-  <object id="151" name="platform-path" type="path" x="112" y="32">
-   <properties>
-    <property name="path_id" type="int" value="1"/>
-   </properties>
-   <polyline points="0,0 16,0 32,0"/>
-  </object>
   <object id="163" name="platform-path" type="path" x="64" y="48">
    <properties>
     <property name="path_id" type="int" value="2"/>
    </properties>
    <polyline points="0,0 0,32"/>
+  </object>
+  <object id="186" type="path" x="112" y="32">
+   <properties>
+    <property name="path_id" type="int" value="1"/>
+   </properties>
+   <polyline points="0,0 32,0"/>
   </object>
  </objectgroup>
  <objectgroup id="4" name="objects">
