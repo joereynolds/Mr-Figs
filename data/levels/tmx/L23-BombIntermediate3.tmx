@@ -152,26 +152,10 @@
   <object id="84" type="destructible" gid="21" x="128" y="64" width="16" height="16"/>
   <object id="85" type="destructible" gid="21" x="80" y="32" width="16" height="16"/>
   <object id="88" type="destructible" gid="21" x="112" y="32" width="16" height="16"/>
-  <object id="91" type="pressure_plate" gid="54" x="144" y="32" width="16" height="16">
-   <properties>
-    <property name="triggers" type="int" value="2"/>
-   </properties>
-  </object>
-  <object id="92" type="pressure_plate" gid="54" x="48" y="32" width="16" height="16">
-   <properties>
-    <property name="triggers" type="int" value="1"/>
-   </properties>
-  </object>
-  <object id="97" type="triggerable" gid="17" x="144" y="64" width="16" height="16">
-   <properties>
-    <property name="triggered_id" type="int" value="1"/>
-   </properties>
-  </object>
-  <object id="98" type="triggerable" gid="17" x="160" y="64" width="16" height="16">
-   <properties>
-    <property name="triggered_id" type="int" value="2"/>
-   </properties>
-  </object>
+  <object id="91" type="pressure_plate" gid="54" x="144" y="32" width="16" height="16"/>
+  <object id="92" type="pressure_plate" gid="54" x="48" y="32" width="16" height="16"/>
+  <object id="97" type="triggerable" gid="17" x="144" y="64" width="16" height="16"/>
+  <object id="98" type="triggerable" gid="17" x="160" y="64" width="16" height="16"/>
   <object id="100" type="finish_tile" gid="32" x="192" y="64" width="16" height="16"/>
   <object id="101" type="destructible" gid="21" x="96" y="80" width="16" height="16"/>
   <object id="104" type="destructible" gid="21" x="96" y="64" width="16" height="16"/>

@@ -3,7 +3,7 @@
  <properties>
   <property name="display_name" value="sneaky bastard dlfjg"/>
   <property name="next_level" value="./data/levels/tmx/L33.tmx"/>
-  <property name="player_bomb_count" value="1"/>
+  <property name="player_bomb_count" value="0"/>
  </properties>
  <tileset firstgid="1" name="newtiledsheet" tilewidth="16" tileheight="16" tilecount="180" columns="9">
   <image source="../../newtiledsheet.png" width="144" height="320"/>

@@ -3,7 +3,7 @@
  <properties>
   <property name="display_name" value="sneaky bastard dlfjg"/>
   <property name="next_level" value="./data/levels/tmx/L29-BombAdvanced4.tmx"/>
-  <property name="player_bomb_count" value="1"/>
+  <property name="player_bomb_count" value="0"/>
  </properties>
  <tileset firstgid="1" name="newtiledsheet" tilewidth="16" tileheight="16" tilecount="180" columns="9">
   <image source="../../newtiledsheet.png" width="144" height="320"/>
@@ -69,15 +69,6 @@
     <property name="triggers" type="int" value="7"/>
    </properties>
   </object>
-  <object id="198" type="moveable_tile" gid="45" x="64" y="48" width="16" height="16"/>
-  <object id="199" type="moveable_tile" gid="45" x="64" y="80" width="16" height="16"/>
-  <object id="200" type="moveable_tile" gid="45" x="64" y="112" width="16" height="16"/>
-  <object id="201" type="moveable_tile" gid="45" x="96" y="112" width="16" height="16"/>
-  <object id="202" type="moveable_tile" gid="45" x="96" y="80" width="16" height="16"/>
-  <object id="203" type="moveable_tile" gid="45" x="96" y="48" width="16" height="16"/>
-  <object id="204" type="moveable_tile" gid="45" x="128" y="48" width="16" height="16"/>
-  <object id="205" type="moveable_tile" gid="45" x="128" y="80" width="16" height="16"/>
-  <object id="206" type="moveable_tile" gid="45" x="128" y="112" width="16" height="16"/>
   <object id="207" type="finish_tile" gid="33" x="160" y="144" width="16" height="16"/>
   <object id="208" type="triggerable" gid="17" x="176" y="112" width="16" height="16">
    <properties>
@@ -175,5 +166,14 @@
   <object id="265" type="tile" gid="2" x="240" y="112" width="16" height="16"/>
   <object id="266" type="tile" gid="2" x="240" y="128" width="16" height="16"/>
   <object id="267" type="tile" gid="2" x="240" y="144" width="16" height="16"/>
+  <object id="198" type="moveable_tile" gid="45" x="64" y="48" width="16" height="16"/>
+  <object id="199" type="moveable_tile" gid="45" x="64" y="80" width="16" height="16"/>
+  <object id="200" type="moveable_tile" gid="45" x="64" y="112" width="16" height="16"/>
+  <object id="201" type="moveable_tile" gid="45" x="96" y="112" width="16" height="16"/>
+  <object id="202" type="moveable_tile" gid="45" x="96" y="80" width="16" height="16"/>
+  <object id="203" type="moveable_tile" gid="45" x="96" y="48" width="16" height="16"/>
+  <object id="204" type="moveable_tile" gid="45" x="128" y="48" width="16" height="16"/>
+  <object id="205" type="moveable_tile" gid="45" x="128" y="80" width="16" height="16"/>
+  <object id="206" type="moveable_tile" gid="45" x="128" y="112" width="16" height="16"/>
  </objectgroup>
 </map>

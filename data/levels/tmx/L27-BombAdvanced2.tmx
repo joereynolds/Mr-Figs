@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="258">
+<map version="1.4" tiledversion="2020.10.30" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="258">
  <properties>
   <property name="display_name" value="sneaky bastard dlfjg"/>
   <property name="next_level" value="./data/levels/tmx/L28-BombAdvanced3.tmx"/>
@@ -49,7 +49,6 @@
   <object id="205" type="actor" gid="46" x="80" y="96" width="16" height="16"/>
   <object id="206" type="pickup_bomb" gid="43" x="96" y="96" width="16" height="16"/>
   <object id="207" type="pickup_bomb" gid="43" x="96" y="32" width="16" height="16"/>
-  <object id="210" type="moveable_tile" gid="45" x="160" y="80" width="16" height="16"/>
   <object id="211" type="pressure_plate" gid="54" x="176" y="80" width="16" height="16">
    <properties>
     <property name="triggers" type="int" value="1"/>
@@ -104,5 +103,6 @@
   <object id="255" type="tile" gid="10" x="192" y="160" width="16" height="16"/>
   <object id="256" type="tile" gid="11" x="160" y="144" width="16" height="16"/>
   <object id="257" type="tile" gid="11" x="160" y="128" width="16" height="16"/>
+  <object id="210" type="moveable_tile" gid="45" x="160" y="80" width="16" height="16"/>
  </objectgroup>
 </map>

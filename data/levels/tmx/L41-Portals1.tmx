@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.4" tiledversion="2020.10.30" orientation="orthogonal" renderorder="right-down" width="20" height="15" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="210">
+ <properties>
+  <property name="display_name" value="sneaky bastard dlfjg"/>
+  <property name="next_level" value="./data/levels/tmx/L42-Portals2.tmx"/>
+  <property name="player_bomb_count" value="0"/>
+ </properties>
+ <tileset firstgid="1" name="newtiledsheet" tilewidth="16" tileheight="16" tilecount="180" columns="9">
+  <image source="../../newtiledsheet.png" width="144" height="320"/>
+ </tileset>
+ <layer id="1" name="background" width="20" height="15">
+  <data encoding="csv">
+27,27,27,27,27,27,27,27,27,27,27,22,22,22,36,36,36,36,36,36,
+27,27,27,27,27,27,27,27,27,27,27,27,27,36,36,36,36,36,36,36,
+27,27,19,20,19,36,27,36,36,27,20,19,20,22,36,36,36,36,36,36,
+27,27,27,27,27,27,27,27,27,27,27,27,27,22,36,36,36,36,36,36,
+27,27,27,27,27,27,27,27,27,27,27,27,22,22,36,36,36,36,36,36,
+27,27,27,27,27,27,27,27,27,27,27,27,22,22,36,36,36,36,36,36,
+27,27,27,27,27,27,27,27,27,27,27,27,22,22,36,36,36,36,36,36,
+22,22,27,22,22,27,27,27,27,27,27,22,22,22,36,36,36,36,36,36,
+22,22,22,22,22,22,22,27,27,22,22,22,22,22,36,36,36,36,36,36,
+36,36,22,22,22,36,36,22,22,22,22,22,22,22,36,36,36,36,36,36,
+36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,
+36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,
+36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,
+36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,
+36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36
+</data>
+ </layer>
+ <objectgroup id="4" name="objects">
+  <object id="176" type="portal" gid="62" x="80" y="48" width="16" height="16">
+   <properties>
+    <property name="portal_id" type="int" value="1"/>
+    <property name="travels_to_portal_id" type="int" value="2"/>
+   </properties>
+  </object>
+  <object id="178" type="actor" gid="46" x="32" y="48" width="16" height="16"/>
+  <object id="179" type="tile" gid="1" x="32" y="32" width="16" height="16"/>
+  <object id="180" type="tile" gid="1" x="48" y="32" width="16" height="16"/>
+  <object id="181" type="tile" gid="1" x="64" y="32" width="16" height="16"/>
+  <object id="186" type="tile" gid="1" x="80" y="32" width="16" height="16"/>
+  <object id="188" type="tile" gid="2" x="96" y="48" width="16" height="16"/>
+  <object id="189" type="tile" gid="10" x="32" y="64" width="16" height="16"/>
+  <object id="190" type="tile" gid="10" x="48" y="64" width="16" height="16"/>
+  <object id="191" type="tile" gid="10" x="64" y="64" width="16" height="16"/>
+  <object id="192" type="tile" gid="10" x="80" y="64" width="16" height="16"/>
+  <object id="196" type="finish_tile" gid="32" x="208" y="48" width="16" height="16"/>
+  <object id="197" type="portal" gid="62" x="144" y="48" width="16" height="16">
+   <properties>
+    <property name="portal_id" type="int" value="2"/>
+    <property name="travels_to_portal_id" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="198" type="tile" gid="1" x="160" y="32" width="16" height="16"/>
+  <object id="199" type="tile" gid="1" x="176" y="32" width="16" height="16"/>
+  <object id="200" type="tile" gid="1" x="192" y="32" width="16" height="16"/>
+  <object id="201" type="tile" gid="1" x="144" y="32" width="16" height="16"/>
+  <object id="202" type="tile" gid="1" x="208" y="32" width="16" height="16"/>
+  <object id="203" type="tile" gid="10" x="144" y="64" width="16" height="16"/>
+  <object id="204" type="tile" gid="10" x="160" y="64" width="16" height="16"/>
+  <object id="205" type="tile" gid="10" x="192" y="64" width="16" height="16"/>
+  <object id="206" type="tile" gid="10" x="176" y="64" width="16" height="16"/>
+  <object id="207" type="tile" gid="10" x="208" y="64" width="16" height="16"/>
+  <object id="208" type="tile" gid="11" x="128" y="48" width="16" height="16"/>
+  <object id="209" type="tile" gid="11" x="16" y="48" width="16" height="16"/>
+ </objectgroup>
+</map>

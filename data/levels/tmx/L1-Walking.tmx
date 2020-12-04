@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="190">
+<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="187">
  <properties>
   <property name="next_level" value="./data/levels/tmx/L2-Walking2.tmx"/>
-  <property name="player_bomb_count" value="500"/>
+  <property name="player_bomb_count" value="0"/>
  </properties>
  <tileset firstgid="1" name="newtiledsheet" tilewidth="16" tileheight="16" tilecount="180" columns="9">
   <image source="../../newtiledsheet.png" width="144" height="320"/>
@@ -139,12 +139,12 @@
 27,27,27,27,27,27,27,27,22,22,22,22,22,22,
 27,19,20,19,20,19,20,36,36,36,20,27,22,22,
 27,36,36,27,27,27,27,27,22,22,22,22,22,22,
-27,20,20,27,27,27,20,20,20,20,20,20,22,22,
-20,20,20,27,27,27,20,20,20,20,20,20,22,22,
-20,20,20,27,19,27,20,20,20,20,20,20,22,22,
-22,20,20,22,22,27,20,20,20,20,20,20,22,22,
-22,20,20,20,20,20,20,20,20,20,20,20,22,22,
-22,20,20,20,20,20,20,20,20,20,20,20,22,22
+27,27,27,27,27,27,27,27,22,22,22,22,22,22,
+27,27,27,27,27,27,27,27,22,22,22,22,22,22,
+27,27,27,27,19,27,27,27,22,22,22,22,22,22,
+22,22,22,22,22,27,27,22,22,22,22,22,22,22,
+22,22,22,22,22,22,22,22,22,22,22,22,22,22,
+22,22,22,22,22,22,22,22,22,22,22,22,22,22
 </data>
  </layer>
  <objectgroup id="6" name="paths">
@@ -196,18 +196,5 @@
   <object id="160" type="tile" gid="11" x="48" y="112" width="16" height="16"/>
   <object id="161" type="tile" gid="2147483659" x="80" y="112" width="16" height="16"/>
   <object id="162" type="tile" gid="2147483659" x="80" y="128" width="16" height="16"/>
-  <object id="187" type="portal" gid="62" x="48" y="48" width="16" height="16">
-   <properties>
-    <property name="portal_id" type="int" value="1"/>
-    <property name="travels_to_portal_id" type="int" value="2"/>
-   </properties>
-  </object>
-  <object id="188" type="portal" gid="62" x="144" y="112" width="16" height="16">
-   <properties>
-    <property name="portal_id" type="int" value="2"/>
-    <property name="travels_to_portal_id" type="int" value="1"/>
-   </properties>
-  </object>
-  <object id="189" type="moveable_tile" gid="45" x="112" y="112" width="16" height="16"/>
  </objectgroup>
 </map>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="2020.10.30" orientation="orthogonal" renderorder="right-down" width="20" height="15" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="269">
+<map version="1.4" tiledversion="2020.10.30" orientation="orthogonal" renderorder="right-down" width="20" height="15" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="323">
  <properties>
   <property name="display_name" value="sneaky bastard dlfjg"/>
   <property name="next_level" value="./data/levels/tmx/L30-BombAdvancedS.tmx"/>
-  <property name="player_bomb_count" value="1"/>
+  <property name="player_bomb_count" value="0"/>
  </properties>
  <tileset firstgid="1" name="newtiledsheet" tilewidth="16" tileheight="16" tilecount="180" columns="9">
   <image source="../../newtiledsheet.png" width="144" height="320"/>
@@ -12,13 +12,13 @@
   <data encoding="csv">
 27,27,27,27,27,27,27,27,27,27,27,22,22,22,27,27,27,27,27,27,
 27,27,27,27,20,19,20,27,27,27,27,27,20,19,27,27,27,27,27,27,
-27,27,19,20,19,20,19,20,19,20,19,20,19,20,19,20,27,27,27,27,
+27,11,19,20,19,20,19,20,19,20,19,20,19,20,19,20,27,27,27,27,
 27,27,27,27,20,19,20,27,27,27,20,27,27,27,27,27,27,27,27,27,
-27,27,27,27,27,27,27,27,27,27,19,27,22,22,27,27,27,27,27,27,
-27,27,27,19,20,19,20,19,20,19,20,19,20,19,20,27,27,27,27,27,
-27,27,27,20,27,20,27,27,27,27,27,36,19,20,19,27,27,27,27,27,
-22,22,27,19,27,19,27,27,36,27,27,22,20,19,20,27,27,27,27,27,
-22,22,27,20,19,20,19,20,19,27,22,22,22,22,27,27,27,27,27,27,
+27,27,27,27,27,27,27,27,27,27,19,27,22,22,27,27,27,19,27,27,
+27,27,27,19,20,19,20,19,20,19,20,27,27,27,27,27,19,20,19,27,
+27,27,27,20,27,20,27,27,27,27,27,36,27,27,27,27,27,19,27,27,
+22,27,27,19,27,19,27,27,36,27,27,22,27,27,27,27,27,27,27,27,
+22,27,27,20,19,20,19,20,19,27,22,22,22,22,27,27,27,27,27,27,
 22,27,27,27,27,27,27,27,27,27,22,27,22,27,27,27,27,27,27,27,
 27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,
 27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,
@@ -61,17 +61,7 @@
    </properties>
   </object>
   <object id="196" type="actor" gid="46" x="32" y="48" width="16" height="16"/>
-  <object id="197" type="video_tape" gid="66" x="208" y="112" width="16" height="16"/>
-  <object id="198" type="triggerable" gid="17" x="176" y="96" width="16" height="16">
-   <properties>
-    <property name="triggered_id" type="int" value="1"/>
-   </properties>
-  </object>
-  <object id="200" type="pressure_plate" gid="54" x="80" y="48" width="16" height="16">
-   <properties>
-    <property name="triggers" type="int" value="1"/>
-   </properties>
-  </object>
+  <object id="197" type="video_tape" gid="66" x="272" y="96" width="16" height="16"/>
   <object id="202" type="tile" gid="1" x="32" y="32" width="16" height="16"/>
   <object id="203" type="tile" gid="1" x="48" y="32" width="16" height="16"/>
   <object id="204" type="tile" gid="1" x="64" y="16" width="16" height="16"/>
@@ -98,7 +88,6 @@
   <object id="225" type="tile" gid="10" x="128" y="112" width="16" height="16"/>
   <object id="226" type="tile" gid="10" x="144" y="112" width="16" height="16"/>
   <object id="227" type="tile" gid="10" x="160" y="112" width="16" height="16"/>
-  <object id="228" type="tile" gid="10" x="176" y="112" width="16" height="16"/>
   <object id="232" type="tile" gid="10" x="176" y="64" width="16" height="16"/>
   <object id="233" type="tile" gid="10" x="192" y="64" width="16" height="16"/>
   <object id="234" type="tile" gid="10" x="224" y="64" width="16" height="16"/>
@@ -108,7 +97,6 @@
   <object id="238" type="tile" gid="10" x="112" y="64" width="16" height="16"/>
   <object id="239" type="tile" gid="10" x="48" y="64" width="16" height="16"/>
   <object id="240" type="tile" gid="10" x="32" y="64" width="16" height="16"/>
-  <object id="241" type="tile" gid="11" x="16" y="48" width="16" height="16"/>
   <object id="242" type="tile" gid="11" x="32" y="96" width="16" height="16"/>
   <object id="243" type="tile" gid="11" x="32" y="112" width="16" height="16"/>
   <object id="244" type="tile" gid="11" x="32" y="128" width="16" height="16"/>
@@ -132,5 +120,58 @@
   <object id="267" type="tile" gid="11" x="64" y="128" width="16" height="16"/>
   <object id="268" type="tile" gid="2" x="256" y="48" width="16" height="16"/>
   <object id="201" type="moveable_tile" gid="45" x="80" y="48" width="16" height="16"/>
+  <object id="269" type="tile" gid="2" x="176" y="96" width="16" height="16"/>
+  <object id="270" type="tile" gid="27" x="256" y="80" width="16" height="16"/>
+  <object id="271" type="tile" gid="27" x="272" y="64" width="16" height="16"/>
+  <object id="272" type="tile" gid="27" x="288" y="80" width="16" height="16"/>
+  <object id="273" type="tile" gid="27" x="304" y="96" width="16" height="16"/>
+  <object id="274" type="tile" gid="27" x="288" y="112" width="16" height="16"/>
+  <object id="275" type="tile" gid="27" x="256" y="112" width="16" height="16"/>
+  <object id="276" type="tile" gid="27" x="240" y="96" width="16" height="16"/>
+  <object id="277" type="tile" gid="27" x="16" y="32" width="16" height="16"/>
+  <object id="278" type="tile" gid="27" x="0" y="32" width="16" height="16"/>
+  <object id="279" type="tile" gid="27" x="0" y="48" width="16" height="16"/>
+  <object id="280" type="tile" gid="27" x="0" y="64" width="16" height="16"/>
+  <object id="281" type="tile" gid="27" x="0" y="80" width="16" height="16"/>
+  <object id="282" type="tile" gid="27" x="0" y="96" width="16" height="16"/>
+  <object id="283" type="tile" gid="27" x="0" y="112" width="16" height="16"/>
+  <object id="284" type="tile" gid="27" x="0" y="128" width="16" height="16"/>
+  <object id="285" type="tile" gid="27" x="0" y="144" width="16" height="16"/>
+  <object id="286" type="tile" gid="27" x="0" y="160" width="16" height="16"/>
+  <object id="287" type="tile" gid="27" x="0" y="176" width="16" height="16"/>
+  <object id="288" type="tile" gid="27" x="0" y="192" width="16" height="16"/>
+  <object id="289" type="tile" gid="27" x="16" y="192" width="16" height="16"/>
+  <object id="290" type="tile" gid="27" x="32" y="192" width="16" height="16"/>
+  <object id="291" type="tile" gid="27" x="32" y="160" width="16" height="16"/>
+  <object id="292" type="tile" gid="27" x="48" y="192" width="16" height="16"/>
+  <object id="293" type="tile" gid="27" x="64" y="192" width="16" height="16"/>
+  <object id="294" type="tile" gid="27" x="80" y="192" width="16" height="16"/>
+  <object id="295" type="tile" gid="27" x="96" y="192" width="16" height="16"/>
+  <object id="296" type="tile" gid="27" x="112" y="192" width="16" height="16"/>
+  <object id="297" type="tile" gid="27" x="128" y="192" width="16" height="16"/>
+  <object id="298" type="tile" gid="27" x="144" y="192" width="16" height="16"/>
+  <object id="299" type="tile" gid="27" x="176" y="192" width="16" height="16"/>
+  <object id="300" type="tile" gid="27" x="160" y="192" width="16" height="16"/>
+  <object id="301" type="tile" gid="27" x="192" y="192" width="16" height="16"/>
+  <object id="302" type="tile" gid="27" x="208" y="192" width="16" height="16"/>
+  <object id="303" type="tile" gid="27" x="224" y="192" width="16" height="16"/>
+  <object id="304" type="tile" gid="27" x="240" y="192" width="16" height="16"/>
+  <object id="305" type="tile" gid="27" x="256" y="192" width="16" height="16"/>
+  <object id="306" type="tile" gid="27" x="272" y="192" width="16" height="16"/>
+  <object id="307" type="tile" gid="27" x="288" y="192" width="16" height="16"/>
+  <object id="308" type="tile" gid="27" x="288" y="176" width="16" height="16"/>
+  <object id="309" type="tile" gid="27" x="288" y="160" width="16" height="16"/>
+  <object id="310" type="tile" gid="27" x="288" y="144" width="16" height="16"/>
+  <object id="311" type="tile" gid="27" x="288" y="128" width="16" height="16"/>
+  <object id="312" type="tile" gid="27" x="256" y="128" width="16" height="16"/>
+  <object id="313" type="tile" gid="27" x="256" y="144" width="16" height="16"/>
+  <object id="314" type="tile" gid="27" x="256" y="160" width="16" height="16"/>
+  <object id="315" type="tile" gid="27" x="240" y="160" width="16" height="16"/>
+  <object id="316" type="tile" gid="27" x="208" y="160" width="16" height="16"/>
+  <object id="317" type="tile" gid="27" x="192" y="160" width="16" height="16"/>
+  <object id="318" type="tile" gid="27" x="176" y="160" width="16" height="16"/>
+  <object id="319" type="tile" gid="27" x="160" y="160" width="16" height="16"/>
+  <object id="321" type="tile" gid="27" x="32" y="80" width="16" height="16"/>
+  <object id="322" type="tile" gid="27" x="224" y="160" width="16" height="16"/>
  </objectgroup>
 </map>
