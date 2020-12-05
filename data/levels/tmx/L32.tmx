@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="2020.10.30" orientation="orthogonal" renderorder="right-down" width="20" height="17" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="299">
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="20" height="17" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="299">
  <properties>
   <property name="display_name" value="sneaky bastard dlfjg"/>
   <property name="next_level" value="./data/levels/tmx/L33.tmx"/>
@@ -31,10 +31,6 @@
  </layer>
  <objectgroup id="4" name="objects">
   <object id="176" type="actor" gid="46" x="128" y="144" width="16" height="16"/>
-  <object id="177" type="moveable_tile" gid="45" x="144" y="144" width="16" height="16"/>
-  <object id="178" type="moveable_tile" gid="45" x="128" y="128" width="16" height="16"/>
-  <object id="179" type="moveable_tile" gid="45" x="112" y="144" width="16" height="16"/>
-  <object id="180" type="moveable_tile" gid="45" x="128" y="160" width="16" height="16"/>
   <object id="182" type="triggerable" gid="7" x="128" y="96" width="16" height="16">
    <properties>
     <property name="triggered_id" type="int" value="1"/>
@@ -97,6 +93,10 @@
   <object id="204" type="tile" gid="1" x="48" y="32" width="16" height="16"/>
   <object id="205" type="tile" gid="1" x="64" y="32" width="16" height="16"/>
   <object id="206" type="tile" gid="1" x="80" y="32" width="16" height="16"/>
+  <object id="177" type="moveable_tile" gid="45" x="144" y="144" width="16" height="16"/>
+  <object id="178" type="moveable_tile" gid="45" x="128" y="128" width="16" height="16"/>
+  <object id="179" type="moveable_tile" gid="45" x="112" y="144" width="16" height="16"/>
+  <object id="180" type="moveable_tile" gid="45" x="128" y="160" width="16" height="16"/>
   <object id="207" type="tile" gid="1" x="96" y="32" width="16" height="16"/>
   <object id="208" type="tile" gid="1" x="160" y="32" width="16" height="16"/>
   <object id="209" type="tile" gid="1" x="176" y="32" width="16" height="16"/>

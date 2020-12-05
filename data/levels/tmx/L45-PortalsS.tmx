@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="2020.10.30" orientation="orthogonal" renderorder="right-down" width="25" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="290">
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="25" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="290">
  <properties>
   <property name="display_name" value="sneaky bastard dlfjg"/>
   <property name="next_level" value="./data/levels/tmx/L46.tmx"/>
@@ -82,7 +82,7 @@
    </properties>
   </object>
   <object id="184" type="pickup_bomb" gid="43" x="80" y="256" width="16" height="16"/>
-  <object id="185" type="pickup-bomb" gid="43" x="80" y="64" width="16" height="16"/>
+  <object id="185" type="pickup_bomb" gid="43" x="80" y="64" width="16" height="16"/>
   <object id="186" type="pickup_bomb" gid="43" x="240" y="64" width="16" height="16"/>
   <object id="187" type="pickup_bomb" gid="43" x="240" y="256" width="16" height="16"/>
   <object id="188" type="actor" gid="46" x="160" y="160" width="16" height="16"/>
