@@ -243,9 +243,11 @@ class LevelData():
     def get_tile_from_object_layer(self, x, y):
         """Gets the tile from the object layer and then maps it to the one in the
         sprite group. This means we can kill our sprites etc..."""
+        sprites = []
         for sprite in self.sprites:
             if sprite.rect.x == x and sprite.rect.y == y:
-                return sprite
+                sprites.append(sprite)
+        return sprites
 
     def get_player(self, tiles):
         """Gets the player"""

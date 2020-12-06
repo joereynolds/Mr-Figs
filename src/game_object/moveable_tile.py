@@ -23,22 +23,23 @@ class MoveableTile(SolidTile):
             target_x = self.rect.x + (vector[player.direction][0] * graphics.tile_width)
             target_y = self.rect.y + (vector[player.direction][1] * graphics.tile_width)
 
-            target_tile = level.tiled_level.get_tile_from_object_layer(target_x, target_y)
+            target_tiles = level.tiled_level.get_tile_from_object_layer(target_x, target_y)
 
-            # Don't go through lasers if they're on
-            # TODO - This should rely on teh state attribute instead of solid
-            if isinstance(target_tile, Triggerable) and target_tile.solid:
-                return
+            for target_tile in target_tiles:
+                # Don't go through lasers if they're on
+                # TODO - This should rely on teh state attribute instead of solid
+                if isinstance(target_tile, Triggerable) and target_tile.solid:
+                    return
 
-            if isinstance(target_tile, self.disallowed_tiles):
-                return
+                if isinstance(target_tile, self.disallowed_tiles):
+                    return
 
-            if isinstance(target_tile, Portal):
-                # TODO - there exists a bug here. Basically we need to do what
-                # we're doing below and update the data
-                self.rect.x = target_tile.destination_portal.rect.x
-                self.rect.y = target_tile.destination_portal.rect.y
-                return
+                if isinstance(target_tile, Portal):
+                    # TODO - there exists a bug here. Basically we need to do what
+                    # we're doing below and update the data
+                    self.rect.x = target_tile.destination_portal.rect.x
+                    self.rect.y = target_tile.destination_portal.rect.y
+                    return
 
             # Bit of an edge case that needs refactoring.  Basically a bug was
             # introduced (or never caught in the first place) where once you
