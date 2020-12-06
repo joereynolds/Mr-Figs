@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="2020.10.30" orientation="orthogonal" renderorder="right-down" width="20" height="15" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="401">
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="20" height="15" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="409">
  <properties>
   <property name="display_name" value="sneaky bastard dlfjg"/>
   <property name="next_level" value="./data/levels/tmx/L31.tmx"/>
@@ -71,7 +71,6 @@
   <object id="278" type="destructible" gid="21" x="96" y="112" width="16" height="16"/>
   <object id="279" type="destructible" gid="21" x="112" y="128" width="16" height="16"/>
   <object id="280" type="destructible" gid="21" x="128" y="128" width="16" height="16"/>
-  <object id="281" type="destructible" gid="21" x="144" y="128" width="16" height="16"/>
   <object id="282" type="destructible" gid="21" x="128" y="96" width="16" height="16"/>
   <object id="283" type="destructible" gid="21" x="128" y="80" width="16" height="16"/>
   <object id="284" type="destructible" gid="21" x="144" y="80" width="16" height="16"/>
@@ -81,7 +80,6 @@
   <object id="288" type="destructible" gid="21" x="176" y="176" width="16" height="16"/>
   <object id="289" type="destructible" gid="21" x="208" y="176" width="16" height="16"/>
   <object id="290" type="destructible" gid="21" x="208" y="192" width="16" height="16"/>
-  <object id="291" type="destructible" gid="21" x="224" y="192" width="16" height="16"/>
   <object id="293" type="destructible" gid="21" x="208" y="160" width="16" height="16"/>
   <object id="294" type="destructible" gid="21" x="208" y="144" width="16" height="16"/>
   <object id="295" type="destructible" gid="21" x="208" y="128" width="16" height="16"/>
@@ -181,5 +179,7 @@
   <object id="397" type="tile" gid="10" x="240" y="224" width="16" height="16"/>
   <object id="398" type="tile" gid="10" x="224" y="224" width="16" height="16"/>
   <object id="399" type="tile" gid="10" x="256" y="224" width="16" height="16"/>
+  <object id="405" type="video_tape" gid="66" x="144" y="128" width="16" height="16"/>
+  <object id="406" name="mossy-rock" type="destructible" gid="99" x="144" y="128" width="16" height="16"/>
  </objectgroup>
 </map>

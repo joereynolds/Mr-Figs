@@ -6,6 +6,7 @@ import pygame
 
 from src.entity import Entity
 from src.game_object.bomb_particle import BombParticle
+from src.game_object.video_tape import VideoTape
 import src.graphics as graphics
 import src.logger as logger
 import src.colours as colours
@@ -110,8 +111,6 @@ class Bomb(Entity):
         # self.bomb_explosion_sound.play()
 
     def create_particle(self, x, y, width, height):
-        tile = self.tiled_level.get_tile_from_object_layer(x, y)
-
         """
         Bomb collision handling has been refactored and now the responsiblity
         of if a particle can be planted on a tile lies with that tile.
@@ -121,10 +120,13 @@ class Bomb(Entity):
         We also have a post function where we can do any necessary cleanup
         (removing the tile from the level, playing a sound etc...)
         """
-        if hasattr(tile, 'handle_pre_bomb_particle_creation'):
-            response = tile.handle_pre_bomb_particle_creation(self.tiled_level)
-            if response is not None:
-                return response
+        tiles = self.tiled_level.get_tile_from_object_layer(x, y)
+
+        for tile in tiles:
+            if hasattr(tile, 'handle_pre_bomb_particle_creation'):
+                response = tile.handle_pre_bomb_particle_creation(self.tiled_level)
+                if response is not None:
+                    return response
 
         particle = BombParticle(
             x,
@@ -135,8 +137,9 @@ class Bomb(Entity):
 
         self.particles.add(particle)
 
-        if hasattr(tile, 'handle_post_bomb_particle_creation'):
-            return tile.handle_post_bomb_particle_creation(self.tiled_level)
+        for tile in tiles:
+            if hasattr(tile, 'handle_post_bomb_particle_creation'):
+                return tile.handle_post_bomb_particle_creation(self.tiled_level)
 
         return True
 

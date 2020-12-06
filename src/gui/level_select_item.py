@@ -38,8 +38,7 @@ class LevelSelectItem(Clickable):
         self.render_text(color=colours.WHITE)
 
         if self.has_video_tape:
-            font_object = pygame.font.Font(None, self.font_size)
             rendered_text = font_object.render('[TAPE]', False, colours.RED)
             self.image.blit(rendered_text, (self.width - 75, self.height - 25))
-            self.render_text(color=colours.WHITE)
+            self.render_text()
 
