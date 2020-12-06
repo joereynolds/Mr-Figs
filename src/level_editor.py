@@ -49,13 +49,21 @@ class LevelData():
         self.get_map_data()
         self.link_doors_and_switches()
         self.link_portals()
-        self.link_platforms_to_paths()
 
     def get_map_data(self):
         """Iterates through the TiledMap file adding tiles to
         the self.sprites sprite group
         """
         factory = TileFactory()
+
+        try:
+            for tile_object in self._map.get_layer_by_name('paths'):
+                self.paths[tile_object.path_id] = Path(
+                    tile_object.points, 
+                    tile_object.path_id
+                )
+        except (AttributeError, ValueError):
+            print('Attempted to iterate through non-existent path layer')
         
         try:
             for tile_object in self._map.get_layer_by_name('objects'):
@@ -65,110 +73,146 @@ class LevelData():
         except ValueError:
             print('this scene doesnt have objects')
 
-        try:
-            for tile_object in self._map.get_layer_by_name('paths'):
-                self.paths[tile_object.path_id] = Path(
-                    tile_object.x, 
-                    tile_object.y, 
-                    tile_object.points, 
-                    tile_object.path_id
-                )
-        except (AttributeError, ValueError):
-            print('Attempted to iterate through non-existent path layer')
-
-
-
     def _create_tile(self, tile_object, surface, factory):
         """Creates tiles passed to it. It finds the type of the
         tile_object and then creates the corresponding tile"""
-        x = tile_object.x
-        y = tile_object.y
-
         # Safe fallbacks just in case objects don't have certain attributes
         state = getattr(tile_object, 'state', 0)
-        lifespan = getattr(tile_object, 'lifespan', False)
         triggers = getattr(tile_object, 'triggers', False)
         triggered_id = getattr(tile_object, 'triggered_id', False)
-        portal_id = getattr(tile_object, 'portal_id', False)
-        travels_to_portal_id = getattr(tile_object, 'travels_to_portal_id', False)
-        follows_path_id = getattr(tile_object, 'follows_path_id', False)
 
         common = {
-            'x': x,
-            'y': y,
+            'x': tile_object.x,
+            'y': tile_object.y,
             'width': self.tile_spacing,
             'height': self.tile_spacing,
             'image': surface
         }
 
-        type_map = {
-            'tile': {
-                **common,
-            },
-            'actor':{
-                **common,
-                'level': self,
-                'image':surface,
-                'remaining_bombs': self.properties.get('player_bomb_count', 0),
-            },
-            'bomb': {
-                **common,
-                'level': self,
-                'lifespan':lifespan,
-            },
-            'pickup_bomb': {
-                **common
-            },
-            'finish_tile': {
-                **common,
-            },
-            'moveable_tile': {
-                **common,
-            },
-            'switch': {
-                **common,
-                'state': state,
-                'triggers': triggers,
-            },
-            'pressure_plate': {
-                **common,
-                'state': state,
-                'triggers': triggers,
-                'images': graphics.sprites['pressure_plate']['sprites']
-            },
-            'triggerable': {
-                **common,
-                'stateful': 'pass',
-                'id': triggered_id
-            },
-            'portal': {
-                **common,
-                'portal_id': portal_id,
-                'travels_to_portal_id': travels_to_portal_id
-            },
-            'platform': {
-                **common,
-                'follows_path_id': follows_path_id
-            },
-            'destructible': {
-                **common,
-            },
-            'video_tape': {
-                **common,
-            },
-        }
+        if tile_object.type == 'platform':
+            type_map = {
+                'platform': {
+                    **common,
+                    'path': self.paths[tile_object.follows_path_id]
+                }
+            }
+
+        if tile_object.type == 'video_tape':
+            type_map = {
+                'video_tape': {
+                    **common,
+                },
+            }
+
+        if tile_object.type == 'destructible':
+            type_map = {
+                'destructible': {
+                    **common,
+                },
+            }
+
+        if tile_object.type == 'portal':
+            type_map = {
+                'portal': {
+                    **common,
+                    'portal_id': tile_object.portal_id,
+                    'travels_to_portal_id': tile_object.travels_to_portal_id
+                },
+            }
+
+        if tile_object.type == 'pressure_plate':
+            type_map = {
+                'pressure_plate': {
+                    **common,
+                    'state': state,
+                    'triggers': triggers,
+                    'images': graphics.sprites['pressure_plate']['sprites']
+                },
+            }
+
+        if tile_object.type == 'tile':
+            type_map = {
+                'tile': {
+                    **common,
+                },
+            }
+
+        if tile_object.type == 'actor':
+            type_map = {
+                'actor':{
+                    **common,
+                    'level': self,
+                    'remaining_bombs': self.properties.get('player_bomb_count', 0),
+                },
+            }
+
+        if tile_object.type == 'enemy_pathable':
+            type_map = {
+                'enemy_pathable':{
+                    **common,
+                    'path': self.paths[tile_object.follows_path_id]
+                },
+            }
+
+        if tile_object.type == 'tile':
+            type_map = {
+                'tile': {
+                    **common,
+                },
+            }
+
+        if tile_object.type == 'finish_tile':
+            type_map = {
+                'finish_tile': {
+                    **common,
+                },
+            }
+
+        if tile_object.type == 'pickup_bomb':
+            type_map = {
+                'pickup_bomb': {
+                    **common
+                },
+            }
+
+        if tile_object.type == 'bomb':
+            type_map = {
+                'bomb': {
+                    **common,
+                    'level': self,
+                    'lifespan': tile_object.lifespan
+                },
+            }
+
+        if tile_object.type == 'switch':
+            type_map = {
+                'switch': {
+                    **common,
+                    'state': state,
+                    'triggers': triggers,
+                },
+            }
+
+        if tile_object.type == 'triggerable':
+            type_map = {
+                'triggerable': {
+                    **common,
+                    'stateful': 'pass',
+                    'id': triggered_id
+                },
+            }
+
+        if tile_object.type == 'moveable_tile':
+            type_map = {
+                'moveable_tile': {
+                    **common,
+                },
+            }
 
         try:
             return factory.build(tile_object.type, **type_map[tile_object.type])
         except KeyError:
             print('You passed an invalid key "' + tile_object.type + '" to the factory for level: ' + self.tmx_file)
-
-    def link_platforms_to_paths(self):
-        for sprite in self.sprites:
-            if isinstance(sprite, Platform):
-                sprite.path = self.paths[sprite.follows_path_id]
-                # Set the destination of our platform to the last coordinate in the path
-                sprite.destination = self.paths[sprite.follows_path_id].points[-1]
 
     def link_portals(self):
         """Makes sure that the switches are passed to the correct

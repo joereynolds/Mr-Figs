@@ -1,5 +1,6 @@
 import pygame
 from src.entity import Entity
+from typing import Tuple
 
 """
 TODO - This shouldn't really be a sprite
@@ -12,8 +13,6 @@ We could create a separate layer in Tiled and work with that, we'll see.
 """
 class Path():
     
-    def __init__(self, x, y, points, id):
-        self.x = x
-        self.y = y
-        self.points = points
+    def __init__(self, points: Tuple[int, int], id: int):
         self.id = id
+        self.points = points
