@@ -1,6 +1,5 @@
 """
-This is the thing that mr-figs can stand on and
-be moved around on.
+An enemy that follows a pre-determined path
 """
 
 import pygame
@@ -11,7 +10,7 @@ import src.colours as colours
 import src.graphics as graphics
 import time
 
-class Platform(entity.Entity):
+class EnemyPathable(entity.Entity):
     def __init__(
             self, 
             x: int, 
@@ -24,12 +23,11 @@ class Platform(entity.Entity):
         entity.Entity.__init__(self, x, y, width, height, image)
         self.minimap_colour = colours.RED_HIGHLIGHT
         self.path = path
-        self.speed =  2
-        self.player_on_platform = False
+        self.destination = path.points[-1]
+        self.speed =  1
         self.processed_points = []
-        self.destination = self.path.points[-1]
 
-    def move_to(self, target_x, target_y, player):
+    def move_to(self, target_x, target_y):
         """Checks to see if we've reached the destination given, if we have,
         we can stop moving. Note that we need to use delta-time otherwise we'll get
         schmancy interpolation effects"""
@@ -42,11 +40,6 @@ class Platform(entity.Entity):
             self.rect.y -= self.speed
         elif target_y > self.rect.y:
             self.rect.y += self.speed
-
-        player.rect.x = self.rect.x
-        player.rect.y = self.rect.y
-        player.destination[0] = self.rect.x
-        player.destination[1] = self.rect.y
 
         if self.rect.x == target_x and self.rect.y == target_y:
             self.processed_points.append((target_x, target_y))
@@ -67,17 +60,18 @@ class Platform(entity.Entity):
         self.destination = self.path.points[-1]
 
     def handle_collision(self, tile, player, level):
-        if self.has_reached_destination() and not self.player_on_platform:
+        if pygame.sprite.collide_rect(self, player):
+            pygame.sprite.Sprite.kill(player)
+
+        if player.destination[0] == self.rect.x and player.destination[1] == self.rect.y:
+            pygame.sprite.Sprite.kill(player)
+
+        if self.has_reached_destination(): 
             self.processed_points = []
             self.toggle_destination()
 
-        if player.destination[0] == self.rect.x and player.destination[1] == self.rect.y:
-            self.player_on_platform = True
-            player.moving = False
-        else: 
-            self.player_on_platform = False
-
-        if self.player_on_platform and not self.has_reached_destination():
+        if not self.has_reached_destination():
             for point in self.path.points:
                 if point not in self.processed_points:
-                    self.move_to(point[0], point[1], player)
+                    self.move_to(point[0], point[1])
+

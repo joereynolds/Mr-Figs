@@ -12,6 +12,7 @@ from src.game_object.pickup_bomb import PickupBomb
 from src.game_object.video_tape import VideoTape
 from src.game_object.path import Path
 from src.game_object.platform import Platform
+from src.game_object.enemy_pathable import EnemyPathable
 
 class TileFactory():
 
@@ -31,6 +32,7 @@ class TileFactory():
             'destructible': Destructible,
             'path': Path,
             'platform': Platform,
+            'enemy_pathable': EnemyPathable,
         }
 
         return tile_map[tile_type](**kwargs)

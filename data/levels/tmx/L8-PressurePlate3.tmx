@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="146">
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="8" nextobjectid="148">
  <properties>
   <property name="next_level" value="./data/levels/tmx/L9-PressurePlate4.tmx"/>
   <property name="player_bomb_count" value="0"/>
@@ -147,6 +147,14 @@
 22,22,22,22,22,22,22,22,22,22,22,22,22,22
 </data>
  </layer>
+ <objectgroup id="7" name="paths">
+  <object id="147" name="enemy-path" type="path" x="176" y="48">
+   <properties>
+    <property name="path_id" type="int" value="1"/>
+   </properties>
+   <polyline points="0,0 -96,0"/>
+  </object>
+ </objectgroup>
  <objectgroup id="4" name="objects">
   <object id="83" type="actor" gid="46" x="16" y="48" width="16" height="16"/>
   <object id="87" type="pressure_plate" gid="54" x="192" y="48" width="16" height="16">
@@ -234,5 +242,10 @@
   <object id="84" type="moveable_tile" gid="45" x="48" y="48" width="16" height="16"/>
   <object id="85" type="moveable_tile" gid="45" x="48" y="64" width="16" height="16"/>
   <object id="86" type="moveable_tile" gid="45" x="112" y="48" width="16" height="16"/>
+  <object id="146" name="enemy" type="enemy_pathable" gid="44" x="176" y="64" width="16" height="16">
+   <properties>
+    <property name="follows_path_id" type="int" value="1"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>
