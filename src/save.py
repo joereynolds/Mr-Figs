@@ -46,7 +46,7 @@ class SaveGame():
         with open(SaveGame.FULL_PATH, 'w') as saved_game:
             saved_game.write(json.dumps(game_data))
 
-    def has_video_for_level(self, level):
+    def has_video_for_level(self, level: str):
         with open(SaveGame.FULL_PATH) as saved_game:
             game_data = json.load(saved_game)
 

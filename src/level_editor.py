@@ -6,6 +6,7 @@ from src.game_object.destructible_tile import Destructible
 from src.game_object.solid_tile import SolidTile
 from src.game_object.path import Path
 from src.game_object.platform import Platform
+from src.game_object.video_tape import VideoTape
 import src.game_object.actor as actor
 from pprint import pprint
 from pytmx.util_pygame import load_pygame
@@ -55,7 +56,6 @@ class LevelData():
         the self.sprites sprite group
         """
         factory = TileFactory()
-
         
         try:
             for tile_object in self._map.get_layer_by_name('objects'):
@@ -207,6 +207,12 @@ class LevelData():
         """Gets the player"""
         for tile in tiles:
             if isinstance(tile, actor.Actor):
+                return tile
+
+    def get_video_tape(self, tiles):
+        """Gets the player"""
+        for tile in tiles:
+            if isinstance(tile, VideoTape):
                 return tile
 
     def find_solid_tile(self, tiles):

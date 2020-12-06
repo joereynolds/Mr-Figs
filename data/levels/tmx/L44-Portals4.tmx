@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="2020.10.30" orientation="orthogonal" renderorder="right-down" width="20" height="15" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="267">
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="20" height="15" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="271">
  <properties>
   <property name="display_name" value="sneaky bastard dlfjg"/>
   <property name="next_level" value="./data/levels/tmx/L45-PortalsS.tmx"/>
@@ -34,34 +34,10 @@
     <property name="travels_to_portal_id" type="int" value="2"/>
    </properties>
   </object>
-  <object id="177" type="portal" gid="62" x="48" y="160" width="16" height="16">
-   <properties>
-    <property name="portal_id" type="int" value="3"/>
-    <property name="travels_to_portal_id" type="int" value="4"/>
-   </properties>
-  </object>
   <object id="178" type="portal" gid="62" x="144" y="64" width="16" height="16">
    <properties>
     <property name="portal_id" type="int" value="2"/>
     <property name="travels_to_portal_id" type="int" value="1"/>
-   </properties>
-  </object>
-  <object id="179" type="portal" gid="62" x="144" y="160" width="16" height="16">
-   <properties>
-    <property name="portal_id" type="int" value="6"/>
-    <property name="travels_to_portal_id" type="int" value="5"/>
-   </properties>
-  </object>
-  <object id="180" type="portal" gid="62" x="240" y="64" width="16" height="16">
-   <properties>
-    <property name="portal_id" type="int" value="5"/>
-    <property name="travels_to_portal_id" type="int" value="6"/>
-   </properties>
-  </object>
-  <object id="181" type="portal" gid="62" x="240" y="160" width="16" height="16">
-   <properties>
-    <property name="portal_id" type="int" value="4"/>
-    <property name="travels_to_portal_id" type="int" value="3"/>
    </properties>
   </object>
   <object id="182" type="actor" gid="46" x="48" y="112" width="16" height="16"/>
@@ -148,5 +124,29 @@
   <object id="264" type="tile" gid="2" x="80" y="144" width="16" height="16"/>
   <object id="265" type="tile" gid="2" x="80" y="160" width="16" height="16"/>
   <object id="266" type="tile" gid="2" x="80" y="176" width="16" height="16"/>
+  <object id="267" type="portal" gid="62" x="48" y="160" width="16" height="16">
+   <properties>
+    <property name="portal_id" type="int" value="3"/>
+    <property name="travels_to_portal_id" type="int" value="4"/>
+   </properties>
+  </object>
+  <object id="268" type="portal" gid="62" x="240" y="160" width="16" height="16">
+   <properties>
+    <property name="portal_id" type="int" value="4"/>
+    <property name="travels_to_portal_id" type="int" value="3"/>
+   </properties>
+  </object>
+  <object id="269" type="portal" gid="62" x="144" y="160" width="16" height="16">
+   <properties>
+    <property name="portal_id" type="int" value="6"/>
+    <property name="travels_to_portal_id" type="int" value="5"/>
+   </properties>
+  </object>
+  <object id="270" type="portal" gid="62" x="240" y="64" width="16" height="16">
+   <properties>
+    <property name="portal_id" type="int" value="5"/>
+    <property name="travels_to_portal_id" type="int" value="6"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

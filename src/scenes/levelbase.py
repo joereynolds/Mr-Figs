@@ -37,9 +37,19 @@ class LevelBase(scene_base.SceneBase):
         self.file = file
         self.sprites = self.tiled_level.sprites
         self.sprites.add(self.player)
+
+        # If the player has collected the tape, remove it so they
+        # can't collect again
+        self.remove_video_tape()
+
         self.renderer = renderers.LevelBaseRenderer(self)
         self.collision_handler = PollingCollisionHandler(self.player, self)
         self.turn_based_collision_handler = TurnBasedCollisionHandler(self.player, self)
+
+    def remove_video_tape(self):
+        if self.game_saver.has_video_for_level(self.file):
+            tape = self.tiled_level.get_video_tape(self.tiled_level.sprites)
+            self.tiled_level.sprites.remove(tape)
 
     def check_player_hasnt_died_a_horrible_death(self):
         """If the player has been destroyed, restart the level"""
