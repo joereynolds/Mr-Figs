@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="14" height="11" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="182">
+<map version="1.4" tiledversion="2020.10.30" orientation="orthogonal" renderorder="right-down" width="14" height="11" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="182">
  <properties>
   <property name="next_level" value="./data/levels/tmx/L11-Bomb.tmx"/>
   <property name="player_bomb_count" value="0"/>
@@ -150,20 +150,76 @@
  </layer>
  <objectgroup id="4" name="objects">
   <object id="83" type="actor" gid="46" x="80" y="80" width="16" height="16"/>
-  <object id="84" type="pressure_plate" gid="54" x="192" y="32" width="16" height="16"/>
-  <object id="85" type="pressure_plate" gid="54" x="192" y="48" width="16" height="16"/>
-  <object id="86" type="pressure_plate" gid="54" x="192" y="64" width="16" height="16"/>
-  <object id="87" type="pressure_plate" gid="54" x="192" y="80" width="16" height="16"/>
-  <object id="88" type="pressure_plate" gid="54" x="192" y="96" width="16" height="16"/>
-  <object id="89" type="pressure_plate" gid="54" x="192" y="112" width="16" height="16"/>
-  <object id="90" type="pressure_plate" gid="54" x="192" y="128" width="16" height="16"/>
-  <object id="91" type="triggerable" gid="17" x="128" y="160" width="16" height="16"/>
-  <object id="92" type="triggerable" gid="17" x="112" y="160" width="16" height="16"/>
-  <object id="93" type="triggerable" gid="17" x="96" y="160" width="16" height="16"/>
-  <object id="94" type="triggerable" gid="17" x="80" y="160" width="16" height="16"/>
-  <object id="95" type="triggerable" gid="17" x="64" y="160" width="16" height="16"/>
-  <object id="96" type="triggerable" gid="17" x="48" y="160" width="16" height="16"/>
-  <object id="97" type="triggerable" gid="17" x="144" y="160" width="16" height="16"/>
+  <object id="84" type="pressure_plate" gid="54" x="192" y="32" width="16" height="16">
+   <properties>
+    <property name="triggers" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="85" type="pressure_plate" gid="54" x="192" y="48" width="16" height="16">
+   <properties>
+    <property name="triggers" type="int" value="2"/>
+   </properties>
+  </object>
+  <object id="86" type="pressure_plate" gid="54" x="192" y="64" width="16" height="16">
+   <properties>
+    <property name="triggers" type="int" value="3"/>
+   </properties>
+  </object>
+  <object id="87" type="pressure_plate" gid="54" x="192" y="80" width="16" height="16">
+   <properties>
+    <property name="triggers" type="int" value="4"/>
+   </properties>
+  </object>
+  <object id="88" type="pressure_plate" gid="54" x="192" y="96" width="16" height="16">
+   <properties>
+    <property name="triggers" type="int" value="5"/>
+   </properties>
+  </object>
+  <object id="89" type="pressure_plate" gid="54" x="192" y="112" width="16" height="16">
+   <properties>
+    <property name="triggers" type="int" value="6"/>
+   </properties>
+  </object>
+  <object id="90" type="pressure_plate" gid="54" x="192" y="128" width="16" height="16">
+   <properties>
+    <property name="triggers" type="int" value="7"/>
+   </properties>
+  </object>
+  <object id="91" type="triggerable" gid="17" x="128" y="160" width="16" height="16">
+   <properties>
+    <property name="triggered_id" type="int" value="6"/>
+   </properties>
+  </object>
+  <object id="92" type="triggerable" gid="17" x="112" y="160" width="16" height="16">
+   <properties>
+    <property name="triggered_id" type="int" value="5"/>
+   </properties>
+  </object>
+  <object id="93" type="triggerable" gid="17" x="96" y="160" width="16" height="16">
+   <properties>
+    <property name="triggered_id" type="int" value="4"/>
+   </properties>
+  </object>
+  <object id="94" type="triggerable" gid="17" x="80" y="160" width="16" height="16">
+   <properties>
+    <property name="triggered_id" type="int" value="3"/>
+   </properties>
+  </object>
+  <object id="95" type="triggerable" gid="17" x="64" y="160" width="16" height="16">
+   <properties>
+    <property name="triggered_id" type="int" value="2"/>
+   </properties>
+  </object>
+  <object id="96" type="triggerable" gid="17" x="48" y="160" width="16" height="16">
+   <properties>
+    <property name="triggered_id" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="97" type="triggerable" gid="17" x="144" y="160" width="16" height="16">
+   <properties>
+    <property name="triggered_id" type="int" value="7"/>
+   </properties>
+  </object>
   <object id="98" type="moveable_tile" gid="45" x="64" y="80" width="16" height="16"/>
   <object id="99" type="moveable_tile" gid="45" x="80" y="64" width="16" height="16"/>
   <object id="100" type="moveable_tile" gid="45" x="96" y="80" width="16" height="16"/>

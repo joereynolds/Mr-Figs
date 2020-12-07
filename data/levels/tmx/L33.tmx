@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="2020.10.30" orientation="orthogonal" renderorder="right-down" width="20" height="15" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="289">
+<map version="1.4" tiledversion="2020.10.30" orientation="orthogonal" renderorder="right-down" width="20" height="15" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="295">
  <properties>
   <property name="display_name" value="sneaky bastard dlfjg"/>
   <property name="next_level" value="./data/levels/tmx/L34.tmx"/>
@@ -119,5 +119,11 @@
   <object id="204" type="moveable_tile" gid="45" x="144" y="96" width="16" height="16"/>
   <object id="205" type="moveable_tile" gid="45" x="160" y="80" width="16" height="16"/>
   <object id="210" type="moveable_tile" gid="45" x="176" y="64" width="16" height="16"/>
+  <object id="289" type="tile" gid="27" x="32" y="144" width="16" height="16"/>
+  <object id="290" type="tile" gid="27" x="48" y="144" width="16" height="16"/>
+  <object id="291" type="tile" gid="27" x="32" y="160" width="16" height="16"/>
+  <object id="292" type="tile" gid="27" x="16" y="128" width="16" height="16"/>
+  <object id="293" type="tile" gid="27" x="32" y="112" width="16" height="16"/>
+  <object id="294" type="tile" gid="27" x="48" y="112" width="16" height="16"/>
  </objectgroup>
 </map>

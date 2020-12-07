@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="124">
+<map version="1.4" tiledversion="2020.10.30" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="124">
  <properties>
   <property name="next_level" value="./data/levels/tmx/L21-BombIntermediate1.tmx"/>
   <property name="player_bomb_count" value="0"/>
@@ -137,7 +137,7 @@
   <data encoding="csv">
 27,27,27,27,27,27,27,27,22,22,22,22,22,22,
 27,20,27,20,27,20,27,20,27,20,22,22,22,22,
-27,19,20,19,20,19,20,19,20,19,20,22,22,22,
+27,19,20,19,20,19,20,19,20,19,20,20,22,22,
 27,20,27,20,27,20,27,20,27,20,22,22,22,22,
 27,27,27,27,27,27,27,27,27,22,22,22,22,22,
 27,27,27,27,27,27,27,27,27,22,22,22,22,22,
@@ -148,9 +148,9 @@
 </data>
  </layer>
  <objectgroup id="4" name="objects">
-  <object id="83" type="finish_tile" gid="32" x="176" y="48" width="16" height="16"/>
-  <object id="84" type="destructible" gid="21" x="96" y="48" width="16" height="16"/>
-  <object id="85" type="destructible" gid="21" x="128" y="48" width="16" height="16"/>
+  <object id="83" type="finish_tile" gid="32" x="192" y="48" width="16" height="16"/>
+  <object id="84" type="destructible" gid="21" x="144" y="48" width="16" height="16"/>
+  <object id="85" type="destructible" gid="21" x="176" y="48" width="16" height="16"/>
   <object id="86" type="destructible" gid="21" x="160" y="48" width="16" height="16"/>
   <object id="88" type="actor" gid="46" x="16" y="48" width="16" height="16"/>
   <object id="89" type="pickup_bomb" gid="43" x="16" y="32" width="16" height="16"/>
@@ -168,16 +168,6 @@
   <object id="93" type="bomb" gid="38" x="48" y="64" width="16" height="16">
    <properties>
     <property name="lifespan" type="int" value="4"/>
-   </properties>
-  </object>
-  <object id="94" type="bomb" gid="37" x="80" y="64" width="16" height="16">
-   <properties>
-    <property name="lifespan" type="int" value="5"/>
-   </properties>
-  </object>
-  <object id="95" type="bomb" gid="37" x="80" y="32" width="16" height="16">
-   <properties>
-    <property name="lifespan" type="int" value="5"/>
    </properties>
   </object>
   <object id="96" type="tile" gid="1" x="16" y="16" width="16" height="16"/>

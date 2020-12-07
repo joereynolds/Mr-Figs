@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="20" height="17" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="299">
+<map version="1.4" tiledversion="2020.10.30" orientation="orthogonal" renderorder="right-down" width="20" height="17" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="300">
  <properties>
   <property name="display_name" value="sneaky bastard dlfjg"/>
   <property name="next_level" value="./data/levels/tmx/L33.tmx"/>
@@ -189,5 +189,6 @@
   <object id="296" type="tile" gid="11" x="48" y="144" width="16" height="16"/>
   <object id="297" type="tile" gid="28" x="48" y="128" width="16" height="16"/>
   <object id="298" type="tile" gid="30" x="48" y="160" width="16" height="16"/>
+  <object id="299" type="tile" gid="2" x="240" y="144" width="16" height="16"/>
  </objectgroup>
 </map>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="2020.10.30" orientation="orthogonal" renderorder="right-down" width="25" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="359">
+<map version="1.4" tiledversion="2020.10.30" orientation="orthogonal" renderorder="right-down" width="25" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="362">
  <properties>
   <property name="display_name" value="sneaky bastard dlfjg"/>
   <property name="next_level" value="./data/levels/tmx/L38.tmx"/>
@@ -56,8 +56,6 @@
     <property name="triggers" type="int" value="1"/>
    </properties>
   </object>
-  <object id="183" type="moveable_tile" gid="45" x="160" y="160" width="16" height="16"/>
-  <object id="188" type="moveable_tile" gid="45" x="304" y="160" width="16" height="16"/>
   <object id="190" type="destructible" gid="21" x="288" y="144" width="16" height="16"/>
   <object id="192" type="destructible" gid="21" x="288" y="176" width="16" height="16"/>
   <object id="197" type="destructible" gid="21" x="256" y="144" width="16" height="16"/>
@@ -219,5 +217,7 @@
   <object id="355" type="tile" gid="11" x="144" y="208" width="16" height="16"/>
   <object id="356" type="tile" gid="11" x="144" y="224" width="16" height="16"/>
   <object id="357" type="tile" gid="29" x="80" y="176" width="16" height="16"/>
+  <object id="359" type="moveable_tile" gid="45" x="304" y="160" width="16" height="16"/>
+  <object id="360" type="moveable_tile" gid="45" x="160" y="160" width="16" height="16"/>
  </objectgroup>
 </map>

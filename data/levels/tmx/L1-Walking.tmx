@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="189">
+<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="134">
  <properties>
-  <property name="next_level" value="./data/levels/tmx/L2-Walking2.tmx"/>
-  <property name="player_bomb_count" value="5000"/>
+  <property name="next_level" value="./data/levels/tmx/L3-Pushing.tmx"/>
+  <property name="player_bomb_count" value="0"/>
  </properties>
  <tileset firstgid="1" name="newtiledsheet" tilewidth="16" tileheight="16" tilecount="180" columns="9">
   <image source="../../newtiledsheet.png" width="144" height="320"/>
@@ -136,67 +136,38 @@
  <layer id="1" name="background" width="14" height="10">
   <data encoding="csv">
 27,27,27,27,27,27,27,27,22,22,22,22,22,22,
+27,27,27,27,27,27,27,36,22,22,22,22,22,22,
+27,19,20,19,27,27,20,27,27,22,22,22,22,22,
+27,27,27,20,19,27,19,27,27,22,22,22,22,22,
+27,27,27,27,20,19,20,27,27,22,22,22,22,22,
+27,27,27,27,27,27,27,27,27,27,27,22,22,22,
 27,27,27,27,27,27,27,27,22,22,22,22,22,22,
-27,19,20,19,20,19,20,36,36,36,20,27,22,22,
-27,36,36,27,27,27,27,27,22,22,22,22,22,22,
 27,27,27,27,27,27,27,27,22,22,22,22,22,22,
-27,27,27,27,27,27,27,27,22,22,22,22,22,22,
-27,27,27,27,19,27,27,27,22,22,22,22,22,22,
-22,22,22,22,22,27,27,22,22,22,22,22,22,22,
-22,22,22,22,22,22,22,22,22,22,22,22,22,22,
+27,27,22,22,22,22,22,22,22,22,22,22,22,22,
 22,22,22,22,22,22,22,22,22,22,22,22,22,22
 </data>
  </layer>
- <objectgroup id="6" name="paths">
-  <object id="163" name="platform-path" type="path" x="64" y="48">
-   <properties>
-    <property name="path_id" type="int" value="2"/>
-   </properties>
-   <polyline points="0,0 0,32"/>
-  </object>
-  <object id="186" type="path" x="112" y="32">
-   <properties>
-    <property name="path_id" type="int" value="1"/>
-   </properties>
-   <polyline points="0,0 32,0"/>
-  </object>
- </objectgroup>
  <objectgroup id="4" name="objects">
-  <object id="116" type="tile" gid="1" x="32" y="32" width="16" height="16"/>
-  <object id="117" type="tile" gid="1" x="16" y="32" width="16" height="16"/>
+  <object id="83" type="tile" gid="1" x="16" y="32" width="16" height="16"/>
+  <object id="85" type="tile" gid="1" x="32" y="32" width="16" height="16"/>
+  <object id="100" type="tile" gid="10" x="16" y="64" width="16" height="16"/>
+  <object id="101" type="tile" gid="10" x="32" y="64" width="16" height="16"/>
+  <object id="114" type="tile" gid="28" x="32" y="64" width="16" height="16"/>
+  <object id="115" type="tile" gid="28" x="0" y="48" width="16" height="16"/>
+  <object id="116" type="tile" gid="11" x="0" y="48" width="16" height="16"/>
+  <object id="117" type="actor" gid="46" x="16" y="48" width="16" height="16"/>
   <object id="118" type="tile" gid="1" x="48" y="32" width="16" height="16"/>
-  <object id="119" type="tile" gid="1" x="64" y="32" width="16" height="16"/>
-  <object id="120" type="tile" gid="1" x="80" y="32" width="16" height="16"/>
-  <object id="126" type="tile" gid="10" x="16" y="64" width="16" height="16"/>
-  <object id="127" type="tile" gid="10" x="32" y="64" width="16" height="16"/>
-  <object id="130" type="tile" gid="10" x="80" y="64" width="16" height="16"/>
-  <object id="131" type="tile" gid="10" x="48" y="64" width="16" height="16"/>
-  <object id="138" type="tile" gid="11" x="0" y="48" width="16" height="16"/>
-  <object id="142" type="actor" gid="46" x="16" y="48" width="16" height="16"/>
-  <object id="146" type="finish_tile" gid="32" x="176" y="48" width="16" height="16"/>
-  <object id="147" type="tile" gid="1" x="96" y="32" width="16" height="16"/>
-  <object id="148" type="tile" gid="10" x="96" y="64" width="16" height="16"/>
-  <object id="150" name="platform" type="platform" gid="53" x="112" y="48" width="16" height="16">
-   <properties>
-    <property name="follows_path_id" type="int" value="1"/>
-   </properties>
-  </object>
-  <object id="152" type="tile" gid="1" x="160" y="32" width="16" height="16"/>
-  <object id="153" type="tile" gid="1" x="176" y="32" width="16" height="16"/>
-  <object id="154" type="tile" gid="10" x="160" y="64" width="16" height="16"/>
-  <object id="155" type="tile" gid="10" x="176" y="64" width="16" height="16"/>
-  <object id="156" type="tile" gid="10" x="64" y="144" width="16" height="16"/>
-  <object id="157" type="finish_tile" gid="32" x="64" y="128" width="16" height="16"/>
-  <object id="158" name="platform" type="platform" gid="53" x="64" y="64" width="16" height="16">
-   <properties>
-    <property name="follows_path_id" type="int" value="2"/>
-   </properties>
-  </object>
-  <object id="159" type="tile" gid="11" x="48" y="128" width="16" height="16"/>
-  <object id="160" type="tile" gid="11" x="48" y="112" width="16" height="16"/>
-  <object id="161" type="tile" gid="2147483659" x="80" y="112" width="16" height="16"/>
-  <object id="162" type="tile" gid="2147483659" x="80" y="128" width="16" height="16"/>
-  <object id="188" type="video_tape" gid="66" x="144" y="112" width="16" height="16"/>
-  <object id="187" type="destructible" gid="21" x="144" y="112" width="16" height="16"/>
+  <object id="119" type="tile" gid="1" x="64" y="48" width="16" height="16"/>
+  <object id="120" type="tile" gid="1" x="80" y="64" width="16" height="16"/>
+  <object id="121" type="tile" gid="10" x="48" y="80" width="16" height="16"/>
+  <object id="122" type="tile" gid="10" x="64" y="96" width="16" height="16"/>
+  <object id="123" type="tile" gid="10" x="80" y="96" width="16" height="16"/>
+  <object id="124" type="tile" gid="10" x="96" y="96" width="16" height="16"/>
+  <object id="125" type="tile" gid="2" x="112" y="80" width="16" height="16"/>
+  <object id="126" type="tile" gid="2" x="112" y="64" width="16" height="16"/>
+  <object id="129" type="tile" gid="1" x="96" y="32" width="16" height="16"/>
+  <object id="131" type="tile" gid="11" x="80" y="48" width="16" height="16"/>
+  <object id="132" type="finish_tile" gid="32" x="112" y="48" width="16" height="16"/>
+  <object id="133" type="tile" gid="1" x="112" y="32" width="16" height="16"/>
  </objectgroup>
 </map>

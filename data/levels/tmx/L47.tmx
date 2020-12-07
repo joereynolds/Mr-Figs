@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="2020.10.30" orientation="orthogonal" renderorder="right-down" width="25" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="321">
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="25" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="340">
  <properties>
   <property name="display_name" value="sneaky bastard dlfjg"/>
   <property name="next_level" value="./data/levels/tmx/L27-BombAdvanced2.tmx"/>
@@ -10,21 +10,21 @@
  </tileset>
  <layer id="1" name="background" width="25" height="20">
   <data encoding="csv">
-27,27,27,27,27,27,27,27,27,27,27,22,22,22,36,36,36,36,36,36,27,27,27,27,27,
-27,27,27,27,27,27,27,27,27,27,27,27,27,36,36,36,36,36,36,27,27,27,27,27,27,
-27,27,19,20,19,27,27,27,19,20,19,27,27,22,19,20,19,36,36,36,27,27,27,27,27,
-27,27,20,19,20,27,27,27,20,19,20,27,27,22,20,19,20,36,36,36,27,27,27,27,27,
-27,27,19,20,19,27,27,27,19,20,19,27,27,22,19,20,19,36,36,27,27,27,27,27,27,
-27,27,27,27,27,27,27,27,27,27,27,27,22,22,36,36,36,36,36,27,27,27,27,27,27,
-27,27,27,27,27,27,27,27,27,27,27,27,22,22,36,36,36,36,36,27,27,27,27,27,27,
-22,22,27,22,27,27,27,27,27,27,27,27,22,22,36,36,36,36,36,27,27,27,27,27,27,
-22,22,19,20,19,27,27,27,19,20,19,27,27,22,19,19,19,36,36,27,27,27,27,27,27,
-36,36,20,19,20,36,27,22,20,19,20,22,27,22,20,19,20,36,36,27,27,27,27,27,27,
-36,36,19,20,19,36,27,36,19,20,19,36,27,27,19,20,19,36,27,27,27,27,27,27,27,
-36,36,36,36,36,36,27,36,36,36,36,36,36,27,27,27,27,27,27,27,27,27,27,27,27,
-36,36,27,27,27,27,27,27,27,27,27,36,36,27,27,27,27,27,27,27,27,27,27,27,27,
-36,36,36,36,36,36,27,27,36,27,27,27,27,27,27,27,27,36,36,27,27,27,27,27,27,
-36,36,19,20,19,27,27,27,19,20,19,27,36,27,19,20,19,27,27,27,27,27,27,27,27,
+27,27,27,27,27,27,27,27,27,27,27,22,22,22,22,22,22,22,22,22,27,27,27,27,27,
+27,27,27,27,27,27,27,27,27,27,27,27,27,22,22,22,22,22,22,27,27,27,27,27,27,
+27,27,19,20,19,27,27,27,19,20,19,27,27,22,19,20,19,22,22,22,27,27,27,27,27,
+27,27,20,19,20,27,27,27,20,19,20,27,27,22,20,19,20,22,22,22,27,27,27,27,27,
+27,27,19,20,19,27,27,27,19,20,19,27,27,22,19,20,19,22,22,27,27,27,27,27,27,
+27,27,27,27,27,27,27,27,27,27,27,27,22,22,22,22,22,22,22,27,27,27,27,27,27,
+27,27,27,27,27,27,27,27,27,27,27,27,22,22,22,22,22,22,22,27,27,27,27,27,27,
+22,22,27,22,27,27,27,27,27,27,27,27,22,22,22,22,22,22,22,27,27,27,27,27,27,
+22,22,19,20,19,27,27,27,19,20,19,27,27,22,19,19,19,22,22,27,27,27,27,27,27,
+22,22,20,19,20,22,27,22,20,19,20,22,27,22,20,19,20,22,22,27,27,27,27,27,27,
+22,22,19,20,19,22,27,22,19,20,19,22,27,27,19,20,19,22,27,27,27,27,27,27,27,
+22,22,22,22,22,22,27,22,22,22,22,22,22,27,27,27,27,27,27,27,27,27,27,27,27,
+22,22,27,27,27,27,27,27,27,27,27,22,22,27,27,27,27,27,27,27,27,27,27,27,27,
+22,22,22,22,22,22,27,27,36,27,27,27,27,27,27,27,27,22,22,27,27,27,27,27,27,
+22,22,19,20,19,27,27,27,19,20,19,27,22,27,19,20,19,27,27,27,27,27,27,27,27,
 27,27,20,19,20,27,27,27,20,19,20,27,27,27,20,19,20,27,27,27,27,27,27,27,27,
 27,27,19,20,19,27,27,27,19,20,19,27,27,27,19,20,19,27,27,27,27,27,27,27,27,
 27,27,27,19,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,
@@ -34,78 +34,6 @@
  </layer>
  <objectgroup id="4" name="objects">
   <object id="176" type="actor" gid="46" x="48" y="64" width="16" height="16"/>
-  <object id="183" type="portal" gid="62" x="32" y="48" width="16" height="16">
-   <properties>
-    <property name="portal_id" type="int" value="1"/>
-    <property name="travels_to_portal_id" type="int" value="2"/>
-   </properties>
-  </object>
-  <object id="184" type="portal" gid="62" x="64" y="48" width="16" height="16">
-   <properties>
-    <property name="portal_id" type="int" value="3"/>
-    <property name="travels_to_portal_id" type="int" value="4"/>
-   </properties>
-  </object>
-  <object id="185" type="portal" gid="62" x="32" y="80" width="16" height="16">
-   <properties>
-    <property name="portal_id" type="int" value="5"/>
-    <property name="travels_to_portal_id" type="int" value="6"/>
-   </properties>
-  </object>
-  <object id="186" type="portal" gid="62" x="64" y="80" width="16" height="16">
-   <properties>
-    <property name="portal_id" type="int" value="7"/>
-    <property name="travels_to_portal_id" type="int" value="8"/>
-   </properties>
-  </object>
-  <object id="187" type="portal" gid="62" x="144" y="144" width="16" height="16">
-   <properties>
-    <property name="portal_id" type="int" value="2"/>
-    <property name="travels_to_portal_id" type="int" value="1"/>
-   </properties>
-  </object>
-  <object id="188" type="portal" gid="62" x="240" y="144" width="16" height="16">
-   <properties>
-    <property name="portal_id" type="int" value="4"/>
-    <property name="travels_to_portal_id" type="int" value="3"/>
-   </properties>
-  </object>
-  <object id="189" type="portal" gid="62" x="144" y="240" width="16" height="16">
-   <properties>
-    <property name="portal_id" type="int" value="6"/>
-    <property name="travels_to_portal_id" type="int" value="5"/>
-   </properties>
-  </object>
-  <object id="190" type="portal" gid="62" x="240" y="240" width="16" height="16">
-   <properties>
-    <property name="portal_id" type="int" value="8"/>
-    <property name="travels_to_portal_id" type="int" value="7"/>
-   </properties>
-  </object>
-  <object id="191" type="portal" gid="62" x="144" y="176" width="16" height="16">
-   <properties>
-    <property name="portal_id" type="int" value="9"/>
-    <property name="travels_to_portal_id" type="int" value="10"/>
-   </properties>
-  </object>
-  <object id="192" type="portal" gid="62" x="48" y="144" width="16" height="16">
-   <properties>
-    <property name="portal_id" type="int" value="10"/>
-    <property name="travels_to_portal_id" type="int" value="9"/>
-   </properties>
-  </object>
-  <object id="193" type="portal" gid="62" x="240" y="176" width="16" height="16">
-   <properties>
-    <property name="portal_id" type="int" value="11"/>
-    <property name="travels_to_portal_id" type="int" value="12"/>
-   </properties>
-  </object>
-  <object id="194" type="portal" gid="62" x="144" y="48" width="16" height="16">
-   <properties>
-    <property name="portal_id" type="int" value="12"/>
-    <property name="travels_to_portal_id" type="int" value="11"/>
-   </properties>
-  </object>
   <object id="195" type="portal" gid="62" x="144" y="272" width="16" height="16">
    <properties>
     <property name="portal_id" type="int" value="13"/>
@@ -118,12 +46,6 @@
     <property name="travels_to_portal_id" type="int" value="13"/>
    </properties>
   </object>
-  <object id="197" type="portal" gid="62" x="240" y="48" width="16" height="16">
-   <properties>
-    <property name="portal_id" type="int" value="16"/>
-    <property name="travels_to_portal_id" type="int" value="15"/>
-   </properties>
-  </object>
   <object id="199" type="pickup_bomb" gid="43" x="144" y="80" width="16" height="16"/>
   <object id="200" type="pickup_bomb" gid="43" x="240" y="80" width="16" height="16"/>
   <object id="201" type="pickup_bomb" gid="43" x="48" y="176" width="16" height="16"/>
@@ -131,12 +53,6 @@
   <object id="203" type="destructible" gid="21" x="48" y="288" width="16" height="16"/>
   <object id="204" type="destructible" gid="21" x="64" y="304" width="16" height="16"/>
   <object id="205" type="finish_tile" gid="32" x="96" y="304" width="16" height="16"/>
-  <object id="206" type="portal" gid="62" x="240" y="272" width="16" height="16">
-   <properties>
-    <property name="portal_id" type="int" value="15"/>
-    <property name="travels_to_portal_id" type="int" value="16"/>
-   </properties>
-  </object>
   <object id="207" type="tile" gid="1" x="32" y="32" width="16" height="16"/>
   <object id="208" type="tile" gid="1" x="48" y="32" width="16" height="16"/>
   <object id="209" type="tile" gid="1" x="64" y="32" width="16" height="16"/>
@@ -251,5 +167,89 @@
   <object id="318" type="tile" gid="2" x="80" y="240" width="16" height="16"/>
   <object id="319" type="tile" gid="2" x="80" y="256" width="16" height="16"/>
   <object id="320" type="tile" gid="2" x="80" y="272" width="16" height="16"/>
+  <object id="322" type="portal" gid="62" x="32" y="48" width="16" height="16">
+   <properties>
+    <property name="portal_id" type="int" value="1"/>
+    <property name="travels_to_portal_id" type="int" value="2"/>
+   </properties>
+  </object>
+  <object id="323" type="portal" gid="62" x="144" y="144" width="16" height="16">
+   <properties>
+    <property name="portal_id" type="int" value="2"/>
+    <property name="travels_to_portal_id" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="324" type="portal" gid="62" x="64" y="48" width="16" height="16">
+   <properties>
+    <property name="portal_id" type="int" value="3"/>
+    <property name="travels_to_portal_id" type="int" value="4"/>
+   </properties>
+  </object>
+  <object id="325" type="portal" gid="62" x="240" y="144" width="16" height="16">
+   <properties>
+    <property name="portal_id" type="int" value="4"/>
+    <property name="travels_to_portal_id" type="int" value="3"/>
+   </properties>
+  </object>
+  <object id="330" type="portal" gid="62" x="64" y="80" width="16" height="16">
+   <properties>
+    <property name="portal_id" type="int" value="7"/>
+    <property name="travels_to_portal_id" type="int" value="8"/>
+   </properties>
+  </object>
+  <object id="331" type="portal" gid="62" x="240" y="240" width="16" height="16">
+   <properties>
+    <property name="portal_id" type="int" value="8"/>
+    <property name="travels_to_portal_id" type="int" value="7"/>
+   </properties>
+  </object>
+  <object id="332" type="portal" gid="62" x="240" y="272" width="16" height="16">
+   <properties>
+    <property name="portal_id" type="int" value="15"/>
+    <property name="travels_to_portal_id" type="int" value="16"/>
+   </properties>
+  </object>
+  <object id="333" type="portal" gid="62" x="240" y="48" width="16" height="16">
+   <properties>
+    <property name="portal_id" type="int" value="16"/>
+    <property name="travels_to_portal_id" type="int" value="15"/>
+   </properties>
+  </object>
+  <object id="334" type="portal" gid="62" x="240" y="176" width="16" height="16">
+   <properties>
+    <property name="portal_id" type="int" value="11"/>
+    <property name="travels_to_portal_id" type="int" value="12"/>
+   </properties>
+  </object>
+  <object id="335" type="portal" gid="62" x="144" y="48" width="16" height="16">
+   <properties>
+    <property name="portal_id" type="int" value="12"/>
+    <property name="travels_to_portal_id" type="int" value="11"/>
+   </properties>
+  </object>
+  <object id="336" type="portal" gid="62" x="144" y="176" width="16" height="16">
+   <properties>
+    <property name="portal_id" type="int" value="9"/>
+    <property name="travels_to_portal_id" type="int" value="10"/>
+   </properties>
+  </object>
+  <object id="337" type="portal" gid="62" x="48" y="144" width="16" height="16">
+   <properties>
+    <property name="portal_id" type="int" value="10"/>
+    <property name="travels_to_portal_id" type="int" value="9"/>
+   </properties>
+  </object>
+  <object id="338" type="portal" gid="62" x="144" y="240" width="16" height="16">
+   <properties>
+    <property name="portal_id" type="int" value="6"/>
+    <property name="travels_to_portal_id" type="int" value="5"/>
+   </properties>
+  </object>
+  <object id="339" type="portal" gid="62" x="32" y="80" width="16" height="16">
+   <properties>
+    <property name="portal_id" type="int" value="5"/>
+    <property name="travels_to_portal_id" type="int" value="6"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="242">
+<map version="1.4" tiledversion="2020.10.30" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="257">
  <properties>
   <property name="has_video_tape" type="bool" value="true"/>
   <property name="next_level" value="./data/levels/tmx/L10-PressurePlateS.tmx"/>
@@ -136,17 +136,17 @@
  </tileset>
  <layer id="1" name="background" width="16" height="12">
   <data encoding="csv">
-27,27,27,27,27,27,27,27,22,22,22,22,22,22,27,27,
-36,36,36,36,36,36,36,36,36,36,36,36,36,22,27,27,
-36,36,36,36,19,20,19,20,19,27,36,36,36,36,27,27,
-27,36,36,36,36,36,36,36,20,27,36,36,36,36,27,27,
-27,36,27,27,19,20,19,20,19,2,19,20,36,22,27,27,
-27,36,36,36,20,36,36,36,27,36,36,36,36,22,27,27,
-27,27,36,27,19,20,19,20,19,27,22,36,36,22,27,27,
-22,36,36,36,36,36,36,36,20,27,36,36,36,36,36,27,
-22,22,22,22,19,20,19,20,19,2,19,20,22,36,36,27,
-22,22,22,22,22,22,22,22,22,27,27,27,36,36,36,27,
-27,27,27,27,27,27,27,27,27,36,36,36,36,36,27,27,
+27,27,27,27,27,27,27,27,22,22,27,27,22,22,27,27,
+27,27,27,27,36,36,36,36,36,36,27,27,27,27,27,27,
+27,27,27,36,19,20,19,20,19,27,36,27,27,27,27,27,
+27,27,27,36,36,36,36,36,20,27,27,27,27,27,27,27,
+27,27,27,27,19,20,19,20,19,2,19,20,36,27,27,27,
+27,27,27,36,20,36,36,36,27,36,27,27,27,27,27,27,
+27,27,27,27,19,20,19,20,19,27,22,27,27,27,27,27,
+22,27,27,36,36,36,36,36,20,27,27,27,27,27,27,27,
+22,22,22,22,19,20,19,20,19,2,19,20,22,27,27,27,
+22,22,22,22,22,22,22,22,22,27,27,27,27,27,27,27,
+27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,
 27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27
 </data>
  </layer>
@@ -226,6 +226,20 @@
   <object id="183" type="moveable_tile" gid="45" x="80" y="48" width="16" height="16"/>
   <object id="184" type="moveable_tile" gid="45" x="112" y="80" width="16" height="16"/>
   <object id="185" type="moveable_tile" gid="45" x="80" y="112" width="16" height="16"/>
-  <object id="241" type="video_tape" gid="66" x="176" y="144" width="16" height="16"/>
+  <object id="242" type="tile" gid="27" x="160" y="64" width="16" height="16"/>
+  <object id="243" type="tile" gid="27" x="176" y="64" width="16" height="16"/>
+  <object id="244" type="tile" gid="27" x="192" y="64" width="16" height="16"/>
+  <object id="245" type="tile" gid="27" x="208" y="80" width="16" height="16"/>
+  <object id="246" type="tile" gid="27" x="192" y="96" width="16" height="16"/>
+  <object id="247" type="tile" gid="27" x="176" y="96" width="16" height="16"/>
+  <object id="248" type="tile" gid="27" x="160" y="96" width="16" height="16"/>
+  <object id="249" type="tile" gid="27" x="160" y="128" width="16" height="16"/>
+  <object id="250" type="tile" gid="27" x="176" y="128" width="16" height="16"/>
+  <object id="251" type="tile" gid="27" x="192" y="128" width="16" height="16"/>
+  <object id="252" type="tile" gid="27" x="192" y="144" width="16" height="16"/>
+  <object id="253" type="tile" gid="27" x="176" y="160" width="16" height="16"/>
+  <object id="254" type="tile" gid="27" x="160" y="160" width="16" height="16"/>
+  <object id="255" type="tile" gid="27" x="144" y="160" width="16" height="16"/>
+  <object id="256" type="video_tape" gid="66" x="176" y="144" width="16" height="16"/>
  </objectgroup>
 </map>
