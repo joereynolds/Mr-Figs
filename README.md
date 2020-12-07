@@ -13,10 +13,13 @@ The player must blast their way through various puzzles to reach the end goal.
 - Move with either `WASD`, `HJKL` or the arrow keys
 - Pickup bombs to add to your inventory
 - Pickup previously planted bombs if you made a mistake
-- Make your way to the stairs
+- Try and find all the hidden video tapes
 - Activate switches by blowing them up
 - Trigger pressure plates by putting something on them
 - Teleport around by going through portals
+- Watch out for patrolling bad guys
+- Make your way to the stairs
+
 
 #### Installing
 
