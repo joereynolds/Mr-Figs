@@ -57,14 +57,13 @@ class Actor(entity.Entity):
         self.turns_taken = 0
         self.is_teleporting = False
         self.minimap_colour = colours.BLUE_HIGHLIGHT
+        self.light = pygame.image.load('./data/light-medium.png')
 
     def move(self, delta_time):
         """Checks to see if we've reached the destination given, if we have,
         we can stop moving. Note that we need to use delta-time otherwise we'll get
         differing results from pc to pc. Also without delta time we can't use fancy
         schmancy interpolation effects"""
-
-        
         target_x = self.destination[0]
         target_y = self.destination[1]
 

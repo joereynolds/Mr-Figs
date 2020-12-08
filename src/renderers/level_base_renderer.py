@@ -2,11 +2,11 @@ import pygame
 import os
 from src.gui.minimap import Minimap
 from src.gui.data_display import DataDisplay
+from src.game_object.light_source import LightSource
 import src.colours as colours
 import src.config as config
 import src.graphics as graphics
 from src.entity import Entity
-# from src.effects import Fader
 
 class LevelBaseRenderer():
 
@@ -87,6 +87,34 @@ class LevelBaseRenderer():
             os.path.basename(level_name)
         )
 
+        self.veil = pygame.Surface((width, height), flags=pygame.SRCALPHA)
+        self.light = pygame.image.load('./data/light-soft.png')
+
+
+        # Index all of our lightable sprites so we can references them straight away
+        # self.light_sources = []
+
+        # for sprite in self.level.sprites:
+        #     if isinstance(sprite, LightSource):
+        #         self.light_sources.append(sprite)
+
+
+
+    def render_lights(self):
+        pass
+        # self.veil.fill((50,50,50,155))
+
+        # for light_source in self.level.sprites:
+        #     if isinstance(light_source, LightSource):
+        #         self.veil.blit(
+        #             light_source.image, 
+        #             light_source.rect
+        #         )
+
+        #To debug, remove the special_flags arg
+        # needs blend_mult flag to work
+        # self.game_area.blit(self.veil, (0,0), )
+
     def render(self):
         if len(self.level.player.bombs) != self.bomb_count:
             pass
@@ -95,6 +123,7 @@ class LevelBaseRenderer():
 
         self.level.sprites.center(self.level.player.rect.center)
         self.level.sprites.draw(self.game_area)
+        self.render_lights()
 
         self.sidebar.fill(colours.BLUE_BASE)
         self.minimap.render()
@@ -102,3 +131,5 @@ class LevelBaseRenderer():
         self.turn_display.render(self.level.player.turns_taken)
         self.ace_turn_display.render(self.level.tiled_level.properties.get('turns_to_ace', 'TODO'))
         self.level_name_display.render()
+
+

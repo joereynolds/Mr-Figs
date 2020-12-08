@@ -26,13 +26,13 @@ class LevelData():
     def __init__(self, file, screen: pygame.Surface):
         self.tmx_file = file
 
-
         self._map = load_pygame(self.tmx_file)
         self.map_data_for_camera = pyscroll.TiledMapData(self._map)
 
         self.map_layer_for_camera = pyscroll.BufferedRenderer(
             self.map_data_for_camera,
-            (100, 100),
+            screen.get_size(),
+            alpha=True
         )
 
         self.sprites = pyscroll.PyscrollGroup(
@@ -41,8 +41,7 @@ class LevelData():
 
         self.paths = {}
 
-        # Would've thought .5 would make it smaller but actually makes it bigger?
-        self.map_layer_for_camera.zoom = .5
+        self.map_layer_for_camera.zoom = 3.5
 
         self.tile_spacing = graphics.tile_width
         self.properties = self._map.properties
@@ -190,6 +189,14 @@ class LevelData():
                     **common,
                     'state': state,
                     'triggers': triggers,
+                },
+            }
+
+        if tile_object.type == 'light_source':
+            type_map = {
+                'light_source': {
+                    **common,
+                    'image': pygame.image.load('./data/light-medium.png')
                 },
             }
 
