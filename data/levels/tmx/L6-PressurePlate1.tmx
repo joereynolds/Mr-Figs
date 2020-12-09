@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="128">
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="128">
  <properties>
+  <property name="display_name" value="serve up on a plate"/>
   <property name="next_level" value="./data/levels/tmx/L7-PressurePlate2.tmx"/>
   <property name="player_bomb_count" value="0"/>
  </properties>

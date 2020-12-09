@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="108">
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="108">
  <properties>
+  <property name="display_name" value="bombs countdown y'know"/>
   <property name="next_level" value="./data/levels/tmx/L18-BombBasic3.tmx"/>
   <property name="player_bomb_count" value="0"/>
  </properties>
