@@ -2,6 +2,7 @@ import pygame
 import os
 from src.gui.minimap import Minimap
 from src.gui.data_display import DataDisplay
+from src.gui.bomb_display import BombDisplay
 import src.colours as colours
 import src.config as config
 import src.graphics as graphics
@@ -15,34 +16,40 @@ class LevelBaseRenderer():
         self.bomb_count = len(self.level.player.bombs)
         print(self.level.file)
 
-        width, height = pygame.display.get_window_size()
-        quarter_of_screen = width // 4
+        self.width, self.height = pygame.display.get_window_size()
+        quarter_of_screen = self.width // 4
 
         self.game_area = self.level.surface.subsurface(
             pygame.Rect(
                 0,
+                64,
+                self.width,
+                self.height - 64
+            )
+        )
+
+        self.top_bar = self.level.surface.subsurface(
+            pygame.Rect(
                 0,
-                width,
-                height
+                0,
+                self.width,
+                64
             )
         )
 
         self.minimap = Minimap(
-            0,
-            25,
+            self.width - 200,
+            32,
             quarter_of_screen,
-            height,
-            level,
-            self.game_area
+            self.height,
+            level
         )
 
-        self.bomb_display = DataDisplay(
-            0,
+        self.bomb_display = BombDisplay(
+            self.width - 200,
             200,
             quarter_of_screen,
-            height,
-            self.game_area,
-            'BOMBS '
+            self.height
         )
 
         file_without_extension = os.path.splitext(self.level.file)[0]
@@ -50,11 +57,11 @@ class LevelBaseRenderer():
         level_name = self.level.tiled_level.properties.get('display_name', fallback_level_name)
 
         self.level_name_display = DataDisplay(
-            0,
-            0,
+            self.width // 2,
+            self.top_bar.get_height() // 2,
             quarter_of_screen,
-            height,
-            self.game_area,
+            self.height,
+            self.top_bar,
             os.path.basename(level_name)
         )
 
@@ -64,9 +71,13 @@ class LevelBaseRenderer():
             #TODO shake the screen here
         else: self.level.surface.fill(self.colour)
 
+        self.top_bar.fill((255,0,0))
         self.level.sprites.center(self.level.player.rect.center)
         self.level.sprites.draw(self.game_area)
 
         self.minimap.render()
         self.bomb_display.render(self.level.player.remaining_bombs)
+
+        self.game_area.blit(self.minimap.surface, (self.width - 200, 32))
+        self.game_area.blit(self.bomb_display.surface, (self.width - 200, 200))
         self.level_name_display.render()

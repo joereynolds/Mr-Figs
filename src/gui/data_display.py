@@ -1,6 +1,3 @@
-"""
-Renders out a display of the count of bombs left on a player
-"""
 import pygame
 
 from src.gui.text_element import TextElement

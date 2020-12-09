@@ -8,6 +8,7 @@ class ResolutionAssetSizer():
     def get_nearest_available_resolution(self, screen_size):
         resolutions = [
             (640, 480),
+            (768, 768),
             (1280, 960),
         ]
 
@@ -29,7 +30,6 @@ class ResolutionAssetSizer():
             (640, 480): 18
         }
 
-
         return font_size_map.get(screen_size, 24)
 
     def get_button_offset(self, screen_size):
@@ -47,6 +47,11 @@ class ResolutionAssetSizer():
     def get_minimap_sprite_size(self, screen_size):
         minimap_sprite_size_map = {
             (640, 480): {
+                'sprite_placement_modifier': 0.5, 
+                'width': graphics.tile_width // 2,
+                'height': graphics.tile_height // 2,
+            },
+            (768, 768): {
                 'sprite_placement_modifier': 0.5, 
                 'width': graphics.tile_width // 2,
                 'height': graphics.tile_height // 2,

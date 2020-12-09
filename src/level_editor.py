@@ -32,7 +32,7 @@ class LevelData():
 
         self.map_layer_for_camera = pyscroll.BufferedRenderer(
             self.map_data_for_camera,
-            (100, 100),
+            screen.get_size()
         )
 
         self.sprites = pyscroll.PyscrollGroup(
@@ -40,9 +40,7 @@ class LevelData():
         )
 
         self.paths = {}
-
-        # Would've thought .5 would make it smaller but actually makes it bigger?
-        self.map_layer_for_camera.zoom = .5
+        self.map_layer_for_camera.zoom = graphics.ZOOM_LEVEL
 
         self.tile_spacing = graphics.tile_width
         self.properties = self._map.properties
