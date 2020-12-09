@@ -40,8 +40,7 @@ class LevelData():
         )
 
         self.paths = {}
-
-        self.map_layer_for_camera.zoom = 2
+        self.map_layer_for_camera.zoom = graphics.ZOOM_LEVEL
 
         self.tile_spacing = graphics.tile_width
         self.properties = self._map.properties

@@ -3,11 +3,10 @@ import os
 from src.gui.minimap import Minimap
 from src.gui.data_display import DataDisplay
 from src.game_object.light_source import LightSource
-
 from src.game_object.finish_tile import FinishTile
 from src.game_object.triggerable import Triggerable
 from src.game_object.bomb import Bomb
-
+from src.gui.bomb_display import BombDisplay
 import src.colours as colours
 import src.config as config
 import src.graphics as graphics
@@ -19,64 +18,42 @@ class LevelBaseRenderer():
         self.level = level
         self.colour = colours.WHITE
         self.bomb_count = len(self.level.player.bombs)
-        # self.fader = Fader(self.level)
         print(self.level.file)
 
-        width, height = pygame.display.get_window_size()
-        quarter_of_screen = width // 4
+        self.width, self.height = pygame.display.get_window_size()
+        quarter_of_screen = self.width // 4
 
         self.game_area = self.level.surface.subsurface(
             pygame.Rect(
                 0,
-                0,
-                width - quarter_of_screen,
-                height
+                64,
+                self.width,
+                self.height - 64
             )
         )
 
-        self.sidebar = self.level.surface.subsurface(
+        self.top_bar = self.level.surface.subsurface(
             pygame.Rect(
-                width - quarter_of_screen,
                 0,
-                quarter_of_screen,
-                height
+                0,
+                self.width,
+                64
             )
         )
 
         self.minimap = Minimap(
-            0,
-            25,
+            self.width - 200,
+            32,
             quarter_of_screen,
-            height,
-            level,
-            self.sidebar
+            self.height,
+            level
         )
 
-        self.bomb_display = DataDisplay(
-            0,
+        self.bomb_display = BombDisplay(
+            self.width - 200,
             200,
             quarter_of_screen,
-            height,
-            self.sidebar,
-            'BOMBS '
-        )
-
-        self.turn_display = DataDisplay(
-            0,
-            225,
-            quarter_of_screen,
-            height,
-            self.sidebar,
-            'TURNS  TAKEN '
-        )
-
-        self.ace_turn_display = DataDisplay(
-            0,
-            250,
-            quarter_of_screen,
-            height,
-            self.sidebar,
-            'TURNS  TO  ACE  '
+            self.height
         )
 
         file_without_extension = os.path.splitext(self.level.file)[0]
@@ -84,11 +61,11 @@ class LevelBaseRenderer():
         level_name = self.level.tiled_level.properties.get('display_name', fallback_level_name)
 
         self.level_name_display = DataDisplay(
-            0,
-            0,
+            self.width // 2,
+            self.top_bar.get_height() // 2,
             quarter_of_screen,
-            height,
-            self.sidebar,
+            self.height,
+            self.top_bar,
             os.path.basename(level_name)
         )
 
@@ -129,15 +106,16 @@ class LevelBaseRenderer():
             #TODO shake the screen here
         else: self.level.surface.fill(self.colour)
 
+        self.top_bar.fill((255,0,0))
         self.level.sprites.center(self.level.player.rect.center)
         self.level.sprites.draw(self.game_area)
         self.render_lights()
 
-        self.sidebar.fill(colours.BLUE_BASE)
         self.minimap.render()
         self.bomb_display.render(self.level.player.remaining_bombs)
-        self.turn_display.render(self.level.player.turns_taken)
-        self.ace_turn_display.render(self.level.tiled_level.properties.get('turns_to_ace', 'TODO'))
+
+        self.game_area.blit(self.minimap.surface, (self.width - 200, 32))
+        self.game_area.blit(self.bomb_display.surface, (self.width - 200, 200))
         self.level_name_display.render()
 
 
