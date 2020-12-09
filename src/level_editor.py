@@ -41,7 +41,7 @@ class LevelData():
 
         self.paths = {}
 
-        self.map_layer_for_camera.zoom = 3.5
+        self.map_layer_for_camera.zoom = 2
 
         self.tile_spacing = graphics.tile_width
         self.properties = self._map.properties
@@ -196,7 +196,7 @@ class LevelData():
             type_map = {
                 'light_source': {
                     **common,
-                    'image': pygame.image.load('./data/light-medium.png')
+                    # 'image': pygame.image.load('./data/test.png')
                 },
             }
 

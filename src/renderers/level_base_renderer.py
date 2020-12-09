@@ -3,6 +3,11 @@ import os
 from src.gui.minimap import Minimap
 from src.gui.data_display import DataDisplay
 from src.game_object.light_source import LightSource
+
+from src.game_object.finish_tile import FinishTile
+from src.game_object.triggerable import Triggerable
+from src.game_object.bomb import Bomb
+
 import src.colours as colours
 import src.config as config
 import src.graphics as graphics
@@ -87,33 +92,36 @@ class LevelBaseRenderer():
             os.path.basename(level_name)
         )
 
-        self.veil = pygame.Surface((width, height), flags=pygame.SRCALPHA)
-        self.light = pygame.image.load('./data/light-soft.png')
-
+        self.veil = pygame.Surface((width - quarter_of_screen, height), flags=pygame.SRCALPHA)
 
         # Index all of our lightable sprites so we can references them straight away
-        # self.light_sources = []
+        self.light_sources = []
 
-        # for sprite in self.level.sprites:
-        #     if isinstance(sprite, LightSource):
-        #         self.light_sources.append(sprite)
-
-
+        for sprite in self.level.sprites:
+            # if isinstance(sprite, (Bomb, FinishTile, Triggerable)):
+            if isinstance(sprite, (LightSource)):
+                self.light_sources.append(sprite)
 
     def render_lights(self):
-        pass
-        # self.veil.fill((50,50,50,155))
+        self.veil.fill((50,50,50,155))
+        ##offset = self.level.tiled_level.map_layer_for_camera.get_center_offset()
 
-        # for light_source in self.level.sprites:
-        #     if isinstance(light_source, LightSource):
-        #         self.veil.blit(
-        #             light_source.image, 
-        #             light_source.rect
-        #         )
+        translated = self.level.tiled_level.map_layer_for_camera.translate_rect(self.level.player.rect)
 
-        #To debug, remove the special_flags arg
-        # needs blend_mult flag to work
-        # self.game_area.blit(self.veil, (0,0), )
+        # self.level.player.light_mask_rect = self.level.player.rect
+        self.veil.blit(self.level.player.light_mask, 
+            (
+                translated.topleft
+                # self.level.player.rect.x + 33,
+                # self.level.player.rect.y + 64
+            )
+        )
+
+        ##To debug, remove the special_flags arg
+        ## needs blend_mult flag to work
+
+        self.game_area.blit(self.veil, (0,0), special_flags=pygame.BLEND_MULT)
+        # self.level.player.light_mask_rect.center = self.level.player.rect.center
 
     def render(self):
         if len(self.level.player.bombs) != self.bomb_count:
