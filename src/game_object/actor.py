@@ -1,5 +1,6 @@
 import pygame
 
+from src.game_object.light_source import LightSource
 from src.game_object.moveable_tile import MoveableTile
 from src.game_object.triggerable import Triggerable
 import src.game_object.bomb as bomb
@@ -58,13 +59,7 @@ class Actor(entity.Entity):
         self.is_teleporting = False
         self.minimap_colour = colours.BLUE_HIGHLIGHT
 
-        # self.light = pygame.image.load('./data/light-medium.png')
-
-        self.light_mask = pygame.Surface((16,16))
-        self.light_mask = pygame.transform.scale(self.light_mask, (16 *2 , 16*2 ))
-        self.light_mask_rect = self.light_mask.get_rect()
-        self.light_mask_rect.center = self.rect.center
-        self.light_mask.fill((255,255,255,150))
+        self.light_mask = LightSource()
 
     def move(self, delta_time):
         """Checks to see if we've reached the destination given, if we have,
