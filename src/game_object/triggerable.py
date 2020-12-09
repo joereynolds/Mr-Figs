@@ -1,5 +1,6 @@
 import pygame
 
+from src.game_object.light_source import LightSource
 from src.game_object.solid_tile import SolidTile
 import src.graphics as graphics
 import src.entity as entity
@@ -32,6 +33,7 @@ class Triggerable(entity.Entity):
         self.minimap_colour = src.colours.RED
 
         self.reverse_animation = False
+        self.light_mask = LightSource()
 
         # TODO - only play this when the state is on
         # self.laser_hum_sound = pygame.mixer.Sound('./data/audio/fx/laser-hum.ogg')

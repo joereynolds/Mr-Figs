@@ -3,6 +3,7 @@ from src.game_object.pressure_plate import PressurePlate
 from src.game_object.triggerable import Triggerable
 from src.game_object.portal import Portal
 from src.game_object.destructible_tile import Destructible
+from src.game_object.torch import Torch
 from src.game_object.solid_tile import SolidTile
 from src.game_object.path import Path
 from src.game_object.platform import Platform
@@ -26,13 +27,13 @@ class LevelData():
     def __init__(self, file, screen: pygame.Surface):
         self.tmx_file = file
 
-
         self._map = load_pygame(self.tmx_file)
         self.map_data_for_camera = pyscroll.TiledMapData(self._map)
 
         self.map_layer_for_camera = pyscroll.BufferedRenderer(
             self.map_data_for_camera,
-            screen.get_size()
+            screen.get_size(),
+            alpha=True
         )
 
         self.sprites = pyscroll.PyscrollGroup(
@@ -191,6 +192,14 @@ class LevelData():
                 },
             }
 
+        if tile_object.type == 'light_source':
+            type_map = {
+                'light_source': {
+                    **common,
+                    # 'image': pygame.image.load('./data/test.png')
+                },
+            }
+
         if tile_object.type == 'triggerable':
             type_map = {
                 'triggerable': {
@@ -206,6 +215,14 @@ class LevelData():
                     **common,
                 },
             }
+
+        if tile_object.type == 'torch':
+            type_map = {
+                'torch': {
+                    **common,
+                },
+            }
+
 
         try:
             return factory.build(tile_object.type, **type_map[tile_object.type])

@@ -1,5 +1,6 @@
 import pygame
 
+from src.game_object.light_source import LightSource
 from src.game_object.moveable_tile import MoveableTile
 from src.game_object.triggerable import Triggerable
 import src.game_object.bomb as bomb
@@ -58,13 +59,13 @@ class Actor(entity.Entity):
         self.is_teleporting = False
         self.minimap_colour = colours.BLUE_HIGHLIGHT
 
+        self.light_mask = LightSource()
+
     def move(self, delta_time):
         """Checks to see if we've reached the destination given, if we have,
         we can stop moving. Note that we need to use delta-time otherwise we'll get
         differing results from pc to pc. Also without delta time we can't use fancy
         schmancy interpolation effects"""
-
-        
         target_x = self.destination[0]
         target_y = self.destination[1]
 
