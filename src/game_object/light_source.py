@@ -17,3 +17,6 @@ class LightSource(pygame.sprite.Sprite):
                 self.image.get_height() * graphics.ZOOM_LEVEL * 4
             )
         )
+
+    def generate_light(self):
+        pass

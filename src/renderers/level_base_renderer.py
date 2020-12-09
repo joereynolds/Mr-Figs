@@ -4,6 +4,7 @@ from src.gui.minimap import Minimap
 from src.gui.data_display import DataDisplay
 from src.game_object.light_source import LightSource
 from src.game_object.finish_tile import FinishTile
+from src.game_object.torch import Torch
 from src.game_object.triggerable import Triggerable
 from src.game_object.bomb import Bomb
 from src.gui.bomb_display import BombDisplay
@@ -74,22 +75,22 @@ class LevelBaseRenderer():
         self.light_sources = []
 
         for light_source in self.level.sprites:
-            if isinstance(light_source, FinishTile):
+            if isinstance(light_source, (Torch, Triggerable)):
                 self.light_sources.append(light_source)
 
 
     def render_lights(self):
         self.veil.fill((50,50,50,155))
-        # TODO - heay stuff hsppening here, do it on __init__ to reducde th load
+        # TODO - heavy stuff hsppening here, do it on __init__ to reduce the load Frodo.
 
         translated = self.level.tiled_level.map_layer_for_camera.translate_rect(self.level.player.rect)
-
 
         self.veil.blit(
             self.level.player.light_mask.image, 
             (
-                translated.x - self.level.player.image.get_width(),
-                translated.y - self.level.player.light_mask.image.get_height() //2
+                translated.x - graphics.tile_width * graphics.ZOOM_LEVEL,
+                # hardcoded to avoid calculations, the source is self.level.player.light_mask.image.get_height() //2
+                translated.y - 128 
             )
         )
 
@@ -99,8 +100,9 @@ class LevelBaseRenderer():
             self.veil.blit(
                 light_source.light_mask.image, 
                 (
-                    translated.x - light_source.image.get_width(),
-                    translated.y - light_source.light_mask.image.get_height() //2
+                    translated.x - graphics.tile_width * graphics.ZOOM_LEVEL,
+                    # hardcoded to avoid calculations, source is light_source.light_mask.image.get_height() //2
+                    translated.y - 128
                 )
             )
 

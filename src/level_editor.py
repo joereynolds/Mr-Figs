@@ -3,6 +3,7 @@ from src.game_object.pressure_plate import PressurePlate
 from src.game_object.triggerable import Triggerable
 from src.game_object.portal import Portal
 from src.game_object.destructible_tile import Destructible
+from src.game_object.torch import Torch
 from src.game_object.solid_tile import SolidTile
 from src.game_object.path import Path
 from src.game_object.platform import Platform
@@ -214,6 +215,14 @@ class LevelData():
                     **common,
                 },
             }
+
+        if tile_object.type == 'torch':
+            type_map = {
+                'torch': {
+                    **common,
+                },
+            }
+
 
         try:
             return factory.build(tile_object.type, **type_map[tile_object.type])

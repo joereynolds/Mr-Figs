@@ -1,4 +1,5 @@
 from src.game_object.triggerable import Triggerable
+from src.game_object.torch import Torch
 from src.game_object.moveable_tile import MoveableTile
 from src.game_object.finish_tile import FinishTile
 from src.game_object.destructible_tile import Destructible
@@ -35,6 +36,7 @@ class TileFactory():
             'platform': Platform,
             'enemy_pathable': EnemyPathable,
             'light_source': LightSource,
+            'torch': Torch
         }
 
         return tile_map[tile_type](**kwargs)
