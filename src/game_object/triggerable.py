@@ -33,7 +33,7 @@ class Triggerable(entity.Entity):
         self.minimap_colour = src.colours.RED
 
         self.reverse_animation = False
-        self.light_mask = LightSource()
+        self.light_mask = LightSource(x, y, width, height)
 
         # TODO - only play this when the state is on
         # self.laser_hum_sound = pygame.mixer.Sound('./data/audio/fx/laser-hum.ogg')
