@@ -1,4 +1,5 @@
 import pygame
+import random
 import os
 from src.gui.minimap import Minimap
 from src.gui.data_display import DataDisplay
@@ -51,8 +52,7 @@ class LevelBaseRenderer():
             self.height
         )
 
-
-        self.veil= pygame.Surface((self.width, self.height), flags=pygame.SRCALPHA)
+        self.veil = pygame.Surface((self.width, self.height))
 
         self.light_sources = []
 
@@ -61,7 +61,7 @@ class LevelBaseRenderer():
                 self.light_sources.append(light_source)
 
     def render_lights(self):
-        self.veil.fill((50,50,50,155))
+        self.veil.fill((50,50,50))
         self.veil.blit(
             self.level.player.light_mask.image, 
             (
@@ -83,8 +83,6 @@ class LevelBaseRenderer():
                 )
             )
 
-
-        ###To debug, remove the special_flags arg needs blend_mult flag to work
         self.game_area.blit(self.veil, (0,0), special_flags=pygame.BLEND_MULT)
 
     def render(self):
