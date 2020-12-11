@@ -2,6 +2,7 @@ import pygame
 import os
 from src.gui.minimap import Minimap
 from src.gui.data_display import DataDisplay
+from src.gui.top_bar import TopBar
 from src.game_object.light_source import LightSource
 from src.game_object.finish_tile import FinishTile
 from src.game_object.torch import Torch
@@ -24,21 +25,14 @@ class LevelBaseRenderer():
         self.width, self.height = pygame.display.get_window_size()
         quarter_of_screen = self.width // 4
 
+        self.top_bar = TopBar(self.width, 64, self.level)
+
         self.game_area = self.level.surface.subsurface(
             pygame.Rect(
                 0,
-                64,
+                self.top_bar.height,
                 self.width,
-                self.height - 64
-            )
-        )
-
-        self.top_bar = self.level.surface.subsurface(
-            pygame.Rect(
-                0,
-                0,
-                self.width,
-                64
+                self.height - self.top_bar.height
             )
         )
 
@@ -55,19 +49,6 @@ class LevelBaseRenderer():
             200,
             quarter_of_screen,
             self.height
-        )
-
-        file_without_extension = os.path.splitext(self.level.file)[0]
-        fallback_level_name = str.replace(file_without_extension, '-', ' ')
-        level_name = self.level.tiled_level.properties.get('display_name', fallback_level_name)
-
-        self.level_name_display = DataDisplay(
-            self.width // 2,
-            self.top_bar.get_height() // 2,
-            quarter_of_screen,
-            self.height,
-            self.top_bar,
-            os.path.basename(level_name)
         )
 
         self.veil = pygame.Surface((self.width, self.height), flags=pygame.SRCALPHA)
@@ -116,16 +97,13 @@ class LevelBaseRenderer():
             #TODO shake the screen here
         else: self.level.surface.fill(self.colour)
 
-        self.top_bar.fill((255,0,0))
         self.level.sprites.center(self.level.player.rect.center)
         self.level.sprites.draw(self.game_area)
         self.render_lights()
 
+        self.top_bar.render(self.level.surface)
         self.minimap.render()
         self.bomb_display.render(self.level.player.remaining_bombs)
 
         self.game_area.blit(self.minimap.surface, (self.width - 200, 32))
         self.game_area.blit(self.bomb_display.surface, (self.width - 200, 200))
-        self.level_name_display.render()
-
-
