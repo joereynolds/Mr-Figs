@@ -84,7 +84,6 @@ class Actor(entity.Entity):
         else:
             if target_x < self.rect.x:
                 self.rect.x -= self.speed
-                self.light_mask.rect.x = self.rect.x
                 self.moving = True
             elif target_x > self.rect.x:
                 self.speed = interpolate.decelerate(self.rect.x, target_x)
