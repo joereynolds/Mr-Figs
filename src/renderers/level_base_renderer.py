@@ -51,7 +51,8 @@ class LevelBaseRenderer():
             self.height
         )
 
-        self.veil = pygame.Surface((self.width, self.height), flags=pygame.SRCALPHA)
+
+        self.veil= pygame.Surface((self.width, self.height), flags=pygame.SRCALPHA)
 
         self.light_sources = []
 
@@ -59,22 +60,17 @@ class LevelBaseRenderer():
             if isinstance(light_source, (Torch, Triggerable)):
                 self.light_sources.append(light_source)
 
-
     def render_lights(self):
         self.veil.fill((50,50,50,155))
-        # TODO - heavy stuff hsppening here, do it on __init__ to reduce the load Frodo.
-
-        translated = self.level.tiled_level.map_layer_for_camera.translate_rect(self.level.player.rect)
-
         self.veil.blit(
             self.level.player.light_mask.image, 
             (
-                translated.x - graphics.tile_width * graphics.ZOOM_LEVEL,
-                # hardcoded to avoid calculations, the source is self.level.player.light_mask.image.get_height() //2
-                translated.y - 128 
+                self.level.player.light_mask.rect.x,
+                self.level.player.light_mask.rect.y,
             )
         )
 
+        ## TODO - heavy stuff hsppening here, do it on __init__ to reduce the load Frodo.
         for light_source in self.light_sources:
             translated = self.level.tiled_level.map_layer_for_camera.translate_rect(light_source.rect)
 
@@ -82,13 +78,13 @@ class LevelBaseRenderer():
                 light_source.light_mask.image, 
                 (
                     translated.x - graphics.tile_width * graphics.ZOOM_LEVEL,
-                    # hardcoded to avoid calculations, source is light_source.light_mask.image.get_height() //2
+                     # hardcoded to avoid calculations, source is light_source.light_mask.image.get_height() //2
                     translated.y - 128
                 )
             )
 
 
-        ##To debug, remove the special_flags arg needs blend_mult flag to work
+        ###To debug, remove the special_flags arg needs blend_mult flag to work
         self.game_area.blit(self.veil, (0,0), special_flags=pygame.BLEND_MULT)
 
     def render(self):

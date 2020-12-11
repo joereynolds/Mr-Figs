@@ -59,7 +59,13 @@ class Actor(entity.Entity):
         self.is_teleporting = False
         self.minimap_colour = colours.BLUE_HIGHLIGHT
 
-        self.light_mask = LightSource()
+        translated = self.tiled_level.map_layer_for_camera.translate_rect(self.rect)
+        self.light_mask = LightSource(
+            translated.x + 256, 
+            translated.y, 
+            width, 
+            height
+        )
 
     def move(self, delta_time):
         """Checks to see if we've reached the destination given, if we have,
@@ -89,6 +95,11 @@ class Actor(entity.Entity):
             elif target_y > self.rect.y:
                 self.rect.y += self.speed
                 self.moving = True
+
+
+        translated = self.tiled_level.map_layer_for_camera.translate_rect(self.rect)
+        self.light_mask.rect.x = translated.x
+        self.light_mask.rect.y = translated.y - 128
 
         #If we have reached our destination, we're not moving anymore
         if self.rect.x == target_x and self.rect.y == target_y:

@@ -3,10 +3,11 @@ import src.entity as entity
 import src.environment
 import src.colours as colours
 import src.graphics as graphics
+from src.entity import Entity
 
-class LightSource(pygame.sprite.Sprite):
-    def __init__(self):
-        pygame.sprite.Sprite.__init__(self)
+class LightSource(Entity):
+    def __init__(self, x, y, width, height):
+        entity.Entity.__init__(self, x, y, width, height, None)
         self.minimap_colour = colours.WHITE
 
         self.image = pygame.image.load('./data/light.png')
@@ -17,6 +18,3 @@ class LightSource(pygame.sprite.Sprite):
                 self.image.get_height() * graphics.ZOOM_LEVEL * 4
             )
         )
-
-    def generate_light(self):
-        pass
