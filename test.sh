@@ -1,23 +1,30 @@
-./run.py &
+for test in ./test/*.sh; do
+    echo "Running: $test"
 
-echo 'Test we go to the next level when we hit the stairs'
-xdotool type --delay 2000 s 
-xdotool key --delay 200 Right
-xdotool key --delay 200 Right
-xdotool key --delay 200 Right
-xdotool key --delay 200 Right
-xdotool key --delay 200 Right
-xdotool key --delay 500 Right
-xdotool key --delay 500 Right
-xdotool key --delay 500 Right
+    # Run our game but suppress output
+    ./run.py > /dev/null 2>&1 & 
 
-read -p "Did the user get taken to the next level after going to the stairs?" answer
+    # Focus the game window
+    wmctrl -a "Mr Figs"
 
-# There's a random s coming in the input from above somehow
-if [ $answer = 'sy' ]; then
-    echo -e '\033[0;32m Test passed!'
-    echo -e '\033[0m'
-fi
+    # Slight pause before xdotool does its thing
+    # otherwise it spits all over the console
+    sleep 0.5
 
-xdotool key --delay 500 Right
-xdotool key --delay 500 Right
+    # s to start the game
+    xdotool key --delay 1000 s > /dev/null 2>&1
+
+    $test
+
+    if [ $? -eq 0 ] 
+    then
+        echo -e '\033[0;32m'
+        echo "$test"
+        echo -e '\033[0m'
+    else
+        echo -e '\033[0;31m'
+        echo "$test"
+        echo -e '\033[0m'
+    fi
+
+done
