@@ -4,6 +4,7 @@ be moved around on.
 """
 
 import pygame
+from pygame.math import Vector2
 import src.interpolate as interpolate
 from src.game_object.path import Path
 import src.entity as entity
@@ -24,60 +25,81 @@ class Platform(entity.Entity):
         entity.Entity.__init__(self, x, y, width, height, image)
         self.minimap_colour = colours.RED_HIGHLIGHT
         self.path = path
-        self.speed =  2
+        self.max_speed = 2
         self.player_on_platform = False
-        self.processed_points = []
+        self.position = Vector2(x, y)
+        self.waypoint_index = 0
+        self.vel = Vector2(0, 0)
+        self.target = self.path.points[1]
+        self.target_radius = 25
+        self.travelling_back = False
+
         self.destination = self.path.points[-1]
 
-    def move_to(self, target_x, target_y, player):
-        """Checks to see if we've reached the destination given, if we have,
-        we can stop moving. Note that we need to use delta-time otherwise we'll get
-        schmancy interpolation effects"""
-
-        if target_x < self.rect.x:
-            self.rect.x -= self.speed
-        elif target_x > self.rect.x:
-            self.rect.x += self.speed
-        elif target_y < self.rect.y:
-            self.rect.y -= self.speed
-        elif target_y > self.rect.y:
-            self.rect.y += self.speed
-
-        player.rect.x = self.rect.x
-        player.rect.y = self.rect.y
-        player.destination[0] = self.rect.x
-        player.destination[1] = self.rect.y
-
-        if self.rect.x == target_x and self.rect.y == target_y:
-            self.processed_points.append((target_x, target_y))
-
     def has_reached_destination(self):
-        return self.rect.x == self.destination[0] and self.rect.y == self.destination[1]
+        print(self.target.x)
+        print(self.position.x)
+        return self.position.x == self.target.x and self.position.y == self.target.y
+
+    def has_reached_to_destination(self):
+        return self.target == self.path.points[0]
+
+    def has_reached_from_destination(self):
+        pass
+        # return self.target == self.path.points[1]
 
     def toggle_destination(self):
         """
         When we arrive at our TO destination, if we get back on
         the platform, we want to be taken to our FROM destination.
         """
-
-        if self.destination == self.path.points[-1]:
-            self.destination = self.path.points[0]
-            return
-
-        self.destination = self.path.points[-1]
+        pass
 
     def handle_collision(self, tile, player, level):
-        if self.has_reached_destination() and not self.player_on_platform:
-            self.processed_points = []
-            self.toggle_destination()
+        if self.has_reached_to_destination() and not self.player_on_platform:
+            print('yup')
+            print(self.waypoint_index)
+            self.travelling_back = True
 
-        if player.destination[0] == self.rect.x and player.destination[1] == self.rect.y:
+        if player.destination[0] == self.position.x and player.destination[1] == self.position.y:
             self.player_on_platform = True
             player.moving = False
         else: 
             self.player_on_platform = False
 
-        if self.player_on_platform and not self.has_reached_destination():
-            for point in self.path.points:
-                if point not in self.processed_points:
-                    self.move_to(point[0], point[1], player)
+        if self.player_on_platform:
+            heading = self.target - self.position
+            distance = heading.length()
+            heading.normalize_ip()
+
+            if self.has_reached_to_destination() and not self.travelling_back:
+                self.position.x = self.path.points[-1].x
+                self.position.y = self.path.points[-1].y
+                self.rect.topleft = self.position
+                player.rect.x = self.position.x
+                player.rect.y = self.position.y
+                player.destination[0] = self.position.x
+                player.destination[1] = self.position.y
+                return
+
+            if distance <= 2:  # We're closer than 2 pixels.
+                # Increment the waypoint index to swtich the target.
+                # The modulo sets the index back to 0 if it's equal to the length.
+                if self.travelling_back:
+                    self.waypoint_index = (self.waypoint_index - 1)
+                else:
+                    self.waypoint_index = (self.waypoint_index + 1) % len(self.path.points)
+
+                self.target = self.path.points[self.waypoint_index]
+            if distance <= self.target_radius:
+                self.vel = heading * (distance / self.target_radius * self.max_speed) # If we're approaching the target, we slow down.
+            else:  
+                self.vel = heading * self.max_speed # Otherwise move with max_speed.
+
+            self.position += self.vel
+            self.rect.topleft = self.position
+            player.rect.x = self.position.x
+            player.rect.y = self.position.y
+            player.destination[0] = self.position.x
+            player.destination[1] = self.position.y
+
