@@ -26,34 +26,29 @@ class Platform(entity.Entity):
         self.minimap_colour = colours.RED_HIGHLIGHT
         self.path = path
         self.max_speed = 2
-        self.player_on_platform = False
         self.position = Vector2(x, y)
         self.waypoint_index = 0
         self.vel = Vector2(0, 0)
         self.target = self.path.points[1]
         self.target_radius = 25
+        self.player_on_platform = False
         self.travelling_back = False
-
-        self.destination = self.path.points[-1]
-
-    def has_reached_destination(self):
-        print(self.target.x)
-        print(self.position.x)
-        return self.position.x == self.target.x and self.position.y == self.target.y
 
     def has_reached_to_destination(self):
         return self.target == self.path.points[0]
 
     def has_reached_from_destination(self):
         return self.target == self.path.points[-1]
-        # return self.target == self.path.points[1]
 
-    def toggle_destination(self):
+    def pin_player(self, player, x, y):
         """
-        When we arrive at our TO destination, if we get back on
-        the platform, we want to be taken to our FROM destination.
+        Pins the player to x and y.
+        Otherwise they wouldn't move
         """
-        pass
+        player.rect.x = x
+        player.rect.y = y
+        player.destination[0] = x
+        player.destination[1] = y
 
     def handle_collision(self, tile, player, level):
         """
@@ -70,11 +65,10 @@ class Platform(entity.Entity):
             self.waypoint_index = (self.waypoint_index + 1) % len(self.path.points) 
             self.travelling_back = False
 
+        self.player_on_platform = False
         if player.destination[0] == self.position.x and player.destination[1] == self.position.y:
             self.player_on_platform = True
             player.moving = False
-        else: 
-            self.player_on_platform = False
 
         if self.player_on_platform:
             heading = self.target - self.position
@@ -85,20 +79,14 @@ class Platform(entity.Entity):
                 self.position.x = self.path.points[-1].x
                 self.position.y = self.path.points[-1].y
                 self.rect.topleft = self.position
-                player.rect.x = self.position.x
-                player.rect.y = self.position.y
-                player.destination[0] = self.position.x
-                player.destination[1] = self.position.y
+                self.pin_player(player, self.position.x, self.position.y)
                 return
 
             if self.has_reached_from_destination() and self.travelling_back:
                 self.position.x = self.path.points[0].x
                 self.position.y = self.path.points[0].y
                 self.rect.topleft = self.position
-                player.rect.x = self.position.x
-                player.rect.y = self.position.y
-                player.destination[0] = self.position.x
-                player.destination[1] = self.position.y
+                self.pin_player(player, self.position.x, self.position.y)
                 return
 
             if distance <= 2:  # We're closer than 2 pixels.
@@ -118,8 +106,4 @@ class Platform(entity.Entity):
 
             self.position += self.vel
             self.rect.topleft = self.position
-            player.rect.x = self.position.x
-            player.rect.y = self.position.y
-            player.destination[0] = self.position.x
-            player.destination[1] = self.position.y
-
+            self.pin_player(player, self.position.x, self.position.y)
