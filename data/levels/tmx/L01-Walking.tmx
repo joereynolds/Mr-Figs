@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="128">
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="11" nextobjectid="150">
  <properties>
-  <property name="display_name" value="serve up on a plate"/>
-  <property name="next_level" value="./data/levels/tmx/L7-PressurePlate2.tmx"/>
+  <property name="display_name" value="Learning To Walk"/>
+  <property name="next_level" value="./data/levels/tmx/L03-Pushing.tmx"/>
   <property name="player_bomb_count" value="0"/>
  </properties>
  <tileset firstgid="1" name="newtiledsheet" tilewidth="16" tileheight="16" tilecount="180" columns="9">
@@ -137,41 +137,44 @@
  <layer id="1" name="background" width="14" height="10">
   <data encoding="csv">
 27,27,27,27,27,27,27,27,22,22,22,22,22,22,
+27,27,27,27,27,27,27,36,22,22,22,22,22,22,
+27,19,20,19,27,27,20,27,27,22,22,22,22,22,
+27,27,27,20,19,27,19,27,27,22,22,22,22,22,
+27,27,27,27,20,19,20,27,27,22,22,22,22,22,
+27,27,27,27,27,27,27,27,27,27,27,22,22,22,
 27,27,27,27,27,27,27,27,22,22,22,22,22,22,
-27,27,27,27,27,20,19,20,19,27,22,22,22,22,
-27,27,27,36,27,27,27,19,27,22,22,22,22,22,
-27,27,27,27,27,27,27,20,27,22,22,22,22,22,
-27,27,27,27,27,27,27,19,27,22,22,22,22,22,
-27,27,27,27,27,27,27,27,27,22,22,22,22,22,
-22,22,22,22,22,22,27,27,22,22,22,22,22,22,
-22,22,22,22,22,22,22,22,22,22,22,22,22,22,
+27,27,27,27,27,27,27,27,22,22,22,22,22,22,
+27,27,22,22,22,22,22,22,22,22,22,22,22,22,
 22,22,22,22,22,22,22,22,22,22,22,22,22,22
 </data>
  </layer>
  <objectgroup id="4" name="objects">
-  <object id="97" type="tile" gid="1" x="96" y="32" width="16" height="16"/>
-  <object id="98" type="tile" gid="1" x="112" y="32" width="16" height="16"/>
-  <object id="99" type="tile" gid="1" x="128" y="32" width="16" height="16"/>
-  <object id="101" type="pressure_plate" gid="54" x="144" y="48" width="16" height="16"/>
-  <object id="102" type="moveable_tile" gid="45" x="112" y="48" width="16" height="16"/>
-  <object id="103" type="tile" gid="1" x="144" y="32" width="16" height="16"/>
-  <object id="104" type="tile" gid="2" x="160" y="48" width="16" height="16"/>
-  <object id="105" type="tile" gid="2" x="128" y="64" width="16" height="16"/>
-  <object id="106" type="tile" gid="2" x="128" y="80" width="16" height="16"/>
-  <object id="108" type="tile" gid="10" x="144" y="64" width="16" height="16"/>
-  <object id="109" type="tile" gid="29" x="128" y="64" width="16" height="16"/>
-  <object id="110" type="tile" gid="10" x="96" y="64" width="16" height="16"/>
-  <object id="116" type="tile" gid="28" x="96" y="64" width="16" height="16"/>
-  <object id="117" type="tile" gid="11" x="96" y="80" width="16" height="16"/>
-  <object id="118" type="tile" gid="11" x="96" y="96" width="16" height="16"/>
-  <object id="119" type="triggerable" gid="9" x="112" y="80" width="16" height="16"/>
-  <object id="120" type="finish_tile" gid="32" x="128" y="96" width="16" height="16"/>
-  <object id="121" type="tile" gid="10" x="112" y="112" width="16" height="16"/>
-  <object id="122" type="tile" gid="10" x="128" y="112" width="16" height="16"/>
-  <object id="123" type="tile" gid="2" x="144" y="96" width="16" height="16"/>
-  <object id="124" type="actor" gid="46" x="80" y="48" width="16" height="16"/>
-  <object id="125" type="tile" gid="1" x="80" y="32" width="16" height="16"/>
-  <object id="126" type="tile" gid="10" x="80" y="64" width="16" height="16"/>
-  <object id="127" type="tile" gid="11" x="64" y="48" width="16" height="16"/>
+  <object id="83" type="tile" gid="1" x="16" y="32" width="16" height="16"/>
+  <object id="85" type="tile" gid="1" x="32" y="32" width="16" height="16"/>
+  <object id="100" type="tile" gid="10" x="16" y="64" width="16" height="16"/>
+  <object id="101" type="tile" gid="10" x="32" y="64" width="16" height="16"/>
+  <object id="114" type="tile" gid="28" x="32" y="64" width="16" height="16"/>
+  <object id="115" type="tile" gid="28" x="0" y="48" width="16" height="16"/>
+  <object id="116" type="tile" gid="11" x="0" y="48" width="16" height="16"/>
+  <object id="117" type="actor" gid="46" x="16" y="48" width="16" height="16"/>
+  <object id="118" type="tile" gid="1" x="48" y="32" width="16" height="16"/>
+  <object id="119" type="tile" gid="1" x="64" y="48" width="16" height="16"/>
+  <object id="120" type="tile" gid="1" x="80" y="64" width="16" height="16"/>
+  <object id="121" type="tile" gid="10" x="48" y="80" width="16" height="16"/>
+  <object id="122" type="tile" gid="10" x="64" y="96" width="16" height="16"/>
+  <object id="123" type="tile" gid="10" x="80" y="96" width="16" height="16"/>
+  <object id="124" type="tile" gid="10" x="96" y="96" width="16" height="16"/>
+  <object id="126" type="tile" gid="2" x="112" y="64" width="16" height="16"/>
+  <object id="129" type="tile" gid="1" x="96" y="32" width="16" height="16"/>
+  <object id="131" type="tile" gid="11" x="80" y="48" width="16" height="16"/>
+  <object id="133" type="tile" gid="1" x="112" y="32" width="16" height="16"/>
+  <object id="146" type="torch" gid="98" x="80" y="64" width="16" height="16"/>
+  <object id="147" type="torch" gid="98" x="112" y="32" width="16" height="16"/>
+  <object id="148" type="scene_switching_tile" gid="32" x="112" y="48" width="16" height="16">
+   <properties>
+    <property name="scene" value="./data/levels/tmx/L03-Pushing.tmx"/>
+   </properties>
+  </object>
+  <object id="149" type="tile" gid="2" x="112" y="80" width="16" height="16"/>
  </objectgroup>
 </map>

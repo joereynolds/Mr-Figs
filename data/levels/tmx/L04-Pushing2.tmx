@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="139">
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="144">
  <properties>
-  <property name="display_name" value="Push It"/>
-  <property name="next_level" value="./data/levels/tmx/L4-Pushing2.tmx"/>
+  <property name="display_name" value="Push It Real Good"/>
+  <property name="has_video_tape" type="bool" value="true"/>
+  <property name="next_level" value="./data/levels/tmx/L05-PushingS.tmx"/>
   <property name="player_bomb_count" value="0"/>
  </properties>
  <tileset firstgid="1" name="newtiledsheet" tilewidth="16" tileheight="16" tilecount="180" columns="9">
@@ -136,38 +137,47 @@
  </tileset>
  <layer id="1" name="background" width="14" height="10">
   <data encoding="csv">
-27,27,27,27,27,27,27,27,22,22,22,22,22,22,
-27,27,27,27,27,27,27,27,22,22,22,22,22,22,
-27,19,20,19,20,19,20,27,27,27,27,27,27,22,
-27,27,36,36,27,20,27,27,27,27,27,27,27,22,
-27,27,27,27,27,19,27,27,22,27,27,27,22,22,
-27,27,27,27,27,27,27,27,22,22,22,22,22,22,
-27,27,27,27,27,27,27,27,27,22,22,22,22,22,
-22,22,22,22,22,27,27,27,27,22,22,22,22,22,
-22,22,22,22,22,22,22,22,22,22,22,22,22,22,
-22,22,22,22,22,22,22,22,22,22,22,22,22,22
+27,27,27,27,27,27,27,27,27,27,27,27,27,22,
+27,27,27,27,27,27,36,20,36,36,36,36,27,27,
+27,27,27,19,20,19,20,19,20,19,20,27,27,27,
+27,27,27,36,36,36,19,20,27,10,22,27,27,22,
+27,27,27,27,27,27,36,36,20,19,22,22,22,22,
+27,27,27,27,27,27,27,20,19,20,22,22,22,22,
+27,27,27,27,27,27,27,19,20,27,27,22,22,22,
+22,27,22,27,22,27,27,27,27,27,27,27,27,22,
+22,27,22,27,22,22,22,22,22,22,22,22,22,22,
+22,27,22,22,22,22,22,22,22,22,22,22,22,22
 </data>
  </layer>
  <objectgroup id="4" name="objects">
-  <object id="88" type="tile" gid="1" x="16" y="32" width="16" height="16"/>
-  <object id="89" type="tile" gid="1" x="16" y="32" width="16" height="16"/>
-  <object id="90" type="tile" gid="1" x="32" y="32" width="16" height="16"/>
-  <object id="91" type="tile" gid="1" x="48" y="32" width="16" height="16"/>
-  <object id="104" type="tile" gid="10" x="16" y="64" width="16" height="16"/>
-  <object id="105" type="tile" gid="10" x="32" y="64" width="16" height="16"/>
-  <object id="106" type="tile" gid="10" x="48" y="64" width="16" height="16"/>
-  <object id="117" type="tile" gid="11" x="0" y="48" width="16" height="16"/>
-  <object id="124" type="actor" gid="46" x="16" y="48" width="16" height="16"/>
-  <object id="126" type="moveable_tile" gid="45" x="80" y="48" width="16" height="16"/>
-  <object id="128" type="finish_tile" gid="33" x="64" y="80" width="16" height="16"/>
-  <object id="129" type="tile" gid="1" x="64" y="32" width="16" height="16"/>
-  <object id="130" type="tile" gid="1" x="80" y="32" width="16" height="16"/>
-  <object id="131" type="tile" gid="1" x="96" y="32" width="16" height="16"/>
-  <object id="132" type="tile" gid="10" x="64" y="64" width="16" height="16"/>
-  <object id="133" type="tile" gid="10" x="64" y="96" width="16" height="16"/>
-  <object id="134" type="tile" gid="10" x="80" y="96" width="16" height="16"/>
-  <object id="135" type="tile" gid="2" x="96" y="64" width="16" height="16"/>
-  <object id="136" type="tile" gid="2" x="96" y="80" width="16" height="16"/>
-  <object id="137" type="tile" gid="2" x="112" y="48" width="16" height="16"/>
+  <object id="87" type="tile" gid="1" x="64" y="32" width="16" height="16"/>
+  <object id="88" type="tile" gid="1" x="80" y="32" width="16" height="16"/>
+  <object id="89" type="tile" gid="1" x="96" y="32" width="16" height="16"/>
+  <object id="90" type="tile" gid="1" x="112" y="16" width="16" height="16"/>
+  <object id="91" type="tile" gid="1" x="128" y="32" width="16" height="16"/>
+  <object id="100" type="tile" gid="10" x="64" y="64" width="16" height="16"/>
+  <object id="101" type="tile" gid="10" x="80" y="64" width="16" height="16"/>
+  <object id="102" type="tile" gid="10" x="96" y="80" width="16" height="16"/>
+  <object id="103" type="tile" gid="10" x="112" y="80" width="16" height="16"/>
+  <object id="104" type="tile" gid="10" x="128" y="64" width="16" height="16"/>
+  <object id="119" type="moveable_tile" gid="45" x="80" y="48" width="16" height="16"/>
+  <object id="124" type="finish_tile" gid="32" x="176" y="48" width="16" height="16"/>
+  <object id="125" type="tile" gid="1" x="144" y="32" width="16" height="16"/>
+  <object id="126" type="tile" gid="1" x="160" y="32" width="16" height="16"/>
+  <object id="127" type="tile" gid="1" x="176" y="32" width="16" height="16"/>
+  <object id="128" type="tile" gid="10" x="160" y="64" width="16" height="16"/>
+  <object id="129" type="tile" gid="10" x="176" y="64" width="16" height="16"/>
+  <object id="131" type="actor" gid="46" x="48" y="48" width="16" height="16"/>
+  <object id="132" type="tile" gid="1" x="48" y="32" width="16" height="16"/>
+  <object id="133" type="tile" gid="10" x="48" y="64" width="16" height="16"/>
+  <object id="134" type="tile" gid="11" x="32" y="48" width="16" height="16"/>
+  <object id="136" type="video_tape" gid="66" x="112" y="112" width="16" height="16"/>
+  <object id="137" type="tile" gid="27" x="96" y="96" width="16" height="16"/>
+  <object id="138" type="tile" gid="27" x="96" y="112" width="16" height="16"/>
+  <object id="139" type="tile" gid="27" x="112" y="128" width="16" height="16"/>
+  <object id="140" type="tile" gid="27" x="128" y="128" width="16" height="16"/>
+  <object id="141" type="tile" gid="27" x="144" y="112" width="16" height="16"/>
+  <object id="142" type="tile" gid="27" x="160" y="96" width="16" height="16"/>
+  <object id="143" type="tile" gid="27" x="160" y="80" width="16" height="16"/>
  </objectgroup>
 </map>

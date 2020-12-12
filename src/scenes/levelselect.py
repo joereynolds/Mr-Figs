@@ -1,6 +1,7 @@
 import pygame
 
 import os
+import glob
 import src.config as config
 import src.colours as colours
 import src.scenes.scenebase as scene_base
@@ -28,6 +29,7 @@ class LevelMenu(scene_base.SceneBase):
         }
 
         self.levels = self.get_levels()
+        print(self.levels)
         self.pagination_max = len(self.levels) - 1
         self.add_levels_to_sprite_group(self.levels[self.level_group_index])
 
@@ -57,9 +59,7 @@ class LevelMenu(scene_base.SceneBase):
             self.add_levels_to_sprite_group(self.levels[self.level_group_index])
 
     def get_levels(self):
-
-        # TODO - sort by level number not string
-        all_levels = sorted(os.listdir(config.level_location))
+        all_levels = sorted([os.path.basename(x) for x in glob.glob(config.level_location  + '*.tmx')])
 
         levels = [
             all_levels[:10],
