@@ -1,14 +1,13 @@
 import pygame
 import random
 import os
-from src.gui.minimap import Minimap
 from src.gui.data_display import DataDisplay
+from src.gui.player_information_display import PlayerInformationDisplay
 from src.gui.top_bar import TopBar
 from src.game_object.light_source import LightSource
 from src.game_object.torch import Torch
 from src.game_object.triggerable import Triggerable
 from src.game_object.bomb import Bomb
-from src.gui.bomb_display import BombDisplay
 import src.colours as colours
 import src.config as config
 import src.graphics as graphics
@@ -20,12 +19,14 @@ class LevelBaseRenderer():
         self.level = level
         self.colour = colours.WHITE
         self.bomb_count = len(self.level.player.bombs)
-        print(self.level.file)
-
         self.width, self.height = pygame.display.get_window_size()
-        quarter_of_screen = self.width // 4
 
         self.top_bar = TopBar(self.width, 64, self.level)
+        self.player_information_display = PlayerInformationDisplay(
+            self.width,
+            self.height,
+            self.level
+        )
 
         self.game_area = self.level.surface.subsurface(
             pygame.Rect(
@@ -34,21 +35,6 @@ class LevelBaseRenderer():
                 self.width,
                 self.height - self.top_bar.height
             )
-        )
-
-        self.minimap = Minimap(
-            self.width - 200,
-            32,
-            quarter_of_screen,
-            self.height,
-            level
-        )
-
-        self.bomb_display = BombDisplay(
-            self.width - 200,
-            200,
-            quarter_of_screen,
-            self.height
         )
 
         self.veil = pygame.Surface((self.width, self.height))
@@ -95,8 +81,4 @@ class LevelBaseRenderer():
         self.render_lights()
 
         self.top_bar.render(self.level.surface)
-        self.minimap.render()
-        self.bomb_display.render(self.level.player.remaining_bombs)
-
-        self.game_area.blit(self.minimap.surface, (self.width - 200, 32))
-        self.game_area.blit(self.bomb_display.surface, (self.width - 200, 200))
+        self.player_information_display.render(self.game_area)
