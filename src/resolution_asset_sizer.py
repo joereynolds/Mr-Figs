@@ -51,6 +51,11 @@ class ResolutionAssetSizer():
                 'width': graphics.tile_width // 2,
                 'height': graphics.tile_height // 2,
             },
+            (768, 600): {
+                'sprite_placement_modifier': 0.5, 
+                'width': graphics.tile_width // 2,
+                'height': graphics.tile_height // 2,
+            },
             (768, 768): {
                 'sprite_placement_modifier': 0.5, 
                 'width': graphics.tile_width // 2,
