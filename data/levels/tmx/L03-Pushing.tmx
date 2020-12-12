@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="139">
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="145">
  <properties>
   <property name="display_name" value="Push It"/>
   <property name="next_level" value="./data/levels/tmx/L04-Pushing2.tmx"/>
@@ -138,14 +138,14 @@
   <data encoding="csv">
 27,27,27,27,27,27,27,27,22,22,22,22,22,22,
 27,27,27,27,27,27,27,27,22,22,22,22,22,22,
-27,19,20,19,20,19,20,27,27,27,27,27,27,22,
-27,27,36,36,27,20,27,27,27,27,27,27,27,22,
-27,27,27,27,27,19,27,27,22,27,27,27,22,22,
+27,19,20,19,20,19,25,27,27,27,27,27,27,22,
+27,27,36,36,27,25,27,27,27,27,27,27,27,22,
+27,27,27,27,27,25,27,27,22,27,27,27,22,22,
 27,27,27,27,27,27,27,27,22,22,22,22,22,22,
 27,27,27,27,27,27,27,27,27,22,22,22,22,22,
-22,22,22,22,22,27,27,27,27,22,22,22,22,22,
-22,22,22,22,22,22,22,22,22,22,22,22,22,22,
-22,22,22,22,22,22,22,22,22,22,22,22,22,22
+22,22,22,22,22,27,27,27,20,20,20,22,22,22,
+22,22,22,22,22,22,22,22,20,20,20,22,22,22,
+22,22,22,22,22,22,22,22,20,20,20,22,22,22
 </data>
  </layer>
  <objectgroup id="4" name="objects">
@@ -154,24 +154,35 @@
   <object id="90" type="tile" gid="1" x="32" y="32" width="16" height="16"/>
   <object id="91" type="tile" gid="1" x="48" y="32" width="16" height="16"/>
   <object id="104" type="tile" gid="10" x="16" y="64" width="16" height="16"/>
-  <object id="105" type="tile" gid="10" x="32" y="64" width="16" height="16"/>
-  <object id="106" type="tile" gid="10" x="48" y="64" width="16" height="16"/>
   <object id="117" type="tile" gid="11" x="0" y="48" width="16" height="16"/>
   <object id="124" type="actor" gid="46" x="16" y="48" width="16" height="16"/>
-  <object id="126" type="moveable_tile" gid="45" x="80" y="48" width="16" height="16"/>
-  <object id="128" type="scene_switching_tile" gid="33" x="64" y="80" width="16" height="16">
+  <object id="126" type="moveable_tile" gid="45" x="192" y="128" width="16" height="16"/>
+  <object id="128" type="scene_switching_tile" gid="33" x="176" y="144" width="16" height="16">
    <properties>
     <property name="scene" value="./data/levels/tmx/L04-Pushing2.tmx"/>
    </properties>
   </object>
   <object id="129" type="tile" gid="1" x="64" y="32" width="16" height="16"/>
-  <object id="130" type="tile" gid="1" x="80" y="32" width="16" height="16"/>
-  <object id="131" type="tile" gid="1" x="96" y="32" width="16" height="16"/>
-  <object id="132" type="tile" gid="10" x="64" y="64" width="16" height="16"/>
-  <object id="133" type="tile" gid="10" x="64" y="96" width="16" height="16"/>
-  <object id="134" type="tile" gid="10" x="80" y="96" width="16" height="16"/>
-  <object id="135" type="tile" gid="2" x="96" y="64" width="16" height="16"/>
-  <object id="136" type="tile" gid="2" x="96" y="80" width="16" height="16"/>
-  <object id="137" type="tile" gid="2" x="112" y="48" width="16" height="16"/>
+  <object id="132" type="tile" gid="10" x="176" y="128" width="16" height="16"/>
+  <object id="133" type="tile" gid="10" x="176" y="160" width="16" height="16"/>
+  <object id="134" type="tile" gid="10" x="192" y="160" width="16" height="16"/>
+  <object id="135" type="tile" gid="2" x="208" y="128" width="16" height="16"/>
+  <object id="136" type="tile" gid="2" x="208" y="144" width="16" height="16"/>
+  <object id="139" type="tile" gid="10" x="32" y="64" width="16" height="16"/>
+  <object id="140" type="tile" gid="10" x="48" y="64" width="16" height="16"/>
+  <object id="141" type="tile" gid="10" x="64" y="64" width="16" height="16"/>
+  <object id="142" type="platform" gid="53" x="80" y="48" width="16" height="16">
+   <properties>
+    <property name="follows_path_id" type="int" value="1"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="6" name="paths">
+  <object id="143" type="path" x="80" y="32">
+   <properties>
+    <property name="path_id" type="int" value="1"/>
+   </properties>
+   <polyline points="0,0 48,0 48,64 -64,64 -64,96 64,96"/>
+  </object>
  </objectgroup>
 </map>
