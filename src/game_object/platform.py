@@ -74,12 +74,14 @@ class Platform(entity.Entity):
             heading = self.target - self.position
             distance = heading.length()
             heading.normalize_ip()
+            player.moving = True
 
             if self.has_reached_to_destination() and not self.travelling_back:
                 self.position.x = self.path.points[-1].x
                 self.position.y = self.path.points[-1].y
                 self.rect.topleft = self.position
                 self.pin_player(player, self.position.x, self.position.y)
+                player.moving = False
                 return
 
             if self.has_reached_from_destination() and self.travelling_back:
@@ -87,6 +89,7 @@ class Platform(entity.Entity):
                 self.position.y = self.path.points[0].y
                 self.rect.topleft = self.position
                 self.pin_player(player, self.position.x, self.position.y)
+                player.moving = False
                 return
 
             if distance <= 2:  # We're closer than 2 pixels.
