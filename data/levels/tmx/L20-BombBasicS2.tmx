@@ -149,7 +149,11 @@
 </data>
  </layer>
  <objectgroup id="4" name="objects">
-  <object id="83" type="finish_tile" gid="32" x="192" y="48" width="16" height="16"/>
+  <object id="83" type="scene_switching_tile" gid="32" x="192" y="48" width="16" height="16">
+   <properties>
+    <property name="scene" value="./data/levels/tmx/L21-BombIntermediate1.tmx"/>
+   </properties>
+  </object>
   <object id="84" type="destructible" gid="21" x="144" y="48" width="16" height="16"/>
   <object id="85" type="destructible" gid="21" x="176" y="48" width="16" height="16"/>
   <object id="86" type="destructible" gid="21" x="160" y="48" width="16" height="16"/>

@@ -41,7 +41,7 @@
    </properties>
   </object>
   <object id="182" type="actor" gid="46" x="48" y="112" width="16" height="16"/>
-  <object id="183" type="finish_tile" gid="32" x="160" y="208" width="16" height="16"/>
+  <object id="183" type="scene_switching_tile" gid="32" x="160" y="208" width="16" height="16"/>
   <object id="184" type="pickup_bomb" gid="43" x="160" y="96" width="16" height="16"/>
   <object id="185" type="destructible" gid="21" x="128" y="112" width="16" height="16"/>
   <object id="186" type="destructible" gid="21" x="144" y="112" width="16" height="16"/>

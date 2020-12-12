@@ -154,7 +154,11 @@
 </data>
  </layer>
  <objectgroup id="4" name="objects">
-  <object id="83" type="finish_tile" gid="32" x="112" y="48" width="16" height="16"/>
+  <object id="83" type="scene_switching_tile" gid="32" x="112" y="48" width="16" height="16">
+   <properties>
+    <property name="scene" value="./data/levels/tmx/L12-BombPlanting(Bomb=1).tmx"/>
+   </properties>
+  </object>
   <object id="84" type="actor" gid="46" x="16" y="48" width="16" height="16"/>
   <object id="86" type="tile" gid="1" x="16" y="32" width="16" height="16"/>
   <object id="87" type="tile" gid="1" x="32" y="32" width="16" height="16"/>

@@ -33,7 +33,7 @@
 </data>
  </layer>
  <objectgroup id="4" name="objects">
-  <object id="176" type="finish_tile" gid="32" x="208" y="80" width="16" height="16"/>
+  <object id="176" type="scene_switching_tile" gid="32" x="208" y="80" width="16" height="16"/>
   <object id="177" type="destructible" gid="21" x="112" y="80" width="16" height="16"/>
   <object id="178" type="triggerable" gid="17" x="144" y="80" width="16" height="16">
    <properties>

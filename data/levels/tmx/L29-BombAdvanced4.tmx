@@ -54,7 +54,7 @@
     <property name="triggers" type="int" value="4"/>
    </properties>
   </object>
-  <object id="194" type="finish_tile" gid="32" x="144" y="144" width="16" height="16"/>
+  <object id="194" type="scene_switching_tile" gid="32" x="144" y="144" width="16" height="16"/>
   <object id="195" type="triggerable" gid="17" x="112" y="144" width="16" height="16">
    <properties>
     <property name="triggered_id" type="int" value="4"/>

@@ -44,7 +44,7 @@
   <object id="190" type="tile" gid="10" x="48" y="64" width="16" height="16"/>
   <object id="191" type="tile" gid="10" x="64" y="64" width="16" height="16"/>
   <object id="192" type="tile" gid="10" x="80" y="64" width="16" height="16"/>
-  <object id="196" type="finish_tile" gid="32" x="208" y="48" width="16" height="16"/>
+  <object id="196" type="scene_switching_tile" gid="32" x="208" y="48" width="16" height="16"/>
   <object id="197" type="portal" gid="62" x="144" y="48" width="16" height="16">
    <properties>
     <property name="portal_id" type="int" value="2"/>

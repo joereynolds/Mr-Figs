@@ -154,7 +154,11 @@
     <property name="triggers" type="int" value="1"/>
    </properties>
   </object>
-  <object id="87" type="finish_tile" gid="32" x="160" y="48" width="16" height="16"/>
+  <object id="87" type="scene_switching_tile" gid="32" x="160" y="48" width="16" height="16">
+   <properties>
+    <property name="scene" value="./data/levels/tmx/L17-BombBasic2(IntroToTimer).tmx"/>
+   </properties>
+  </object>
   <object id="88" type="triggerable" gid="17" x="144" y="48" width="16" height="16">
    <properties>
     <property name="triggered_id" type="int" value="2"/>

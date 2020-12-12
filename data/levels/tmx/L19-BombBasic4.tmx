@@ -150,7 +150,11 @@
  </layer>
  <objectgroup id="4" name="objects">
   <object id="86" type="destructible" gid="21" x="80" y="80" width="16" height="16"/>
-  <object id="89" type="finish_tile" gid="32" x="112" y="112" width="16" height="16"/>
+  <object id="89" type="scene_switching_tile" gid="32" x="112" y="112" width="16" height="16">
+   <properties>
+    <property name="scene" value="./data/levels/tmx/L20-BombBasicS2.tmx"/>
+   </properties>
+  </object>
   <object id="90" type="bomb" gid="37" x="80" y="48" width="16" height="16">
    <properties>
     <property name="lifespan" type="int" value="5"/>

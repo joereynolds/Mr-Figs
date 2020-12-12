@@ -28,7 +28,7 @@
 </data>
  </layer>
  <objectgroup id="4" name="objects">
-  <object id="176" type="finish_tile" gid="32" x="256" y="208" width="16" height="16"/>
+  <object id="176" type="scene_switching_tile" gid="32" x="256" y="208" width="16" height="16"/>
   <object id="177" type="actor" gid="46" x="192" y="208" width="16" height="16"/>
   <object id="178" type="triggerable" gid="17" x="224" y="208" width="16" height="16">
    <properties>

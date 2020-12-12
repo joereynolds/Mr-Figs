@@ -168,7 +168,11 @@
    </properties>
   </object>
   <object id="181" type="actor" gid="46" x="64" y="48" width="16" height="16"/>
-  <object id="189" type="finish_tile" gid="33" x="48" y="144" width="16" height="16"/>
+  <object id="189" type="scene_switching_tile" gid="33" x="48" y="144" width="16" height="16">
+   <properties>
+    <property name="scene" value="./data/levels/tmx/L10-PressurePlateS.tmx"/>
+   </properties>
+  </object>
   <object id="190" type="tile" gid="1" x="64" y="32" width="16" height="16"/>
   <object id="191" type="tile" gid="1" x="80" y="32" width="16" height="16"/>
   <object id="192" type="tile" gid="1" x="96" y="32" width="16" height="16"/>

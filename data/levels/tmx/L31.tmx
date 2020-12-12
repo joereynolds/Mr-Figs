@@ -45,7 +45,7 @@
    </properties>
   </object>
   <object id="192" type="pickup_bomb" gid="43" x="144" y="224" width="16" height="16"/>
-  <object id="193" type="finish_tile" gid="32" x="288" y="48" width="16" height="16"/>
+  <object id="193" type="scene_switching_tile" gid="32" x="288" y="48" width="16" height="16"/>
   <object id="194" type="triggerable" gid="16" x="272" y="48" width="16" height="16">
    <properties>
     <property name="triggered_id" type="int" value="5"/>

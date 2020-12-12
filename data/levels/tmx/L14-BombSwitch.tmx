@@ -171,7 +171,11 @@
   <object id="122" type="tile" gid="28" x="144" y="48" width="16" height="16"/>
   <object id="123" type="tile" gid="29" x="128" y="48" width="16" height="16"/>
   <object id="124" type="tile" gid="30" x="144" y="64" width="16" height="16"/>
-  <object id="125" type="finish_tile" gid="32" x="128" y="96" width="16" height="16"/>
+  <object id="125" type="scene_switching_tile" gid="32" x="128" y="96" width="16" height="16">
+   <properties>
+    <property name="scene" value="./data/levels/tmx/L15-BombBasicS.tmx"/>
+   </properties>
+  </object>
   <object id="126" type="triggerable" gid="17" x="112" y="96" width="16" height="16"/>
   <object id="127" type="tile" gid="10" x="112" y="112" width="16" height="16"/>
   <object id="128" type="tile" gid="10" x="128" y="112" width="16" height="16"/>

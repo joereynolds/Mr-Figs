@@ -165,7 +165,11 @@
   <object id="117" type="tile" gid="11" x="96" y="80" width="16" height="16"/>
   <object id="118" type="tile" gid="11" x="96" y="96" width="16" height="16"/>
   <object id="119" type="triggerable" gid="9" x="112" y="80" width="16" height="16"/>
-  <object id="120" type="finish_tile" gid="32" x="128" y="96" width="16" height="16"/>
+  <object id="120" type="scene_switching_tile" gid="32" x="128" y="96" width="16" height="16">
+   <properties>
+    <property name="scene" value="./data/levels/tmx/L07-PressurePlate2.tmx"/>
+   </properties>
+  </object>
   <object id="121" type="tile" gid="10" x="112" y="112" width="16" height="16"/>
   <object id="122" type="tile" gid="10" x="128" y="112" width="16" height="16"/>
   <object id="123" type="tile" gid="2" x="144" y="96" width="16" height="16"/>

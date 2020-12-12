@@ -82,7 +82,7 @@
   <object id="228" type="tile" gid="2" x="288" y="176" width="16" height="16"/>
   <object id="229" type="tile" gid="2" x="288" y="192" width="16" height="16"/>
   <object id="230" type="tile" gid="10" x="288" y="224" width="16" height="16"/>
-  <object id="231" type="finish_tile" gid="32" x="288" y="208" width="16" height="16"/>
+  <object id="231" type="scene_switching_tile" gid="32" x="288" y="208" width="16" height="16"/>
   <object id="232" type="actor" gid="46" x="32" y="48" width="16" height="16"/>
   <object id="233" type="tile" gid="27" x="48" y="48" width="16" height="16"/>
   <object id="234" type="tile" gid="27" x="64" y="48" width="16" height="16"/>

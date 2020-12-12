@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="2020.10.30" orientation="orthogonal" renderorder="right-down" width="18" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="202">
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="18" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="202">
  <properties>
   <property name="display_name" value="sneaky bastard dlfjg"/>
   <property name="next_level" value="./data/levels/tmx/L27-BombAdvanced2.tmx"/>
@@ -89,7 +89,11 @@
   <object id="178" type="destructible" gid="21" x="128" y="48" width="16" height="16"/>
   <object id="180" type="destructible" gid="21" x="96" y="80" width="16" height="16"/>
   <object id="181" type="tile" gid="10" x="96" y="112" width="16" height="16"/>
-  <object id="182" type="finish_tile" gid="32" x="256" y="96" width="16" height="16"/>
+  <object id="182" type="scene_switching_tile" gid="32" x="256" y="96" width="16" height="16">
+   <properties>
+    <property name="scene" value="./data/levels/tmx/L27-BombAdvanced2.tmx"/>
+   </properties>
+  </object>
   <object id="183" type="triggerable" gid="16" x="208" y="64" width="16" height="16">
    <properties>
     <property name="triggered_id" type="int" value="1"/>

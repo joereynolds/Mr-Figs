@@ -149,7 +149,11 @@
 </data>
  </layer>
  <objectgroup id="4" name="objects">
-  <object id="83" type="finish_tile" gid="32" x="208" y="48" width="16" height="16"/>
+  <object id="83" type="scene_switching_tile" gid="32" x="208" y="48" width="16" height="16">
+   <properties>
+    <property name="scene" value="./data/levels/tmx/L16-BombBasic1.tmx"/>
+   </properties>
+  </object>
   <object id="84" type="triggerable" gid="17" x="192" y="48" width="16" height="16">
    <properties>
     <property name="triggered_id" type="int" value="2"/>

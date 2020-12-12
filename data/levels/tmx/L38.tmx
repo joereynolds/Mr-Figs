@@ -55,7 +55,7 @@
   <object id="193" type="destructible" gid="21" x="240" y="192" width="16" height="16"/>
   <object id="194" type="destructible" gid="21" x="224" y="208" width="16" height="16"/>
   <object id="195" type="destructible" gid="21" x="240" y="208" width="16" height="16"/>
-  <object id="203" type="finish_tile" gid="32" x="288" y="128" width="16" height="16"/>
+  <object id="203" type="scene_switching_tile" gid="32" x="288" y="128" width="16" height="16"/>
   <object id="206" type="destructible" gid="21" x="32" y="144" width="16" height="16"/>
   <object id="207" type="destructible" gid="21" x="48" y="144" width="16" height="16"/>
   <object id="208" type="destructible" gid="21" x="32" y="160" width="16" height="16"/>

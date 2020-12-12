@@ -156,7 +156,11 @@
    </properties>
   </object>
   <object id="85" type="destructible" gid="21" x="128" y="48" width="16" height="16"/>
-  <object id="87" type="finish_tile" gid="32" x="144" y="48" width="16" height="16"/>
+  <object id="87" type="scene_switching_tile" gid="32" x="144" y="48" width="16" height="16">
+   <properties>
+    <property name="scene" value="./data/levels/tmx/L18-BombBasic3.tmx"/>
+   </properties>
+  </object>
   <object id="88" type="tile" gid="1" x="16" y="32" width="16" height="16"/>
   <object id="89" type="tile" gid="1" x="32" y="32" width="16" height="16"/>
   <object id="90" type="tile" gid="1" x="48" y="32" width="16" height="16"/>

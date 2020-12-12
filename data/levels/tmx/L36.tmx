@@ -74,7 +74,7 @@
     <property name="triggered_id" type="int" value="4"/>
    </properties>
   </object>
-  <object id="236" type="finish_tile" gid="32" x="64" y="144" width="16" height="16"/>
+  <object id="236" type="scene_switching_tile" gid="32" x="64" y="144" width="16" height="16"/>
   <object id="237" type="tile" gid="1" x="32" y="32" width="16" height="16"/>
   <object id="238" type="tile" gid="1" x="48" y="32" width="16" height="16"/>
   <object id="239" type="tile" gid="1" x="64" y="32" width="16" height="16"/>

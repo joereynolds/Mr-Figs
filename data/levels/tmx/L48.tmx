@@ -51,7 +51,7 @@
     <property name="travels_to_portal_id" type="int" value="1"/>
    </properties>
   </object>
-  <object id="182" type="finish_tile" gid="32" x="96" y="64" width="16" height="16"/>
+  <object id="182" type="scene_switching_tile" gid="32" x="96" y="64" width="16" height="16"/>
   <object id="183" type="triggerable" gid="16" x="80" y="64" width="16" height="16">
    <properties>
     <property name="triggered_id" type="int" value="3"/>

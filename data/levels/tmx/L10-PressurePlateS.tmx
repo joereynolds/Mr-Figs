@@ -290,7 +290,11 @@
   <object id="168" type="tile" gid="10" x="144" y="176" width="16" height="16"/>
   <object id="169" type="tile" gid="10" x="144" y="176" width="16" height="16"/>
   <object id="170" type="tile" gid="10" x="160" y="176" width="16" height="16"/>
-  <object id="171" type="finish_tile" gid="32" x="160" y="160" width="16" height="16"/>
+  <object id="171" type="scene_switching_tile" gid="32" x="160" y="160" width="16" height="16">
+   <properties>
+    <property name="scene" value="./data/levels/tmx/L11-Bomb.tmx"/>
+   </properties>
+  </object>
   <object id="172" type="tile" gid="2" x="208" y="64" width="16" height="16"/>
   <object id="174" type="tile" gid="2" x="208" y="32" width="16" height="16"/>
   <object id="175" type="tile" gid="2" x="208" y="48" width="16" height="16"/>

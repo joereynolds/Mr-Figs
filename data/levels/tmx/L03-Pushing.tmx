@@ -159,7 +159,11 @@
   <object id="117" type="tile" gid="11" x="0" y="48" width="16" height="16"/>
   <object id="124" type="actor" gid="46" x="16" y="48" width="16" height="16"/>
   <object id="126" type="moveable_tile" gid="45" x="80" y="48" width="16" height="16"/>
-  <object id="128" type="finish_tile" gid="33" x="64" y="80" width="16" height="16"/>
+  <object id="128" type="scene_switching_tile" gid="33" x="64" y="80" width="16" height="16">
+   <properties>
+    <property name="scene" value="./data/levels/tmx/L04-Pushing2.tmx"/>
+   </properties>
+  </object>
   <object id="129" type="tile" gid="1" x="64" y="32" width="16" height="16"/>
   <object id="130" type="tile" gid="1" x="80" y="32" width="16" height="16"/>
   <object id="131" type="tile" gid="1" x="96" y="32" width="16" height="16"/>
