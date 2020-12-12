@@ -1,4 +1,5 @@
 from src.game_object.triggerable import Triggerable
+from src.game_object.scene_switching_tile import SceneSwitchingTile
 from src.game_object.torch import Torch
 from src.game_object.moveable_tile import MoveableTile
 from src.game_object.finish_tile import FinishTile
@@ -19,6 +20,11 @@ from src.game_object.light_source import LightSource
 class TileFactory():
 
     def build(self, tile_type, **kwargs):
+        # TODO automatically infer the class to create
+        # We can split on '_' and TitleCase it and try
+        # and create it
+        # i.e. finish_tile => FinishTile
+        #      some_other_tile: SomeOtherTile
         tile_map = {
             'triggerable': Triggerable,
             'finish_tile': FinishTile,
@@ -36,7 +42,8 @@ class TileFactory():
             'platform': Platform,
             'enemy_pathable': EnemyPathable,
             'light_source': LightSource,
-            'torch': Torch
+            'torch': Torch,
+            'scene_switching_tile': SceneSwitchingTile,
         }
 
         return tile_map[tile_type](**kwargs)

@@ -1,7 +1,7 @@
-xdotool key --delay 200 Escape
-xdotool key --delay 200 Escape
-xdotool key --delay 200 Escape
-xdotool key --delay 200 Escape
+xdotool key --delay 200 n
+xdotool key --delay 200 n
+xdotool key --delay 200 n
+xdotool key --delay 200 n
 xdotool key --delay 200 Right
 xdotool key --delay 200 Right
 xdotool key --delay 200 Down

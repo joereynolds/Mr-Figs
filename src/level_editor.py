@@ -1,4 +1,5 @@
 from src.game_object.switch_tile import Switch
+from src.game_object.scene_switching_tile import SceneSwitchingTile
 from src.game_object.pressure_plate import PressurePlate
 from src.game_object.triggerable import Triggerable
 from src.game_object.portal import Portal
@@ -163,6 +164,14 @@ class LevelData():
             type_map = {
                 'finish_tile': {
                     **common,
+                },
+            }
+
+        if tile_object.type == 'scene_switching_tile':
+            type_map = {
+                'scene_switching_tile': {
+                    **common,
+                    'scene': tile_object.scene 
                 },
             }
 

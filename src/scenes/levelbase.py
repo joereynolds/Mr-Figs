@@ -83,9 +83,8 @@ class LevelBase(scene_base.SceneBase):
                     collected_tape = False
 
         self.game_saver.save(self.file, self.player.turns_taken, collected_tape)
-        self.next = LevelBase(
-            self.tiled_level.properties['next_level']
-        )
+        self.next = LevelBase(next_scene)
+
 
     def reset(self):
         """Reinitialises our level, kind of a hacky way
