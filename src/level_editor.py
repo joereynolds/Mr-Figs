@@ -10,11 +10,11 @@ from src.game_object.path import Path
 from src.game_object.platform import Platform
 from src.game_object.video_tape import VideoTape
 import src.game_object.actor as actor
-from pprint import pprint
 from pytmx.util_pygame import load_pygame
 import pygame
 import src.graphics as graphics
 import pyscroll
+import src.logger as logger
 
 from src.tile_factory import TileFactory
 
@@ -62,15 +62,14 @@ class LevelData():
                     tile_object.path_id
                 )
         except (AttributeError, ValueError):
-            print('Attempted to iterate through non-existent path layer')
-        
+            logger.LOGGER.info('Level "' + self.tmx_file + '" does not have a "paths" layer.')
         try:
             for tile_object in self._map.get_layer_by_name('objects'):
                 surface = self._map.get_tile_image_by_gid(tile_object.gid)
                 obj = self._create_tile(tile_object, surface, factory)
                 self.sprites.add(obj)
         except ValueError:
-            print('this scene doesnt have objects')
+            logger.LOGGER.info('Level "' + self.tmx_file + '" does not have a "objects" layer.')
 
     def _create_tile(self, tile_object, surface, factory):
         """Creates tiles passed to it. It finds the type of the
@@ -231,11 +230,10 @@ class LevelData():
                 },
             }
 
-
         try:
             return factory.build(tile_object.type, **type_map[tile_object.type])
         except KeyError:
-            print('You passed an invalid key "' + tile_object.type + '" to the factory for level: ' + self.tmx_file)
+            logger.LOGGER.info('Invalid key "' + tile_object.type + '" passed to factory for level: ' + self.tmx_file)
 
     def link_portals(self):
         """Makes sure that the switches are passed to the correct

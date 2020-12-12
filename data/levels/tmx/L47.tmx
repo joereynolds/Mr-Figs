@@ -52,7 +52,11 @@
   <object id="202" type="destructible" gid="21" x="48" y="304" width="16" height="16"/>
   <object id="203" type="destructible" gid="21" x="48" y="288" width="16" height="16"/>
   <object id="204" type="destructible" gid="21" x="64" y="304" width="16" height="16"/>
-  <object id="205" type="scene_switching_tile" gid="32" x="96" y="304" width="16" height="16"/>
+  <object id="205" type="scene_switching_tile" gid="32" x="96" y="304" width="16" height="16">
+   <properties>
+    <property name="scene" value="./data/levels/tmx/L27-BombAdvanced2.tmx"/>
+   </properties>
+  </object>
   <object id="207" type="tile" gid="1" x="32" y="32" width="16" height="16"/>
   <object id="208" type="tile" gid="1" x="48" y="32" width="16" height="16"/>
   <object id="209" type="tile" gid="1" x="64" y="32" width="16" height="16"/>

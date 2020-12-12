@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="2020.10.30" orientation="orthogonal" renderorder="right-down" width="20" height="15" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="352">
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="20" height="15" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="352">
  <properties>
   <property name="display_name" value="sneaky bastard dlfjg"/>
   <property name="next_level" value="./data/levels/tmx/L39.tmx"/>
@@ -55,7 +55,11 @@
   <object id="193" type="destructible" gid="21" x="240" y="192" width="16" height="16"/>
   <object id="194" type="destructible" gid="21" x="224" y="208" width="16" height="16"/>
   <object id="195" type="destructible" gid="21" x="240" y="208" width="16" height="16"/>
-  <object id="203" type="scene_switching_tile" gid="32" x="288" y="128" width="16" height="16"/>
+  <object id="203" type="scene_switching_tile" gid="32" x="288" y="128" width="16" height="16">
+   <properties>
+    <property name="scene" value="./data/levels/tmx/L39.tmx"/>
+   </properties>
+  </object>
   <object id="206" type="destructible" gid="21" x="32" y="144" width="16" height="16"/>
   <object id="207" type="destructible" gid="21" x="48" y="144" width="16" height="16"/>
   <object id="208" type="destructible" gid="21" x="32" y="160" width="16" height="16"/>

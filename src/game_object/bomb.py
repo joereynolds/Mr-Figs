@@ -10,7 +10,6 @@ from src.game_object.video_tape import VideoTape
 import src.graphics as graphics
 import src.logger as logger
 import src.colours as colours
-from pprint import pprint
 
 
 class Bomb(Entity):

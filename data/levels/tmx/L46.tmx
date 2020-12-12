@@ -74,7 +74,11 @@
     <property name="travels_to_portal_id" type="int" value="1"/>
    </properties>
   </object>
-  <object id="194" type="scene_switching_tile" gid="32" x="272" y="192" width="16" height="16"/>
+  <object id="194" type="scene_switching_tile" gid="32" x="272" y="192" width="16" height="16">
+   <properties>
+    <property name="scene" value="./data/levels/tmx/L47.tmx"/>
+   </properties>
+  </object>
   <object id="195" type="tile" gid="1" x="32" y="32" width="16" height="16"/>
   <object id="196" type="tile" gid="1" x="48" y="32" width="16" height="16"/>
   <object id="197" type="tile" gid="1" x="64" y="32" width="16" height="16"/>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="2020.10.30" orientation="orthogonal" renderorder="right-down" width="20" height="15" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="210">
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="20" height="15" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="210">
  <properties>
   <property name="display_name" value="sneaky bastard dlfjg"/>
   <property name="next_level" value="./data/levels/tmx/L42-Portals2.tmx"/>
@@ -44,7 +44,11 @@
   <object id="190" type="tile" gid="10" x="48" y="64" width="16" height="16"/>
   <object id="191" type="tile" gid="10" x="64" y="64" width="16" height="16"/>
   <object id="192" type="tile" gid="10" x="80" y="64" width="16" height="16"/>
-  <object id="196" type="scene_switching_tile" gid="32" x="208" y="48" width="16" height="16"/>
+  <object id="196" type="scene_switching_tile" gid="32" x="208" y="48" width="16" height="16">
+   <properties>
+    <property name="scene" value="./data/levels/tmx/L42-Portals2.tmx"/>
+   </properties>
+  </object>
   <object id="197" type="portal" gid="62" x="144" y="48" width="16" height="16">
    <properties>
     <property name="portal_id" type="int" value="2"/>

@@ -1,6 +1,7 @@
 import src.graphics as graphics
 import src.level_editor as level_editor
 from src.game_object.video_tape import VideoTape
+import src.logger as logger
 import src.scenes.scenebase as scene_base
 import src.renderers.level_base_renderer as renderers
 import src.input_handlers.global_input_handler as input_handler
@@ -21,6 +22,8 @@ class LevelBase(scene_base.SceneBase):
         @level = A TMXMap object of the level (I think)
         @level_tiles = A sprite group of all tiles on the level
         """
+        logger.LOGGER.info('Creating level: ' + file)
+
         screen = graphics.get_window_surface()
         self.tiled_level = level_editor.LevelData(file, screen)
         self.player = self.tiled_level.get_player(self.tiled_level.sprites)
@@ -83,8 +86,9 @@ class LevelBase(scene_base.SceneBase):
                     collected_tape = False
 
         self.game_saver.save(self.file, self.player.turns_taken, collected_tape)
-        self.next = LevelBase(next_scene)
 
+        logger.LOGGER.info('Switching to scene: ' + next_scene)
+        self.next = LevelBase(next_scene)
 
     def reset(self):
         """Reinitialises our level, kind of a hacky way

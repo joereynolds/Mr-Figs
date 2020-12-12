@@ -29,7 +29,6 @@ class LevelMenu(scene_base.SceneBase):
         }
 
         self.levels = self.get_levels()
-        print(self.levels)
         self.pagination_max = len(self.levels) - 1
         self.add_levels_to_sprite_group(self.levels[self.level_group_index])
 

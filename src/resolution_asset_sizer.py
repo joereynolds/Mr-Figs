@@ -1,4 +1,5 @@
 import src.graphics as graphics
+import src.logger as logger
 
 class ResolutionAssetSizer():
 
@@ -13,15 +14,13 @@ class ResolutionAssetSizer():
         ]
 
         if screen_size in resolutions:
-            print('size is ' + str(screen_size))
             return screen_size
 
         for resolution in resolutions:
             if resolution[0] >= screen_size[0] and resolution[1] >= screen_size[1]:
-                print('size is ' + str(resolution))
                 return resolution;
 
-        print('resolution not found in available_resolutions setting default scaling using 1280x960')
+        logger.LOGGER.info('resolution not found in `available_resolutions` using scaling for 1280x960')
         return (1280, 960)
 
 

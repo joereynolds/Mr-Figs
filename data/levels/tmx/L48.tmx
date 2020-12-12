@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="2020.10.30" orientation="orthogonal" renderorder="right-down" width="20" height="15" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="376">
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="20" height="15" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="376">
  <properties>
   <property name="display_name" value="sneaky bastard dlfjg"/>
   <property name="next_level" value="./data/levels/tmx/L49.tmx"/>
@@ -51,7 +51,11 @@
     <property name="travels_to_portal_id" type="int" value="1"/>
    </properties>
   </object>
-  <object id="182" type="scene_switching_tile" gid="32" x="96" y="64" width="16" height="16"/>
+  <object id="182" type="scene_switching_tile" gid="32" x="96" y="64" width="16" height="16">
+   <properties>
+    <property name="scene" value="./data/levels/tmx/L49.tmx"/>
+   </properties>
+  </object>
   <object id="183" type="triggerable" gid="16" x="80" y="64" width="16" height="16">
    <properties>
     <property name="triggered_id" type="int" value="3"/>

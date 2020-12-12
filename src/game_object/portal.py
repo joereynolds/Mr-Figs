@@ -1,7 +1,6 @@
 import pygame
 import src.entity as entity
 import src.colours as colours
-from pprint import pprint
 
 class Portal(entity.Entity):
     """
