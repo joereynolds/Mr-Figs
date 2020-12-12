@@ -5,7 +5,6 @@ from src.gui.minimap import Minimap
 from src.gui.data_display import DataDisplay
 from src.gui.top_bar import TopBar
 from src.game_object.light_source import LightSource
-from src.game_object.finish_tile import FinishTile
 from src.game_object.torch import Torch
 from src.game_object.triggerable import Triggerable
 from src.game_object.bomb import Bomb

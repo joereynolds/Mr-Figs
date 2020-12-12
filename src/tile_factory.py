@@ -2,7 +2,6 @@ from src.game_object.triggerable import Triggerable
 from src.game_object.scene_switching_tile import SceneSwitchingTile
 from src.game_object.torch import Torch
 from src.game_object.moveable_tile import MoveableTile
-from src.game_object.finish_tile import FinishTile
 from src.game_object.destructible_tile import Destructible
 from src.game_object.switch_tile import Switch
 from src.game_object.portal import Portal
@@ -23,11 +22,9 @@ class TileFactory():
         # TODO automatically infer the class to create
         # We can split on '_' and TitleCase it and try
         # and create it
-        # i.e. finish_tile => FinishTile
-        #      some_other_tile: SomeOtherTile
+        # i.e.  some_other_tile: SomeOtherTile
         tile_map = {
             'triggerable': Triggerable,
-            'finish_tile': FinishTile,
             'moveable_tile': MoveableTile,
             'switch': Switch,
             'pressure_plate': PressurePlate,

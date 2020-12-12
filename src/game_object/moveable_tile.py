@@ -6,7 +6,7 @@ import src.colours
 
 from src.game_object.triggerable import Triggerable
 from src.game_object.solid_tile import SolidTile
-from src.game_object.finish_tile import FinishTile
+from src.game_object.scene_switching_tile import SceneSwitchingTile
 from src.game_object.bomb import Bomb
 from src.game_object.portal import Portal
 
@@ -16,7 +16,7 @@ class MoveableTile(SolidTile):
         self.minimap_colour = src.colours.BROWN_BASE
 
         # A moveable tile cannot be pushed into any of these
-        self.disallowed_tiles = (SolidTile, Bomb, FinishTile)
+        self.disallowed_tiles = (SolidTile, Bomb, SceneSwitchingTile)
 
     def handle_collision(self, tile, player, level):
         if player.destination[0] == self.rect.x and player.destination[1] == self.rect.y:
