@@ -45,7 +45,7 @@ class Platform(entity.Entity):
         return self.target == self.path.points[0]
 
     def has_reached_from_destination(self):
-        pass
+        return self.target == self.path.points[-1]
         # return self.target == self.path.points[1]
 
     def toggle_destination(self):
@@ -56,10 +56,19 @@ class Platform(entity.Entity):
         pass
 
     def handle_collision(self, tile, player, level):
+        """
+        TODO: this code is shockingly bad. Refactor when less tired and know
+        more vector math
+        """
         if self.has_reached_to_destination() and not self.player_on_platform:
-            print('yup')
-            print(self.waypoint_index)
+            self.target = self.path.points[-2]
+            self.waypoint_index = (self.waypoint_index - 1) % - len(self.path.points) 
             self.travelling_back = True
+
+        if self.has_reached_from_destination() and not self.player_on_platform:
+            self.target = self.path.points[1]
+            self.waypoint_index = (self.waypoint_index + 1) % len(self.path.points) 
+            self.travelling_back = False
 
         if player.destination[0] == self.position.x and player.destination[1] == self.position.y:
             self.player_on_platform = True
@@ -82,15 +91,26 @@ class Platform(entity.Entity):
                 player.destination[1] = self.position.y
                 return
 
+            if self.has_reached_from_destination() and self.travelling_back:
+                self.position.x = self.path.points[0].x
+                self.position.y = self.path.points[0].y
+                self.rect.topleft = self.position
+                player.rect.x = self.position.x
+                player.rect.y = self.position.y
+                player.destination[0] = self.position.x
+                player.destination[1] = self.position.y
+                return
+
             if distance <= 2:  # We're closer than 2 pixels.
                 # Increment the waypoint index to swtich the target.
                 # The modulo sets the index back to 0 if it's equal to the length.
                 if self.travelling_back:
-                    self.waypoint_index = (self.waypoint_index - 1)
+                    self.waypoint_index = (self.waypoint_index - 1) % - len(self.path.points) 
                 else:
                     self.waypoint_index = (self.waypoint_index + 1) % len(self.path.points)
 
                 self.target = self.path.points[self.waypoint_index]
+
             if distance <= self.target_radius:
                 self.vel = heading * (distance / self.target_radius * self.max_speed) # If we're approaching the target, we slow down.
             else:  
