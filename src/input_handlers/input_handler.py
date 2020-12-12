@@ -35,8 +35,8 @@ class InputHandler():
         Note also that if we're not pressing the spacebar then we want
         to update everything in the game. The reason being is that we
         don't want to update things when we plant a bomb (press spacebar)"""
-        if event.key == pygame.K_ESCAPE:
-            self.level.switch_to_scene(src.environment.level_obj_list['escape-menu'])
+        if event.key == pygame.K_n:
+            self.level.switch_to_scene(self.level.tiled_level.properties['next_level'])
         for key in self.keys.keys():
             if event.key == key:
                 self.keys[key]()
