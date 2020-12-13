@@ -63,7 +63,9 @@ class LevelBase(scene_base.SceneBase):
         self.check_player_hasnt_died_a_horrible_death()
         self.player.update(delta_time)
 
-        self.collision_handler.handle_collisions()
+        self.sprites.update()
+        self.collision_handler.update()
+
         self.sprites.add(self.player.bombs)
         self.sprites.move_to_front(self.player)
         for bomb in self.player.bombs:

@@ -168,7 +168,7 @@ class Actor(entity.Entity):
         if command == 'space':
             self.create_bomb()
 
-    def update(self, delta_time):
+    def update(self, delta_time=0):
         """These are actions that SHOULD be called every frame. Animation, collision checking etc..."""
         self.update_bomb_collection()
         self.move(delta_time)

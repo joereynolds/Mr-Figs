@@ -23,7 +23,7 @@ class BombParticle(entity.Entity):
                 return True
             if isinstance(_tile, Switch):
                 if pygame.sprite.collide_rect(self, _tile):
-                    _tile.update()
+                    _tile.change_state()
                     return
 
     def animate(self):

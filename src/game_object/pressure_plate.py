@@ -23,9 +23,6 @@ class PressurePlate(entity.Entity):
         self.triggers = triggers
         self.minimap_colour = colours.BLUE_GLOW
 
-    def update(self):
-        self.change_state()
-
     def change_state(self):
         if self.state:
             self.turn_off()

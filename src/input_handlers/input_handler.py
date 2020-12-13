@@ -40,9 +40,4 @@ class InputHandler():
         for key in self.keys.keys():
             if event.key == key:
                 self.keys[key]()
-            elif event.key != pygame.K_SPACE:
-                for sprite in self.level.tiled_level.sprites:
-                    if isinstance(sprite, src.game_object.triggerable.Triggerable):
-                        sprite.update()
-
 
