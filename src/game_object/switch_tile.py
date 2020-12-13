@@ -3,12 +3,6 @@ import src.colours
 from src.game_object.solid_tile import SolidTile
 
 
-# TODO
-# In this class it'd be good to have an 'off_image' and an 'on_image'
-# attribute. The reason being is that sometimes we want one switches off
-# to look like another's "on". It'll confuse and make the game more puzzling
-# (in a good way)
-
 class Switch(SolidTile):
     """The switch class is a tile that can be either on or off.
        It usually links to the Triggerable class
@@ -24,9 +18,6 @@ class Switch(SolidTile):
         self.images = images
         self.triggers = triggers
         self.minimap_colour = src.colours.RED
-
-    def update(self):
-        self.change_state()
 
     def change_state(self):
         if self.state:

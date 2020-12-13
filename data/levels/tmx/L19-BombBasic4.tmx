@@ -187,14 +187,14 @@
   <object id="118" type="tile" gid="2" x="144" y="64" width="16" height="16"/>
   <object id="119" type="tile" gid="2" x="144" y="32" width="16" height="16"/>
   <object id="121" type="actor" gid="46" x="32" y="64" width="16" height="16"/>
-  <object id="122" type="triggerable" gid="17" x="96" y="112" width="16" height="16">
-   <properties>
-    <property name="triggered_id" type="int" value="2"/>
-   </properties>
-  </object>
   <object id="123" type="pressure_plate" gid="54" x="128" y="32" width="16" height="16">
    <properties>
     <property name="triggers" type="int" value="2"/>
+   </properties>
+  </object>
+  <object id="122" type="triggerable" gid="17" x="96" y="112" width="16" height="16">
+   <properties>
+    <property name="triggered_id" type="int" value="2"/>
    </properties>
   </object>
   <object id="124" type="moveable_tile" gid="45" x="64" y="64" width="16" height="16"/>

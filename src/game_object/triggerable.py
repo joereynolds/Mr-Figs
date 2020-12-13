@@ -50,11 +50,8 @@ class Triggerable(entity.Entity):
             self.image = graphics.sprites['laser']['sprites'][self.last_image]
             self.minimap_colour = src.colours.RED
 
-    def update(self):
-        self.trigger()
-
     def handle_collision(self, tile, player, level):
-        self.update()
+        self.trigger()
         if player.destination[0] == self.rect.x and player.destination[1] == self.rect.y and self.stateful.state == 0:
             pygame.sprite.Sprite.kill(player)
 

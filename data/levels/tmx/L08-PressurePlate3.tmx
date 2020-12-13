@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="148">
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="150">
  <properties>
   <property name="display_name" value="not too fiddly"/>
   <property name="next_level" value="./data/levels/tmx/L09-PressurePlate4.tmx"/>
@@ -160,6 +160,11 @@
     <property name="triggers" type="int" value="2"/>
    </properties>
   </object>
+  <object id="144" type="pressure_plate" gid="54" x="64" y="128" width="16" height="16">
+   <properties>
+    <property name="triggers" type="int" value="3"/>
+   </properties>
+  </object>
   <object id="89" type="triggerable" gid="8" x="144" y="32" width="16" height="16">
    <properties>
     <property name="triggered_id" type="int" value="1"/>
@@ -224,11 +229,6 @@
   <object id="143" type="triggerable" gid="17" x="112" y="112" width="16" height="16">
    <properties>
     <property name="triggered_id" type="int" value="3"/>
-   </properties>
-  </object>
-  <object id="144" type="pressure_plate" gid="54" x="64" y="128" width="16" height="16">
-   <properties>
-    <property name="triggers" type="int" value="3"/>
    </properties>
   </object>
   <object id="145" type="scene_switching_tile" gid="32" x="176" y="112" width="16" height="16">
