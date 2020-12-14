@@ -1,4 +1,5 @@
 from src.game_object.triggerable import Triggerable
+from src.game_object.barrel import Barrel
 """
 Contains all events that 
 are passed into the event handler
@@ -31,3 +32,8 @@ def animate_particles(player, level=None):
     for bomb in player.bombs:
         for particle in bomb.particles:
             particle.animate()
+
+def command_barrels_to_shoot(player=None, level=None):
+    for sprite in level.tiled_level.sprites:
+        if isinstance(sprite, Barrel):
+            sprite.shoot(level)

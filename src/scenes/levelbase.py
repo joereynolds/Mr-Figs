@@ -67,7 +67,10 @@ class LevelBase(scene_base.SceneBase):
         self.collision_handler.update()
 
         self.sprites.add(self.player.bombs)
-        self.sprites.move_to_front(self.player)
+
+        if self.player in self.sprites:
+            self.sprites.move_to_front(self.player)
+
         for bomb in self.player.bombs:
             self.sprites.add(bomb.particles)
 

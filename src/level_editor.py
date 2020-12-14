@@ -199,6 +199,23 @@ class LevelData():
                 },
             }
 
+        # Barrels all use one class but pass a direction through
+        if tile_object.type == 'barrel_down':
+            type_map = {
+                'barrel_down': {
+                    **common,
+                    'direction': 'down'
+                },
+            }
+
+        if tile_object.type == 'barrel_left':
+            type_map = {
+                'barrel_left': {
+                    **common,
+                    'direction': 'left'
+                },
+            }
+
         if tile_object.type == 'light_source':
             type_map = {
                 'light_source': {

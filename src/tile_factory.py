@@ -1,4 +1,5 @@
 from src.game_object.triggerable import Triggerable
+from src.game_object.barrel import Barrel
 from src.game_object.scene_switching_tile import SceneSwitchingTile
 from src.game_object.torch import Torch
 from src.game_object.moveable_tile import MoveableTile
@@ -41,6 +42,9 @@ class TileFactory():
             'light_source': LightSource,
             'torch': Torch,
             'scene_switching_tile': SceneSwitchingTile,
+            'barrel': Barrel,
+            'barrel_left': Barrel,
+            'barrel_down': Barrel,
         }
 
         return tile_map[tile_type](**kwargs)
