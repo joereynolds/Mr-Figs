@@ -22,7 +22,7 @@ class Bullet(Entity):
             pygame.sprite.Sprite.kill(player)
 
         for _tile in level.tiled_level.sprites:
-            if isinstance(_tile, (SolidTile)) and pygame.sprite.collide_rect(self, _tile):
+            if isinstance(_tile, (SolidTile, MoveableTile)) and pygame.sprite.collide_rect(self, _tile):
                 if pygame.sprite.collide_rect(self, _tile):
                     pygame.sprite.Sprite.kill(self)
     

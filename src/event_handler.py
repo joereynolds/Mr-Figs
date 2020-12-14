@@ -19,7 +19,6 @@ class EventHandler():
         pygame.USEREVENT: events.call_bomb_events,
         pygame.USEREVENT + 1: events.animate_particles,
         pygame.USEREVENT + 2: events.animate_lasers,
-        pygame.USEREVENT + 3: events.command_barrels_to_shoot,
     }
 
     def __init__(self, level, player):
@@ -33,7 +32,6 @@ class EventHandler():
             (pygame.USEREVENT, 500, 'bomb animation and sound effects'),
             (pygame.USEREVENT + 1, 100, 'particle animation'),
             (pygame.USEREVENT + 2, 100, 'laser animation'),
-            (pygame.USEREVENT + 3, 2000, 'shooting barrels'),
         ]
 
         self.set_timers()

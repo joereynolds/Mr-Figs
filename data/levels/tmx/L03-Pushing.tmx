@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="145">
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="152">
  <properties>
   <property name="display_name" value="Push It"/>
   <property name="next_level" value="./data/levels/tmx/L04-Pushing2.tmx"/>
@@ -136,11 +136,11 @@
  </tileset>
  <layer id="1" name="background" width="14" height="10">
   <data encoding="csv">
-27,27,27,27,27,27,27,27,22,22,22,22,22,22,
-27,27,27,27,27,27,27,27,22,22,22,22,22,22,
-27,19,20,19,20,19,25,27,27,27,27,27,27,22,
-27,27,36,36,27,25,27,27,27,27,27,27,27,22,
-27,27,27,27,27,25,27,27,22,27,27,27,22,22,
+27,27,27,27,27,27,27,27,22,19,19,19,19,19,
+27,27,27,27,27,27,27,27,22,19,19,19,19,19,
+27,19,20,19,20,19,25,27,27,19,19,19,19,19,
+27,27,36,36,27,25,27,27,27,19,19,19,19,19,
+27,27,27,27,27,25,27,27,22,19,19,19,19,19,
 27,27,27,27,27,27,27,27,22,22,22,22,22,22,
 27,27,27,27,27,27,27,27,27,22,22,22,22,22,
 22,22,22,22,22,27,27,27,20,20,20,22,22,22,
@@ -163,10 +163,8 @@
    </properties>
   </object>
   <object id="129" type="tile" gid="1" x="64" y="32" width="16" height="16"/>
-  <object id="132" type="tile" gid="10" x="176" y="128" width="16" height="16"/>
   <object id="133" type="tile" gid="10" x="176" y="160" width="16" height="16"/>
   <object id="134" type="tile" gid="10" x="192" y="160" width="16" height="16"/>
-  <object id="135" type="tile" gid="2" x="208" y="128" width="16" height="16"/>
   <object id="136" type="tile" gid="2" x="208" y="144" width="16" height="16"/>
   <object id="139" type="tile" gid="10" x="32" y="64" width="16" height="16"/>
   <object id="140" type="tile" gid="10" x="48" y="64" width="16" height="16"/>
@@ -176,6 +174,12 @@
     <property name="follows_path_id" type="int" value="1"/>
    </properties>
   </object>
+  <object id="146" type="tile" gid="144" x="176" y="48" width="16" height="16"/>
+  <object id="147" type="barrel_right" gid="143" x="192" y="48" width="16" height="16"/>
+  <object id="148" type="barrel_left" gid="142" x="160" y="48" width="16" height="16"/>
+  <object id="149" type="barrel_down" gid="150" x="176" y="64" width="16" height="16"/>
+  <object id="150" type="barrel_up" gid="141" x="176" y="32" width="16" height="16"/>
+  <object id="151" type="tile" gid="21" x="128" y="48" width="16" height="16"/>
  </objectgroup>
  <objectgroup id="6" name="paths">
   <object id="143" type="path" x="80" y="32">

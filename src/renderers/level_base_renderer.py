@@ -78,7 +78,7 @@ class LevelBaseRenderer():
 
         self.level.sprites.center(self.level.player.rect.center)
         self.level.sprites.draw(self.game_area)
-        self.render_lights()
+        # self.render_lights()
 
         self.top_bar.render(self.level.surface)
         self.player_information_display.render(self.game_area)

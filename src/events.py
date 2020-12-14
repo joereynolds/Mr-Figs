@@ -32,9 +32,3 @@ def animate_particles(player, level=None):
     for bomb in player.bombs:
         for particle in bomb.particles:
             particle.animate()
-
-def command_barrels_to_shoot(player=None, level=None):
-    pass
-    # for sprite in level.tiled_level.sprites:
-    #     if isinstance(sprite, Barrel):
-    #         sprite.shoot(level)
