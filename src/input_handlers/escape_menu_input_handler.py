@@ -1,4 +1,5 @@
 """
+NOTE: This file isn't used but it'd be nice to switch to it when possible
 Contains our input handler class.
 This particular input handler is used for all actions
 that aren't player related. i.e. navigating menus
@@ -27,7 +28,6 @@ class EscapeMenuInput():
         """Handles the scenes to go to when we
         click on certain clickable components"""
         if event.key == pygame.K_c:
-            print('caleled')
             self.escape_menu.is_visible = False
 
         if event.type == pygame.MOUSEBUTTONDOWN:
