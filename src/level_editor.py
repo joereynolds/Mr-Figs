@@ -204,7 +204,25 @@ class LevelData():
             type_map = {
                 'barrel_down': {
                     **common,
-                    'direction': 'down'
+                    'direction': 'down',
+                    'level': self,
+                },
+            }
+        if tile_object.type == 'barrel_up':
+            type_map = {
+                'barrel_up': {
+                    **common,
+                    'direction': 'up',
+                    'level': self,
+                },
+            }
+
+        if tile_object.type == 'barrel_right':
+            type_map = {
+                'barrel_right': {
+                    **common,
+                    'direction': 'right',
+                    'level': self,
                 },
             }
 
@@ -212,7 +230,8 @@ class LevelData():
             type_map = {
                 'barrel_left': {
                     **common,
-                    'direction': 'left'
+                    'direction': 'left',
+                    'level': self,
                 },
             }
 

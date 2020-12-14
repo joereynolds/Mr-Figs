@@ -44,6 +44,8 @@ class TileFactory():
             'scene_switching_tile': SceneSwitchingTile,
             'barrel': Barrel,
             'barrel_left': Barrel,
+            'barrel_right': Barrel,
+            'barrel_up': Barrel,
             'barrel_down': Barrel,
         }
 

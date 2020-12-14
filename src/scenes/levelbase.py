@@ -63,7 +63,7 @@ class LevelBase(scene_base.SceneBase):
         self.check_player_hasnt_died_a_horrible_death()
         self.player.update(delta_time)
 
-        self.sprites.update()
+        self.sprites.update(delta_time)
         self.collision_handler.update()
 
         self.sprites.add(self.player.bombs)

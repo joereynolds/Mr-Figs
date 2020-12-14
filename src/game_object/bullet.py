@@ -1,5 +1,6 @@
 import pygame
 from src.game_object.solid_tile import SolidTile
+from src.game_object.moveable_tile import MoveableTile
 from src.entity import Entity
 import src.colours as colours
 import src.movement_vector as movement_vector
@@ -12,7 +13,7 @@ class Bullet(Entity):
         self.speed = 2
         self.velocity = movement_vector.vector[direction]
 
-    def update(self):
+    def update(self, delta_time):
         self.rect.x += self.speed * self.velocity[0]
         self.rect.y += self.speed * self.velocity[1]
 
