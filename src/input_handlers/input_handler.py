@@ -37,6 +37,10 @@ class InputHandler():
         don't want to update things when we plant a bomb (press spacebar)"""
         if event.key == pygame.K_n:
             self.level.switch_to_scene(self.level.tiled_level.properties['next_level'])
+        if event.key == pygame.K_ESCAPE:
+            self.level.renderer.escape_menu.toggle_visiblity()
+        if event.key == pygame.K_c:
+            self.level.renderer.escape_menu.close_menu()
         for key in self.keys.keys():
             if event.key == key:
                 self.keys[key]()
