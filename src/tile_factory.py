@@ -46,7 +46,11 @@ class TileFactory():
             'barrel_left': Barrel,
             'barrel_right': Barrel,
             'barrel_up': Barrel,
+            'barrel_up_left': Barrel,
+            'barrel_up_right': Barrel,
             'barrel_down': Barrel,
+            'barrel_down_left': Barrel,
+            'barrel_down_right': Barrel,
         }
 
         return tile_map[tile_type](**kwargs)

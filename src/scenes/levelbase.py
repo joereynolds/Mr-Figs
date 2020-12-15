@@ -54,13 +54,13 @@ class LevelBase(scene_base.SceneBase):
             tape = self.tiled_level.get_video_tape(self.tiled_level.sprites)
             self.tiled_level.sprites.remove(tape)
 
-    def check_player_hasnt_died_a_horrible_death(self):
+    def check_player_hasnt_died_a_horrible_death(self, dt):
         """If the player has been destroyed, restart the level"""
-        if self.player.is_dead():
+        if self.player.is_dead(dt):
             self.reset()
 
     def update(self, delta_time):
-        self.check_player_hasnt_died_a_horrible_death()
+        self.check_player_hasnt_died_a_horrible_death(delta_time)
         self.player.update(delta_time)
 
         self.sprites.update(delta_time)

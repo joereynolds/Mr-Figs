@@ -194,12 +194,17 @@ class Actor(entity.Entity):
             ))
             self.remaining_bombs -= 1
 
-    def is_dead(self):
+    def is_dead(self, dt):
         """Returns true if the player is dead"""
+        if self not in self.tiled_level.sprites:
+            self.animate_death(dt)
         return self not in self.tiled_level.sprites
 
     def animate(self):
         pass
+
+    def animate_death(self, dt):
+        print('dying')
 
     def update_bomb_collection(self):
         """Makes sure that not only do we process the bombs that we planted, but also
