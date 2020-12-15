@@ -11,10 +11,6 @@ import src.config as config
 
 class Minimap(Entity):
 
-    # PRetty sure that although this is used,
-    # it's pointless
-    HEIGHT = 84
-
     def __init__(self, x, y, width, height, level, image=None):
         """
         @level     = level data from the LevelEditor class
@@ -48,6 +44,6 @@ class Minimap(Entity):
                 self.map.add(minimap_sprite)
 
     def render(self):
-        self.surface.fill((0,0,0,200))
+        self.surface.fill((0, 0, 0, 200))
         self.populate_map()
         self.map.draw(self.surface)

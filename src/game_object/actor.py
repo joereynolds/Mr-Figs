@@ -1,6 +1,5 @@
 import pygame
 
-from src.game_object.light_source import LightSource
 from src.game_object.moveable_tile import MoveableTile
 from src.game_object.triggerable import Triggerable
 import src.game_object.bomb as bomb
@@ -59,26 +58,11 @@ class Actor(entity.Entity):
         self.is_teleporting = False
         self.minimap_colour = colours.BLUE_HIGHLIGHT
 
-        translated = self.tiled_level.map_layer_for_camera.translate_rect(self.rect)
-        self.light_mask = LightSource(
-            translated.x + 256, 
-            translated.y, 
-            width, 
-            height
-        )
-
     def move(self, delta_time):
         """Checks to see if we've reached the destination given, if we have,
         we can stop moving. Note that we need to use delta-time otherwise we'll get
         differing results from pc to pc. Also without delta time we can't use fancy
         schmancy interpolation effects"""
-
-        # These 3 lines are a bugfix to make the light render in the correct spot
-        # the very first time it's rendered
-        translated = self.tiled_level.map_layer_for_camera.translate_rect(self.rect)
-        self.light_mask.rect.x = translated.x
-        self.light_mask.rect.y = translated.y - 128
-
         target_x = self.destination[0]
         target_y = self.destination[1]
 
@@ -102,11 +86,6 @@ class Actor(entity.Entity):
             elif target_y > self.rect.y:
                 self.rect.y += self.speed
                 self.moving = True
-
-
-        translated = self.tiled_level.map_layer_for_camera.translate_rect(self.rect)
-        self.light_mask.rect.x = translated.x
-        self.light_mask.rect.y = translated.y - 128
 
         #If we have reached our destination, we're not moving anymore
         if self.rect.x == target_x and self.rect.y == target_y:

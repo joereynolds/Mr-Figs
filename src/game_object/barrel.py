@@ -8,7 +8,6 @@ class Barrel(Entity):
 
     def __init__(self, x, y, width, height, direction, level, image=None):
         Entity.__init__(self, x, y, width, height, image)
-        self.minimap_colour = colours.WHITE
         self.direction = direction
         self.vector = self.get_vector_for_direction(self.direction)
         self.level = level

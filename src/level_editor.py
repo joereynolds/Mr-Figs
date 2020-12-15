@@ -270,14 +270,6 @@ class LevelData():
                 },
             }
 
-        if tile_object.type == 'light_source':
-            type_map = {
-                'light_source': {
-                    **common,
-                    # 'image': pygame.image.load('./data/test.png')
-                },
-            }
-
         if tile_object.type == 'triggerable':
             type_map = {
                 'triggerable': {

@@ -4,7 +4,6 @@ import os
 from src.gui.data_display import DataDisplay
 from src.gui.player_information_display import PlayerInformationDisplay
 from src.gui.top_bar import TopBar
-from src.game_object.light_source import LightSource
 from src.game_object.torch import Torch
 from src.game_object.triggerable import Triggerable
 from src.game_object.bomb import Bomb
@@ -41,36 +40,6 @@ class LevelBaseRenderer():
             )
         )
 
-        self.veil = pygame.Surface((self.width, self.height))
-
-        self.light_sources = []
-
-        for light_source in self.level.sprites:
-            if isinstance(light_source, (Torch, Triggerable)):
-                self.light_sources.append(light_source)
-
-    def render_lights(self):
-        self.veil.fill((50,50,50))
-
-        self.veil.blit(
-            self.level.player.light_mask.image, 
-            (
-                self.level.player.light_mask.rect.x,
-                self.level.player.light_mask.rect.y,
-            )
-        )
-
-        for light_source in self.light_sources:
-            self.veil.blit(
-                light_source.light_mask.image, 
-                (
-                    light_source.light_mask.rect.x,
-                    light_source.light_mask.rect.y,
-                )
-            )
-
-        self.game_area.blit(self.veil, (0,0), special_flags=pygame.BLEND_MULT)
-
     def render(self):
         if len(self.level.player.bombs) != self.bomb_count:
             pass
@@ -80,7 +49,6 @@ class LevelBaseRenderer():
 
         self.level.sprites.center(self.level.player.rect.center)
         self.level.sprites.draw(self.game_area)
-        self.render_lights()
 
         self.top_bar.render(self.level.surface)
         self.player_information_display.render(self.game_area)
