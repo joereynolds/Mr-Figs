@@ -283,7 +283,8 @@ class LevelData():
                 'triggerable': {
                     **common,
                     'stateful': 'pass',
-                    'id': triggered_id
+                    'id': triggered_id,
+                    'level': self
                 },
             }
 
@@ -298,6 +299,10 @@ class LevelData():
             type_map = {
                 'torch': {
                     **common,
+                    # level is only passed in so we can translate the lights
+                    # Not a huge fan of passing the entire level into a torch
+                    # just to light it up...
+                    'level': self
                 },
             }
 

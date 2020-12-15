@@ -13,14 +13,6 @@ class LightSource(pygame.sprite.Sprite):
         self.minimap_colour = colours.WHITE
 
         self.particles = pygame.sprite.Group()
-        # self.image = pygame.image.load('./data/light.png')
-        # self.image = pygame.transform.scale(
-        #     self.image, 
-        #     (
-        #         self.image.get_width() * graphics.ZOOM_LEVEL * 4, 
-        #         self.image.get_height() * graphics.ZOOM_LEVEL * 4
-        #     )
-        # )
 
     def generate_light(self):
         pass

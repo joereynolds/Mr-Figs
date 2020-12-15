@@ -22,7 +22,7 @@ class Triggerable(entity.Entity):
        @self.id = The numeric id of the Triggerable. This is used to link the state and
                   Triggerable together"""
 
-    def __init__(self,x, y, width, height, stateful, image, id=0):
+    def __init__(self,x, y, width, height, stateful, image, level, id=0):
         self.last_image = 0
         self.image = graphics.sprites['laser']['sprites'][self.last_image]
         entity.Entity.__init__(self, x, y, width, height, self.image)
@@ -33,7 +33,13 @@ class Triggerable(entity.Entity):
         self.minimap_colour = src.colours.RED
 
         self.reverse_animation = False
-        self.light_mask = LightSource(x, y, width, height)
+        translated = level.map_layer_for_camera.translate_rect(self.rect)
+        self.light_mask = LightSource(
+            translated.x + 128, 
+            translated.y - 128, 
+            width, 
+            height
+        )
 
         # TODO - only play this when the state is on
         # self.laser_hum_sound = pygame.mixer.Sound('./data/audio/fx/laser-hum.ogg')

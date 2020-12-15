@@ -28,11 +28,6 @@ class SceneBase():
         for event in pygame.event.get():
             self.input_handler.process_input(event)
 
-            #Always quit on any scene if we press 'q'
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_q:
-                    self.terminate()
-
     def update(self, delta_time):
         """Stub for our class that inherit this class"""
         pass

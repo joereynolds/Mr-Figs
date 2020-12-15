@@ -51,6 +51,7 @@ class LevelBaseRenderer():
 
     def render_lights(self):
         self.veil.fill((50,50,50))
+
         self.veil.blit(
             self.level.player.light_mask.image, 
             (
@@ -59,16 +60,12 @@ class LevelBaseRenderer():
             )
         )
 
-        ## TODO - heavy stuff hsppening here, do it on __init__ to reduce the load Frodo.
         for light_source in self.light_sources:
-            translated = self.level.tiled_level.map_layer_for_camera.translate_rect(light_source.rect)
-
             self.veil.blit(
                 light_source.light_mask.image, 
                 (
-                    translated.x - graphics.tile_width * graphics.ZOOM_LEVEL,
-                     # hardcoded to avoid calculations, source is light_source.light_mask.image.get_height() //2
-                    translated.y - 128
+                    light_source.light_mask.rect.x,
+                    light_source.light_mask.rect.y,
                 )
             )
 

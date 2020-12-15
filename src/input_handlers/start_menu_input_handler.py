@@ -33,11 +33,15 @@ class StartMenuInput():
         """Handles the scenes to go to when we
         click on certain clickable components"""
         if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_q:
+                pygame.quit()
+
             for key in self.keys.keys():
                 if event.key == key:
                     self.start_menu.switch_to_scene(
                         src.environment.level_obj_list[self.keys[key]]
                     )
+
         if event.type == pygame.MOUSEBUTTONDOWN:
             self.start_menu.menu_items['start-button'].sprite.on_click(
                 self.start_menu.switch_to_scene, 
