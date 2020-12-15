@@ -8,14 +8,23 @@ import src.movement_vector as movement_vector
 class Bullet(Entity):
     def __init__(self, x, y, width, height, direction, image=None):
         Entity.__init__(self, x, y, width, height, image)
-        self.minimap_colour = colours.RED
         self.image.fill(colours.RED)
         self.speed = 2
         self.velocity = movement_vector.vector[direction]
+        self.screen_width, self.screen_height = pygame.display.get_window_size()
 
     def update(self, delta_time):
         self.rect.x += self.speed * self.velocity[0]
         self.rect.y += self.speed * self.velocity[1]
+
+        if self.rect.x > self.screen_width:
+            pygame.sprite.Sprite.kill(self)
+        if self.rect.x < 0:
+            pygame.sprite.Sprite.kill(self)
+        if self.rect.y < 0:
+            pygame.sprite.Sprite.kill(self)
+        if self.rect.y > self.screen_height:
+            pygame.sprite.Sprite.kill(self)
 
     def handle_collision(self, tile, player, level):
         if pygame.sprite.collide_rect(self, player):
