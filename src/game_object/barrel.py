@@ -11,10 +11,8 @@ class Barrel(Entity):
         self.direction = direction
         self.vector = self.get_vector_for_direction(self.direction)
         self.level = level
-
         self.bullet_timer = 1
         self.burst_fire_timer = 0.1
-
 
     def update(self, delta_time):
         self.bullet_timer-= delta_time

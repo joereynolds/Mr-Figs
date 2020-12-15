@@ -20,7 +20,7 @@ class InputHandler():
         @self.player = The player on the level
         @self.level  = The Base level.
                        This is needed to access functions that aren't
-                       available in the TiledMap LevelData object
+                       available in the TiledMap object
         """
         self.player = player
         self.level = level

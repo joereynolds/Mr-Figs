@@ -1,5 +1,5 @@
 import src.graphics as graphics
-import src.level_editor as level_editor
+from src.tiled_map import TiledMap
 from src.game_object.video_tape import VideoTape
 import src.logger as logger
 import src.scenes.scenebase as scene_base
@@ -25,7 +25,7 @@ class LevelBase(scene_base.SceneBase):
         logger.LOGGER.info('Creating level: ' + file)
 
         screen = graphics.get_window_surface()
-        self.tiled_level = level_editor.LevelData(file, screen)
+        self.tiled_level = TiledMap(file, screen)
         self.player = self.tiled_level.get_player(self.tiled_level.sprites)
         self.game_saver = SaveGame()
 

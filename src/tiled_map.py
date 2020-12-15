@@ -18,7 +18,7 @@ import src.logger as logger
 
 from src.tile_factory import TileFactory
 
-class LevelData():
+class TiledMap():
     """
     @self.file = Tiled map filename
     @self.tile_spacing = The spacing between each tile when rendered
