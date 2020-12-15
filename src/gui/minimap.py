@@ -41,9 +41,11 @@ class Minimap(Entity):
                 self.size_data['width'],
                 self.size_data['height']
             )
-            minimap_sprite.image.fill(sprite.minimap_colour)
 
-            self.map.add(minimap_sprite)
+            if hasattr(sprite, 'minimap_colour'):
+                minimap_sprite.image.fill(sprite.minimap_colour)
+
+                self.map.add(minimap_sprite)
 
     def render(self):
         self.surface.fill((0,0,0,200))

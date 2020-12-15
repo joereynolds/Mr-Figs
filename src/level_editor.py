@@ -199,6 +199,77 @@ class LevelData():
                 },
             }
 
+        # Barrels all use one class but pass a direction through
+        if tile_object.type == 'barrel_down':
+            type_map = {
+                'barrel_down': {
+                    **common,
+                    'direction': 'down',
+                    'level': self,
+                },
+            }
+        if tile_object.type == 'barrel_up':
+            type_map = {
+                'barrel_up': {
+                    **common,
+                    'direction': 'up',
+                    'level': self,
+                },
+            }
+
+        if tile_object.type == 'barrel_right':
+            type_map = {
+                'barrel_right': {
+                    **common,
+                    'direction': 'right',
+                    'level': self,
+                },
+            }
+
+        if tile_object.type == 'barrel_left':
+            type_map = {
+                'barrel_left': {
+                    **common,
+                    'direction': 'left',
+                    'level': self,
+                },
+            }
+
+        if tile_object.type == 'barrel_down_left':
+            type_map = {
+                'barrel_down_left': {
+                    **common,
+                    'direction': 'down_left',
+                    'level': self,
+                },
+            }
+        if tile_object.type == 'barrel_down_right':
+            type_map = {
+                'barrel_down_right': {
+                    **common,
+                    'direction': 'down_right',
+                    'level': self,
+                },
+            }
+
+        if tile_object.type == 'barrel_up_left':
+            type_map = {
+                'barrel_up_left': {
+                    **common,
+                    'direction': 'up_left',
+                    'level': self,
+                },
+            }
+
+        if tile_object.type == 'barrel_up_right':
+            type_map = {
+                'barrel_up_right': {
+                    **common,
+                    'direction': 'up_right',
+                    'level': self,
+                },
+            }
+
         if tile_object.type == 'light_source':
             type_map = {
                 'light_source': {
@@ -233,6 +304,8 @@ class LevelData():
         try:
             return factory.build(tile_object.type, **type_map[tile_object.type])
         except KeyError:
+            logger.LOGGER.info('Invalid key "' + tile_object.type + '" passed to factory for level: ' + self.tmx_file)
+        except UnboundLocalError:
             logger.LOGGER.info('Invalid key "' + tile_object.type + '" passed to factory for level: ' + self.tmx_file)
 
     def link_portals(self):

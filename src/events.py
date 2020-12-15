@@ -1,4 +1,5 @@
 from src.game_object.triggerable import Triggerable
+from src.game_object.barrel import Barrel
 """
 Contains all events that 
 are passed into the event handler

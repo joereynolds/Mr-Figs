@@ -72,6 +72,13 @@ class Actor(entity.Entity):
         we can stop moving. Note that we need to use delta-time otherwise we'll get
         differing results from pc to pc. Also without delta time we can't use fancy
         schmancy interpolation effects"""
+
+        # These 3 lines are a bugfix to make the light render in the correct spot
+        # the very first time it's rendered
+        translated = self.tiled_level.map_layer_for_camera.translate_rect(self.rect)
+        self.light_mask.rect.x = translated.x
+        self.light_mask.rect.y = translated.y - 128
+
         target_x = self.destination[0]
         target_y = self.destination[1]
 
@@ -187,12 +194,17 @@ class Actor(entity.Entity):
             ))
             self.remaining_bombs -= 1
 
-    def is_dead(self):
+    def is_dead(self, dt):
         """Returns true if the player is dead"""
+        if self not in self.tiled_level.sprites:
+            self.animate_death(dt)
         return self not in self.tiled_level.sprites
 
     def animate(self):
         pass
+
+    def animate_death(self, dt):
+        print('dying')
 
     def update_bomb_collection(self):
         """Makes sure that not only do we process the bombs that we planted, but also
