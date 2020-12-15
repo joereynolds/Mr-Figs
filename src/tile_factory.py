@@ -15,6 +15,8 @@ from src.game_object.video_tape import VideoTape
 from src.game_object.path import Path
 from src.game_object.platform import Platform
 from src.game_object.enemy_pathable import EnemyPathable
+from src.game_object.particle_emitter import ParticleEmitter
+
 
 class TileFactory():
 
@@ -49,6 +51,7 @@ class TileFactory():
             'barrel_down': Barrel,
             'barrel_down_left': Barrel,
             'barrel_down_right': Barrel,
+            'particle_emitter': ParticleEmitter,
         }
 
         return tile_map[tile_type](**kwargs)

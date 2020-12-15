@@ -86,6 +86,15 @@ class LevelData():
             'height': self.tile_spacing,
             'image': surface
         }
+        if tile_object.type == 'particle_emitter':
+            type_map = {
+                'particle_emitter': {
+                    'x': tile_object.x,
+                    'y': tile_object.y,
+                    'level': self,
+                    'emits': tile_object.emits,
+                }
+            }
 
         if tile_object.type == 'platform':
             type_map = {
