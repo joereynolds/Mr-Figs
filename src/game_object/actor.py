@@ -161,7 +161,7 @@ class Actor(entity.Entity):
 
     def create_bomb(self):
         """Creates a bomb underneath the players position"""
-        if self.remaining_bombs:
+        if self.remaining_bombs and not self.moving:
             self.bombs.add(bomb.Bomb(
                 self.rect.x,
                 self.rect.y,
