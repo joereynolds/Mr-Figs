@@ -10,3 +10,6 @@ lint:
 
 test:
 	python3 -m unittest discover -v
+
+executable:
+	pyinstaller run.py --onefile --noconsole
