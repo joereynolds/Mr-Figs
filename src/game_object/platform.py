@@ -71,6 +71,12 @@ class Platform(entity.Entity):
             player.moving = False
 
         if self.player_on_platform:
+            # We manually change the layer here to the top most one
+            # (move_to_front didn't work) so that when we're moving, we're
+            # above everything else.
+            level.sprites.change_layer(self, 1)
+
+
             heading = self.target - self.position
             distance = heading.length()
             heading.normalize_ip()
