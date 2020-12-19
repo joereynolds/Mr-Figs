@@ -3,7 +3,6 @@ from src.scenes.levelbase import LevelBase
 import src.scenes.levelbase as level_base
 import src.scenes.startmenu as start_menu
 import src.scenes.game_over_menu as game_over_menu
-import src.scenes.levelselect as level_select
 import src.config as config
 from src.scenes.optionsmenu import OptionsMenu
 
