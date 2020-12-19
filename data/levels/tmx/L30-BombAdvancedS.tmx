@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="20" height="15" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="409">
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="20" height="15" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="418">
  <properties>
-  <property name="display_name" value="sneaky bastard dlfjg"/>
+  <property name="display_name" value="Hmmm"/>
   <property name="next_level" value="./data/levels/tmx/L31.tmx"/>
   <property name="player_bomb_count" value="0"/>
  </properties>
@@ -10,21 +10,21 @@
  </tileset>
  <layer id="1" name="background" width="20" height="15">
   <data encoding="csv">
-27,27,27,27,27,27,27,27,27,27,27,22,22,22,36,36,36,36,36,36,
-27,27,27,27,27,27,27,27,27,27,27,27,27,36,36,36,36,36,36,36,
-27,27,19,20,19,20,19,20,19,20,19,20,19,20,19,20,19,36,36,36,
-27,27,20,19,20,19,20,19,20,19,20,19,20,19,20,19,20,36,36,36,
-27,27,19,20,19,20,19,20,19,20,19,20,19,20,19,20,19,36,36,36,
-27,27,20,19,20,19,20,19,20,19,20,19,20,19,20,19,20,36,36,36,
-27,27,19,20,19,20,19,20,19,20,19,20,19,20,19,20,19,36,36,36,
-22,22,20,19,20,19,20,19,20,19,20,19,20,19,20,19,20,36,36,36,
-22,22,19,20,19,20,19,20,19,20,19,20,19,20,19,20,19,36,36,36,
-36,36,20,19,20,19,20,19,20,19,20,19,20,19,20,19,20,36,36,36,
-36,36,19,20,19,20,19,20,19,19,19,19,19,19,19,20,19,36,36,36,
-36,36,20,19,20,19,20,19,20,19,20,19,20,19,20,19,20,36,36,36,
-36,36,19,20,19,20,19,20,19,20,19,20,19,20,19,20,19,36,36,36,
-36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,
-36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36
+22,22,27,27,27,27,27,27,27,27,27,22,22,22,22,22,22,22,22,22,
+20,20,27,27,27,27,27,27,27,27,27,27,27,36,36,36,36,36,22,22,
+20,27,19,20,19,20,19,20,19,20,19,20,19,20,19,20,19,36,22,22,
+27,27,20,19,20,19,20,19,20,19,20,19,20,19,20,19,20,36,22,22,
+27,27,19,20,19,20,19,20,19,20,19,20,19,20,19,20,19,36,22,22,
+27,27,20,19,20,19,20,19,20,19,20,19,20,19,20,19,20,36,22,22,
+27,27,19,20,19,20,19,20,19,20,19,20,19,20,19,20,19,36,22,22,
+22,22,20,19,20,19,20,19,20,19,20,19,20,19,20,19,20,36,22,22,
+22,22,19,20,19,20,19,20,19,20,19,20,19,20,19,20,19,36,22,22,
+22,36,20,19,20,19,20,19,20,19,20,19,20,19,20,19,20,36,22,22,
+22,36,19,20,19,20,19,20,19,19,19,19,19,19,19,20,19,36,22,22,
+22,36,20,19,20,19,20,19,20,19,20,19,20,19,20,19,20,36,22,22,
+22,36,19,20,19,20,19,20,19,20,19,20,19,20,19,20,19,36,22,22,
+22,22,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,22,22,22,
+22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22
 </data>
  </layer>
  <objectgroup id="4" name="objects">
@@ -52,7 +52,6 @@
   <object id="254" type="destructible" gid="21" x="48" y="128" width="16" height="16"/>
   <object id="256" type="destructible" gid="21" x="48" y="160" width="16" height="16"/>
   <object id="257" type="destructible" gid="21" x="48" y="176" width="16" height="16"/>
-  <object id="258" type="destructible" gid="21" x="48" y="192" width="16" height="16"/>
   <object id="259" type="destructible" gid="21" x="64" y="192" width="16" height="16"/>
   <object id="260" type="destructible" gid="21" x="144" y="192" width="16" height="16"/>
   <object id="261" type="destructible" gid="21" x="64" y="208" width="16" height="16"/>
@@ -75,7 +74,6 @@
   <object id="278" type="destructible" gid="21" x="96" y="112" width="16" height="16"/>
   <object id="279" type="destructible" gid="21" x="112" y="128" width="16" height="16"/>
   <object id="280" type="destructible" gid="21" x="128" y="128" width="16" height="16"/>
-  <object id="281" type="destructible" gid="21" x="144" y="128" width="16" height="16"/>
   <object id="282" type="destructible" gid="21" x="128" y="96" width="16" height="16"/>
   <object id="283" type="destructible" gid="21" x="128" y="80" width="16" height="16"/>
   <object id="284" type="destructible" gid="21" x="144" y="80" width="16" height="16"/>
@@ -185,7 +183,25 @@
   <object id="397" type="tile" gid="10" x="240" y="224" width="16" height="16"/>
   <object id="398" type="tile" gid="10" x="224" y="224" width="16" height="16"/>
   <object id="399" type="tile" gid="10" x="256" y="224" width="16" height="16"/>
+  <object id="411" type="platform" gid="53" x="144" y="128" width="16" height="16">
+   <properties>
+    <property name="follows_path_id" type="int" value="1"/>
+   </properties>
+  </object>
   <object id="404" type="destructible" gid="21" x="240" y="64" width="16" height="16"/>
   <object id="405" type="destructible" gid="21" x="224" y="64" width="16" height="16"/>
+  <object id="410" type="destructible" gid="99" x="144" y="128" width="16" height="16"/>
+  <object id="413" type="video_tape" gid="66" x="0" y="32" width="16" height="16"/>
+  <object id="415" type="tile" gid="22" x="0" y="16" width="16" height="16"/>
+  <object id="416" type="tile" gid="22" x="16" y="16" width="16" height="16"/>
+  <object id="417" type="pickup_bomb" gid="43" x="48" y="192" width="16" height="16"/>
+ </objectgroup>
+ <objectgroup id="6" name="paths">
+  <object id="412" x="160" y="112">
+   <properties>
+    <property name="path_id" type="int" value="1"/>
+   </properties>
+   <polyline points="-16,0 -160,0 -160,-64"/>
+  </object>
  </objectgroup>
 </map>

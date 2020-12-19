@@ -33,9 +33,8 @@ class StartMenu(scene_base.SceneBase):
 
         self.menu_items = {
             'start-button': pygame.sprite.GroupSingle(Clickable(offset, offset, button_width, button_height, '[S]TART GAME')),
-            'level-select': pygame.sprite.GroupSingle(Clickable(offset, offset + button_height + spacing, button_width, button_height, '[L]EVEL SELECT')),
-            'options': pygame.sprite.GroupSingle(Clickable(offset, offset + (button_height * 2) + (spacing * 2), button_width, button_height, '[O]PTIONS')),
-            'quit': pygame.sprite.GroupSingle(Clickable(offset, offset + (button_height * 3) + (spacing * 3), button_width, button_height, '[Q]UIT'))
+            'options': pygame.sprite.GroupSingle(Clickable(offset, offset + (button_height * 1) + (spacing * 1), button_width, button_height, '[O]PTIONS')),
+            'quit': pygame.sprite.GroupSingle(Clickable(offset, offset + (button_height * 2) + (spacing * 2), button_width, button_height, '[Q]UIT'))
 
         }
 
@@ -44,8 +43,6 @@ class StartMenu(scene_base.SceneBase):
         self.surface.blit(self.image, ((0,0)))
         self.menu_items['start-button'].draw(self.surface)
         self.menu_items['start-button'].sprite.render_text()
-        self.menu_items['level-select'].draw(self.surface)
-        self.menu_items['level-select'].sprite.render_text()
         self.menu_items['options'].draw(self.surface)
         self.menu_items['options'].sprite.render_text()
         self.menu_items['quit'].draw(self.surface)

@@ -21,7 +21,6 @@ class ParticleEmitter(Entity):
         return self.particle_factory.build(self.emits)
 
     def update(self, dt):
-        print(self.particles)
         for i in range(self.total):
             if len(self.particles) <= self.total:
                 particle = self.create_particle()

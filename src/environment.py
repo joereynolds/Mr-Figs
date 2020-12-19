@@ -16,11 +16,10 @@ def create_level_list():
     """
     level_dict = {}
 
-    level_dict['tutorial-movement.tmx'] = LevelBase(config.level_location + 'L01-Walking.tmx')
+    level_dict['level-select'] = LevelBase(config.level_location + 'L00-LevelSelect.tmx')
     level_dict['start-menu'] = start_menu.StartMenu()
     level_dict['game-over-menu'] = game_over_menu.GameOverMenu()
     level_dict['options-menu'] = OptionsMenu()
-    level_dict['level-select'] = level_select.LevelMenu(level_dict)
 
     return level_dict
 

@@ -183,7 +183,7 @@ class Actor(entity.Entity):
         pass
 
     def animate_death(self, dt):
-        print('dying')
+        print('death animation here')
 
     def update_bomb_collection(self):
         """Makes sure that not only do we process the bombs that we planted, but also
