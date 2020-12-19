@@ -83,8 +83,8 @@ class TiledMap():
         common = {
             'x': tile_object.x,
             'y': tile_object.y,
-            'width': self.tile_spacing,
-            'height': self.tile_spacing,
+            'width': tile_object.width,
+            'height': tile_object.height,
             'image': surface
         }
         if tile_object.type == 'particle_emitter':
@@ -301,10 +301,6 @@ class TiledMap():
             type_map = {
                 'torch': {
                     **common,
-                    # level is only passed in so we can translate the lights
-                    # Not a huge fan of passing the entire level into a torch
-                    # just to light it up...
-                    'level': self
                 },
             }
 
