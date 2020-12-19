@@ -1,4 +1,6 @@
 import src.graphics as graphics
+from src.scenes.levelbase import LevelBase
+from src.renderers.level_select_renderer import LevelSelectRenderer
 from src.tiled_map import TiledMap
 from src.game_object.video_tape import VideoTape
 import src.logger as logger
@@ -10,7 +12,7 @@ from src.collision_handlers.turn_based_collision_handler import TurnBasedCollisi
 from src.user_data import UserData
 
 
-class LevelBase(scene_base.SceneBase):
+class LevelSelect(scene_base.SceneBase):
     """All levels use this class as the base level.
     So far (probably because it's huge), there has
     been no need to extend this class."""
@@ -22,7 +24,7 @@ class LevelBase(scene_base.SceneBase):
         @level = A TMXMap object of the level (I think)
         @level_tiles = A sprite group of all tiles on the level
         """
-        logger.LOGGER.info('Creating level: ' + file)
+        logger.LOGGER.info('Creating level select: ' + file)
 
         screen = graphics.get_window_surface()
         self.tiled_level = TiledMap(file, screen)
@@ -41,39 +43,20 @@ class LevelBase(scene_base.SceneBase):
         self.sprites = self.tiled_level.sprites
         self.sprites.add(self.player)
 
-        # If the player has collected the tape, remove it so they
-        # can't collect again
-        self.remove_video_tape()
-        self.game_saver.register_last_played_level(file);
+        for sprite in self.sprites:
+            if hasattr(sprite, 'scene'):
+                if sprite.scene == self.game_saver.get_last_played_level():
+                    self.player.rect.x = sprite.rect.x
+                    self.player.rect.y = sprite.rect.y - graphics.tile_height
+                    self.player.destination[0] = sprite.rect.x
+                    self.player.destination[1] = sprite.rect.y - graphics.tile_height
 
-        self.renderer = renderers.LevelBaseRenderer(self)
+        self.renderer = LevelSelectRenderer(self)
         self.collision_handler = PollingCollisionHandler(self.player, self)
         self.turn_based_collision_handler = TurnBasedCollisionHandler(self.player, self)
 
-    def remove_video_tape(self):
-        if self.game_saver.has_video_for_level(self.file):
-            tape = self.tiled_level.get_video_tape(self.tiled_level.sprites)
-            self.tiled_level.sprites.remove(tape)
-
-    def check_player_hasnt_died_a_horrible_death(self, dt):
-        """If the player has been destroyed, restart the level"""
-        if self.player.is_dead(dt):
-            self.reset()
-
     def update(self, delta_time):
-        self.check_player_hasnt_died_a_horrible_death(delta_time)
         self.player.update(delta_time)
-
-        self.sprites.update(delta_time)
-        self.collision_handler.update()
-
-        self.sprites.add(self.player.bombs)
-
-        if self.player in self.sprites:
-            self.sprites.move_to_front(self.player)
-
-        for bomb in self.player.bombs:
-            self.sprites.add(bomb.particles)
 
     def render(self):
         """Calls the global renderer to render"""
@@ -83,16 +66,6 @@ class LevelBase(scene_base.SceneBase):
         """Goes to the next scene. Note that SceneBase is
         sort of similar to a linked list in implementation.
         It is a linked list of scenes"""
-        # TODO - Pretty ugly
-        collected_tape = None
-        if self.tiled_level.properties.get('has_video_tape', False):
-            collected_tape = True
-            for sprite in self.sprites:
-                if isinstance(sprite, VideoTape):
-                    collected_tape = False
-
-        self.game_saver.save(self.file, self.player.turns_taken, collected_tape)
-
         logger.LOGGER.info('Switching to scene: ' + next_scene)
         self.next = LevelBase(next_scene)
 

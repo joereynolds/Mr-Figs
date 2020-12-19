@@ -1,5 +1,6 @@
 import os
 from src.scenes.levelbase import LevelBase
+from src.scenes.levelselect import LevelSelect
 import src.scenes.levelbase as level_base
 import src.scenes.startmenu as start_menu
 import src.config as config
@@ -14,7 +15,7 @@ def create_level_list():
     """
     level_dict = {}
 
-    level_dict['level-select'] = LevelBase(config.level_location + 'L00-LevelSelect.tmx')
+    level_dict['level-select'] = LevelSelect(config.level_location + 'L00-LevelSelect.tmx')
     level_dict['start-menu'] = start_menu.StartMenu()
     level_dict['options-menu'] = OptionsMenu()
 
