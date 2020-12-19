@@ -2,7 +2,6 @@ import os
 from src.scenes.levelbase import LevelBase
 import src.scenes.levelbase as level_base
 import src.scenes.startmenu as start_menu
-import src.scenes.game_over_menu as game_over_menu
 import src.config as config
 from src.scenes.optionsmenu import OptionsMenu
 
@@ -17,7 +16,6 @@ def create_level_list():
 
     level_dict['level-select'] = LevelBase(config.level_location + 'L00-LevelSelect.tmx')
     level_dict['start-menu'] = start_menu.StartMenu()
-    level_dict['game-over-menu'] = game_over_menu.GameOverMenu()
     level_dict['options-menu'] = OptionsMenu()
 
     return level_dict
