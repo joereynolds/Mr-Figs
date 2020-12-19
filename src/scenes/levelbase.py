@@ -28,7 +28,6 @@ class LevelBase(scene_base.SceneBase):
         self.tiled_level = TiledMap(file, screen)
         self.player = self.tiled_level.get_player(self.tiled_level.sprites)
         self.game_saver = UserData()
-        self.game_saver.register_last_played_level(file);
 
         scene_base.SceneBase.__init__(
             self,
@@ -41,6 +40,20 @@ class LevelBase(scene_base.SceneBase):
         self.file = file
         self.sprites = self.tiled_level.sprites
         self.sprites.add(self.player)
+
+        # If we're on the level select menu, change the player's X and
+        # Y to be near that of the last level they played
+        if file == 'data/levels/tmx/L00-LevelSelect.tmx':
+            for sprite in self.sprites:
+                if hasattr(sprite, 'scene'):
+                    if sprite.scene == self.game_saver.get_last_played_level():
+                        self.player.rect.x = sprite.rect.x
+                        self.player.rect.y = sprite.rect.y - graphics.tile_height
+                        self.player.destination[0] = sprite.rect.x
+                        self.player.destination[1] = sprite.rect.y - graphics.tile_height
+
+        # Level select should not get counted as the last level we played
+        else: self.game_saver.register_last_played_level(file);
 
         # If the player has collected the tape, remove it so they
         # can't collect again

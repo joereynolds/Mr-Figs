@@ -1,3 +1,8 @@
+"""
+TODO
+Would be nice to load the entire config at once rather
+than each time per method
+"""
 import json
 import os.path
 
@@ -5,6 +10,18 @@ class UserData():
     LOCATION = os.path.join('data', 'saved-games' + os.sep)
     FILENAME = 'game-data.json'
     FULL_PATH = LOCATION + FILENAME
+
+    def get_last_played_level(self) -> str:
+        """
+        Saves the name of the level we last played so that
+        when we head to the level select, we're positioned over it
+        """
+        path = UserData.LOCATION + UserData.FILENAME
+
+        with open(path) as saved_game:
+            game_data = json.load(saved_game)
+
+        return game_data['last_played_level']
 
     def register_last_played_level(self, level: str):
         """
