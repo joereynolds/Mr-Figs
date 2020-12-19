@@ -7,7 +7,7 @@ import src.renderers.level_base_renderer as renderers
 import src.input_handlers.global_input_handler as input_handler
 from src.collision_handlers.polling_collision_handler import PollingCollisionHandler
 from src.collision_handlers.turn_based_collision_handler import TurnBasedCollisionHandler
-from src.save import SaveGame
+from src.user_data import UserData
 
 
 class LevelBase(scene_base.SceneBase):
@@ -27,7 +27,8 @@ class LevelBase(scene_base.SceneBase):
         screen = graphics.get_window_surface()
         self.tiled_level = TiledMap(file, screen)
         self.player = self.tiled_level.get_player(self.tiled_level.sprites)
-        self.game_saver = SaveGame()
+        self.game_saver = UserData()
+        self.game_saver.register_last_played_level(file);
 
         scene_base.SceneBase.__init__(
             self,

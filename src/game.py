@@ -1,7 +1,7 @@
 import pygame
 import json
 import src.config as config
-from src.save import SaveGame
+from src.user_data import UserData
 
 
 class Game(object):
@@ -24,7 +24,7 @@ class Game(object):
         pygame.init()
         pygame.display.set_caption(config.game_title)
 
-        with open(SaveGame.FULL_PATH) as user_config:
+        with open(UserData.FULL_PATH) as user_config:
             game_data = json.load(user_config)
 
         if game_data['settings']['music']: 

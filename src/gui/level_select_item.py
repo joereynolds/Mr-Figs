@@ -7,7 +7,7 @@ import pytmx
 import src.config as config
 import src.colours as colours
 
-from src.save import SaveGame
+from src.user_data import UserData
 from src.gui.clickable import Clickable
 
 class LevelSelectItem(Clickable):
@@ -15,7 +15,7 @@ class LevelSelectItem(Clickable):
     def __init__(self, x: int, y: int, width: int, height: int, level_name: str, level_number: str, image = './data/placeholder-card-image.png'):
         map = pytmx.TiledMap(config.level_location + level_name)
 
-        self.game_data = SaveGame()
+        self.game_data = UserData()
         self.has_video_tape = self.game_data.has_video_for_level(config.level_location + level_name)
 
         level_name = map.properties.get('display_name', level_name + 'NEED A NAME')

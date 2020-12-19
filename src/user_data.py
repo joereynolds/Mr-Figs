@@ -1,14 +1,30 @@
 import json
 import os.path
 
-class SaveGame():
-    LOCATION = './data/saved-games/'
+class UserData():
+    LOCATION = os.path.join('data', 'saved-games' + os.sep)
     FILENAME = 'game-data.json'
     FULL_PATH = LOCATION + FILENAME
 
+    def register_last_played_level(self, level: str):
+        """
+        Saves the name of the level we last played so that
+        when we head to the level select, we're positioned over it
+        """
+        path = UserData.LOCATION + UserData.FILENAME
+
+        with open(path) as saved_game:
+            game_data = json.load(saved_game)
+
+        game_data['last_played_level'] = level
+
+        with open(path, 'w') as saved_game:
+            saved_game.write(json.dumps(game_data))
+
+
     def save(self, completed_level: str, turns_taken: int, collected_tape=None):
         """Saves our game"""
-        path = SaveGame.LOCATION + SaveGame.FILENAME
+        path = UserData.LOCATION + UserData.FILENAME
 
         with open(path) as saved_game:
             game_data = json.load(saved_game)
@@ -26,28 +42,28 @@ class SaveGame():
 
     def delete_save_data(self):
         """Removes the save data but preserves our settings"""
-        with open(SaveGame.FULL_PATH) as saved_game:
+        with open( UserData.FULL_PATH) as saved_game:
             game_data = json.load(saved_game)
 
         settings = game_data['settings']
         game_data.clear()
         game_data['settings'] = settings
 
-        with open(SaveGame.FULL_PATH, 'w') as saved_game:
+        with open( UserData.FULL_PATH, 'w') as saved_game:
             saved_game.write(json.dumps(game_data))
 
     def toggle_music_option(self):
-        with open(SaveGame.FULL_PATH) as saved_game:
+        with open( UserData.FULL_PATH) as saved_game:
             game_data = json.load(saved_game)
 
         settings = game_data['settings']
         settings['music'] = not settings['music']
 
-        with open(SaveGame.FULL_PATH, 'w') as saved_game:
+        with open( UserData.FULL_PATH, 'w') as saved_game:
             saved_game.write(json.dumps(game_data))
 
     def has_video_for_level(self, level: str):
-        with open(SaveGame.FULL_PATH) as saved_game:
+        with open( UserData.FULL_PATH) as saved_game:
             game_data = json.load(saved_game)
 
         if level in game_data:

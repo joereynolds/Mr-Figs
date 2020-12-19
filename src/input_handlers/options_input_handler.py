@@ -2,7 +2,7 @@ import src.environment
 import pygame
 import src.config as config
 from src.scenes.levelbase import LevelBase
-from src.save import SaveGame
+from src.user_data import UserData
 
 
 class OptionsInputHandler():
@@ -13,7 +13,7 @@ class OptionsInputHandler():
         @level_select_menu = The LevelMenu object
         """
         self.level_select_menu = level_select_menu
-        self.save = SaveGame()
+        self.save = UserData()
 
         self.keys = {
             pygame.K_1: 0,
