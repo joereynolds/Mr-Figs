@@ -21,7 +21,6 @@ from src.tile_factory import TileFactory
 class TiledMap():
     """
     @self.file = Tiled map filename
-    @self.tile_spacing = The spacing between each tile when rendered
     @self._map = The TiledMap object of self.file
     @self.data = A sprite group of all of the tiles in self._map
     """
@@ -44,13 +43,12 @@ class TiledMap():
         self.paths = {}
         self.map_layer_for_camera.zoom = graphics.ZOOM_LEVEL
 
-        self.tile_spacing = graphics.tile_width
         self.properties = self._map.properties
-        self.get_map_data()
+        self.create_sprites_from_map()
         self.link_doors_and_switches()
         self.link_portals()
 
-    def get_map_data(self):
+    def create_sprites_from_map(self):
         """Iterates through the TiledMap file adding tiles to
         the self.sprites sprite group
         """
@@ -87,6 +85,7 @@ class TiledMap():
             'height': tile_object.height,
             'image': surface
         }
+
         if tile_object.type == 'particle_emitter':
             type_map = {
                 'particle_emitter': {

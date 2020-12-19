@@ -15,7 +15,9 @@ class Entity(pygame.sprite.Sprite):
     def load_image(self, image, width, height, colour=None):
         """attempts to load an image, falls back onto a pygame surface otherwise"""
         if image:
-            return image
+            # Scale images up on the off-chance we've supplied a tile
+            # bigger than the rest.
+            return pygame.transform.scale(image, (int(width), int(height)))
         else:
             return pygame.Surface((width, height)).convert()
 
