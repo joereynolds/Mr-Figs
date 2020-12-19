@@ -1,7 +1,7 @@
 import src.environment
 import pygame
 import src.config as config
-from src.scenes.levelbase import LevelBase
+from src.scenes.level import Level
 from src.user_data import UserData
 
 

@@ -1,11 +1,11 @@
 import src.graphics as graphics
-from src.scenes.levelbase import LevelBase
+from src.scenes.level import Level
 from src.renderers.level_select_renderer import LevelSelectRenderer
 from src.tiled_map import TiledMap
 from src.game_object.video_tape import VideoTape
 import src.logger as logger
 import src.scenes.scenebase as scene_base
-import src.renderers.level_base_renderer as renderers
+import src.renderers.level_renderer as renderers
 import src.input_handlers.global_input_handler as input_handler
 from src.collision_handlers.polling_collision_handler import PollingCollisionHandler
 from src.collision_handlers.turn_based_collision_handler import TurnBasedCollisionHandler
@@ -67,7 +67,7 @@ class LevelSelect(scene_base.SceneBase):
         sort of similar to a linked list in implementation.
         It is a linked list of scenes"""
         logger.LOGGER.info('Switching to scene: ' + next_scene)
-        self.next = LevelBase(next_scene)
+        self.next = Level(next_scene)
 
     def reset(self):
         """Reinitialises our level, kind of a hacky way

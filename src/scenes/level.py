@@ -3,14 +3,14 @@ from src.tiled_map import TiledMap
 from src.game_object.video_tape import VideoTape
 import src.logger as logger
 import src.scenes.scenebase as scene_base
-import src.renderers.level_base_renderer as renderers
+import src.renderers.level_renderer as renderers
 import src.input_handlers.global_input_handler as input_handler
 from src.collision_handlers.polling_collision_handler import PollingCollisionHandler
 from src.collision_handlers.turn_based_collision_handler import TurnBasedCollisionHandler
 from src.user_data import UserData
 
 
-class LevelBase(scene_base.SceneBase):
+class Level(scene_base.SceneBase):
     """All levels use this class as the base level.
     So far (probably because it's huge), there has
     been no need to extend this class."""
@@ -46,7 +46,7 @@ class LevelBase(scene_base.SceneBase):
         self.remove_video_tape()
         self.game_saver.register_last_played_level(file);
 
-        self.renderer = renderers.LevelBaseRenderer(self)
+        self.renderer = renderers.LevelRenderer(self)
         self.collision_handler = PollingCollisionHandler(self.player, self)
         self.turn_based_collision_handler = TurnBasedCollisionHandler(self.player, self)
 
@@ -94,7 +94,7 @@ class LevelBase(scene_base.SceneBase):
         self.game_saver.save(self.file, self.player.turns_taken, collected_tape)
 
         logger.LOGGER.info('Switching to scene: ' + next_scene)
-        self.next = LevelBase(next_scene)
+        self.next = Level(next_scene)
 
     def reset(self):
         """Reinitialises our level, kind of a hacky way

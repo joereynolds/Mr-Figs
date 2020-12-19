@@ -1,7 +1,7 @@
 import os
-from src.scenes.levelbase import LevelBase
+from src.scenes.level import Level
 from src.scenes.levelselect import LevelSelect
-import src.scenes.levelbase as level_base
+import src.scenes.level as level
 import src.scenes.startmenu as start_menu
 import src.config as config
 from src.scenes.optionsmenu import OptionsMenu

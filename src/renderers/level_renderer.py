@@ -13,7 +13,7 @@ import src.config as config
 import src.graphics as graphics
 from src.entity import Entity
 
-class LevelBaseRenderer():
+class LevelRenderer():
 
     def __init__(self, level):
         self.level = level
