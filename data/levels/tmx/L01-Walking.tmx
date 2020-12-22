@@ -176,7 +176,11 @@
    </properties>
   </object>
   <object id="149" type="tile" gid="2" x="112" y="80" width="16" height="16"/>
-  <object id="150" type="barrel_left" gid="142" x="96" y="80" width="16" height="16"/>
+  <object id="150" type="barrel_left" gid="142" x="96" y="80" width="16" height="16">
+   <properties>
+    <property name="bullet_speed" type="int" value="1"/>
+   </properties>
+  </object>
   <object id="151" type="barrel_down" gid="150" x="96" y="48" width="16" height="16"/>
   <object id="152" type="particle_emitter" x="80" y="48" width="16" height="16">
    <properties>

@@ -6,10 +6,10 @@ import src.colours as colours
 import src.movement_vector as movement_vector
 
 class Bullet(Entity):
-    def __init__(self, x, y, width, height, direction, image=None):
+    def __init__(self, x, y, width, height, speed, direction, image=None):
         Entity.__init__(self, x, y, width, height, image)
         self.image.fill(colours.RED)
-        self.speed = 2
+        self.speed = speed
         self.velocity = movement_vector.vector[direction]
         self.screen_width, self.screen_height = pygame.display.get_window_size()
 
