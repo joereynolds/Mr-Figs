@@ -23,12 +23,12 @@ class TopBar():
         )
 
         self.level_name_display = DataDisplay(
-            self.width // 2,
-            self.height // 2,
+            self.width // 4,
+            self.height // 4,
             self.width,
             self.height,
             self.surface,
-            os.path.basename(level_name)
+            os.path.basename(level_name.upper())
         )
 
     def render(self, game_surface):
