@@ -1,6 +1,7 @@
 import pygame
 import src.gui.text_element as text_element
 from src.resolution_asset_sizer import ResolutionAssetSizer
+import src.config as config
 
 
 class BaseComponent(pygame.sprite.Sprite):
@@ -35,6 +36,6 @@ class BaseComponent(pygame.sprite.Sprite):
         if color:
             self.text.set_color(color)
 
-        font_object = pygame.font.Font(None, self.font_size)
+        font_object = pygame.font.Font(config.font, self.font_size)
         rendered_text = font_object.render(self.text.text, False, self.text.color)
         self.image.blit(rendered_text, self.text.position)
