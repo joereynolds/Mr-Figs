@@ -1,5 +1,6 @@
 import src.graphics as graphics
 from src.scenes.level import Level
+from src.game_object.scene_switching_tile import SceneSwitchingTile
 from src.renderers.level_select_renderer import LevelSelectRenderer
 from src.tiled_map import TiledMap
 from src.game_object.video_tape import VideoTape
@@ -43,8 +44,13 @@ class LevelSelect(scene_base.SceneBase):
         self.sprites = self.tiled_level.sprites
         self.sprites.add(self.player)
 
+        self.scene_switching_tiles = []
+
         for sprite in self.sprites:
-            if hasattr(sprite, 'scene'):
+            if isinstance(sprite, SceneSwitchingTile):
+                self.scene_switching_tiles.append(sprite)
+                # If the stair's scene is the same as our last played level,
+                # then put our sprite near those stairs
                 if sprite.scene == self.game_saver.get_last_played_level():
                     self.player.rect.x = sprite.rect.x
                     self.player.rect.y = sprite.rect.y - graphics.tile_height

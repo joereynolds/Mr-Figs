@@ -30,9 +30,18 @@ class LevelSelectRenderer():
             )
         )
 
+        for scene_switching_tile in self.level.scene_switching_tiles:
+            # If we've completed the level, for now indicate it with
+            # a green overlay
+            if self.level.game_saver.has_completed_level(
+                scene_switching_tile.scene
+                ):
+                veil = pygame.Surface((graphics.tile_width, graphics.tile_height)).convert_alpha()
+                veil.fill((0,255,0, 125))
+                scene_switching_tile.image.blit(veil, (0, 0))
+
     def render(self):
         self.level.surface.fill(self.colour)
-
         self.level.sprites.center(self.level.player.rect.center)
         self.level.sprites.draw(self.game_area)
 

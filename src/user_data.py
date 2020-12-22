@@ -11,6 +11,17 @@ class UserData():
     FILENAME = 'game-data.json'
     FULL_PATH = LOCATION + FILENAME
 
+    def has_completed_level(self, level: str) -> bool:
+        path = UserData.LOCATION + UserData.FILENAME
+
+        with open(path) as saved_game:
+            game_data = json.load(saved_game)
+
+        if level in game_data:
+            return game_data[level]['completed_level']
+
+        return False
+
     def get_last_played_level(self) -> str:
         """
         Saves the name of the level we last played so that
@@ -21,7 +32,10 @@ class UserData():
         with open(path) as saved_game:
             game_data = json.load(saved_game)
 
-        return game_data['last_played_level']
+        try:
+            return game_data['last_played_level']
+        except KeyError:
+            return None
 
     def register_last_played_level(self, level: str):
         """
