@@ -1,4 +1,5 @@
 import src.graphics as graphics
+from src.scenes.startmenu import StartMenu
 from src.scenes.level import Level
 from src.game_object.scene_switching_tile import SceneSwitchingTile
 from src.renderers.level_select_renderer import LevelSelectRenderer
@@ -68,12 +69,16 @@ class LevelSelect(scene_base.SceneBase):
         """Calls the global renderer to render"""
         self.renderer.render()
 
-    def switch_to_scene(self, next_scene):
+    def switch_to_scene(self, next_scene, start_menu=False):
         """Goes to the next scene. Note that SceneBase is
         sort of similar to a linked list in implementation.
         It is a linked list of scenes"""
         logger.LOGGER.info('Switching to scene: ' + next_scene)
-        self.next = Level(next_scene)
+
+        if start_menu:
+            self.reset()
+            self.next = StartMenu()
+        else: self.next = Level(next_scene)
 
     def reset(self):
         """Reinitialises our level, kind of a hacky way

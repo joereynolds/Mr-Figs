@@ -5,6 +5,7 @@ that aren't player related. i.e. navigating menus
 etc...
 """
 import src.game_object.solid_tile
+from src.scenes.startmenu import StartMenu
 import src.environment
 import pygame
 
@@ -38,7 +39,7 @@ class InputHandler():
         if event.key == pygame.K_n:
             self.level.switch_to_scene(self.level.tiled_level.properties['next_level'])
         if event.key == pygame.K_q:
-            pygame.quit()
+            self.level.switch_to_scene('start-menu', True)
         if event.key == pygame.K_ESCAPE:
             self.level.renderer.escape_menu.toggle_visiblity()
         if event.key == pygame.K_c:

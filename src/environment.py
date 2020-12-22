@@ -2,7 +2,7 @@ import os
 from src.scenes.level import Level
 from src.scenes.levelselect import LevelSelect
 import src.scenes.level as level
-import src.scenes.startmenu as start_menu
+from src.scenes.startmenu import StartMenu
 import src.config as config
 from src.scenes.optionsmenu import OptionsMenu
 
@@ -16,7 +16,7 @@ def create_level_list():
     level_dict = {}
 
     level_dict['level-select'] = LevelSelect(config.level_location + 'L00-LevelSelect.tmx')
-    level_dict['start-menu'] = start_menu.StartMenu()
+    level_dict['start-menu'] = StartMenu()
     level_dict['options-menu'] = OptionsMenu()
 
     return level_dict

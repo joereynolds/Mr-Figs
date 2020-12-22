@@ -1,4 +1,5 @@
 import src.graphics as graphics
+from src.scenes.startmenu import StartMenu
 from src.tiled_map import TiledMap
 from src.game_object.video_tape import VideoTape
 import src.logger as logger
@@ -79,7 +80,7 @@ class Level(scene_base.SceneBase):
         """Calls the global renderer to render"""
         self.renderer.render()
 
-    def switch_to_scene(self, next_scene):
+    def switch_to_scene(self, next_scene, start_menu=False):
         """Goes to the next scene. Note that SceneBase is
         sort of similar to a linked list in implementation.
         It is a linked list of scenes"""
@@ -94,7 +95,11 @@ class Level(scene_base.SceneBase):
         self.game_saver.save(self.file, self.player.turns_taken, collected_tape)
 
         logger.LOGGER.info('Switching to scene: ' + next_scene)
-        self.next = Level(next_scene)
+
+        if start_menu:
+            self.reset()
+            self.next = StartMenu()
+        else: self.next = Level(next_scene)
 
     def reset(self):
         """Reinitialises our level, kind of a hacky way
