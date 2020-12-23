@@ -18,7 +18,8 @@ class UserData():
             game_data = json.load(saved_game)
 
         if level in game_data:
-            return game_data[level]['completed_level']
+            if game_data[level]['completed_level'] == True:
+                return True
 
         return False
 

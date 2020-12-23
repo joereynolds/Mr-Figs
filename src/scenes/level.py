@@ -92,14 +92,14 @@ class Level(scene_base.SceneBase):
                 if isinstance(sprite, VideoTape):
                     collected_tape = False
 
-        self.game_saver.save(self.file, self.player.turns_taken, collected_tape)
-
         logger.LOGGER.info('Switching to scene: ' + next_scene)
 
         if start_menu:
             self.reset()
             self.next = StartMenu()
-        else: self.next = Level(next_scene)
+        else: 
+            self.next = Level(next_scene)
+            self.game_saver.save(self.file, self.player.turns_taken, collected_tape)
 
     def reset(self):
         """Reinitialises our level, kind of a hacky way
