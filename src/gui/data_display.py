@@ -29,4 +29,5 @@ class DataDisplay(Entity):
         """
         font_object = pygame.font.Font(config.font, self.font_size)
         rendered_text = font_object.render(self.text.text + str(display_this), False, colours.WHITE)
-        self.surface.blit(rendered_text, (self.x, self.y))
+        rendered_text_rect = rendered_text.get_rect(center=(self.width // 2, self.height // 2))
+        self.surface.blit(rendered_text, rendered_text_rect)
