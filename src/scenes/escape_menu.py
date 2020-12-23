@@ -51,7 +51,7 @@ class EscapeMenu(scene_base.SceneBase):
                 300, 
                 button_width,
                 50, 
-                '[Q]uit to title screen'
+                '[Q]uit to main menu' # TODO - rename this to "main menu"
             )
         )
 

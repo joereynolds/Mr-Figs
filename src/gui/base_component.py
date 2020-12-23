@@ -37,5 +37,5 @@ class BaseComponent(pygame.sprite.Sprite):
             self.text.set_color(color)
 
         font_object = pygame.font.Font(config.font, self.font_size)
-        rendered_text = font_object.render(self.text.text, False, self.text.color)
+        rendered_text = font_object.render(self.text.text.upper(), False, self.text.color)
         self.image.blit(rendered_text, self.text.position)
