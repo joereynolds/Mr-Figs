@@ -8,8 +8,8 @@ import src.environment as environment
 # Run program with
 # python3 -Xfaulthandler run.py
 # for better stacktraces
+# Note this breaks windows (might just be because I have an older version on there though)
 faulthandler.enable()
-
 
 if __name__ == '__main__':
     GAME = game.Game(60)

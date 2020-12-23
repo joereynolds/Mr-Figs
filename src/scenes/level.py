@@ -40,7 +40,6 @@ class Level(scene_base.SceneBase):
 
         self.file = file
         self.sprites = self.tiled_level.sprites
-        self.sprites.add(self.player)
 
         # If the player has collected the tape, remove it so they
         # can't collect again
