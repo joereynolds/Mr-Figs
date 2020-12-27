@@ -1,10 +1,7 @@
 import pygame
 
 class PlayerInputHandler():
-    """Handles all input processing for players.
-    This is meant to be extendable so that in theory,
-    we can pass this class to 400 players and they could
-    all handle their input with minimal extra effort from me."""
+    """Handles all input processing for players"""
 
     keys = {
         pygame.K_UP:'up',

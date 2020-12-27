@@ -1,7 +1,9 @@
+import copy
 import src.graphics as graphics
 from src.scenes.startmenu import StartMenu
 from src.tiled_map import TiledMap
 from src.game_object.video_tape import VideoTape
+from src.level_memento import LevelMemento
 import src.logger as logger
 import src.scenes.scenebase as scene_base
 import src.renderers.level_renderer as renderers
@@ -29,6 +31,7 @@ class Level(scene_base.SceneBase):
         self.tiled_level = TiledMap(file, screen)
         self.player = self.tiled_level.get_player(self.tiled_level.sprites)
         self.game_saver = UserData()
+        self.mementos = []
 
         scene_base.SceneBase.__init__(
             self,
@@ -99,6 +102,32 @@ class Level(scene_base.SceneBase):
         else: 
             self.next = Level(next_scene)
             self.game_saver.save(self.file, self.player.turns_taken, collected_tape)
+
+    def save(self):
+        state = {
+            'player_x': self.player.rect.x,
+            'player_y': self.player.rect.y,
+            'player_destination_x': self.player.destination[0],
+            'player_destination_y': self.player.destination[1],
+        }
+
+        print('saving', state)
+        memento = LevelMemento(state)
+        self.mementos.append(memento)
+
+    def undo(self):
+        """Rewinds our state to a previous one"""
+        if not self.mementos:
+            return
+
+        memento = self.mementos.pop()
+        state = memento.restore()
+        print('restoring', state)
+
+        self.player.rect.x = state['player_x']
+        self.player.rect.y = state['player_y']
+        self.player.destination[0] = state['player_destination_x']
+        self.player.destination[1] = state['player_destination_y']
 
     def reset(self):
         """Reinitialises our level, kind of a hacky way

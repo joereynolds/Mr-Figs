@@ -44,6 +44,7 @@ class LevelSelect(scene_base.SceneBase):
         self.file = file
         self.sprites = self.tiled_level.sprites
         self.sprites.add(self.player)
+        self.mementos = []
 
         self.scene_switching_tiles = []
 
@@ -79,6 +80,10 @@ class LevelSelect(scene_base.SceneBase):
             self.reset()
             self.next = StartMenu()
         else: self.next = Level(next_scene)
+
+
+    def save(self):
+        pass
 
     def reset(self):
         """Reinitialises our level, kind of a hacky way

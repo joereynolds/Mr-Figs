@@ -40,6 +40,10 @@ class InputHandler():
             self.level.switch_to_scene(self.level.tiled_level.properties['next_level'])
         if event.key == pygame.K_q:
             self.level.switch_to_scene('start-menu', True)
+        if event.key != pygame.K_u:
+            self.level.save()
+        if event.key == pygame.K_u:
+            self.level.undo()
         if event.key == pygame.K_ESCAPE:
             self.level.renderer.escape_menu.toggle_visiblity()
         if event.key == pygame.K_c:

@@ -33,5 +33,5 @@ class GlobalInputHandler():
         if event.type == pygame.MOUSEBUTTONDOWN:
             pass
         elif event.type == pygame.KEYDOWN:
-            self.player_input_handler.process_input(event)
             self.level_input_handler.process_input(event)
+            self.player_input_handler.process_input(event)
