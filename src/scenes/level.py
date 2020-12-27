@@ -111,6 +111,15 @@ class Level(scene_base.SceneBase):
             'player_destination_y': self.player.destination[1],
         }
 
+        for sprite in self.sprites:
+            sprites_id = str(id(sprite))
+            state[sprites_id] = {
+                'x': None,
+                'y': None,
+            }
+            state[sprites_id]['x'] = sprite.rect.x
+            state[sprites_id]['y'] = sprite.rect.y
+
         print('saving', state)
         memento = LevelMemento(state)
         self.mementos.append(memento)
@@ -128,6 +137,12 @@ class Level(scene_base.SceneBase):
         self.player.rect.y = state['player_y']
         self.player.destination[0] = state['player_destination_x']
         self.player.destination[1] = state['player_destination_y']
+
+        for sprite in self.sprites:
+            sprites_id = str(id(sprite))
+            if sprites_id in state:
+                sprite.rect.x = state[sprites_id]['x']
+                sprite.rect.y = state[sprites_id]['y']
 
     def reset(self):
         """Reinitialises our level, kind of a hacky way
