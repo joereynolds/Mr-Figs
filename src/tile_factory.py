@@ -16,6 +16,7 @@ from src.game_object.path import Path
 from src.game_object.platform import Platform
 from src.game_object.enemy_pathable import EnemyPathable
 from src.game_object.particle_emitter import ParticleEmitter
+from src.game_object.moving_platform import MovingPlatform
 
 
 class TileFactory():
@@ -39,6 +40,7 @@ class TileFactory():
             'destructible': Destructible,
             'path': Path,
             'platform': Platform,
+            'moving_platform': MovingPlatform,
             'enemy_pathable': EnemyPathable,
             'torch': Torch,
             'scene_switching_tile': SceneSwitchingTile,
