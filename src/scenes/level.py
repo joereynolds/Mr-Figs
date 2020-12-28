@@ -1,5 +1,6 @@
 import copy
 import src.graphics as graphics
+from src.game_object.bomb import Bomb
 from src.scenes.startmenu import StartMenu
 from src.tiled_map import TiledMap
 from src.game_object.video_tape import VideoTape
@@ -111,6 +112,11 @@ class Level(scene_base.SceneBase):
             'player_destination_y': self.player.destination[1],
         }
 
+        # TODO - Refactor this
+        # I think each class should be responsible for setting
+        # and restoring its own state (probably)
+        # Maybe we can give all game_object a `save` and `restore`
+        # method which then does the correc tthing within that class.
         for sprite in self.sprites:
             sprites_id = str(id(sprite))
             state[sprites_id] = {
@@ -119,6 +125,9 @@ class Level(scene_base.SceneBase):
             }
             state[sprites_id]['x'] = sprite.rect.x
             state[sprites_id]['y'] = sprite.rect.y
+
+            if isinstance(sprite, Bomb):
+                state[sprites_id]['lifespan'] = sprite.lifespan
 
         print('saving', state)
         memento = LevelMemento(state)
@@ -137,12 +146,16 @@ class Level(scene_base.SceneBase):
         self.player.rect.y = state['player_y']
         self.player.destination[0] = state['player_destination_x']
         self.player.destination[1] = state['player_destination_y']
+        self.player.moving = False
 
         for sprite in self.sprites:
             sprites_id = str(id(sprite))
             if sprites_id in state:
                 sprite.rect.x = state[sprites_id]['x']
                 sprite.rect.y = state[sprites_id]['y']
+
+                if isinstance(sprite, Bomb):
+                    sprite.lifespan = state[sprites_id]['lifespan']
 
     def reset(self):
         """Reinitialises our level, kind of a hacky way
