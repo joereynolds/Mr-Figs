@@ -110,6 +110,7 @@ class Level(scene_base.SceneBase):
             'player_y': self.player.rect.y,
             'player_destination_x': self.player.destination[0],
             'player_destination_y': self.player.destination[1],
+            'player_remaining_bombs': self.player.remaining_bombs,
         }
 
         # TODO - Refactor this
@@ -129,7 +130,7 @@ class Level(scene_base.SceneBase):
             if isinstance(sprite, Bomb):
                 state[sprites_id]['lifespan'] = sprite.lifespan
 
-        print('saving', state)
+        # print('saving', state)
         memento = LevelMemento(state)
         self.mementos.append(memento)
 
@@ -140,22 +141,26 @@ class Level(scene_base.SceneBase):
 
         memento = self.mementos.pop()
         state = memento.restore()
-        print('restoring', state)
+        # print('restoring', state)
 
         self.player.rect.x = state['player_x']
         self.player.rect.y = state['player_y']
         self.player.destination[0] = state['player_destination_x']
         self.player.destination[1] = state['player_destination_y']
+        self.player.remaining_bombs = state['player_remaining_bombs']
         self.player.moving = False
 
         for sprite in self.sprites:
             sprites_id = str(id(sprite))
-            if sprites_id in state:
-                sprite.rect.x = state[sprites_id]['x']
-                sprite.rect.y = state[sprites_id]['y']
+            # try:
+            sprite.rect.x = state[sprites_id]['x']
+            sprite.rect.y = state[sprites_id]['y']
 
-                if isinstance(sprite, Bomb):
-                    sprite.lifespan = state[sprites_id]['lifespan']
+            if isinstance(sprite, Bomb):
+                sprite.lifespan = state[sprites_id]['lifespan']
+            # except KeyError:
+            #     print('attempted to undo a now non-existent sprite. Did it get blown up or killed?')
+            #     print(sprite)
 
     def reset(self):
         """Reinitialises our level, kind of a hacky way
