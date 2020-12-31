@@ -5,7 +5,7 @@ This particular input handler is used for all actions
 that aren't player related. i.e. navigating menus
 etc...
 """
-import src.environment
+import src.static_scenes
 import pygame
 
 
@@ -32,6 +32,6 @@ class EscapeMenuInput():
 
         if event.type == pygame.MOUSEBUTTONDOWN:
             self.escape_menu.component_dict['resume'].on_click(
-                self.escape_menu.switch_to_scene, src.environment.level_obj_list['level-1']
+                self.escape_menu.switch_to_scene, src.static_scenes.level_obj_list['level-1']
             )
             self.escape_menu.component_dict['quit-desktop'].on_click(self.escape_menu.terminate)
