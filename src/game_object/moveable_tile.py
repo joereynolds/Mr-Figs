@@ -2,8 +2,6 @@ from src.movement_vector import vector
 import src.graphics as graphics
 import src.entity as entity
 import src.colours
-
-
 from src.game_object.triggerable import Triggerable
 from src.game_object.solid_tile import SolidTile
 from src.game_object.scene_switching_tile import SceneSwitchingTile

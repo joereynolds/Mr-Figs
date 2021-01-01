@@ -1,5 +1,11 @@
 import copy
 import src.graphics as graphics
+from src.game_object.actor import Actor
+from src.game_object.solid_tile import SolidTile
+from src.game_object.pickup_bomb import PickupBomb
+from src.game_object.destructible_tile import Destructible
+from src.game_object.moveable_tile import MoveableTile
+from src.game_object.scene_switching_tile import SceneSwitchingTile
 from src.game_object.bomb import Bomb
 from src.scenes.startmenu import StartMenu
 from src.tiled_map import TiledMap
@@ -105,32 +111,33 @@ class Level(scene_base.SceneBase):
             self.game_saver.save(self.file, self.player.turns_taken, collected_tape)
 
     def save(self):
-        state = {
-            'player_x': self.player.rect.x,
-            'player_y': self.player.rect.y,
-            'player_destination_x': self.player.destination[0],
-            'player_destination_y': self.player.destination[1],
-            'player_remaining_bombs': self.player.remaining_bombs,
-        }
-
         # TODO - Refactor this
         # I think each class should be responsible for setting
         # and restoring its own state (probably)
         # Maybe we can give all game_object a `save` and `restore`
         # method which then does the correc tthing within that class.
+        state = {}
+
         for sprite in self.sprites:
             sprites_id = str(id(sprite))
             state[sprites_id] = {
-                'x': None,
-                'y': None,
+                'x': sprite.rect.x,
+                'y': sprite.rect.y,
+                'image': sprite.image,
+                'type': type(sprite).__name__,
             }
-            state[sprites_id]['x'] = sprite.rect.x
-            state[sprites_id]['y'] = sprite.rect.y
+
+            if isinstance(sprite, Actor):
+                state[sprites_id]['destination_x'] = self.player.destination[0]
+                state[sprites_id]['destination_y'] = self.player.destination[1]
+                state[sprites_id]['remaining_bombs'] = self.player.remaining_bombs
+
+            if isinstance(sprite, SceneSwitchingTile):
+                state[sprites_id]['scene'] = sprite.scene
 
             if isinstance(sprite, Bomb):
                 state[sprites_id]['lifespan'] = sprite.lifespan
 
-        # print('saving', state)
         memento = LevelMemento(state)
         self.mementos.append(memento)
 
@@ -141,27 +148,93 @@ class Level(scene_base.SceneBase):
 
         memento = self.mementos.pop()
         state = memento.restore()
-        # print('restoring', state)
 
-        self.player.rect.x = state['player_x']
-        self.player.rect.y = state['player_y']
-        self.player.destination[0] = state['player_destination_x']
-        self.player.destination[1] = state['player_destination_y']
-        self.player.remaining_bombs = state['player_remaining_bombs']
-        self.player.moving = False
+        self.sprites.empty()
+        self.player.bombs.empty()
 
-        for sprite in self.sprites:
-            sprites_id = str(id(sprite))
-            # try:
-            sprite.rect.x = state[sprites_id]['x']
-            sprite.rect.y = state[sprites_id]['y']
+        # The gist of it is pretty simple.
+        # We recreate everything (except the player) from
+        # a previous state. Definitely due a refactor
+        for sprite in state:
+            mementod_sprite = state[sprite]
+            print(state[sprite])
 
-            if isinstance(sprite, Bomb):
-                sprite.lifespan = state[sprites_id]['lifespan']
-            # except KeyError:
-            #     print('attempted to undo a now non-existent sprite. Did it get blown up or killed?')
-            #     print(sprite)
+            if mementod_sprite['type'] == 'Bomb':
+                new_sprite = Bomb(
+                    mementod_sprite['x'],
+                    mementod_sprite['y'],
+                    16,# mementod_sprite['width'],
+                    16,# mementod_sprite['height'],
+                    self.tiled_level,
+                    mementod_sprite['lifespan'],
+                    mementod_sprite['image']
+                )
+                self.sprites.add(new_sprite)
+                self.player.bombs.add(new_sprite)
 
+            if mementod_sprite['type'] == 'SceneSwitchingTile':
+                new_sprite = SceneSwitchingTile(
+                    mementod_sprite['x'],
+                    mementod_sprite['y'],
+                    16,# mementod_sprite['width'],
+                    16,# mementod_sprite['height'],
+                    mementod_sprite['scene'],
+                    mementod_sprite['image']
+                )
+                self.sprites.add(new_sprite)
+
+            if mementod_sprite['type'] == 'PickupBomb':
+                new_sprite = PickupBomb(
+                    mementod_sprite['x'],
+                    mementod_sprite['y'],
+                    16,# mementod_sprite['width'],
+                    16,# mementod_sprite['height'],
+                    mementod_sprite['image']
+                )
+                self.sprites.add(new_sprite)
+
+            if mementod_sprite['type'] == 'MoveableTile':
+                new_sprite = MoveableTile(
+                    mementod_sprite['x'],
+                    mementod_sprite['y'],
+                    16,# mementod_sprite['width'],
+                    16,# mementod_sprite['height'],
+                    mementod_sprite['image']
+                )
+                self.sprites.add(new_sprite)
+
+            if mementod_sprite['type'] == 'Destructible':
+                new_sprite = Destructible(
+                    mementod_sprite['x'],
+                    mementod_sprite['y'],
+                    16,# mementod_sprite['width'],
+                    16,# mementod_sprite['height'],
+                    mementod_sprite['image']
+                )
+                self.sprites.add(new_sprite)
+
+            if mementod_sprite['type'] == 'SolidTile':
+                new_sprite = SolidTile(
+                    mementod_sprite['x'],
+                    mementod_sprite['y'],
+                    16,# mementod_sprite['width'],
+                    16,# mementod_sprite['height'],
+                    mementod_sprite['image']
+                )
+
+                self.sprites.add(new_sprite)
+
+            # We don't create a new player, we just modify the old one.
+            # The old one has loads of logic (input and event handling etc...)
+            # tied to it which would be a pain to rewire on a new class
+            if mementod_sprite['type'] == 'Actor':
+                self.player.rect.x = mementod_sprite['x']
+                self.player.rect.y = mementod_sprite['y']
+                self.player.destination[0] = mementod_sprite['destination_x'] 
+                self.player.destination[1] = mementod_sprite['destination_y']
+                self.player.remaining_bombs = mementod_sprite['remaining_bombs']
+                self.sprites.add(self.player)
+            
     def reset(self):
         """Reinitialises our level, kind of a hacky way
         of resetting the level again."""
