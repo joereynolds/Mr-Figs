@@ -3,7 +3,7 @@
 import faulthandler
 
 import src.game as game
-import src.environment as environment
+import src.static_scenes as scenes
 
 # Run program with
 # python3 -Xfaulthandler run.py
@@ -13,4 +13,4 @@ faulthandler.enable()
 
 if __name__ == '__main__':
     GAME = game.Game(60)
-    GAME.run(environment.level_obj_list['start-menu'])
+    GAME.run(scenes.level_obj_list['start-menu'])

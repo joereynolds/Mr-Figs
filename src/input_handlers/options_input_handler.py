@@ -1,4 +1,4 @@
-import src.environment
+import src.static_scenes
 import pygame
 import src.config as config
 from src.scenes.level import Level
@@ -29,7 +29,7 @@ class OptionsInputHandler():
         """
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
-                self.level_select_menu.switch_to_scene(src.environment.level_obj_list['start-menu'])
+                self.level_select_menu.switch_to_scene(src.static_scenes.level_obj_list['start-menu'])
 
         if event.type == pygame.MOUSEBUTTONDOWN:
             self.level_select_menu.menu_items['toggle_music'].sprite.on_click(
