@@ -153,6 +153,14 @@ class TiledMap():
                 },
             }
 
+        if tile_object.type == 'enemy_bombable':
+            type_map = {
+                'enemy_bombable':{
+                    **common,
+                    'path': self.paths[tile_object.follows_path_id]
+                },
+            }
+
         if tile_object.type == 'enemy_pathable':
             type_map = {
                 'enemy_pathable':{

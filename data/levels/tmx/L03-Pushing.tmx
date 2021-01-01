@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="25" height="24" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="201">
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="25" height="24" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="211">
  <properties>
   <property name="display_name" value="Push It"/>
   <property name="next_level" value="./data/levels/tmx/L04-Pushing2.tmx"/>
@@ -229,6 +229,21 @@
   <object id="197" type="barrel_down_left" gid="121" x="272" y="256" width="16" height="16"/>
   <object id="198" type="barrel_up_right" gid="113" x="304" y="224" width="16" height="16"/>
   <object id="199" type="barrel_down_right" gid="122" x="304" y="256" width="16" height="16"/>
+  <object id="201" type="enemy_pathable" gid="44" x="208" y="208" width="16" height="16">
+   <properties>
+    <property name="follows_path_id" type="int" value="2"/>
+   </properties>
+  </object>
+  <object id="204" type="enemy_bombable" gid="44" x="16" y="192" width="16" height="16">
+   <properties>
+    <property name="follows_path_id" type="int" value="3"/>
+   </properties>
+  </object>
+  <object id="206" type="tile" gid="21" x="128" y="128" width="16" height="16"/>
+  <object id="207" type="tile" gid="21" x="128" y="160" width="16" height="16"/>
+  <object id="208" type="tile" gid="21" x="128" y="176" width="16" height="16"/>
+  <object id="209" type="tile" gid="21" x="128" y="144" width="16" height="16"/>
+  <object id="210" type="tile" gid="21" x="128" y="80" width="16" height="16"/>
  </objectgroup>
  <objectgroup id="6" name="paths">
   <object id="143" type="path" x="80" y="32">
@@ -236,6 +251,18 @@
     <property name="path_id" type="int" value="1"/>
    </properties>
    <polyline points="0,0 48,0 48,64 -64,64 -64,96 64,96"/>
+  </object>
+  <object id="203" type="path" x="224" y="192">
+   <properties>
+    <property name="path_id" type="int" value="2"/>
+   </properties>
+   <polygon points="0,0 -128,0 -64,80 -128,80 -32,96"/>
+  </object>
+  <object id="205" type="path" x="16" y="224">
+   <properties>
+    <property name="path_id" type="int" value="3"/>
+   </properties>
+   <polyline points="0,0 64,0 64,96 16,96 16,67.2 0,0 0,-44.8"/>
   </object>
  </objectgroup>
 </map>
