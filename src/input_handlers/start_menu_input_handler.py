@@ -24,7 +24,7 @@ class StartMenuInput():
         self.start_menu = start_menu
 
         self.keys = {
-            pygame.K_s: 'level-select',
+            pygame.K_s: 'introduction',
             pygame.K_o: 'options-menu'
         }
 
@@ -44,7 +44,7 @@ class StartMenuInput():
         if event.type == pygame.MOUSEBUTTONDOWN:
             self.start_menu.menu_items['start-button'].sprite.on_click(
                 self.start_menu.switch_to_scene, 
-                src.static_scenes.level_obj_list['level-select']
+                src.static_scenes.level_obj_list['introduction']
             )
 
             self.start_menu.menu_items['quit'].sprite.on_click(self.start_menu.terminate)

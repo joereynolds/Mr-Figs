@@ -1,5 +1,6 @@
 from src.scenes.levelselect import LevelSelect
 from src.scenes.startmenu import StartMenu
+from src.scenes.introduction_text_overlay import IntroductionTextOverlay
 import src.config as config
 from src.scenes.optionsmenu import OptionsMenu
 
@@ -12,6 +13,7 @@ def get_scenes():
     """
     scenes = {}
 
+    scenes['introduction'] = IntroductionTextOverlay()
     scenes['level-select'] = LevelSelect(config.level_location + 'L00-LevelSelect.tmx')
     scenes['start-menu'] = StartMenu()
     scenes['options-menu'] = OptionsMenu()
