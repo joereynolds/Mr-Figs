@@ -2,7 +2,7 @@ import pygame
 
 from src.game_object.moveable_tile import MoveableTile
 from src.game_object.triggerable import Triggerable
-import src.game_object.bomb as bomb
+from src.game_object.bomb import Bomb
 import src.colours as colours
 import src.entity as entity
 import src.graphics as graphics
@@ -162,7 +162,7 @@ class Actor(entity.Entity):
     def create_bomb(self):
         """Creates a bomb underneath the players position"""
         if self.remaining_bombs and not self.moving:
-            self.bombs.add(bomb.Bomb(
+            self.bombs.add(Bomb(
                 self.rect.x,
                 self.rect.y,
                 graphics.tile_width,
@@ -189,7 +189,7 @@ class Actor(entity.Entity):
         """Makes sure that not only do we process the bombs that we planted, but also
         the bombs that were already on the level"""
         for sprite in self.tiled_level.sprites:
-            if isinstance(sprite, bomb.Bomb):
+            if isinstance(sprite, Bomb):
                 self.bombs.add(sprite)
 
     def update_bombs(self):
