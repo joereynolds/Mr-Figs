@@ -5,6 +5,8 @@ from src.game_object.solid_tile import SolidTile
 from src.game_object.pickup_bomb import PickupBomb
 from src.game_object.destructible_tile import Destructible
 from src.game_object.moveable_tile import MoveableTile
+from src.game_object.pressure_plate import PressurePlate
+from src.game_object.triggerable import Triggerable
 from src.game_object.scene_switching_tile import SceneSwitchingTile
 from src.game_object.bomb import Bomb
 from src.scenes.startmenu import StartMenu
@@ -135,6 +137,15 @@ class Level(scene_base.SceneBase):
             if isinstance(sprite, SceneSwitchingTile):
                 state[sprites_id]['scene'] = sprite.scene
 
+            if isinstance(sprite, PressurePlate):
+                state[sprites_id]['state'] = sprite.state
+                state[sprites_id]['triggers'] = sprite.triggers
+
+            if isinstance(sprite, Triggerable):
+                state[sprites_id]['stateful'] = sprite.stateful
+                state[sprites_id]['triggered_id'] = sprite.triggered_id
+                state[sprites_id]['solid'] = sprite.solid
+
             if isinstance(sprite, Bomb):
                 state[sprites_id]['lifespan'] = sprite.lifespan
 
@@ -171,6 +182,33 @@ class Level(scene_base.SceneBase):
                 )
                 self.sprites.add(new_sprite)
                 self.player.bombs.add(new_sprite)
+
+            # TODO - These do not correctly link when reconstructed
+            # if mementod_sprite['type'] == 'PressurePlate':
+            #     new_sprite = PressurePlate(
+            #         mementod_sprite['x'],
+            #         mementod_sprite['y'],
+            #         16,# mementod_sprite['width'],
+            #         16,# mementod_sprite['height'],
+            #         mementod_sprite['state'],
+            #         mementod_sprite['image']
+            #     )
+            #     new_sprite.triggers = mementod_sprite['triggers']
+            #     self.sprites.add(new_sprite)
+
+            # if mementod_sprite['type'] == 'Triggerable':
+            #     new_sprite = Triggerable(
+            #         mementod_sprite['x'],
+            #         mementod_sprite['y'],
+            #         16,# mementod_sprite['width'],
+            #         16,# mementod_sprite['height'],
+            #         mementod_sprite['stateful'],
+            #         mementod_sprite['image'],
+            #         self,
+            #         mementod_sprite['triggered_id']
+            #     )
+            #     new_sprite.solid = mementod_sprite['solid']
+            #     self.sprites.add(new_sprite)
 
             if mementod_sprite['type'] == 'SceneSwitchingTile':
                 new_sprite = SceneSwitchingTile(

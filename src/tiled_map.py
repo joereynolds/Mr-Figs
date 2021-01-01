@@ -132,8 +132,7 @@ class TiledMap():
                 'pressure_plate': {
                     **common,
                     'state': state,
-                    'triggers': triggers,
-                    'images': graphics.sprites['pressure_plate']['sprites']
+                    'triggers': triggers
                 },
             }
 
