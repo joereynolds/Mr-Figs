@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.4" tiledversion="2020.10.30" orientation="orthogonal" renderorder="right-down" width="25" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="443">
+ <properties>
+  <property name="display_name" value="sneaky bastard dlfjg"/>
+  <property name="has_video_tape" type="bool" value="false"/>
+  <property name="next_level" value="./data/levels/tmx/New40.tmx"/>
+  <property name="player_bomb_count" value="0"/>
+ </properties>
+ <tileset firstgid="1" name="newtiledsheet" tilewidth="16" tileheight="16" tilecount="180" columns="9">
+  <image source="../../newtiledsheet.png" width="144" height="320"/>
+ </tileset>
+ <layer id="1" name="background" width="25" height="20">
+  <data encoding="csv">
+27,27,27,27,27,27,27,27,27,27,27,22,27,27,27,27,27,27,27,27,27,27,27,27,27,
+27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,
+27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,
+27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,
+27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,
+27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,
+27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,
+27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,
+27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,
+27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,
+27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,
+27,27,27,27,27,27,27,27,20,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,
+27,27,19,20,19,20,19,20,19,20,19,27,27,27,27,27,27,27,27,27,27,27,27,27,27,
+27,27,27,27,27,27,27,27,20,27,20,27,27,27,27,27,27,27,27,27,27,27,27,27,27,
+27,27,27,27,27,27,27,27,19,27,19,27,27,27,27,27,27,27,27,27,27,27,27,27,27,
+27,27,27,27,27,27,27,27,20,27,20,27,27,27,27,27,27,27,27,27,27,27,27,27,27,
+27,27,27,27,27,27,27,21,21,27,19,27,27,27,27,27,27,27,27,27,27,27,27,27,27,
+27,19,20,19,20,19,20,19,20,27,20,27,27,27,27,27,27,27,27,27,27,27,27,27,27,
+27,27,27,27,27,27,27,21,21,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,
+27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27
+</data>
+ </layer>
+ <objectgroup id="4" name="objects">
+  <object id="394" type="actor" gid="46" x="16" y="288" width="16" height="16"/>
+  <object id="396" type="scene_switching_tile" gid="33" x="32" y="208" width="16" height="16">
+   <properties>
+    <property name="scene" value="./data/levels/tmx/New38.tmx"/>
+   </properties>
+  </object>
+  <object id="397" type="destructible" gid="21" x="144" y="288" width="16" height="16"/>
+  <object id="398" type="pressure_plate" gid="54" x="160" y="288" width="16" height="16">
+   <properties>
+    <property name="triggers" type="int" value="2"/>
+   </properties>
+  </object>
+  <object id="399" type="pressure_plate" gid="54" x="128" y="192" width="16" height="16">
+   <properties>
+    <property name="triggers" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="413" type="destructible" gid="21" x="16" y="272" width="16" height="16"/>
+  <object id="414" type="destructible" gid="21" x="32" y="272" width="16" height="16"/>
+  <object id="415" type="destructible" gid="21" x="48" y="272" width="16" height="16"/>
+  <object id="416" type="destructible" gid="21" x="64" y="272" width="16" height="16"/>
+  <object id="417" type="destructible" gid="21" x="80" y="272" width="16" height="16"/>
+  <object id="418" type="destructible" gid="21" x="96" y="272" width="16" height="16"/>
+  <object id="419" type="destructible" gid="21" x="16" y="304" width="16" height="16"/>
+  <object id="420" type="destructible" gid="21" x="32" y="304" width="16" height="16"/>
+  <object id="421" type="destructible" gid="21" x="48" y="304" width="16" height="16"/>
+  <object id="422" type="destructible" gid="21" x="64" y="304" width="16" height="16"/>
+  <object id="423" type="destructible" gid="21" x="80" y="304" width="16" height="16"/>
+  <object id="425" type="destructible" gid="21" x="96" y="304" width="16" height="16"/>
+  <object id="426" type="destructible" gid="21" x="144" y="272" width="16" height="16"/>
+  <object id="427" type="destructible" gid="21" x="144" y="304" width="16" height="16"/>
+  <object id="428" type="triggerable" gid="17" x="144" y="208" width="16" height="16">
+   <properties>
+    <property name="triggered_id" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="437" type="destructible" gid="21" x="64" y="208" width="16" height="16"/>
+  <object id="438" type="triggerable" gid="17" x="80" y="208" width="16" height="16">
+   <properties>
+    <property name="triggered_id" type="int" value="2"/>
+   </properties>
+  </object>
+  <object id="439" type="scene_switching_tile" gid="32" x="352" y="240" width="16" height="16">
+   <properties>
+    <property name="scene" value="./data/levels/tmx/New40.tmx"/>
+   </properties>
+  </object>
+  <object id="440" type="moveable_tile" gid="45" x="128" y="288" width="16" height="16"/>
+  <object id="441" type="moveable_tile" gid="45" x="160" y="240" width="16" height="16"/>
+  <object id="442" type="pickup_bomb" gid="43" x="32" y="288" width="16" height="16"/>
+ </objectgroup>
+</map>

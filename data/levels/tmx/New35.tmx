@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.4" tiledversion="2020.10.30" orientation="orthogonal" renderorder="right-down" width="25" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="404">
+ <properties>
+  <property name="display_name" value="sneaky bastard dlfjg"/>
+  <property name="has_video_tape" type="bool" value="false"/>
+  <property name="next_level" value="./data/levels/tmx/L51.tmx"/>
+  <property name="player_bomb_count" value="0"/>
+ </properties>
+ <tileset firstgid="1" name="newtiledsheet" tilewidth="16" tileheight="16" tilecount="180" columns="9">
+  <image source="../../newtiledsheet.png" width="144" height="320"/>
+ </tileset>
+ <layer id="1" name="background" width="25" height="20">
+  <data encoding="csv">
+27,27,27,27,27,27,27,27,27,27,27,22,27,27,27,27,27,27,27,27,27,27,27,27,27,
+27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,
+27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,
+27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,
+27,27,27,27,27,27,27,27,27,27,27,19,20,19,20,19,20,27,27,27,27,27,27,27,27,
+27,27,27,27,27,27,27,27,27,27,27,27,19,27,19,27,19,27,27,27,27,27,27,27,27,
+27,27,27,27,27,27,27,27,27,27,27,27,20,19,27,19,20,27,27,27,27,27,27,27,27,
+27,27,27,27,27,27,27,27,27,27,27,27,19,27,19,27,19,20,27,27,27,27,27,27,27,
+27,27,27,27,27,27,27,27,27,27,27,27,20,19,20,19,20,19,27,27,27,27,27,27,27,
+27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,20,27,27,27,27,27,27,27,
+27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,19,27,27,27,27,27,27,27,
+27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,20,27,27,27,27,27,27,27,
+27,27,27,27,27,27,27,27,27,27,27,19,20,19,20,19,20,19,27,27,27,27,27,27,27,
+27,27,27,27,27,27,27,27,27,27,27,20,19,20,19,20,27,27,27,27,27,27,27,27,27,
+27,27,27,27,27,27,27,27,27,27,27,19,20,19,20,20,27,27,27,27,27,27,27,27,27,
+27,27,27,27,27,27,27,27,27,27,27,20,19,20,19,20,27,27,27,27,27,27,27,27,27,
+27,27,27,27,27,27,27,27,27,19,19,19,20,19,20,19,27,27,27,27,27,27,27,27,27,
+27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,
+27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,
+27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27
+</data>
+ </layer>
+ <objectgroup id="4" name="objects">
+  <object id="393" type="barrel_down_left" gid="144" x="224" y="112" width="16" height="16"/>
+  <object id="395" type="actor" gid="46" x="176" y="80" width="16" height="16"/>
+  <object id="398" type="pressure_plate" gid="54" x="224" y="288" width="16" height="16">
+   <properties>
+    <property name="triggers" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="399" type="finish_tile" gid="33" x="144" y="272" width="16" height="16"/>
+  <object id="400" type="barrel_up_right" gid="144" x="224" y="112" width="16" height="16"/>
+  <object id="401" type="barrel_up_right" gid="144" x="208" y="240" width="16" height="16"/>
+  <object id="402" type="barrel_down_left" gid="144" x="208" y="240" width="16" height="16"/>
+  <object id="403" type="triggerable" gid="17" x="160" y="272" width="16" height="16">
+   <properties>
+    <property name="triggered_id" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="397" type="moveable_tile" gid="45" x="224" y="224" width="16" height="16"/>
+ </objectgroup>
+</map>

@@ -1,6 +1,7 @@
 import pygame
 import random
 import os
+from src.scenes.text_overlay import TextOverlay
 from src.gui.data_display import DataDisplay
 from src.gui.player_information_display import PlayerInformationDisplay
 from src.gui.top_bar import TopBar
@@ -45,12 +46,7 @@ class LevelRenderer():
         )
 
     def render(self):
-        if len(self.level.player.bombs) != self.bomb_count:
-            pass
-            #TODO shake the screen here
-        else: self.level.surface.fill(self.colour)
-
-
+        self.level.surface.fill(self.colour)
         self.level.sprites.center(self.level.player.rect.center)
         self.level.sprites.draw(self.game_area)
 

@@ -32,6 +32,9 @@ class TurnBasedCollisionHandler():
             particle.handle_collision(None, self.player, self.level)
 
     def handle_collisions(self):
+        # TODO - I *think* there's a bug here.
+        # pretty sure the BombParticle needs to either be added to this list (which it might be already)
+        # or that we need to add it to the PollingCollisionHandler so that it kills stuff on time.
         for _tile in self.level.tiled_level.sprites:
             if hasattr(_tile, 'handle_collision'):
                 _tile.handle_collision(_tile, self.player, self.level)

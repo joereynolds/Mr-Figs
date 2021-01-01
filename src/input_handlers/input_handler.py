@@ -6,7 +6,7 @@ etc...
 """
 import src.game_object.solid_tile
 from src.scenes.startmenu import StartMenu
-import src.environment
+import src.static_scenes
 import pygame
 
 

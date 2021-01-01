@@ -20,6 +20,15 @@ The player must blast their way through various puzzles to reach the end goal.
 - Watch out for patrolling bad guys
 - Make your way to the stairs
 
+#### Storyline
+
+Mr-Figs is the result of an experiment gone wrong. For years he's been studying
+the patterns of the mad scientist behind all of this in a plan to escape and
+expose the experiments that have been going on within the walls of the
+laboratory that he was raised in.
+
+Tonight is the night he has planned for all this time.
+
 
 #### Installing
 

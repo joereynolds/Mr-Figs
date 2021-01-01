@@ -1,5 +1,5 @@
 import src.entity as entity
-import src.environment
+import src.static_scenes
 import src.colours as colours
 
 class SceneSwitchingTile(entity.Entity):
