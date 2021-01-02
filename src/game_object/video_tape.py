@@ -2,6 +2,7 @@ import pygame
 
 import src.colours as colours
 from src.entity import Entity
+from pathlib import Path
 
 class VideoTape(Entity):
     """The tile class represents any tile in the game background,
@@ -19,11 +20,7 @@ class VideoTape(Entity):
             image=None
         ):
         Entity.__init__(self, x, y, width, height, image)
-
-        self.story_file = story
-
-        with open (self.story_file, 'r') as file:
-            self.text = file.read()
+        self.text = Path(story).read_text()
 
         self.minimap_colour = colours.WHITE
 
