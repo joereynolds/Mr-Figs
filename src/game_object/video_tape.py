@@ -25,4 +25,5 @@ class VideoTape(Entity):
 
     def handle_collision(self, tile, player, level):
         if player.destination[0] == self.rect.x and player.destination[1] == self.rect.y:
+            level.renderer.display_video_tape_story(self)
             pygame.sprite.Sprite.kill(self)

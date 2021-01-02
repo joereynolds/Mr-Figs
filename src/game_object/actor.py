@@ -41,7 +41,16 @@ class Actor(entity.Entity):
     @self.turns_taken = How many turns the player has taken
                         
     """
-    def __init__(self, x, y, width, height, level, remaining_bombs, image=None):
+    def __init__(
+            self, 
+            x: int, 
+            y: int, 
+            width: int, 
+            height: int, 
+            level, 
+            remaining_bombs: int, 
+            image=None
+        ):
         entity.Entity.__init__(self, x, y, width, height, image)
 
         self.remaining_bombs = int(remaining_bombs)

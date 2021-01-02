@@ -6,34 +6,36 @@ import src.input_handlers.escape_menu_input_handler as input_handler
 from src.gui.clickable import Clickable
 
 class TextOverlay(scene_base.SceneBase):
-    """The menu that pops up during game when we press escape"""
+    """The overlay that displays when the player collects a video tape"""
 
     def __init__(self, text):
         # TODO needs its own input handler
         scene_base.SceneBase.__init__(self, input_handler.EscapeMenuInput(self)) 
         self.text = text
-
-        self.is_visible = False
         self.width, self.height = pygame.display.get_window_size()
         self.center = self.width // 2
         self.surface = pygame.Surface((self.width, self.height)).convert()
         self.font_size = 24
         self.font = pygame.font.Font(config.font, self.font_size)
+        self.timer = 1000
 
     def render(self, surface):
         """Renders all the buttons on our escape menu"""
-        self.surface.fill(colours.BLACK)
-        self.wrap_text(
-            self.text, 
-            self.font,
-            colours.WHITE,
-            self.center,
-            100,
-            self.surface, 
-            self.center
-        )
+        if self.timer > 0:
+            self.timer -= 1
+            self.surface.fill(colours.BLACK)
+            self.wrap_text(
+                self.text, 
+                self.font,
+                colours.WHITE,
+                self.center,
+                100,
+                self.surface, 
+                self.center
+            )
 
-        surface.blit(self.surface, (0,0))
+            surface.blit(self.surface, (0,0))
+            pygame.display.flip()
 
     def wrap_text(self, text: str, font, colour, x, y, screen, allowed_width):
         # first, split the text into words

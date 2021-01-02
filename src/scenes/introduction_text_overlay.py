@@ -15,14 +15,13 @@ class IntroductionTextOverlay(scene_base.SceneBase):
         scene_base.SceneBase.__init__(self, input_handler.EscapeMenuInput(self)) 
 
         self.screen = graphics.get_window_surface()
-        self.is_visible = False
         self.width, self.height = pygame.display.get_window_size()
         self.center = self.width // 2
         self.surface = pygame.Surface((self.width, self.height)).convert()
         self.font_size = 24
         pygame.font.init()
         self.font = pygame.font.Font(config.font, self.font_size)
-        self.timer = 300
+        self.timer = 100
         self.text = """It is time.
             I have studied the Mad Professors schedule
             and can make my escape if I follow the path laid before me.

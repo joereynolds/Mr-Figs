@@ -51,7 +51,6 @@ class OptionsMenu(scene_base.SceneBase):
             colours.GREEN_HIGHLIGHT
         )
 
-        print( self.menu_items['toggle_music'].sprite.rect)
         self.surface.blit(
             rendered_text, 
             (
