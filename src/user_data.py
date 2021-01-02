@@ -11,6 +11,20 @@ class UserData():
     FILENAME = 'game-data.json'
     FULL_PATH = LOCATION + FILENAME
 
+    def __init__(self):
+        self.create_settings_file()
+
+    def create_settings_file(self):
+        if not os.path.exists(UserData.FULL_PATH):
+
+            settings = {
+                "settings": {
+                    "music": True
+                }
+            }
+            with open( UserData.FULL_PATH, 'w') as saved_game:
+                saved_game.write(json.dumps(settings))
+
     def has_completed_level(self, level: str) -> bool:
         path = UserData.LOCATION + UserData.FILENAME
 

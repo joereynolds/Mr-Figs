@@ -1,1 +1,1 @@
-{"settings": {"music": false}, "last_played_level": "./data/levels/tmx/L04-Pushing2.tmx"}
+{"settings": {"music": true}, "last_played_level": "./data/levels/tmx/L05-PushingS.tmx", "./data/levels/tmx/L01-Walking.tmx": {"completed_level": true, "turns_taken": 1}, "./data/levels/tmx/L03-Pushing.tmx": {"completed_level": true, "turns_taken": 0}, "./data/levels/tmx/L04-Pushing2.tmx": {"completed_level": true, "turns_taken": 23, "collected_tape": true}}
