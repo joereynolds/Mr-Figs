@@ -62,7 +62,7 @@ class LevelRenderer():
 
     def display_video_tape_story(self, video_tape: VideoTape = None):
         if video_tape is not None:
-            overlay = TextOverlay(video_tape.story)
+            overlay = TextOverlay(video_tape.text)
             # Lock it in a loop until we're done
             while overlay.timer > 0:
                 overlay.render(self.game_area)

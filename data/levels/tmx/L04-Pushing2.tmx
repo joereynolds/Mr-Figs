@@ -175,7 +175,11 @@
   <object id="132" type="tile" gid="1" x="48" y="32" width="16" height="16"/>
   <object id="133" type="tile" gid="10" x="48" y="64" width="16" height="16"/>
   <object id="134" type="tile" gid="11" x="32" y="48" width="16" height="16"/>
-  <object id="136" type="video_tape" gid="66" x="112" y="112" width="16" height="16"/>
+  <object id="136" type="video_tape" gid="66" x="112" y="112" width="16" height="16">
+   <properties>
+    <property name="story" value="./data/tape-stories/first-tape"/>
+   </properties>
+  </object>
   <object id="137" type="tile" gid="27" x="96" y="96" width="16" height="16"/>
   <object id="138" type="tile" gid="27" x="96" y="112" width="16" height="16"/>
   <object id="139" type="tile" gid="27" x="112" y="128" width="16" height="16"/>

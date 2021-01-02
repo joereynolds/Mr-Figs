@@ -20,7 +20,11 @@ class VideoTape(Entity):
         ):
         Entity.__init__(self, x, y, width, height, image)
 
-        self.story = story
+        self.story_file = story
+
+        with open (self.story_file, 'r') as file:
+            self.text = file.read()
+
         self.minimap_colour = colours.WHITE
 
     def handle_collision(self, tile, player, level):
