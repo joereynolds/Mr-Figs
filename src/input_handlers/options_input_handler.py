@@ -28,6 +28,15 @@ class OptionsInputHandler():
         level.
         """
         if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_b:
+                self.level_select_menu.switch_to_scene(src.static_scenes.level_obj_list['start-menu'])
+            if event.key == pygame.K_c:
+                self.save.delete_save_data()
+            if event.key == pygame.K_t:
+                self.level_select_menu.menu_items['toggle_music'].sprite.toggle(
+                    self.save.toggle_music_option
+                )
+                
             if event.key == pygame.K_ESCAPE:
                 self.level_select_menu.switch_to_scene(src.static_scenes.level_obj_list['start-menu'])
 
