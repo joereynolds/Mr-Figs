@@ -108,7 +108,7 @@ class TiledMap():
             type_map = {
                 'video_tape': {
                     **common,
-                    'story': tile_object.properties.get('story', "This story isn't written yet.")
+                    'story': tile_object.properties.get('story', "./data/tape-stories/first-tape")
                 },
             }
 
