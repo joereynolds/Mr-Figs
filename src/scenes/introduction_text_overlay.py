@@ -5,6 +5,7 @@ import src.colours as colours
 import src.config as config
 import src.scenes.scenebase as scene_base
 import src.input_handlers.escape_menu_input_handler as input_handler
+from src.user_data import UserData
 from src.gui.clickable import Clickable
 
 class IntroductionTextOverlay(scene_base.SceneBase):
@@ -14,6 +15,7 @@ class IntroductionTextOverlay(scene_base.SceneBase):
         # TODO needs its own input handler
         scene_base.SceneBase.__init__(self, input_handler.EscapeMenuInput(self)) 
 
+        self.user_data = UserData()
         self.screen = graphics.get_window_surface()
         self.width, self.height = pygame.display.get_window_size()
         self.center = self.width // 2
@@ -31,7 +33,7 @@ class IntroductionTextOverlay(scene_base.SceneBase):
 
     def render(self):
         """Renders all the buttons on our escape menu"""
-        if self.timer > 0:
+        if self.timer > 0 and not self.user_data.get_has_seen_introduction():
             self.timer -= 1
             self.surface.fill(colours.BLACK)
             self.wrap_text(
@@ -46,6 +48,7 @@ class IntroductionTextOverlay(scene_base.SceneBase):
 
             self.screen.blit(self.surface, (0,0))
         else:
+            self.user_data.register_has_seen_introduction()
             self.switch_to_scene(src.static_scenes.level_obj_list['level-select'])
 
     def wrap_text(self, text: str, font, colour, x, y, screen, allowed_width):

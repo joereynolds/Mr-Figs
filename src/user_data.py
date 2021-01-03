@@ -37,6 +37,31 @@ class UserData():
 
         return False
 
+    def get_has_seen_introduction(self):
+        """
+        Brings back whether we've seen the intro text or not
+        """
+        path = UserData.LOCATION + UserData.FILENAME
+
+        with open(path) as saved_game:
+            game_data = json.load(saved_game)
+
+        try:
+            return game_data['has_seen_introduction']
+        except KeyError:
+            return None
+
+    def register_has_seen_introduction(self):
+        path = UserData.LOCATION + UserData.FILENAME
+
+        with open(path) as saved_game:
+            game_data = json.load(saved_game)
+
+        game_data['has_seen_introduction'] = True
+
+        with open(path, 'w') as saved_game:
+            saved_game.write(json.dumps(game_data))
+
     def get_last_played_level(self) -> str:
         """
         Saves the name of the level we last played so that
