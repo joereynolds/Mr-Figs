@@ -64,7 +64,6 @@ class EnemyBombable(entity.Entity):
                     5,
                     graphics.sprites['bomb']['sprites'][0]
                 ))
-                print("plant bomb here")
                 self.bomb_timer = 100
         self.bomb_timer -= 1
 

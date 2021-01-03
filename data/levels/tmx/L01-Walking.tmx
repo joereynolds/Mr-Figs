@@ -181,7 +181,11 @@
     <property name="bullet_speed" type="int" value="1"/>
    </properties>
   </object>
-  <object id="151" type="barrel_down" gid="150" x="96" y="48" width="16" height="16"/>
+  <object id="151" type="barrel_down" gid="150" x="96" y="48" width="16" height="16">
+   <properties>
+    <property name="pattern" value="burst"/>
+   </properties>
+  </object>
   <object id="152" type="particle_emitter" x="80" y="48" width="16" height="16">
    <properties>
     <property name="emits" value="smoke"/>
