@@ -8,6 +8,7 @@ Play through the game and confirm the following:
 - [ ] - Explosions stop at stairs
 - [ ] - A user walking into a solid tile while a bomb detonates will die
 - [ ] - Explosion blow up destructible objects
+- [ ] - Bombs do not blow up things when collected at 1
 
 ### Moveable tiles
 - [ ] - Once a moveable tile has been moved, bombs do not pass through it (or before it was moved)

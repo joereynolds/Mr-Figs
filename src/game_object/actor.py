@@ -205,7 +205,11 @@ class Actor(entity.Entity):
         """Updates all bombs that are owned by the player.
         Usually, all bombs on the map are owned by the player,
         even the ones the player did not plant"""
+        
         for bomb in self.bombs:
-            bomb.lifespan -= 1
-            if bomb.blow_up():
-                self.bombs.remove(bomb)
+            # Don't decreate the lifespan of a bomb if we're going to it.
+            # This would cause it to blow up even if we've collected it.
+            if self.destination[0] != bomb.rect.x or self.destination[1] != bomb.rect.y:
+                bomb.lifespan -= 1
+                if bomb.blow_up():
+                    self.bombs.remove(bomb)
