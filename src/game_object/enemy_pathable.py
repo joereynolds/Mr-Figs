@@ -12,6 +12,8 @@ import src.graphics as graphics
 import time
 
 class EnemyPathable(entity.Entity):
+    """Represents most things that follow a path and kill you.
+    Not just literal enemies, could also be saw blades etc..."""
     def __init__(
             self, 
             x: int, 
@@ -19,26 +21,22 @@ class EnemyPathable(entity.Entity):
             width: int, 
             height: int, 
             path: Path, 
+            speed: int = 2,
             image=None
         ):
         entity.Entity.__init__(self, x, y, width, height, image)
         self.minimap_colour = colours.RED_HIGHLIGHT
         self.path = path
         self.destination = path.points[-1]
-        self.speed =  1
         self.processed_points = []
         self.position = Vector2(x, y)
         self.vel = Vector2(0, 0)
         self.target = self.path.points[1]
         self.target_radius = 25
-        self.max_speed = 2
+        self.speed = speed
         self.waypoint_index = 0
 
     def handle_collision(self, tile, player, level):
-        """
-        TODO: this code is shockingly bad. Refactor when less tired and know
-        more vector math
-        """
         if pygame.sprite.collide_rect(self, player):
             pygame.sprite.Sprite.kill(player)
 
@@ -52,6 +50,6 @@ class EnemyPathable(entity.Entity):
             self.waypoint_index = (self.waypoint_index + 1) % len(self.path.points)
             self.target = self.path.points[self.waypoint_index]
 
-        self.vel = heading * self.max_speed # Otherwise move with max_speed.
+        self.vel = heading * self.speed
         self.position += self.vel
         self.rect.topleft = self.position

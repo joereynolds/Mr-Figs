@@ -166,7 +166,8 @@ class TiledMap():
             type_map = {
                 'enemy_pathable':{
                     **common,
-                    'path': self.paths[tile_object.follows_path_id]
+                    'path': self.paths[tile_object.follows_path_id],
+                    'speed': tile_object.properties.get('speed', 2),
                 },
             }
 
