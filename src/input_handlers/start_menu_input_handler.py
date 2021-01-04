@@ -25,6 +25,7 @@ class StartMenuInput():
 
         self.keys = {
             pygame.K_s: 'introduction',
+            pygame.K_c: 'credits',
             pygame.K_o: 'options-menu'
         }
 
