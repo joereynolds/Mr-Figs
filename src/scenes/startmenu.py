@@ -1,5 +1,6 @@
 import pygame
 
+import src.graphics as graphics
 import src.colours as colours
 import src.scenes.scenebase as scene_base
 import src.input_handlers.start_menu_input_handler as input_handler
