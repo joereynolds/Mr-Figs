@@ -17,24 +17,4 @@ class KeyboardController():
         pygame.K_j: 'down',
         pygame.K_k: 'up',
         pygame.K_l: 'right',
-
-        # xbox controller
-
-        #button
-        0: 'nothing',
-        1: 'space',
-
-        #hats (dpad)
-        (1, 0): 'right',
-        (-1, 0): 'left',
-        (0, 1): 'up',
-        (0, -1): 'down',
-        (0, 0): 'nothing',
-
-        # Weird in between values, just try and guess them
-        # best we can
-        (1, 1): 'up',
-        (-1, 1): 'up',
-        (1, -1): 'down',
-        (-1, -1): 'down',
     }

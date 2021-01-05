@@ -1,6 +1,8 @@
 
 class Xbox360Controller():
 
+    NAME = 'Xbox 360 Controller'
+
     keys = {
         # buttons
         0: 'nothing',

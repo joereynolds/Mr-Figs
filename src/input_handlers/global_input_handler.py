@@ -1,6 +1,8 @@
 import pygame
 import src.event_handler as event_handler
+import src.graphics as graphics
 import src.input_handlers.input_handler as input_handler
+import src.logger as logger
 from src.input_handlers.player_input_handler import PlayerInputHandler
 from src.input_handlers.input_handler import InputHandler
 from src.input_handlers.xbox_360_controller import Xbox360Controller
@@ -20,15 +22,7 @@ class GlobalInputHandler():
         self.level = level
         self.player = player
 
-        pygame.joystick.init()
-        self.joystick_count = pygame.joystick.get_count()
-
-        self.controller = KeyboardController
-        if pygame.joystick.get_count() > 0:
-            self.joystick = pygame.joystick.Joystick(0)
-            if self.joystick.get_name() == 'Xbox 360 Controller':
-                self.controller = Xbox360Controller(self.joystick)
-
+        self.controller = graphics.get_controller()
         self.player_input_handler = PlayerInputHandler(player, level, self.controller)
         self.level_input_handler = InputHandler(player, level, self.controller)
 

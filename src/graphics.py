@@ -1,10 +1,28 @@
 import pygame
 import src.config as config
+from src.input_handlers.xbox_360_controller import Xbox360Controller
+from src.input_handlers.keyboard_controller import KeyboardController
 
 ZOOM_LEVEL = 4
 
 tile_width = 16
 tile_height = 16
+
+def get_controller():
+    pygame.joystick.init()
+
+    controller = KeyboardController
+    if pygame.joystick.get_count() > 0:
+        joystick = pygame.joystick.Joystick(0)
+        if joystick.get_name() == 'Xbox 360 Controller':
+            controller = Xbox360Controller(joystick)
+        else:
+            logger.LOGGER.info("No compatible controller found, falling back to keyboard input")
+
+    return controller
+            
+
+
 
 def get_window_surface():
     # return pygame.display.set_mode((768, 768), )
