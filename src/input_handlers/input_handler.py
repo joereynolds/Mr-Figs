@@ -16,7 +16,7 @@ class InputHandler():
     is kept in here. All player input is handler
     via the PlayerInputHandler class"""
 
-    def __init__(self, player, level):
+    def __init__(self, player, level, controller):
         """
         @self.player = The player on the level
         @self.level  = The Base level.
@@ -25,6 +25,7 @@ class InputHandler():
         """
         self.player = player
         self.level = level
+        self.controller = controller
 
         self.keys = {
             pygame.K_r: self.level.reset,
@@ -47,4 +48,23 @@ class InputHandler():
         for key in self.keys.keys():
             if event.key == key:
                 self.keys[key]()
+
+    def process_joystick_input(self, event):
+        """Processes therelated actions that are present in self.keys.
+        self.keys is a mapping of keyboard input to a function.
+        Note also that if we're not pressing the spacebar then we want
+        to update everything in the game. The reason being is that we
+        don't want to update things when we plant a bomb (press spacebar)"""
+        if event.type == pygame.JOYBUTTONDOWN:
+            if self.controller.get_start_button_state():
+                self.level.renderer.escape_menu.toggle_visiblity()
+            if self.controller.get_y_button_state():
+                self.level.reset()
+
+        # if event.key == pygame.K_n:
+        #     self.level.switch_to_scene(self.level.tiled_level.properties['next_level'])
+        # if event.key == pygame.K_q:
+        #     self.level.switch_to_scene('start-menu', True)
+        # if event.key == pygame.K_c:
+        #     self.level.renderer.escape_menu.close_menu()
 
