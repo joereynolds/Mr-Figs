@@ -15,6 +15,7 @@ from src.game_object.video_tape import VideoTape
 from src.game_object.path import Path
 from src.game_object.platform import Platform
 from src.game_object.enemy_pathable import EnemyPathable
+from src.game_object.enemy_bombable import EnemyBombable
 from src.game_object.particle_emitter import ParticleEmitter
 from src.game_object.moving_platform import MovingPlatform
 
@@ -42,6 +43,7 @@ class TileFactory():
             'platform': Platform,
             'moving_platform': MovingPlatform,
             'enemy_pathable': EnemyPathable,
+            'enemy_bombable': EnemyBombable,
             'torch': Torch,
             'scene_switching_tile': SceneSwitchingTile,
             'barrel': Barrel,

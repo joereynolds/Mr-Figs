@@ -61,19 +61,20 @@ class Level(scene_base.SceneBase):
             self.reset()
 
     def update(self, delta_time):
-        self.check_player_hasnt_died_a_horrible_death(delta_time)
-        self.player.update(delta_time)
+        if not self.renderer.escape_menu.is_visible:
+            self.check_player_hasnt_died_a_horrible_death(delta_time)
+            self.player.update(delta_time)
 
-        self.sprites.update(delta_time)
-        self.collision_handler.update()
+            self.sprites.update(delta_time)
+            self.collision_handler.update()
 
-        self.sprites.add(self.player.bombs)
+            self.sprites.add(self.player.bombs)
 
-        if self.player in self.sprites:
-            self.sprites.move_to_front(self.player)
+            if self.player in self.sprites:
+                self.sprites.move_to_front(self.player)
 
-        for bomb in self.player.bombs:
-            self.sprites.add(bomb.particles)
+            for bomb in self.player.bombs:
+                self.sprites.add(bomb.particles)
 
     def render(self):
         """Calls the global renderer to render"""

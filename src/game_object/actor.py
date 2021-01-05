@@ -2,7 +2,7 @@ import pygame
 
 from src.game_object.moveable_tile import MoveableTile
 from src.game_object.triggerable import Triggerable
-import src.game_object.bomb as bomb
+from src.game_object.bomb import Bomb
 import src.colours as colours
 import src.entity as entity
 import src.graphics as graphics
@@ -41,7 +41,16 @@ class Actor(entity.Entity):
     @self.turns_taken = How many turns the player has taken
                         
     """
-    def __init__(self, x, y, width, height, level, remaining_bombs, image=None):
+    def __init__(
+            self, 
+            x: int, 
+            y: int, 
+            width: int, 
+            height: int, 
+            level, 
+            remaining_bombs: int, 
+            image=None
+        ):
         entity.Entity.__init__(self, x, y, width, height, image)
 
         self.remaining_bombs = int(remaining_bombs)
@@ -162,7 +171,7 @@ class Actor(entity.Entity):
     def create_bomb(self):
         """Creates a bomb underneath the players position"""
         if self.remaining_bombs and not self.moving:
-            self.bombs.add(bomb.Bomb(
+            self.bombs.add(Bomb(
                 self.rect.x,
                 self.rect.y,
                 graphics.tile_width,
@@ -189,14 +198,18 @@ class Actor(entity.Entity):
         """Makes sure that not only do we process the bombs that we planted, but also
         the bombs that were already on the level"""
         for sprite in self.tiled_level.sprites:
-            if isinstance(sprite, bomb.Bomb):
+            if isinstance(sprite, Bomb):
                 self.bombs.add(sprite)
 
     def update_bombs(self):
         """Updates all bombs that are owned by the player.
         Usually, all bombs on the map are owned by the player,
         even the ones the player did not plant"""
+        
         for bomb in self.bombs:
-            bomb.lifespan -= 1
-            if bomb.blow_up():
-                self.bombs.remove(bomb)
+            # Don't decreate the lifespan of a bomb if we're going to it.
+            # This would cause it to blow up even if we've collected it.
+            if self.destination[0] != bomb.rect.x or self.destination[1] != bomb.rect.y:
+                bomb.lifespan -= 1
+                if bomb.blow_up():
+                    self.bombs.remove(bomb)

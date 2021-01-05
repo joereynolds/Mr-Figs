@@ -11,6 +11,20 @@ class UserData():
     FILENAME = 'game-data.json'
     FULL_PATH = LOCATION + FILENAME
 
+    def __init__(self):
+        self.create_settings_file()
+
+    def create_settings_file(self):
+        if not os.path.exists(UserData.FULL_PATH):
+
+            settings = {
+                "settings": {
+                    "music": True
+                }
+            }
+            with open( UserData.FULL_PATH, 'w') as saved_game:
+                saved_game.write(json.dumps(settings))
+
     def has_completed_level(self, level: str) -> bool:
         path = UserData.LOCATION + UserData.FILENAME
 
@@ -22,6 +36,31 @@ class UserData():
                 return True
 
         return False
+
+    def get_has_seen_introduction(self):
+        """
+        Brings back whether we've seen the intro text or not
+        """
+        path = UserData.LOCATION + UserData.FILENAME
+
+        with open(path) as saved_game:
+            game_data = json.load(saved_game)
+
+        try:
+            return game_data['has_seen_introduction']
+        except KeyError:
+            return None
+
+    def register_has_seen_introduction(self):
+        path = UserData.LOCATION + UserData.FILENAME
+
+        with open(path) as saved_game:
+            game_data = json.load(saved_game)
+
+        game_data['has_seen_introduction'] = True
+
+        with open(path, 'w') as saved_game:
+            saved_game.write(json.dumps(game_data))
 
     def get_last_played_level(self) -> str:
         """

@@ -116,6 +116,7 @@ class TiledMap():
             type_map = {
                 'video_tape': {
                     **common,
+                    'story': tile_object.properties.get('story', "./data/tape-stories/first-tape")
                 },
             }
 
@@ -161,11 +162,20 @@ class TiledMap():
                 },
             }
 
+        if tile_object.type == 'enemy_bombable':
+            type_map = {
+                'enemy_bombable':{
+                    **common,
+                    'path': self.paths[tile_object.follows_path_id]
+                },
+            }
+
         if tile_object.type == 'enemy_pathable':
             type_map = {
                 'enemy_pathable':{
                     **common,
-                    'path': self.paths[tile_object.follows_path_id]
+                    'path': self.paths[tile_object.follows_path_id],
+                    'speed': tile_object.properties.get('speed', 2),
                 },
             }
 
@@ -220,6 +230,7 @@ class TiledMap():
         if tile_object.type == 'barrel_down':
             type_map = {
                 'barrel_down': {
+                    'pattern': tile_object.properties.get('pattern', 'constant'),
                     **common,
                     'direction': 'down',
                     'bullet_speed': tile_object.properties.get('bullet_speed', 2),
@@ -229,6 +240,7 @@ class TiledMap():
         if tile_object.type == 'barrel_up':
             type_map = {
                 'barrel_up': {
+                    'pattern': tile_object.properties.get('pattern', 'constant'),
                     **common,
                     'direction': 'up',
                     'bullet_speed': tile_object.properties.get('bullet_speed', 2),
@@ -239,6 +251,7 @@ class TiledMap():
         if tile_object.type == 'barrel_right':
             type_map = {
                 'barrel_right': {
+                    'pattern': tile_object.properties.get('pattern', 'constant'),
                     **common,
                     'bullet_speed': tile_object.properties.get('bullet_speed', 2),
                     'direction': 'right',
@@ -249,6 +262,7 @@ class TiledMap():
         if tile_object.type == 'barrel_left':
             type_map = {
                 'barrel_left': {
+                    'pattern': tile_object.properties.get('pattern', 'constant'),
                     'bullet_speed': tile_object.properties.get('bullet_speed', 2),
                     **common,
                     'direction': 'left',
@@ -259,6 +273,7 @@ class TiledMap():
         if tile_object.type == 'barrel_down_left':
             type_map = {
                 'barrel_down_left': {
+                    'pattern': tile_object.properties.get('pattern', 'constant'),
                     **common,
                     'bullet_speed': tile_object.properties.get('bullet_speed', 2),
                     'direction': 'down_left',
@@ -268,6 +283,7 @@ class TiledMap():
         if tile_object.type == 'barrel_down_right':
             type_map = {
                 'barrel_down_right': {
+                    'pattern': tile_object.properties.get('pattern', 'constant'),
                     **common,
                     'bullet_speed': tile_object.properties.get('bullet_speed', 2),
                     'direction': 'down_right',
@@ -278,16 +294,19 @@ class TiledMap():
         if tile_object.type == 'barrel_up_left':
             type_map = {
                 'barrel_up_left': {
+                    'pattern': tile_object.properties.get('pattern', 'constant'),
                     **common,
                     'bullet_speed': tile_object.properties.get('bullet_speed', 2),
                     'direction': 'up_left',
                     'level': self,
+                    'pattern': tile_object.properties.get('pattern', 'constant')
                 },
             }
 
         if tile_object.type == 'barrel_up_right':
             type_map = {
                 'barrel_up_right': {
+                    'pattern': tile_object.properties.get('pattern', 'constant'),
                     'bullet_speed': tile_object.properties.get('bullet_speed', 2),
                     **common,
                     'direction': 'up_right',
