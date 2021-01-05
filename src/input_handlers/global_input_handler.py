@@ -22,12 +22,11 @@ class GlobalInputHandler():
         self.level = level
         self.player = player
 
-        self.controller = graphics.get_controller()
-        self.player_input_handler = PlayerInputHandler(player, level, self.controller)
-        self.level_input_handler = InputHandler(player, level, self.controller)
+        controller = graphics.get_controller()
+        self.player_input_handler = PlayerInputHandler(player, level, controller)
+        self.level_input_handler = InputHandler(player, level, controller)
 
         self.event_handler = event_handler.EventHandler(level, player)
-
 
     def process_input(self, event):
         """Processes input for everything. Note that
@@ -36,6 +35,9 @@ class GlobalInputHandler():
         self.event_handler.handle_events(event)
         if event.type == pygame.QUIT:
             pygame.quit()
+        if event.type == pygame.JOYDEVICEREMOVED:
+            self.player_input_handler.controller = KeyboardController
+            self.level_input_handler.controller = KeyboardController
         if event.type == pygame.JOYHATMOTION or event.type == pygame.JOYBUTTONDOWN:
             if not self.level.renderer.escape_menu.is_visible:
                 self.player_input_handler.process_joystick_input(event)
@@ -44,5 +46,3 @@ class GlobalInputHandler():
             if not self.level.renderer.escape_menu.is_visible:
                 self.player_input_handler.process_input(event)
             self.level_input_handler.process_input(event)
-
-        joystick_count = pygame.joystick.get_count()
