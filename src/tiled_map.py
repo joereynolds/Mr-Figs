@@ -171,6 +171,27 @@ class TiledMap():
                 },
             }
 
+        if tile_object.type == 'laser_up':
+            type_map = {
+                'laser_up': {
+                    **common,
+                    'path': self.paths[tile_object.follows_path_id],
+                    'level': self,
+                    'direction': "up"
+                },
+            }
+
+        if tile_object.type == 'laser_right':
+            type_map = {
+                'laser_right': {
+                    **common,
+                    'path': self.paths[tile_object.follows_path_id],
+                    'level': self,
+                    'direction': "right"
+                },
+            }
+
+
         if tile_object.type == 'tile':
             type_map = {
                 'tile': {
@@ -322,6 +343,7 @@ class TiledMap():
                     **common,
                 },
             }
+
 
         if tile_object.type == 'torch':
             type_map = {
