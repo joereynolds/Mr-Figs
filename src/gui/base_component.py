@@ -6,7 +6,7 @@ import src.config as config
 
 class BaseComponent(pygame.sprite.Sprite):
 
-    def __init__(self, x, y, width, height, string='Default'):
+    def __init__(self, x, y, width, height, string='Default', selected=False):
         pygame.sprite.Sprite.__init__(self)
         self.width = width
         self.height = height
@@ -19,9 +19,14 @@ class BaseComponent(pygame.sprite.Sprite):
         self.font_size = self.asset_sizer.get_font_size(
             pygame.display.get_window_size()
         )
+        self.selected = selected
 
     def render(self, position=False):
         """A wrapper to encapsulate all rendering"""
+
+        if self.selected:
+            self.image.fill((255,255,255))
+
         self.render_text(position)
 
     def render_text(self, position=False, color=False):

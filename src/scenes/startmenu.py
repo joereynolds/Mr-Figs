@@ -33,17 +33,18 @@ class StartMenu(scene_base.SceneBase):
         self.image = pygame.transform.scale(self.image, (size[0], size[1]))
 
         self.menu_items = {
-            'start-button': pygame.sprite.GroupSingle(Clickable(offset, offset, button_width, button_height, '[S]TART GAME')),
+            'start-button': pygame.sprite.GroupSingle(Clickable(offset, offset, button_width, button_height, '[S]TART GAME', True)),
             'options': pygame.sprite.GroupSingle(Clickable(offset, offset + (button_height * 1) + (spacing * 1), button_width, button_height, '[O]PTIONS')),
             'quit': pygame.sprite.GroupSingle(Clickable(offset, offset + (button_height * 2) + (spacing * 2), button_width, button_height, '[Q]UIT'))
-
         }
+
+        self.selectables = self.menu_items.keys()
 
     def render(self):
         """Fill our surface and render our buttons"""
         self.surface.blit(self.image, ((0,0)))
         self.menu_items['start-button'].draw(self.surface)
-        self.menu_items['start-button'].sprite.render_text()
+        self.menu_items['start-button'].sprite.render()
         self.menu_items['options'].draw(self.surface)
         self.menu_items['options'].sprite.render_text()
         self.menu_items['quit'].draw(self.surface)
