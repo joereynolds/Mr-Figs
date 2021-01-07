@@ -56,6 +56,7 @@ class TileFactory():
             'barrel_down_right': Barrel,
             'particle_emitter': ParticleEmitter,
             'laser_up': MovingLaser,
+            'laser_right': MovingLaser,
         }
 
         return tile_map[tile_type](**kwargs)

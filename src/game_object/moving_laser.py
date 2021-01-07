@@ -10,8 +10,7 @@ from src.game_object.solid_tile import SolidTile
 from src.entity import Entity
 import src.colours as colours
 import src.graphics as graphics
-import time
-import random
+import src.movement_vector as movement_vector
 
 class MovingLaser(Entity):
     """An almost exact copy of enemy pathable. If we can do it in a clean way,
@@ -25,14 +24,15 @@ class MovingLaser(Entity):
             height: int, 
             path: Path, 
             level, #: TiledMap,
+            direction: str,
             speed: int = 2,
             image=None,
         ):
         Entity.__init__(self, x, y, width, height, image)
         self.minimap_colour = colours.RED_HIGHLIGHT
         self.path = path
+        self.direction = direction
         self.destination = path.points[-1]
-        self.processed_points = []
         self.position = Vector2(x, y)
         self.vel = Vector2(0, 0)
         self.target = self.path.points[1]
@@ -41,9 +41,9 @@ class MovingLaser(Entity):
         self.waypoint_index = 0
         self.level = level
         self.lasers = pygame.sprite.LayeredUpdates()
+        self.laser_thickness = 2
         self.range = 25
         self.speed = 0.5
-
 
     def round_to_nearest_tile(self, x, base = graphics.tile_width):
         return base * round(x/base)
@@ -51,12 +51,21 @@ class MovingLaser(Entity):
     def update(self, delta_time):
 
         for i in range(self.range):
-            laser = Line(
-                self.rect.x, 
-                self.rect.y - (i * graphics.tile_height),
-                2, 
-                graphics.tile_height
-            )
+            if self.direction == 'up':
+                laser = Line(
+                    self.rect.x, 
+                    self.rect.y - (i * graphics.tile_height),
+                    self.laser_thickness, 
+                    graphics.tile_height
+                )
+
+            if self.direction == 'right':
+                laser = Line(
+                    self.rect.x + (i * graphics.tile_width), 
+                    self.rect.centery,
+                    graphics.tile_height,
+                    self.laser_thickness, 
+                )
 
             nearest_x = self.round_to_nearest_tile(laser.rect.x)
             nearest_y = self.round_to_nearest_tile(laser.rect.y)
@@ -98,9 +107,13 @@ class MovingLaser(Entity):
 
     def pin_laser(self):
         for laser in self.lasers:
-            laser.rect.x = self.rect.centerx - 2 # laser's width
-            # laser.rect.y = self.rect.y
+            if self.direction == 'up':
+                laser.rect.x = self.rect.centerx - self.laser_thickness
+            if self.direction == 'right':
+                laser.rect.y = self.rect.centery - self.laser_thickness
 
+    def get_vector_for_direction(self, direction):
+        return movement_vector.vector[direction]
 
 # For now just do "up"
 class Line(Entity):
@@ -119,13 +132,7 @@ class Line(Entity):
     def update(self, delta_time):
         self.timer -= delta_time
 
-        if self.timer <=0:
-            self.image.fill(
-                (
-                random.randint(0,255), 
-                random.randint(0,255), 
-                random.randint(0,255), 
-                )
-            )
+        if self.timer <= 0:
+            # do something cool, maybe pulse?
             self.timer = 1
 
