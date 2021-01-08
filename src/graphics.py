@@ -3,7 +3,8 @@ import src.config as config
 from src.input_handlers.xbox_360_controller import Xbox360Controller
 from src.input_handlers.keyboard_controller import KeyboardController
 
-ZOOM_LEVEL = 5
+BASE_RESOLUTION = (640, 360)
+ZOOM_LEVEL = 1.5
 
 tile_width = 16
 tile_height = 16

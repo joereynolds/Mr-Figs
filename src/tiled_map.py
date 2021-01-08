@@ -30,11 +30,9 @@ class TiledMap():
         self._map = load_pygame(self.tmx_file)
         self.map_data_for_camera = pyscroll.TiledMapData(self._map)
 
-        fixed_screen_size = (1366, 768)
         self.map_layer_for_camera = pyscroll.BufferedRenderer(
             self.map_data_for_camera,
-            fixed_screen_size,
-            # screen.get_size(),
+            graphics.BASE_RESOLUTION
             # clamp_camera=False
         )
 
