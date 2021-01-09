@@ -42,8 +42,15 @@ class MovingLaser(Entity):
         self.level = level
         self.lasers = pygame.sprite.LayeredUpdates()
         self.laser_thickness = 2
-        self.range = 25
         self.speed = 0.5
+
+        self.horizontal_laser_range = min(self.level._map.width, 25)
+        self.vertical_laser_range = min(self.level._map.height, 25)
+
+        self.screen_width, self.screen_height = pygame.display.get_window_size()
+        self.range = self.vertical_laser_range
+        if self.direction in ['left', 'right']:
+            self.range = self.horizontal_laser_range
 
     def round_to_nearest_tile(self, x, base = graphics.tile_width):
         return base * round(x/base)
@@ -52,20 +59,26 @@ class MovingLaser(Entity):
 
         for i in range(self.range):
             if self.direction == 'up':
-                laser = Line(
-                    self.rect.x, 
-                    self.rect.y - (i * graphics.tile_height),
-                    self.laser_thickness, 
-                    graphics.tile_height
-                )
+                next_tile_y = self.rect.y - (i * graphics.tile_height)
+
+                if next_tile_y < self.screen_height and next_tile_y > 0:
+                    laser = Line(
+                        self.rect.x, 
+                        next_tile_y,
+                        self.laser_thickness, 
+                        graphics.tile_height
+                    )
 
             if self.direction == 'right':
-                laser = Line(
-                    self.rect.x + (i * graphics.tile_width), 
-                    self.rect.centery,
-                    graphics.tile_height,
-                    self.laser_thickness, 
-                )
+                next_tile_x = self.rect.x + (i * graphics.tile_width)
+
+                if next_tile_x > 0 and next_tile_x < self.screen_width:
+                    laser = Line(
+                        next_tile_x, 
+                        self.rect.centery,
+                        graphics.tile_height,
+                        self.laser_thickness, 
+                    )
 
             nearest_x = self.round_to_nearest_tile(laser.rect.x)
             nearest_y = self.round_to_nearest_tile(laser.rect.y)
