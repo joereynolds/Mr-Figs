@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="152">
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="153">
  <properties>
   <property name="display_name" value="not too fiddly"/>
   <property name="next_level" value="./data/levels/tmx/L09-PressurePlate4.tmx"/>
@@ -137,12 +137,12 @@
  <layer id="1" name="background" width="14" height="10">
   <data encoding="csv">
 27,27,27,27,27,27,27,27,27,22,27,22,22,22,
-27,27,27,27,27,27,27,27,27,19,27,27,27,27,
-27,20,19,20,19,20,19,20,19,20,19,20,22,27,
-27,19,20,19,20,19,20,19,20,19,20,19,27,27,
+27,27,27,27,27,27,27,27,27,19,22,22,27,27,
+27,20,19,20,19,20,19,20,19,20,22,22,22,27,
+27,19,20,19,20,19,20,19,20,19,22,22,27,27,
 27,27,27,27,19,27,27,27,22,22,22,22,22,22,
 27,27,27,27,20,27,27,27,22,22,22,22,22,22,
-27,27,27,27,19,20,19,20,19,20,19,32,27,22,
+27,27,27,27,19,20,19,20,19,20,22,22,27,22,
 22,22,27,27,20,27,27,27,27,27,27,22,22,22,
 22,22,22,22,22,22,22,22,22,22,22,22,22,22,
 22,22,22,22,22,22,22,22,22,22,22,22,22,22
@@ -150,12 +150,12 @@
  </layer>
  <objectgroup id="4" name="objects">
   <object id="83" type="actor" gid="46" x="16" y="48" width="16" height="16"/>
-  <object id="87" type="pressure_plate" gid="54" x="192" y="48" width="16" height="16">
+  <object id="87" type="pressure_plate" gid="54" x="144" y="48" width="16" height="16">
    <properties>
     <property name="triggers" type="int" value="1"/>
    </properties>
   </object>
-  <object id="88" type="pressure_plate" gid="54" x="144" y="16" width="16" height="16">
+  <object id="88" type="pressure_plate" gid="54" x="128" y="16" width="16" height="16">
    <properties>
     <property name="triggers" type="int" value="2"/>
    </properties>
@@ -165,7 +165,7 @@
     <property name="triggers" type="int" value="3"/>
    </properties>
   </object>
-  <object id="89" type="triggerable" gid="8" x="144" y="32" width="16" height="16">
+  <object id="89" type="triggerable" gid="8" x="128" y="32" width="16" height="16">
    <properties>
     <property name="triggered_id" type="int" value="1"/>
    </properties>
@@ -177,10 +177,7 @@
   <object id="94" type="tile" gid="1" x="80" y="32" width="16" height="16"/>
   <object id="95" type="tile" gid="1" x="96" y="32" width="16" height="16"/>
   <object id="96" type="tile" gid="1" x="112" y="32" width="16" height="16"/>
-  <object id="97" type="tile" gid="1" x="128" y="32" width="16" height="16"/>
-  <object id="98" type="tile" gid="1" x="160" y="32" width="16" height="16"/>
-  <object id="99" type="tile" gid="1" x="176" y="32" width="16" height="16"/>
-  <object id="100" type="tile" gid="1" x="192" y="32" width="16" height="16"/>
+  <object id="100" type="tile" gid="1" x="144" y="32" width="16" height="16"/>
   <object id="101" type="tile" gid="10" x="16" y="80" width="16" height="16"/>
   <object id="102" type="tile" gid="10" x="32" y="80" width="16" height="16"/>
   <object id="103" type="tile" gid="10" x="32" y="80" width="16" height="16"/>
@@ -190,27 +187,16 @@
   <object id="107" type="tile" gid="10" x="80" y="128" width="16" height="16"/>
   <object id="108" type="tile" gid="10" x="112" y="128" width="16" height="16"/>
   <object id="109" type="tile" gid="10" x="128" y="128" width="16" height="16"/>
-  <object id="110" type="tile" gid="10" x="144" y="128" width="16" height="16"/>
-  <object id="111" type="tile" gid="10" x="160" y="128" width="16" height="16"/>
-  <object id="112" type="tile" gid="10" x="176" y="128" width="16" height="16"/>
   <object id="113" type="tile" gid="10" x="80" y="80" width="16" height="16"/>
   <object id="114" type="tile" gid="10" x="96" y="80" width="16" height="16"/>
   <object id="115" type="tile" gid="10" x="112" y="80" width="16" height="16"/>
   <object id="116" type="tile" gid="10" x="128" y="80" width="16" height="16"/>
-  <object id="117" type="tile" gid="10" x="144" y="80" width="16" height="16"/>
-  <object id="118" type="tile" gid="10" x="144" y="80" width="16" height="16"/>
-  <object id="119" type="tile" gid="10" x="160" y="80" width="16" height="16"/>
-  <object id="120" type="tile" gid="10" x="176" y="80" width="16" height="16"/>
-  <object id="121" type="tile" gid="10" x="192" y="64" width="16" height="16"/>
-  <object id="122" type="tile" gid="2" x="208" y="48" width="16" height="16"/>
+  <object id="121" type="tile" gid="10" x="144" y="64" width="16" height="16"/>
+  <object id="122" type="tile" gid="2" x="160" y="48" width="16" height="16"/>
   <object id="123" type="tile" gid="2" x="80" y="96" width="16" height="16"/>
-  <object id="124" type="tile" gid="2" x="192" y="112" width="16" height="16"/>
+  <object id="124" type="tile" gid="2" x="144" y="112" width="16" height="16"/>
   <object id="125" type="tile" gid="1" x="96" y="96" width="16" height="16"/>
   <object id="126" type="tile" gid="1" x="112" y="96" width="16" height="16"/>
-  <object id="127" type="tile" gid="1" x="144" y="96" width="16" height="16"/>
-  <object id="128" type="tile" gid="1" x="144" y="96" width="16" height="16"/>
-  <object id="129" type="tile" gid="1" x="160" y="96" width="16" height="16"/>
-  <object id="130" type="tile" gid="1" x="176" y="96" width="16" height="16"/>
   <object id="131" type="tile" gid="1" x="128" y="96" width="16" height="16"/>
   <object id="132" type="tile" gid="1" x="80" y="96" width="16" height="16"/>
   <object id="134" type="tile" gid="11" x="48" y="96" width="16" height="16"/>
@@ -226,33 +212,32 @@
     <property name="triggered_id" type="int" value="2"/>
    </properties>
   </object>
-  <object id="143" type="triggerable" gid="17" x="112" y="112" width="16" height="16">
+  <object id="143" type="triggerable" gid="17" x="96" y="112" width="16" height="16">
    <properties>
     <property name="triggered_id" type="int" value="3"/>
    </properties>
   </object>
-  <object id="145" type="scene_switching_tile" gid="32" x="176" y="112" width="16" height="16">
+  <object id="145" type="scene_switching_tile" gid="32" x="128" y="112" width="16" height="16">
    <properties>
     <property name="scene" value="./data/levels/tmx/L09-PressurePlate4.tmx"/>
    </properties>
   </object>
-  <object id="84" type="moveable_tile" gid="45" x="48" y="48" width="16" height="16"/>
-  <object id="85" type="moveable_tile" gid="45" x="48" y="64" width="16" height="16"/>
-  <object id="86" type="moveable_tile" gid="45" x="112" y="48" width="16" height="16"/>
-  <object id="146" type="tile" gid="27" x="128" y="16" width="16" height="16"/>
-  <object id="147" type="tile" gid="27" x="160" y="16" width="16" height="16"/>
-  <object id="150" type="enemy_pathable" gid="74" x="128" y="48" width="16" height="16">
+  <object id="84" type="moveable_tile" gid="45" x="32" y="48" width="16" height="16"/>
+  <object id="85" type="moveable_tile" gid="45" x="32" y="64" width="16" height="16"/>
+  <object id="86" type="moveable_tile" gid="45" x="96" y="48" width="16" height="16"/>
+  <object id="152" type="enemy_pathable" gid="73" x="128" y="64" width="16" height="16">
    <properties>
     <property name="follows_path_id" type="int" value="1"/>
+    <property name="speed" type="int" value="1"/>
    </properties>
   </object>
  </objectgroup>
  <objectgroup id="6" name="paths">
-  <object id="151" type="path" x="128" y="32">
+  <object id="151" type="path" x="128" y="48">
    <properties>
     <property name="path_id" type="int" value="1"/>
    </properties>
-   <polyline points="0,0 -96,0"/>
+   <polyline points="0,0 -48,0"/>
   </object>
  </objectgroup>
 </map>
