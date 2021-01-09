@@ -26,6 +26,7 @@ class BaseComponent(pygame.sprite.Sprite):
 
         if self.selected:
             self.image.fill((255,255,255))
+        else: self.image.fill((0,0,0))
 
         self.render_text(position)
 

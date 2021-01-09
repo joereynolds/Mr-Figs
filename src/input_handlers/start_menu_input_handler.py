@@ -36,6 +36,12 @@ class StartMenuInput():
             if event.key == pygame.K_q:
                 pygame.quit()
 
+            if event.key == pygame.K_DOWN:
+                self.start_menu.select_next_item()
+
+            if event.key == pygame.K_UP:
+                self.start_menu.select_previous_item()
+
             for key in self.keys.keys():
                 if event.key == key:
                     self.start_menu.switch_to_scene(

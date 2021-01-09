@@ -5,6 +5,7 @@ import src.colours as colours
 import src.scenes.scenebase as scene_base
 import src.input_handlers.start_menu_input_handler as input_handler
 from src.gui.clickable import Clickable
+from src.gui.menu_items import MenuItems
 from src.resolution_asset_sizer import ResolutionAssetSizer
 
 class StartMenu(scene_base.SceneBase):
@@ -38,7 +39,28 @@ class StartMenu(scene_base.SceneBase):
             'quit': pygame.sprite.GroupSingle(Clickable(offset, offset + (button_height * 2) + (spacing * 2), button_width, button_height, '[Q]UIT'))
         }
 
-        self.selectables = self.menu_items.keys()
+        # 0 is start-button, 1 is options, 2 is quit
+        # We use this for selecting
+        self.menu_item_map = ['start-button', 'options', 'quit']
+        self.selected_index = 0
+
+    def select_previous_item(self):
+        self.menu_items[self.menu_item_map[self.selected_index]].sprite.selected = False
+
+        self.selected_index -= 1
+        if self.selected_index < 0:
+            self.selected_index = len(self.menu_item_map) - 1
+
+        self.menu_items[self.menu_item_map[self.selected_index]].sprite.selected = True
+
+    def select_next_item(self):
+        self.menu_items[self.menu_item_map[self.selected_index]].sprite.selected = False
+
+        self.selected_index += 1
+        if self.selected_index >= len(self.menu_item_map):
+            self.selected_index = 0
+
+        self.menu_items[self.menu_item_map[self.selected_index]].sprite.selected = True
 
     def render(self):
         """Fill our surface and render our buttons"""
@@ -46,6 +68,6 @@ class StartMenu(scene_base.SceneBase):
         self.menu_items['start-button'].draw(self.surface)
         self.menu_items['start-button'].sprite.render()
         self.menu_items['options'].draw(self.surface)
-        self.menu_items['options'].sprite.render_text()
+        self.menu_items['options'].sprite.render()
         self.menu_items['quit'].draw(self.surface)
-        self.menu_items['quit'].sprite.render_text()
+        self.menu_items['quit'].sprite.render()
