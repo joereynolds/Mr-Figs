@@ -102,6 +102,13 @@ class MovingLaser(Entity):
         if pygame.sprite.spritecollide(player, self.lasers, False):
             pygame.sprite.Sprite.kill(player)
 
+        for bomb in player.bombs:
+            if pygame.sprite.spritecollide(bomb, self.lasers, False):
+                bomb.explode()
+                # TODO - currently we can't see the particles because
+                # it happens so fast. Set this on a timer
+                pygame.sprite.Sprite.kill(bomb)
+
         heading = self.target - self.position
         distance = heading.length()
 

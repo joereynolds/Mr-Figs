@@ -28,8 +28,8 @@ class BombDisplay(Entity):
         self.bomb_image = [graphics.sprites['bomb']['sprites'][0]],
         self.bomb_image = self.bomb_image[0][0] # Stupid structure
 
-        self.bomb_image_width_scaled = self.bomb_image.get_width() * graphics.ZOOM_LEVEL
-        self.bomb_image_height_scaled = self.bomb_image.get_height() * graphics.ZOOM_LEVEL
+        self.bomb_image_width_scaled = round(self.bomb_image.get_width() * graphics.ZOOM_LEVEL)
+        self.bomb_image_height_scaled = round(self.bomb_image.get_height() * graphics.ZOOM_LEVEL)
 
     def render(self, bomb_count):
         """Renders text at the default position of (0,0) or otherwise

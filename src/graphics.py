@@ -3,7 +3,7 @@ import src.config as config
 from src.input_handlers.xbox_360_controller import Xbox360Controller
 from src.input_handlers.keyboard_controller import KeyboardController
 
-BASE_RESOLUTION = (640, 360)
+BASE_RESOLUTION = (512, 288)
 ZOOM_LEVEL = 1.5
 
 tile_width = 16
@@ -27,7 +27,7 @@ def get_controller():
 
 def get_window_surface():
     # return pygame.display.set_mode((768, 768), )
-    # return pygame.display.set_mode((800, 480), )
+    return pygame.display.set_mode((800, 480), )
     # return pygame.display.set_mode((768, 768), )
     # return pygame.display.set_mode((640, 480), )
     # return pygame.display.set_mode((1280, 960), )
