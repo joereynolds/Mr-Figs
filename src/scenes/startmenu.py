@@ -14,7 +14,7 @@ class StartMenu(scene_base.SceneBase):
     def __init__(self):
         scene_base.SceneBase.__init__(
             self,
-            input_handler.StartMenuInput(self)
+            input_handler.StartMenuInput(self, graphics.get_controller())
         )
         self.components = pygame.sprite.LayeredUpdates()
         self.image = pygame.image.load('./data/background-scene.png').convert()

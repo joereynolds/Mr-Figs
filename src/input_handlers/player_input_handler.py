@@ -23,7 +23,7 @@ class PlayerInputHandler():
     def process_joystick_input(self, event):
         """Processess all input from a joystick"""
         joystick_movement = self.controller.joystick.get_hat(0)
-        button_state = self.controller.get_a_button_state()
+        button_state = self.controller.get_action_button_state()
 
         if event.type == pygame.JOYBUTTONDOWN:
             if button_state == 1:

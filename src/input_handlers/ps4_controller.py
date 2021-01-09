@@ -33,7 +33,7 @@ class PS4Controller():
     def __init__(self, joystick):
         self.joystick = joystick
 
-    def get_a_button_state(self):
+    def get_action_button_state(self):
         """Gets the state of the A button"""
         return self.joystick.get_button(0)
 
@@ -42,7 +42,10 @@ class PS4Controller():
         return self.joystick.get_button(3)
 
     def get_down_button_state(self):
-        pass
+        return int(self.joystick.get_hat(0) == (0, -1))
+
+    def get_up_button_state(self):
+        return int(self.joystick.get_hat(0) == (0, 1))
 
     def get_start_button_state(self):
         return self.joystick.get_button(9)

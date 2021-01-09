@@ -1,4 +1,5 @@
 import pygame
+
 class KeyboardController():
     keys = {
         pygame.K_UP:'up',
