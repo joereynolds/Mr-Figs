@@ -26,24 +26,24 @@ class EscapeMenu(scene_base.SceneBase):
         items = {
             'continue': pygame.sprite.GroupSingle(
                 Clickable(
-                    button_x, button_offset, button_width, button_height, '[C]ontinue', True
+                    button_x, button_offset, button_width, button_height, '[C]ontinue', True, name='continue'
                 )
             ),
 
             'restart': pygame.sprite.GroupSingle(
                 Clickable(
-                    button_x, button_offset * 3, button_width, button_height, '[R]estart'
+                    button_x, button_offset * 3, button_width, button_height, '[R]estart', name='restart'
                 )
             ),
 
             'quit_to_main': pygame.sprite.GroupSingle(
                 Clickable(
-                    button_x, button_offset * 5, button_width, button_height, '[Q]uit to main menu' # TODO - rename this to "main menu"
+                    button_x, button_offset * 5, button_width, button_height, '[Q]uit to main menu', name='main' # TODO - rename this title to [M]ain menu
                 )
             ),
             'quit_to_desktop': pygame.sprite.GroupSingle(
                 Clickable(
-                    button_x, button_offset * 7, button_width, button_height, 'E[X]it game'
+                    button_x, button_offset * 7, button_width, button_height, 'E[X]it game', name='quit'
                 )
             )
         }

@@ -27,10 +27,6 @@ class InputHandler():
         self.level = level
         self.controller = controller
 
-        self.keys = {
-            pygame.K_r: self.level.reset,
-        }
-
     def process_input(self, event):
         """Processes therelated actions that are present in self.keys.
         self.keys is a mapping of keyboard input to a function.
@@ -44,15 +40,25 @@ class InputHandler():
                 self.level.switch_to_scene('start-menu', True)
             if event.key == pygame.K_ESCAPE:
                 self.level.renderer.escape_menu.toggle_visiblity()
+            if event.key == pygame.K_r:
+                self.level.reset()
+            if event.key == pygame.K_RETURN:
+                item = self.level.renderer.escape_menu.menu_items.get_selected_item()
+                if item.name == 'continue':
+                    self.level.renderer.escape_menu.close_menu()
+                if item.name == 'restart':
+                    self.level.reset()
+                if item.name == 'main':
+                    self.level.switch_to_scene('start-menu', True)
+                if item.name == 'quit':
+                    pygame.quit()
+
             if event.key == pygame.K_c:
                 self.level.renderer.escape_menu.close_menu()
             if event.key == pygame.K_UP:
                 self.level.renderer.escape_menu.menu_items.select_previous_item()
             if event.key == pygame.K_DOWN:
                 self.level.renderer.escape_menu.menu_items.select_next_item()
-            for key in self.keys.keys():
-                if event.key == key:
-                    self.keys[key]()
 
         if event.type == pygame.MOUSEBUTTONDOWN:
             self.level.renderer.escape_menu.menu_items.items['continue'].sprite.on_click(
