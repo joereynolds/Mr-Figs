@@ -1,7 +1,9 @@
 import pygame
 import src.config as config
 from src.input_handlers.xbox_360_controller import Xbox360Controller
+from src.input_handlers.ps4_controller import PS4Controller
 from src.input_handlers.keyboard_controller import KeyboardController
+import src.logger as logger
 
 BASE_RESOLUTION = (512, 288)
 ZOOM_LEVEL = 1.5
@@ -17,13 +19,12 @@ def get_controller():
         joystick = pygame.joystick.Joystick(0)
         if joystick.get_name() == 'Xbox 360 Controller':
             controller = Xbox360Controller(joystick)
+        if joystick.get_name() == 'Sony Interactive Entertainment Wireless Controller':
+            controller = PS4Controller(joystick)
         else:
             logger.LOGGER.info("No compatible controller found, falling back to keyboard input")
 
     return controller
-            
-
-
 
 def get_window_surface():
     # return pygame.display.set_mode((768, 768), )
