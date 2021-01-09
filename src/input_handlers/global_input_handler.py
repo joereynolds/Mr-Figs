@@ -42,7 +42,7 @@ class GlobalInputHandler():
             if not self.level.renderer.escape_menu.is_visible:
                 self.player_input_handler.process_joystick_input(event)
             self.level_input_handler.process_joystick_input(event)
-        elif event.type == pygame.KEYDOWN:
+        elif event.type == pygame.KEYDOWN or event.type == pygame.MOUSEBUTTONDOWN: 
             if not self.level.renderer.escape_menu.is_visible:
                 self.player_input_handler.process_input(event)
             self.level_input_handler.process_input(event)

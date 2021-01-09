@@ -17,13 +17,6 @@ class EscapeMenu(scene_base.SceneBase):
 
         self.surface = pygame.Surface((self.width // 2, self.height - 64)).convert_alpha()
 
-        self.menu_items = {
-            'continue': pygame.sprite.GroupSingle(),
-            'restart': pygame.sprite.GroupSingle(),
-            'quit_to_main':  pygame.sprite.GroupSingle(),
-            'quit_to_desktop':  pygame.sprite.GroupSingle()
-        }
-
         button_x = self.surface.get_width() // 4
         button_width = self.surface.get_width() // 2
 
