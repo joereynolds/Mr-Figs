@@ -4,6 +4,7 @@ import src.config as config
 import src.scenes.scenebase as scene_base
 import src.input_handlers.escape_menu_input_handler as input_handler
 from src.gui.clickable import Clickable
+from src.gui.menu_items import MenuItems
 
 class EscapeMenu(scene_base.SceneBase):
     """The menu that pops up during game when we press escape"""
@@ -26,44 +27,31 @@ class EscapeMenu(scene_base.SceneBase):
         button_x = self.surface.get_width() // 4
         button_width = self.surface.get_width() // 2
 
-        self.menu_items['continue'].add(
-            Clickable(
-                button_x, 
-                100, 
-                button_width,
-                50, '[C]ontinue'
-            )
-        )
+        items = {
+            'continue': pygame.sprite.GroupSingle(
+                Clickable(
+                    button_x, 100, button_width, 50, '[C]ontinue', True
+                )
+            ),
 
-        self.menu_items['restart'].add(
-            Clickable(
-                button_x, 
-                200, 
-                button_width,
-                50, 
-                '[R]estart'
-            )
-        )
+            'restart': pygame.sprite.GroupSingle(
+                Clickable(
+                    button_x, 200, button_width, 50, '[R]estart'
+                )
+            ),
 
-        self.menu_items['quit_to_main'].add(
-            Clickable(
-                button_x, 
-                300, 
-                button_width,
-                50, 
-                '[Q]uit to main menu' # TODO - rename this to "main menu"
+            'quit_to_main': pygame.sprite.GroupSingle(
+                Clickable(
+                    button_x, 300, button_width, 50, '[Q]uit to main menu' # TODO - rename this to "main menu"
+                )
+            ),
+            'quit_to_desktop': pygame.sprite.GroupSingle(
+                Clickable(
+                    button_x, 400, button_width, 50, 'E[X]it game'
+                )
             )
-        )
-
-        self.menu_items['quit_to_desktop'].add(
-            Clickable(
-                button_x, 
-                400, 
-                button_width, 
-                50, 
-                'E[X]it game'
-            )
-        )
+        }
+        self.menu_items = MenuItems(items)
 
     def toggle_visiblity(self):
         self.is_visible = not self.is_visible
@@ -75,16 +63,13 @@ class EscapeMenu(scene_base.SceneBase):
         """Renders all the buttons on our escape menu"""
         self.surface.fill((30, 90, 129, 225))
 
-        self.menu_items['continue'].draw(self.surface)
-        self.menu_items['continue'].sprite.render()
-
-        self.menu_items['restart'].draw(self.surface)
-        self.menu_items['restart'].sprite.render()
-
-        self.menu_items['quit_to_main'].draw(self.surface)
-        self.menu_items['quit_to_main'].sprite.render()
-
-        self.menu_items['quit_to_desktop'].draw(self.surface)
-        self.menu_items['quit_to_desktop'].sprite.render()
+        self.menu_items.items['continue'].draw(self.surface)
+        self.menu_items.items['continue'].sprite.render()
+        self.menu_items.items['restart'].draw(self.surface)
+        self.menu_items.items['restart'].sprite.render()
+        self.menu_items.items['quit_to_main'].draw(self.surface)
+        self.menu_items.items['quit_to_main'].sprite.render()
+        self.menu_items.items['quit_to_desktop'].draw(self.surface)
+        self.menu_items.items['quit_to_desktop'].sprite.render()
 
         game_surface.blit(self.surface, (self.width // 4,0))

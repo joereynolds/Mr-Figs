@@ -17,7 +17,7 @@ class StartMenu(scene_base.SceneBase):
             input_handler.StartMenuInput(self)
         )
         self.components = pygame.sprite.LayeredUpdates()
-        self.image = pygame.image.load('./data/background-scene.png')
+        self.image = pygame.image.load('./data/background-scene.png').convert()
 
         size = pygame.display.get_window_size()
         width = size[0]
@@ -33,41 +33,49 @@ class StartMenu(scene_base.SceneBase):
 
         self.image = pygame.transform.scale(self.image, (size[0], size[1]))
 
-        self.menu_items = {
-            'start-button': pygame.sprite.GroupSingle(Clickable(offset, offset, button_width, button_height, '[S]TART GAME', True)),
-            'options': pygame.sprite.GroupSingle(Clickable(offset, offset + (button_height * 1) + (spacing * 1), button_width, button_height, '[O]PTIONS')),
-            'quit': pygame.sprite.GroupSingle(Clickable(offset, offset + (button_height * 2) + (spacing * 2), button_width, button_height, '[Q]UIT'))
+        items = {
+            'start-button': pygame.sprite.GroupSingle(
+                Clickable(
+                    offset, 
+                    offset, 
+                    button_width, 
+                    button_height, 
+                    '[S]TART GAME', 
+                    True,
+                    name="introduction"
+                    )
+                ),
+            'options': pygame.sprite.GroupSingle(
+                Clickable(
+                    offset, 
+                    offset + (button_height * 1) + (spacing * 1), 
+                    button_width, 
+                    button_height, 
+                    '[O]PTIONS',
+                    name="options-menu"
+                    )
+                ),
+            'quit': pygame.sprite.GroupSingle(
+                Clickable(
+                    offset, 
+                    offset + (button_height * 2) + (spacing * 2), 
+                    button_width, 
+                    button_height, 
+                    '[Q]UIT',
+                    name="quit"
+                    )
+                )
         }
 
-        # 0 is start-button, 1 is options, 2 is quit
-        # We use this for selecting
-        self.menu_item_map = ['start-button', 'options', 'quit']
-        self.selected_index = 0
-
-    def select_previous_item(self):
-        self.menu_items[self.menu_item_map[self.selected_index]].sprite.selected = False
-
-        self.selected_index -= 1
-        if self.selected_index < 0:
-            self.selected_index = len(self.menu_item_map) - 1
-
-        self.menu_items[self.menu_item_map[self.selected_index]].sprite.selected = True
-
-    def select_next_item(self):
-        self.menu_items[self.menu_item_map[self.selected_index]].sprite.selected = False
-
-        self.selected_index += 1
-        if self.selected_index >= len(self.menu_item_map):
-            self.selected_index = 0
-
-        self.menu_items[self.menu_item_map[self.selected_index]].sprite.selected = True
+        self.menu_items = MenuItems(items)
 
     def render(self):
         """Fill our surface and render our buttons"""
+        
         self.surface.blit(self.image, ((0,0)))
-        self.menu_items['start-button'].draw(self.surface)
-        self.menu_items['start-button'].sprite.render()
-        self.menu_items['options'].draw(self.surface)
-        self.menu_items['options'].sprite.render()
-        self.menu_items['quit'].draw(self.surface)
-        self.menu_items['quit'].sprite.render()
+        self.menu_items.items['start-button'].draw(self.surface)
+        self.menu_items.items['start-button'].sprite.render()
+        self.menu_items.items['options'].draw(self.surface)
+        self.menu_items.items['options'].sprite.render()
+        self.menu_items.items['quit'].draw(self.surface)
+        self.menu_items.items['quit'].sprite.render()

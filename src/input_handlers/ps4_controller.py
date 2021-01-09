@@ -41,5 +41,8 @@ class PS4Controller():
         """Gets the state of the A button"""
         return self.joystick.get_button(3)
 
+    def get_down_button_state(self):
+        pass
+
     def get_start_button_state(self):
         return self.joystick.get_button(9)

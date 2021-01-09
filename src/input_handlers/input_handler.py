@@ -45,6 +45,10 @@ class InputHandler():
             self.level.renderer.escape_menu.toggle_visiblity()
         if event.key == pygame.K_c:
             self.level.renderer.escape_menu.close_menu()
+        if event.key == pygame.K_UP:
+            self.level.renderer.escape_menu.menu_items.select_previous_item()
+        if event.key == pygame.K_DOWN:
+            self.level.renderer.escape_menu.menu_items.select_next_item()
         for key in self.keys.keys():
             if event.key == key:
                 self.keys[key]()
