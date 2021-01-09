@@ -7,6 +7,8 @@ etc...
 import src.static_scenes
 import pygame
 from src.input_handlers.keyboard_controller import KeyboardController
+from src.input_handlers.xbox_360_controller import Xbox360Controller
+from src.input_handlers.ps4_controller import PS4Controller
 
 
 # TODO can most menus be generalised?
@@ -36,9 +38,10 @@ class StartMenuInput():
     def process_input(self, event):
         """Handles the scenes to go to when we
         click on certain clickable components"""
-        if not isinstance(self.controller, KeyboardController):
+        if isinstance(self.controller, (PS4Controller, Xbox360Controller)):
             self.process_joystick_input(event)
-        else: self.process_keyboard_input(event)
+        else: 
+            self.process_keyboard_input(event)
 
     def process_joystick_input(self, event):
         """Processess all input from a joystick"""

@@ -22,8 +22,10 @@ def get_controller():
         joystick = pygame.joystick.Joystick(0)
         if joystick.get_name() == 'Xbox 360 Controller':
             controller = Xbox360Controller(joystick)
+            logger.LOGGER.info("Settings controller to Xbox360Controller")
         if joystick.get_name() == 'Sony Interactive Entertainment Wireless Controller':
             controller = PS4Controller(joystick)
+            logger.LOGGER.info("Settings controller to PS4Controller")
         else:
             logger.LOGGER.info("No compatible controller found, falling back to keyboard input")
 
