@@ -11,6 +11,9 @@ ZOOM_LEVEL = 1.5
 tile_width = 16
 tile_height = 16
 
+def round_to_nearest_tile(x, base=tile_width):
+    return base * round(x/base)
+
 def get_controller():
     pygame.joystick.init()
 

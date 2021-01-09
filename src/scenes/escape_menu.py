@@ -1,4 +1,5 @@
 import pygame
+import src.graphics as graphics
 import src.colours as colours
 import src.config as config
 import src.scenes.scenebase as scene_base
@@ -19,28 +20,30 @@ class EscapeMenu(scene_base.SceneBase):
 
         button_x = self.surface.get_width() // 4
         button_width = self.surface.get_width() // 2
+        button_height = graphics.round_to_nearest_tile(self.height // graphics.tile_height)
+        button_offset = button_height
 
         items = {
             'continue': pygame.sprite.GroupSingle(
                 Clickable(
-                    button_x, 100, button_width, 50, '[C]ontinue', True
+                    button_x, button_offset, button_width, button_height, '[C]ontinue', True
                 )
             ),
 
             'restart': pygame.sprite.GroupSingle(
                 Clickable(
-                    button_x, 200, button_width, 50, '[R]estart'
+                    button_x, button_offset * 3, button_width, button_height, '[R]estart'
                 )
             ),
 
             'quit_to_main': pygame.sprite.GroupSingle(
                 Clickable(
-                    button_x, 300, button_width, 50, '[Q]uit to main menu' # TODO - rename this to "main menu"
+                    button_x, button_offset * 5, button_width, button_height, '[Q]uit to main menu' # TODO - rename this to "main menu"
                 )
             ),
             'quit_to_desktop': pygame.sprite.GroupSingle(
                 Clickable(
-                    button_x, 400, button_width, 50, 'E[X]it game'
+                    button_x, button_offset * 7, button_width, button_height, 'E[X]it game'
                 )
             )
         }
