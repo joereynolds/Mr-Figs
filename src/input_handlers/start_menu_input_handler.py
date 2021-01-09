@@ -8,6 +8,7 @@ import src.static_scenes
 import pygame
 
 
+# TODO can most menus be generalised?
 class StartMenuInput():
     """Handles all inputs for the game itself
     anything related to menu navigation etc...
@@ -36,6 +37,24 @@ class StartMenuInput():
             if event.key == pygame.K_q:
                 pygame.quit()
 
+            if event.key == pygame.K_DOWN:
+                self.start_menu.menu_items.select_next_item()
+
+            if event.key == pygame.K_UP:
+                self.start_menu.menu_items.select_previous_item()
+
+            if event.key == pygame.K_RETURN:
+                item = self.start_menu.menu_items.get_selected_item()
+
+                if item.name == 'quit':
+                    pygame.quit()
+                    return
+
+                item.on_selected(
+                    self.start_menu.switch_to_scene,
+                    src.static_scenes.level_obj_list[item.name]
+                )
+
             for key in self.keys.keys():
                 if event.key == key:
                     self.start_menu.switch_to_scene(
@@ -43,14 +62,14 @@ class StartMenuInput():
                     )
 
         if event.type == pygame.MOUSEBUTTONDOWN:
-            self.start_menu.menu_items['start-button'].sprite.on_click(
+            self.start_menu.menu_items.items['start-button'].sprite.on_click(
                 self.start_menu.switch_to_scene, 
                 src.static_scenes.level_obj_list['introduction']
             )
 
-            self.start_menu.menu_items['options'].sprite.on_click(
+            self.start_menu.menu_items.items['options'].sprite.on_click(
                 self.start_menu.switch_to_scene, 
                 src.static_scenes.level_obj_list['options-menu']
             )
 
-            self.start_menu.menu_items['quit'].sprite.on_click(self.start_menu.terminate)
+            self.start_menu.menu_items.items['quit'].sprite.on_click(self.start_menu.terminate)

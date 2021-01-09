@@ -37,17 +37,32 @@ class InputHandler():
         Note also that if we're not pressing the spacebar then we want
         to update everything in the game. The reason being is that we
         don't want to update things when we plant a bomb (press spacebar)"""
-        if event.key == pygame.K_n:
-            self.level.switch_to_scene(self.level.tiled_level.properties['next_level'])
-        if event.key == pygame.K_q:
-            self.level.switch_to_scene('start-menu', True)
-        if event.key == pygame.K_ESCAPE:
-            self.level.renderer.escape_menu.toggle_visiblity()
-        if event.key == pygame.K_c:
-            self.level.renderer.escape_menu.close_menu()
-        for key in self.keys.keys():
-            if event.key == key:
-                self.keys[key]()
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_n:
+                self.level.switch_to_scene(self.level.tiled_level.properties['next_level'])
+            if event.key == pygame.K_q:
+                self.level.switch_to_scene('start-menu', True)
+            if event.key == pygame.K_ESCAPE:
+                self.level.renderer.escape_menu.toggle_visiblity()
+            if event.key == pygame.K_c:
+                self.level.renderer.escape_menu.close_menu()
+            if event.key == pygame.K_UP:
+                self.level.renderer.escape_menu.menu_items.select_previous_item()
+            if event.key == pygame.K_DOWN:
+                self.level.renderer.escape_menu.menu_items.select_next_item()
+            for key in self.keys.keys():
+                if event.key == key:
+                    self.keys[key]()
+
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            self.level.renderer.escape_menu.menu_items.items['continue'].sprite.on_click(
+                print,
+                "CON"
+            )
+            self.level.renderer.escape_menu.menu_items.items['restart'].sprite.on_click(
+                print,
+                "RES"
+            )
 
     def process_joystick_input(self, event):
         """Processes therelated actions that are present in self.keys.

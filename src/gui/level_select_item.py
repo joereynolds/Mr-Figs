@@ -22,7 +22,7 @@ class LevelSelectItem(Clickable):
 
         Clickable.__init__(self, x, y, width, height, level_name)
 
-        self.image = pygame.image.load(image)
+        self.image = pygame.image.load(image).convert()
         self.image = pygame.transform.scale(self.image, (width, height))
         self.level_number = str(level_number)
 
