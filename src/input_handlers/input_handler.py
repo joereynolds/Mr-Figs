@@ -26,6 +26,7 @@ class InputHandler():
         self.player = player
         self.level = level
         self.controller = controller
+        self.last_pressed = (0,0)
 
     def process_input(self, event):
         """Processes therelated actions that are present in self.keys.
@@ -76,16 +77,36 @@ class InputHandler():
         Note also that if we're not pressing the spacebar then we want
         to update everything in the game. The reason being is that we
         don't want to update things when we plant a bomb (press spacebar)"""
+        joystick_movement = self.controller.joystick.get_hat(0)
+        button_state = self.controller.get_action_button_state()
+
         if event.type == pygame.JOYBUTTONDOWN:
             if self.controller.get_start_button_state():
                 self.level.renderer.escape_menu.toggle_visiblity()
             if self.controller.get_y_button_state():
                 self.level.reset()
 
-        # if event.key == pygame.K_n:
-        #     self.level.switch_to_scene(self.level.tiled_level.properties['next_level'])
-        # if event.key == pygame.K_q:
-        #     self.level.switch_to_scene('start-menu', True)
-        # if event.key == pygame.K_c:
-        #     self.level.renderer.escape_menu.close_menu()
+            if button_state == 1:
+                item = self.level.renderer.escape_menu.menu_items.get_selected_item()
 
+                if item.name == 'quit':
+                    pygame.quit()
+                    return
+
+                if item.name == 'continue':
+                    self.level.renderer.escape_menu.close_menu()
+
+                if item.name == 'restart':
+                    self.level.reset()
+
+                if item.name == 'main':
+                    self.level.switch_to_scene('start-menu', True)
+
+        elif joystick_movement != self.last_pressed:
+            if joystick_movement != self.controller.keys['nothing']:
+                if self.controller.get_down_button_state():
+                    self.level.renderer.escape_menu.menu_items.select_next_item()
+                if self.controller.get_up_button_state():
+                    self.level.renderer.escape_menu.menu_items.select_previous_item()
+
+            self.last_pressed = joystick_movement
