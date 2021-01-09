@@ -171,6 +171,12 @@ class Actor(entity.Entity):
     def create_bomb(self):
         """Creates a bomb underneath the players position"""
         if self.remaining_bombs and not self.moving:
+
+            # Don't plant a bomb here if there's already one there
+            for bomb in self.bombs:
+                if bomb.rect.x == self.rect.x and bomb.rect.y == self.rect.y:
+                    return
+
             self.bombs.add(Bomb(
                 self.rect.x,
                 self.rect.y,

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="257">
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="260">
  <properties>
   <property name="display_name" value="snake vibes"/>
   <property name="has_video_tape" type="bool" value="true"/>
@@ -246,5 +246,8 @@
   <object id="254" type="tile" gid="27" x="160" y="160" width="16" height="16"/>
   <object id="255" type="tile" gid="27" x="144" y="160" width="16" height="16"/>
   <object id="256" type="video_tape" gid="66" x="176" y="144" width="16" height="16"/>
+  <object id="257" type="barrel_down" gid="150" x="128" y="48" width="16" height="16"/>
+  <object id="258" type="barrel_down" gid="150" x="64" y="80" width="16" height="16"/>
+  <object id="259" type="barrel_down" gid="150" x="128" y="112" width="16" height="16"/>
  </objectgroup>
 </map>

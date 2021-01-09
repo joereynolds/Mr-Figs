@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="11" nextobjectid="181">
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="12" nextobjectid="191">
  <properties>
   <property name="display_name" value="Learning To Walk"/>
   <property name="next_level" value="./data/levels/tmx/L03-Pushing.tmx"/>
@@ -137,21 +137,21 @@
  <layer id="1" name="background" width="14" height="10">
   <data encoding="csv">
 27,27,27,27,27,27,27,27,22,22,22,22,22,22,
-27,27,27,27,27,27,27,36,22,22,22,22,22,22,
-27,19,20,19,27,27,20,27,27,22,22,22,22,22,
-27,20,27,20,19,27,19,27,27,22,22,22,22,22,
-27,20,20,27,20,19,20,27,27,22,22,22,22,22,
-27,20,19,20,20,27,27,27,27,27,27,22,22,22,
-27,20,20,20,20,20,20,20,22,22,22,22,22,22,
-27,20,19,19,20,19,19,20,22,22,22,22,22,22,
-27,20,20,20,19,20,20,20,22,22,22,22,22,22,
-22,22,22,22,22,22,22,22,22,22,22,22,22,22
+3,27,27,27,27,27,27,36,23,23,23,23,23,22,
+27,19,20,19,27,27,20,27,23,23,23,23,23,22,
+12,20,27,20,19,27,19,27,23,23,23,23,23,22,
+27,23,23,27,20,19,20,27,23,23,23,23,23,22,
+27,23,23,23,20,27,27,27,23,23,23,23,23,22,
+23,23,23,23,23,23,23,23,23,23,23,23,23,22,
+23,23,23,23,23,23,23,23,23,23,23,23,23,23,
+27,23,23,23,23,23,23,23,23,23,23,23,23,23,
+22,22,22,23,23,23,23,23,23,22,22,22,22,22
 </data>
  </layer>
  <objectgroup id="4" name="objects">
   <object id="83" type="tile" gid="1" x="16" y="32" width="16" height="16"/>
   <object id="85" type="tile" gid="1" x="32" y="32" width="16" height="16"/>
-  <object id="100" type="tile" gid="10" x="16" y="160" width="16" height="16"/>
+  <object id="100" type="tile" gid="10" x="16" y="64" width="16" height="16"/>
   <object id="101" type="tile" gid="10" x="32" y="64" width="16" height="16"/>
   <object id="114" type="tile" gid="28" x="32" y="64" width="16" height="16"/>
   <object id="115" type="tile" gid="28" x="0" y="48" width="16" height="16"/>
@@ -176,16 +176,6 @@
    </properties>
   </object>
   <object id="149" type="tile" gid="2" x="112" y="80" width="16" height="16"/>
-  <object id="150" type="barrel_left" gid="142" x="96" y="80" width="16" height="16">
-   <properties>
-    <property name="bullet_speed" type="int" value="1"/>
-   </properties>
-  </object>
-  <object id="151" type="barrel_down" gid="150" x="96" y="48" width="16" height="16">
-   <properties>
-    <property name="pattern" value="burst"/>
-   </properties>
-  </object>
   <object id="152" type="particle_emitter" x="80" y="48" width="16" height="16">
    <properties>
     <property name="emits" value="smoke"/>
@@ -196,39 +186,7 @@
     <property name="emits" value="smoke"/>
    </properties>
   </object>
-  <object id="155" type="tile" gid="10" x="32" y="160" width="16" height="16"/>
-  <object id="156" type="tile" gid="10" x="48" y="160" width="16" height="16"/>
-  <object id="157" type="tile" gid="10" x="64" y="160" width="16" height="16"/>
-  <object id="158" type="tile" gid="10" x="80" y="160" width="16" height="16"/>
-  <object id="159" type="tile" gid="10" x="96" y="160" width="16" height="16"/>
-  <object id="160" type="tile" gid="10" x="112" y="160" width="16" height="16"/>
-  <object id="161" type="tile" gid="10" x="128" y="160" width="16" height="16"/>
-  <object id="162" type="tile" gid="2" x="128" y="128" width="16" height="16"/>
-  <object id="163" type="tile" gid="2" x="128" y="144" width="16" height="16"/>
-  <object id="164" type="tile" gid="2" x="128" y="112" width="16" height="16"/>
   <object id="165" type="tile" gid="10" x="112" y="96" width="16" height="16"/>
-  <object id="166" type="tile" gid="28" x="0" y="64" width="16" height="16"/>
-  <object id="167" type="tile" gid="11" x="0" y="64" width="16" height="16"/>
-  <object id="168" type="tile" gid="28" x="0" y="80" width="16" height="16"/>
-  <object id="169" type="tile" gid="11" x="0" y="80" width="16" height="16"/>
-  <object id="170" type="tile" gid="28" x="0" y="96" width="16" height="16"/>
-  <object id="171" type="tile" gid="11" x="0" y="96" width="16" height="16"/>
-  <object id="172" type="tile" gid="28" x="0" y="112" width="16" height="16"/>
-  <object id="173" type="tile" gid="11" x="0" y="112" width="16" height="16"/>
-  <object id="174" type="tile" gid="28" x="0" y="128" width="16" height="16"/>
-  <object id="175" type="tile" gid="11" x="0" y="128" width="16" height="16"/>
-  <object id="176" type="tile" gid="28" x="0" y="144" width="16" height="16"/>
-  <object id="177" type="tile" gid="11" x="0" y="144" width="16" height="16"/>
-  <object id="178" type="barrel_up" gid="141" x="64" y="144" width="16" height="16"/>
-  <object id="179" type="barrel_up" gid="141" x="80" y="144" width="16" height="16">
-   <properties>
-    <property name="pattern" value="burst"/>
-   </properties>
-  </object>
-  <object id="180" type="barrel_up" gid="141" x="96" y="144" width="16" height="16">
-   <properties>
-    <property name="pattern" value="flame"/>
-   </properties>
-  </object>
  </objectgroup>
+ <objectgroup id="11" name="paths"/>
 </map>

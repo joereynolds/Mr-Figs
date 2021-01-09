@@ -17,7 +17,6 @@ class BombParticle(entity.Entity):
 
     def handle_collision(self, tile, player, level):
         for _tile in level.tiled_level.sprites:
-            # TODO - does this need to be in the loop?
             if player.destination[0] == self.rect.x and player.destination[1] == self.rect.y:
                 pygame.sprite.Sprite.kill(player)
                 return True

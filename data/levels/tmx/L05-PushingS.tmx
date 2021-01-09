@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="135">
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="136">
  <properties>
   <property name="display_name" value="Boulder Party"/>
   <property name="next_level" value="./data/levels/tmx/L06-PressurePlate1.tmx"/>
@@ -205,5 +205,10 @@
   <object id="132" type="tile" gid="11" x="16" y="112" width="16" height="16"/>
   <object id="133" type="tile" gid="11" x="16" y="128" width="16" height="16"/>
   <object id="134" type="tile" gid="10" x="80" y="144" width="16" height="16"/>
+  <object id="135" type="barrel_down" gid="150" x="176" y="48" width="16" height="16">
+   <properties>
+    <property name="pattern" value="burst"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

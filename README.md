@@ -5,7 +5,7 @@ The player must blast their way through various puzzles to reach the end goal.
 
 #### Demo Gif
 
-![](https://github.com/joereynolds/Mr-Figs/blob/master/figs-newest-demo.gif)
+![](https://github.com/joereynolds/Mr-Figs/blob/master/figs.gif)
 
 #### Gameplay
 

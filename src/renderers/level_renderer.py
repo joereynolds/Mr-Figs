@@ -28,7 +28,7 @@ class LevelRenderer():
 
         self.top_bar = TopBar(
             self.width, 
-            graphics.tile_height * graphics.ZOOM_LEVEL, 
+            graphics.tile_height * 4,
             self.level
         )
 
