@@ -19,6 +19,8 @@ The player must blast their way through various puzzles to reach the end goal.
 - Teleport around by going through portals
 - Watch out for patrolling bad guys
 - Make your way to the stairs
+- PS4 controller support (tested on Ubuntu)
+- Xbox 360 controller support (tested on Ubuntu)
 
 #### Storyline
 
