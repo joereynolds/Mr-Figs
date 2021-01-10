@@ -1,9 +1,9 @@
 class MenuItems():
 
-    def __init__(self, menu_items):
+    def __init__(self, menu_items, selected_index=0):
         self.items = menu_items
         self.menu_item_map = list(self.items.keys())
-        self.selected_index = 0
+        self.selected_index = selected_index
 
     def get_selected_item(self):
         return self.items[self.menu_item_map[self.selected_index]].sprite

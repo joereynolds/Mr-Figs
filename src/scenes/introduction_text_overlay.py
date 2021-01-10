@@ -51,6 +51,9 @@ class IntroductionTextOverlay(scene_base.SceneBase):
             )
 
             self.screen.blit(self.surface, (0,0))
+        else: 
+            self.switch_to_scene(src.static_scenes.level_obj_list['level-select'])
+
 
     def wrap_text(self, text: str, font, colour, x, y, screen, allowed_width):
         # first, split the text into words

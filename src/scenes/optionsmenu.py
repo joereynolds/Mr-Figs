@@ -70,7 +70,7 @@ class OptionsMenu(scene_base.SceneBase):
             )
         }
 
-        self.menu_items = MenuItems(items)
+        self.menu_items = MenuItems(items, selected_index=2)
 
     def render(self):
         """Fill our surface and render our buttons"""
