@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="25" height="18" tilewidth="16" tileheight="16" infinite="0" nextlayerid="12" nextobjectid="325">
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="25" height="18" tilewidth="16" tileheight="16" infinite="0" nextlayerid="12" nextobjectid="336">
  <properties>
   <property name="display_name" value="Learning To Walk"/>
   <property name="next_level" value="./data/levels/tmx/L03-Pushing.tmx"/>
@@ -345,6 +345,16 @@
   <object id="322" type="pickup_bomb" gid="43" x="176" y="80" width="16" height="16"/>
   <object id="323" type="pickup_bomb" gid="43" x="160" y="80" width="16" height="16"/>
   <object id="324" type="pickup_bomb" gid="43" x="144" y="80" width="16" height="16"/>
+  <object id="325" type="moving_platform" gid="53" x="176" y="112" width="16" height="16">
+   <properties>
+    <property name="follows_path_id" type="int" value="6"/>
+   </properties>
+  </object>
+  <object id="334" type="moving_platform" gid="53" x="176" y="160" width="16" height="16">
+   <properties>
+    <property name="follows_path_id" type="int" value="5"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="11" name="paths">
   <object id="182" type="path" x="304" y="256">
@@ -370,6 +380,18 @@
     <property name="path_id" type="int" value="4"/>
    </properties>
    <polyline points="0,0 0,42.6667 64,96"/>
+  </object>
+  <object id="328" type="path" x="176.16" y="144">
+   <properties>
+    <property name="path_id" type="int" value="6"/>
+   </properties>
+   <polyline points="-0.16,-48 -0.16,-32"/>
+  </object>
+  <object id="335" type="path" x="176" y="144">
+   <properties>
+    <property name="path_id" type="int" value="5"/>
+   </properties>
+   <polyline points="0,0 0,-16"/>
   </object>
  </objectgroup>
 </map>

@@ -61,5 +61,5 @@ class MovingPlatform(entity.Entity):
             self.position += self.vel
             self.rect.topleft = self.position
 
-            if self.rect.x % 16 == 0:
+            if self.rect.x % 16 == 0 and self.rect.y % 16 == 0:
                 self.timer = 50
