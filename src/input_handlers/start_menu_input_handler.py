@@ -2,8 +2,6 @@ import src.static_scenes
 import pygame
 from src.event_command import EventCommand
 
-
-# TODO can most menus be generalised?
 class StartMenuInput():
     """Handles all inputs for the game itself
     anything related to menu navigation etc...
@@ -19,19 +17,18 @@ class StartMenuInput():
         self.process__input(event)
 
     def process__input(self, event):
-        if event:
-            if event['key'] == EventCommand.DOWN:
-                self.start_menu.menu_items.select_next_item()
-            if event['key'] == EventCommand.UP:
-                self.start_menu.menu_items.select_previous_item()
-            if event['key'] == EventCommand.ACTION:
-                item = self.start_menu.menu_items.get_selected_item()
+        if event['key'] == EventCommand.DOWN:
+            self.start_menu.menu_items.select_next_item()
+        if event['key'] == EventCommand.UP:
+            self.start_menu.menu_items.select_previous_item()
+        if event['key'] == EventCommand.ACTION:
+            item = self.start_menu.menu_items.get_selected_item()
 
-                if item.name == 'quit':
-                    pygame.quit()
-                    return
+            if item.name == 'quit':
+                pygame.quit()
+                return
 
-                item.on_selected(
-                    self.start_menu.switch_to_scene,
-                    src.static_scenes.level_obj_list[item.name]
-                )
+            item.on_selected(
+                self.start_menu.switch_to_scene,
+                src.static_scenes.level_obj_list[item.name]
+            )

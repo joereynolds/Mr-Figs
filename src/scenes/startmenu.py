@@ -18,27 +18,25 @@ class StartMenu(scene_base.SceneBase):
             graphics.get_controller()
         )
         self.components = pygame.sprite.LayeredUpdates()
-        self.image = pygame.image.load('./data/background-scene.png').convert()
-
         size = pygame.display.get_window_size()
         width = size[0]
         height = size[1]
-        asset_sizer = ResolutionAssetSizer()
+        self.image = pygame.image.load('./data/background-scene.png').convert()
+        self.image = pygame.transform.scale(self.image, (size[0], size[1]))
+        self.rect = self.image.get_rect()
 
-        asset_sizer.get_nearest_available_resolution(size)
+        asset_sizer = ResolutionAssetSizer()
 
         offset = asset_sizer.get_button_offset(size)
         spacing = asset_sizer.get_button_spacing(size)
         button_width = width // 4
-        button_height = graphics.round_to_nearest_tile(height // graphics.tile_height * 1.5)
-
-        self.image = pygame.transform.scale(self.image, (size[0], size[1]))
+        button_height = asset_sizer.get_button_height(size)
 
         items = {
             'start-button': pygame.sprite.GroupSingle(
                 Clickable(
                     offset, 
-                    offset, 
+                    offset,
                     button_width, 
                     button_height, 
                     '[S]TART GAME', 

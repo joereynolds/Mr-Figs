@@ -23,25 +23,17 @@ class ResolutionAssetSizer():
         logger.LOGGER.info('resolution not found in `available_resolutions` using scaling for 1280x960')
         return (1280, 960)
 
-
     def get_font_size(self, screen_size):
-        font_size_map = {
-            (640, 480): 18
-        }
+        return graphics.round_to_nearest_tile(screen_size[1] // graphics.tile_height // 3)
 
-        return font_size_map.get(screen_size, 24)
+    def get_button_height(self, screen_size):
+        return graphics.round_to_nearest_tile(screen_size[1] // graphics.tile_height * 1.5)
 
     def get_button_offset(self, screen_size):
-        button_offset_map = {
-            (640, 480): 64
-        }
-        return button_offset_map.get(screen_size, 256)
+        return graphics.round_to_nearest_tile(screen_size[1] // graphics.tile_height * 1.5)
 
     def get_button_spacing(self, screen_size):
-        button_spacing_map = {
-            (640, 480): 32
-        }
-        return button_spacing_map.get(screen_size, 64)
+        return graphics.round_to_nearest_tile(screen_size[1] // graphics.tile_height * 1.5)
 
     def get_minimap_sprite_size(self, screen_size):
         minimap_sprite_size_map = {
