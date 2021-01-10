@@ -3,44 +3,42 @@ import src.graphics as graphics
 import src.colours as colours
 import src.config as config
 import src.scenes.scenebase as scene_base
-import src.input_handlers.escape_menu_input_handler as input_handler
+from src.input_handlers.text_overlay_input_handler import TextOverlayInputHandler
 from src.gui.clickable import Clickable
 
 class TextOverlay(scene_base.SceneBase):
     """The overlay that displays when the player collects a video tape"""
 
-    def __init__(self, text):
-        # TODO needs its own input handler
+    def __init__(self, text, redirect_to):
+        self.redirect_to = redirect_to
+
         scene_base.SceneBase.__init__(
             self, 
-            input_handler.EscapeMenuInput(self),
+            TextOverlayInputHandler(self),
             graphics.get_controller()
-            ) 
+        ) 
         self.text = text
         self.width, self.height = pygame.display.get_window_size()
         self.center = self.width // 2
         self.surface = pygame.Surface((self.width, self.height)).convert()
         self.font_size = 24
         self.font = pygame.font.Font(config.font, self.font_size)
-        self.timer = 1000
+        self.screen_surface = graphics.get_window_surface()
 
-    def render(self, surface):
+    def render(self):
         """Renders all the buttons on our escape menu"""
-        if self.timer > 0:
-            self.timer -= 1
-            self.surface.fill(colours.BLACK)
-            self.wrap_text(
-                self.text, 
-                self.font,
-                colours.WHITE,
-                self.center,
-                100,
-                self.surface, 
-                self.center
-            )
+        self.surface.fill(colours.BLACK)
+        self.wrap_text(
+            self.text, 
+            self.font,
+            colours.WHITE,
+            self.center,
+            100,
+            self.surface, 
+            self.center
+        )
 
-            surface.blit(self.surface, (0,0))
-            pygame.display.flip()
+        self.screen_surface.blit(self.surface, (0,0))
 
     def wrap_text(self, text: str, font, colour, x, y, screen, allowed_width):
         # first, split the text into words

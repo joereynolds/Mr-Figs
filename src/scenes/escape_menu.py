@@ -24,7 +24,7 @@ class EscapeMenu(scene_base.SceneBase):
 
         button_x = self.surface.get_width() // 4
         button_width = self.surface.get_width() // 2
-        button_height = graphics.round_to_nearest_tile(self.height // graphics.tile_height)
+        button_height = graphics.round_to_nearest_tile(self.height // graphics.tile_height * 1.5)
         button_offset = button_height
 
         items = {

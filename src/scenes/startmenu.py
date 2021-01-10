@@ -30,7 +30,7 @@ class StartMenu(scene_base.SceneBase):
         offset = asset_sizer.get_button_offset(size)
         spacing = asset_sizer.get_button_spacing(size)
         button_width = width // 4
-        button_height = height // 12
+        button_height = graphics.round_to_nearest_tile(height // graphics.tile_height * 1.5)
 
         self.image = pygame.transform.scale(self.image, (size[0], size[1]))
 
