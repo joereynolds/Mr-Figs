@@ -8,6 +8,7 @@ from src.game_object.platform import Platform
 from src.game_object.moving_platform import MovingPlatform
 from src.game_object.enemy_pathable import EnemyPathable
 from src.game_object.enemy_bombable import EnemyBombable
+from src.game_object.moving_laser import MovingLaser
 
 
 class PollingCollisionHandler():
@@ -16,6 +17,7 @@ class PollingCollisionHandler():
         self.player = player
         self.level = level
         self.polling_instances = (
+            MovingLaser,
              Bullet, 
              PressurePlate, 
              Triggerable, 

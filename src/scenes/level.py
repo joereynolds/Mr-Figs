@@ -1,4 +1,5 @@
 import src.graphics as graphics
+from src.scenes.text_overlay import TextOverlay
 from src.scenes.startmenu import StartMenu
 from src.tiled_map import TiledMap
 from src.game_object.video_tape import VideoTape
@@ -34,8 +35,10 @@ class Level(scene_base.SceneBase):
             self,
             input_handler.GlobalInputHandler(
                 self.player,
-                self
-            )
+                self,
+                graphics.get_controller()
+            ),
+            graphics.get_controller()
         )
 
         self.file = file
@@ -80,7 +83,12 @@ class Level(scene_base.SceneBase):
         """Calls the global renderer to render"""
         self.renderer.render()
 
-    def switch_to_scene(self, next_scene, start_menu=False):
+    def switch_to_scene(
+        self, 
+        next_scene, 
+        start_menu=False, 
+        video_tape_obj=False,
+        ):
         """Goes to the next scene. Note that SceneBase is
         sort of similar to a linked list in implementation.
         It is a linked list of scenes"""
@@ -97,9 +105,11 @@ class Level(scene_base.SceneBase):
         if start_menu:
             self.reset()
             self.next = StartMenu()
+        elif video_tape_obj:
+            self.next = TextOverlay(video_tape_obj.text, video_tape_obj.redirect_to)
         else: 
             self.next = Level(next_scene)
-            self.game_saver.save(self.file, self.player.turns_taken, collected_tape)
+            self.game_saver.save(self.file, collected_tape)
 
     def reset(self):
         """Reinitialises our level, kind of a hacky way

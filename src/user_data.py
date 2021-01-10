@@ -93,7 +93,7 @@ class UserData():
             saved_game.write(json.dumps(game_data))
 
 
-    def save(self, completed_level: str, turns_taken: int, collected_tape=None):
+    def save(self, completed_level: str, collected_tape=None):
         """Saves our game"""
         path = UserData.LOCATION + UserData.FILENAME
 
@@ -102,7 +102,6 @@ class UserData():
 
         game_data[completed_level] = {
             'completed_level': True,
-            'turns_taken': turns_taken
         }
 
         if collected_tape is not None:

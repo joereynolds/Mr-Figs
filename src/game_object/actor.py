@@ -38,8 +38,6 @@ class Actor(entity.Entity):
     @self.valid_destinations = A list of valid moves that the user can make.
                                i.e. they can't move 13pixels if they themselves are 48px big.
 
-    @self.turns_taken = How many turns the player has taken
-                        
     """
     def __init__(
             self, 
@@ -63,7 +61,6 @@ class Actor(entity.Entity):
         self.destination = [self.rect.x, self.rect.y]
         self.valid_destinations = [graphics.tile_width * x for x in range(-100, 100)]
         self.moving = False
-        self.turns_taken = 0
         self.is_teleporting = False
         self.minimap_colour = colours.BLUE_HIGHLIGHT
 
@@ -143,9 +140,6 @@ class Actor(entity.Entity):
     def add_bomb(self):
         self.remaining_bombs += 1
 
-    def add_turn(self):
-        self.turns_taken += 1
-
     def event_update(self, command):
         """These events should only happen on a keypress. They do not need to be checked
            every frame"""
@@ -158,9 +152,9 @@ class Actor(entity.Entity):
                     directions[command][1]
                 )
                 self.set_direction(command)
-                if command != 'space' :
+                if command != 'action' :
                     self.update_bombs()
-        if command == 'space':
+        if command == 'action':
             self.create_bomb()
 
     def update(self, delta_time=0):
@@ -171,6 +165,12 @@ class Actor(entity.Entity):
     def create_bomb(self):
         """Creates a bomb underneath the players position"""
         if self.remaining_bombs and not self.moving:
+
+            # Don't plant a bomb here if there's already one there
+            for bomb in self.bombs:
+                if bomb.rect.x == self.rect.x and bomb.rect.y == self.rect.y:
+                    return
+
             self.bombs.add(Bomb(
                 self.rect.x,
                 self.rect.y,

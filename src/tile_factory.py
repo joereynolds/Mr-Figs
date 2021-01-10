@@ -18,6 +18,7 @@ from src.game_object.enemy_pathable import EnemyPathable
 from src.game_object.enemy_bombable import EnemyBombable
 from src.game_object.particle_emitter import ParticleEmitter
 from src.game_object.moving_platform import MovingPlatform
+from src.game_object.moving_laser import MovingLaser
 
 
 class TileFactory():
@@ -56,6 +57,8 @@ class TileFactory():
             'barrel_down_left': Barrel,
             'barrel_down_right': Barrel,
             'particle_emitter': ParticleEmitter,
+            'laser_up': MovingLaser,
+            'laser_right': MovingLaser,
         }
 
         return tile_map[tile_type](**kwargs)

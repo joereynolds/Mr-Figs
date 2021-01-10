@@ -37,8 +37,10 @@ class LevelSelect(scene_base.SceneBase):
             self,
             input_handler.GlobalInputHandler(
                 self.player,
-                self
-            )
+                self,
+                graphics.get_controller()
+            ),
+            graphics.get_controller()
         )
 
         self.file = file

@@ -28,7 +28,7 @@ class LevelRenderer():
 
         self.top_bar = TopBar(
             self.width, 
-            graphics.tile_height * graphics.ZOOM_LEVEL, 
+            (self.height // graphics.tile_height) * 1.25,
             self.level
         )
 
@@ -62,7 +62,8 @@ class LevelRenderer():
 
     def display_video_tape_story(self, video_tape: VideoTape = None):
         if video_tape is not None:
-            overlay = TextOverlay(video_tape.text)
-            # Lock it in a loop until we're done
-            while overlay.timer > 0:
-                overlay.render(self.game_area)
+            video_tape.redirect_to=self.level
+            self.level.switch_to_scene(
+                "ignore me",
+                video_tape_obj=video_tape
+            )

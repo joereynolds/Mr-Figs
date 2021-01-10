@@ -32,7 +32,7 @@ class TiledMap():
 
         self.map_layer_for_camera = pyscroll.BufferedRenderer(
             self.map_data_for_camera,
-            screen.get_size(),
+            graphics.BASE_RESOLUTION
             # clamp_camera=False
         )
 
@@ -178,6 +178,27 @@ class TiledMap():
                     'speed': tile_object.properties.get('speed', 2),
                 },
             }
+
+        if tile_object.type == 'laser_up':
+            type_map = {
+                'laser_up': {
+                    **common,
+                    'path': self.paths[tile_object.follows_path_id],
+                    'level': self,
+                    'direction': "up"
+                },
+            }
+
+        if tile_object.type == 'laser_right':
+            type_map = {
+                'laser_right': {
+                    **common,
+                    'path': self.paths[tile_object.follows_path_id],
+                    'level': self,
+                    'direction': "right"
+                },
+            }
+
 
         if tile_object.type == 'tile':
             type_map = {
@@ -330,6 +351,7 @@ class TiledMap():
                     **common,
                 },
             }
+
 
         if tile_object.type == 'torch':
             type_map = {

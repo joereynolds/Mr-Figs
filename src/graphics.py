@@ -1,21 +1,38 @@
 import pygame
 import src.config as config
+from src.input_handlers.xbox_360_controller import Xbox360Controller
+from src.input_handlers.ps4_controller import PS4Controller
+from src.input_handlers.keyboard_controller import KeyboardController
+import src.logger as logger
 
-ZOOM_LEVEL = 4
+BASE_RESOLUTION = (512, 288)
+ZOOM_LEVEL = 1.5
 
 tile_width = 16
 tile_height = 16
 
+def round_to_nearest_tile(x, base=tile_width):
+    return base * round(x/base)
+
+def get_controller():
+    pygame.joystick.init()
+
+    controller = KeyboardController
+    if pygame.joystick.get_count() > 0:
+        joystick = pygame.joystick.Joystick(0)
+        if joystick.get_name() == 'Xbox 360 Controller':
+            controller = Xbox360Controller(joystick)
+            logger.LOGGER.info("Settings controller to Xbox360Controller")
+        if joystick.get_name() == 'Sony Interactive Entertainment Wireless Controller':
+            controller = PS4Controller(joystick)
+            logger.LOGGER.info("Settings controller to PS4Controller")
+        else:
+            logger.LOGGER.info("No compatible controller found, falling back to keyboard input")
+
+    return controller
+
 def get_window_surface():
-    # return pygame.display.set_mode((768, 768), )
-    # return pygame.display.set_mode((800, 480), )
-    # return pygame.display.set_mode((768, 768), )
     return pygame.display.set_mode((800, 480), )
-    # return pygame.display.set_mode((768, 768), )
-    # return pygame.display.set_mode((640, 480), )
-    # return pygame.display.set_mode((1280, 960), )
-    # return pygame.display.set_mode((1920, 1080), )
-    return pygame.display.set_mode((0, 0), pygame.NOFRAME)
     # return pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
 
 def grid(x: int, y: int):
