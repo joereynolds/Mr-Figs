@@ -47,6 +47,7 @@ class GlobalInputHandler():
                 if event['raw_event'].key == pygame.K_n:
                     self.level.switch_to_scene(self.level.tiled_level.properties['next_level'])
             # end debugging
+
             if not self.level.renderer.escape_menu.is_visible:
                 self.player_input_handler.process_input(event)
             if self.level.renderer.escape_menu.is_visible:

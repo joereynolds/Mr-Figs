@@ -27,6 +27,8 @@ def get_controller():
             controller = PS4Controller(joystick)
             logger.LOGGER.info("Settings controller to PS4Controller")
         else:
+
+            logger.LOGGER.info(joystick.get_name())
             logger.LOGGER.info("No compatible controller found, falling back to keyboard input")
 
     return controller
