@@ -13,7 +13,7 @@ The player must blast their way through various puzzles to reach the end goal.
 - Move with either `WASD`, `HJKL` or the arrow keys
 - Pickup bombs to add to your inventory
 - Pickup previously planted bombs if you made a mistake
-- Try and find all the hidden video tapes
+- Try and find all the hidden video tapes to reveal the story behind Mr Figs and the lab
 - Activate switches by blowing them up
 - Trigger pressure plates by putting something on them
 - Teleport around by going through portals
