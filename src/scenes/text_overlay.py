@@ -1,4 +1,5 @@
 import pygame
+import src.graphics as graphics
 import src.colours as colours
 import src.config as config
 import src.scenes.scenebase as scene_base
@@ -10,7 +11,11 @@ class TextOverlay(scene_base.SceneBase):
 
     def __init__(self, text):
         # TODO needs its own input handler
-        scene_base.SceneBase.__init__(self, input_handler.EscapeMenuInput(self)) 
+        scene_base.SceneBase.__init__(
+            self, 
+            input_handler.EscapeMenuInput(self),
+            graphics.get_controller()
+            ) 
         self.text = text
         self.width, self.height = pygame.display.get_window_size()
         self.center = self.width // 2

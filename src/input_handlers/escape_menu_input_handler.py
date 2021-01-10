@@ -18,7 +18,6 @@ class EscapeMenuInput():
     def __init__(self, escape_menu):
         self.escape_menu = escape_menu
 
-
     def process_input(self, event):
         """Handles the scenes to go to when we
         click on certain clickable components"""

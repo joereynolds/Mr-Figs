@@ -1,5 +1,3 @@
-
-
 class MenuItems():
 
     def __init__(self, menu_items):
