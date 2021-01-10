@@ -19,22 +19,21 @@ class OptionsInputHandler():
         or the presses of a key and redirect to that
         level.
         """
-        if event:
-            if event['key'] == EventCommand.DOWN:
-                self.menu.menu_items.select_next_item()
-            if event['key'] == EventCommand.UP:
-                self.menu.menu_items.select_previous_item()
-            if event['key'] == EventCommand.ACTION:
-                item = self.menu.menu_items.get_selected_item()
+        if event['key'] == EventCommand.DOWN:
+            self.menu.menu_items.select_next_item()
+        if event['key'] == EventCommand.UP:
+            self.menu.menu_items.select_previous_item()
+        if event['key'] == EventCommand.ACTION:
+            item = self.menu.menu_items.get_selected_item()
 
-                if item.name == 'clear_data':
-                    self.save.delete_save_data()
-                
-                if item.name == 'toggle_music':
-                    self.save.toggle_music_option()
+            if item.name == 'clear_data':
+                self.save.delete_save_data()
+            
+            if item.name == 'toggle_music':
+                self.save.toggle_music_option()
 
-                if item.name == 'go_back':
-                    self.menu.switch_to_scene(src.static_scenes.level_obj_list['start-menu'])
+            if item.name == 'go_back':
+                self.menu.switch_to_scene(src.static_scenes.level_obj_list['start-menu'])
 
         # TODO -get this working again
 #         if event.type == pygame.MOUSEBUTTONDOWN:
