@@ -32,8 +32,8 @@ def get_controller():
     return controller
 
 def get_window_surface():
-    return pygame.display.set_mode((800, 480), )
-    # return pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+    # return pygame.display.set_mode((800, 480), )
+    return pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
 
 def grid(x: int, y: int):
     """
