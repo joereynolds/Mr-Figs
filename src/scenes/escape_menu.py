@@ -11,7 +11,11 @@ class EscapeMenu(scene_base.SceneBase):
     """The menu that pops up during game when we press escape"""
 
     def __init__(self):
-        scene_base.SceneBase.__init__(self, input_handler.EscapeMenuInput(self)) 
+        scene_base.SceneBase.__init__(
+            self, 
+            input_handler.EscapeMenuInput(self),
+            graphics.get_controller()
+        ) 
 
         self.is_visible = False
         self.width, self.height = pygame.display.get_window_size()

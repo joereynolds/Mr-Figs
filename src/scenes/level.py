@@ -34,8 +34,10 @@ class Level(scene_base.SceneBase):
             self,
             input_handler.GlobalInputHandler(
                 self.player,
-                self
-            )
+                self,
+                graphics.get_controller()
+            ),
+            graphics.get_controller()
         )
 
         self.file = file
@@ -99,7 +101,7 @@ class Level(scene_base.SceneBase):
             self.next = StartMenu()
         else: 
             self.next = Level(next_scene)
-            self.game_saver.save(self.file, self.player.turns_taken, collected_tape)
+            self.game_saver.save(self.file, collected_tape)
 
     def reset(self):
         """Reinitialises our level, kind of a hacky way

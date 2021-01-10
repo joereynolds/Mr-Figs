@@ -1,21 +1,24 @@
 import pygame
 
 class KeyboardController():
-    keys = {
-        pygame.K_UP:'up',
-        pygame.K_DOWN:'down',
-        pygame.K_LEFT:'left',
-        pygame.K_RIGHT:'right',
 
-        pygame.K_SPACE:'space',
+    def get_down_button_state():
+        return pygame.K_DOWN
 
-        pygame.K_w: 'up',
-        pygame.K_a: 'left',
-        pygame.K_s: 'down',
-        pygame.K_d: 'right',
+    def get_up_button_state():
+        return pygame.K_UP
 
-        pygame.K_h: 'left',
-        pygame.K_j: 'down',
-        pygame.K_k: 'up',
-        pygame.K_l: 'right',
-    }
+    def get_left_button_state():
+        return pygame.K_LEFT
+
+    def get_right_button_state():
+        return pygame.K_RIGHT
+
+    def get_select_button_state():
+        return pygame.K_RETURN
+
+    def get_action_button_state():
+        return pygame.K_SPACE
+
+    def get_escape_button_state():
+        return pygame.K_ESCAPE

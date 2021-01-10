@@ -4,6 +4,7 @@ import src.graphics as graphics
 import src.config as config
 import src.colours as colours
 import src.scenes.scenebase as scene_base
+from src.gui.menu_items import MenuItems
 from src.input_handlers.options_input_handler import OptionsInputHandler
 from src.gui.clickable import Clickable
 from src.gui.checkbox import Checkbox
@@ -15,7 +16,8 @@ class OptionsMenu(scene_base.SceneBase):
     def __init__(self):
         scene_base.SceneBase.__init__(
             self,
-            OptionsInputHandler(self)
+            OptionsInputHandler(self),
+            graphics.get_controller()
         )
         self.components = pygame.sprite.LayeredUpdates()
         asset_sizer = ResolutionAssetSizer()
@@ -35,11 +37,40 @@ class OptionsMenu(scene_base.SceneBase):
         self.music_toggle_text = "[T]OGGLE MUSIC"
         self.font_size = asset_sizer.get_font_size(size)
         self.font = pygame.font.Font(config.font, self.font_size)
-        self.menu_items = {
-            'toggle_music': pygame.sprite.GroupSingle(Checkbox(offset, offset, checkbox_width, button_height, 0)),
-            'clear_data': pygame.sprite.GroupSingle(Clickable(offset, offset + (button_height * 1) + (spacing * 1), button_width, button_height, '[C]LEAR GAME DATA')),
-            'go_back': pygame.sprite.GroupSingle(Clickable(offset, offset + (button_height * 2) + (spacing * 2), button_width, button_height, '[B]ACK'))
+
+        items = {
+            'toggle_music': pygame.sprite.GroupSingle(
+                Checkbox(
+                    offset, 
+                    offset, 
+                    checkbox_width, 
+                    button_height, 
+                    0, 
+                    name='toggle_music'
+                    )
+                ),
+            'clear_data': pygame.sprite.GroupSingle(
+                Clickable(
+                    offset, 
+                    offset + (button_height * 1) + (spacing * 1), 
+                    button_width, 
+                    button_height, 
+                    '[C]LEAR GAME DATA', 
+                    name='clear_data')),
+            'go_back': pygame.sprite.GroupSingle(
+                Clickable(
+                    offset, 
+                    offset + (button_height * 2) + (spacing * 2), 
+                    button_width, 
+                    button_height, 
+                    '[B]ACK', 
+                    selected=True,
+                    name='go_back'
+                )
+            )
         }
+
+        self.menu_items = MenuItems(items)
 
     def render(self):
         """Fill our surface and render our buttons"""
@@ -54,14 +85,14 @@ class OptionsMenu(scene_base.SceneBase):
         self.surface.blit(
             rendered_text, 
             (
-                self.menu_items['toggle_music'].sprite.rect.right + 25, 
-                self.menu_items['toggle_music'].sprite.rect.top, 
+                self.menu_items.items['toggle_music'].sprite.rect.right + 25, 
+                self.menu_items.items['toggle_music'].sprite.rect.top, 
             )
         )
 
-        self.menu_items['toggle_music'].draw(self.surface)
-        self.menu_items['clear_data'].draw(self.surface)
-        self.menu_items['go_back'].draw(self.surface)
-        self.menu_items['toggle_music'].sprite.render()
-        self.menu_items['clear_data'].sprite.render()
-        self.menu_items['go_back'].sprite.render()
+        self.menu_items.items['toggle_music'].draw(self.surface)
+        self.menu_items.items['clear_data'].draw(self.surface)
+        self.menu_items.items['go_back'].draw(self.surface)
+        self.menu_items.items['toggle_music'].sprite.render()
+        self.menu_items.items['clear_data'].sprite.render()
+        self.menu_items.items['go_back'].sprite.render()

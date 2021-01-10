@@ -4,9 +4,10 @@ import src.colours as colours
     
 class Checkbox(Clickable):
 
-    def __init__(self, x, y, width, height, state):
+    def __init__(self, x, y, width, height, state, name):
         Clickable.__init__(self, x, y, width, height, '')
         self.state = 0
+        self.name = name
 
         self.toggle_colours = {
             0: colours.BLACK,

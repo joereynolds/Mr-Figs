@@ -13,7 +13,11 @@ class Credits(scene_base.SceneBase):
 
     def __init__(self):
         # TODO needs its own input handler
-        scene_base.SceneBase.__init__(self, input_handler.EscapeMenuInput(self)) 
+        scene_base.SceneBase.__init__(
+            self, 
+            input_handler.EscapeMenuInput(self),
+            graphics.get_controller()
+            ) 
 
         self.user_data = UserData()
         self.screen = graphics.get_window_surface()

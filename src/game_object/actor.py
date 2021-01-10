@@ -152,9 +152,9 @@ class Actor(entity.Entity):
                     directions[command][1]
                 )
                 self.set_direction(command)
-                if command != 'space' :
+                if command != 'action' :
                     self.update_bombs()
-        if command == 'space':
+        if command == 'action':
             self.create_bomb()
 
     def update(self, delta_time=0):
