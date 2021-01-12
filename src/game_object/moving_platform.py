@@ -44,8 +44,6 @@ class MovingPlatform(entity.Entity):
         self.timer -= 1
 
         if self.timer <= 0:
-            if pygame.sprite.collide_rect(self, player):
-                self.pin_player(player, self.position.x, self.position.y)
 
             heading = self.target - self.position
             distance = heading.length()
@@ -61,5 +59,14 @@ class MovingPlatform(entity.Entity):
             self.position += self.vel
             self.rect.topleft = self.position
 
+            if pygame.sprite.collide_rect(self, player):
+                self.pin_player(player, self.position.x, self.position.y)
+
+            """Filled green and red for now to visualise.
+            Green is safe to go on. Red is not, if it's red and we 
+            try and go on, we should die."""
             if self.rect.x % 16 == 0 and self.rect.y % 16 == 0:
+                self.image.fill((0, 255,0))
                 self.timer = 50
+            else:
+                self.image.fill((140,0,0))
