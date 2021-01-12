@@ -5,6 +5,7 @@ from src.game_object.pressure_plate import PressurePlate
 from src.game_object.bullet import Bullet
 from src.game_object.triggerable import Triggerable
 from src.game_object.platform import Platform
+from src.game_object.bomb_particle import BombParticle
 from src.game_object.moving_platform import MovingPlatform
 from src.game_object.enemy_pathable import EnemyPathable
 from src.game_object.enemy_bombable import EnemyBombable
@@ -17,14 +18,15 @@ class PollingCollisionHandler():
         self.player = player
         self.level = level
         self.polling_instances = (
+            BombParticle,
             MovingLaser,
-             Bullet, 
-             PressurePlate, 
-             Triggerable, 
-             Platform, 
-             EnemyPathable,
-             EnemyBombable,
-             MovingPlatform,
+            Bullet, 
+            PressurePlate, 
+            Triggerable, 
+            Platform, 
+            EnemyPathable,
+            EnemyBombable,
+            MovingPlatform,
         )
 
     def update(self):

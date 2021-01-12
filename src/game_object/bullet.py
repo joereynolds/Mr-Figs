@@ -1,4 +1,5 @@
 import pygame
+from src.game_object.bomb import Bomb
 from src.game_object.solid_tile import SolidTile
 from src.game_object.moveable_tile import MoveableTile
 from src.entity import Entity
@@ -31,6 +32,11 @@ class Bullet(Entity):
             pygame.sprite.Sprite.kill(player)
 
         for _tile in level.tiled_level.sprites:
+            if isinstance(_tile, Bomb) and pygame.sprite.collide_rect(self, _tile):
+                pygame.sprite.Sprite.kill(self)
+                _tile.lifespan = 0
+                _tile.explode()
+
             if isinstance(_tile, (SolidTile, MoveableTile)) and pygame.sprite.collide_rect(self, _tile):
                 if pygame.sprite.collide_rect(self, _tile):
                     pygame.sprite.Sprite.kill(self)
