@@ -17,6 +17,7 @@ from src.game_object.platform import Platform
 from src.game_object.enemy_pathable import EnemyPathable
 from src.game_object.enemy_bombable import EnemyBombable
 from src.game_object.particle_emitter import ParticleEmitter
+from src.game_object.moving_platform import MovingPlatform
 from src.game_object.moving_laser import MovingLaser
 
 
@@ -41,6 +42,7 @@ class TileFactory():
             'destructible': Destructible,
             'path': Path,
             'platform': Platform,
+            'moving_platform': MovingPlatform,
             'enemy_pathable': EnemyPathable,
             'enemy_bombable': EnemyBombable,
             'torch': Torch,

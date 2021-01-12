@@ -96,6 +96,14 @@ class TiledMap():
                 }
             }
 
+        if tile_object.type == 'moving_platform':
+            type_map = {
+                'moving_platform': {
+                    **common,
+                    'path': self.paths[tile_object.follows_path_id]
+                }
+            }
+
         if tile_object.type == 'platform':
             type_map = {
                 'platform': {
