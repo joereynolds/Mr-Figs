@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="25" height="18" tilewidth="16" tileheight="16" infinite="0" nextlayerid="12" nextobjectid="336">
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="25" height="18" tilewidth="16" tileheight="16" infinite="0" nextlayerid="12" nextobjectid="351">
  <properties>
   <property name="display_name" value="Learning To Walk"/>
   <property name="next_level" value="./data/levels/tmx/L03-Pushing.tmx"/>
@@ -355,6 +355,31 @@
     <property name="follows_path_id" type="int" value="5"/>
    </properties>
   </object>
+  <object id="336" type="moving_platform" gid="53" x="192" y="160" width="16" height="16">
+   <properties>
+    <property name="follows_path_id" type="int" value="7"/>
+   </properties>
+  </object>
+  <object id="339" type="triggerable" gid="8" x="192" y="176" width="16" height="16">
+   <properties>
+    <property name="triggered_id" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="340" type="switch" gid="34" x="208" y="176" width="16" height="16">
+   <properties>
+    <property name="triggers" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="341" type="tile" gid="11" x="224" y="176" width="16" height="16"/>
+  <object id="342" type="tile" gid="11" x="208" y="192" width="16" height="16"/>
+  <object id="343" type="tile" gid="11" x="208" y="208" width="16" height="16"/>
+  <object id="344" type="tile" gid="11" x="208" y="224" width="16" height="16"/>
+  <object id="345" type="tile" gid="11" x="208" y="240" width="16" height="16"/>
+  <object id="346" type="tile" gid="2" x="176" y="176" width="16" height="16"/>
+  <object id="347" type="tile" gid="2" x="176" y="192" width="16" height="16"/>
+  <object id="348" type="tile" gid="2" x="176" y="208" width="16" height="16"/>
+  <object id="349" type="tile" gid="2" x="176" y="224" width="16" height="16"/>
+  <object id="350" type="tile" gid="2" x="176" y="240" width="16" height="16"/>
  </objectgroup>
  <objectgroup id="11" name="paths">
   <object id="182" type="path" x="304" y="256">
@@ -387,11 +412,17 @@
    </properties>
    <polyline points="-0.16,-48 -0.16,-32"/>
   </object>
-  <object id="335" type="path" x="176" y="144">
+  <object id="337" type="path" x="176" y="144">
    <properties>
     <property name="path_id" type="int" value="5"/>
    </properties>
    <polyline points="0,0 0,-16"/>
+  </object>
+  <object id="338" type="path" x="192" y="144">
+   <properties>
+    <property name="path_id" type="int" value="7"/>
+   </properties>
+   <polyline points="0,0 16,0"/>
   </object>
  </objectgroup>
 </map>
