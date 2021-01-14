@@ -30,6 +30,9 @@ class MovingPlatform(entity.Entity):
         self.target = self.path.points[1]
         self.timer = 50
 
+        self.safe_platform_image = graphics.subsurf(graphics.grid(7, 8))
+        self.unsafe_platform_image = graphics.subsurf(graphics.grid(8, 8))
+
     def pin_player(self, player, x, y):
         """
         Pins the player to x and y.
@@ -80,9 +83,9 @@ class MovingPlatform(entity.Entity):
             Green is safe to go on. Red is not, if it's red and we 
             try and go on, we should die."""
             if self.rect.x % 16 == 0 and self.rect.y % 16 == 0:
-                self.image.fill((0, 255,0))
+                self.image = self.safe_platform_image
 
                 # Time to wait before moving again
                 self.timer = 50
             else:
-                self.image.fill((140,0,0))
+                self.image = self.unsafe_platform_image
