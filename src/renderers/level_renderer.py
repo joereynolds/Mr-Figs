@@ -2,6 +2,7 @@ import pygame
 import random
 import os
 from src.scenes.text_overlay import TextOverlay
+from src.gui.minimap import Minimap
 from src.gui.data_display import DataDisplay
 from src.gui.player_information_display import PlayerInformationDisplay
 from src.gui.top_bar import TopBar
@@ -47,6 +48,16 @@ class LevelRenderer():
             )
         )
 
+        self.game_area_rect = self.game_area.get_rect()
+
+        self.minimap = Minimap(
+            self.game_area_rect.centerx,
+            self.game_area_rect.centery,
+            self.width,
+            self.height - self.top_bar.height,
+            level
+        )
+
     def render(self):
         self.level.surface.fill(self.colour)
         self.level.sprites.center(self.level.player.rect.center)
@@ -59,6 +70,9 @@ class LevelRenderer():
 
         if self.escape_menu.is_visible:
             self.escape_menu.render(self.game_area)
+
+        if self.minimap.is_visible:
+            self.minimap.render(self.game_area)
 
     def display_video_tape_story(self, video_tape: VideoTape = None):
         if video_tape is not None:

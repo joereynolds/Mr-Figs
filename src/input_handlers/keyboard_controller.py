@@ -20,5 +20,8 @@ class KeyboardController():
     def get_action_button_state():
         return pygame.K_SPACE
 
+    def get_secondary_button_state():
+        return pygame.K_TAB
+
     def get_escape_button_state():
         return pygame.K_ESCAPE

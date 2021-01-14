@@ -36,28 +36,11 @@ class ResolutionAssetSizer():
         return graphics.round_to_nearest_tile(screen_size[1] // graphics.tile_height * 1.5)
 
     def get_minimap_sprite_size(self, screen_size):
-        minimap_sprite_size_map = {
-            (640, 480): {
-                'sprite_placement_modifier': 0.5, 
-                'width': graphics.tile_width // 2,
-                'height': graphics.tile_height // 2,
-            },
-            (768, 600): {
-                'sprite_placement_modifier': 0.5, 
-                'width': graphics.tile_width // 2,
-                'height': graphics.tile_height // 2,
-            },
-            (768, 768): {
-                'sprite_placement_modifier': 0.5, 
-                'width': graphics.tile_width // 2,
-                'height': graphics.tile_height // 2,
-            }
-        }
 
         default = {
-            'sprite_placement_modifier': 0.5, 
-            'width': graphics.tile_width // 2,
-            'height': graphics.tile_height // 2,
+            'sprite_placement_modifier': 3, 
+            'width': graphics.tile_width * 3,
+            'height': graphics.tile_height * 3,
         }
 
-        return minimap_sprite_size_map.get(screen_size, default)
+        return default

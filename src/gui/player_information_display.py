@@ -9,14 +9,6 @@ class PlayerInformationDisplay():
         self.height = height
         self.level = level
 
-        self.minimap = Minimap(
-            self.width - 200,
-            32,
-            quarter_of_screen,
-            self.height,
-            level
-        )
-
         self.bomb_display = BombDisplay(
             self.width - 200,
             200,
@@ -25,7 +17,5 @@ class PlayerInformationDisplay():
         )
 
     def render(self, game_surface):
-        self.minimap.render()
         self.bomb_display.render(self.level.player.remaining_bombs)
-        game_surface.blit(self.minimap.surface, (self.width - 200, 32))
         game_surface.blit(self.bomb_display.surface, (self.width - 200, 200))

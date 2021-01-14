@@ -17,25 +17,38 @@ class Minimap(Entity):
         """
         Entity.__init__(self, x, y, width, height, image)
 
-        self.tiled_level = level
+
+        self.x = x
+        self.y = y
+        self.level= level
+        self.height = height
+        self.is_visible = False
+        self.width = self.level.tiled_level._map.width * graphics.tile_width
+        self.height = self.level.tiled_level._map.height * graphics.tile_height
+
         self.map = pygame.sprite.Group()
         asset_sizer = ResolutionAssetSizer()
         self.size_data = asset_sizer.get_minimap_sprite_size(pygame.display.get_window_size())
         self.populate_map()
-        self.minimap_colour = colours.RED_GLOW
-        self.surface = pygame.Surface((200, 200)).convert_alpha()
+        self.surface = pygame.Surface((self.width, self.height)).convert_alpha()
+
+    def toggle_visiblity(self):
+        self.is_visible = not self.is_visible
+
+    def close_menu(self):
+        self.is_visible = False
 
     def populate_map(self):
         """
         Populates a minimap i.e. A smaller representation of the game itself.
         """
         self.map.empty()
-        for sprite in self.tiled_level.sprites:
+        for sprite in self.level.sprites:
             minimap_sprite = Entity(
-                sprite.rect.x * self.size_data['sprite_placement_modifier'],
-                sprite.rect.y * self.size_data['sprite_placement_modifier'],
-                self.size_data['width'],
-                self.size_data['height']
+                sprite.rect.x,
+                sprite.rect.y,
+                graphics.tile_width,
+                graphics.tile_height
             )
 
             if hasattr(sprite, 'minimap_colour'):
@@ -43,7 +56,8 @@ class Minimap(Entity):
 
                 self.map.add(minimap_sprite)
 
-    def render(self):
-        self.surface.fill((0, 0, 0, 200))
+    def render(self, game_surface):
+        self.surface.fill((5, 5, 5, 200))
         self.populate_map()
         self.map.draw(self.surface)
+        game_surface.blit(self.surface, (self.x ,self.y))

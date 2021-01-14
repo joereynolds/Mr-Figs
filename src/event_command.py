@@ -23,6 +23,7 @@ class EventCommand():
     ESCAPE = 'escape' # Opening up the escape menu
     ACTION = 'action' # Planting a bomb
     NOTHING = 'nothing'
+    SECONDARY_ACTION = 'secondary-action'
 
     def __init__(self, controller):
         self.controller = controller
@@ -48,6 +49,9 @@ class EventCommand():
 
             if event.key == self.controller.get_action_button_state():
                 return {'key': EventCommand.ACTION, 'raw_event': event}
+
+            if event.key == self.controller.get_secondary_button_state():
+                return {'key': EventCommand.SECONDARY_ACTION, 'raw_event': event}
 
         # TODO - would be nice to merge this with above
         if event.type == pygame.JOYHATMOTION:

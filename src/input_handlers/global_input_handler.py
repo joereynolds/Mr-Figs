@@ -42,6 +42,9 @@ class GlobalInputHandler():
             if event['key'] == EventCommand.ESCAPE:
                 self.level.renderer.escape_menu.toggle_visiblity()
 
+            if event['key'] == EventCommand.SECONDARY_ACTION:
+                self.level.renderer.minimap.toggle_visiblity()
+
             # debugging only
             if event['raw_event'].type == pygame.KEYDOWN:
                 if event['raw_event'].key == pygame.K_n:
