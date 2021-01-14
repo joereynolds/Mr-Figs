@@ -18,7 +18,7 @@ class PollingCollisionHandler():
         self.player = player
         self.level = level
         self.polling_instances = (
-            BombParticle,
+            # BombParticle,
             MovingLaser,
             Bullet, 
             PressurePlate, 
