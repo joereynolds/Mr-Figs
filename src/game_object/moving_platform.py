@@ -40,6 +40,14 @@ class MovingPlatform(entity.Entity):
         player.destination[0] = x
         player.destination[1] = y
 
+    def pin_bomb(self, bomb, x, y):
+        """
+        Pins the player to x and y.
+        Otherwise they wouldn't move
+        """
+        bomb.rect.x = x
+        bomb.rect.y = y
+
     def handle_collision(self, tile, player, level):
         self.timer -= 1
 
@@ -51,7 +59,7 @@ class MovingPlatform(entity.Entity):
             if heading != [0,0]:
                 heading.normalize_ip()
 
-            if distance <= 1:  # We're closer than 2 pixels.
+            if distance <= 1:  # We're closer than a pixel
                 self.waypoint_index = (self.waypoint_index + 1) % len(self.path.points)
                 self.target = self.path.points[self.waypoint_index]
 
@@ -59,14 +67,22 @@ class MovingPlatform(entity.Entity):
             self.position += self.vel
             self.rect.topleft = self.position
 
+            for bomb in player.bombs:
+                # Pin bombs to the platform if we've planted any
+                if pygame.sprite.collide_rect(self, bomb):
+                    self.pin_bomb(bomb, self.position.x, self.position.y)
+
             if pygame.sprite.collide_rect(self, player):
                 self.pin_player(player, self.position.x, self.position.y)
+
 
             """Filled green and red for now to visualise.
             Green is safe to go on. Red is not, if it's red and we 
             try and go on, we should die."""
             if self.rect.x % 16 == 0 and self.rect.y % 16 == 0:
                 self.image.fill((0, 255,0))
+
+                # Time to wait before moving again
                 self.timer = 50
             else:
                 self.image.fill((140,0,0))
