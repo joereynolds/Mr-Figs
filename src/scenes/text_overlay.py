@@ -5,6 +5,7 @@ import src.config as config
 import src.scenes.scenebase as scene_base
 from src.input_handlers.text_overlay_input_handler import TextOverlayInputHandler
 from src.gui.clickable import Clickable
+from src.resolution_asset_sizer import ResolutionAssetSizer
 
 class TextOverlay(scene_base.SceneBase):
     """The overlay that displays when the player collects a video tape"""
@@ -20,8 +21,11 @@ class TextOverlay(scene_base.SceneBase):
         self.text = text
         self.width, self.height = pygame.display.get_window_size()
         self.center = self.width // 2
+        self.asset_sizer = ResolutionAssetSizer()
         self.surface = pygame.Surface((self.width, self.height)).convert()
-        self.font_size = 24
+        self.font_size = self.asset_sizer.get_font_size(
+            pygame.display.get_window_size()
+        )
         self.font = pygame.font.Font(config.font, self.font_size)
         self.screen_surface = graphics.get_window_surface()
 

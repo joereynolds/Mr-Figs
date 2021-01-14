@@ -6,6 +6,7 @@ import src.config as config
 import src.scenes.scenebase as scene_base
 from src.input_handlers.introduction_input_handler import IntroductionTextOverlayInputHandler
 from src.user_data import UserData
+from src.resolution_asset_sizer import ResolutionAssetSizer
 from src.gui.clickable import Clickable
 
 class IntroductionTextOverlay(scene_base.SceneBase):
@@ -24,7 +25,11 @@ class IntroductionTextOverlay(scene_base.SceneBase):
         self.width, self.height = pygame.display.get_window_size()
         self.center = self.width // 2
         self.surface = pygame.Surface((self.width, self.height)).convert()
-        self.font_size = 24
+
+        self.asset_sizer = ResolutionAssetSizer()
+        self.font_size = self.asset_sizer.get_font_size(
+            pygame.display.get_window_size()
+        )
         pygame.font.init()
         self.font = pygame.font.Font(config.font, self.font_size)
         self.timer = 100
