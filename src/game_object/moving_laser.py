@@ -13,8 +13,6 @@ import src.graphics as graphics
 import src.movement_vector as movement_vector
 
 class MovingLaser(Entity):
-    """An almost exact copy of enemy pathable. If we can do it in a clean way,
-    consider extending it instead and writing the laser logic separately."""
 
     def __init__(
             self, 
