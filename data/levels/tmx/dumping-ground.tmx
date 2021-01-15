@@ -209,7 +209,7 @@
     <property name="pattern" value="flame"/>
    </properties>
   </object>
-  <object id="181" type="laser_up" gid="141" x="288" y="272" width="16" height="16">
+  <object id="181" type="laser_up" gid="141" x="224" y="272" width="16" height="16">
    <properties>
     <property name="follows_path_id" type="int" value="1"/>
    </properties>
@@ -382,11 +382,11 @@
   <object id="350" type="tile" gid="2" x="176" y="240" width="16" height="16"/>
  </objectgroup>
  <objectgroup id="11" name="paths">
-  <object id="182" type="path" x="304" y="256">
+  <object id="182" type="path" x="240" y="256">
    <properties>
     <property name="path_id" type="int" value="1"/>
    </properties>
-   <polyline points="0,0 48,0"/>
+   <polyline points="0,0 80,0"/>
   </object>
   <object id="190" type="path" x="16" y="192">
    <properties>

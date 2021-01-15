@@ -40,6 +40,11 @@ class TiledMap():
             map_layer=self.map_layer_for_camera
         )
 
+        # Used to keep a note of all solid tiles
+        # handy for our moving laser code and saves iterating through
+        # all the tiles at runtime for solid tiles
+        self.solids = pygame.sprite.Group()
+
         self.paths = {}
         self.map_layer_for_camera.zoom = graphics.ZOOM_LEVEL
 
@@ -67,6 +72,10 @@ class TiledMap():
                 surface = self._map.get_tile_image_by_gid(tile_object.gid)
                 obj = self._create_tile(tile_object, surface, factory)
                 self.sprites.add(obj)
+
+                if isinstance(obj, SolidTile):
+                    self.solids.add(obj)
+
         except ValueError:
             logger.LOGGER.info('Level "' + self.tmx_file + '" does not have a "objects" layer.')
 

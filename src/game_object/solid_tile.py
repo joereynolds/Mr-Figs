@@ -1,3 +1,4 @@
+import pygame
 import src.colours as colours
 import src.entity as entity
 

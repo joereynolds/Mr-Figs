@@ -1,5 +1,5 @@
 """
-An enemy that follows a pre-determined path
+A laser that fires all the way up to a solid
 """
 
 import pygame
@@ -32,11 +32,9 @@ class MovingLaser(Entity):
         self.minimap_colour = colours.RED_HIGHLIGHT
         self.path = path
         self.direction = direction
-        self.destination = path.points[-1]
         self.position = Vector2(x, y)
         self.vel = Vector2(0, 0)
         self.target = self.path.points[1]
-        self.target_radius = 25
         self.speed = speed
         self.waypoint_index = 0
         self.level = level
@@ -44,18 +42,18 @@ class MovingLaser(Entity):
         self.laser_thickness = 2
         self.speed = 0.5
 
-        self.horizontal_laser_range = min(self.level._map.width, 25)
-        self.vertical_laser_range = min(self.level._map.height, 25)
+        self.horizontal_laser_range = min(self.level._map.width, 20)
+        self.vertical_laser_range = min(self.level._map.height, 20)
 
         self.screen_width, self.screen_height = pygame.display.get_window_size()
         self.range = self.vertical_laser_range
+
         if self.direction in ['left', 'right']:
             self.range = self.horizontal_laser_range
 
-    def round_to_nearest_tile(self, x, base = graphics.tile_width):
-        return base * round(x/base)
-
     def update(self, delta_time):
+        self.level.sprites.remove(self.lasers)
+        self.lasers.empty()
 
         for i in range(self.range):
             if self.direction == 'up':
@@ -63,11 +61,14 @@ class MovingLaser(Entity):
 
                 if next_tile_y < self.screen_height and next_tile_y > 0:
                     laser = Line(
-                        self.rect.x, 
+                        self.rect.centerx, 
                         next_tile_y,
                         self.laser_thickness, 
                         graphics.tile_height
                     )
+
+                    if pygame.sprite.spritecollideany(laser, self.level.solids):
+                        break
 
             if self.direction == 'right':
                 next_tile_x = self.rect.x + (i * graphics.tile_width)
@@ -80,15 +81,8 @@ class MovingLaser(Entity):
                         self.laser_thickness, 
                     )
 
-            nearest_x = self.round_to_nearest_tile(laser.rect.x)
-            nearest_y = self.round_to_nearest_tile(laser.rect.y)
-
-            tile = self.level.get_tile_from_object_layer(nearest_x, nearest_y)
-
-            if tile:
-                tile = tile[0]
-                if isinstance(tile, SolidTile):
-                    break
+                    if pygame.sprite.spritecollideany(laser, self.level.solids):
+                        break
 
             self.lasers.add(laser)
 
@@ -98,7 +92,6 @@ class MovingLaser(Entity):
         self.level.sprites.add(self.lasers)
 
     def handle_collision(self, tile, player, level):
-        # TODO - needs to be pixel perfect - Use masks.
         if pygame.sprite.spritecollide(player, self.lasers, False):
             pygame.sprite.Sprite.kill(player)
 
@@ -128,25 +121,19 @@ class MovingLaser(Entity):
     def pin_laser(self):
         for laser in self.lasers:
             if self.direction == 'up':
-                laser.rect.x = self.rect.centerx - self.laser_thickness
+                laser.rect.x = self.rect.centerx
             if self.direction == 'right':
                 laser.rect.y = self.rect.centery - self.laser_thickness
 
-    def get_vector_for_direction(self, direction):
-        return movement_vector.vector[direction]
-
-# For now just do "up"
 class Line(Entity):
 
     def __init__(self, x, y, width, height, image=None):
         Entity.__init__(self, x, y, width, height, image)
         self.image = pygame.Surface((width, height))
         self.image.fill((255,0,0))
-        self.image.set_colorkey((0, 0, 0))
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
-        self.mask = pygame.mask.from_surface(self.image)
         self.timer = 1
 
     def update(self, delta_time):
