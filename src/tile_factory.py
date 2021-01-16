@@ -19,6 +19,10 @@ from src.game_object.enemy_bombable import EnemyBombable
 from src.game_object.particle_emitter import ParticleEmitter
 from src.game_object.moving_platform import MovingPlatform
 from src.game_object.moving_laser import MovingLaser
+from src.game_object.computer_terminal import ComputerTerminal
+
+from src.game_object.minigame.hunt.player import Player
+from src.game_object.minigame.hunt.collectible import Collectible
 
 
 class TileFactory():
@@ -59,6 +63,11 @@ class TileFactory():
             'particle_emitter': ParticleEmitter,
             'laser_up': MovingLaser,
             'laser_right': MovingLaser,
+            'computer_terminal': ComputerTerminal,
+
+            # Hunt minigame
+            'minigame-hunt-player': Player,
+            'minigame-hunt-collectible': Collectible,
         }
 
         return tile_map[tile_type](**kwargs)

@@ -11,6 +11,8 @@ from src.collision_handlers.polling_collision_handler import PollingCollisionHan
 from src.collision_handlers.turn_based_collision_handler import TurnBasedCollisionHandler
 from src.user_data import UserData
 
+from src.scenes.minigame.hunt.hunt import Hunt
+
 
 class Level(scene_base.SceneBase):
     """All levels use this class as the base level.
@@ -88,6 +90,7 @@ class Level(scene_base.SceneBase):
         next_scene, 
         start_menu=False, 
         video_tape_obj=False,
+        minigame=False,
         ):
         """Goes to the next scene. Note that SceneBase is
         sort of similar to a linked list in implementation.
@@ -105,6 +108,9 @@ class Level(scene_base.SceneBase):
         if start_menu:
             self.reset()
             self.next = StartMenu()
+        elif minigame:
+            # hardcoded minigame for now
+            self.next = Hunt(next_scene)
         elif video_tape_obj:
             self.next = TextOverlay(video_tape_obj.text, video_tape_obj.redirect_to)
         else: 
