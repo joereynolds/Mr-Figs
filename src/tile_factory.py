@@ -23,8 +23,11 @@ from src.game_object.moving_laser import MovingLaser
 from src.game_object.computer_terminal import ComputerTerminal
 from src.game_object.deadly_area import DeadlyArea
 
-from src.game_object.minigame.hunt.player import Player
-from src.game_object.minigame.hunt.collectible import Collectible
+from src.minigames.hunt.player import Player
+from src.minigames.hunt.collectible import Collectible
+
+from src.minigames.lines.player import Player as LinesPlayer
+from src.minigames.lines.collectible import Collectible as LinesCollectible
 
 
 class TileFactory():
@@ -72,6 +75,10 @@ class TileFactory():
             'minigame-hunt-player': Player,
             'minigame-hunt-collectible': Collectible,
             'deadly_area': DeadlyArea,
+
+            # lines minigame
+            'minigame_lines_player': LinesPlayer,
+            'minigame_lines_collectible': LinesCollectible,
         }
 
         return tile_map[tile_type](**kwargs)

@@ -19,6 +19,8 @@ class Player(Entity):
         self.tail = pygame.sprite.Group()
         self.last_planted_tail = None
         self.screen_width, self.screen_height = pygame.display.get_window_size()
+        self.width = width
+        self.height = height
 
         # A list of all coordinates already planted so we know not to plant there again 
         self.sprite_coordinate_cache = []
@@ -26,7 +28,7 @@ class Player(Entity):
         Entity.__init__(self, x, y, width, height, image)
 
     def update(self, delta_time, level):
-        if self.rect.x % graphics.tile_width == 0 and self.rect.y % graphics.tile_width == 0:
+        if self.rect.x % self.width == 0 and self.rect.y % self.height == 0:
             self.create_tail(level.sprites)
 
             collided_sprite = pygame.sprite.spritecollideany(self, self.tail)
@@ -41,7 +43,7 @@ class Player(Entity):
 
     def create_tail(self, level_sprites):
         if (self.rect.x, self.rect.y) not in self.sprite_coordinate_cache:
-            tail = Entity(self.rect.x, self.rect.y, graphics.tile_width, graphics.tile_height)
+            tail = Entity(self.rect.x, self.rect.y, self.width, self.height)
             tail.image.fill((155,0 ,0))
             self.tail.add(tail)
             level_sprites.add(self.tail)

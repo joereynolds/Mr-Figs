@@ -387,7 +387,7 @@ class TiledMap():
             type_map = {
                 'computer_terminal': {
                     **common, 
-                    'minigame': tile_object.properties.get('minigame', './data/levels/tmx/minigame-hunt'),
+                    'minigame': tile_object.properties['minigame'],
                     'state': 0,
                     'triggers': triggers,
                 },
@@ -403,6 +403,22 @@ class TiledMap():
         if tile_object.type == 'minigame-hunt-collectible':
             type_map = {
                 'minigame-hunt-collectible': {
+                    **common,
+                },
+            }
+
+        if tile_object.type == 'minigame_lines_collectible':
+            type_map = {
+                'minigame_lines_collectible': {
+                    **common,
+                    'player_teleports_to_grid_x': tile_object.properties['player_teleports_to_grid_x'],
+                    'player_teleports_to_grid_y': tile_object.properties['player_teleports_to_grid_y'],
+                },
+            }
+
+        if tile_object.type == 'minigame_lines_player':
+            type_map = {
+                'minigame_lines_player': {
                     **common,
                 },
             }
