@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="21" height="12" tilewidth="16" tileheight="16" infinite="0" nextlayerid="13" nextobjectid="199">
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="21" height="12" tilewidth="16" tileheight="16" infinite="0" nextlayerid="13" nextobjectid="203">
  <properties>
   <property name="display_name" value="Learning To Walk"/>
   <property name="next_level" value="./data/levels/tmx/L03-Pushing.tmx"/>
@@ -153,15 +153,15 @@
  <layer id="12" name="above" width="21" height="12">
   <data encoding="csv">
 94,96,96,96,96,96,96,96,80,96,81,96,81,96,96,96,96,96,96,96,94,
-95,0,0,0,0,0,0,0,0,0,0,0,0,0,0,23,23,0,0,0,95,
-95,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,23,0,0,0,95,
-95,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,23,0,0,0,95,
-95,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,23,0,0,0,95,
-95,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,23,0,0,0,95,
-95,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,23,0,0,0,95,
-95,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,23,0,0,0,95,
-95,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,23,0,0,0,95,
-95,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,23,0,0,0,95,
+95,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,95,
+95,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,95,
+95,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,95,
+95,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,95,
+95,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,95,
+95,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,95,
+95,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,95,
+95,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,95,
+95,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,95,
 95,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,95,
 94,96,96,96,96,96,96,96,96,96,96,96,96,96,96,96,96,96,96,96,94
 </data>
@@ -171,5 +171,9 @@
   <object id="196" name="collectible" type="minigame-hunt-collectible" gid="101" x="64" y="96" width="16" height="16"/>
   <object id="197" name="collectible" type="minigame-hunt-collectible" gid="101" x="96" y="128" width="16" height="16"/>
   <object id="198" name="collectible" type="minigame-hunt-collectible" gid="101" x="192" y="64" width="16" height="16"/>
+  <object id="199" type="deadly_area" x="0" y="0" width="16" height="192"/>
+  <object id="200" type="deadly_area" x="0" y="0" width="336" height="16"/>
+  <object id="201" type="deadly_area" x="16" y="176" width="320" height="16"/>
+  <object id="202" type="deadly_area" x="320" y="0" width="16" height="192"/>
  </objectgroup>
 </map>

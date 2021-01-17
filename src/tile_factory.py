@@ -20,6 +20,7 @@ from src.game_object.particle_emitter import ParticleEmitter
 from src.game_object.moving_platform import MovingPlatform
 from src.game_object.moving_laser import MovingLaser
 from src.game_object.computer_terminal import ComputerTerminal
+from src.game_object.deadly_area import DeadlyArea
 
 from src.game_object.minigame.hunt.player import Player
 from src.game_object.minigame.hunt.collectible import Collectible
@@ -68,6 +69,7 @@ class TileFactory():
             # Hunt minigame
             'minigame-hunt-player': Player,
             'minigame-hunt-collectible': Collectible,
+            'deadly_area': DeadlyArea,
         }
 
         return tile_map[tile_type](**kwargs)

@@ -369,6 +369,13 @@ class TiledMap():
                 },
             }
 
+        if tile_object.type == 'deadly_area':
+            type_map = {
+                'deadly_area': {
+                    **common,
+                },
+            }
+
         if tile_object.type == 'computer_terminal':
             type_map = {
                 'computer_terminal': {

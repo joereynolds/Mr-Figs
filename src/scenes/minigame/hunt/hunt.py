@@ -9,6 +9,7 @@ from src.resolution_asset_sizer import ResolutionAssetSizer
 from src.game_object.minigame.hunt.player import Player
 from src.game_object.minigame.hunt.collectible import Collectible
 from src.tiled_map import TiledMap
+from src.game_object.deadly_area import DeadlyArea
 
 class Hunt(scene_base.SceneBase):
     """The Hunt minigame...pretty much snake"""
@@ -20,6 +21,8 @@ class Hunt(scene_base.SceneBase):
         self.tiled_map = TiledMap(self.file, self.surface)
         self.sprites = self.tiled_map.sprites
         self.player = self.get_player()
+        self.collectibles = pygame.sprite.Group([sprite for sprite in self.sprites if isinstance(sprite, Collectible)])
+        self.collideables = pygame.sprite.Group([sprite for sprite in self.sprites if isinstance(sprite, DeadlyArea)])
 
         scene_base.SceneBase.__init__(
             self, 
@@ -32,10 +35,7 @@ class Hunt(scene_base.SceneBase):
 
     def update(self, delta_time):
         self.sprites.update(delta_time, self.tiled_map)
-
-        for sprite in self.sprites:
-            if hasattr(sprite, 'handle_collision'):
-                sprite.handle_collision(self.player)
+        self.player.handle_collision(self.collectibles, self.collideables)
 
         if not self.player.alive():
             self.reset()
@@ -44,7 +44,6 @@ class Hunt(scene_base.SceneBase):
             self.switch_to_scene(self.previous)
         elif self.has_won():
             self.next_stage()
-
 
     def has_won(self):
         has_no_enemies = True

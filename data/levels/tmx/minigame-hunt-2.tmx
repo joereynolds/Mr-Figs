@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="21" height="12" tilewidth="16" tileheight="16" infinite="0" nextlayerid="13" nextobjectid="202">
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="21" height="12" tilewidth="16" tileheight="16" infinite="0" nextlayerid="13" nextobjectid="206">
  <properties>
   <property name="display_name" value="Learning To Walk"/>
   <property name="next_level" value="./data/levels/tmx/L03-Pushing.tmx"/>
@@ -174,5 +174,9 @@
   <object id="199" name="collectible" type="minigame-hunt-collectible" gid="101" x="80" y="64" width="16" height="16"/>
   <object id="200" name="collectible" type="minigame-hunt-collectible" gid="101" x="128" y="32" width="16" height="16"/>
   <object id="201" name="collectible" type="minigame-hunt-collectible" gid="101" x="16" y="32" width="16" height="16"/>
+  <object id="202" type="deadly_area" x="0" y="0" width="16" height="192"/>
+  <object id="203" type="deadly_area" x="0" y="0" width="336" height="16"/>
+  <object id="204" type="deadly_area" x="320" y="0" width="16" height="192"/>
+  <object id="205" type="deadly_area" x="0" y="176" width="336" height="16"/>
  </objectgroup>
 </map>
