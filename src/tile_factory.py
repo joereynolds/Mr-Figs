@@ -2,6 +2,7 @@ from src.game_object.triggerable import Triggerable
 from src.game_object.barrel import Barrel
 from src.game_object.scene_switching_tile import SceneSwitchingTile
 from src.game_object.torch import Torch
+from src.game_object.door import Door
 from src.game_object.moveable_tile import MoveableTile
 from src.game_object.destructible_tile import Destructible
 from src.game_object.switch_tile import Switch
@@ -65,6 +66,7 @@ class TileFactory():
             'laser_up': MovingLaser,
             'laser_right': MovingLaser,
             'computer_terminal': ComputerTerminal,
+            'door': Door,
 
             # Hunt minigame
             'minigame-hunt-player': Player,

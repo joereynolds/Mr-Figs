@@ -369,6 +369,13 @@ class TiledMap():
                 },
             }
 
+
+        if tile_object.type == 'door':
+            type_map = {
+                'door': {
+                    **common,
+                },
+            }
         if tile_object.type == 'deadly_area':
             type_map = {
                 'deadly_area': {
@@ -380,9 +387,12 @@ class TiledMap():
             type_map = {
                 'computer_terminal': {
                     **common, 
-                    'minigame': tile_object.properties.get('minigame', './data/levels/tmx/minigame-hunt')
+                    'minigame': tile_object.properties.get('minigame', './data/levels/tmx/minigame-hunt'),
+                    'state': 0,
+                    'triggers': triggers,
                 },
             }
+
         if tile_object.type == 'minigame-hunt-player':
             type_map = {
                 'minigame-hunt-player': {

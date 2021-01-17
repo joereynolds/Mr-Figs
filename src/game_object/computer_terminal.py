@@ -1,14 +1,21 @@
-import src.entity as entity
+from src.entity import Entity
 import src.static_scenes
 import src.colours as colours
 import src.graphics as graphics
+from src.game_object.switch_tile import Switch
 
-class ComputerTerminal(entity.Entity):
-    def __init__(self, x, y, width, height, minigame, image=None):
-        entity.Entity.__init__(self, x, y, width, height, image)
+class ComputerTerminal(Entity):
+    def __init__(self, x, y, width, height, minigame, state, triggers, image=None):
+
+        self.images = [
+            graphics.subsurf(graphics.grid(2, 10)),
+            graphics.subsurf(graphics.grid(1, 10)),
+        ]
+        Entity.__init__(self, x, y, width, height, image, )
         self.minigame = minigame
         self.image = graphics.subsurf(graphics.grid(2, 10))
         self.broken_image = graphics.subsurf(graphics.grid(1, 10))
+        self.state = 0
 
     def handle_collision(self, tile, player, level):
         if player.destination[0] == self.rect.x and player.destination[1] == self.rect.y:

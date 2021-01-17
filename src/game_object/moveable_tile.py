@@ -5,6 +5,7 @@ import src.colours
 
 
 from src.game_object.triggerable import Triggerable
+from src.game_object.door import Door
 from src.game_object.solid_tile import SolidTile
 from src.game_object.scene_switching_tile import SceneSwitchingTile
 from src.game_object.bomb import Bomb
@@ -27,8 +28,12 @@ class MoveableTile(SolidTile):
 
             for target_tile in target_tiles:
                 # Don't go through lasers if they're on
-                # TODO - This should rely on teh state attribute instead of solid
+                # TODO - This should rely on the state attribute instead of solid
                 if isinstance(target_tile, Triggerable) and target_tile.solid:
+                    return
+
+                # Don't go through doors if they're closed 
+                if isinstance(target_tile, Door) and not target_tile.open:
                     return
 
                 if isinstance(target_tile, self.disallowed_tiles):

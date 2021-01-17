@@ -3,6 +3,7 @@ from src.scenes.text_overlay import TextOverlay
 from src.scenes.startmenu import StartMenu
 from src.tiled_map import TiledMap
 from src.game_object.video_tape import VideoTape
+from src.game_object.door import Door
 import src.logger as logger
 import src.scenes.scenebase as scene_base
 import src.renderers.level_renderer as renderers
@@ -59,6 +60,14 @@ class Level(scene_base.SceneBase):
         if self.game_saver.has_video_for_level(self.file):
             tape = self.tiled_level.get_video_tape(self.tiled_level.sprites)
             self.tiled_level.sprites.remove(tape)
+
+    def open_secured_door(self):
+        """Opens the door after completing the minigame.
+        The minigame is sort of black boxed so is difficult to get its state
+        so we have the minigame tell the level when it's done (by calling this)"""
+        for sprite in self.sprites:
+            if isinstance(sprite, Door):
+                sprite.open_door()
 
     def check_player_hasnt_died_a_horrible_death(self, dt):
         """If the player has been destroyed, restart the level"""

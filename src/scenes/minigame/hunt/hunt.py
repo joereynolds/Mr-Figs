@@ -41,6 +41,7 @@ class Hunt(scene_base.SceneBase):
             self.reset()
 
         if self.has_completed_minigame():
+            self.previous.open_secured_door()
             self.switch_to_scene(self.previous)
         elif self.has_won():
             self.next_stage()
