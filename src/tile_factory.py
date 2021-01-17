@@ -23,8 +23,8 @@ from src.game_object.moving_laser import MovingLaser
 from src.game_object.computer_terminal import ComputerTerminal
 from src.game_object.deadly_area import DeadlyArea
 
-from src.game_object.minigame.hunt.player import Player
-from src.game_object.minigame.hunt.collectible import Collectible
+from src.minigames.hunt.player import Player
+from src.minigames.hunt.collectible import Collectible
 
 
 class TileFactory():
