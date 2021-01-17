@@ -3,6 +3,7 @@ from src.scenes.text_overlay import TextOverlay
 from src.scenes.startmenu import StartMenu
 from src.tiled_map import TiledMap
 from src.game_object.video_tape import VideoTape
+from src.game_object.door import Door
 import src.logger as logger
 import src.scenes.scenebase as scene_base
 import src.renderers.level_renderer as renderers
@@ -10,6 +11,8 @@ import src.input_handlers.global_input_handler as input_handler
 from src.collision_handlers.polling_collision_handler import PollingCollisionHandler
 from src.collision_handlers.turn_based_collision_handler import TurnBasedCollisionHandler
 from src.user_data import UserData
+
+from src.scenes.minigame.hunt.hunt import Hunt
 
 
 class Level(scene_base.SceneBase):
@@ -58,6 +61,14 @@ class Level(scene_base.SceneBase):
             tape = self.tiled_level.get_video_tape(self.tiled_level.sprites)
             self.tiled_level.sprites.remove(tape)
 
+    def open_secured_door(self):
+        """Opens the door after completing the minigame.
+        The minigame is sort of black boxed so is difficult to get its state
+        so we have the minigame tell the level when it's done (by calling this)"""
+        for sprite in self.sprites:
+            if isinstance(sprite, Door):
+                sprite.open_door()
+
     def check_player_hasnt_died_a_horrible_death(self, dt):
         """If the player has been destroyed, restart the level"""
         if self.player.is_dead(dt):
@@ -88,6 +99,7 @@ class Level(scene_base.SceneBase):
         next_scene, 
         start_menu=False, 
         video_tape_obj=False,
+        minigame=False,
         ):
         """Goes to the next scene. Note that SceneBase is
         sort of similar to a linked list in implementation.
@@ -105,6 +117,10 @@ class Level(scene_base.SceneBase):
         if start_menu:
             self.reset()
             self.next = StartMenu()
+        elif minigame:
+            # hardcoded minigame for now
+            scene = Hunt(next_scene, self)
+            self.next = scene
         elif video_tape_obj:
             self.next = TextOverlay(video_tape_obj.text, video_tape_obj.redirect_to)
         else: 

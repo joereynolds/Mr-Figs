@@ -10,6 +10,8 @@ class SceneBase():
         """self.next is a sort of 'pointer' to the next level.
         See the environment file for how levels are linked together.
         Essentially we have a linked list of levels.
+
+        self.previous is the scene we've just come from (if any)
         
         @input_handler = The input handler for processing input.
                          Each scene has a separate input handler,
@@ -20,6 +22,7 @@ class SceneBase():
                          The start menu has its own input handler
                          The escape menu has its own input handler
                          """
+        self.previous = None
         self.next = self
         self.surface = graphics.get_window_surface()
         self.input_handler = input_handler

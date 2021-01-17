@@ -369,6 +369,44 @@ class TiledMap():
                 },
             }
 
+
+        if tile_object.type == 'door':
+            type_map = {
+                'door': {
+                    **common,
+                },
+            }
+        if tile_object.type == 'deadly_area':
+            type_map = {
+                'deadly_area': {
+                    **common,
+                },
+            }
+
+        if tile_object.type == 'computer_terminal':
+            type_map = {
+                'computer_terminal': {
+                    **common, 
+                    'minigame': tile_object.properties.get('minigame', './data/levels/tmx/minigame-hunt'),
+                    'state': 0,
+                    'triggers': triggers,
+                },
+            }
+
+        if tile_object.type == 'minigame-hunt-player':
+            type_map = {
+                'minigame-hunt-player': {
+                    **common,
+                },
+            }
+
+        if tile_object.type == 'minigame-hunt-collectible':
+            type_map = {
+                'minigame-hunt-collectible': {
+                    **common,
+                },
+            }
+
         try:
             return factory.build(tile_object.type, **type_map[tile_object.type])
         except KeyError:
