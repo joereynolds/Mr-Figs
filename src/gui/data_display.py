@@ -21,13 +21,13 @@ class DataDisplay(Entity):
         self.font_size = self.asset_sizer.get_font_size(
             pygame.display.get_window_size()
         )
+        self.font = pygame.font.Font(config.font, self.font_size)
 
     def render(self, display_this=''):
         """Renders text at the default position of (0,0) or otherwise
         if a position is supplied.
         @position = Position for the text to be rendered (optional)
         """
-        font_object = pygame.font.Font(config.font, self.font_size)
-        rendered_text = font_object.render(self.text.text + str(display_this), False, colours.WHITE)
+        rendered_text = self.font.render(self.text.text + str(display_this), False, colours.WHITE)
         rendered_text_rect = rendered_text.get_rect(center=(self.width // 2, self.height // 2))
         self.surface.blit(rendered_text, rendered_text_rect)
