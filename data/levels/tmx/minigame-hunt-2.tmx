@@ -168,12 +168,11 @@
  </layer>
  <objectgroup id="4" name="objects">
   <object id="195" name="player" type="minigame-hunt-player" gid="100" x="32" y="144" width="16" height="16"/>
-  <object id="196" name="collectible" type="minigame-hunt-collectible" gid="101" x="64" y="96" width="16" height="16"/>
-  <object id="197" name="collectible" type="minigame-hunt-collectible" gid="101" x="96" y="128" width="16" height="16"/>
-  <object id="198" name="collectible" type="minigame-hunt-collectible" gid="101" x="192" y="64" width="16" height="16"/>
-  <object id="199" name="collectible" type="minigame-hunt-collectible" gid="101" x="80" y="64" width="16" height="16"/>
-  <object id="200" name="collectible" type="minigame-hunt-collectible" gid="101" x="128" y="32" width="16" height="16"/>
-  <object id="201" name="collectible" type="minigame-hunt-collectible" gid="101" x="16" y="32" width="16" height="16"/>
+  <object id="196" name="collectible" type="minigame-hunt-collectible" gid="101" x="80" y="128" width="16" height="16"/>
+  <object id="198" name="collectible" type="minigame-hunt-collectible" gid="101" x="272" y="128" width="16" height="16"/>
+  <object id="199" name="collectible" type="minigame-hunt-collectible" gid="101" x="176" y="112" width="16" height="16"/>
+  <object id="200" name="collectible" type="minigame-hunt-collectible" gid="101" x="240" y="64" width="16" height="16"/>
+  <object id="201" name="collectible" type="minigame-hunt-collectible" gid="101" x="96" y="64" width="16" height="16"/>
   <object id="202" type="deadly_area" x="0" y="0" width="16" height="192"/>
   <object id="203" type="deadly_area" x="0" y="0" width="336" height="16"/>
   <object id="204" type="deadly_area" x="320" y="0" width="16" height="192"/>

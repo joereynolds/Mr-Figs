@@ -168,9 +168,9 @@
  </layer>
  <objectgroup id="4" name="objects">
   <object id="195" name="player" type="minigame-hunt-player" gid="100" x="32" y="144" width="16" height="16"/>
-  <object id="196" name="collectible" type="minigame-hunt-collectible" gid="101" x="64" y="96" width="16" height="16"/>
-  <object id="197" name="collectible" type="minigame-hunt-collectible" gid="101" x="96" y="128" width="16" height="16"/>
-  <object id="198" name="collectible" type="minigame-hunt-collectible" gid="101" x="192" y="64" width="16" height="16"/>
+  <object id="196" name="collectible" type="minigame-hunt-collectible" gid="101" x="64" y="80" width="16" height="16"/>
+  <object id="197" name="collectible" type="minigame-hunt-collectible" gid="101" x="176" y="144" width="16" height="16"/>
+  <object id="198" name="collectible" type="minigame-hunt-collectible" gid="101" x="256" y="64" width="16" height="16"/>
   <object id="199" type="deadly_area" x="0" y="0" width="16" height="192"/>
   <object id="200" type="deadly_area" x="0" y="0" width="336" height="16"/>
   <object id="201" type="deadly_area" x="16" y="176" width="320" height="16"/>
