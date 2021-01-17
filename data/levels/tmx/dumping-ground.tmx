@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="25" height="18" tilewidth="16" tileheight="16" infinite="0" nextlayerid="12" nextobjectid="354">
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="25" height="18" tilewidth="16" tileheight="16" infinite="0" nextlayerid="12" nextobjectid="355">
  <properties>
   <property name="display_name" value="Learning To Walk"/>
   <property name="next_level" value="./data/levels/tmx/L03-Pushing.tmx"/>
@@ -384,7 +384,12 @@
   <object id="351" type="moveable_tile" gid="45" x="128" y="80" width="16" height="16"/>
   <object id="352" type="computer_terminal" gid="93" x="80" y="32" width="16" height="16">
    <properties>
-    <property name="minigame" value="./data/levels/tmx/minigame-hunt-1.tmx"/>
+    <property name="minigame" value="hunt"/>
+   </properties>
+  </object>
+  <object id="354" type="computer_terminal" gid="93" x="96" y="32" width="16" height="16">
+   <properties>
+    <property name="minigame" value="lines"/>
    </properties>
   </object>
  </objectgroup>

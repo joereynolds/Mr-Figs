@@ -3,20 +3,20 @@ import src.graphics as graphics
 import src.colours as colours
 import src.config as config
 import src.scenes.scenebase as scene_base
-from src.minigames.hunt.input_handler import InputHandler
+from src.minigames.lines.input_handler import InputHandler
 from src.gui.clickable import Clickable
 from src.resolution_asset_sizer import ResolutionAssetSizer
-from src.game_object.minigame.hunt.player import Player
-from src.game_object.minigame.hunt.collectible import Collectible
+from src.minigames.lines.player import Player
+from src.minigames.lines.collectible import Collectible
 from src.tiled_map import TiledMap
 from src.game_object.deadly_area import DeadlyArea
 
-class Hunt(scene_base.SceneBase):
-    """The Hunt minigame...pretty much snake"""
+class Lines(scene_base.SceneBase):
+    """The Lines minigame"""
 
-    def __init__(self, file, previous, current_stage=1):
+    def __init__(self, previous, current_stage=1):
         self.current_stage = current_stage
-        self.file = './data/levels/tmx/minigame-hunt-' + str(self.current_stage) + '.tmx'
+        self.file = './data/levels/tmx/minigame_lines_' + str(self.current_stage) + '.tmx'
         self.surface = graphics.get_window_surface()
         self.tiled_map = TiledMap(self.file, self.surface)
         self.sprites = self.tiled_map.sprites
@@ -64,11 +64,12 @@ class Hunt(scene_base.SceneBase):
     def get_player(self):
         for sprite in self.sprites:
             if isinstance(sprite, Player):
+                print(sprite)
                 return sprite
 
     def reset(self):
-        self.__init__(self.file, self.previous, self.current_stage)
+        self.__init__(self.previous, self.current_stage)
 
     def next_stage(self):
         self.current_stage += 1
-        self.__init__(self.file, self.previous, self.current_stage)
+        self.__init__(self.previous, self.current_stage)

@@ -11,8 +11,9 @@ import src.input_handlers.global_input_handler as input_handler
 from src.collision_handlers.polling_collision_handler import PollingCollisionHandler
 from src.collision_handlers.turn_based_collision_handler import TurnBasedCollisionHandler
 from src.user_data import UserData
+from src.minigame_factory import MinigameFactory
 
-from src.minigames.hunt.game import Hunt
+
 
 
 class Level(scene_base.SceneBase):
@@ -118,8 +119,9 @@ class Level(scene_base.SceneBase):
             self.reset()
             self.next = StartMenu()
         elif minigame:
-            # hardcoded minigame for now
-            scene = Hunt(next_scene, self)
+            minigame_factory = MinigameFactory()
+            # next_scene here is actually the name of the minigame; 'hunt'/'lines' etc...
+            scene = minigame_factory.build(next_scene, self)
             self.next = scene
         elif video_tape_obj:
             self.next = TextOverlay(video_tape_obj.text, video_tape_obj.redirect_to)

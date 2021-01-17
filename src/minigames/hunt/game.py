@@ -15,7 +15,7 @@ from src.minigames.hunt.collectible import Collectible
 class Hunt(scene_base.SceneBase):
     """The Hunt minigame...pretty much snake"""
 
-    def __init__(self, file, previous, current_stage=1):
+    def __init__(self, previous, current_stage=1):
         self.current_stage = current_stage
         self.file = './data/levels/tmx/minigame-hunt-' + str(self.current_stage) + '.tmx'
         self.surface = graphics.get_window_surface()
@@ -68,8 +68,8 @@ class Hunt(scene_base.SceneBase):
                 return sprite
 
     def reset(self):
-        self.__init__(self.file, self.previous, self.current_stage)
+        self.__init__(self.previous, self.current_stage)
 
     def next_stage(self):
         self.current_stage += 1
-        self.__init__(self.file, self.previous, self.current_stage)
+        self.__init__(self.previous, self.current_stage)
