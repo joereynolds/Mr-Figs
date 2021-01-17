@@ -20,6 +20,3 @@ class Entity(pygame.sprite.Sprite):
             return pygame.transform.scale(image, (int(width), int(height)))
         else:
             return pygame.Surface((width, height)).convert()
-
-class MoveableEntity(Entity):
-    pass

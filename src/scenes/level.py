@@ -110,7 +110,8 @@ class Level(scene_base.SceneBase):
             self.next = StartMenu()
         elif minigame:
             # hardcoded minigame for now
-            self.next = Hunt(next_scene)
+            scene = Hunt(next_scene, self)
+            self.next = scene
         elif video_tape_obj:
             self.next = TextOverlay(video_tape_obj.text, video_tape_obj.redirect_to)
         else: 
