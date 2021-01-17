@@ -3,7 +3,7 @@ import src.graphics as graphics
 import src.colours as colours
 import src.config as config
 import src.scenes.scenebase as scene_base
-from src.scenes.minigame.hunt.input_handler import InputHandler
+from src.minigames.hunt.input_handler import InputHandler
 from src.gui.clickable import Clickable
 from src.resolution_asset_sizer import ResolutionAssetSizer
 from src.game_object.minigame.hunt.player import Player

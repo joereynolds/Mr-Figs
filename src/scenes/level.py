@@ -12,7 +12,7 @@ from src.collision_handlers.polling_collision_handler import PollingCollisionHan
 from src.collision_handlers.turn_based_collision_handler import TurnBasedCollisionHandler
 from src.user_data import UserData
 
-from src.scenes.minigame.hunt.hunt import Hunt
+from src.minigames.hunt.hunt import Hunt
 
 
 class Level(scene_base.SceneBase):
