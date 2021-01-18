@@ -6,6 +6,7 @@ import src.scenes.scenebase as scene_base
 import src.input_handlers.escape_menu_input_handler as input_handler
 from src.gui.clickable import Clickable
 from src.gui.menu_items import MenuItems
+from src.resolution_asset_sizer import ResolutionAssetSizer
 
 class EscapeMenu(scene_base.SceneBase):
     """The menu that pops up during game when we press escape"""
@@ -21,10 +22,12 @@ class EscapeMenu(scene_base.SceneBase):
         self.width, self.height = pygame.display.get_window_size()
 
         self.surface = pygame.Surface((self.width // 2, self.height - 64)).convert_alpha()
+        asset_sizer = ResolutionAssetSizer()
 
+        size = pygame.display.get_window_size()
         button_x = self.surface.get_width() // 4
         button_width = self.surface.get_width() // 2
-        button_height = graphics.round_to_nearest_tile(self.height // graphics.tile_height * 1.5)
+        button_height = asset_sizer.get_button_height(size)
         button_offset = button_height
 
         items = {

@@ -26,7 +26,7 @@ class BombParticle(entity.Entity):
                     return
 
     def animate(self):
-        if self.last_image >= 5:
+        if self.last_image == len(graphics.sprites['explosion']['sprites']) - 1:
             return
 
         self.last_image += 1

@@ -83,7 +83,9 @@ class Actor(entity.Entity):
                 self.rect.x -= self.speed
                 self.moving = True
             elif target_x > self.rect.x:
-                self.speed = interpolate.decelerate(self.rect.x, target_x)
+                # TODO - this interpolation breaks on the new tileset
+                # definitely some maths error
+                # self.speed = interpolate.decelerate(self.rect.x, target_x)
                 self.rect.x += self.speed
                 self.moving = True
             elif target_y < self.rect.y:

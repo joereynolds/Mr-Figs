@@ -6,10 +6,10 @@ from src.input_handlers.keyboard_controller import KeyboardController
 import src.logger as logger
 
 BASE_RESOLUTION = (512, 288)
-ZOOM_LEVEL = 1.5
+ZOOM_LEVEL = 1.25
 
-tile_width = 16
-tile_height = 16
+tile_width = 32
+tile_height = 32
 
 def round_to_nearest_tile(x, base=tile_width):
     return base * round(x/base)
@@ -59,22 +59,21 @@ def subsurf(grid_pos):
 sprites = {
     'bomb'  : {
         'sprites' : [
-            subsurf(grid(0,4)),
-            subsurf(grid(1,4)),
-            subsurf(grid(2,4)),
-            subsurf(grid(3,4)),
-            subsurf(grid(4,4)),
-            subsurf(grid(5,4))
+            subsurf(grid(15,11)), # 5
+            subsurf(grid(14,11)), # 4 ...
+            subsurf(grid(13,11)),
+            subsurf(grid(12,11)),
+            subsurf(grid(11,11)), # 1
+            subsurf(grid(16,11)), # blank bomb 
         ]
     },
     'explosion' :{
         'sprites':[
-            subsurf(grid(0, 6)),
-            subsurf(grid(1, 6)),
-            subsurf(grid(2, 6)),
-            subsurf(grid(3, 6)),
-            subsurf(grid(4, 6)),
-            subsurf(grid(5, 6))
+            subsurf(grid(11, 12)),
+            subsurf(grid(12, 12)),
+            subsurf(grid(13, 12)),
+            subsurf(grid(14, 12)),
+            subsurf(grid(15, 12)),
         ]
     },
     'player': {
