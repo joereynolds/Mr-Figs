@@ -55,6 +55,7 @@ def subsurf(grid_pos):
 """A dictionary of sprites and their properties
     sprites = pygame surfaces of their location
 """
+spritesheet = pygame.image.load(config.spritesheet_location)
 # TODO - These should be moved into the class responsible for them
 sprites = {
     'bomb'  : {
@@ -88,16 +89,21 @@ sprites = {
         ]
     },
     'switch': {
-        'sprites': [subsurf(grid(6, 3)),
-                    subsurf(grid(7, 3))]
+        'sprites': [subsurf(grid(4, 3)),
+                    subsurf(grid(4, 4))]
+    },
+    'button': {
+        'sprites': [
+            spritesheet.subsurface(0 * 32, 9 * 32, tile_width * 3, tile_height) # normal button (not hovered or clicked)
+        ]
     },
     'pressure_plate': {
         'sprites': [
             # These are both the same surface for now
             # I don't have an image for a pressure_plate in the 'on'
             # position yet.
-            subsurf(grid(8, 5)),
-            subsurf(grid(8, 5)),
+            subsurf(grid(5, 3)),
+            subsurf(grid(5, 4)),
         ]
     }
 }
