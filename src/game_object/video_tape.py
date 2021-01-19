@@ -1,5 +1,6 @@
 import pygame
 
+import src.graphics as graphics
 import src.colours as colours
 from src.entity import Entity
 from pathlib import Path
@@ -28,8 +29,43 @@ class VideoTape(Entity):
         self.redirect_to = None
 
         self.minimap_colour = colours.WHITE
+        self.last_image = 0
+
+        self.frames = [
+            graphics.subsurf(graphics.grid(11, 14)),
+            graphics.subsurf(graphics.grid(12, 14)),
+            graphics.subsurf(graphics.grid(13, 14)),
+            graphics.subsurf(graphics.grid(14, 14)),
+            graphics.subsurf(graphics.grid(15, 14)),
+            graphics.subsurf(graphics.grid(16, 14)),
+            graphics.subsurf(graphics.grid(17, 14)),
+            graphics.subsurf(graphics.grid(18, 14)),
+        ]
+
+        self.timer = 0.125
 
     def handle_collision(self, tile, player, level):
         if player.destination[0] == self.rect.x and player.destination[1] == self.rect.y:
             level.renderer.display_video_tape_story(self)
             pygame.sprite.Sprite.kill(self)
+
+    def update(self, delta_time):
+        self.animate(delta_time)
+
+    def animate(self, delta_time):
+
+        self.timer -= delta_time
+
+        if self.timer <= 0:
+            if self.last_image >= len(self.frames) - 1:
+                self.last_image = 0
+
+            self.last_image += 1
+
+            self.image = self.frames[self.last_image]
+
+            self.timer = 0.125
+
+            print("yest")
+
+
