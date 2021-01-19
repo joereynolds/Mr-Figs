@@ -5,7 +5,7 @@ import src.colours as colours
 class Checkbox(Clickable):
 
     def __init__(self, x, y, width, height, state, name):
-        Clickable.__init__(self, x, y, width, height, '')
+        Clickable.__init__(self, x, y, width, height, string='')
         self.state = 0
         self.name = name
 

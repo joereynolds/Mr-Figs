@@ -11,6 +11,16 @@ ZOOM_LEVEL = 1.25
 tile_width = 32
 tile_height = 32
 
+spritesheet = pygame.image.load(config.spritesheet_location)
+button_image = spritesheet.subsurface(
+        0 * 32, 
+        9 * 32, 
+        tile_width * 3, 
+        tile_height)
+
+button_image = pygame.transform.scale(button_image, (32 * 24, 32 * 8))
+
+
 def round_to_nearest_tile(x, base=tile_width):
     return base * round(x/base)
 
@@ -34,6 +44,7 @@ def get_controller():
     return controller
 
 def get_window_surface():
+    # TODO - Apparently multiple calls to this are bad? Investigate.
     # return pygame.display.set_mode((800, 800))
     return pygame.display.set_mode((0, 0), pygame.NOFRAME)
 
@@ -55,7 +66,6 @@ def subsurf(grid_pos):
 """A dictionary of sprites and their properties
     sprites = pygame surfaces of their location
 """
-spritesheet = pygame.image.load(config.spritesheet_location)
 # TODO - These should be moved into the class responsible for them
 sprites = {
     'bomb'  : {
@@ -77,15 +87,12 @@ sprites = {
             subsurf(grid(15, 12)),
         ]
     },
-    'player': {
-        'sprites':[subsurf(grid(0,5))]
-    },
     'laser' : {
         'sprites': [
-            subsurf(grid(4, 1)),
-            subsurf(grid(5, 1)),
-            subsurf(grid(6, 1)),
-            subsurf(grid(7, 1))
+            subsurf(grid(6, 7)), # TODO - waiting on the off laser image to be added to spritesheet
+            subsurf(grid(6, 7)),
+            subsurf(grid(6, 7)),
+            subsurf(grid(6, 7))
         ]
     },
     'switch': {
@@ -97,13 +104,4 @@ sprites = {
             spritesheet.subsurface(0 * 32, 9 * 32, tile_width * 3, tile_height) # normal button (not hovered or clicked)
         ]
     },
-    'pressure_plate': {
-        'sprites': [
-            # These are both the same surface for now
-            # I don't have an image for a pressure_plate in the 'on'
-            # position yet.
-            subsurf(grid(5, 3)),
-            subsurf(grid(5, 4)),
-        ]
-    }
 }

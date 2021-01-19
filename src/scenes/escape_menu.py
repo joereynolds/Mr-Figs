@@ -33,29 +33,50 @@ class EscapeMenu(scene_base.SceneBase):
         items = {
             'continue': pygame.sprite.GroupSingle(
                 Clickable(
-                    button_x, button_offset, button_width, button_height, '[C]ontinue', True, name='continue'
+                    button_x, 
+                    button_offset, 
+                    button_width, 
+                    button_height, 
+                    string='[C]ontinue', 
+                    selected=True, 
+                    name='continue'
                 )
             ),
 
             'restart': pygame.sprite.GroupSingle(
                 Clickable(
-                    button_x, button_offset * 3, button_width, button_height, '[R]estart', name='restart'
+                    button_x, 
+                    button_offset * 3, 
+                    button_width, 
+                    button_height, 
+                    string='[R]estart', 
+                    name='restart'
                 )
             ),
 
             'quit_to_main': pygame.sprite.GroupSingle(
                 Clickable(
-                    button_x, button_offset * 5, button_width, button_height, '[Q]uit to main menu', name='main' # TODO - rename this title to [M]ain menu
+                    button_x, 
+                    button_offset * 5, 
+                    button_width, 
+                    button_height, 
+                    string='[Q]uit to main menu', 
+                    name='main' # TODO - rename this title to [M]ain menu
                 )
             ),
             'quit_to_desktop': pygame.sprite.GroupSingle(
                 Clickable(
-                    button_x, button_offset * 7, button_width, button_height, 'E[X]it game', name='quit'
+                    button_x, 
+                    button_offset * 7, 
+                    button_width, 
+                    button_height, 
+                    string='E[X]it game', 
+                    name='quit'
                 )
             )
         }
         self.menu_items = MenuItems(items)
-
+ 
     def toggle_visiblity(self):
         self.is_visible = not self.is_visible
 

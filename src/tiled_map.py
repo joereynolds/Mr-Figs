@@ -151,7 +151,6 @@ class TiledMap():
                     **common,
                     'state': state,
                     'triggers': triggers,
-                    'images': graphics.sprites['pressure_plate']['sprites']
                 },
             }
 
@@ -207,7 +206,6 @@ class TiledMap():
                     'direction': "right"
                 },
             }
-
 
         if tile_object.type == 'tile':
             type_map = {

@@ -2,6 +2,7 @@ import pygame
 import src.gui.text_element as text_element
 from src.resolution_asset_sizer import ResolutionAssetSizer
 import src.config as config
+import src.graphics as graphics
 
 
 class BaseComponent(pygame.sprite.Sprite):
@@ -12,6 +13,7 @@ class BaseComponent(pygame.sprite.Sprite):
             y, 
             width, 
             height, 
+            image=graphics.button_image,
             string='Default', 
             selected=False, 
             name="Default"
@@ -19,7 +21,7 @@ class BaseComponent(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.width = width
         self.height = height
-        self.image = pygame.Surface([self.width, self.height])
+        self.image = image
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
@@ -32,6 +34,35 @@ class BaseComponent(pygame.sprite.Sprite):
         self.name = name
         self.font = pygame.font.Font(config.font, self.font_size)
 
+        self.default_image = graphics.spritesheet.subsurface(
+            0 * graphics.tile_width, 
+            9 * graphics.tile_height, 
+            graphics.tile_width * 3, 
+            graphics.tile_height
+        )
+
+        # TODO - need more intelligent resizing here
+        self.default_image = pygame.transform.scale(
+            self.default_image,
+            (graphics.tile_width * 24, graphics.tile_height * 8)
+        )
+
+        self.selected_image = graphics.spritesheet.subsurface(
+            0 * graphics.tile_width, 
+            10 * graphics.tile_height, 
+            graphics.tile_width * 3, 
+            graphics.tile_height
+        )
+
+        self.selected_image = pygame.transform.scale(
+            self.selected_image,
+            (graphics.tile_width * 24, graphics.tile_height * 8)
+        )
+
+        self.default_image = self.default_image.convert_alpha()
+        self.selected_image = self.selected_image.convert_alpha()
+
+
     def on_selected(self, func, *args):
         """When we've selected the item, do these things"""
         func(*args)
@@ -40,8 +71,8 @@ class BaseComponent(pygame.sprite.Sprite):
         """A wrapper to encapsulate all rendering"""
 
         if self.selected:
-            self.image.fill((255,255,255))
-        else: self.image.fill((0,0,0))
+            self.image = self.selected_image
+        else: self.image = self.default_image
 
         self.render_text(position)
 

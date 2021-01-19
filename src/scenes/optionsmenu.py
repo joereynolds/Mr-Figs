@@ -55,7 +55,7 @@ class OptionsMenu(scene_base.SceneBase):
                     offset + (button_height * 1) + (spacing * 1), 
                     button_width, 
                     button_height, 
-                    '[C]LEAR GAME DATA', 
+                    string='[C]LEAR GAME DATA', 
                     name='clear_data')),
             'go_back': pygame.sprite.GroupSingle(
                 Clickable(
@@ -63,7 +63,7 @@ class OptionsMenu(scene_base.SceneBase):
                     offset + (button_height * 2) + (spacing * 2), 
                     button_width, 
                     button_height, 
-                    '[B]ACK', 
+                    string='[B]ACK', 
                     selected=True,
                     name='go_back'
                 )
