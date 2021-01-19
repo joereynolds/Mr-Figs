@@ -50,7 +50,7 @@ class Triggerable(entity.Entity):
 
     def handle_collision(self, tile, player, level):
         self.trigger()
-        if player.destination[0] == self.rect.x and player.destination[1] == self.rect.y and self.stateful.state == 0:
+        if player.destination[0] == self.rect.x and player.destination[1] + player.offset_y == self.rect.y and self.stateful.state == 0:
             pygame.sprite.Sprite.kill(player)
 
     def animate(self):

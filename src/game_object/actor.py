@@ -66,10 +66,10 @@ class Actor(entity.Entity):
 
         self.rect.y -= graphics.tile_height // 4
 
-        self.collide_rect = pygame.Rect(
-            (self.rect.x, self.rect.y + graphics.tile_height),
-            (graphics.tile_width, graphics.tile_height)
-        )
+        # We don't want the character exactly on the tile, this doesn't look as good so
+        # we offset the y position and then store that in here + our tiles height so we can
+        # correctly check for tiles underneath us
+        self.offset_y = (graphics.tile_height // 4) + graphics.tile_height # 40
 
         self.bombs = pygame.sprite.LayeredUpdates()
         self.move_stack = []
@@ -96,16 +96,10 @@ class Actor(entity.Entity):
         target_x = self.destination[0]
         target_y = self.destination[1]
 
-        self.set_collide_rect()
-
-        print('mouse', 
-                graphics.round_to_nearest_tile(pygame.mouse.get_pos()[0]) // 32, 
-                graphics.round_to_nearest_tile(pygame.mouse.get_pos()[1]) // 32)
-        print('collide_rect', self.collide_rect.x // 32, self.collide_rect.y // 32)
         #Stop moving if the next tile we're going to is a solid
         if (self.rect.x == target_x and self.rect.y == target_y) \
             or self.tiled_level.find_solid_tile(
-                self.tiled_level.get_tile_all_layers(target_x, target_y)
+                self.tiled_level.get_tile_all_layers(target_x, target_y + self.offset_y)
             ) :
             return
         else:
@@ -129,10 +123,6 @@ class Actor(entity.Entity):
         if self.rect.x == target_x and self.rect.y == target_y:
             self.moving = False
 
-    def set_collide_rect(self):
-        self.collide_rect.x = self.rect.x
-        self.collide_rect.y = self.rect.y + (graphics.tile_height * 4)
-
     def set_destination(self, x, y):
         """
         Set's the next destination that our sprite is going to be
@@ -145,9 +135,9 @@ class Actor(entity.Entity):
         destination to x:160 and y:320 but instead to x * 160 * 16 and y * 320 * 16
         AKA batshit nonsense.
         """
-        if self.is_valid_move(x, y):
-            self.destination[0] = self.rect.x + (x * self.distance)
-            self.destination[1] = self.rect.y + (y * self.distance)
+        # if self.is_valid_move(x, y):
+        self.destination[0] = self.rect.x + (x * self.distance)
+        self.destination[1] = self.rect.y + (y * self.distance)
 
     def is_valid_move(self, x, y):
         # TODO - This calculation is identical to the one in set_destination
@@ -180,6 +170,7 @@ class Actor(entity.Entity):
         """These events should only happen on a keypress. They do not need to be checked
            every frame"""
         directions = movement_vector.vector
+        self.tiled_level.sprites.change_layer(self, 1)
 
         if command in directions.keys():
             if not self.moving:
@@ -209,7 +200,7 @@ class Actor(entity.Entity):
 
             self.bombs.add(Bomb(
                 self.rect.x,
-                self.rect.y,
+                self.rect.y + self.offset_y,
                 graphics.tile_width,
                 graphics.tile_height,
                 self.tiled_level,

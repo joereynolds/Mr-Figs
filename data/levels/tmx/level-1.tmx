@@ -59,7 +59,6 @@
   <object id="47" type="pressure_plate" gid="120" x="192" y="256" width="32" height="32"/>
   <object id="34" type="tile" gid="129" x="480" y="64" width="32" height="32"/>
   <object id="35" type="tile" gid="17" x="480" y="32" width="32" height="32"/>
-  <object id="42" type="actor" gid="495" x="32" y="64" width="32" height="32"/>
   <object id="43" type="moveable_tile" gid="116" x="256" y="96" width="32" height="32"/>
   <object id="44" type="destructible" gid="117" x="384" y="64" width="32" height="32"/>
   <object id="46" type="switch" gid="119" x="384" y="192" width="32" height="32">
@@ -82,5 +81,6 @@
     <property name="triggered_id" type="int" value="1"/>
    </properties>
   </object>
+  <object id="42" type="actor" gid="495" x="32" y="64" width="32" height="32"/>
  </objectgroup>
 </map>

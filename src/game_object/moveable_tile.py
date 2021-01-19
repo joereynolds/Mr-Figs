@@ -20,7 +20,7 @@ class MoveableTile(SolidTile):
         self.disallowed_tiles = (SolidTile, Bomb, SceneSwitchingTile)
 
     def handle_collision(self, tile, player, level):
-        if player.destination[0] == self.rect.x and player.destination[1] == self.rect.y:
+        if player.destination[0] == self.rect.x and player.destination[1] + player.offset_y == self.rect.y:
             target_x = self.rect.x + (vector[player.direction][0] * graphics.tile_width)
             target_y = self.rect.y + (vector[player.direction][1] * graphics.tile_width)
 

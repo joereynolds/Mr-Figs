@@ -46,5 +46,5 @@ class PressurePlate(entity.Entity):
         for _tile in level.tiled_level.sprites:
             if isinstance(_tile, (MoveableTile, Bomb)) and pygame.sprite.collide_rect(self, _tile):
                 self.turn_on()
-        if pygame.sprite.collide_rect(player, self):
+        if player.destination[0] == self.rect.x and player.destination[1] + player.offset_y == self.rect.y:
             self.turn_on()

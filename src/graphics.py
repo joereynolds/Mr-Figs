@@ -6,7 +6,7 @@ from src.input_handlers.keyboard_controller import KeyboardController
 import src.logger as logger
 
 BASE_RESOLUTION = (512, 288)
-ZOOM_LEVEL = 1
+ZOOM_LEVEL = 1.25
 
 tile_width = 32
 tile_height = 32
@@ -45,8 +45,8 @@ def get_controller():
 
 def get_window_surface():
     # TODO - Apparently multiple calls to this are bad? Investigate.
-    return pygame.display.set_mode((800, 800))
-    return pygame.display.set_mode((800, 800))
+    # return pygame.display.set_mode((800, 800))
+    # return pygame.display.set_mode((800, 800))
     return pygame.display.set_mode((0, 0), pygame.NOFRAME)
 
 def grid(x: int, y: int):
