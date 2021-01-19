@@ -56,6 +56,14 @@ class Actor(entity.Entity):
         self.speed = graphics.tile_width // 2
         self.distance = graphics.tile_width
         self.tiled_level = level
+
+        self.image = graphics.spritesheet.subsurface(
+                0 * graphics.tile_width, 
+                12 * graphics.tile_height, 
+                graphics.tile_width, 
+                graphics.tile_height * 2
+        ) 
+
         self.bombs = pygame.sprite.LayeredUpdates()
         self.move_stack = []
         self.destination = [self.rect.x, self.rect.y]
@@ -63,6 +71,15 @@ class Actor(entity.Entity):
         self.moving = False
         self.is_teleporting = False
         self.minimap_colour = colours.BLUE_HIGHLIGHT
+
+        self.frames = {
+            'up': [],
+            'down': [],
+            'left': [],
+            'right': [],
+            'space': [],
+            'nothing': []
+        }
 
     def move(self, delta_time):
         """Checks to see if we've reached the destination given, if we have,

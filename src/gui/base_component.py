@@ -67,23 +67,21 @@ class BaseComponent(pygame.sprite.Sprite):
         """When we've selected the item, do these things"""
         func(*args)
 
-    def render(self, position=False):
+    def render(self):
         """A wrapper to encapsulate all rendering"""
 
         if self.selected:
             self.image = self.selected_image
         else: self.image = self.default_image
 
-        self.render_text(position)
+        self.render_text()
 
-    def render_text(self, position=False, color=False):
+    def render_text(self, color=False):
         """Renders text at the default position of (0,0) or otherwise
         if a position is supplied.
         @position = Position for the text to be rendered (optional)
         """
-        self.text.position = (0, 0)
-        if position:
-            self.text.position = position
+        self.text.position = (0,0)
 
         if color:
             self.text.set_color(color)
