@@ -64,6 +64,13 @@ class Actor(entity.Entity):
                 graphics.tile_height * 2
         ) 
 
+        self.rect.y -= graphics.tile_height // 4
+
+        self.collide_rect = pygame.Rect(
+            (self.rect.x, self.rect.y + graphics.tile_height),
+            (graphics.tile_width, graphics.tile_height)
+        )
+
         self.bombs = pygame.sprite.LayeredUpdates()
         self.move_stack = []
         self.destination = [self.rect.x, self.rect.y]
@@ -89,6 +96,12 @@ class Actor(entity.Entity):
         target_x = self.destination[0]
         target_y = self.destination[1]
 
+        self.set_collide_rect()
+
+        print('mouse', 
+                graphics.round_to_nearest_tile(pygame.mouse.get_pos()[0]) // 32, 
+                graphics.round_to_nearest_tile(pygame.mouse.get_pos()[1]) // 32)
+        print('collide_rect', self.collide_rect.x // 32, self.collide_rect.y // 32)
         #Stop moving if the next tile we're going to is a solid
         if (self.rect.x == target_x and self.rect.y == target_y) \
             or self.tiled_level.find_solid_tile(
@@ -115,6 +128,10 @@ class Actor(entity.Entity):
         #If we have reached our destination, we're not moving anymore
         if self.rect.x == target_x and self.rect.y == target_y:
             self.moving = False
+
+    def set_collide_rect(self):
+        self.collide_rect.x = self.rect.x
+        self.collide_rect.y = self.rect.y + (graphics.tile_height * 4)
 
     def set_destination(self, x, y):
         """
