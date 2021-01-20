@@ -12,13 +12,6 @@ tile_width = 32
 tile_height = 32
 
 spritesheet = pygame.image.load(config.spritesheet_location)
-button_image = spritesheet.subsurface(
-        0 * 32, 
-        9 * 32, 
-        tile_width * 3, 
-        tile_height)
-
-button_image = pygame.transform.scale(button_image, (32 * 24, 32 * 8))
 
 
 def round_to_nearest_tile(x, base=tile_width):

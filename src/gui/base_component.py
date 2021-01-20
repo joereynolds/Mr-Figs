@@ -2,7 +2,8 @@ import pygame
 import src.gui.text_element as text_element
 from src.resolution_asset_sizer import ResolutionAssetSizer
 import src.config as config
-import src.graphics as graphics
+import src.graphics as g
+
 
 
 class BaseComponent(pygame.sprite.Sprite):
@@ -13,7 +14,7 @@ class BaseComponent(pygame.sprite.Sprite):
             y, 
             width, 
             height, 
-            image=graphics.button_image,
+            image=None,
             string='Default', 
             selected=False, 
             name="Default"
@@ -21,7 +22,36 @@ class BaseComponent(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.width = width
         self.height = height
-        self.image = image
+
+        self.image = g.spritesheet.subsurface(
+                0 * 32, 
+                9 * 32, 
+                g.tile_width * 3, 
+                g.tile_height
+        )
+
+        self.default_image = g.spritesheet.subsurface(
+            0 * g.tile_width, 
+            9 * g.tile_height, 
+            g.tile_width * 3, 
+            g.tile_height
+        )
+
+        self.selected_image = g.spritesheet.subsurface(
+            0 * g.tile_width, 
+            10 * g.tile_height, 
+            g.tile_width * 3, 
+            g.tile_height
+        )
+
+        # TODO - need more intelligent resizing here
+        self.default_image = pygame.transform.scale(self.default_image, (g.tile_width * 24, g.tile_height * 8))
+        self.image = pygame.transform.scale(self.image, (g.tile_width * 24, g.tile_height * 8))
+        self.selected_image = pygame.transform.scale(self.selected_image, (g.tile_width * 24, g.tile_height * 8))
+
+        self.default_image = self.default_image.convert_alpha()
+        self.selected_image = self.selected_image.convert_alpha()
+
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
@@ -34,33 +64,6 @@ class BaseComponent(pygame.sprite.Sprite):
         self.name = name
         self.font = pygame.font.Font(config.font, self.font_size)
 
-        self.default_image = graphics.spritesheet.subsurface(
-            0 * graphics.tile_width, 
-            9 * graphics.tile_height, 
-            graphics.tile_width * 3, 
-            graphics.tile_height
-        )
-
-        # TODO - need more intelligent resizing here
-        self.default_image = pygame.transform.scale(
-            self.default_image,
-            (graphics.tile_width * 24, graphics.tile_height * 8)
-        )
-
-        self.selected_image = graphics.spritesheet.subsurface(
-            0 * graphics.tile_width, 
-            10 * graphics.tile_height, 
-            graphics.tile_width * 3, 
-            graphics.tile_height
-        )
-
-        self.selected_image = pygame.transform.scale(
-            self.selected_image,
-            (graphics.tile_width * 24, graphics.tile_height * 8)
-        )
-
-        self.default_image = self.default_image.convert_alpha()
-        self.selected_image = self.selected_image.convert_alpha()
 
 
     def on_selected(self, func, *args):
