@@ -1,1 +1,1 @@
-{"settings": {"music": false}, "last_played_level": "data/levels/tmx/level-1.tmx", "has_seen_introduction": true}
+{"settings": {"music": false}, "last_played_level": "./data/levels/tmx/level-2.tmx", "has_seen_introduction": true, "data/levels/tmx/level-1.tmx": {"completed_level": true}, "./data/levels/tmx/level-2.tmx": {"completed_level": true}}

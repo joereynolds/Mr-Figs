@@ -27,7 +27,7 @@
  <objectgroup id="2" name="objects">
   <object id="1" type="scene_switching_tile" gid="269" x="448" y="64" width="32" height="32">
    <properties>
-    <property name="scene" value="todo"/>
+    <property name="scene" value="./data/levels/tmx/level-2.tmx"/>
    </properties>
   </object>
   <object id="3" type="tile" gid="244" x="160" y="32" width="32" height="32"/>
