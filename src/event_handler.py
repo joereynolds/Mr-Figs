@@ -17,7 +17,6 @@ class EventHandler():
 
     events_map = {
         pygame.USEREVENT: events.call_bomb_events,
-        pygame.USEREVENT + 1: events.animate_particles,
         pygame.USEREVENT + 2: events.animate_lasers,
     }
 
@@ -30,7 +29,6 @@ class EventHandler():
 
         self.events = [
             (pygame.USEREVENT, 500, 'bomb animation and sound effects'),
-            (pygame.USEREVENT + 1, 100, 'particle animation'),
             (pygame.USEREVENT + 2, 100, 'laser animation'),
         ]
 
