@@ -5,7 +5,7 @@ from src.game_object.triggerable import Triggerable
 from src.game_object.bomb import Bomb
 import src.colours as colours
 import src.entity as entity
-import src.graphics as graphics
+import src.graphics as g
 import src.movement_vector as movement_vector
 import src.interpolate as interpolate
 from src.collision_handlers.turn_based_collision_handler import TurnBasedCollisionHandler
@@ -53,39 +53,117 @@ class Actor(entity.Entity):
 
         self.remaining_bombs = int(remaining_bombs)
         self.direction = 'down'
-        self.speed = graphics.tile_width // 2
-        self.distance = graphics.tile_width
+        self.speed = 2
+        self.distance = g.tile_width
         self.tiled_level = level
 
-        self.image = graphics.spritesheet.subsurface(
-                0 * graphics.tile_width, 
-                12 * graphics.tile_height, 
-                graphics.tile_width, 
-                graphics.tile_height * 2
+        self.image = g.spritesheet.subsurface(
+                0 * g.tile_width, 
+                12 * g.tile_height, 
+                g.tile_width, 
+                g.tile_height * 2
         ) 
 
-        self.rect.y -= graphics.tile_height // 4
+        self.rect.y -= g.tile_height // 4
 
         # We don't want the character exactly on the tile, this doesn't look as good so
         # we offset the y position and then store that in here + our tiles height so we can
         # correctly check for tiles underneath us
-        self.offset_y = (graphics.tile_height // 4) + graphics.tile_height # 40
+        self.offset_y = (g.tile_height // 4) + g.tile_height # 40
 
         self.bombs = pygame.sprite.LayeredUpdates()
         self.move_stack = []
         self.destination = [self.rect.x, self.rect.y]
-        self.valid_destinations = [graphics.tile_width * x for x in range(-100, 100)]
+        self.valid_destinations = [g.tile_width * x for x in range(-100, 100)]
         self.moving = False
         self.is_teleporting = False
         self.minimap_colour = colours.BLUE_HIGHLIGHT
 
+        self.animation_timer = 0.500
+        self.frame_index = 0
+
+        # True is Walking, false is idle
         self.frames = {
-            'up': [],
-            'down': [],
-            'left': [],
-            'right': [],
-            'space': [],
-            'nothing': []
+            'up': {
+                True: [
+                    g.spritesheet.subsurface(0 * g.tile_width, 34 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(1 * g.tile_width, 34 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(2 * g.tile_width, 34 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(3 * g.tile_width, 34 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(4 * g.tile_width, 34 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(5 * g.tile_width, 34 * g.tile_height, g.tile_width, g.tile_height * 2),
+                ],
+                False: [
+                    g.spritesheet.subsurface(0 * g.tile_width, 16 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(1 * g.tile_width, 16 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(2 * g.tile_width, 16 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(3 * g.tile_width, 16 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(4 * g.tile_width, 16 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(5 * g.tile_width, 16 * g.tile_height, g.tile_width, g.tile_height * 2),
+                ]
+            },
+            'down': {
+                True: [
+                    g.spritesheet.subsurface(0 * g.tile_width, 28 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(1 * g.tile_width, 28 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(2 * g.tile_width, 28 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(3 * g.tile_width, 28 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(4 * g.tile_width, 28 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(5 * g.tile_width, 28 * g.tile_height, g.tile_width, g.tile_height * 2),
+                ],
+                False: [
+                    g.spritesheet.subsurface(0 * g.tile_width, 12 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(1 * g.tile_width, 12 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(2 * g.tile_width, 12 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(3 * g.tile_width, 12 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(4 * g.tile_width, 12 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(5 * g.tile_width, 12 * g.tile_height, g.tile_width, g.tile_height * 2),
+                ]
+            },
+            'left': {
+                True: [
+                    g.spritesheet.subsurface(0 * g.tile_width, 32 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(1 * g.tile_width, 32 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(2 * g.tile_width, 32 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(3 * g.tile_width, 32 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(4 * g.tile_width, 32 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(5 * g.tile_width, 32 * g.tile_height, g.tile_width, g.tile_height * 2),
+                ],
+                False: [
+                    g.spritesheet.subsurface(0 * g.tile_width, 18 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(1 * g.tile_width, 18 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(2 * g.tile_width, 18 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(3 * g.tile_width, 18 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(4 * g.tile_width, 18 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(5 * g.tile_width, 18 * g.tile_height, g.tile_width, g.tile_height * 2),
+                ]
+            },
+            'right': {
+                True: [
+                    g.spritesheet.subsurface(0 * g.tile_width, 30 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(1 * g.tile_width, 30 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(2 * g.tile_width, 30 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(3 * g.tile_width, 30 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(4 * g.tile_width, 30 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(5 * g.tile_width, 30 * g.tile_height, g.tile_width, g.tile_height * 2),
+                ],
+                False: [
+                    g.spritesheet.subsurface(0 * g.tile_width, 14 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(1 * g.tile_width, 14 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(2 * g.tile_width, 14 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(3 * g.tile_width, 14 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(4 * g.tile_width, 14 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(5 * g.tile_width, 14 * g.tile_height, g.tile_width, g.tile_height * 2),
+                ]
+            },
+            'space': {
+                True: [],
+                False: []
+            },
+            'nothing': {
+                True: [],
+                False: []
+            },
         }
 
     def move(self, delta_time):
@@ -188,6 +266,7 @@ class Actor(entity.Entity):
         """These are actions that SHOULD be called every frame. Animation, collision checking etc..."""
         self.update_bomb_collection()
         self.move(delta_time)
+        self.animate(delta_time)
 
     def create_bomb(self):
         """Creates a bomb underneath the players position"""
@@ -201,11 +280,11 @@ class Actor(entity.Entity):
             self.bombs.add(Bomb(
                 self.rect.x,
                 self.rect.y + self.offset_y,
-                graphics.tile_width,
-                graphics.tile_height,
+                g.tile_width,
+                g.tile_height,
                 self.tiled_level,
                 5,
-                graphics.sprites['bomb']['sprites'][0]
+                g.sprites['bomb']['sprites'][0]
             ))
             self.remaining_bombs -= 1
 
@@ -215,8 +294,17 @@ class Actor(entity.Entity):
             self.animate_death(dt)
         return self not in self.tiled_level.sprites
 
-    def animate(self):
-        pass
+    def animate(self, delta_time):
+        self.animation_timer -= delta_time
+
+        if self.animation_timer <= 0:
+            if self.frame_index >= len(self.frames[self.direction][self.moving]) - 1:
+                self.frame_index = 0
+
+            self.frame_index += 1
+            self.image = self.frames[self.direction][self.moving][self.frame_index]
+
+            self.animation_timer = 0.250
 
     def animate_death(self, dt):
         print('death animation here')

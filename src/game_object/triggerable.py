@@ -1,9 +1,19 @@
 import pygame
 
 from src.game_object.solid_tile import SolidTile
-import src.graphics as graphics
+import src.graphics as g
 import src.entity as entity
 import src.colours
+
+# Keep it out of the class for performance reasons
+# we don't want to get subsurfaces everytime we
+# create a laser!
+sprites = [
+    g.subsurf(g.grid(4, 6)), # TODO - waiting on the off laser image to be added to spritesheet
+    g.subsurf(g.grid(4, 6)),
+    g.subsurf(g.grid(4, 6)),
+    g.subsurf(g.grid(4, 6))
+]
 
 class Triggerable(entity.Entity):
     """A Triggerable class is linked to the Switch or PressurePlate class. It takes a Switch/PressurePlate
@@ -23,11 +33,11 @@ class Triggerable(entity.Entity):
 
     def __init__(self,x, y, width, height, stateful, image, level, id=0):
         self.last_image = 0
-        self.image = graphics.sprites['laser']['sprites'][self.last_image]
+        self.image = sprites[self.last_image]
         entity.Entity.__init__(self, x, y, width, height, self.image)
         self.stateful = stateful
         self.triggered_id = id
-        self.images = graphics.sprites['laser']['sprites']
+        self.images = sprites
 
         self.minimap_colour = src.colours.RED
 
@@ -41,11 +51,12 @@ class Triggerable(entity.Entity):
         """To be called when our stateful tile is 'on'"""
         if self.stateful.state == 1:
             self.solid = False
-            self.image = self.images[0]
+            # self.image = self.images[0]
+            self.image.fill((255,0,0,50))
             self.minimap_colour = src.colours.BLUE_BASE
         if self.stateful.state == 0:
             self.solid = True
-            self.image = graphics.sprites['laser']['sprites'][self.last_image]
+            self.image = sprites[self.last_image]
             self.minimap_colour = src.colours.RED
 
     def handle_collision(self, tile, player, level):
@@ -67,5 +78,4 @@ class Triggerable(entity.Entity):
         else:
             self.last_image += 1
 
-
-        self.image = graphics.sprites['laser']['sprites'][self.last_image]
+        self.image = sprites[self.last_image]

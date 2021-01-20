@@ -45,7 +45,7 @@ class VideoTape(Entity):
         self.timer = 0.125
 
     def handle_collision(self, tile, player, level):
-        if player.destination[0] == self.rect.x and player.destination[1] == self.rect.y:
+        if player.destination[0] == self.rect.x and player.destination[1] + player.offset_y == self.rect.y:
             level.renderer.display_video_tape_story(self)
             pygame.sprite.Sprite.kill(self)
 
@@ -61,11 +61,7 @@ class VideoTape(Entity):
                 self.last_image = 0
 
             self.last_image += 1
-
             self.image = self.frames[self.last_image]
-
             self.timer = 0.125
-
-            print("yest")
 
 

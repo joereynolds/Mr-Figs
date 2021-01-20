@@ -153,7 +153,7 @@ class Bomb(Entity):
                         self.explode()
 
     def handle_collision(self, tile, player, level):
-        if player.destination[0] == self.rect.x and player.destination[1] == self.rect.y:
+        if player.destination[0] == self.rect.x and player.destination[1] + player.offset_y == self.rect.y:
             # Bit of a hack but if 5 is our max lifespan for a bomb then it's impossible to be
             # travelling to it and for it to have that lifespan since we would have moved
             # and decreased the bomb's lifespan
