@@ -75,8 +75,9 @@ class Actor(entity.Entity):
         self.move_stack = []
         self.destination = [self.rect.x, self.rect.y]
         self.valid_destinations = [g.tile_width * x for x in range(-100, 100)]
-        self.moving = False
-        self.is_teleporting = False
+        self.moving = False # Whether or not we are moving
+        self.is_teleporting = False # Whether or not we are being teleported by a portal
+        self.creating_bomb = False  # Whether or not we are at this moment, creating a bomb
         self.minimap_colour = colours.BLUE_HIGHLIGHT
 
         self.animation_timer = 0.500
@@ -100,6 +101,14 @@ class Actor(entity.Entity):
                     g.spritesheet.subsurface(3 * g.tile_width, 16 * g.tile_height, g.tile_width, g.tile_height * 2),
                     g.spritesheet.subsurface(4 * g.tile_width, 16 * g.tile_height, g.tile_width, g.tile_height * 2),
                     g.spritesheet.subsurface(5 * g.tile_width, 16 * g.tile_height, g.tile_width, g.tile_height * 2),
+                ],
+                'planting_bomb': [
+                    g.spritesheet.subsurface(0 * g.tile_width, 22 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(1 * g.tile_width, 22 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(2 * g.tile_width, 22 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(3 * g.tile_width, 22 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(4 * g.tile_width, 22 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(5 * g.tile_width, 22 * g.tile_height, g.tile_width, g.tile_height * 2),
                 ]
             },
             'down': {
@@ -118,6 +127,14 @@ class Actor(entity.Entity):
                     g.spritesheet.subsurface(3 * g.tile_width, 12 * g.tile_height, g.tile_width, g.tile_height * 2),
                     g.spritesheet.subsurface(4 * g.tile_width, 12 * g.tile_height, g.tile_width, g.tile_height * 2),
                     g.spritesheet.subsurface(5 * g.tile_width, 12 * g.tile_height, g.tile_width, g.tile_height * 2),
+                ],
+                'planting_bomb': [
+                    g.spritesheet.subsurface(0 * g.tile_width, 20 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(1 * g.tile_width, 20 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(2 * g.tile_width, 20 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(3 * g.tile_width, 20 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(4 * g.tile_width, 20 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(5 * g.tile_width, 20 * g.tile_height, g.tile_width, g.tile_height * 2),
                 ]
             },
             'left': {
@@ -136,6 +153,14 @@ class Actor(entity.Entity):
                     g.spritesheet.subsurface(3 * g.tile_width, 18 * g.tile_height, g.tile_width, g.tile_height * 2),
                     g.spritesheet.subsurface(4 * g.tile_width, 18 * g.tile_height, g.tile_width, g.tile_height * 2),
                     g.spritesheet.subsurface(5 * g.tile_width, 18 * g.tile_height, g.tile_width, g.tile_height * 2),
+                ],
+                'planting_bomb': [
+                    g.spritesheet.subsurface(0 * g.tile_width, 26 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(1 * g.tile_width, 26 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(2 * g.tile_width, 26 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(3 * g.tile_width, 26 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(4 * g.tile_width, 26 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(5 * g.tile_width, 26 * g.tile_height, g.tile_width, g.tile_height * 2),
                 ]
             },
             'right': {
@@ -154,15 +179,15 @@ class Actor(entity.Entity):
                     g.spritesheet.subsurface(3 * g.tile_width, 14 * g.tile_height, g.tile_width, g.tile_height * 2),
                     g.spritesheet.subsurface(4 * g.tile_width, 14 * g.tile_height, g.tile_width, g.tile_height * 2),
                     g.spritesheet.subsurface(5 * g.tile_width, 14 * g.tile_height, g.tile_width, g.tile_height * 2),
+                ],
+                'planting_bomb': [
+                    g.spritesheet.subsurface(0 * g.tile_width, 24 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(1 * g.tile_width, 24 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(2 * g.tile_width, 24 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(3 * g.tile_width, 24 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(4 * g.tile_width, 24 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(5 * g.tile_width, 24 * g.tile_height, g.tile_width, g.tile_height * 2),
                 ]
-            },
-            'space': {
-                True: [],
-                False: []
-            },
-            'nothing': {
-                True: [],
-                False: []
             },
         }
 
@@ -272,6 +297,7 @@ class Actor(entity.Entity):
         """Creates a bomb underneath the players position"""
         if self.remaining_bombs and not self.moving:
 
+            self.creating_bomb = True
             # Don't plant a bomb here if there's already one there
             for bomb in self.bombs:
                 if bomb.rect.x == self.rect.x and bomb.rect.y == self.rect.y:
@@ -298,13 +324,19 @@ class Actor(entity.Entity):
         self.animation_timer -= delta_time
 
         if self.animation_timer <= 0:
+
             if self.frame_index >= len(self.frames[self.direction][self.moving]) - 1:
                 self.frame_index = 0
 
             self.frame_index += 1
-            self.image = self.frames[self.direction][self.moving][self.frame_index]
+
+            if self.creating_bomb:
+                self.image = self.frames[self.direction]['planting_bomb'][self.frame_index]
+            else: self.image = self.frames[self.direction][self.moving][self.frame_index]
 
             self.animation_timer = 0.250
+
+            self.creating_bomb = False
 
     def animate_death(self, dt):
         print('death animation here')
