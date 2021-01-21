@@ -22,19 +22,23 @@ class EscapeMenu(scene_base.SceneBase):
         self.width, self.height = pygame.display.get_window_size()
 
         self.surface = pygame.Surface((self.width // 2, self.height - 64)).convert_alpha()
+        self.rect = self.surface.get_rect()
         asset_sizer = ResolutionAssetSizer()
 
         size = pygame.display.get_window_size()
-        button_x = self.surface.get_width() // 4
-        button_width = self.surface.get_width() // 2
-        button_height = asset_sizer.get_button_height(size)
-        button_offset = button_height
+        button_width, button_height = asset_sizer.get_button_size(size)
+        button_width *= 8
+        button_height *= 2
+
+        offset = button_height
+        bottom = self.rect.bottom
+        button_x = self.rect.left
 
         items = {
             'continue': pygame.sprite.GroupSingle(
                 Clickable(
                     button_x, 
-                    button_offset, 
+                    bottom - offset *4, 
                     button_width, 
                     button_height, 
                     string='[C]ontinue', 
@@ -46,7 +50,7 @@ class EscapeMenu(scene_base.SceneBase):
             'restart': pygame.sprite.GroupSingle(
                 Clickable(
                     button_x, 
-                    button_offset * 3, 
+                    bottom - offset * 3, 
                     button_width, 
                     button_height, 
                     string='[R]estart', 
@@ -57,7 +61,7 @@ class EscapeMenu(scene_base.SceneBase):
             'quit_to_main': pygame.sprite.GroupSingle(
                 Clickable(
                     button_x, 
-                    button_offset * 5, 
+                    bottom - offset * 2, 
                     button_width, 
                     button_height, 
                     string='[Q]uit to main menu', 
@@ -67,7 +71,7 @@ class EscapeMenu(scene_base.SceneBase):
             'quit_to_desktop': pygame.sprite.GroupSingle(
                 Clickable(
                     button_x, 
-                    button_offset * 7, 
+                    bottom - offset, 
                     button_width, 
                     button_height, 
                     string='E[X]it game', 

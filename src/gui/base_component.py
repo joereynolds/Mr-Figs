@@ -44,10 +44,9 @@ class BaseComponent(pygame.sprite.Sprite):
             g.tile_height
         )
 
-        # TODO - need more intelligent resizing here
-        self.default_image = pygame.transform.scale(self.default_image, (g.tile_width * 24, g.tile_height * 8))
-        self.image = pygame.transform.scale(self.image, (g.tile_width * 24, g.tile_height * 8))
-        self.selected_image = pygame.transform.scale(self.selected_image, (g.tile_width * 24, g.tile_height * 8))
+        self.default_image = pygame.transform.scale(self.default_image, (self.width, self.height))
+        self.image = pygame.transform.scale(self.image, (self.width, self.height))
+        self.selected_image = pygame.transform.scale(self.selected_image, (self.width, self.height))
 
         self.default_image = self.default_image.convert_alpha()
         self.selected_image = self.selected_image.convert_alpha()
@@ -63,8 +62,6 @@ class BaseComponent(pygame.sprite.Sprite):
         self.selected = selected
         self.name = name
         self.font = pygame.font.Font(config.font, self.font_size)
-
-
 
     def on_selected(self, func, *args):
         """When we've selected the item, do these things"""
@@ -84,7 +81,7 @@ class BaseComponent(pygame.sprite.Sprite):
         if a position is supplied.
         @position = Position for the text to be rendered (optional)
         """
-        self.text.position = (0,0)
+        self.text.position = (self.rect.x,0)
 
         if color:
             self.text.set_color(color)

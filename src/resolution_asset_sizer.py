@@ -3,20 +3,21 @@ import src.logger as logger
 
 class ResolutionAssetSizer():
 
-    def __init__(self):
-        self.available_resolutions = ((640, 480))
-
     def get_font_size(self, screen_size):
         return graphics.round_to_nearest_tile(screen_size[1] // graphics.tile_height)
 
-    def get_button_height(self, screen_size):
-        return graphics.round_to_nearest_tile(screen_size[1] // graphics.tile_height * 2)
+    def get_button_size(self, screen_size):
+        """
+        TODO - rename this method
+        Gets the scaled up size of a tile in pixels
+        """
+        width_ratio = 16
+        height_ratio = 9
 
-    def get_button_offset(self, screen_size):
-        return graphics.round_to_nearest_tile(screen_size[1] // graphics.tile_height * 2)
+        tile_width = screen_size[0] // width_ratio
+        tile_height = screen_size[1] // height_ratio
 
-    def get_button_spacing(self, screen_size):
-        return graphics.round_to_nearest_tile(screen_size[1] // graphics.tile_height * 2)
+        return tile_width, tile_height
 
     def get_minimap_sprite_size(self, screen_size):
 
