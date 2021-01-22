@@ -6,7 +6,7 @@
   <property name="player_bomb_count" value="9"/>
  </properties>
  <tileset firstgid="1" name="newtiledsheet" tilewidth="16" tileheight="16" tilecount="180" columns="9">
-  <image source="../../newtiledsheet.png" width="144" height="320"/>
+     <image source="../../images/newtiledsheet.png" width="144" height="320"/>
   <tile id="0">
    <properties>
     <property name="destructable" value=""/>

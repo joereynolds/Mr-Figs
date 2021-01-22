@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="16" height="16" tilewidth="32" tileheight="32" infinite="0" nextlayerid="3" nextobjectid="78">
+ <properties>
+  <property name="player_bomb_count" type="int" value="100"/>
+ </properties>
+ <tileset firstgid="1" source="mr-figs.tsx"/>
+ <layer id="1" name="background" width="16" height="16">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,229,229,229,0,0,305,0,0,0,0,0,0,0,0,0,
+0,267,0,305,305,0,305,0,0,0,0,0,0,0,0,0,
+0,0,0,0,305,305,305,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup id="2" name="objects">
+  <object id="1" type="scene_switching_tile" gid="269" x="224" y="64" width="32" height="32">
+   <properties>
+    <property name="scene" value="./data/levels/tmx/level-3.tmx"/>
+   </properties>
+  </object>
+  <object id="52" type="tile" gid="322" x="160" y="96" width="32" height="32"/>
+  <object id="53" type="tile" gid="318" x="224" y="160" width="32" height="32"/>
+  <object id="54" type="tile" gid="280" x="224" y="128" width="32" height="32"/>
+  <object id="55" type="tile" gid="280" x="224" y="96" width="32" height="32"/>
+  <object id="56" type="tile" gid="317" x="192" y="160" width="32" height="32"/>
+  <object id="57" type="tile" gid="317" x="160" y="160" width="32" height="32"/>
+  <object id="58" type="tile" gid="317" x="128" y="160" width="32" height="32"/>
+  <object id="59" type="tile" gid="316" x="96" y="160" width="32" height="32"/>
+  <object id="60" type="tile" gid="163" x="96" y="128" width="32" height="32"/>
+  <object id="61" type="tile" gid="201" x="64" y="128" width="32" height="32"/>
+  <object id="62" type="tile" gid="163" x="64" y="96" width="32" height="32"/>
+  <object id="63" type="tile" gid="202" x="32" y="128" width="32" height="32"/>
+  <object id="64" type="tile" gid="201" x="0" y="96" width="32" height="32"/>
+  <object id="65" type="tile" gid="49" x="0" y="64" width="32" height="32"/>
+  <object id="66" type="tile" gid="13" x="0" y="32" width="32" height="32"/>
+  <object id="67" type="tile" gid="14" x="32" y="32" width="32" height="32"/>
+  <object id="68" type="tile" gid="14" x="64" y="32" width="32" height="32"/>
+  <object id="70" type="tile" gid="242" x="224" y="32" width="32" height="32"/>
+  <object id="71" type="tile" gid="242" x="192" y="32" width="32" height="32"/>
+  <object id="42" type="actor" gid="495" x="32" y="64" width="32" height="32"/>
+  <object id="73" type="tile" gid="131" x="96" y="32" width="32" height="32"/>
+  <object id="74" type="tile" gid="202" x="128" y="64" width="32" height="32"/>
+  <object id="75" type="tile" gid="202" x="160" y="64" width="32" height="32"/>
+ </objectgroup>
+</map>

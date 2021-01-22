@@ -22,10 +22,9 @@ class OptionsMenu(scene_base.SceneBase):
         self.components = pygame.sprite.LayeredUpdates()
         asset_sizer = ResolutionAssetSizer()
         size = pygame.display.get_window_size()
-        self.image = pygame.image.load('./data/mr-figs-title-draft.png').convert()
+        self.image = pygame.image.load(config.image_dir + 'mr-figs-title-draft.png').convert()
         self.image = pygame.transform.scale(self.image, (size[0], size[1]))
         self.rect = self.image.get_rect()
-
 
         button_width, button_height = asset_sizer.get_button_size(size)
         button_width *= 8

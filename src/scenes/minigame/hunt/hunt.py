@@ -16,7 +16,7 @@ class Hunt(scene_base.SceneBase):
 
     def __init__(self, file, previous, current_stage=1):
         self.current_stage = current_stage
-        self.file = './data/levels/tmx/minigame-hunt-' + str(self.current_stage) + '.tmx'
+        self.file = './assets/levels/tmx/minigame-hunt-' + str(self.current_stage) + '.tmx'
         self.surface = graphics.get_window_surface()
         self.tiled_map = TiledMap(self.file, self.surface)
         self.sprites = self.tiled_map.sprites

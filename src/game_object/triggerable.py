@@ -44,7 +44,7 @@ class Triggerable(entity.Entity):
         self.reverse_animation = False
 
         # TODO - only play this when the state is on
-        # self.laser_hum_sound = pygame.mixer.Sound('./data/audio/fx/laser-hum.ogg')
+        # self.laser_hum_sound = pygame.mixer.Sound('./assets/audio/fx/laser-hum.ogg')
         # self.laser_hum_sound.play(-1)
 
     def trigger(self):

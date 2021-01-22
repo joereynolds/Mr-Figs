@@ -21,7 +21,7 @@ class StartMenu(scene_base.SceneBase):
         size = pygame.display.get_window_size()
         width = size[0]
         height = size[1]
-        self.image = pygame.image.load('./data/mr-figs-title-draft.png').convert()
+        self.image = pygame.image.load('./assets/images/mr-figs-title-draft.png').convert()
         self.image = pygame.transform.scale(self.image, (size[0], size[1]))
         self.rect = self.image.get_rect()
 
