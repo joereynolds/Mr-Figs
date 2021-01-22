@@ -15,8 +15,8 @@ class Bullet(Entity):
         self.screen_width, self.screen_height = pygame.display.get_window_size()
 
     def update(self, delta_time):
-        self.rect.x += self.speed * self.velocity[0]
-        self.rect.y += self.speed * self.velocity[1]
+        self.rect.x += (self.speed * self.velocity[0]) * delta_time
+        self.rect.y += (self.speed * self.velocity[1]) * delta_time
 
         if self.rect.x > self.screen_width:
             pygame.sprite.Sprite.kill(self)

@@ -4,7 +4,8 @@ class FadeOut():
     through to the component that requires fading
 
     Thanks to pyroller for implementation details:
-    https://github.com/iminurnamez/pyroller/edit/master/data/components/flair_pieces.py
+    repo: https://github.com/iminurnamez/pyroller/
+    file: flair_pieces.py
     """
 
     def __init__(self,surface, fade_speed=0.1):
