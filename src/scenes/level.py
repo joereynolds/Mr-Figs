@@ -51,7 +51,7 @@ class Level(scene_base.SceneBase):
         # If the player has collected the tape, remove it so they
         # can't collect again
         self.remove_video_tape()
-        self.game_saver.register_last_played_level(file);
+        self.game_saver.register_last_played_level(file)
 
         self.renderer = renderers.LevelRenderer(self)
         self.collision_handler = PollingCollisionHandler(self.player, self)
@@ -120,7 +120,7 @@ class Level(scene_base.SceneBase):
             self.next = StartMenu()
         elif minigame:
             minigame_factory = MinigameFactory()
-            # next_scene here is actually the name of the minigame; 'hunt'/'lines' etc...
+            # next_scene here is actually the name of the minigame: 'hunt'/'lines' etc...
             scene = minigame_factory.build(next_scene, self)
             self.next = scene
         elif video_tape_obj:

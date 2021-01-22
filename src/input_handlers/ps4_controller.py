@@ -33,6 +33,9 @@ class PS4Controller():
     def __init__(self, joystick):
         self.joystick = joystick
 
+    def get_name(self):
+        return PS4Controller.NAME
+
     def get_select_button_state(self):
         """Maps to the same button as the action button"""
         return self.joystick.get_button(0)

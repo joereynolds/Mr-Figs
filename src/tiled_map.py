@@ -387,7 +387,7 @@ class TiledMap():
             type_map = {
                 'computer_terminal': {
                     **common, 
-                    'minigame': tile_object.properties.get('minigame', './assets/levels/tmx/minigame-hunt'),
+                    'minigame': tile_object.properties['minigame'],
                     'state': 0,
                     'triggers': triggers,
                 },

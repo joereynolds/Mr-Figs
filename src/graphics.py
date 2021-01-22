@@ -21,6 +21,7 @@ def get_controller():
     pygame.joystick.init()
 
     controller = KeyboardController
+    # TODO - This can be moved to a controller_factory
     if pygame.joystick.get_count() > 0:
         joystick = pygame.joystick.Joystick(0)
         if joystick.get_name() == 'Xbox 360 Controller':

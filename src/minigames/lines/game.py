@@ -16,7 +16,7 @@ class Lines(scene_base.SceneBase):
 
     def __init__(self, previous, current_stage=1):
         self.current_stage = current_stage
-        self.file = './data/levels/tmx/minigame_lines_' + str(self.current_stage) + '.tmx'
+        self.file = './assets/game-data/levels/minigames/lines/minigame_lines_' + str(self.current_stage) + '.tmx'
         self.surface = graphics.get_window_surface()
         self.tiled_map = TiledMap(self.file, self.surface)
         self.sprites = self.tiled_map.sprites

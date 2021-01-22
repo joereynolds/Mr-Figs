@@ -18,7 +18,7 @@ class ComputerTerminal(Entity):
         self.state = 0
 
     def handle_collision(self, tile, player, level):
-        if player.destination[0] == self.rect.x and player.destination[1] == self.rect.y:
+        if player.destination[0] == self.rect.x and player.destination[1] + player.offset_y == self.rect.y:
             level.switch_to_scene(self.minigame, minigame=True);
             self.image = self.broken_image
 

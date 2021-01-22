@@ -1,6 +1,7 @@
 import pygame
 import os
 from src.gui.data_display import DataDisplay
+import src.colours as colours
 
 
 class TopBar():
@@ -32,5 +33,5 @@ class TopBar():
         )
 
     def render(self, game_surface):
-        self.surface.fill((255, 0, 0))
+        self.surface.fill(colours.YELLOW_JACKET)
         self.level_name_display.render()

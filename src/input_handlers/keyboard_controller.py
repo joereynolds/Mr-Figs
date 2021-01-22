@@ -2,6 +2,11 @@ import pygame
 
 class KeyboardController():
 
+    NAME = 'keyboard'
+
+    def get_name(self):
+        return KeyboardController.NAME
+
     def get_down_button_state():
         return pygame.K_DOWN
 

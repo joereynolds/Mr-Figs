@@ -83,9 +83,11 @@ class MovingPlatform(entity.Entity):
             Green is safe to go on. Red is not, if it's red and we 
             try and go on, we should die."""
             if self.rect.x % graphics.tile_width == 0 and self.rect.y % graphics.tile_height == 0:
-                self.image = self.safe_platform_image
+                self.image.fill((0,255,0))
+                # self.image = self.safe_platform_image
 
                 # Time to wait before moving again
                 self.timer = 50
             else:
-                self.image = self.unsafe_platform_image
+                self.image.fill((255,0,0))
+                # self.image = self.unsafe_platform_image

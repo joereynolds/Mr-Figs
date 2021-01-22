@@ -80,7 +80,7 @@ class Actor(entity.Entity):
         self.creating_bomb = False  # Whether or not we are at this moment, creating a bomb
         self.minimap_colour = colours.BLUE_HIGHLIGHT
 
-        self.animation_timer = 0.500
+        self.animation_timer = 0.125
         self.frame_index = 0
 
         # True is Walking, false is idle
@@ -109,6 +109,10 @@ class Actor(entity.Entity):
                     g.spritesheet.subsurface(3 * g.tile_width, 22 * g.tile_height, g.tile_width, g.tile_height * 2),
                     g.spritesheet.subsurface(4 * g.tile_width, 22 * g.tile_height, g.tile_width, g.tile_height * 2),
                     g.spritesheet.subsurface(5 * g.tile_width, 22 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(4 * g.tile_width, 22 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(3 * g.tile_width, 22 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(2 * g.tile_width, 22 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(1 * g.tile_width, 22 * g.tile_height, g.tile_width, g.tile_height * 2),
                 ]
             },
             'down': {
@@ -135,6 +139,10 @@ class Actor(entity.Entity):
                     g.spritesheet.subsurface(3 * g.tile_width, 20 * g.tile_height, g.tile_width, g.tile_height * 2),
                     g.spritesheet.subsurface(4 * g.tile_width, 20 * g.tile_height, g.tile_width, g.tile_height * 2),
                     g.spritesheet.subsurface(5 * g.tile_width, 20 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(4 * g.tile_width, 20 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(3 * g.tile_width, 20 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(2 * g.tile_width, 20 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(1 * g.tile_width, 20 * g.tile_height, g.tile_width, g.tile_height * 2),
                 ]
             },
             'left': {
@@ -161,6 +169,10 @@ class Actor(entity.Entity):
                     g.spritesheet.subsurface(3 * g.tile_width, 26 * g.tile_height, g.tile_width, g.tile_height * 2),
                     g.spritesheet.subsurface(4 * g.tile_width, 26 * g.tile_height, g.tile_width, g.tile_height * 2),
                     g.spritesheet.subsurface(5 * g.tile_width, 26 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(4 * g.tile_width, 26 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(3 * g.tile_width, 26 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(2 * g.tile_width, 26 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(1 * g.tile_width, 26 * g.tile_height, g.tile_width, g.tile_height * 2),
                 ]
             },
             'right': {
@@ -187,6 +199,10 @@ class Actor(entity.Entity):
                     g.spritesheet.subsurface(3 * g.tile_width, 24 * g.tile_height, g.tile_width, g.tile_height * 2),
                     g.spritesheet.subsurface(4 * g.tile_width, 24 * g.tile_height, g.tile_width, g.tile_height * 2),
                     g.spritesheet.subsurface(5 * g.tile_width, 24 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(4 * g.tile_width, 24 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(3 * g.tile_width, 24 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(2 * g.tile_width, 24 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(1 * g.tile_width, 24 * g.tile_height, g.tile_width, g.tile_height * 2),
                 ]
             },
         }
@@ -238,9 +254,9 @@ class Actor(entity.Entity):
         destination to x:160 and y:320 but instead to x * 160 * 16 and y * 320 * 16
         AKA batshit nonsense.
         """
-        # if self.is_valid_move(x, y):
-        self.destination[0] = self.rect.x + (x * self.distance)
-        self.destination[1] = self.rect.y + (y * self.distance)
+        if self.is_valid_move(x, y):
+            self.destination[0] = self.rect.x + (x * self.distance)
+            self.destination[1] = self.rect.y + (y * self.distance)
 
     def is_valid_move(self, x, y):
         # TODO - This calculation is identical to the one in set_destination
@@ -332,9 +348,10 @@ class Actor(entity.Entity):
 
             if self.creating_bomb:
                 self.image = self.frames[self.direction]['planting_bomb'][self.frame_index]
+
             else: self.image = self.frames[self.direction][self.moving][self.frame_index]
 
-            self.animation_timer = 0.250
+            self.animation_timer = 0.125
 
             self.creating_bomb = False
 

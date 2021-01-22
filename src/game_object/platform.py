@@ -25,7 +25,7 @@ class Platform(entity.Entity):
         entity.Entity.__init__(self, x, y, width, height, image)
         self.minimap_colour = colours.RED_HIGHLIGHT
         self.path = path
-        self.max_speed = 2
+        self.max_speed = 4
         self.position = Vector2(x, y)
         self.waypoint_index = 0
         self.vel = Vector2(0, 0)
@@ -46,15 +46,17 @@ class Platform(entity.Entity):
         Otherwise they wouldn't move
         """
         player.rect.x = x
-        player.rect.y = y
+        player.rect.y = y - player.offset_y
         player.destination[0] = x
-        player.destination[1] = y
+        player.destination[1] = y - player.offset_y
 
     def handle_collision(self, tile, player, level):
         """
         TODO: this code is shockingly bad. Refactor when less tired and know
         more vector math
         """
+        level.sprites.change_layer(player, 2)
+
         if self.has_reached_to_destination() and not self.player_on_platform:
             self.target = self.path.points[-2]
             self.waypoint_index = (self.waypoint_index - 1) % - len(self.path.points) 
@@ -66,7 +68,7 @@ class Platform(entity.Entity):
             self.travelling_back = False
 
         self.player_on_platform = False
-        if player.destination[0] == self.position.x and player.destination[1] == self.position.y:
+        if player.destination[0] == self.position.x and player.destination[1] + player.offset_y == self.position.y:
             self.player_on_platform = True
             player.moving = False
 

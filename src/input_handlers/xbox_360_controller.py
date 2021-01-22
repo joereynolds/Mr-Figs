@@ -28,6 +28,9 @@ class Xbox360Controller():
     def __init__(self, joystick):
         self.joystick = joystick
 
+    def get_name(self):
+        return Xbox360Controller.NAME
+
     def get_action_button_state(self):
         """Gets the state of the A button"""
         return self.joystick.get_button(0)

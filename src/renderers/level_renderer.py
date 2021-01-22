@@ -15,6 +15,7 @@ import src.colours as colours
 import src.config as config
 import src.graphics as graphics
 from src.entity import Entity
+from src.resolution_asset_sizer import ResolutionAssetSizer
 
 class LevelRenderer():
 
@@ -24,12 +25,13 @@ class LevelRenderer():
         self.bomb_count = len(self.level.player.bombs)
         self.width, self.height = pygame.display.get_window_size()
         self.displaying_video_story = False
+        asset_sizer = ResolutionAssetSizer()
 
         self.escape_menu = EscapeMenu()
 
         self.top_bar = TopBar(
             self.width, 
-            (self.height // graphics.tile_height) * 2,
+            asset_sizer.get_button_size((self.width, self.height))[1] * 0.75,
             self.level
         )
 
