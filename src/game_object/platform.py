@@ -73,6 +73,11 @@ class Platform(entity.Entity):
             player.moving = False
 
         if self.player_on_platform:
+            # Don't animate the player while on the platform, it looks shit.
+            # Maybe in the future we can do a bit of an idle animation here though
+            # just need to use the right frames
+            # TODO - Above ^^^
+            player.image = player.frames[player.direction][False][0]
             # We manually change the layer here to the top most one
             # (move_to_front didn't work) so that when we're moving, we're
             # above everything else.

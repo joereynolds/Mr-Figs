@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="26" height="26" tilewidth="32" tileheight="32" infinite="0" nextlayerid="4" nextobjectid="158">
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="26" height="26" tilewidth="32" tileheight="32" infinite="0" nextlayerid="4" nextobjectid="175">
  <properties>
   <property name="player_bomb_count" type="int" value="100"/>
  </properties>
@@ -190,6 +190,23 @@
     <property name="follows_path_id" type="int" value="3"/>
    </properties>
   </object>
+  <object id="158" type="tile" gid="318" x="704" y="448" width="32" height="32"/>
+  <object id="159" type="tile" gid="318" x="736" y="416" width="32" height="32"/>
+  <object id="160" type="tile" gid="317" x="672" y="448" width="32" height="32"/>
+  <object id="161" type="tile" gid="317" x="704" y="416" width="32" height="32"/>
+  <object id="162" type="tile" gid="206" x="736" y="384" width="32" height="32"/>
+  <object id="163" type="tile" gid="206" x="736" y="352" width="32" height="32"/>
+  <object id="164" type="tile" gid="206" x="736" y="320" width="32" height="32"/>
+  <object id="165" type="tile" gid="317" x="608" y="448" width="32" height="32"/>
+  <object id="166" type="tile" gid="316" x="576" y="448" width="32" height="32"/>
+  <object id="167" type="tile" gid="163" x="576" y="416" width="32" height="32"/>
+  <object id="168" type="tile" gid="316" x="544" y="416" width="32" height="32"/>
+  <object id="169" type="tile" gid="317" x="640" y="224" width="32" height="32"/>
+  <object id="170" type="tile" gid="13" x="608" y="224" width="32" height="32"/>
+  <object id="171" type="tile" gid="129" x="704" y="288" width="32" height="32"/>
+  <object id="172" type="tile" gid="129" x="672" y="256" width="32" height="32"/>
+  <object id="173" type="tile" gid="129" x="608" y="256" width="32" height="32"/>
+  <object id="174" type="tile" gid="129" x="576" y="288" width="32" height="32"/>
  </objectgroup>
  <objectgroup id="3" name="paths">
   <object id="95" type="path" x="96" y="416">
