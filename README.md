@@ -3,6 +3,13 @@
 Mr Figs is a turn-based puzzler.
 The player must blast their way through various puzzles to reach the end goal.
 
+## NOTE TO PLAYERS
+
+This game uses paid for assets. You can checkout this commit `b3e6a30a82526117682d54d2e583d6d844607181`
+and the game will use free assets (the ones features in the gifs) (though its also missing out on lots of updates).
+
+The future of this game is based off paid assets in completely different tile sizes with differing mechanics.
+
 #### Demo Gif
 
 ![](https://github.com/joereynolds/Mr-Figs/blob/master/figs.gif)
