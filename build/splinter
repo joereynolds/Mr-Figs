@@ -1,0 +1,64 @@
+#!/usr/bin/env bash
+# Splinter (https://github.com/duolingo/splinter)
+
+set -efu
+
+VERSION='1.3.0'
+
+main() {
+  # Collect arguments
+  local -r rules_file="$1"
+  shift
+  local -r src_paths=("$@")
+
+  # Show help message and version number if requested
+  if [[ "$rules_file" == '-h' || "$rules_file" == '--help' ]]; then
+    echo 'Splinter is a simple, pattern-based linter.'
+    echo 'See usage instructions at https://github.com/artnc/splinter'
+    echo "Version: $VERSION"
+    exit 0
+  fi
+
+  # Parse rule file
+  local expecting_rule_message=true
+  local messages=()
+  local regexes=()
+  while read -r line; do
+    if [[ $line =~ ^\ *$ ]]; then
+      # Line contains no non-space chars
+      :
+    elif [[ $line =~ ^# ]]; then
+      # Line is a comment
+      :
+    elif [ "$expecting_rule_message" = true ]; then
+      # Line is a rule message
+      messages+=("$line")
+      expecting_rule_message=false
+    else
+      # Line is a rule regex
+      regexes+=("$line")
+      expecting_rule_message=true
+    fi
+  done < "$rules_file"
+
+  # Find violations
+  local violations=''
+  local i
+  for i in "${!regexes[@]}"; do
+    local matches
+    matches="$(grep -EHInr "${regexes[$i]}" "${src_paths[@]}" || echo)"
+    if [ -n "$matches" ]; then
+      violations+="$(
+        echo "$matches" | cut -d: -f-2 | sed "s#\$#:${messages[$i]}#g" \
+      )"$'\n'
+    fi
+  done
+
+  # Print report and exit with error code if violations found
+  if [ -n "$violations" ]; then
+    echo -n "$violations" | sort -t: -k1,1 -k2,2n
+    exit 1
+  fi
+}
+
+main "$@"
