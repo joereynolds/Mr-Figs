@@ -9,6 +9,8 @@ This game uses paid for assets. You can checkout this commit `b3e6a30a8252611768
 and the game will use free assets (the ones features in the gifs) (though its also missing out on lots of updates).
 
 The future of this game is based off paid assets in completely different tile sizes with differing mechanics.
+I hope to one day in the future make it compatible with the free assets again but for now, consider this repository a showcase of the game
+rather than something you can clone down and play.
 
 #### Demo Gif
 
