@@ -6,6 +6,7 @@ import src.scenes.scenebase as scene_base
 import src.input_handlers.escape_menu_input_handler as input_handler
 from src.gui.clickable import Clickable
 from src.gui.menu_items import MenuItems
+from src.resolution_asset_sizer import ResolutionAssetSizer
 
 class EscapeMenu(scene_base.SceneBase):
     """The menu that pops up during game when we press escape"""
@@ -21,38 +22,65 @@ class EscapeMenu(scene_base.SceneBase):
         self.width, self.height = pygame.display.get_window_size()
 
         self.surface = pygame.Surface((self.width // 2, self.height - 64)).convert_alpha()
+        self.rect = self.surface.get_rect()
+        asset_sizer = ResolutionAssetSizer()
 
-        button_x = self.surface.get_width() // 4
-        button_width = self.surface.get_width() // 2
-        button_height = graphics.round_to_nearest_tile(self.height // graphics.tile_height * 1.5)
-        button_offset = button_height
+        size = pygame.display.get_window_size()
+        button_width, button_height = asset_sizer.get_button_size(size)
+        button_width *= 8
+        button_height *= 2
+
+        offset = button_height
+        bottom = self.rect.bottom
+        button_x = self.rect.left
 
         items = {
             'continue': pygame.sprite.GroupSingle(
                 Clickable(
-                    button_x, button_offset, button_width, button_height, '[C]ontinue', True, name='continue'
+                    button_x, 
+                    bottom - offset *4, 
+                    button_width, 
+                    button_height, 
+                    string='[C]ontinue', 
+                    selected=True, 
+                    name='continue'
                 )
             ),
 
             'restart': pygame.sprite.GroupSingle(
                 Clickable(
-                    button_x, button_offset * 3, button_width, button_height, '[R]estart', name='restart'
+                    button_x, 
+                    bottom - offset * 3, 
+                    button_width, 
+                    button_height, 
+                    string='[R]estart', 
+                    name='restart'
                 )
             ),
 
             'quit_to_main': pygame.sprite.GroupSingle(
                 Clickable(
-                    button_x, button_offset * 5, button_width, button_height, '[Q]uit to main menu', name='main' # TODO - rename this title to [M]ain menu
+                    button_x, 
+                    bottom - offset * 2, 
+                    button_width, 
+                    button_height, 
+                    string='[Q]uit to main menu', 
+                    name='main' # TODO - rename this title to [M]ain menu
                 )
             ),
             'quit_to_desktop': pygame.sprite.GroupSingle(
                 Clickable(
-                    button_x, button_offset * 7, button_width, button_height, 'E[X]it game', name='quit'
+                    button_x, 
+                    bottom - offset, 
+                    button_width, 
+                    button_height, 
+                    string='E[X]it game', 
+                    name='quit'
                 )
             )
         }
         self.menu_items = MenuItems(items)
-
+ 
     def toggle_visiblity(self):
         self.is_visible = not self.is_visible
 

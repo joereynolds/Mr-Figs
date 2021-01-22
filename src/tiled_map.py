@@ -15,6 +15,7 @@ import pygame
 import src.graphics as graphics
 import pyscroll
 import src.logger as logger
+import src.config as config
 
 from src.tile_factory import TileFactory
 
@@ -27,6 +28,7 @@ class TiledMap():
     def __init__(self, file, screen: pygame.Surface):
         self.tmx_file = file
 
+        print(self.tmx_file)
         self._map = load_pygame(self.tmx_file)
         self.map_data_for_camera = pyscroll.TiledMapData(self._map)
 
@@ -125,7 +127,7 @@ class TiledMap():
             type_map = {
                 'video_tape': {
                     **common,
-                    'story': tile_object.properties.get('story', "./data/tape-stories/first-tape")
+                    'story': tile_object.properties.get('story', config.tape_dir + "first-tape")
                 },
             }
 
@@ -151,7 +153,6 @@ class TiledMap():
                     **common,
                     'state': state,
                     'triggers': triggers,
-                    'images': graphics.sprites['pressure_plate']['sprites']
                 },
             }
 
@@ -207,7 +208,6 @@ class TiledMap():
                     'direction': "right"
                 },
             }
-
 
         if tile_object.type == 'tile':
             type_map = {
@@ -387,7 +387,7 @@ class TiledMap():
             type_map = {
                 'computer_terminal': {
                     **common, 
-                    'minigame': tile_object.properties['minigame'],
+                    'minigame': tile_object.properties.get('minigame', './assets/levels/tmx/minigame-hunt'),
                     'state': 0,
                     'triggers': triggers,
                 },

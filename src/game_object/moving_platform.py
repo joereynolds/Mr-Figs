@@ -82,7 +82,7 @@ class MovingPlatform(entity.Entity):
             """Filled green and red for now to visualise.
             Green is safe to go on. Red is not, if it's red and we 
             try and go on, we should die."""
-            if self.rect.x % 16 == 0 and self.rect.y % 16 == 0:
+            if self.rect.x % graphics.tile_width == 0 and self.rect.y % graphics.tile_height == 0:
                 self.image = self.safe_platform_image
 
                 # Time to wait before moving again

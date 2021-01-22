@@ -7,7 +7,7 @@ import json
 import os.path
 
 class UserData():
-    LOCATION = os.path.join('data', 'saved-games' + os.sep)
+    LOCATION = os.path.join('assets', 'game-data' ,'saved-games' + os.sep)
     FILENAME = 'game-data.json'
     FULL_PATH = LOCATION + FILENAME
 

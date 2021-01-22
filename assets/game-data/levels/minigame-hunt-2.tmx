@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="21" height="12" tilewidth="16" tileheight="16" infinite="0" nextlayerid="13" nextobjectid="206">
+ <properties>
+  <property name="display_name" value="Learning To Walk"/>
+  <property name="next_level" value="./data/levels/tmx/L03-Pushing.tmx"/>
+  <property name="player_bomb_count" value="0"/>
+ </properties>
+ <tileset firstgid="1" name="newtiledsheet" tilewidth="16" tileheight="16" tilecount="180" columns="9">
+  <image source="../../newtiledsheet.png" width="144" height="320"/>
+  <tile id="0">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value="1"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value="1"/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value="1"/>
+   </properties>
+  </tile>
+  <tile id="3">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value="1"/>
+   </properties>
+  </tile>
+  <tile id="4">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value=""/>
+   </properties>
+  </tile>
+  <tile id="9">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value="1"/>
+   </properties>
+  </tile>
+  <tile id="10">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value="1"/>
+   </properties>
+  </tile>
+  <tile id="11">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value="1"/>
+   </properties>
+  </tile>
+  <tile id="12">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value="1"/>
+   </properties>
+  </tile>
+  <tile id="13">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value=""/>
+   </properties>
+  </tile>
+  <tile id="18">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value=""/>
+   </properties>
+  </tile>
+  <tile id="19">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value=""/>
+   </properties>
+  </tile>
+  <tile id="20">
+   <properties>
+    <property name="destructable" type="bool" value="true"/>
+    <property name="solid" value="1"/>
+   </properties>
+  </tile>
+  <tile id="27">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value="1"/>
+   </properties>
+  </tile>
+  <tile id="28">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value="1"/>
+   </properties>
+  </tile>
+  <tile id="29">
+   <properties>
+    <property name="destructable" value="1"/>
+    <property name="solid" value="1"/>
+   </properties>
+  </tile>
+  <tile id="30">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value="1"/>
+   </properties>
+  </tile>
+  <tile id="31">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value=""/>
+   </properties>
+  </tile>
+  <tile id="32">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value=""/>
+   </properties>
+  </tile>
+  <tile id="54">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value="True"/>
+   </properties>
+  </tile>
+  <tile id="58">
+   <properties>
+    <property name="destructable" value=""/>
+    <property name="solid" value=""/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer id="1" name="background" width="21" height="12">
+  <data encoding="csv">
+24,24,24,24,24,24,24,24,24,24,24,24,24,24,25,22,22,22,22,22,22,
+24,24,24,24,24,24,24,24,24,24,24,24,24,24,25,22,22,22,22,22,22,
+24,24,24,24,24,24,24,24,24,24,24,24,24,24,25,22,22,22,22,22,22,
+24,24,24,24,24,0,24,24,24,24,24,24,24,24,25,22,22,22,22,22,22,
+24,24,24,24,24,24,24,24,24,24,24,24,24,24,25,22,22,22,22,22,22,
+24,24,24,24,24,24,24,24,24,24,24,24,24,24,25,22,22,22,22,22,22,
+24,24,24,24,24,24,24,24,24,24,24,24,24,24,25,22,22,22,22,22,22,
+24,24,24,24,24,24,24,24,24,24,24,24,24,24,25,22,22,22,22,22,22,
+24,24,24,24,24,24,24,24,24,24,24,24,24,24,25,22,22,22,22,22,22,
+24,24,24,24,24,24,24,24,24,24,24,24,24,24,25,22,22,22,22,22,22,
+22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,
+22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22
+</data>
+ </layer>
+ <layer id="12" name="above" width="21" height="12">
+  <data encoding="csv">
+94,96,96,96,96,96,96,96,80,96,80,96,81,96,96,96,96,96,96,96,94,
+95,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,95,
+95,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,95,
+95,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,95,
+95,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,95,
+95,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,95,
+95,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,95,
+95,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,95,
+95,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,95,
+95,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,95,
+95,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,95,
+94,96,96,96,96,96,96,96,96,96,96,96,96,96,96,96,96,96,96,96,94
+</data>
+ </layer>
+ <objectgroup id="4" name="objects">
+  <object id="195" name="player" type="minigame-hunt-player" gid="100" x="32" y="144" width="16" height="16"/>
+  <object id="196" name="collectible" type="minigame-hunt-collectible" gid="101" x="80" y="128" width="16" height="16"/>
+  <object id="198" name="collectible" type="minigame-hunt-collectible" gid="101" x="272" y="128" width="16" height="16"/>
+  <object id="199" name="collectible" type="minigame-hunt-collectible" gid="101" x="176" y="112" width="16" height="16"/>
+  <object id="200" name="collectible" type="minigame-hunt-collectible" gid="101" x="240" y="64" width="16" height="16"/>
+  <object id="201" name="collectible" type="minigame-hunt-collectible" gid="101" x="96" y="64" width="16" height="16"/>
+  <object id="202" type="deadly_area" x="0" y="0" width="16" height="192"/>
+  <object id="203" type="deadly_area" x="0" y="0" width="336" height="16"/>
+  <object id="204" type="deadly_area" x="320" y="0" width="16" height="192"/>
+  <object id="205" type="deadly_area" x="0" y="176" width="336" height="16"/>
+ </objectgroup>
+</map>

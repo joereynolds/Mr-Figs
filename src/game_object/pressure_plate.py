@@ -16,12 +16,16 @@ class PressurePlate(entity.Entity):
        @self.images   = an array of pygame surfaces
        @self.triggers = The numeric id of the Triggerable
                         if there is one to be triggered"""
-    def __init__(self, x, y, width, height, state, image, images = graphics.sprites['switch']['sprites'], triggers=0):
+    def __init__(self, x, y, width, height, state, image, triggers=0):
         entity.Entity.__init__(self, x, y, width, height, image)
         self.state = state
-        self.images = images
+        self.images = [
+            graphics.subsurf(graphics.grid(5, 3)),
+            graphics.subsurf(graphics.grid(5, 4)),
+        ]
         self.triggers = triggers
         self.minimap_colour = colours.BLUE_GLOW
+
 
     def change_state(self):
         if self.state:
@@ -42,5 +46,5 @@ class PressurePlate(entity.Entity):
         for _tile in level.tiled_level.sprites:
             if isinstance(_tile, (MoveableTile, Bomb)) and pygame.sprite.collide_rect(self, _tile):
                 self.turn_on()
-        if pygame.sprite.collide_rect(player, self):
+        if player.destination[0] == self.rect.x and player.destination[1] + player.offset_y == self.rect.y:
             self.turn_on()

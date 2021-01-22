@@ -21,46 +21,49 @@ class StartMenu(scene_base.SceneBase):
         size = pygame.display.get_window_size()
         width = size[0]
         height = size[1]
-        self.image = pygame.image.load('./data/background-scene.png').convert()
+        self.image = pygame.image.load('./assets/images/mr-figs-title-draft.png').convert()
         self.image = pygame.transform.scale(self.image, (size[0], size[1]))
         self.rect = self.image.get_rect()
 
         asset_sizer = ResolutionAssetSizer()
 
-        offset = asset_sizer.get_button_offset(size)
-        spacing = asset_sizer.get_button_spacing(size)
-        button_width = width // 4
-        button_height = asset_sizer.get_button_height(size)
+        button_width, button_height = asset_sizer.get_button_size(size)
+        button_width *= 8
+        button_height *= 2
+
+        offset = button_height
+
+        bottom = self.rect.bottom
 
         items = {
             'start-button': pygame.sprite.GroupSingle(
                 Clickable(
-                    offset, 
-                    offset,
+                    self.rect.left, 
+                    bottom - offset * 3,
                     button_width, 
                     button_height, 
-                    '[S]TART GAME', 
-                    True,
+                    string='[S]TART GAME', 
+                    selected=True,
                     name="introduction"
                     )
                 ),
             'options': pygame.sprite.GroupSingle(
                 Clickable(
-                    offset, 
-                    offset + (button_height * 1) + (spacing * 1), 
+                    self.rect.left, 
+                    bottom - offset * 2, 
                     button_width, 
                     button_height, 
-                    '[O]PTIONS',
+                    string='[O]PTIONS',
                     name="options-menu"
                     )
                 ),
             'quit': pygame.sprite.GroupSingle(
                 Clickable(
-                    offset, 
-                    offset + (button_height * 2) + (spacing * 2), 
+                    self.rect.left, 
+                    bottom - offset, 
                     button_width, 
                     button_height, 
-                    '[Q]UIT',
+                    string='[Q]UIT',
                     name="quit"
                     )
                 )

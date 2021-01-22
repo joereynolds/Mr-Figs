@@ -51,6 +51,8 @@ class GlobalInputHandler():
                     self.level.switch_to_scene(self.level.tiled_level.properties['next_level'])
                 if event['raw_event'].key == pygame.K_b:
                     self.level.tiled_level.map_layer_for_camera.zoom += 0.5
+                if event['raw_event'].key == pygame.K_v:
+                    self.level.tiled_level.map_layer_for_camera.zoom -= 0.5
             # end debugging
 
             if not self.level.renderer.escape_menu.is_visible:

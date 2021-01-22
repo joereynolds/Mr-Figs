@@ -22,17 +22,20 @@ class OptionsMenu(scene_base.SceneBase):
         self.components = pygame.sprite.LayeredUpdates()
         asset_sizer = ResolutionAssetSizer()
         size = pygame.display.get_window_size()
-        width = size[0]
-        height = size[1]
-        self.image = pygame.image.load('./data/background-scene.png').convert()
-        self.image = pygame.transform.scale(self.image, (width, height))
-        center_x = width // 2
+        self.image = pygame.image.load(config.image_dir + 'mr-figs-title-draft.png').convert()
+        self.image = pygame.transform.scale(self.image, (size[0], size[1]))
+        self.rect = self.image.get_rect()
 
-        offset = asset_sizer.get_button_offset(size)
-        spacing = asset_sizer.get_button_spacing(size)
-        button_width = width // 4
-        button_height = height // 12
-        checkbox_width = graphics.tile_width * graphics.ZOOM_LEVEL
+        button_width, button_height = asset_sizer.get_button_size(size)
+        button_width *= 8
+        button_height *= 2
+
+        left = self.rect.left
+        bottom = self.rect.bottom
+
+        offset = button_height
+
+        checkbox_width = asset_sizer.get_button_size(size)[0]
 
         self.music_toggle_text = "[T]OGGLE MUSIC"
         self.font_size = asset_sizer.get_font_size(size)
@@ -41,8 +44,8 @@ class OptionsMenu(scene_base.SceneBase):
         items = {
             'toggle_music': pygame.sprite.GroupSingle(
                 Checkbox(
-                    offset, 
-                    offset, 
+                    left, 
+                    bottom - offset * 3, 
                     checkbox_width, 
                     button_height, 
                     0, 
@@ -51,19 +54,19 @@ class OptionsMenu(scene_base.SceneBase):
                 ),
             'clear_data': pygame.sprite.GroupSingle(
                 Clickable(
-                    offset, 
-                    offset + (button_height * 1) + (spacing * 1), 
+                    left, 
+                    bottom - offset * 2,
                     button_width, 
                     button_height, 
-                    '[C]LEAR GAME DATA', 
+                    string='[C]LEAR GAME DATA', 
                     name='clear_data')),
             'go_back': pygame.sprite.GroupSingle(
                 Clickable(
-                    offset, 
-                    offset + (button_height * 2) + (spacing * 2), 
+                    left, 
+                    bottom - offset,
                     button_width, 
                     button_height, 
-                    '[B]ACK', 
+                    string='[B]ACK', 
                     selected=True,
                     name='go_back'
                 )

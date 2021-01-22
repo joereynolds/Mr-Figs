@@ -5,7 +5,7 @@ from src.game_object.triggerable import Triggerable
 from src.game_object.bomb import Bomb
 import src.colours as colours
 import src.entity as entity
-import src.graphics as graphics
+import src.graphics as g
 import src.movement_vector as movement_vector
 import src.interpolate as interpolate
 from src.collision_handlers.turn_based_collision_handler import TurnBasedCollisionHandler
@@ -53,16 +53,143 @@ class Actor(entity.Entity):
 
         self.remaining_bombs = int(remaining_bombs)
         self.direction = 'down'
-        self.speed = graphics.tile_width // 2
-        self.distance = graphics.tile_width
+        self.speed = 2
+        self.distance = g.tile_width
         self.tiled_level = level
+
+        self.image = g.spritesheet.subsurface(
+                0 * g.tile_width, 
+                12 * g.tile_height, 
+                g.tile_width, 
+                g.tile_height * 2
+        ) 
+
+        self.rect.y -= g.tile_height // 4
+
+        # We don't want the character exactly on the tile, this doesn't look as good so
+        # we offset the y position and then store that in here + our tiles height so we can
+        # correctly check for tiles underneath us
+        self.offset_y = (g.tile_height // 4) + g.tile_height # 40
+
         self.bombs = pygame.sprite.LayeredUpdates()
         self.move_stack = []
         self.destination = [self.rect.x, self.rect.y]
-        self.valid_destinations = [graphics.tile_width * x for x in range(-100, 100)]
-        self.moving = False
-        self.is_teleporting = False
+        self.valid_destinations = [g.tile_width * x for x in range(-100, 100)]
+        self.moving = False # Whether or not we are moving
+        self.is_teleporting = False # Whether or not we are being teleported by a portal
+        self.creating_bomb = False  # Whether or not we are at this moment, creating a bomb
         self.minimap_colour = colours.BLUE_HIGHLIGHT
+
+        self.animation_timer = 0.500
+        self.frame_index = 0
+
+        # True is Walking, false is idle
+        self.frames = {
+            'up': {
+                True: [
+                    g.spritesheet.subsurface(0 * g.tile_width, 34 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(1 * g.tile_width, 34 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(2 * g.tile_width, 34 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(3 * g.tile_width, 34 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(4 * g.tile_width, 34 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(5 * g.tile_width, 34 * g.tile_height, g.tile_width, g.tile_height * 2),
+                ],
+                False: [
+                    g.spritesheet.subsurface(0 * g.tile_width, 16 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(1 * g.tile_width, 16 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(2 * g.tile_width, 16 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(3 * g.tile_width, 16 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(4 * g.tile_width, 16 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(5 * g.tile_width, 16 * g.tile_height, g.tile_width, g.tile_height * 2),
+                ],
+                'planting_bomb': [
+                    g.spritesheet.subsurface(0 * g.tile_width, 22 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(1 * g.tile_width, 22 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(2 * g.tile_width, 22 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(3 * g.tile_width, 22 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(4 * g.tile_width, 22 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(5 * g.tile_width, 22 * g.tile_height, g.tile_width, g.tile_height * 2),
+                ]
+            },
+            'down': {
+                True: [
+                    g.spritesheet.subsurface(0 * g.tile_width, 28 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(1 * g.tile_width, 28 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(2 * g.tile_width, 28 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(3 * g.tile_width, 28 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(4 * g.tile_width, 28 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(5 * g.tile_width, 28 * g.tile_height, g.tile_width, g.tile_height * 2),
+                ],
+                False: [
+                    g.spritesheet.subsurface(0 * g.tile_width, 12 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(1 * g.tile_width, 12 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(2 * g.tile_width, 12 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(3 * g.tile_width, 12 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(4 * g.tile_width, 12 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(5 * g.tile_width, 12 * g.tile_height, g.tile_width, g.tile_height * 2),
+                ],
+                'planting_bomb': [
+                    g.spritesheet.subsurface(0 * g.tile_width, 20 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(1 * g.tile_width, 20 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(2 * g.tile_width, 20 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(3 * g.tile_width, 20 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(4 * g.tile_width, 20 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(5 * g.tile_width, 20 * g.tile_height, g.tile_width, g.tile_height * 2),
+                ]
+            },
+            'left': {
+                True: [
+                    g.spritesheet.subsurface(0 * g.tile_width, 32 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(1 * g.tile_width, 32 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(2 * g.tile_width, 32 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(3 * g.tile_width, 32 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(4 * g.tile_width, 32 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(5 * g.tile_width, 32 * g.tile_height, g.tile_width, g.tile_height * 2),
+                ],
+                False: [
+                    g.spritesheet.subsurface(0 * g.tile_width, 18 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(1 * g.tile_width, 18 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(2 * g.tile_width, 18 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(3 * g.tile_width, 18 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(4 * g.tile_width, 18 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(5 * g.tile_width, 18 * g.tile_height, g.tile_width, g.tile_height * 2),
+                ],
+                'planting_bomb': [
+                    g.spritesheet.subsurface(0 * g.tile_width, 26 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(1 * g.tile_width, 26 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(2 * g.tile_width, 26 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(3 * g.tile_width, 26 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(4 * g.tile_width, 26 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(5 * g.tile_width, 26 * g.tile_height, g.tile_width, g.tile_height * 2),
+                ]
+            },
+            'right': {
+                True: [
+                    g.spritesheet.subsurface(0 * g.tile_width, 30 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(1 * g.tile_width, 30 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(2 * g.tile_width, 30 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(3 * g.tile_width, 30 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(4 * g.tile_width, 30 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(5 * g.tile_width, 30 * g.tile_height, g.tile_width, g.tile_height * 2),
+                ],
+                False: [
+                    g.spritesheet.subsurface(0 * g.tile_width, 14 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(1 * g.tile_width, 14 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(2 * g.tile_width, 14 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(3 * g.tile_width, 14 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(4 * g.tile_width, 14 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(5 * g.tile_width, 14 * g.tile_height, g.tile_width, g.tile_height * 2),
+                ],
+                'planting_bomb': [
+                    g.spritesheet.subsurface(0 * g.tile_width, 24 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(1 * g.tile_width, 24 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(2 * g.tile_width, 24 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(3 * g.tile_width, 24 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(4 * g.tile_width, 24 * g.tile_height, g.tile_width, g.tile_height * 2),
+                    g.spritesheet.subsurface(5 * g.tile_width, 24 * g.tile_height, g.tile_width, g.tile_height * 2),
+                ]
+            },
+        }
 
     def move(self, delta_time):
         """Checks to see if we've reached the destination given, if we have,
@@ -75,7 +202,7 @@ class Actor(entity.Entity):
         #Stop moving if the next tile we're going to is a solid
         if (self.rect.x == target_x and self.rect.y == target_y) \
             or self.tiled_level.find_solid_tile(
-                self.tiled_level.get_tile_all_layers(target_x, target_y)
+                self.tiled_level.get_tile_all_layers(target_x, target_y + self.offset_y)
             ) :
             return
         else:
@@ -83,7 +210,9 @@ class Actor(entity.Entity):
                 self.rect.x -= self.speed
                 self.moving = True
             elif target_x > self.rect.x:
-                self.speed = interpolate.decelerate(self.rect.x, target_x)
+                # TODO - this interpolation breaks on the new tileset
+                # definitely some maths error
+                # self.speed = interpolate.decelerate(self.rect.x, target_x)
                 self.rect.x += self.speed
                 self.moving = True
             elif target_y < self.rect.y:
@@ -109,9 +238,9 @@ class Actor(entity.Entity):
         destination to x:160 and y:320 but instead to x * 160 * 16 and y * 320 * 16
         AKA batshit nonsense.
         """
-        if self.is_valid_move(x, y):
-            self.destination[0] = self.rect.x + (x * self.distance)
-            self.destination[1] = self.rect.y + (y * self.distance)
+        # if self.is_valid_move(x, y):
+        self.destination[0] = self.rect.x + (x * self.distance)
+        self.destination[1] = self.rect.y + (y * self.distance)
 
     def is_valid_move(self, x, y):
         # TODO - This calculation is identical to the one in set_destination
@@ -144,6 +273,7 @@ class Actor(entity.Entity):
         """These events should only happen on a keypress. They do not need to be checked
            every frame"""
         directions = movement_vector.vector
+        self.tiled_level.sprites.change_layer(self, 1)
 
         if command in directions.keys():
             if not self.moving:
@@ -161,11 +291,13 @@ class Actor(entity.Entity):
         """These are actions that SHOULD be called every frame. Animation, collision checking etc..."""
         self.update_bomb_collection()
         self.move(delta_time)
+        self.animate(delta_time)
 
     def create_bomb(self):
         """Creates a bomb underneath the players position"""
         if self.remaining_bombs and not self.moving:
 
+            self.creating_bomb = True
             # Don't plant a bomb here if there's already one there
             for bomb in self.bombs:
                 if bomb.rect.x == self.rect.x and bomb.rect.y == self.rect.y:
@@ -173,12 +305,12 @@ class Actor(entity.Entity):
 
             self.bombs.add(Bomb(
                 self.rect.x,
-                self.rect.y,
-                graphics.tile_width,
-                graphics.tile_height,
+                self.rect.y + self.offset_y,
+                g.tile_width,
+                g.tile_height,
                 self.tiled_level,
                 5,
-                graphics.sprites['bomb']['sprites'][0]
+                g.sprites['bomb']['sprites'][0]
             ))
             self.remaining_bombs -= 1
 
@@ -188,8 +320,23 @@ class Actor(entity.Entity):
             self.animate_death(dt)
         return self not in self.tiled_level.sprites
 
-    def animate(self):
-        pass
+    def animate(self, delta_time):
+        self.animation_timer -= delta_time
+
+        if self.animation_timer <= 0:
+
+            if self.frame_index >= len(self.frames[self.direction][self.moving]) - 1:
+                self.frame_index = 0
+
+            self.frame_index += 1
+
+            if self.creating_bomb:
+                self.image = self.frames[self.direction]['planting_bomb'][self.frame_index]
+            else: self.image = self.frames[self.direction][self.moving][self.frame_index]
+
+            self.animation_timer = 0.250
+
+            self.creating_bomb = False
 
     def animate_death(self, dt):
         print('death animation here')

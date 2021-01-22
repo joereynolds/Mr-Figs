@@ -6,10 +6,13 @@ from src.input_handlers.keyboard_controller import KeyboardController
 import src.logger as logger
 
 BASE_RESOLUTION = (512, 288)
-ZOOM_LEVEL = 1.5
+ZOOM_LEVEL = 1.25
 
-tile_width = 16
-tile_height = 16
+tile_width = 32
+tile_height = 32
+
+spritesheet = pygame.image.load(config.spritesheet_location)
+
 
 def round_to_nearest_tile(x, base=tile_width):
     return base * round(x/base)
@@ -34,6 +37,8 @@ def get_controller():
     return controller
 
 def get_window_surface():
+    # TODO - Apparently multiple calls to this are bad? Investigate.
+    # return pygame.display.set_mode((512, 288))
     # return pygame.display.set_mode((800, 800))
     return pygame.display.set_mode((0, 0), pygame.NOFRAME)
 
@@ -59,46 +64,38 @@ def subsurf(grid_pos):
 sprites = {
     'bomb'  : {
         'sprites' : [
-            subsurf(grid(0,4)),
-            subsurf(grid(1,4)),
-            subsurf(grid(2,4)),
-            subsurf(grid(3,4)),
-            subsurf(grid(4,4)),
-            subsurf(grid(5,4))
+            subsurf(grid(15,11)), # 5
+            subsurf(grid(14,11)), # 4 ...
+            subsurf(grid(13,11)),
+            subsurf(grid(12,11)),
+            subsurf(grid(11,11)), # 1
+            subsurf(grid(16,11)), # blank bomb 
         ]
     },
     'explosion' :{
         'sprites':[
-            subsurf(grid(0, 6)),
-            subsurf(grid(1, 6)),
-            subsurf(grid(2, 6)),
-            subsurf(grid(3, 6)),
-            subsurf(grid(4, 6)),
-            subsurf(grid(5, 6))
+            subsurf(grid(11, 12)),
+            subsurf(grid(12, 12)),
+            subsurf(grid(13, 12)),
+            subsurf(grid(14, 12)),
+            subsurf(grid(15, 12)),
         ]
-    },
-    'player': {
-        'sprites':[subsurf(grid(0,5))]
     },
     'laser' : {
         'sprites': [
-            subsurf(grid(4, 1)),
-            subsurf(grid(5, 1)),
-            subsurf(grid(6, 1)),
-            subsurf(grid(7, 1))
+            subsurf(grid(6, 7)), # TODO - waiting on the off laser image to be added to spritesheet
+            subsurf(grid(6, 7)),
+            subsurf(grid(6, 7)),
+            subsurf(grid(6, 7))
         ]
     },
     'switch': {
-        'sprites': [subsurf(grid(6, 3)),
-                    subsurf(grid(7, 3))]
+        'sprites': [subsurf(grid(4, 3)),
+                    subsurf(grid(4, 4))]
     },
-    'pressure_plate': {
+    'button': {
         'sprites': [
-            # These are both the same surface for now
-            # I don't have an image for a pressure_plate in the 'on'
-            # position yet.
-            subsurf(grid(8, 5)),
-            subsurf(grid(8, 5)),
+            spritesheet.subsurface(0 * 32, 9 * 32, tile_width * 3, tile_height) # normal button (not hovered or clicked)
         ]
-    }
+    },
 }

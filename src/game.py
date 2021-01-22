@@ -30,7 +30,7 @@ class Game(object):
         if game_data['settings']['music']: 
             pygame.mixer.pre_init(44100, -16, 2, 512)
             pygame.mixer.init()
-            pygame.mixer.music.load('./data/audio/music/carmack.ogg')
+            pygame.mixer.music.load('./assets/audio/music/carmack.ogg')
             pygame.mixer.music.play(-1)
 
         delta_time = 0

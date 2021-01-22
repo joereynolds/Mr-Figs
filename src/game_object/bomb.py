@@ -27,10 +27,10 @@ class Bomb(Entity):
         self.image = image
         self.images = graphics.sprites['bomb']['sprites']
 
-        # self.bomb_creation_sound = pygame.mixer.Sound('./data/audio/fx/bomb-place.ogg')
-        # self.bomb_beep_sound = pygame.mixer.Sound('./data/audio/fx/bomb-beep.ogg')
+        # self.bomb_creation_sound = pygame.mixer.Sound('./assets/audio/fx/bomb-place.ogg')
+        # self.bomb_beep_sound = pygame.mixer.Sound('./assets/audio/fx/bomb-beep.ogg')
 
-        # self.bomb_explosion_sound = pygame.mixer.Sound('./data/audio/fx/bomb-explode.ogg')
+        # self.bomb_explosion_sound = pygame.mixer.Sound('./assets/audio/fx/bomb-explode.ogg')
         # self.bomb_explosion_sound.set_volume(0.2)
 
         # self.bomb_creation_sound.play()
@@ -153,7 +153,7 @@ class Bomb(Entity):
                         self.explode()
 
     def handle_collision(self, tile, player, level):
-        if player.destination[0] == self.rect.x and player.destination[1] == self.rect.y:
+        if player.destination[0] == self.rect.x and player.destination[1] + player.offset_y == self.rect.y:
             # Bit of a hack but if 5 is our max lifespan for a bomb then it's impossible to be
             # travelling to it and for it to have that lifespan since we would have moved
             # and decreased the bomb's lifespan

@@ -2,6 +2,8 @@ import pygame
 import src.gui.text_element as text_element
 from src.resolution_asset_sizer import ResolutionAssetSizer
 import src.config as config
+import src.graphics as g
+
 
 
 class BaseComponent(pygame.sprite.Sprite):
@@ -12,6 +14,7 @@ class BaseComponent(pygame.sprite.Sprite):
             y, 
             width, 
             height, 
+            image=None,
             string='Default', 
             selected=False, 
             name="Default"
@@ -19,7 +22,35 @@ class BaseComponent(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.width = width
         self.height = height
-        self.image = pygame.Surface([self.width, self.height])
+
+        self.image = g.spritesheet.subsurface(
+                0 * 32, 
+                9 * 32, 
+                g.tile_width * 3, 
+                g.tile_height
+        )
+
+        self.default_image = g.spritesheet.subsurface(
+            0 * g.tile_width, 
+            9 * g.tile_height, 
+            g.tile_width * 3, 
+            g.tile_height
+        )
+
+        self.selected_image = g.spritesheet.subsurface(
+            0 * g.tile_width, 
+            10 * g.tile_height, 
+            g.tile_width * 3, 
+            g.tile_height
+        )
+
+        self.default_image = pygame.transform.scale(self.default_image, (self.width, self.height))
+        self.image = pygame.transform.scale(self.image, (self.width, self.height))
+        self.selected_image = pygame.transform.scale(self.selected_image, (self.width, self.height))
+
+        self.default_image = self.default_image.convert_alpha()
+        self.selected_image = self.selected_image.convert_alpha()
+
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
@@ -36,23 +67,21 @@ class BaseComponent(pygame.sprite.Sprite):
         """When we've selected the item, do these things"""
         func(*args)
 
-    def render(self, position=False):
+    def render(self):
         """A wrapper to encapsulate all rendering"""
 
         if self.selected:
-            self.image.fill((255,255,255))
-        else: self.image.fill((0,0,0))
+            self.image = self.selected_image
+        else: self.image = self.default_image
 
-        self.render_text(position)
+        self.render_text()
 
-    def render_text(self, position=False, color=False):
+    def render_text(self, color=False):
         """Renders text at the default position of (0,0) or otherwise
         if a position is supplied.
         @position = Position for the text to be rendered (optional)
         """
-        self.text.position = (0, 0)
-        if position:
-            self.text.position = position
+        self.text.position = (self.rect.x,0)
 
         if color:
             self.text.set_color(color)

@@ -4,6 +4,7 @@ from src.game_object.bullet import Bullet
 class ConstantFirePattern():
 
     def __init__(self, spawn_x: int, spawn_y: int, bullet_speed: int, level, vector):
+
         self.spawn_x = spawn_x
         self.spawn_y = spawn_y
         self.level = level
@@ -25,6 +26,4 @@ class ConstantFirePattern():
                 self.vector
             )
             self.level.sprites.add(bullet)
-
-            elapsed = 0
             self.start_time = pygame.time.get_ticks()
