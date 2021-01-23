@@ -25,11 +25,16 @@ class BombDisplay(Entity):
         )
 
         self.surface = pygame.Surface((width, height)).convert_alpha()
-        self.bomb_image = [graphics.sprites['bomb']['sprites'][0]],
-        self.bomb_image = self.bomb_image[0][0] # Stupid structure
+        self.bomb_image = graphics.sprites['bomb']['sprites'][0],
+        self.bomb_image = self.bomb_image[0]
 
         self.bomb_image_width_scaled = round(self.bomb_image.get_width() * 4)
         self.bomb_image_height_scaled = round(self.bomb_image.get_height() * 4)
+
+        self.scaled_bomb_image = pygame.transform.scale(
+            self.bomb_image,
+            (self.bomb_image_width_scaled, self.bomb_image_height_scaled)
+        )
 
     def render(self, bomb_count):
         """Renders text at the default position of (0,0) or otherwise
@@ -39,9 +44,6 @@ class BombDisplay(Entity):
         self.surface.fill((0,0,0, 0))
         for i in range(bomb_count):
             self.surface.blit(
-                pygame.transform.scale(
-                    self.bomb_image,
-                    (self.bomb_image_width_scaled, self.bomb_image_height_scaled)
-                ),
+                self.scaled_bomb_image,
                 ((i + 1) * self.bomb_image.get_width(), 64)
             )
