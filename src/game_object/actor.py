@@ -316,7 +316,7 @@ class Actor(entity.Entity):
             self.creating_bomb = True
             # Don't plant a bomb here if there's already one there
             for bomb in self.bombs:
-                if bomb.rect.x == self.rect.x and bomb.rect.y == self.rect.y:
+                if bomb.rect.x == self.rect.x and bomb.rect.y == self.rect.y + self.offset_y:
                     return
 
             self.bombs.add(Bomb(
