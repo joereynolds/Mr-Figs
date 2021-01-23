@@ -36,7 +36,7 @@ class TextOverlay(scene_base.SceneBase):
         self.action_image = self.controller.get_action_button_image()
         self.controller_prompt_x, self.controller_prompt_y = self.screen_surface_rect.midbottom
         self.controller_prompt_x = self.screen_surface_rect.centerx * 0.75
-        self.controller_prompt_y -= self.asset_sizer.get_button_size(self.size)[0]
+        self.controller_prompt_y -= self.asset_sizer.get_button_size(self.size)[0] + 15
 
     def render(self):
         """Renders all the buttons on our escape menu"""

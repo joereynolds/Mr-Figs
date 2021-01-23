@@ -73,15 +73,6 @@ sprites = {
             subsurf(grid(16,11)), # blank bomb 
         ]
     },
-    'explosion' :{
-        'sprites':[
-            subsurf(grid(11, 12)),
-            subsurf(grid(12, 12)),
-            subsurf(grid(13, 12)),
-            subsurf(grid(14, 12)),
-            subsurf(grid(15, 12)),
-        ]
-    },
     'laser' : {
         'sprites': [
             subsurf(grid(6, 7)), # TODO - waiting on the off laser image to be added to spritesheet
