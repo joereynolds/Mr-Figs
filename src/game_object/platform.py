@@ -55,7 +55,8 @@ class Platform(entity.Entity):
         TODO: this code is shockingly bad. Refactor when less tired and know
         more vector math
         """
-        level.sprites.change_layer(player, 2)
+        if player in level.sprites:
+            level.sprites.change_layer(player, 2)
 
         if self.has_reached_to_destination() and not self.player_on_platform:
             self.target = self.path.points[-2]
