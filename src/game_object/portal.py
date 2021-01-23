@@ -60,9 +60,11 @@ class Portal(entity.Entity):
             player.destination[1] = self.destination_portal.rect.y - player.offset_y
             player.is_teleporting = True
             self.is_teleporting = True
+            self.destination_portal.is_teleporting = True
         else:
             player.is_teleporting = False
             self.is_teleporting = False
+            self.destination_portal.is_teleporting = False
 
     def animate(self, delta_time):
         self.timer -= delta_time

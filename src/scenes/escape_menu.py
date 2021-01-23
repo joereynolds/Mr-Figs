@@ -27,21 +27,23 @@ class EscapeMenu(scene_base.SceneBase):
 
         size = pygame.display.get_window_size()
         button_width, button_height = asset_sizer.get_button_size(size)
-        button_width *= 8
+
+        left = self.rect.left + button_width
+
+        button_width *= 6
         button_height *= 2
 
         offset = button_height
         bottom = self.rect.bottom
-        button_x = self.rect.left
 
         items = {
             'continue': pygame.sprite.GroupSingle(
                 Clickable(
-                    button_x, 
-                    bottom - offset *4, 
+                    left,
+                    bottom - offset * 4, 
                     button_width, 
                     button_height, 
-                    string='[C]ontinue', 
+                    string='Continue', 
                     selected=True, 
                     name='continue'
                 )
@@ -49,32 +51,32 @@ class EscapeMenu(scene_base.SceneBase):
 
             'restart': pygame.sprite.GroupSingle(
                 Clickable(
-                    button_x, 
+                    left,
                     bottom - offset * 3, 
                     button_width, 
                     button_height, 
-                    string='[R]estart', 
+                    string='Restart', 
                     name='restart'
                 )
             ),
 
             'quit_to_main': pygame.sprite.GroupSingle(
                 Clickable(
-                    button_x, 
+                    left,
                     bottom - offset * 2, 
                     button_width, 
                     button_height, 
-                    string='[Q]uit to main menu', 
-                    name='main' # TODO - rename this title to [M]ain menu
+                    string='Main menu', 
+                    name='main'
                 )
             ),
             'quit_to_desktop': pygame.sprite.GroupSingle(
                 Clickable(
-                    button_x, 
+                    left,
                     bottom - offset, 
                     button_width, 
                     button_height, 
-                    string='E[X]it game', 
+                    string='Exit game', 
                     name='quit'
                 )
             )

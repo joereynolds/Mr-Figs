@@ -27,13 +27,14 @@ class OptionsMenu(scene_base.SceneBase):
         self.rect = self.image.get_rect()
 
         button_width, button_height = asset_sizer.get_button_size(size)
-        button_width *= 8
+
+        left = self.rect.left + button_width
+
+        button_width *= 6
         button_height *= 2
 
-        left = self.rect.left
-        bottom = self.rect.bottom
-
         offset = button_height
+        bottom = self.rect.bottom
 
         checkbox_width = asset_sizer.get_button_size(size)[0]
 
@@ -58,7 +59,7 @@ class OptionsMenu(scene_base.SceneBase):
                     bottom - offset * 2,
                     button_width, 
                     button_height, 
-                    string='[C]LEAR GAME DATA', 
+                    string='CLEAR GAME DATA', 
                     name='clear_data')),
             'go_back': pygame.sprite.GroupSingle(
                 Clickable(
@@ -66,7 +67,7 @@ class OptionsMenu(scene_base.SceneBase):
                     bottom - offset,
                     button_width, 
                     button_height, 
-                    string='[B]ACK', 
+                    string='BACK', 
                     selected=True,
                     name='go_back'
                 )

@@ -28,42 +28,44 @@ class StartMenu(scene_base.SceneBase):
         asset_sizer = ResolutionAssetSizer()
 
         button_width, button_height = asset_sizer.get_button_size(size)
-        button_width *= 8
+
+        left = self.rect.left + button_width
+
+        button_width *= 6
         button_height *= 2
 
         offset = button_height
-
         bottom = self.rect.bottom
 
         items = {
             'start-button': pygame.sprite.GroupSingle(
                 Clickable(
-                    self.rect.left, 
+                    left,
                     bottom - offset * 3,
                     button_width, 
                     button_height, 
-                    string='[S]TART GAME', 
+                    string='START GAME', 
                     selected=True,
                     name="introduction"
                     )
                 ),
             'options': pygame.sprite.GroupSingle(
                 Clickable(
-                    self.rect.left, 
+                    left,
                     bottom - offset * 2, 
                     button_width, 
                     button_height, 
-                    string='[O]PTIONS',
+                    string='OPTIONS',
                     name="options-menu"
                     )
                 ),
             'quit': pygame.sprite.GroupSingle(
                 Clickable(
-                    self.rect.left, 
+                    left,
                     bottom - offset, 
                     button_width, 
                     button_height, 
-                    string='[Q]UIT',
+                    string='QUIT',
                     name="quit"
                     )
                 )

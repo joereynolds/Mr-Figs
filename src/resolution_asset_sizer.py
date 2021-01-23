@@ -4,7 +4,7 @@ import src.logger as logger
 class ResolutionAssetSizer():
 
     def get_font_size(self, screen_size):
-        return graphics.round_to_nearest_tile(screen_size[1] // graphics.tile_height)
+        return int(self.get_button_size(screen_size)[0] * 0.25)
 
     def get_button_size(self, screen_size):
         """

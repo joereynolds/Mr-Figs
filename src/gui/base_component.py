@@ -5,7 +5,6 @@ import src.config as config
 import src.graphics as g
 
 
-
 class BaseComponent(pygame.sprite.Sprite):
 
     def __init__(
@@ -56,12 +55,19 @@ class BaseComponent(pygame.sprite.Sprite):
         self.rect.y = y
         self.text = text_element.TextElement(text=string)
         self.asset_sizer = ResolutionAssetSizer()
+        self.size = pygame.display.get_window_size()
+
         self.font_size = self.asset_sizer.get_font_size(
-            pygame.display.get_window_size()
+            self.size
         )
+
         self.selected = selected
         self.name = name
         self.font = pygame.font.Font(config.font, self.font_size)
+
+        self.tile_size = self.asset_sizer.get_button_size(
+            self.size
+        )
 
     def on_selected(self, func, *args):
         """When we've selected the item, do these things"""
@@ -81,7 +87,7 @@ class BaseComponent(pygame.sprite.Sprite):
         if a position is supplied.
         @position = Position for the text to be rendered (optional)
         """
-        self.text.position = (self.rect.x,0)
+        self.text.position = (self.rect.left + self.tile_size[0], self.tile_size[0])
 
         if color:
             self.text.set_color(color)
