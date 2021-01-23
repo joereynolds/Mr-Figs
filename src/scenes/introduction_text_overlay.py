@@ -14,22 +14,24 @@ class IntroductionTextOverlay(scene_base.SceneBase):
 
     def __init__(self):
         # TODO needs its own input handler
+        self.controller = graphics.get_controller()
         scene_base.SceneBase.__init__(
             self, 
             IntroductionTextOverlayInputHandler(self),
-            graphics.get_controller()
+            self.controller
         ) 
 
         self.user_data = UserData()
         self.screen = graphics.get_window_surface()
+        self.screen_surface_rect = self.screen.get_rect()
         self.width, self.height = pygame.display.get_window_size()
         self.center = self.width // 2
         self.surface = pygame.Surface((self.width, self.height)).convert()
 
+        self.size = pygame.display.get_window_size()
         self.asset_sizer = ResolutionAssetSizer()
-        self.font_size = self.asset_sizer.get_font_size(
-            pygame.display.get_window_size()
-        )
+        self.font_size = self.asset_sizer.get_font_size(self.size)
+
         pygame.font.init()
         self.font = pygame.font.Font(config.font, self.font_size)
         self.timer = 100
@@ -39,6 +41,11 @@ class IntroductionTextOverlay(scene_base.SceneBase):
             I hear from 'The Others' that he's guilty of leaving evidence of these experiments just lying around.
             I should collect these and finally expose his wicked games!"
             """
+
+        self.action_image = self.controller.get_action_button_image()
+        self.controller_prompt_x, self.controller_prompt_y = self.screen_surface_rect.midbottom
+        self.controller_prompt_x = self.screen_surface_rect.centerx * 0.75
+        self.controller_prompt_y -= self.asset_sizer.get_button_size(self.size)[0]
 
     def render(self):
         """Renders all the buttons on our escape menu"""
@@ -56,6 +63,28 @@ class IntroductionTextOverlay(scene_base.SceneBase):
             )
 
             self.screen.blit(self.surface, (0,0))
+
+            rendered_text = self.font.render("Press ", False, colours.WHITE)
+            rendered_text_other = self.font.render("To continue ", False, colours.WHITE)
+
+            self.screen.blit(
+                rendered_text, 
+                (self.controller_prompt_x, self.controller_prompt_y)
+            )
+
+            self.screen.blit(
+                self.action_image, 
+                (self.controller_prompt_x + rendered_text.get_width(), self.controller_prompt_y)
+            )
+
+            self.screen.blit(
+                rendered_text_other, 
+                (
+                    self.controller_prompt_x + rendered_text.get_width() + self.action_image.get_width() , 
+                    self.controller_prompt_y
+                )
+            )
+
         else: 
             self.switch_to_scene(src.static_scenes.level_obj_list['level-select'])
 
