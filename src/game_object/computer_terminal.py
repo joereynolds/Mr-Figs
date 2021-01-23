@@ -19,7 +19,7 @@ class ComputerTerminal(Entity):
 
     def handle_collision(self, tile, player, level):
         if player.destination[0] == self.rect.x and player.destination[1] + player.offset_y == self.rect.y:
-            level.switch_to_scene(self.minigame, minigame=True);
+            level.switch_to_scene(self.minigame, minigame=True)
             self.image = self.broken_image
 
     def handle_pre_bomb_particle_creation(self, level):
