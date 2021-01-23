@@ -40,7 +40,7 @@ class EnemyBombable(entity.Entity):
         TODO: this code is shockingly bad. Refactor when less tired and know
         more vector math
         """
-        if pygame.sprite.collide_rect(self, player):
+        if pygame.sprite.collide_rect(self, player.collideable):
             pygame.sprite.Sprite.kill(player)
 
         heading = self.target - self.position

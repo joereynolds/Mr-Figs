@@ -37,7 +37,7 @@ class EnemyPathable(entity.Entity):
         self.waypoint_index = 0
 
     def handle_collision(self, tile, player, level):
-        if pygame.sprite.collide_rect(self, player):
+        if pygame.sprite.collide_rect(self, player.collideable):
             pygame.sprite.Sprite.kill(player)
 
         heading = self.target - self.position

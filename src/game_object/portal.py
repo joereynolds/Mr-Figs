@@ -20,6 +20,8 @@ class Portal(entity.Entity):
     def handle_collision(self, tile, player, level):
         if player.destination[0] == self.rect.x and player.destination[1] + player.offset_y == self.rect.y and not player.is_teleporting:
             player.rect.x = self.destination_portal.rect.x
+            player.collideable.rect.x = self.destination_portal.rect.x
+            player.collideable.rect.y = self.destination_portal.rect.y
             player.rect.y = self.destination_portal.rect.y - player.offset_y
             player.destination[0] = self.destination_portal.rect.x
             player.destination[1] = self.destination_portal.rect.y - player.offset_y

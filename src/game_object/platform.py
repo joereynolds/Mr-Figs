@@ -47,6 +47,8 @@ class Platform(entity.Entity):
         """
         player.rect.x = x
         player.rect.y = y - player.offset_y
+        player.collideable.rect.x = x
+        player.collideable.rect.y = y
         player.destination[0] = x
         player.destination[1] = y - player.offset_y
 
@@ -55,7 +57,8 @@ class Platform(entity.Entity):
         TODO: this code is shockingly bad. Refactor when less tired and know
         more vector math
         """
-        level.sprites.change_layer(player, 2)
+        if player in level.sprites:
+            level.sprites.change_layer(player, 2)
 
         if self.has_reached_to_destination() and not self.player_on_platform:
             self.target = self.path.points[-2]

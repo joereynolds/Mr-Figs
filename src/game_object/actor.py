@@ -10,6 +10,131 @@ import src.movement_vector as movement_vector
 import src.interpolate as interpolate
 from src.collision_handlers.turn_based_collision_handler import TurnBasedCollisionHandler
 
+# True is Walking, false is idle
+sprites = {
+    'up': {
+        True: [
+            g.spritesheet.subsurface(0 * g.tile_width, 34 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(1 * g.tile_width, 34 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(2 * g.tile_width, 34 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(3 * g.tile_width, 34 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(4 * g.tile_width, 34 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(5 * g.tile_width, 34 * g.tile_height, g.tile_width, g.tile_height * 2),
+        ],
+        False: [
+            g.spritesheet.subsurface(0 * g.tile_width, 16 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(1 * g.tile_width, 16 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(2 * g.tile_width, 16 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(3 * g.tile_width, 16 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(4 * g.tile_width, 16 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(5 * g.tile_width, 16 * g.tile_height, g.tile_width, g.tile_height * 2),
+        ],
+        'planting_bomb': [
+            g.spritesheet.subsurface(0 * g.tile_width, 22 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(1 * g.tile_width, 22 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(2 * g.tile_width, 22 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(3 * g.tile_width, 22 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(4 * g.tile_width, 22 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(5 * g.tile_width, 22 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(4 * g.tile_width, 22 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(3 * g.tile_width, 22 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(2 * g.tile_width, 22 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(1 * g.tile_width, 22 * g.tile_height, g.tile_width, g.tile_height * 2),
+        ]
+    },
+    'down': {
+        True: [
+            g.spritesheet.subsurface(0 * g.tile_width, 28 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(1 * g.tile_width, 28 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(2 * g.tile_width, 28 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(3 * g.tile_width, 28 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(4 * g.tile_width, 28 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(5 * g.tile_width, 28 * g.tile_height, g.tile_width, g.tile_height * 2),
+        ],
+        False: [
+            g.spritesheet.subsurface(0 * g.tile_width, 12 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(1 * g.tile_width, 12 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(2 * g.tile_width, 12 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(3 * g.tile_width, 12 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(4 * g.tile_width, 12 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(5 * g.tile_width, 12 * g.tile_height, g.tile_width, g.tile_height * 2),
+        ],
+        'planting_bomb': [
+            g.spritesheet.subsurface(0 * g.tile_width, 20 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(1 * g.tile_width, 20 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(2 * g.tile_width, 20 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(3 * g.tile_width, 20 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(4 * g.tile_width, 20 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(5 * g.tile_width, 20 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(4 * g.tile_width, 20 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(3 * g.tile_width, 20 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(2 * g.tile_width, 20 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(1 * g.tile_width, 20 * g.tile_height, g.tile_width, g.tile_height * 2),
+        ]
+    },
+    'left': {
+        True: [
+            g.spritesheet.subsurface(0 * g.tile_width, 32 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(1 * g.tile_width, 32 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(2 * g.tile_width, 32 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(3 * g.tile_width, 32 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(4 * g.tile_width, 32 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(5 * g.tile_width, 32 * g.tile_height, g.tile_width, g.tile_height * 2),
+        ],
+        False: [
+            g.spritesheet.subsurface(0 * g.tile_width, 18 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(1 * g.tile_width, 18 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(2 * g.tile_width, 18 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(3 * g.tile_width, 18 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(4 * g.tile_width, 18 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(5 * g.tile_width, 18 * g.tile_height, g.tile_width, g.tile_height * 2),
+        ],
+        'planting_bomb': [
+            g.spritesheet.subsurface(0 * g.tile_width, 26 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(1 * g.tile_width, 26 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(2 * g.tile_width, 26 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(3 * g.tile_width, 26 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(4 * g.tile_width, 26 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(5 * g.tile_width, 26 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(4 * g.tile_width, 26 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(3 * g.tile_width, 26 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(2 * g.tile_width, 26 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(1 * g.tile_width, 26 * g.tile_height, g.tile_width, g.tile_height * 2),
+        ]
+    },
+    'right': {
+        True: [
+            g.spritesheet.subsurface(0 * g.tile_width, 30 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(1 * g.tile_width, 30 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(2 * g.tile_width, 30 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(3 * g.tile_width, 30 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(4 * g.tile_width, 30 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(5 * g.tile_width, 30 * g.tile_height, g.tile_width, g.tile_height * 2),
+        ],
+        False: [
+            g.spritesheet.subsurface(0 * g.tile_width, 14 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(1 * g.tile_width, 14 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(2 * g.tile_width, 14 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(3 * g.tile_width, 14 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(4 * g.tile_width, 14 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(5 * g.tile_width, 14 * g.tile_height, g.tile_width, g.tile_height * 2),
+        ],
+        'planting_bomb': [
+            g.spritesheet.subsurface(0 * g.tile_width, 24 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(1 * g.tile_width, 24 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(2 * g.tile_width, 24 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(3 * g.tile_width, 24 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(4 * g.tile_width, 24 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(5 * g.tile_width, 24 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(4 * g.tile_width, 24 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(3 * g.tile_width, 24 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(2 * g.tile_width, 24 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(1 * g.tile_width, 24 * g.tile_height, g.tile_width, g.tile_height * 2),
+        ]
+    },
+}
+
+
 class Actor(entity.Entity):
     """
     @self.direction   = The last pressed direction.
@@ -64,12 +189,19 @@ class Actor(entity.Entity):
                 g.tile_height * 2
         ) 
 
+        # Used as a hitbox for mr figs
+        self.collideable = entity.Entity(self.rect.x, self.rect.y + 32, 32, 32, alpha=True)
+        self.collideable.image.fill((255,0,0,75))
+        self.tiled_level.sprites.add(self.collideable)
+
         self.rect.y -= g.tile_height // 4
 
         # We don't want the character exactly on the tile, this doesn't look as good so
         # we offset the y position and then store that in here + our tiles height so we can
         # correctly check for tiles underneath us
         self.offset_y = (g.tile_height // 4) + g.tile_height # 40
+
+
 
         self.bombs = pygame.sprite.LayeredUpdates()
         self.move_stack = []
@@ -83,129 +215,7 @@ class Actor(entity.Entity):
         self.animation_timer = 0.125
         self.frame_index = 0
 
-        # True is Walking, false is idle
-        self.frames = {
-            'up': {
-                True: [
-                    g.spritesheet.subsurface(0 * g.tile_width, 34 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(1 * g.tile_width, 34 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(2 * g.tile_width, 34 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(3 * g.tile_width, 34 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(4 * g.tile_width, 34 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(5 * g.tile_width, 34 * g.tile_height, g.tile_width, g.tile_height * 2),
-                ],
-                False: [
-                    g.spritesheet.subsurface(0 * g.tile_width, 16 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(1 * g.tile_width, 16 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(2 * g.tile_width, 16 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(3 * g.tile_width, 16 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(4 * g.tile_width, 16 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(5 * g.tile_width, 16 * g.tile_height, g.tile_width, g.tile_height * 2),
-                ],
-                'planting_bomb': [
-                    g.spritesheet.subsurface(0 * g.tile_width, 22 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(1 * g.tile_width, 22 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(2 * g.tile_width, 22 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(3 * g.tile_width, 22 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(4 * g.tile_width, 22 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(5 * g.tile_width, 22 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(4 * g.tile_width, 22 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(3 * g.tile_width, 22 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(2 * g.tile_width, 22 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(1 * g.tile_width, 22 * g.tile_height, g.tile_width, g.tile_height * 2),
-                ]
-            },
-            'down': {
-                True: [
-                    g.spritesheet.subsurface(0 * g.tile_width, 28 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(1 * g.tile_width, 28 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(2 * g.tile_width, 28 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(3 * g.tile_width, 28 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(4 * g.tile_width, 28 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(5 * g.tile_width, 28 * g.tile_height, g.tile_width, g.tile_height * 2),
-                ],
-                False: [
-                    g.spritesheet.subsurface(0 * g.tile_width, 12 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(1 * g.tile_width, 12 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(2 * g.tile_width, 12 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(3 * g.tile_width, 12 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(4 * g.tile_width, 12 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(5 * g.tile_width, 12 * g.tile_height, g.tile_width, g.tile_height * 2),
-                ],
-                'planting_bomb': [
-                    g.spritesheet.subsurface(0 * g.tile_width, 20 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(1 * g.tile_width, 20 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(2 * g.tile_width, 20 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(3 * g.tile_width, 20 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(4 * g.tile_width, 20 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(5 * g.tile_width, 20 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(4 * g.tile_width, 20 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(3 * g.tile_width, 20 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(2 * g.tile_width, 20 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(1 * g.tile_width, 20 * g.tile_height, g.tile_width, g.tile_height * 2),
-                ]
-            },
-            'left': {
-                True: [
-                    g.spritesheet.subsurface(0 * g.tile_width, 32 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(1 * g.tile_width, 32 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(2 * g.tile_width, 32 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(3 * g.tile_width, 32 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(4 * g.tile_width, 32 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(5 * g.tile_width, 32 * g.tile_height, g.tile_width, g.tile_height * 2),
-                ],
-                False: [
-                    g.spritesheet.subsurface(0 * g.tile_width, 18 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(1 * g.tile_width, 18 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(2 * g.tile_width, 18 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(3 * g.tile_width, 18 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(4 * g.tile_width, 18 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(5 * g.tile_width, 18 * g.tile_height, g.tile_width, g.tile_height * 2),
-                ],
-                'planting_bomb': [
-                    g.spritesheet.subsurface(0 * g.tile_width, 26 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(1 * g.tile_width, 26 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(2 * g.tile_width, 26 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(3 * g.tile_width, 26 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(4 * g.tile_width, 26 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(5 * g.tile_width, 26 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(4 * g.tile_width, 26 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(3 * g.tile_width, 26 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(2 * g.tile_width, 26 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(1 * g.tile_width, 26 * g.tile_height, g.tile_width, g.tile_height * 2),
-                ]
-            },
-            'right': {
-                True: [
-                    g.spritesheet.subsurface(0 * g.tile_width, 30 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(1 * g.tile_width, 30 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(2 * g.tile_width, 30 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(3 * g.tile_width, 30 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(4 * g.tile_width, 30 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(5 * g.tile_width, 30 * g.tile_height, g.tile_width, g.tile_height * 2),
-                ],
-                False: [
-                    g.spritesheet.subsurface(0 * g.tile_width, 14 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(1 * g.tile_width, 14 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(2 * g.tile_width, 14 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(3 * g.tile_width, 14 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(4 * g.tile_width, 14 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(5 * g.tile_width, 14 * g.tile_height, g.tile_width, g.tile_height * 2),
-                ],
-                'planting_bomb': [
-                    g.spritesheet.subsurface(0 * g.tile_width, 24 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(1 * g.tile_width, 24 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(2 * g.tile_width, 24 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(3 * g.tile_width, 24 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(4 * g.tile_width, 24 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(5 * g.tile_width, 24 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(4 * g.tile_width, 24 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(3 * g.tile_width, 24 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(2 * g.tile_width, 24 * g.tile_height, g.tile_width, g.tile_height * 2),
-                    g.spritesheet.subsurface(1 * g.tile_width, 24 * g.tile_height, g.tile_width, g.tile_height * 2),
-                ]
-            },
-        }
+        self.frames = sprites
 
     def move(self, delta_time):
         """Checks to see if we've reached the destination given, if we have,
@@ -224,18 +234,22 @@ class Actor(entity.Entity):
         else:
             if target_x < self.rect.x:
                 self.rect.x -= self.speed
+                self.collideable.rect.x -= self.speed
                 self.moving = True
             elif target_x > self.rect.x:
                 # TODO - this interpolation breaks on the new tileset
                 # definitely some maths error
                 # self.speed = interpolate.decelerate(self.rect.x, target_x)
                 self.rect.x += self.speed
+                self.collideable.rect.x += self.speed
                 self.moving = True
             elif target_y < self.rect.y:
                 self.rect.y -= interpolate.decelerate(self.rect.x, target_x)
+                self.collideable.rect.y -= interpolate.decelerate(self.rect.x, target_x)
                 self.moving = True
             elif target_y > self.rect.y:
                 self.rect.y += self.speed
+                self.collideable.rect.y += self.speed
                 self.moving = True
 
         #If we have reached our destination, we're not moving anymore
@@ -316,7 +330,7 @@ class Actor(entity.Entity):
             self.creating_bomb = True
             # Don't plant a bomb here if there's already one there
             for bomb in self.bombs:
-                if bomb.rect.x == self.rect.x and bomb.rect.y == self.rect.y:
+                if bomb.rect.x == self.rect.x and bomb.rect.y == self.rect.y + self.offset_y:
                     return
 
             self.bombs.add(Bomb(

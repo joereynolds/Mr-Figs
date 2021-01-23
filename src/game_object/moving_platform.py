@@ -39,9 +39,11 @@ class MovingPlatform(entity.Entity):
         Otherwise they wouldn't move
         """
         player.rect.x = x
-        player.rect.y = y
+        player.rect.y = y - player.offset_y
+        player.collideable.rect.x = x
+        player.collideable.rect.y = y
         player.destination[0] = x
-        player.destination[1] = y
+        player.destination[1] = y - player.offset_y
 
     def pin_bomb(self, bomb, x, y):
         """
@@ -75,7 +77,7 @@ class MovingPlatform(entity.Entity):
                 if pygame.sprite.collide_rect(self, bomb):
                     self.pin_bomb(bomb, self.position.x, self.position.y)
 
-            if pygame.sprite.collide_rect(self, player):
+            if pygame.sprite.collide_rect(self, player.collideable):
                 self.pin_player(player, self.position.x, self.position.y)
 
 
