@@ -73,8 +73,11 @@ class StartMenu(scene_base.SceneBase):
 
     def render(self):
         """Fill our surface and render our buttons"""
-        
+
+   
         self.surface.blit(self.image, ((0,0)))
+
+        self.menu_items.update()
         self.menu_items.items['start-button'].draw(self.surface)
         self.menu_items.items['start-button'].sprite.render()
         self.menu_items.items['options'].draw(self.surface)

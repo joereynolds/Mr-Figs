@@ -91,6 +91,7 @@ class EscapeMenu(scene_base.SceneBase):
         """Renders all the buttons on our escape menu"""
         self.surface.fill((30, 90, 129, 225))
 
+        self.menu_items.update()
         self.menu_items.items['continue'].draw(self.surface)
         self.menu_items.items['continue'].sprite.render()
         self.menu_items.items['restart'].draw(self.surface)

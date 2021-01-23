@@ -79,6 +79,7 @@ class OptionsMenu(scene_base.SceneBase):
         """Fill our surface and render our buttons"""
         self.surface.blit(self.image, ((0,0)))
 
+
         rendered_text = self.font.render(
             self.music_toggle_text, 
             False, 
@@ -93,6 +94,7 @@ class OptionsMenu(scene_base.SceneBase):
             )
         )
 
+        self.menu_items.update()
         self.menu_items.items['toggle_music'].draw(self.surface)
         self.menu_items.items['clear_data'].draw(self.surface)
         self.menu_items.items['go_back'].draw(self.surface)
