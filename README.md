@@ -1,4 +1,5 @@
-# Mr-Figs
+<img src="./assets/images/mr-figs-title-draft.png" alt="Mr Figs" width="100%">
+
 
 Mr Figs is a turn-based puzzler.
 The player must blast their way through various puzzles to reach the end goal.
