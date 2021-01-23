@@ -47,6 +47,8 @@ class Platform(entity.Entity):
         """
         player.rect.x = x
         player.rect.y = y - player.offset_y
+        player.collideable.rect.x = x
+        player.collideable.rect.y = y
         player.destination[0] = x
         player.destination[1] = y - player.offset_y
 
