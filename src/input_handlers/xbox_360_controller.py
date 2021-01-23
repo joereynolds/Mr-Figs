@@ -1,3 +1,5 @@
+import pygame
+import os
 
 class Xbox360Controller():
 
@@ -35,6 +37,16 @@ class Xbox360Controller():
         """Gets the state of the A button"""
         return self.joystick.get_button(0)
 
+    def get_action_button_image(self):
+        base_path = os.path.join(
+            'assets', 
+            'images', 
+            'controller-prompts',
+            'xbox-one' + os.sep
+        )
+
+        return pygame.image.load(base_path + 'XboxOne_A.png')
+
     def get_y_button_state(self):
         """Gets the state of the A button"""
         return self.joystick.get_button(3)
@@ -44,6 +56,12 @@ class Xbox360Controller():
 
     def get_up_button_state(self):
         return int(self.joystick.get_hat(0) == (0, 1))
+
+    def get_left_button_state(self):
+        return int(self.joystick.get_hat(0) == (-1, 0))
+
+    def get_right_button_state(self):
+        return int(self.joystick.get_hat(0) == (1, 0))
 
     def get_start_button_state(self):
         return self.joystick.get_button(7)

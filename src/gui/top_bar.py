@@ -24,8 +24,8 @@ class TopBar():
         )
 
         self.level_name_display = DataDisplay(
-            self.width // 4,
-            self.height // 4,
+            self.width * 0.25,
+            self.height * 0.25,
             self.width,
             self.height,
             self.surface,

@@ -12,22 +12,31 @@ class TextOverlay(scene_base.SceneBase):
 
     def __init__(self, text, redirect_to):
         self.redirect_to = redirect_to
+        self.size = pygame.display.get_window_size()
+        self.controller = graphics.get_controller()
 
         scene_base.SceneBase.__init__(
             self, 
             TextOverlayInputHandler(self),
-            graphics.get_controller()
+            self.controller
         ) 
+
         self.text = text
         self.width, self.height = pygame.display.get_window_size()
         self.center = self.width // 2
         self.asset_sizer = ResolutionAssetSizer()
         self.surface = pygame.Surface((self.width, self.height)).convert()
         self.font_size = self.asset_sizer.get_font_size(
-            pygame.display.get_window_size()
+            self.size
         )
         self.font = pygame.font.Font(config.font, self.font_size)
         self.screen_surface = graphics.get_window_surface()
+        self.screen_surface_rect = self.screen_surface.get_rect()
+
+        self.action_image = self.controller.get_action_button_image()
+        self.controller_prompt_x, self.controller_prompt_y = self.screen_surface_rect.midbottom
+        self.controller_prompt_x = self.screen_surface_rect.centerx * 0.75
+        self.controller_prompt_y -= self.asset_sizer.get_button_size(self.size)[0]
 
     def render(self):
         """Renders all the buttons on our escape menu"""
@@ -43,6 +52,28 @@ class TextOverlay(scene_base.SceneBase):
         )
 
         self.screen_surface.blit(self.surface, (0,0))
+
+        rendered_text = self.font.render("Press ", False, colours.WHITE)
+        rendered_text_other = self.font.render("To continue ", False, colours.WHITE)
+
+        self.screen_surface.blit(
+            rendered_text, 
+            (self.controller_prompt_x, self.controller_prompt_y)
+        )
+
+        self.screen_surface.blit(
+            self.action_image, 
+            (self.controller_prompt_x + rendered_text.get_width(), self.controller_prompt_y)
+        )
+
+        self.screen_surface.blit(
+            rendered_text_other, 
+            (
+                self.controller_prompt_x + rendered_text.get_width() + self.action_image.get_width() , 
+                self.controller_prompt_y
+            )
+        )
+
 
     def wrap_text(self, text: str, font, colour, x, y, screen, allowed_width):
         # first, split the text into words

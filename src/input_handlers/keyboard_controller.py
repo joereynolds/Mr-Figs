@@ -1,4 +1,5 @@
 import pygame
+import os
 
 class KeyboardController():
 
@@ -12,6 +13,17 @@ class KeyboardController():
 
     def get_up_button_state():
         return pygame.K_UP
+
+    def get_action_button_image():
+        base_path = os.path.join(
+            'assets', 
+            'images', 
+            'controller-prompts',
+            'keyboard-and-mouse', 
+            'Light' + os.sep
+        )
+
+        return pygame.image.load(base_path + 'Space_Key_Light.png')
 
     def get_left_button_state():
         return pygame.K_LEFT
@@ -30,3 +42,5 @@ class KeyboardController():
 
     def get_escape_button_state():
         return pygame.K_ESCAPE
+
+    
