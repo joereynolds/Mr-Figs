@@ -26,20 +26,14 @@ class EnemyBombable(entity.Entity):
         entity.Entity.__init__(self, x, y, width, height, image)
         self.minimap_colour = colours.RED_HIGHLIGHT
         self.path = path
-        self.destination = path.points[-1]
         self.position = Vector2(x, y)
         self.vel = Vector2(0, 0)
         self.target = self.path.points[1]
-        self.target_radius = 25
         self.max_speed = 1
         self.waypoint_index = 0
         self.bomb_timer = 100
 
     def handle_collision(self, tile, player, level):
-        """
-        TODO: this code is shockingly bad. Refactor when less tired and know
-        more vector math
-        """
         if pygame.sprite.collide_rect(self, player.collideable):
             pygame.sprite.Sprite.kill(player)
 
@@ -49,21 +43,28 @@ class EnemyBombable(entity.Entity):
         if heading != [0,0]:
             heading.normalize_ip()
 
-        if distance <= 1:  # We're closer than 2 pixels.
+        if distance <= 1:  # We're closer than a pixel
             self.waypoint_index = (self.waypoint_index + 1) % len(self.path.points)
             self.target = self.path.points[self.waypoint_index]
 
+        can_plant = True
+
         if self.rect.x % graphics.tile_width == 0 and self.rect.y % graphics.tile_height == 0:
             if self.bomb_timer < 0:
-                player.bombs.add(Bomb(
-                    self.rect.x,
-                    self.rect.y,
-                    graphics.tile_width,
-                    graphics.tile_height,
-                    level.tiled_level,
-                    5,
-                    graphics.sprites['bomb']['sprites'][0]
-                ))
+                for bomb in level.player.bombs:
+                    if self.rect.x == bomb.rect.x and self.rect.y == bomb.rect.y:
+                        can_plant = False
+
+                if can_plant:
+                    player.bombs.add(Bomb(
+                        self.rect.x,
+                        self.rect.y,
+                        graphics.tile_width,
+                        graphics.tile_height,
+                        level.tiled_level,
+                        5,
+                        graphics.sprites['bomb']['sprites'][0]
+                    ))
                 self.bomb_timer = 100
         self.bomb_timer -= 1
 

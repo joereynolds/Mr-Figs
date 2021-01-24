@@ -28,7 +28,6 @@ class TiledMap():
     def __init__(self, file, screen: pygame.Surface):
         self.tmx_file = file
 
-        print(self.tmx_file)
         self._map = load_pygame(self.tmx_file)
         self.map_data_for_camera = pyscroll.TiledMapData(self._map)
 

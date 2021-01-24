@@ -385,8 +385,9 @@ class Actor(entity.Entity):
         even the ones the player did not plant"""
         
         for bomb in self.bombs:
-            # Don't decreate the lifespan of a bomb if we're going to it.
+            # Don't decrease the lifespan of a bomb if we're going to it.
             # This would cause it to blow up even if we've collected it.
+            # TODO - Probably doesn't work after offset refactor 
             if self.destination[0] != bomb.rect.x or self.destination[1] != bomb.rect.y:
                 bomb.lifespan -= 1
                 if bomb.blow_up():

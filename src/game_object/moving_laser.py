@@ -90,7 +90,7 @@ class MovingLaser(Entity):
         self.level.sprites.add(self.lasers)
 
     def handle_collision(self, tile, player, level):
-        if pygame.sprite.spritecollide(player, self.lasers, False):
+        if pygame.sprite.spritecollide(player.collideable, self.lasers, False):
             pygame.sprite.Sprite.kill(player)
 
         for bomb in player.bombs:
