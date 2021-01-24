@@ -412,6 +412,7 @@ class Actor(entity.Entity):
         self.tiled_level.sprites.change_layer(self, 1)
 
         if command in directions.keys():
+            self.creating_bomb = False
             if not self.moving:
                 self.set_destination(
                     directions[command][0],
@@ -469,14 +470,12 @@ class Actor(entity.Entity):
 
             if self.creating_bomb:
                 self.animate_bomb_create(delta_time)
-            else: self.image = self.frames[self.direction][self.moving][self.frame_index]
+            else: 
+                self.image = self.frames[self.direction][self.moving][self.frame_index]
 
             self.animation_timer = 0.125
 
     def animate_bomb_create(self, dt):
-        print(self.creating_bomb_frame_index)
-        print(len(self.frames[self.direction]['planting_bomb']) - 1)
-
         if self.creating_bomb_frame_index == len(self.frames[self.direction]['planting_bomb']) - 1:
             self.creating_bomb = False
             return
