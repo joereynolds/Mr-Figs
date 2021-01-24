@@ -295,8 +295,14 @@ class Actor(entity.Entity):
         ) 
 
         # Used as a hitbox for mr figs
-        self.collideable = entity.Entity(self.rect.x, self.rect.y + 32, 32, 32, alpha=True)
-        self.collideable.image.fill((255,0,0,75))
+        self.collideable = entity.Entity(
+            self.rect.x + g.tile_width * 0.25,
+            self.rect.y + g.tile_height + (g.tile_height * 0.33), 
+            g.tile_width * 0.5, 
+            g.tile_height * 0.5, 
+            alpha=True
+        )
+        self.collideable.image.fill((0, 0, 0, 75))
         self.tiled_level.sprites.add(self.collideable)
 
         self.rect.y -= g.tile_height // 4
@@ -322,6 +328,16 @@ class Actor(entity.Entity):
         self.creating_bomb_frame_index = 0
 
         self.frames = sprites
+
+    def move_player(self, x: int, y:int):
+        """Called by other objects to move this player. 
+        i.e. Portals, platforms etc..."""
+        self.rect.x = x
+        self.rect.y = y - self.offset_y
+        self.collideable.rect.x = self.rect.x + g.tile_width * 0.25
+        self.collideable.rect.y = self.rect.y + g.tile_height + (g.tile_height * 0.33)
+        self.destination[0] = x
+        self.destination[1] = y - self.offset_y
 
     def move(self, delta_time):
         """Checks to see if we've reached the destination given, if we have,

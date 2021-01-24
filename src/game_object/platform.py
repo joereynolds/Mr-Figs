@@ -40,17 +40,12 @@ class Platform(entity.Entity):
     def has_reached_from_destination(self):
         return self.target == self.path.points[-1]
 
-    def pin_player(self, player, x, y):
+    def pin_player(self, player, x: int, y: int):
         """
         Pins the player to x and y.
         Otherwise they wouldn't move
         """
-        player.rect.x = x
-        player.rect.y = y - player.offset_y
-        player.collideable.rect.x = x
-        player.collideable.rect.y = y
-        player.destination[0] = x
-        player.destination[1] = y - player.offset_y
+        player.move_player(x, y)
 
     def handle_collision(self, tile, player, level):
         """

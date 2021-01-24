@@ -33,17 +33,12 @@ class MovingPlatform(entity.Entity):
         self.safe_platform_image = graphics.subsurf(graphics.grid(7, 8))
         self.unsafe_platform_image = graphics.subsurf(graphics.grid(8, 8))
 
-    def pin_player(self, player, x, y):
+    def pin_player(self, player, x: int, y: int):
         """
         Pins the player to x and y.
         Otherwise they wouldn't move
         """
-        player.rect.x = x
-        player.rect.y = y - player.offset_y
-        player.collideable.rect.x = x
-        player.collideable.rect.y = y
-        player.destination[0] = x
-        player.destination[1] = y - player.offset_y
+        player.move_player(x, y)
 
     def pin_bomb(self, bomb, x, y):
         """
