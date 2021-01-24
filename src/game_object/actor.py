@@ -53,16 +53,15 @@ sprites = {
             g.spritesheet.subsurface(5 * g.tile_width, 16 * g.tile_height, g.tile_width, g.tile_height * 2),
         ],
         'planting_bomb': [
-            g.spritesheet.subsurface(0 * g.tile_width, 22 * g.tile_height, g.tile_width, g.tile_height * 2),
-            g.spritesheet.subsurface(1 * g.tile_width, 22 * g.tile_height, g.tile_width, g.tile_height * 2),
-            g.spritesheet.subsurface(2 * g.tile_width, 22 * g.tile_height, g.tile_width, g.tile_height * 2),
-            g.spritesheet.subsurface(3 * g.tile_width, 22 * g.tile_height, g.tile_width, g.tile_height * 2),
-            g.spritesheet.subsurface(4 * g.tile_width, 22 * g.tile_height, g.tile_width, g.tile_height * 2),
-            g.spritesheet.subsurface(5 * g.tile_width, 22 * g.tile_height, g.tile_width, g.tile_height * 2),
-            g.spritesheet.subsurface(4 * g.tile_width, 22 * g.tile_height, g.tile_width, g.tile_height * 2),
-            g.spritesheet.subsurface(3 * g.tile_width, 22 * g.tile_height, g.tile_width, g.tile_height * 2),
-            g.spritesheet.subsurface(2 * g.tile_width, 22 * g.tile_height, g.tile_width, g.tile_height * 2),
-            g.spritesheet.subsurface(1 * g.tile_width, 22 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(0 * g.tile_width, 22 * g.tile_height, g.tile_width * 2, g.tile_height * 2),
+            g.spritesheet.subsurface(2 * g.tile_width, 22 * g.tile_height, g.tile_width * 2, g.tile_height * 2),
+            g.spritesheet.subsurface(4 * g.tile_width, 22 * g.tile_height, g.tile_width * 2, g.tile_height * 2),
+            g.spritesheet.subsurface(6 * g.tile_width, 22 * g.tile_height, g.tile_width * 2, g.tile_height * 2),
+            g.spritesheet.subsurface(8 * g.tile_width, 22 * g.tile_height, g.tile_width * 2, g.tile_height * 2),
+            g.spritesheet.subsurface(6 * g.tile_width, 22 * g.tile_height, g.tile_width * 2, g.tile_height * 2),
+            g.spritesheet.subsurface(4 * g.tile_width, 22 * g.tile_height, g.tile_width * 2, g.tile_height * 2),
+            g.spritesheet.subsurface(2 * g.tile_width, 22 * g.tile_height, g.tile_width * 2, g.tile_height * 2),
+            g.spritesheet.subsurface(0 * g.tile_width, 22 * g.tile_height, g.tile_width * 2, g.tile_height * 2),
         ]
     },
     'down': {
@@ -117,16 +116,15 @@ sprites = {
             g.spritesheet.subsurface(5 * g.tile_width, 12 * g.tile_height, g.tile_width, g.tile_height * 2),
         ],
         'planting_bomb': [
-            g.spritesheet.subsurface(0 * g.tile_width, 20 * g.tile_height, g.tile_width, g.tile_height * 2),
-            g.spritesheet.subsurface(1 * g.tile_width, 20 * g.tile_height, g.tile_width, g.tile_height * 2),
-            g.spritesheet.subsurface(2 * g.tile_width, 20 * g.tile_height, g.tile_width, g.tile_height * 2),
-            g.spritesheet.subsurface(3 * g.tile_width, 20 * g.tile_height, g.tile_width, g.tile_height * 2),
-            g.spritesheet.subsurface(4 * g.tile_width, 20 * g.tile_height, g.tile_width, g.tile_height * 2),
-            g.spritesheet.subsurface(5 * g.tile_width, 20 * g.tile_height, g.tile_width, g.tile_height * 2),
-            g.spritesheet.subsurface(4 * g.tile_width, 20 * g.tile_height, g.tile_width, g.tile_height * 2),
-            g.spritesheet.subsurface(3 * g.tile_width, 20 * g.tile_height, g.tile_width, g.tile_height * 2),
-            g.spritesheet.subsurface(2 * g.tile_width, 20 * g.tile_height, g.tile_width, g.tile_height * 2),
-            g.spritesheet.subsurface(1 * g.tile_width, 20 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(0 * g.tile_width, 20 * g.tile_height, g.tile_width * 2, g.tile_height * 2),
+            g.spritesheet.subsurface(2 * g.tile_width, 20 * g.tile_height, g.tile_width * 2, g.tile_height * 2),
+            g.spritesheet.subsurface(4 * g.tile_width, 20 * g.tile_height, g.tile_width * 2, g.tile_height * 2),
+            g.spritesheet.subsurface(6 * g.tile_width, 20 * g.tile_height, g.tile_width * 2, g.tile_height * 2),
+            g.spritesheet.subsurface(8 * g.tile_width, 20 * g.tile_height, g.tile_width * 2, g.tile_height * 2),
+            g.spritesheet.subsurface(6 * g.tile_width, 20 * g.tile_height, g.tile_width * 2, g.tile_height * 2),
+            g.spritesheet.subsurface(4 * g.tile_width, 20 * g.tile_height, g.tile_width * 2, g.tile_height * 2),
+            g.spritesheet.subsurface(2 * g.tile_width, 20 * g.tile_height, g.tile_width * 2, g.tile_height * 2),
+            g.spritesheet.subsurface(0 * g.tile_width, 20 * g.tile_height, g.tile_width * 2, g.tile_height * 2),
         ]
     },
     'left': {
@@ -165,16 +163,15 @@ sprites = {
             g.spritesheet.subsurface(5 * g.tile_width, 18 * g.tile_height, g.tile_width, g.tile_height * 2),
         ],
         'planting_bomb': [
-            g.spritesheet.subsurface(0 * g.tile_width, 26 * g.tile_height, g.tile_width, g.tile_height * 2),
-            g.spritesheet.subsurface(1 * g.tile_width, 26 * g.tile_height, g.tile_width, g.tile_height * 2),
-            g.spritesheet.subsurface(2 * g.tile_width, 26 * g.tile_height, g.tile_width, g.tile_height * 2),
-            g.spritesheet.subsurface(3 * g.tile_width, 26 * g.tile_height, g.tile_width, g.tile_height * 2),
-            g.spritesheet.subsurface(4 * g.tile_width, 26 * g.tile_height, g.tile_width, g.tile_height * 2),
-            g.spritesheet.subsurface(5 * g.tile_width, 26 * g.tile_height, g.tile_width, g.tile_height * 2),
-            g.spritesheet.subsurface(4 * g.tile_width, 26 * g.tile_height, g.tile_width, g.tile_height * 2),
-            g.spritesheet.subsurface(3 * g.tile_width, 26 * g.tile_height, g.tile_width, g.tile_height * 2),
-            g.spritesheet.subsurface(2 * g.tile_width, 26 * g.tile_height, g.tile_width, g.tile_height * 2),
-            g.spritesheet.subsurface(1 * g.tile_width, 26 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(0 * g.tile_width , 26 * g.tile_height, g.tile_width * 2, g.tile_height * 2),
+            g.spritesheet.subsurface(1 * g.tile_width, 26 * g.tile_height, g.tile_width * 2, g.tile_height * 2),
+            g.spritesheet.subsurface(3 * g.tile_width, 26 * g.tile_height, g.tile_width * 2, g.tile_height * 2),
+            g.spritesheet.subsurface(5 * g.tile_width, 26 * g.tile_height, g.tile_width * 2, g.tile_height * 2),
+            g.spritesheet.subsurface(7 * g.tile_width, 26 * g.tile_height, g.tile_width * 2, g.tile_height * 2),
+            g.spritesheet.subsurface(5 * g.tile_width , 26 * g.tile_height, g.tile_width * 2, g.tile_height * 2),
+            g.spritesheet.subsurface(3 * g.tile_width , 26 * g.tile_height, g.tile_width * 2, g.tile_height * 2),
+            g.spritesheet.subsurface(1 * g.tile_width , 26 * g.tile_height, g.tile_width * 2, g.tile_height * 2),
+            g.spritesheet.subsurface(0 * g.tile_width , 26 * g.tile_height, g.tile_width, g.tile_height * 2),
         ]
     },
     'right': {
@@ -229,16 +226,15 @@ sprites = {
             g.spritesheet.subsurface(5 * g.tile_width, 14 * g.tile_height, g.tile_width, g.tile_height * 2),
         ],
         'planting_bomb': [
-            g.spritesheet.subsurface(0 * g.tile_width, 24 * g.tile_height, g.tile_width, g.tile_height * 2),
-            g.spritesheet.subsurface(1 * g.tile_width, 24 * g.tile_height, g.tile_width, g.tile_height * 2),
-            g.spritesheet.subsurface(2 * g.tile_width, 24 * g.tile_height, g.tile_width, g.tile_height * 2),
-            g.spritesheet.subsurface(3 * g.tile_width, 24 * g.tile_height, g.tile_width, g.tile_height * 2),
-            g.spritesheet.subsurface(4 * g.tile_width, 24 * g.tile_height, g.tile_width, g.tile_height * 2),
-            g.spritesheet.subsurface(5 * g.tile_width, 24 * g.tile_height, g.tile_width, g.tile_height * 2),
-            g.spritesheet.subsurface(4 * g.tile_width, 24 * g.tile_height, g.tile_width, g.tile_height * 2),
-            g.spritesheet.subsurface(3 * g.tile_width, 24 * g.tile_height, g.tile_width, g.tile_height * 2),
-            g.spritesheet.subsurface(2 * g.tile_width, 24 * g.tile_height, g.tile_width, g.tile_height * 2),
-            g.spritesheet.subsurface(1 * g.tile_width, 24 * g.tile_height, g.tile_width, g.tile_height * 2),
+            g.spritesheet.subsurface(0 * g.tile_width, 24 * g.tile_height, g.tile_width * 2, g.tile_height * 2),
+            g.spritesheet.subsurface(2 * g.tile_width, 24 * g.tile_height, g.tile_width * 2, g.tile_height * 2),
+            g.spritesheet.subsurface(4 * g.tile_width, 24 * g.tile_height, g.tile_width * 2, g.tile_height * 2),
+            g.spritesheet.subsurface(6 * g.tile_width, 24 * g.tile_height, g.tile_width * 2, g.tile_height * 2),
+            g.spritesheet.subsurface(8 * g.tile_width, 24 * g.tile_height, g.tile_width * 2, g.tile_height * 2),
+            g.spritesheet.subsurface(6 * g.tile_width, 24 * g.tile_height, g.tile_width * 2, g.tile_height * 2),
+            g.spritesheet.subsurface(4 * g.tile_width, 24 * g.tile_height, g.tile_width * 2, g.tile_height * 2),
+            g.spritesheet.subsurface(2 * g.tile_width, 24 * g.tile_height, g.tile_width * 2, g.tile_height * 2),
+            g.spritesheet.subsurface(0 * g.tile_width, 24 * g.tile_height, g.tile_width * 2, g.tile_height * 2),
         ]
     },
 }
@@ -323,6 +319,7 @@ class Actor(entity.Entity):
 
         self.animation_timer = 0.125
         self.frame_index = 0
+        self.creating_bomb_frame_index = 0
 
         self.frames = sprites
 
@@ -437,6 +434,7 @@ class Actor(entity.Entity):
         if self.remaining_bombs and not self.moving:
 
             self.creating_bomb = True
+            self.creating_bomb_frame_index = 0
             # Don't plant a bomb here if there's already one there
             for bomb in self.bombs:
                 if bomb.rect.x == self.rect.x and bomb.rect.y == self.rect.y + self.offset_y:
@@ -470,13 +468,23 @@ class Actor(entity.Entity):
             self.frame_index += 1
 
             if self.creating_bomb:
-                self.image = self.frames[self.direction]['planting_bomb'][self.frame_index]
-
+                self.animate_bomb_create(delta_time)
             else: self.image = self.frames[self.direction][self.moving][self.frame_index]
 
             self.animation_timer = 0.125
 
+    def animate_bomb_create(self, dt):
+        print(self.creating_bomb_frame_index)
+        print(len(self.frames[self.direction]['planting_bomb']) - 1)
+
+        if self.creating_bomb_frame_index == len(self.frames[self.direction]['planting_bomb']) - 1:
             self.creating_bomb = False
+            return
+
+        self.creating_bomb_frame_index += 1
+
+        self.image = self.frames[self.direction]['planting_bomb'][self.creating_bomb_frame_index]
+
 
     def animate_death(self, dt):
         print('death animation here')
