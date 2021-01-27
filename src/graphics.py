@@ -20,7 +20,7 @@ def round_to_nearest_tile(x, base=tile_width):
 def get_controller():
     pygame.joystick.init()
 
-    controller = KeyboardController
+    controller = KeyboardController()
     # TODO - This can be moved to a controller_factory
     if pygame.joystick.get_count() > 0:
         joystick = pygame.joystick.Joystick(0)

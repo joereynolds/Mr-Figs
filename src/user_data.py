@@ -19,11 +19,30 @@ class UserData():
 
             settings = {
                 "settings": {
-                    "music": True
+                    "music": True,
+                    "controls": {
+                        "up": "K_UP",
+                        "down": "K_DOWN", 
+                        "left":  "K_LEFT",
+                        "right": "K_RIGHT",
+                        "select": "K_RETURN",
+                        "action": "K_SPACE",
+                        "secondary": "K_TAB",
+                        "escape": "K_ESCAPE"
+                    }
                 }
             }
             with open( UserData.FULL_PATH, 'w') as saved_game:
                 saved_game.write(json.dumps(settings))
+
+    def get_controls(self):
+        path = UserData.LOCATION + UserData.FILENAME
+
+        with open(path) as saved_game:
+            game_data = json.load(saved_game)
+
+        return game_data['settings']['controls']
+
 
     def has_completed_level(self, level: str) -> bool:
         path = UserData.LOCATION + UserData.FILENAME

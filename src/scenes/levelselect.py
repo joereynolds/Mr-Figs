@@ -32,15 +32,16 @@ class LevelSelect(scene_base.SceneBase):
         self.tiled_level = TiledMap(file, screen)
         self.player = self.tiled_level.get_player(self.tiled_level.sprites)
         self.game_saver = UserData()
+        self.controller = graphics.get_controller()
 
         scene_base.SceneBase.__init__(
             self,
             input_handler.GlobalInputHandler(
                 self.player,
                 self,
-                graphics.get_controller()
+                self.controller
             ),
-            graphics.get_controller()
+            self.controller
         )
 
         self.file = file
