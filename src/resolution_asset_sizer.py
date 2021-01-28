@@ -3,8 +3,14 @@ import src.logger as logger
 
 class ResolutionAssetSizer():
 
-    def get_font_size(self, screen_size):
-        return int(self.get_button_size(screen_size)[0] * 0.25)
+    def get_font_size(self, screen_size, font_size=12):
+        """
+        Scales a font size to a resolution
+        """
+        # Ref:
+        # https://gamedev.stackexchange.com/questions/79487/problem-to-match-font-size-to-the-screen-resolution-in-libgdx
+        return (screen_size[0] * font_size // graphics.BASE_RESOLUTION[0])
+
 
     def get_button_size(self, screen_size):
         """
