@@ -27,7 +27,6 @@ class InputHandler():
         self.player = player
         self.level = level
         self.controller = controller
-        self.last_pressed = (0,0)
 
     def process_input(self, event):
         """Processes the related actions that are present in self.keys.
@@ -51,14 +50,3 @@ class InputHandler():
                 self.level.switch_to_scene('start-menu', True)
             if item.name == 'quit':
                 pygame.quit()
-
-# TODO GET THESE WORKING AGAIN
-#         if event.type == pygame.MOUSEBUTTONDOWN:
-#             self.level.renderer.escape_menu.menu_items.items['continue'].sprite.on_click(
-#                 print,
-#                 "CON"
-#             )
-#             self.level.renderer.escape_menu.menu_items.items['restart'].sprite.on_click(
-#                 print,
-#                 "RES"
-#             )

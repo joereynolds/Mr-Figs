@@ -14,8 +14,6 @@ from src.user_data import UserData
 from src.minigame_factory import MinigameFactory
 
 
-
-
 class Level(scene_base.SceneBase):
     """All levels use this class as the base level.
     So far (probably because it's huge), there has

@@ -151,6 +151,12 @@ class UserData():
         with open( UserData.FULL_PATH, 'w') as saved_game:
             saved_game.write(json.dumps(game_data))
 
+    def get_music_option(self):
+        with open( UserData.FULL_PATH) as saved_game:
+            game_data = json.load(saved_game)
+
+        return game_data['settings']['music']
+
     def has_video_for_level(self, level: str):
         with open( UserData.FULL_PATH) as saved_game:
             game_data = json.load(saved_game)

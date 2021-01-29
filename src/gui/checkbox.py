@@ -12,21 +12,21 @@ class Checkbox(Clickable):
 
     def __init__(self, x, y, width, height, state, name):
         Clickable.__init__(self, x, y, width, height, string='')
-        self.state = 0
+        self.state = state
         self.name = name
-
-        self.toggle_colours = {
-            0: colours.BLACK,
-            1: colours.RED
-        }
-
         self.image = sprites[self.state]
-        self.image = pygame.transform.scale(self.image, (g.tile_width * 24, g.tile_height * 8))
-        self.image = self.image.convert_alpha()
+        self.width = width
+        self.height = height
+
+        self.image = pygame.transform.scale(self.image, (self.width, self.height))
 
     def toggle(self, function, *args):
         self.state = not self.state
+
+        self.image = sprites[self.state]
+        self.image = pygame.transform.scale(self.image, (self.width, self.height))
+
         function(*args)
 
     def render(self):
-        self.image = sprites[self.state]
+        pass

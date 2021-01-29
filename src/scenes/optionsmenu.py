@@ -9,6 +9,7 @@ from src.input_handlers.options_input_handler import OptionsInputHandler
 from src.gui.clickable import Clickable
 from src.gui.checkbox import Checkbox
 from src.resolution_asset_sizer import ResolutionAssetSizer
+from src.user_data import UserData
 
 class OptionsMenu(scene_base.SceneBase):
     """Options menu for toggling music etc..."""
@@ -26,6 +27,8 @@ class OptionsMenu(scene_base.SceneBase):
         self.image = pygame.transform.scale(self.image, (size[0], size[1]))
         self.rect = self.image.get_rect()
 
+        self.user_config = UserData()
+
         button_width, button_height = asset_sizer.get_button_size(size)
 
         left = self.rect.left + button_width
@@ -36,8 +39,6 @@ class OptionsMenu(scene_base.SceneBase):
         offset = button_height
         bottom = self.rect.bottom
 
-        checkbox_width = asset_sizer.get_button_size(size)[0]
-
         self.music_toggle_text = "[T]OGGLE MUSIC"
         self.font_size = asset_sizer.get_font_size(size)
         self.font = pygame.font.Font(config.font, self.font_size)
@@ -47,9 +48,9 @@ class OptionsMenu(scene_base.SceneBase):
                 Checkbox(
                     left, 
                     bottom - offset * 3, 
-                    checkbox_width, 
+                    200, 
                     button_height, 
-                    0, 
+                    int(self.user_config.get_music_option()), 
                     name='toggle_music'
                     )
                 ),
@@ -80,11 +81,10 @@ class OptionsMenu(scene_base.SceneBase):
         """Fill our surface and render our buttons"""
         self.surface.blit(self.image, ((0,0)))
 
-
         rendered_text = self.font.render(
             self.music_toggle_text, 
             False, 
-            colours.GREEN_HIGHLIGHT
+            colours.WHITE
         )
 
         self.surface.blit(

@@ -30,25 +30,9 @@ class OptionsInputHandler():
                 self.save.delete_save_data()
             
             if item.name == 'toggle_music':
-                self.save.toggle_music_option()
+                self.menu.menu_items.items['toggle_music'].sprite.toggle(
+                    self.save.toggle_music_option
+                )
 
             if item.name == 'go_back':
                 self.menu.switch_to_scene(src.static_scenes.level_obj_list['start-menu'])
-
-        # TODO -get this working again
-#         if event.type == pygame.MOUSEBUTTONDOWN:
-
-#             self.level_select_menu.menu_items['toggle_music'].sprite.on_click(
-#                 self.level_select_menu.menu_items['toggle_music'].sprite.toggle,
-#                 self.save.toggle_music_option
-#             )
-
-#             self.level_select_menu.menu_items['clear_data'].sprite.on_click(
-#                 self.save.delete_save_data
-#             )
-
-#             self.level_select_menu.menu_items['go_back'].sprite.on_click(
-#                 self.level_select_menu.switch_to_scene,
-#                 src.static_scenes.level_obj_list['start-menu']
-#             )
-
