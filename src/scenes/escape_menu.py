@@ -21,7 +21,7 @@ class EscapeMenu(scene_base.SceneBase):
         self.is_visible = False
         self.width, self.height = pygame.display.get_window_size()
 
-        self.surface = pygame.Surface((self.width // 2, self.height - 64)).convert_alpha()
+        self.surface = pygame.Surface((self.width, self.height)).convert_alpha()
         self.rect = self.surface.get_rect()
         asset_sizer = ResolutionAssetSizer()
 
@@ -91,7 +91,7 @@ class EscapeMenu(scene_base.SceneBase):
 
     def render(self, game_surface):
         """Renders all the buttons on our escape menu"""
-        self.surface.fill((30, 90, 129, 225))
+        self.surface.fill((0, 0, 0, 225))
 
         self.menu_items.update()
         self.menu_items.items['continue'].draw(self.surface)
@@ -103,4 +103,4 @@ class EscapeMenu(scene_base.SceneBase):
         self.menu_items.items['quit_to_desktop'].draw(self.surface)
         self.menu_items.items['quit_to_desktop'].sprite.render()
 
-        game_surface.blit(self.surface, (self.width // 4,0))
+        game_surface.blit(self.surface, (0, 0))
