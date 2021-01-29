@@ -2,6 +2,7 @@ import pygame
 import src.entity as entity
 import src.colours as colours
 import src.graphics as g
+from src.countdown_timer import CountdownTimer
 
 # True is teleporting, False is idle
 frames =  {
@@ -45,7 +46,7 @@ class Portal(entity.Entity):
         self.is_teleporting = False
         self.frame_index = 0
         self.frames = frames
-        self.timer = 0.125
+        self.timer = CountdownTimer(0.125)
 
     def update(self, delta_time):
         self.animate(delta_time)
@@ -65,13 +66,13 @@ class Portal(entity.Entity):
             self.destination_portal.is_teleporting = False
 
     def animate(self, delta_time):
-        self.timer -= delta_time
+        self.timer.decrement(delta_time)
 
-        if self.timer <= 0:
+        if self.timer.has_ended():
             if self.frame_index >= len(self.frames[self.is_teleporting]) - 1:
                 self.frame_index = 0
 
             self.image = self.frames[self.is_teleporting][self.frame_index]
             
             self.frame_index += 1
-            self.timer = 0.125
+            self.timer.reset()

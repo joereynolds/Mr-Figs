@@ -1,7 +1,4 @@
 import src.static_scenes
-import pygame
-import src.config as config
-from src.scenes.level import Level
 from src.user_data import UserData
 from src.event_command import EventCommand
 
@@ -14,11 +11,6 @@ class OptionsInputHandler():
         self.save = UserData()
 
     def process_input(self, event):
-        """
-        Process either the clicks on a certain level
-        or the presses of a key and redirect to that
-        level.
-        """
         if event['key'] == EventCommand.DOWN:
             self.menu.menu_items.select_next_item()
         if event['key'] == EventCommand.UP:

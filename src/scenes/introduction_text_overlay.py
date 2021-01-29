@@ -9,6 +9,7 @@ from src.user_data import UserData
 from src.resolution_asset_sizer import ResolutionAssetSizer
 from src.gui.clickable import Clickable
 from src.gui.textbox import Textbox
+from src.countdown_timer import CountdownTimer
 
 class IntroductionTextOverlay(scene_base.SceneBase):
     """The intro movie"""
@@ -40,7 +41,7 @@ class IntroductionTextOverlay(scene_base.SceneBase):
         Hello. I am Mr Figs.
         At least that's what I call myself.
         I was never given a name.
-        What's the point in a name when you've got noone to call you it?
+        What's the point in a name when you're called a number?
         """,
         """
         I was raised in this lab a long time ago.
@@ -48,17 +49,27 @@ class IntroductionTextOverlay(scene_base.SceneBase):
         But really... nothing's changed.
         """,
         """
-        I've been here for years.
-        """
-        """
-        Years.
-        I've watched him for years.
-        Years as he plucked loved ones from what felt like my grasp.
-        Years of screams ringing in my ears and writhing in my mind.
-        Years of no purpose.
+        My days consist of waiting around,
+        the occasional unpleasantry,
+        and then I go to sleep.
         """,
+        """
+        It's been like this for years.
+        I almost think I'm getting used to it,
+        but then I remember where I am.
+        """,
+        """
+        I don't think I can do this much longer.
+        It's too easy to waste my life away
+        (What's the life expectancy on a weird squid man anyway?).
+        I need to break out and fast.
+        Perhaps I can spread the news of what this place does to people...
+        """,
+        """
+        Yep. That sounds like a good idea.
+        Let's gooooo!
+        """
         ]
-
 
         self.action_image = self.controller.get_action_button_image()
         self.controller_prompt_x, self.controller_prompt_y = self.screen_surface_rect.midbottom
@@ -72,8 +83,9 @@ class IntroductionTextOverlay(scene_base.SceneBase):
         zoom = 6
         self.image_width *= zoom
         self.image_height *= zoom
+            
+        self.animation_timer = CountdownTimer(0.75)
 
-        self.animation_timer = 0.750
         self.frame_index = 0
         self.frames = [
             pygame.transform.scale(g.spritesheet.subsurface(0 * g.tile_width, 36 * g.tile_height, g.tile_width, g.tile_height),(self.image_width, self.image_height)),
@@ -96,8 +108,7 @@ class IntroductionTextOverlay(scene_base.SceneBase):
 
     def render(self):
         """Renders all the buttons on our escape menu"""
-        # if not self.user_data.get_has_seen_introduction():
-        if 1:
+        if not self.user_data.get_has_seen_introduction():
             self.timer -= 1
             self.surface.fill(colours.BLACK)
             self.textbox.draw(self.surface)
@@ -132,12 +143,12 @@ class IntroductionTextOverlay(scene_base.SceneBase):
 
 
     def animate(self, delta_time):
-        self.animation_timer -= delta_time
+        self.animation_timer.decrement(delta_time)
 
-        if self.animation_timer <= 0:
+        if self.animation_timer.has_ended():
 
             if self.frame_index >= len(self.frames) - 1:
                 self.frame_index = 0
 
             self.frame_index += 1
-            self.animation_timer = 0.750
+            self.animation_timer.reset()

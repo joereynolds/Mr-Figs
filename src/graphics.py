@@ -13,10 +13,6 @@ tile_height = 32
 
 spritesheet = pygame.image.load(config.spritesheet_location)
 
-
-def round_to_nearest_tile(x, base=tile_width):
-    return base * round(x/base)
-
 def get_controller():
     pygame.joystick.init()
 
@@ -84,10 +80,5 @@ sprites = {
     'switch': {
         'sprites': [subsurf(grid(4, 3)),
                     subsurf(grid(4, 4))]
-    },
-    'button': {
-        'sprites': [
-            spritesheet.subsurface(0 * 32, 9 * 32, tile_width * 3, tile_height) # normal button (not hovered or clicked)
-        ]
     },
 }

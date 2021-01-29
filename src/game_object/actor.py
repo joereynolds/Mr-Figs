@@ -1,5 +1,6 @@
 import pygame
 
+from src.countdown_timer import CountdownTimer
 from src.game_object.moveable_tile import MoveableTile
 from src.game_object.triggerable import Triggerable
 from src.game_object.bomb import Bomb
@@ -323,7 +324,7 @@ class Actor(entity.Entity):
         self.creating_bomb = False  # Whether or not we are at this moment, creating a bomb
         self.minimap_colour = colours.BLUE_HIGHLIGHT
 
-        self.animation_timer = 0.125
+        self.animation_timer = CountdownTimer(0.125)
         self.frame_index = 0
         self.creating_bomb_frame_index = 0
 
@@ -475,9 +476,9 @@ class Actor(entity.Entity):
         return self not in self.tiled_level.sprites
 
     def animate(self, delta_time):
-        self.animation_timer -= delta_time
+        self.animation_timer.decrement(delta_time)
 
-        if self.animation_timer <= 0:
+        if self.animation_timer.has_ended():
 
             if self.frame_index >= len(self.frames[self.direction][self.moving]) - 1:
                 self.frame_index = 0
@@ -489,7 +490,7 @@ class Actor(entity.Entity):
             else: 
                 self.image = self.frames[self.direction][self.moving][self.frame_index]
 
-            self.animation_timer = 0.125
+            self.animation_timer.reset()
 
     def animate_bomb_create(self, dt):
         if self.creating_bomb_frame_index == len(self.frames[self.direction]['planting_bomb']) - 1:

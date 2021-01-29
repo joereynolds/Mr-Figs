@@ -1,5 +1,6 @@
 import pygame
 
+from src.countdown_timer import CountdownTimer
 from src.game_object.switch_tile import Switch
 import src.entity as entity
 import src.colours as colours
@@ -26,7 +27,7 @@ class BombParticle(entity.Entity):
         entity.Entity.__init__(self, x, y, width, height, self.image)
         self.minimap_colour = colours.RED_GLOW
 
-        self.animation_timer = 0.125
+        self.animation_timer = CountdownTimer(0.125)
         self.frame_index = 0
         self.frames = sprites
 
@@ -44,17 +45,17 @@ class BombParticle(entity.Entity):
         self.animate(dt)
 
     def animate(self, dt):
-        self.animation_timer -= dt
+        self.animation_timer.decrement(dt)
 
         if self.last_image == len(self.frames) - 1:
             alpha = 128
             self.image.fill((255, 0, 255, alpha), None, pygame.BLEND_RGBA_MULT)
-        elif self.animation_timer <= 0:
+        elif self.animation_timer.has_ended():
             if self.last_image >= len(self.frames) - 1:
                 self.last_image = 0
 
             self.last_image += 1
             self.image = self.frames[self.last_image]
-            self.animation_timer = 0.125
+            self.animation_timer.reset()
 
 
