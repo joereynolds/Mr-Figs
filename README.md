@@ -6,12 +6,15 @@ The player must blast their way through various puzzles to reach the end goal.
 
 ## NOTE TO PLAYERS
 
-This game uses paid for assets. You can checkout this commit `b3e6a30a82526117682d54d2e583d6d844607181`
-and the game will use free assets (the ones features in the gifs) (though its also missing out on lots of updates).
+This game uses proprietary assets. You can checkout this commit
+`b3e6a30a82526117682d54d2e583d6d844607181` and the game will use public domain
+assets (the ones featured in the gifs) (though its also missing out on lots of
+updates).
 
-The future of this game is based off paid assets in completely different tile sizes with differing mechanics.
-I hope to one day in the future make it compatible with the free assets again but for now, consider this repository a showcase of the game
-rather than something you can clone down and play.
+The future of this game is based off of proprietary assets.  I hope to one day in the
+future make it compatible with the free assets again but for now, consider this
+repository a showcase of the game rather than something you can clone down and
+play (unless you want to run `git checkout b3e6a30a82526117682d54d2e583d6d844607181` and play the demo version).
 
 #### Demo Gif
 
