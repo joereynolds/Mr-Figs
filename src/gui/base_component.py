@@ -23,8 +23,8 @@ class BaseComponent(pygame.sprite.Sprite):
         self.height = height
 
         self.image = g.spritesheet.subsurface(
-                0 * 32, 
-                9 * 32, 
+                0 * g.tile_width, 
+                9 * g.tile_height, 
                 g.tile_width * 3, 
                 g.tile_height
         )

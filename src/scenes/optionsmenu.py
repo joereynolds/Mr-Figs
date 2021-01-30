@@ -45,15 +45,13 @@ class OptionsMenu(scene_base.SceneBase):
         bottom = self.rect.bottom
 
         self.music_toggle_text = "[T]OGGLE MUSIC"
-        self.font_size = asset_sizer.get_font_size(size)
-        self.font = pygame.font.Font(config.font, self.font_size)
 
         items = {
             'toggle_music': pygame.sprite.GroupSingle(
                 Checkbox(
                     left, 
-                    bottom - offset * 3, 
-                    200, 
+                    bottom - offset * 3,
+                    button_width, 
                     button_height, 
                     int(self.user_config.get_music_option()), 
                     name='toggle_music'
@@ -85,20 +83,6 @@ class OptionsMenu(scene_base.SceneBase):
     def render(self):
         """Fill our surface and render our buttons"""
         self.surface.blit(self.image, ((0,0)))
-
-        rendered_text = self.font.render(
-            self.music_toggle_text, 
-            False, 
-            colours.WHITE
-        )
-
-        self.surface.blit(
-            rendered_text, 
-            (
-                self.menu_items.items['toggle_music'].sprite.rect.right + 25, 
-                self.menu_items.items['toggle_music'].sprite.rect.top, 
-            )
-        )
 
         self.menu_items.update()
         self.menu_items.items['toggle_music'].draw(self.surface)
