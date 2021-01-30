@@ -1,9 +1,5 @@
-data/mr-figs.png
-data/mr-figs-extra.png
-# Tiled
-data/levels/levels.tiled-session
-data/mr-figs.png
 assets/images/mr-figs.png
+assets/images/mr-figs-extra.png
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

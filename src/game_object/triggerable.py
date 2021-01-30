@@ -1,5 +1,6 @@
 import pygame
 
+import copy
 from src.game_object.solid_tile import SolidTile
 import src.graphics as g
 import src.entity as entity
@@ -33,7 +34,7 @@ class Triggerable(entity.Entity):
 
     def __init__(self,x, y, width, height, stateful, image, level, id=0):
         self.last_image = 0
-        self.image = sprites[self.last_image]
+        self.image = copy.copy(sprites[self.last_image]) # Copy so that we don't affect all laser's images
         entity.Entity.__init__(self, x, y, width, height, self.image)
         self.stateful = stateful
         self.triggered_id = id
@@ -51,7 +52,7 @@ class Triggerable(entity.Entity):
         """To be called when our stateful tile is 'on'"""
         if self.stateful.state == 1:
             self.solid = False
-            # self.image = self.images[0]
+            self.image = self.images[0]
             self.image.fill((255,0,0,50))
             self.minimap_colour = src.colours.BLUE_BASE
         if self.stateful.state == 0:
