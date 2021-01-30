@@ -25,10 +25,10 @@ class EscapeMenu(scene_base.SceneBase):
         self.rect = self.surface.get_rect()
         asset_sizer = ResolutionAssetSizer()
 
-        size = pygame.display.get_window_size()
-        button_width, button_height = asset_sizer.get_button_size(size)
+        button_width, button_height = asset_sizer.get_button_size((self.width, self.height))
 
-        left = self.rect.left + button_width
+        x = self.rect.centerx - (button_width * 4)
+        y = self.rect.top
 
         button_width *= 6
         button_height *= 2
@@ -39,8 +39,8 @@ class EscapeMenu(scene_base.SceneBase):
         items = {
             'continue': pygame.sprite.GroupSingle(
                 Clickable(
-                    left,
-                    bottom - offset * 4, 
+                    x,
+                    y, 
                     button_width, 
                     button_height, 
                     string='Continue', 
@@ -51,8 +51,8 @@ class EscapeMenu(scene_base.SceneBase):
 
             'restart': pygame.sprite.GroupSingle(
                 Clickable(
-                    left,
-                    bottom - offset * 3, 
+                    x,
+                    y + offset, 
                     button_width, 
                     button_height, 
                     string='Restart', 
@@ -62,8 +62,8 @@ class EscapeMenu(scene_base.SceneBase):
 
             'quit_to_main': pygame.sprite.GroupSingle(
                 Clickable(
-                    left,
-                    bottom - offset * 2, 
+                    x,
+                    y + offset * 2, 
                     button_width, 
                     button_height, 
                     string='Main menu', 
@@ -72,8 +72,8 @@ class EscapeMenu(scene_base.SceneBase):
             ),
             'quit_to_desktop': pygame.sprite.GroupSingle(
                 Clickable(
-                    left,
-                    bottom - offset, 
+                    x,
+                    y + offset * 3, 
                     button_width, 
                     button_height, 
                     string='Exit game', 

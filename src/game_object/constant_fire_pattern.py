@@ -20,8 +20,8 @@ class ConstantFirePattern():
             bullet = Bullet(
                 self.spawn_x,
                 self.spawn_y,
-                2, 
-                2, 
+                4, 
+                4, 
                 self.bullet_speed, 
                 self.vector
             )

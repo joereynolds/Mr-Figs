@@ -23,7 +23,7 @@ class TextOverlay(scene_base.SceneBase):
 
         self.text = text
         self.width, self.height = pygame.display.get_window_size()
-        self.center = self.width // 2
+        self.center = self.width * 0.5
         self.asset_sizer = ResolutionAssetSizer()
         self.surface = pygame.Surface((self.width, self.height)).convert()
         self.font_size = self.asset_sizer.get_font_size(

@@ -35,7 +35,6 @@ class Textbox(pygame.sprite.Sprite):
         self.index += 1
 
     def render(self, surface):
-        self.image.fill((255,255,255, 125))
         self.wrap_text(
             self.text[self.index], 
             self.font,
