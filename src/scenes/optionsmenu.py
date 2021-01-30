@@ -8,6 +8,7 @@ from src.gui.menu_items import MenuItems
 from src.input_handlers.options_input_handler import OptionsInputHandler
 from src.gui.clickable import Clickable
 from src.gui.checkbox import Checkbox
+from src.gui.alert import Alert
 from src.resolution_asset_sizer import ResolutionAssetSizer
 from src.user_data import UserData
 
@@ -26,8 +27,12 @@ class OptionsMenu(scene_base.SceneBase):
         self.image = pygame.image.load(config.image_dir + 'mr-figs-title-draft.png').convert()
         self.image = pygame.transform.scale(self.image, (size[0], size[1]))
         self.rect = self.image.get_rect()
-
         self.user_config = UserData()
+        self.confirm_delete_save_alert = Alert(
+            "Delete your save file?", 
+            "User save file deleted.",
+            self.user_config.delete_save_data
+        )
 
         button_width, button_height = asset_sizer.get_button_size(size)
 
@@ -102,3 +107,6 @@ class OptionsMenu(scene_base.SceneBase):
         self.menu_items.items['toggle_music'].sprite.render()
         self.menu_items.items['clear_data'].sprite.render()
         self.menu_items.items['go_back'].sprite.render()
+
+        if self.confirm_delete_save_alert.is_visible:
+            self.confirm_delete_save_alert.render(self.surface)

@@ -9,7 +9,7 @@ class IntroductionTextOverlayInputHandler():
         if event['key'] == EventCommand.ACTION:
             if self.menu.textbox.sprite.index == len(self.menu.textbox.sprite.text) - 1:
                 self.menu.user_data.register_has_seen_introduction()
-                self.menu.switch_to_scene(src.static_scenes.level_obj_list['level-select'])
+                self.menu.switch_to_scene(src.static_scenes.level_obj_list['first-level'])
                 return
 
             self.menu.textbox.sprite.index += 1

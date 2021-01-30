@@ -36,7 +36,7 @@ def get_controller():
 def get_window_surface():
     # TODO - Apparently multiple calls to this are bad? Investigate.
     # return pygame.display.set_mode((512, 288))
-    return pygame.display.set_mode((800, 800))
+    # return pygame.display.set_mode((800, 800))
     return pygame.display.set_mode((0, 0), pygame.NOFRAME)
 
 def grid(x: int, y: int):

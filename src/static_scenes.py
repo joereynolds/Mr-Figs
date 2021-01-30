@@ -1,4 +1,5 @@
 from src.scenes.levelselect import LevelSelect
+from src.scenes.level import Level
 from src.scenes.startmenu import StartMenu
 from src.scenes.introduction_text_overlay import IntroductionTextOverlay
 from src.scenes.credits import Credits
@@ -16,6 +17,7 @@ def get_scenes():
 
     scenes['introduction'] = IntroductionTextOverlay()
     scenes['level-select'] = LevelSelect(config.level_location + 'L00-LevelSelect.tmx')
+    scenes['first-level'] = Level(config.level_location + 'level-2.tmx')
     scenes['start-menu'] = StartMenu()
     scenes['options-menu'] = OptionsMenu()
     scenes['credits'] = Credits()

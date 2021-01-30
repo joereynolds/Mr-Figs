@@ -66,8 +66,11 @@ class IntroductionTextOverlay(scene_base.SceneBase):
         Perhaps I can spread the news of what this place does to people...
         """,
         """
-        Yep. That sounds like a good idea.
-        Let's gooooo!
+        It'd be nice if you could follow along to
+        make sure I'm safe and that nothing bad happens to me.
+        I've seen a lot of this place but it's bigger than you think.
+
+        So what do you say?
         """
         ]
 
@@ -139,7 +142,8 @@ class IntroductionTextOverlay(scene_base.SceneBase):
             )
 
         else: 
-            self.switch_to_scene(src.static_scenes.level_obj_list['level-select'])
+            # TODO - switch to the last played level here. Remember where we set off
+            self.switch_to_scene(src.static_scenes.level_obj_list['first-level'])
 
 
     def animate(self, delta_time):

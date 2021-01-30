@@ -87,10 +87,8 @@ class BaseComponent(pygame.sprite.Sprite):
         if a position is supplied.
         @position = Position for the text to be rendered (optional)
         """
-        self.text.position = (self.rect.left + self.tile_size[0], self.tile_size[0])
-
         if color:
             self.text.set_color(color)
 
         rendered_text = self.font.render(self.text.text.upper(), False, self.text.color)
-        self.image.blit(rendered_text, self.text.position)
+        self.image.blit(rendered_text, (25, self.tile_size[0]))
