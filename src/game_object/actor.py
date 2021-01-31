@@ -258,7 +258,6 @@ class Actor(entity.Entity):
 
     @self.bombs       = A list of Bomb objects planted by Actor
 
-    @self.move_stack  = (not used) a stack of the previous moves of the actor
 
     @self.destination = [x,y] a 2 element list containing
                         the next destination the sprite will be travelling to
@@ -295,6 +294,9 @@ class Actor(entity.Entity):
                 g.tile_height * 2
         ) 
 
+
+        self.rect.y -= g.tile_height // 4 + g.tile_height
+
         # Used as a hitbox for mr figs
         self.collideable = entity.Entity(
             self.rect.x + g.tile_width * 0.25,
@@ -304,19 +306,14 @@ class Actor(entity.Entity):
             alpha=True
         )
         self.collideable.image.fill((0, 0, 0, 75))
+
         self.tiled_level.sprites.add(self.collideable)
-
-        self.rect.y -= g.tile_height // 4
-
         # We don't want the character exactly on the tile, this doesn't look as good so
         # we offset the y position and then store that in here + our tiles height so we can
         # correctly check for tiles underneath us
         self.offset_y = (g.tile_height // 4) + g.tile_height # 40
 
-
-
         self.bombs = pygame.sprite.LayeredUpdates()
-        self.move_stack = []
         self.destination = [self.rect.x, self.rect.y]
         self.valid_destinations = [g.tile_width * x for x in range(-100, 100)]
         self.moving = False # Whether or not we are moving

@@ -26,7 +26,7 @@
 </data>
  </layer>
  <objectgroup id="2" name="objects">
-  <object id="122" name="actor" type="actor" gid="45" x="32" y="96" width="32" height="32"/>
+  <object id="122" name="actor" type="actor" gid="45" x="32" y="128" width="32" height="32"/>
   <object id="123" type="moveable_tile" gid="116" x="96" y="128" width="32" height="32"/>
   <object id="124" type="tile" gid="202" x="160" y="192" width="32" height="32"/>
   <object id="125" type="tile" gid="202" x="128" y="192" width="32" height="32"/>
