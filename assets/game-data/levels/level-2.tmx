@@ -27,7 +27,7 @@
  <objectgroup id="2" name="objects">
   <object id="1" type="scene_switching_tile" gid="269" x="224" y="64" width="32" height="32">
    <properties>
-    <property name="scene" value="./assets/game-data/levels/level-3.tmx"/>
+    <property name="scene" value="level-3.tmx"/>
    </properties>
   </object>
   <object id="52" type="tile" gid="322" x="160" y="96" width="32" height="32"/>

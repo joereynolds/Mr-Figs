@@ -48,7 +48,7 @@
   <object id="147" type="tile" gid="202" x="32" y="96" width="32" height="32"/>
   <object id="148" type="scene_switching_tile" gid="269" x="288" y="128" width="32" height="32">
    <properties>
-    <property name="scene" value="./assets/game-data/levels/level-4.tmx"/>
+    <property name="scene" value="level-4.tmx"/>
    </properties>
   </object>
   <object id="149" type="tile" gid="202" x="288" y="96" width="32" height="32"/>
